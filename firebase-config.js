@@ -1,16 +1,15 @@
 // Firebase Configuration for EduPet Collection
 // 실제 Firebase 콘솔에서 생성된 설정으로 교체해야 합니다
 
-const firebaseConfig = {
-    // TODO: Firebase Console에서 실제 값으로 교체
-    apiKey: "your-api-key-here",
-    authDomain: "edupet-collection.firebaseapp.com", 
-    databaseURL: "https://edupet-collection-default-rtdb.firebaseio.com",
+ const firebaseConfig = {
+    apiKey: "AIzaSyCHbGsKNYkhbIZnZFsI2SvzFpNQUv-LHEk",
+    authDomain: "edupet-collection.firebaseapp.com",
+    databaseURL: "https://edupet-collection-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "edupet-collection",
-    storageBucket: "edupet-collection.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "your-app-id-here"
-};
+    storageBucket: "edupet-collection.firebasestorage.app",
+    messagingSenderId: "555586725209",
+    appId: "1:555586725209:web:edcb983936ede1add1d848"
+  };
 
 // Firebase 초기화 함수
 let firebase_app = null;
