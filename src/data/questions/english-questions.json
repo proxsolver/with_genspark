@@ -1,0 +1,38 @@
+[
+  {
+    "id": "eng_easy_001",
+    "subject": "english",
+    "question": "다음 중 'apple'의 뜻은?",
+    "options": ["사과", "바나나", "오렌지", "포도"],
+    "correctIndex": 0,
+    "explanation": "Apple은 사과를 의미합니다. 영어에서 가장 기본적인 과일 단어 중 하나예요.",
+    "difficulty": 1,
+    "tags": ["vocabulary", "fruits", "basic"],
+    "audioText": "apple",
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "eng_easy_002",
+    "subject": "english",
+    "question": "'cat'의 뜻은?",
+    "options": ["개", "고양이", "새", "물고기"],
+    "correctIndex": 1,
+    "explanation": "Cat은 고양이를 의미합니다.",
+    "difficulty": 1,
+    "tags": ["vocabulary", "animals", "basic"],
+    "audioText": "cat",
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "eng_easy_003",
+    "subject": "english",
+    "question": "'red'의 뜻은?",
+    "options": ["파란색", "빨간색", "노란색", "초록색"],
+    "correctIndex": 1,
+    "explanation": "Red는 빨간색을 의미합니다.",
+    "difficulty": 1,
+    "tags": ["vocabulary", "colors", "basic"],
+    "audioText": "red",
+    "gradeRange": [3, 4]
+  }
+]

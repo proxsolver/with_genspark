@@ -1,0 +1,35 @@
+[
+  {
+    "id": "idi_easy_001",
+    "subject": "idiom",
+    "question": "'금상첨화'의 뜻은?",
+    "options": ["나쁜 일이 더 나빠짐", "좋은 일에 더 좋은 일이 더해짐", "돈이 많아짐", "꽃이 피어남"],
+    "correctIndex": 1,
+    "explanation": "'금상첨화'는 좋은 것 위에 더 좋은 것이 더해진다는 뜻입니다.",
+    "difficulty": 1,
+    "tags": ["four-character-idiom", "meaning"],
+    "gradeRange": [4, 6]
+  },
+  {
+    "id": "idi_easy_002",
+    "subject": "idiom",
+    "question": "'일석이조'의 뜻은?",
+    "options": ["돌 하나로 새 두 마리를 잡음", "하나를 해서 둘을 얻음", "둘 다 맞음", "새가 두 마리 있음"],
+    "correctIndex": 2,
+    "explanation": "'일석이조'는 돌 하나로 새 두 마리를 잡는다는 뜻으로, 하나를 해서 둘을 얻는다는 의미입니다.",
+    "difficulty": 1,
+    "tags": ["four-character-idiom", "efficiency"],
+    "gradeRange": [4, 6]
+  },
+  {
+    "id": "idi_easy_003",
+    "subject": "idiom",
+    "question": "'새옹지마'의 뜻은?",
+    "options": ["말을 타고 달림", "인생의 길흉화복을 알 수 없음", "새가 죽음", "마구간이 무너짐"],
+    "correctIndex": 1,
+    "explanation": "'새옹지마'는 인생의 좋고 나쁜 일을 미리 알 수 없다는 뜻입니다.",
+    "difficulty": 1,
+    "tags": ["four-character-idiom", "philosophy"],
+    "gradeRange": [5, 6]
+  }
+]

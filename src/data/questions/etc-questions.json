@@ -1,0 +1,35 @@
+[
+  {
+    "id": "etc_easy_001",
+    "subject": "etc",
+    "question": "컴퓨터로 할 수 없는 일은?",
+    "options": ["게임하기", "그림 그리기", "음악 듣기", "실제로 만지기"],
+    "correctIndex": 3,
+    "explanation": "컴퓨터는 디지털 세계의 도구이므로 실제로 물건을 만질 수는 없습니다.",
+    "difficulty": 1,
+    "tags": ["technology", "computer", "limits"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "etc_easy_002",
+    "subject": "etc",
+    "question": "교통신호등에서 '가라'는 뜻의 색깔은?",
+    "options": ["빨간색", "노란색", "파란색", "초록색"],
+    "correctIndex": 3,
+    "explanation": "교통신호등에서 초록색(파란색)은 '가라'는 뜻입니다.",
+    "difficulty": 1,
+    "tags": ["traffic", "safety", "colors"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "etc_easy_003",
+    "subject": "etc",
+    "question": "전화번호 '119'는 언제 사용하나요?",
+    "options": ["배가 고플 때", "불이 났을 때", "심심할 때", "숙제할 때"],
+    "correctIndex": 1,
+    "explanation": "'119'는 화재나 응급상황이 발생했을 때 사용하는 신고번호입니다.",
+    "difficulty": 1,
+    "tags": ["emergency", "safety", "phone"],
+    "gradeRange": [3, 5]
+  }
+]

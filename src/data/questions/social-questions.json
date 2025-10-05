@@ -1,0 +1,35 @@
+[
+  {
+    "id": "soc_easy_001",
+    "subject": "social",
+    "question": "우리나라의 수도는?",
+    "options": ["부산", "서울", "대구", "인천"],
+    "correctIndex": 1,
+    "explanation": "우리나라의 수도는 서울입니다. 한국의 정치, 경제, 문화의 중심지예요.",
+    "difficulty": 1,
+    "tags": ["geography", "korea", "capital"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "soc_easy_002",
+    "subject": "social",
+    "question": "다음 중 우리나라 전통 음식은?",
+    "options": ["피자", "김치", "햄버거", "파스타"],
+    "correctIndex": 1,
+    "explanation": "김치는 우리나라의 대표적인 전통 음식입니다.",
+    "difficulty": 1,
+    "tags": ["culture", "food", "tradition"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "soc_easy_003",
+    "subject": "social",
+    "question": "우리나라를 둘러싼 바다가 아닌 것은?",
+    "options": ["동해", "서해", "남해", "북해"],
+    "correctIndex": 3,
+    "explanation": "우리나라 주변에는 동해, 서해, 남해가 있습니다. 북해는 없어요.",
+    "difficulty": 1,
+    "tags": ["geography", "seas"],
+    "gradeRange": [3, 5]
+  }
+]
