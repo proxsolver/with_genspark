@@ -329,6 +329,17 @@
                     navigator.vibrate(pattern);
                 }
                 
+                // Firebase 통계 업데이트
+                if (typeof updateFirebaseStats !== 'undefined') {
+                    updateFirebaseStats.animal({
+                        animalId: animal.id,
+                        name: animal.name,
+                        tier: tier,
+                        cost: 1, // 뽑기권 1장 사용
+                        isNewAnimal: gameState.collection[animal.id].count === 1
+                    });
+                }
+                
                 saveGameState();
                 updateDisplay();
                 

@@ -877,6 +877,18 @@
             
             localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
             
+            // Firebase 통계 업데이트
+            if (typeof updateFirebaseStats !== 'undefined') {
+                updateFirebaseStats.quiz({
+                    totalQuestions: totalAnswered,
+                    correctAnswers: sessionStats.correct,
+                    moneyEarned: totalReward,
+                    waterEarned: waterReward,
+                    accuracy: accuracy,
+                    subject: selectedSubjects[currentSubjectIndex]
+                });
+            }
+            
             // 농장으로 이동하여 보상 확인
             setTimeout(() => {
                 if (confirm(`🎉 물방울 ${waterReward}개 획득!\\n식물친구들에게 물을 주러 가시겠습니까?`)) {
