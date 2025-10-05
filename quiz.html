@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 퀴즈 - EduPet Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .font-game {
+            font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+            font-weight: 600;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, 
+                rgba(76, 175, 80, 0.1) 0%, 
+                rgba(255, 152, 0, 0.1) 50%, 
+                rgba(33, 150, 243, 0.1) 100%
+            );
+        }
+        
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .option-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .option-btn.correct {
+            background-color: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+        
+        .option-btn.incorrect {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+        
+        .option-btn.neutral {
+            background-color: #e5e7eb;
+            border-color: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        .confetti-animation {
+            animation: confetti 1s ease-out;
+        }
+        
+        @keyframes confetti {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .progress-fill {
+            transition: width 0.5s ease-out;
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#4CAF50',
+                            600: '#16a34a',
+                        },
+                        secondary: {
+                            500: '#FF9800',
+                            600: '#ea580c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- 퀴즈 컨테이너 -->
+    <div class="container mx-auto px-4 py-6 max-w-2xl">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+                <button onclick="window.location.href='index.html'" class="p-2 rounded-lg hover:bg-white hover:shadow-md transition-all">
+                    ← 돌아가기
+                </button>
+                <div class="flex items-center space-x-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                        🇺🇸 영어
+                    </span>
+                    <span class="text-sm text-gray-600 font-medium" id="question-counter">1 / 10</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+                <span class="text-sm text-gray-600">남은 시간:</span>
+                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium" id="timer">
+                    ⏰ 9:30
+                </span>
+            </div>
+        </div>
+
+        <!-- 진행률 바 -->
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+            <div class="bg-primary-500 h-2 rounded-full progress-fill" id="progress-bar" style="width: 10%;"></div>
+        </div>
+
+        <!-- 퀴즈 카드 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 slide-in">
+            <!-- 문제 -->
+            <div class="mb-6">
+                <div class="flex items-start justify-between">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex-1" id="question-text">
+                        다음 중 'apple'의 뜻은?
+                    </h2>
+                    
+                    <!-- TTS 버튼 -->
+                    <button id="tts-btn" onclick="playTTS()" class="ml-4 px-3 py-1 border-2 border-primary-500 text-primary-500 rounded-lg text-sm hover:bg-primary-500 hover:text-white transition-all">
+                        🔊 발음
+                    </button>
+                </div>
+            </div>
+
+            <!-- 보기 -->
+            <div class="space-y-3 mb-6" id="options-container">
+                <button class="option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium" onclick="selectOption(0)">
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">A</span>
+                    사과
+                </button>
+                <button class="option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium" onclick="selectOption(1)">
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">B</span>
+                    바나나
+                </button>
+                <button class="option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium" onclick="selectOption(2)">
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">C</span>
+                    오렌지
+                </button>
+                <button class="option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium" onclick="selectOption(3)">
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">D</span>
+                    포도
+                </button>
+            </div>
+
+            <!-- 해설 (처음엔 숨김) -->
+            <div id="explanation" class="hidden mb-6">
+                <div class="p-4 rounded-xl border-2 bg-green-50 border-green-200">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl" id="result-icon">🎉</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2" id="result-text">정답입니다!</h4>
+                            <p class="text-gray-700 leading-relaxed" id="explanation-text">
+                                Apple은 사과를 의미합니다. 영어에서 가장 기본적인 과일 단어 중 하나예요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 다음 버튼 (처음엔 숨김) -->
+            <div id="next-section" class="hidden text-center">
+                <button onclick="nextQuestion()" class="px-8 py-3 bg-primary-500 text-white rounded-xl text-lg font-bold hover:bg-primary-600 transition-all">
+                    다음 문제 ➡️
+                </button>
+            </div>
+        </div>
+
+        <!-- 학습 통계 -->
+        <div class="bg-white rounded-xl shadow-lg p-4">
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                    <div class="text-2xl font-bold text-primary-600" id="correct-count">0</div>
+                    <div class="text-sm text-gray-600">정답</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-red-600" id="incorrect-count">0</div>
+                    <div class="text-sm text-gray-600">오답</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-blue-600" id="accuracy">0%</div>
+                    <div class="text-sm text-gray-600">정답률</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 샘플 문제 데이터
+        const questions = [
+            {
+                id: "eng_vocab_001",
+                subject: "english",
+                question: "다음 중 'apple'의 뜻은?",
+                options: ["사과", "바나나", "오렌지", "포도"],
+                correctIndex: 0,
+                explanation: "Apple은 사과를 의미합니다. 영어에서 가장 기본적인 과일 단어 중 하나예요.",
+                audioText: "apple"
+            },
+            {
+                id: "eng_vocab_002", 
+                subject: "english",
+                question: "'Good morning'을 한국어로 하면?",
+                options: ["안녕하세요", "좋은 아침", "안녕히 가세요", "고맙습니다"],
+                correctIndex: 1,
+                explanation: "Good morning은 '좋은 아침'이라는 뜻으로, 아침 인사말입니다.",
+                audioText: "Good morning"
+            },
+            {
+                id: "eng_vocab_003",
+                subject: "english", 
+                question: "'Thank you'의 뜻은?",
+                options: ["미안해요", "고마워요", "안녕하세요", "괜찮아요"],
+                correctIndex: 1,
+                explanation: "Thank you는 '고마워요'라는 뜻의 기본적인 감사 표현입니다.",
+                audioText: "Thank you"
+            }
+        ];
+
+        // 게임 상태
+        let currentQuestionIndex = 0;
+        let correctCount = 0;
+        let incorrectCount = 0;
+        let isAnswered = false;
+        let shuffledOptions = [];
+        let timeRemaining = 600; // 10분 (600초)
+
+        // 타이머
+        function startTimer() {
+            setInterval(() => {
+                if (timeRemaining > 0) {
+                    timeRemaining--;
+                    const minutes = Math.floor(timeRemaining / 60);
+                    const seconds = timeRemaining % 60;
+                    document.getElementById('timer').textContent = `⏰ ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    // 시간이 1분 미만일 때 빨간색으로 강조
+                    if (timeRemaining < 60) {
+                        document.getElementById('timer').className = 'px-2 py-1 bg-red-500 text-white rounded-full text-sm font-medium animate-pulse';
+                    }
+                } else {
+                    // 시간 종료
+                    alert('시간이 종료되었습니다!');
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
+        }
+
+        // 보기 셔플 함수 (Fisher-Yates 알고리즘)
+        function shuffleOptions(question) {
+            const options = question.options.map((text, index) => ({
+                text,
+                originalIndex: index
+            }));
+            
+            const shuffled = [...options];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            return shuffled;
+        }
+
+        // 문제 로드
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                // 모든 문제 완료
+                completeQuiz();
+                return;
+            }
+
+            const question = questions[currentQuestionIndex];
+            shuffledOptions = shuffleOptions(question);
+            isAnswered = false;
+
+            // UI 업데이트
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('question-counter').textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
+            
+            // 진행률 업데이트
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+
+            // 보기 업데이트
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            shuffledOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium transition-all';
+                button.onclick = () => selectOption(index);
+                button.innerHTML = `
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">
+                        ${String.fromCharCode(65 + index)}
+                    </span>
+                    ${option.text}
+                `;
+                optionsContainer.appendChild(button);
+            });
+
+            // 해설과 다음 버튼 숨김
+            document.getElementById('explanation').classList.add('hidden');
+            document.getElementById('next-section').classList.add('hidden');
+
+            // TTS 버튼 표시/숨김
+            const ttsBtn = document.getElementById('tts-btn');
+            if (question.audioText) {
+                ttsBtn.style.display = 'block';
+            } else {
+                ttsBtn.style.display = 'none';
+            }
+        }
+
+        // 옵션 선택
+        function selectOption(shuffledIndex) {
+            if (isAnswered) return;
+
+            const question = questions[currentQuestionIndex];
+            const selectedOriginalIndex = shuffledOptions[shuffledIndex].originalIndex;
+            const isCorrect = selectedOriginalIndex === question.correctIndex;
+            
+            isAnswered = true;
+
+            // 버튼 상태 업데이트
+            const options = document.querySelectorAll('.option-btn');
+            options.forEach((btn, index) => {
+                const originalIndex = shuffledOptions[index].originalIndex;
+                
+                if (originalIndex === question.correctIndex) {
+                    // 정답 버튼
+                    btn.classList.add('correct');
+                    btn.innerHTML += ' <span class="ml-2 text-xl">✅</span>';
+                } else if (index === shuffledIndex) {
+                    // 선택한 오답 버튼
+                    btn.classList.add('incorrect');
+                    btn.innerHTML += ' <span class="ml-2 text-xl">❌</span>';
+                } else {
+                    // 나머지 버튼들
+                    btn.classList.add('neutral');
+                }
+                
+                btn.onclick = null; // 클릭 비활성화
+            });
+
+            // 통계 업데이트
+            if (isCorrect) {
+                correctCount++;
+                // 정답 애니메이션
+                options[shuffledIndex].classList.add('confetti-animation');
+            } else {
+                incorrectCount++;
+            }
+
+            updateStats();
+
+            // 해설 표시
+            setTimeout(() => {
+                showExplanation(isCorrect, question.explanation);
+            }, 1000);
+        }
+
+        // 해설 표시
+        function showExplanation(isCorrect, explanation) {
+            const explanationDiv = document.getElementById('explanation');
+            const resultIcon = document.getElementById('result-icon');
+            const resultText = document.getElementById('result-text');
+            const explanationText = document.getElementById('explanation-text');
+            const nextSection = document.getElementById('next-section');
+
+            if (isCorrect) {
+                resultIcon.textContent = '🎉';
+                resultText.textContent = '정답입니다!';
+                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-green-50 border-green-200';
+            } else {
+                resultIcon.textContent = '💡';
+                resultText.textContent = '아쉽네요! 정답을 확인해보세요.';
+                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-blue-50 border-blue-200';
+            }
+
+            explanationText.textContent = explanation;
+            explanationDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                nextSection.classList.remove('hidden');
+            }, 500);
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = incorrectCount;
+            
+            const totalAnswered = correctCount + incorrectCount;
+            const accuracy = totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+        }
+
+        // 다음 문제
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        // TTS 재생
+        function playTTS() {
+            const question = questions[currentQuestionIndex];
+            if (question.audioText && 'speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(question.audioText);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 퀴즈 완료
+        function completeQuiz() {
+            const accuracy = Math.round((correctCount / questions.length) * 100);
+            
+            alert(`퀴즈 완료!\n정답: ${correctCount}개\n정답률: ${accuracy}%\n\n식물이 자랐어요! 🌱`);
+            
+            // 메인 페이지로 돌아가기
+            window.location.href = 'index.html';
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            startTimer();
+            loadQuestion();
+            updateStats();
+        });
+
+        // 뒤로가기 확인
+        window.addEventListener('beforeunload', function(e) {
+            if (currentQuestionIndex > 0 && currentQuestionIndex < questions.length) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+    </script>
+</body>
+</html>

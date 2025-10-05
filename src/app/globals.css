@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 한글 폰트 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+/* 기본 스타일 리셋 */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  min-height: 100vh;
+}
+
+/* CSS 커스텀 속성 */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 250, 251, 252;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* 교육용 게임 색상 팔레트 */
+  --primary: 76, 175, 80;      /* #4CAF50 - 성장과 학습의 녹색 */
+  --secondary: 255, 152, 0;    /* #FF9800 - 활력과 재미의 오렌지 */
+  --accent: 33, 150, 243;      /* #2196F3 - 신뢰와 안정의 파란색 */
+  --danger: 244, 67, 54;       /* #F44336 - 위험 알림의 빨간색 */
+  
+  /* 등급별 색상 */
+  --common: 156, 163, 175;     /* #9CA3AF - 회색 */
+  --rare: 59, 130, 246;        /* #3B82F6 - 파란색 */
+  --epic: 139, 92, 246;        /* #8B5CF6 - 보라색 */
+  --legendary: 245, 158, 11;   /* #F59E0B - 금색 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 31, 41, 55;
+    --background-end-rgb: 17, 24, 39;
+  }
+}
+
+/* 커스텀 애니메이션 */
+@keyframes confetti {
+  0% { 
+    transform: scale(0) rotate(0deg); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: scale(1) rotate(360deg); 
+    opacity: 1; 
+  }
+}
+
+@keyframes grow {
+  0% { 
+    transform: scale(0.8); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.1); 
+    opacity: 0.8; 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(0.8); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2); 
+  }
+}
+
+/* 게임용 폰트 스타일 */
+.font-game {
+  font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+  font-weight: 600;
+}
+
+/* 접근성을 위한 터치 영역 */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .bg-white {
+    background-color: #ffffff !important;
+  }
+  
+  .text-gray-600 {
+    color: #000000 !important;
+  }
+  
+  .border-gray-200 {
+    border-color: #000000 !important;
+  }
+}
+
+/* 애니메이션 감소 모드 지원 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 포커스 링 스타일 */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
+}
+
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 로딩 스피너 */
+.loading-spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid rgb(var(--primary));
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 그라디언트 배경 */
+.gradient-bg {
+  background: linear-gradient(135deg, 
+    rgb(var(--primary) / 0.1) 0%, 
+    rgb(var(--secondary) / 0.1) 50%, 
+    rgb(var(--accent) / 0.1) 100%
+  );
+}
+
+/* 카드 호버 효과 */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* 등급별 글로우 효과 */
+.glow-common {
+  box-shadow: 0 0 20px rgba(var(--common), 0.3);
+}
+
+.glow-rare {
+  box-shadow: 0 0 20px rgba(var(--rare), 0.4);
+}
+
+.glow-epic {
+  box-shadow: 0 0 20px rgba(var(--epic), 0.5);
+  animation: sparkle 2s infinite;
+}
+
+.glow-legendary {
+  box-shadow: 0 0 30px rgba(var(--legendary), 0.6);
+  animation: sparkle 1.5s infinite;
+}
+
+/* 텍스트 크기 조정 지원 */
+.text-adjustable {
+  font-size: var(--user-font-size, 1rem);
+}
+
+/* PWA 스타일 */
+.pwa-container {
+  max-width: 100vw;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* iOS Safari 하단 바 대응 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 터치 디바이스 최적화 */
+@media (pointer: coarse) {
+  .touch-optimized {
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+  
+  button, 
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 다크 모드 지원 준비 */
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 31, 41, 55;
+  --background-end-rgb: 17, 24, 39;
+}
+
+.dark .bg-white {
+  background-color: rgb(31, 41, 55);
+}
+
+.dark .text-gray-900 {
+  color: rgb(243, 244, 246);
+}
+
+.dark .text-gray-600 {
+  color: rgb(156, 163, 175);
+}
+
+.dark .border-gray-200 {
+  border-color: rgb(75, 85, 99);
+}
+
+/* 유틸리티 클래스 */
+.text-shadow {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 인쇄 스타일 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+}
