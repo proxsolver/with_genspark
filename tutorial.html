@@ -219,11 +219,64 @@
                 </div>
             </div>
 
-            <!-- Slide 6: Start -->
+            <!-- Slide 6: Nickname Input -->
             <div id="slide6" class="tutorial-slide hidden">
                 <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">👤</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">나만의 별명을 만들어보세요!</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="text-sm text-gray-600 mb-4">
+                            별명을 설정하면 친구들과 순위표에서<br>
+                            더 재미있게 소통할 수 있어요!
+                        </div>
+                        
+                        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                            <div class="flex items-center justify-center space-x-2 mb-3">
+                                <span class="text-2xl">🌐</span>
+                                <span class="font-medium text-blue-800">소셜 기능 미리보기</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs text-blue-700">
+                                <div>🏆 실시간 순위표</div>
+                                <div>👥 친구 추가</div>
+                                <div>🐾 동물 자랑하기</div>
+                                <div>🎯 학습 그룹</div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <input 
+                                type="text" 
+                                id="nicknameInput" 
+                                placeholder="2-10자 사이로 입력하세요" 
+                                maxlength="10"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none text-center text-lg"
+                            >
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <div>💡 나중에 소셜 허브에서 언제든 변경할 수 있어요!</div>
+                                <div id="nicknameError" class="text-red-500 hidden"></div>
+                                <div id="nicknameSuccess" class="text-green-600 hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <button id="setNicknameBtn" onclick="setUserNickname()" class="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-colors">
+                            ✨ 별명 설정하기
+                        </button>
+                        <button onclick="skipNickname()" class="w-full px-6 py-2 text-gray-500 hover:text-gray-700 transition-colors text-sm">
+                            건너뛰기 (나중에 설정)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Start -->
+            <div id="slide7" class="tutorial-slide hidden">
+                <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🎉</div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">이제 시작해보세요!</h2>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">
+                        <span id="welcomeMessage">이제 시작해보세요!</span>
+                    </h2>
                     <div class="text-gray-600 mb-6 space-y-3">
                         <div class="bg-green-50 rounded-lg p-4">
                             <div class="text-sm text-green-700 space-y-1">
@@ -261,7 +314,7 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 6;
+        const totalSlides = 7;
 
         function updateUI() {
             // Hide all slides
@@ -306,6 +359,102 @@
             }
         }
 
+        // 별명 설정 함수
+        function setUserNickname() {
+            const nicknameInput = document.getElementById('nicknameInput');
+            const nickname = nicknameInput.value.trim();
+            const errorDiv = document.getElementById('nicknameError');
+            const successDiv = document.getElementById('nicknameSuccess');
+            const setBtn = document.getElementById('setNicknameBtn');
+            
+            // 에러/성공 메시지 초기화
+            errorDiv.classList.add('hidden');
+            successDiv.classList.add('hidden');
+            
+            // 입력 검증
+            if (!nickname) {
+                showError('별명을 입력해주세요!');
+                return;
+            }
+            
+            if (nickname.length < 2) {
+                showError('별명은 2글자 이상이어야 해요!');
+                return;
+            }
+            
+            if (nickname.length > 10) {
+                showError('별명은 10글자 이하여야 해요!');
+                return;
+            }
+            
+            // 특수문자 검사 (한글, 영문, 숫자, 일부 특수문자만 허용)
+            const allowedPattern = /^[가-힣a-zA-Z0-9_\s]+$/;
+            if (!allowedPattern.test(nickname)) {
+                showError('한글, 영문, 숫자, _만 사용할 수 있어요!');
+                return;
+            }
+            
+            // 별명 저장
+            const userSettings = {
+                userName: nickname,
+                setAt: Date.now()
+            };
+            localStorage.setItem('eduPetSettings', JSON.stringify(userSettings));
+            
+            // 성공 메시지
+            showSuccess(`✨ "${nickname}" 별명이 설정되었어요!`);
+            
+            // 환영 메시지 업데이트
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                welcomeMessage.textContent = `${nickname}님, 환영합니다!`;
+            }
+            
+            // 버튼 변경
+            setBtn.textContent = '✅ 설정 완료';
+            setBtn.disabled = true;
+            setBtn.classList.add('bg-green-500', 'hover:bg-green-500');
+            setBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+            
+            // 2초 후 자동으로 다음 단계로
+            setTimeout(() => {
+                nextSlide();
+            }, 2000);
+            
+            function showError(message) {
+                errorDiv.textContent = message;
+                errorDiv.classList.remove('hidden');
+                nicknameInput.classList.add('border-red-300');
+                nicknameInput.focus();
+            }
+            
+            function showSuccess(message) {
+                successDiv.textContent = message;
+                successDiv.classList.remove('hidden');
+                nicknameInput.classList.remove('border-red-300');
+                nicknameInput.classList.add('border-green-300');
+            }
+        }
+        
+        // 별명 설정 건너뛰기
+        function skipNickname() {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (welcomeMessage) {
+                welcomeMessage.textContent = '이제 시작해보세요!';
+            }
+            nextSlide();
+        }
+        
+        // 엔터 키로 별명 설정
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && currentSlide === 6) {
+                const nicknameInput = document.getElementById('nicknameInput');
+                if (document.activeElement === nicknameInput) {
+                    setUserNickname();
+                }
+            }
+        });
+
         function completeOnboarding() {
             // Mark onboarding as completed
             localStorage.setItem('eduPetOnboardingCompleted', 'true');
@@ -316,8 +465,19 @@
             simpleFarmState.water = 12;
             localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
             
+            // Get user nickname for personalized message
+            let nickname = '학습자';
+            try {
+                const userSettings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+                if (userSettings.userName) {
+                    nickname = userSettings.userName;
+                }
+            } catch (error) {
+                console.log('사용자 설정 로드 실패:', error);
+            }
+            
             // Show completion message
-            alert('🎉 EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 500원\n💧 물방울 12개\n\n이제 첫 번째 퀴즈를 풀어보세요!');
+            alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 500원\n💧 물방울 12개\n\n이제 첫 번째 퀴즈를 풀어보세요!`);
             
             // Redirect to main page
             window.location.href = 'index.html';

@@ -129,17 +129,17 @@
                     <span class="text-3xl">🌱</span>
                     <div>
                         <h1 class="text-2xl font-bold text-gray-900 font-game">EduPet Collection</h1>
-                        <p class="text-sm text-gray-600">초롱이님의 학습 농장</p>
+                        <p class="text-sm text-gray-600"><span id="userNameDisplay">학습자</span>님의 학습 농장</p>
                     </div>
                 </div>
                 
                 <div class="text-right">
                     <div class="flex items-center justify-end space-x-2 mb-1">
                         <span class="text-2xl">💰</span>
-                        <span class="text-xl font-bold text-primary-600">3,500원</span>
+                        <span id="moneyDisplay" class="text-xl font-bold text-primary-600">0원</span>
                     </div>
                     <div class="inline-flex items-center px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">
-                        🔥 7일 연속
+                        🔥 <span id="streakDisplay">0일째</span>
                     </div>
                 </div>
             </div>
@@ -150,17 +150,17 @@
             <div class="flex items-center space-x-2 mb-4">
                 <span class="text-xl">📚</span>
                 <h2 class="text-xl font-bold font-game">오늘의 학습 미션</h2>
-                <span class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">15분 / 25분</span>
+                <span id="studyTimeDisplay" class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">0분 / 25분</span>
             </div>
             
             <!-- 진행률 바 -->
             <div class="mb-4">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm text-gray-600">학습 진행률</span>
-                    <span class="text-sm font-medium">60%</span>
+                    <span id="progressPercentDisplay" class="text-sm font-medium">0%</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-3">
-                    <div class="bg-primary-500 h-3 rounded-full progress-bar" style="width: 60%;"></div>
+                    <div id="progressBarDisplay" class="bg-primary-500 h-3 rounded-full progress-bar" style="width: 0%;"></div>
                 </div>
             </div>
 
@@ -168,28 +168,28 @@
             <div class="mb-4">
                 <h4 class="text-sm font-semibold text-gray-700 mb-3">필수 과목</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <button onclick="startQuickQuiz('english')" class="bg-green-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover">
+                    <button id="english-btn" onclick="startQuickQuiz('english')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🇺🇸</span>
                             <span class="font-medium">영어</span>
                         </div>
-                        <div class="text-xs opacity-80">✅ 완료</div>
+                        <div id="english-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                     
-                    <button onclick="startQuickQuiz('math')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button id="math-btn" onclick="startQuickQuiz('math')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔢</span>
                             <span class="font-medium">수학</span>
                         </div>
-                        <div class="text-xs opacity-80">7.5분 남음</div>
+                        <div id="math-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                     
-                    <button onclick="startQuickQuiz('science')" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button id="science-btn" onclick="startQuickQuiz('science')" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔬</span>
                             <span class="font-medium">과학</span>
                         </div>
-                        <div class="text-xs opacity-80">7.5분 남음</div>
+                        <div id="science-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                 </div>
             </div>
@@ -215,7 +215,7 @@
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-2">
                     <span class="text-xl">🌱</span>
-                    <h2 class="text-xl font-bold font-game">초롱이의 작은 정원</h2>
+                    <h2 class="text-xl font-bold font-game"><span id="gardenOwnerDisplay">학습자</span>의 작은 정원</h2>
                 </div>
                 <div class="flex items-center space-x-2">
                     <span class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">
@@ -379,6 +379,16 @@
                     데이터 관리
                 </button>
             </div>
+
+            <!-- 소셜 기능 -->
+            <div class="grid grid-cols-1 gap-3 mb-4">
+                <button onclick="window.location.href='social-hub.html'" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-4 rounded-xl text-lg font-bold font-game card-hover relative overflow-hidden">
+                    <span class="mr-2">🌐</span>
+                    친구들과 소통하기
+                    <div class="absolute top-1 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">NEW!</div>
+                    <div class="text-xs opacity-90 mt-1">순위표 • 친구 추가 • 동물 자랑하기</div>
+                </button>
+            </div>
             
             <p class="text-sm text-gray-600">
                 <span class="font-semibold">빠른 시작:</span> 위의 필수 과목 버튼을 클릭<br>
@@ -525,6 +535,139 @@
             }
         }
 
+        // 과목별 학습 진도 업데이트
+        function updateSubjectProgress() {
+            const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+            const today = new Date().toDateString();
+            
+            const subjects = [
+                { id: 'english', name: '영어', emoji: '🇺🇸' },
+                { id: 'math', name: '수학', emoji: '🔢' },
+                { id: 'science', name: '과학', emoji: '🔬' }
+            ];
+            
+            subjects.forEach(subject => {
+                const btn = document.getElementById(`${subject.id}-btn`);
+                const status = document.getElementById(`${subject.id}-status`);
+                
+                if (btn && status) {
+                    const subjectProgress = progressData[subject.id] || {};
+                    const todayStudy = subjectProgress[today];
+                    
+                    if (todayStudy && todayStudy.completed) {
+                        // 완료된 과목
+                        btn.className = 'bg-green-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
+                        status.textContent = '✅ 완료';
+                    } else if (todayStudy && todayStudy.questionsAnswered > 0) {
+                        // 진행 중인 과목
+                        btn.className = 'bg-blue-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
+                        const progress = Math.round((todayStudy.questionsAnswered / 10) * 100);
+                        status.textContent = `${progress}% 진행중`;
+                    } else {
+                        // 아직 시작하지 않은 과목
+                        btn.className = 'border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50';
+                        status.textContent = '시작하기';
+                    }
+                }
+            });
+        }
+
+        // 돈 표시 업데이트
+        function updateMoneyDisplay() {
+            const farmState = JSON.parse(localStorage.getItem('eduPetFarmState') || '{"coins": 0}');
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"money": 0}');
+            
+            // 두 농장 시스템의 돈을 합산
+            const totalMoney = (farmState.coins || 0) + (simpleFarmState.money || 0);
+            
+            const moneyDisplay = document.getElementById('moneyDisplay');
+            if (moneyDisplay) {
+                moneyDisplay.textContent = `${totalMoney.toLocaleString()}원`;
+            }
+        }
+
+        // 사용자 이름 업데이트
+        function updateUserNameDisplay() {
+            let userName = '학습자';
+            
+            // 1순위: 튜토리얼에서 설정한 로컬 별명
+            const localSettings = localStorage.getItem('eduPetSettings');
+            if (localSettings) {
+                try {
+                    const settings = JSON.parse(localSettings);
+                    if (settings.userName) {
+                        userName = settings.userName;
+                    }
+                } catch (error) {
+                    console.log('로컬 설정 로드 실패:', error);
+                }
+            }
+            
+            // 2순위: Firebase 소셜 허브에서 설정한 닉네임
+            const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
+            if (firebaseUser && userName === '학습자') {
+                try {
+                    const userData = JSON.parse(firebaseUser);
+                    if (userData.userData?.profile?.nickname) {
+                        userName = userData.userData.profile.nickname;
+                    }
+                } catch (error) {
+                    console.log('Firebase 사용자 데이터 로드 실패:', error);
+                }
+            }
+            
+            // UI 업데이트
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const gardenOwnerDisplay = document.getElementById('gardenOwnerDisplay');
+            
+            if (userNameDisplay) userNameDisplay.textContent = userName;
+            if (gardenOwnerDisplay) gardenOwnerDisplay.textContent = userName;
+        }
+
+        // 오늘의 학습 진행률 업데이트
+        function updateTodayProgress() {
+            const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+            const today = new Date().toDateString();
+            
+            // 오늘 모든 과목의 진행률 계산
+            const subjects = ['english', 'math', 'science'];
+            let totalQuestions = 0;
+            let totalTime = 0;
+            let completedSubjects = 0;
+            
+            subjects.forEach(subject => {
+                const subjectProgress = progressData[subject] || {};
+                const todayStudy = subjectProgress[today];
+                
+                if (todayStudy) {
+                    totalQuestions += todayStudy.questionsAnswered || 0;
+                    totalTime += todayStudy.timeSpent || 0;
+                    if (todayStudy.completed) completedSubjects++;
+                }
+            });
+            
+            // 진행률 계산 (목표: 3과목 완료)
+            const progressPercent = Math.round((completedSubjects / subjects.length) * 100);
+            const targetTime = 25; // 목표 시간 (분)
+            
+            // UI 업데이트
+            const studyTimeDisplay = document.getElementById('studyTimeDisplay');
+            const progressPercentDisplay = document.getElementById('progressPercentDisplay');
+            const progressBarDisplay = document.getElementById('progressBarDisplay');
+            
+            if (studyTimeDisplay) {
+                studyTimeDisplay.textContent = `${Math.round(totalTime)}분 / ${targetTime}분`;
+            }
+            
+            if (progressPercentDisplay) {
+                progressPercentDisplay.textContent = `${progressPercent}%`;
+            }
+            
+            if (progressBarDisplay) {
+                progressBarDisplay.style.width = `${progressPercent}%`;
+            }
+        }
+
         // 첫 방문 체크 및 온보딩
         function checkFirstVisit() {
             if (localStorage.getItem('eduPetOnboardingCompleted') !== 'true') {
@@ -535,6 +678,19 @@
             return true;
         }
 
+        // 빠른 퀴즈 시작 함수
+        function startQuickQuiz(subject) {
+            // 선택한 과목으로 퀴즈 페이지로 이동
+            const subjectMap = {
+                'english': 'english',
+                'math': 'math', 
+                'science': 'science'
+            };
+            
+            const selectedSubject = subjectMap[subject] || 'english';
+            window.location.href = `subject-select.html?quick=${selectedSubject}`;
+        }
+
         adjustFontSize();
         
         // 첫 방문이 아닌 경우에만 나머지 초기화
@@ -542,11 +698,19 @@
             updateGardenStatus();
             updateTicketDisplay();
             updateStreakDisplay();
+            updateSubjectProgress();
+            updateMoneyDisplay();
+            updateUserNameDisplay();
+            updateTodayProgress();
             
-            // 주기적으로 뽑기권 개수 및 연속 학습일 업데이트
+            // 주기적으로 모든 데이터 업데이트
             setInterval(() => {
                 updateTicketDisplay();
                 updateStreakDisplay();
+                updateSubjectProgress();
+                updateMoneyDisplay();
+                updateUserNameDisplay();
+                updateTodayProgress();
             }, 5000);
         }
     </script>

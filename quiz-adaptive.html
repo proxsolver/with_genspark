@@ -392,7 +392,16 @@
 
         // 과목 정보
         const subjects = {
-            english: { name: '영어', icon: '🇺🇸', targetTime: 10 }
+            english: { name: '영어', icon: '🇺🇸', targetTime: 10 },
+            math: { name: '수학', icon: '🔢', targetTime: 10 },
+            science: { name: '과학', icon: '🔬', targetTime: 10 },
+            korean: { name: '국어', icon: '📚', targetTime: 10 },
+            social: { name: '사회', icon: '🏛️', targetTime: 10 },
+            common: { name: '상식', icon: '🧠', targetTime: 7.5 },
+            idiom: { name: '사자성어', icon: '📜', targetTime: 7.5 },
+            person: { name: '인물', icon: '👤', targetTime: 7.5 },
+            economy: { name: '경제', icon: '💰', targetTime: 7.5 },
+            etc: { name: '기타', icon: '🎲', targetTime: 7.5 }
         };
 
         // 난이도별 설정
@@ -876,6 +885,18 @@
             }
             
             localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
+            
+            // Firebase 통계 업데이트
+            if (typeof updateFirebaseStats !== 'undefined') {
+                updateFirebaseStats.quiz({
+                    totalQuestions: totalAnswered,
+                    correctAnswers: sessionStats.correct,
+                    moneyEarned: totalReward,
+                    waterEarned: waterReward,
+                    accuracy: accuracy,
+                    subject: selectedSubjects[currentSubjectIndex]
+                });
+            }
             
             // 농장으로 이동하여 보상 확인
             setTimeout(() => {

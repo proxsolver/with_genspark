@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPet 소셜 허브 🌐</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script defer src="firebase-config.js"></script>
+    <script defer src="firebase-auth.js"></script>
+    <script defer src="firebase-leaderboard.js"></script>
+    <script defer src="firebase-social.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #6c757d;
+            transition: all 0.3s;
+        }
+
+        .nav-tab.active {
+            background: white;
+            color: #495057;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .nav-tab:hover {
+            background: #e9ecef;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .auth-section {
+            text-align: center;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .auth-section.authenticated {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .auth-status {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .input-group {
+            display: flex;
+            margin: 10px 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-control {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 25px 0 0 25px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+        }
+
+        .input-group .btn {
+            border-radius: 0 25px 25px 0;
+            margin: 0;
+        }
+
+        .leaderboard {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .leaderboard h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .leaderboard-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .rank {
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 50px;
+            text-align: center;
+        }
+
+        .rank.first { color: #ffd700; }
+        .rank.second { color: #c0c0c0; }
+        .rank.third { color: #cd7f32; }
+
+        .user-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .nickname {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #495057;
+        }
+
+        .avatar {
+            font-size: 2rem;
+        }
+
+        .value {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .online-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #28a745;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .online-status.offline {
+            background: #6c757d;
+        }
+
+        .friends-section, .showoff-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .friend-item, .showoff-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .showoff-item {
+            border-left: 4px solid #007bff;
+        }
+
+        .showoff-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .showoff-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .showoff-time {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .animal-showcase {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .animal-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+
+        .animal-tier {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tier-common { background: #28a745; color: white; }
+        .tier-rare { background: #007bff; color: white; }
+        .tier-epic { background: #6f42c1; color: white; }
+        .tier-legendary { background: #fd7e14; color: white; }
+
+        .showoff-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            color: #dc3545;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .like-btn:hover {
+            color: #c82333;
+        }
+
+        .like-btn.liked {
+            color: #dc3545;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            margin: 10% auto;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .nav-tab {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .leaderboard-item {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 EduPet 소셜 허브</h1>
+            <p>친구들과 함께 공부하고 경쟁해보세요!</p>
+        </div>
+
+        <!-- 인증 섹션 -->
+        <div id="auth-section" class="auth-section">
+            <div id="auth-status" class="auth-status">
+                로딩 중...
+            </div>
+            <div id="auth-controls">
+                <!-- 인증 버튼들이 동적으로 추가됨 -->
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('leaderboards')">🏆 순위표</button>
+            <button class="nav-tab" onclick="showTab('friends')">👥 친구</button>
+            <button class="nav-tab" onclick="showTab('showoff')">🐾 자랑하기</button>
+            <button class="nav-tab" onclick="showTab('groups')">🎯 그룹</button>
+        </div>
+
+        <!-- 순위표 탭 -->
+        <div id="leaderboards" class="tab-content active">
+            <h2>🏆 실시간 순위표</h2>
+            
+            <div class="leaderboard">
+                <h3>🧠 퀴즈 마스터</h3>
+                <div id="quiz-leaderboard" class="loading">순위표를 불러오는 중...</div>
+            </div>
+
+            <div class="leaderboard">
+                <h3>🎯 정확도 킹</h3>
+                <div id="accuracy-leaderboard" class="loading">순위표를 불러오는 중...</div>
+            </div>
+
+            <div class="leaderboard">
+                <h3>💰 부자 랭킹</h3>
+                <div id="money-leaderboard" class="loading">순위표를 불러오는 중...</div>
+            </div>
+
+            <div class="leaderboard">
+                <h3>🐾 동물 컬렉터</h3>
+                <div id="animal-leaderboard" class="loading">순위표를 불러오는 중...</div>
+            </div>
+        </div>
+
+        <!-- 친구 탭 -->
+        <div id="friends" class="tab-content">
+            <h2>👥 친구 관리</h2>
+            
+            <div class="friends-section">
+                <h3>새 친구 추가</h3>
+                <div class="input-group">
+                    <input type="text" id="friend-nickname" class="form-control" placeholder="친구 닉네임 입력">
+                    <button class="btn btn-primary" onclick="addFriend()">추가</button>
+                </div>
+                <div id="add-friend-result"></div>
+            </div>
+
+            <div class="friends-section">
+                <h3>내 친구 목록</h3>
+                <div id="friends-list" class="loading">친구 목록을 불러오는 중...</div>
+            </div>
+        </div>
+
+        <!-- 자랑하기 탭 -->
+        <div id="showoff" class="tab-content">
+            <h2>🐾 동물 자랑하기</h2>
+            
+            <div class="showoff-section">
+                <h3>새 자랑하기</h3>
+                <button class="btn btn-primary" onclick="openShowOffModal()">동물 자랑하기</button>
+            </div>
+
+            <div class="showoff-section">
+                <h3>최근 자랑하기</h3>
+                <div id="showoff-list" class="loading">자랑하기 목록을 불러오는 중...</div>
+            </div>
+        </div>
+
+        <!-- 그룹 탭 -->
+        <div id="groups" class="tab-content">
+            <h2>🎯 학습 그룹</h2>
+            
+            <div class="friends-section">
+                <h3>그룹 생성</h3>
+                <div class="input-group">
+                    <input type="text" id="group-name" class="form-control" placeholder="그룹 이름 입력">
+                    <button class="btn btn-primary" onclick="createGroup()">생성</button>
+                </div>
+                <div id="create-group-result"></div>
+            </div>
+
+            <div class="friends-section">
+                <h3>내 그룹</h3>
+                <div id="groups-list" class="loading">그룹 목록을 불러오는 중...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 자랑하기 모달 -->
+    <div id="showoff-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeShowOffModal()">&times;</span>
+            <h3>🐾 동물 자랑하기</h3>
+            <div id="animal-selection">
+                <p>자랑할 동물을 선택하세요:</p>
+                <div id="user-animals" class="loading">동물 목록을 불러오는 중...</div>
+            </div>
+            <div id="showoff-form" style="display: none;">
+                <textarea id="showoff-message" placeholder="자랑하고 싶은 말을 써주세요! (200자 이내)" maxlength="200" style="width: 100%; height: 100px; margin: 15px 0; padding: 10px; border: 2px solid #dee2e6; border-radius: 10px; resize: none;"></textarea>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" onclick="submitShowOff()">자랑하기 게시</button>
+                    <button class="btn btn-secondary" onclick="closeShowOffModal()">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 전역 변수
+        let currentUser = null;
+        let selectedAnimal = null;
+        let leaderboardListeners = [];
+
+        // 페이지 초기화
+        window.addEventListener('load', async () => {
+            try {
+                // Firebase 초기화
+                const firebaseReady = await initFirebase();
+                if (!firebaseReady) {
+                    showError('Firebase 연결에 실패했습니다. 페이지를 새로고침해주세요.');
+                    return;
+                }
+
+                // 인증 상태 리스너
+                eduPetAuth.addAuthStateListener(onAuthStateChanged);
+
+                // 기존 로컬 사용자 확인
+                const localUser = eduPetAuth.loadFromLocalStorage();
+                if (localUser) {
+                    showAuthStatus('기존 사용자 복원 중...');
+                    await eduPetAuth.signInAnonymously();
+                } else {
+                    showAuthStatus('새 사용자입니다. 시작하려면 로그인하세요.');
+                    showAuthControls(false);
+                }
+
+            } catch (error) {
+                console.error('초기화 실패:', error);
+                showError('앱 초기화에 실패했습니다.');
+            }
+        });
+
+        // 인증 상태 변경 핸들러
+        function onAuthStateChanged(state, userData) {
+            currentUser = userData;
+            
+            if (state === 'signed_in') {
+                showAuthStatus(`환영합니다, ${userData?.profile?.nickname || '익명'}님! 🎉`);
+                showAuthControls(true);
+                loadSocialData();
+            } else {
+                showAuthStatus('로그인이 필요합니다.');
+                showAuthControls(false);
+                clearSocialData();
+            }
+        }
+
+        // 인증 상태 표시
+        function showAuthStatus(message) {
+            document.getElementById('auth-status').textContent = message;
+            
+            const authSection = document.getElementById('auth-section');
+            if (currentUser) {
+                authSection.classList.add('authenticated');
+            } else {
+                authSection.classList.remove('authenticated');
+            }
+        }
+
+        // 인증 컨트롤 표시
+        function showAuthControls(isAuthenticated) {
+            const controlsDiv = document.getElementById('auth-controls');
+            
+            if (isAuthenticated) {
+                controlsDiv.innerHTML = `
+                    <div style="margin-bottom: 15px;">
+                        <div class="input-group">
+                            <input type="text" id="nickname-input" class="form-control" placeholder="닉네임 설정 (선택사항)" value="${currentUser?.profile?.nickname || ''}">
+                            <button class="btn btn-primary" onclick="setNickname()">설정</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="signOut()">로그아웃</button>
+                `;
+            } else {
+                controlsDiv.innerHTML = `
+                    <button class="btn btn-primary" onclick="signInAnonymously()">시작하기</button>
+                    <p style="margin-top: 10px; color: #6c757d;">익명으로 시작하여 친구들과 소통하세요!</p>
+                `;
+            }
+        }
+
+        // 익명 로그인
+        async function signInAnonymously() {
+            showAuthStatus('로그인 중...');
+            const success = await eduPetAuth.signInAnonymously();
+            if (!success) {
+                showError('로그인에 실패했습니다. 다시 시도해주세요.');
+            }
+        }
+
+        // 닉네임 설정
+        async function setNickname() {
+            const nickname = document.getElementById('nickname-input').value.trim();
+            if (!nickname) {
+                showError('닉네임을 입력해주세요.');
+                return;
+            }
+
+            if (nickname.length < 2 || nickname.length > 10) {
+                showError('닉네임은 2-10자 사이여야 합니다.');
+                return;
+            }
+
+            try {
+                await eduPetAuth.setNickname(nickname);
+                showSuccess('닉네임이 설정되었습니다!');
+                showAuthStatus(`환영합니다, ${nickname}님! 🎉`);
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        // 로그아웃
+        async function signOut() {
+            await eduPetAuth.signOut();
+        }
+
+        // 소셜 데이터 로드
+        function loadSocialData() {
+            loadLeaderboards();
+            loadFriendsList();
+            loadShowOffs();
+        }
+
+        // 순위표 로드
+        async function loadLeaderboards() {
+            const types = ['quiz_score', 'quiz_accuracy', 'money_collector', 'animal_collector'];
+            const containers = ['quiz-leaderboard', 'accuracy-leaderboard', 'money-leaderboard', 'animal-leaderboard'];
+
+            for (let i = 0; i < types.length; i++) {
+                try {
+                    const leaderboard = await eduPetLeaderboard.getLeaderboard(types[i], 10);
+                    displayLeaderboard(leaderboard, containers[i]);
+                } catch (error) {
+                    console.error(`순위표 ${types[i]} 로드 실패:`, error);
+                    document.getElementById(containers[i]).innerHTML = '<div class="error">순위표를 불러올 수 없습니다.</div>';
+                }
+            }
+        }
+
+        // 순위표 표시
+        function displayLeaderboard(leaderboard, containerId) {
+            const container = document.getElementById(containerId);
+            
+            if (!leaderboard || leaderboard.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 데이터가 없습니다.</p>';
+                return;
+            }
+
+            const html = leaderboard.map((user, index) => {
+                const rankClass = index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : '';
+                const onlineStatus = user.isOnline ? 'online' : 'offline';
+                
+                return `
+                    <div class="leaderboard-item">
+                        <div class="rank ${rankClass}">${user.rank}</div>
+                        <div class="avatar">${getAnimalEmoji(user.avatarAnimal)}</div>
+                        <div class="user-info">
+                            <div class="nickname">
+                                ${user.nickname}
+                                <span class="online-status ${onlineStatus}"></span>
+                            </div>
+                        </div>
+                        <div class="value">${formatValue(user.value, containerId)}</div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+        }
+
+        // 친구 목록 로드
+        async function loadFriendsList() {
+            try {
+                const friends = await eduPetSocial.getFriendsList();
+                displayFriendsList(friends);
+            } catch (error) {
+                console.error('친구 목록 로드 실패:', error);
+                document.getElementById('friends-list').innerHTML = '<div class="error">친구 목록을 불러올 수 없습니다.</div>';
+            }
+        }
+
+        // 친구 목록 표시
+        function displayFriendsList(friends) {
+            const container = document.getElementById('friends-list');
+            
+            if (!friends || friends.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 친구가 없습니다. 친구를 추가해보세요!</p>';
+                return;
+            }
+
+            const html = friends.map(friend => {
+                const onlineStatus = friend.isOnline ? 'online' : 'offline';
+                const statusText = friend.isOnline ? '온라인' : '오프라인';
+                
+                return `
+                    <div class="friend-item">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="avatar">${getAnimalEmoji(friend.avatarAnimal)}</div>
+                                <div>
+                                    <div class="nickname">
+                                        ${friend.nickname}
+                                        <span class="online-status ${onlineStatus}"></span>
+                                        <small style="color: #6c757d;">(${statusText})</small>
+                                    </div>
+                                    <div style="font-size: 0.9rem; color: #6c757d;">
+                                        정답: ${friend.stats.correctAnswers || 0}개 | 
+                                        동물: ${friend.stats.animalsCollected || 0}마리
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger" onclick="removeFriend('${friend.uid}')">삭제</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+        }
+
+        // 친구 추가
+        async function addFriend() {
+            const nickname = document.getElementById('friend-nickname').value.trim();
+            const resultDiv = document.getElementById('add-friend-result');
+            
+            if (!nickname) {
+                resultDiv.innerHTML = '<div class="error">닉네임을 입력해주세요.</div>';
+                return;
+            }
+
+            try {
+                await eduPetSocial.addFriend(nickname);
+                resultDiv.innerHTML = '<div class="success">친구가 추가되었습니다!</div>';
+                document.getElementById('friend-nickname').value = '';
+                
+                // 친구 목록 새로고침
+                setTimeout(() => {
+                    loadFriendsList();
+                    resultDiv.innerHTML = '';
+                }, 2000);
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">${error.message}</div>`;
+            }
+        }
+
+        // 친구 삭제
+        async function removeFriend(friendUid) {
+            if (!confirm('정말 이 친구를 삭제하시겠습니까?')) return;
+
+            try {
+                await eduPetSocial.removeFriend(friendUid);
+                loadFriendsList(); // 목록 새로고침
+                showSuccess('친구가 삭제되었습니다.');
+            } catch (error) {
+                showError('친구 삭제에 실패했습니다.');
+            }
+        }
+
+        // 자랑하기 목록 로드
+        async function loadShowOffs() {
+            try {
+                const showOffs = await eduPetSocial.getShowOffs(20);
+                displayShowOffs(showOffs);
+            } catch (error) {
+                console.error('자랑하기 목록 로드 실패:', error);
+                document.getElementById('showoff-list').innerHTML = '<div class="error">자랑하기 목록을 불러올 수 없습니다.</div>';
+            }
+        }
+
+        // 자랑하기 목록 표시
+        function displayShowOffs(showOffs) {
+            const container = document.getElementById('showoff-list');
+            
+            if (!showOffs || showOffs.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 자랑하기가 없습니다. 첫 번째로 자랑해보세요!</p>';
+                return;
+            }
+
+            const html = showOffs.map(showOff => {
+                const timeAgo = getTimeAgo(showOff.createdAt);
+                const isLiked = showOff.likedBy && showOff.likedBy[currentUser?.profile?.uid];
+                
+                return `
+                    <div class="showoff-item">
+                        <div class="showoff-header">
+                            <div class="showoff-user">
+                                <div class="avatar">${getAnimalEmoji(showOff.userAvatar)}</div>
+                                <div>
+                                    <div class="nickname">${showOff.userNickname}</div>
+                                    <div class="showoff-time">${timeAgo}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="animal-showcase">
+                            <div class="animal-name">${showOff.animal.name}</div>
+                            <div class="animal-tier tier-${showOff.animal.tier}">${getTierName(showOff.animal.tier)}</div>
+                            <div style="font-size: 3rem; margin: 10px 0;">${getAnimalEmoji(showOff.animal.name)}</div>
+                        </div>
+                        
+                        ${showOff.message ? `<div style="padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 10px 0;">${showOff.message}</div>` : ''}
+                        
+                        <div class="showoff-actions">
+                            <button class="like-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${showOff.id}')">
+                                ❤️ ${showOff.likes || 0}
+                            </button>
+                            <span style="color: #6c757d; font-size: 0.9rem;">💬 댓글 기능 준비 중</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+        }
+
+        // 자랑하기 모달 열기
+        function openShowOffModal() {
+            document.getElementById('showoff-modal').style.display = 'block';
+            loadUserAnimals();
+        }
+
+        // 자랑하기 모달 닫기
+        function closeShowOffModal() {
+            document.getElementById('showoff-modal').style.display = 'none';
+            selectedAnimal = null;
+            document.getElementById('showoff-form').style.display = 'none';
+            document.getElementById('animal-selection').style.display = 'block';
+        }
+
+        // 사용자 동물 목록 로드
+        function loadUserAnimals() {
+            try {
+                const gameState = JSON.parse(localStorage.getItem('eduPetGameState') || '{}');
+                const animals = gameState.animals || {};
+                
+                if (Object.keys(animals).length === 0) {
+                    document.getElementById('user-animals').innerHTML = 
+                        '<p style="text-align: center; color: #6c757d;">아직 수집한 동물이 없습니다. 동물 컬렉션에서 동물을 모아보세요!</p>';
+                    return;
+                }
+
+                const html = Object.entries(animals).map(([animalName, animalData]) => `
+                    <div class="friend-item" style="cursor: pointer;" onclick="selectAnimal('${animalName}', ${JSON.stringify(animalData).replace(/"/g, '&quot;')})">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="font-size: 2rem;">${getAnimalEmoji(animalName)}</div>
+                            <div>
+                                <div class="nickname">${animalData.name}</div>
+                                <div class="animal-tier tier-${animalData.tier}" style="font-size: 0.8rem; margin-top: 5px;">${getTierName(animalData.tier)}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                document.getElementById('user-animals').innerHTML = html;
+            } catch (error) {
+                console.error('동물 목록 로드 실패:', error);
+                document.getElementById('user-animals').innerHTML = '<div class="error">동물 목록을 불러올 수 없습니다.</div>';
+            }
+        }
+
+        // 동물 선택
+        function selectAnimal(animalName, animalData) {
+            selectedAnimal = animalData;
+            document.getElementById('animal-selection').style.display = 'none';
+            document.getElementById('showoff-form').style.display = 'block';
+        }
+
+        // 자랑하기 제출
+        async function submitShowOff() {
+            if (!selectedAnimal) {
+                showError('동물을 선택해주세요.');
+                return;
+            }
+
+            const message = document.getElementById('showoff-message').value.trim();
+            
+            try {
+                await eduPetSocial.showOffAnimal(selectedAnimal, message);
+                showSuccess('자랑하기가 게시되었습니다!');
+                closeShowOffModal();
+                loadShowOffs(); // 목록 새로고침
+            } catch (error) {
+                showError('자랑하기 게시에 실패했습니다.');
+            }
+        }
+
+        // 좋아요 토글
+        async function toggleLike(showOffId) {
+            try {
+                const result = await eduPetSocial.likeShowOff(showOffId);
+                if (result) {
+                    loadShowOffs(); // 목록 새로고침
+                }
+            } catch (error) {
+                showError('좋아요 처리에 실패했습니다.');
+            }
+        }
+
+        // 그룹 생성
+        async function createGroup() {
+            const groupName = document.getElementById('group-name').value.trim();
+            const resultDiv = document.getElementById('create-group-result');
+            
+            if (!groupName) {
+                resultDiv.innerHTML = '<div class="error">그룹 이름을 입력해주세요.</div>';
+                return;
+            }
+
+            try {
+                await eduPetSocial.createGroup(groupName, '학습 그룹');
+                resultDiv.innerHTML = '<div class="success">그룹이 생성되었습니다!</div>';
+                document.getElementById('group-name').value = '';
+                
+                setTimeout(() => {
+                    resultDiv.innerHTML = '';
+                }, 2000);
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">${error.message}</div>`;
+            }
+        }
+
+        // 탭 전환
+        function showTab(tabName) {
+            // 모든 탭 숨기기
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 모든 탭 버튼 비활성화
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 선택된 탭 표시
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // 소셜 데이터 초기화
+        function clearSocialData() {
+            // 순위표 리스너 제거
+            leaderboardListeners.forEach(listener => {
+                if (listener) eduPetLeaderboard.unsubscribeFromLeaderboard(listener);
+            });
+            leaderboardListeners = [];
+
+            // 콘텐츠 초기화
+            ['quiz-leaderboard', 'accuracy-leaderboard', 'money-leaderboard', 'animal-leaderboard'].forEach(id => {
+                document.getElementById(id).innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+            });
+            
+            document.getElementById('friends-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+            document.getElementById('showoff-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+            document.getElementById('groups-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+        }
+
+        // 유틸리티 함수들
+        function getAnimalEmoji(animal) {
+            const emojiMap = {
+                'bunny': '🐰', 'cat': '🐱', 'dog': '🐶', 'fox': '🦊', 'lion': '🦁',
+                'tiger': '🐅', 'bear': '🐻', 'panda': '🐼', 'koala': '🐨', 'monkey': '🐵',
+                'elephant': '🐘', 'giraffe': '🦒', 'zebra': '🦓', 'horse': '🐎', 'cow': '🐄',
+                'pig': '🐷', 'sheep': '🐑', 'chicken': '🐔', 'penguin': '🐧', 'owl': '🦉',
+                // 더 많은 동물 매핑...
+            };
+            
+            return emojiMap[animal] || '🐾';
+        }
+
+        function getTierName(tier) {
+            const tierNames = {
+                'common': '일반',
+                'rare': '레어',
+                'epic': '에픽',
+                'legendary': '전설'
+            };
+            return tierNames[tier] || tier;
+        }
+
+        function formatValue(value, containerId) {
+            if (containerId.includes('accuracy')) {
+                return `${value}%`;
+            } else if (containerId.includes('money')) {
+                return `${value.toLocaleString()}원`;
+            } else {
+                return `${value.toLocaleString()}`;
+            }
+        }
+
+        function getTimeAgo(timestamp) {
+            const now = Date.now();
+            const diff = now - timestamp;
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+
+            if (days > 0) return `${days}일 전`;
+            if (hours > 0) return `${hours}시간 전`;
+            if (minutes > 0) return `${minutes}분 전`;
+            return '방금 전';
+        }
+
+        function showError(message) {
+            // 간단한 에러 표시 (실제로는 toast나 모달 사용)
+            const existingError = document.querySelector('.error');
+            if (existingError) existingError.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            errorDiv.style.position = 'fixed';
+            errorDiv.style.top = '20px';
+            errorDiv.style.right = '20px';
+            errorDiv.style.zIndex = '9999';
+            errorDiv.style.maxWidth = '300px';
+            
+            document.body.appendChild(errorDiv);
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+
+        function showSuccess(message) {
+            const existingSuccess = document.querySelector('.success');
+            if (existingSuccess) existingSuccess.remove();
+            
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success';
+            successDiv.textContent = message;
+            successDiv.style.position = 'fixed';
+            successDiv.style.top = '20px';
+            successDiv.style.right = '20px';
+            successDiv.style.zIndex = '9999';
+            successDiv.style.maxWidth = '300px';
+            
+            document.body.appendChild(successDiv);
+            setTimeout(() => successDiv.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
