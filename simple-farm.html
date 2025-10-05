@@ -107,6 +107,29 @@
             animation: modalSlideIn 0.3s ease-out;
         }
         
+        .protection-shield {
+            animation: protectionFloat 3s ease-out;
+        }
+        
+        @keyframes protectionFloat {
+            0% { 
+                transform: translate(-50%, 0) scale(0); 
+                opacity: 0; 
+            }
+            20% { 
+                transform: translate(-50%, -20px) scale(1.2); 
+                opacity: 1; 
+            }
+            80% { 
+                transform: translate(-50%, -30px) scale(1); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translate(-50%, -60px) scale(0.5); 
+                opacity: 0; 
+            }
+        }
+        
         @keyframes modalSlideIn {
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -786,13 +809,22 @@
                     const daysPassed = Math.floor((Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30)); // 테스트용 30배 가속
                     const gradeInfo = seedGrades[plant.grade];
                     
+                    let gradeText = '';
                     if (plant.isFullyGrown && !plant.isHarvested) {
-                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • 🎉 수확 가능! ${gradeInfo.harvestAmount}원`;
+                        gradeText = `${gradeInfo.icon} ${gradeInfo.name} • 🎉 수확 가능! ${gradeInfo.harvestAmount}원`;
                     } else if (plant.isHarvested) {
-                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • ✅ 수확 완료 (${gradeInfo.harvestAmount}원 획득)`;
+                        gradeText = `${gradeInfo.icon} ${gradeInfo.name} • ✅ 수확 완료 (${gradeInfo.harvestAmount}원 획득)`;
                     } else {
-                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • 성장 ${daysPassed}/${gradeInfo.growthDays}일`;
+                        gradeText = `${gradeInfo.icon} ${gradeInfo.name} • 성장 ${daysPassed}/${gradeInfo.growthDays}일`;
                     }
+                    
+                    // 보호 상태 표시
+                    if (isPlantProtected(potNumber)) {
+                        const protectedDays = Math.ceil((plant.protectedUntil - Date.now()) / (1000 * 60 * 60 * 24));
+                        gradeText += `<br><div class="text-sm text-purple-600 mt-1">🛡️ ${plant.protectedBy.emoji} ${plant.protectedBy.name}이 보호 중 (${protectedDays}일 남음)</div>`;
+                    }
+                    
+                    gradeDisplay.innerHTML = gradeText;
                 }
                 
                 if (plant.isFullyGrown && !plant.isHarvested) {
@@ -811,11 +843,28 @@
                     `;
                 } else {
                     // 성장 중
-                    actions.innerHTML = `
-                        <button onclick="interactWithPlant(${potNumber})" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all">
+                    let actionsHtml = `
+                        <button onclick="interactWithPlant(${potNumber})" class="px-3 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all mb-2 w-full">
                             💧 물주기
                         </button>
                     `;
+                    
+                    // 보호되지 않은 식물에만 보호 버튼 표시
+                    if (!isPlantProtected(potNumber)) {
+                        actionsHtml += `
+                            <button onclick="showProtectionDialog(${potNumber})" class="px-3 py-2 bg-purple-500 text-white rounded-lg text-sm hover:bg-purple-600 transition-all w-full">
+                                🛡️ 동물 보호
+                            </button>
+                        `;
+                    } else {
+                        actionsHtml += `
+                            <div class="px-3 py-2 bg-purple-100 text-purple-600 rounded-lg text-sm text-center w-full">
+                                🛡️ 보호 중
+                            </div>
+                        `;
+                    }
+                    
+                    actions.innerHTML = actionsHtml;
                 }
             }
         }
@@ -841,6 +890,157 @@
             setTimeout(() => {
                 potElement.removeChild(heart);
             }, 2000);
+        }
+
+        // 동물 보호 시스템
+        function getProtectiveAnimals() {
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            const collection = animalCollection.collection || {};
+            
+            const protectiveAnimals = [];
+            for (const [animalId, animalData] of Object.entries(collection)) {
+                if (animalData.tier === 'epic' || animalData.tier === 'legendary') {
+                    protectiveAnimals.push({
+                        ...animalData,
+                        id: animalId
+                    });
+                }
+            }
+            return protectiveAnimals;
+        }
+
+        function activateProtection(potNumber, animalId) {
+            const plant = gameState.plants[potNumber];
+            if (!plant) return false;
+
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            const animal = animalCollection.collection[animalId];
+            
+            if (!animal || (animal.tier !== 'epic' && animal.tier !== 'legendary') || animal.count <= 0) {
+                alert('이 동물은 보호 능력이 없거나 보유하고 있지 않습니다.');
+                return false;
+            }
+
+            // 동물 희생 (수량 감소)
+            animal.count--;
+            if (animal.count <= 0) {
+                delete animalCollection.collection[animalId];
+                // 명예의 전당에 추가
+                if (!animalCollection.hallOfFame) animalCollection.hallOfFame = [];
+                animalCollection.hallOfFame.push({
+                    ...animal,
+                    id: animalId,
+                    sacrificedAt: Date.now(),
+                    protectedPlant: plant.type,
+                    potNumber: potNumber
+                });
+            }
+
+            // 식물에 보호 상태 추가
+            plant.protectedUntil = Date.now() + (7 * 24 * 60 * 60 * 1000); // 7일 보호
+            plant.protectedBy = {
+                id: animalId,
+                name: animal.name,
+                emoji: animal.emoji,
+                tier: animal.tier
+            };
+
+            localStorage.setItem('animalCollection', JSON.stringify(animalCollection));
+            saveGameState();
+
+            showProtectionAnimation(potNumber, animal);
+            alert(`${animal.emoji} ${animal.name}이(가) ${plant.protectedBy ? plant.protectedBy.name : '식물'}을 7일간 보호합니다!\n이 식물은 등급이 하락하지 않습니다.`);
+            
+            updatePlantDisplay(potNumber);
+            return true;
+        }
+
+        function showProtectionAnimation(potNumber, animal) {
+            const potElement = document.querySelector(`#pot${potNumber}-container`);
+            if (!potElement) return;
+
+            const shield = document.createElement('div');
+            shield.innerHTML = `🛡️${animal.emoji}`;
+            shield.className = 'absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl protection-shield pointer-events-none';
+            potElement.appendChild(shield);
+            
+            setTimeout(() => {
+                if (potElement.contains(shield)) {
+                    potElement.removeChild(shield);
+                }
+            }, 3000);
+        }
+
+        function isPlantProtected(potNumber) {
+            const plant = gameState.plants[potNumber];
+            return plant && plant.protectedUntil && Date.now() < plant.protectedUntil;
+        }
+
+        function showProtectionDialog(potNumber) {
+            const protectiveAnimals = getProtectiveAnimals();
+            if (protectiveAnimals.length === 0) {
+                alert('보호 능력을 가진 동물이 없습니다.\n에픽 또는 전설 등급의 동물을 수집하세요!');
+                return;
+            }
+
+            const plant = gameState.plants[potNumber];
+            const plantName = plant ? `${seedGrades[plant.grade].name} ${plantTypes[plant.type].name}` : '식물';
+            
+            let dialogHtml = `
+                <div id="protection-dialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white rounded-xl p-6 max-w-sm mx-4">
+                        <h3 class="text-lg font-bold mb-4 text-center">🛡️ 식물 보호</h3>
+                        <p class="text-sm text-gray-600 mb-4 text-center">${plantName}을(를) 보호할 동물을 선택하세요.<br><span class="text-red-500">선택한 동물은 희생됩니다.</span></p>
+                        <div class="space-y-2 max-h-60 overflow-y-auto">
+            `;
+            
+            protectiveAnimals.forEach(animal => {
+                const tierColor = animal.tier === 'legendary' ? 'bg-yellow-100 border-yellow-500' : 'bg-purple-100 border-purple-500';
+                dialogHtml += `
+                    <button onclick="confirmProtection('${potNumber}', '${animal.id}')" 
+                            class="w-full p-3 ${tierColor} border-2 rounded-lg text-left hover:scale-105 transition-transform">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-2xl">${animal.emoji}</span>
+                                <div>
+                                    <div class="font-bold">${animal.name}</div>
+                                    <div class="text-xs text-gray-600">${animal.tier === 'legendary' ? '전설' : '에픽'} • 파워 ${animal.power}</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold">${animal.count}마리</div>
+                        </div>
+                    </button>
+                `;
+            });
+            
+            dialogHtml += `
+                        </div>
+                        <button onclick="closeProtectionDialog()" 
+                                class="w-full mt-4 p-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+                            취소
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', dialogHtml);
+        }
+
+        function confirmProtection(potNumber, animalId) {
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            const animal = animalCollection.collection[animalId];
+            
+            if (confirm(`정말로 ${animal.emoji} ${animal.name}을(를) 희생시켜 식물을 보호하시겠습니까?\n\n이 동물은 7일간 식물을 보호한 후 명예의 전당에 기록됩니다.`)) {
+                closeProtectionDialog();
+                activateProtection(potNumber, animalId);
+            }
+        }
+
+        function closeProtectionDialog() {
+            const dialog = document.getElementById('protection-dialog');
+            if (dialog) {
+                dialog.remove();
+            }
         }
 
         function showPlantSpeech(message) {
@@ -906,6 +1106,11 @@
             [1, 2].forEach(potNumber => {
                 const plant = gameState.plants[potNumber];
                 if (!plant || plant.isHarvested) return;
+                
+                // 보호 중인 식물은 등급 하락 없음
+                if (isPlantProtected(potNumber)) {
+                    return;
+                }
                 
                 const lastStudied = plant.lastStudied || plant.plantedAt;
                 const daysSinceStudy = (Date.now() - lastStudied) / (1000 * 60 * 60 * 24 / 30); // 테스트용 30배 가속

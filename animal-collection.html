@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물 수집 - EduPet Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        
+        .animal-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        
+        .animal-card.common {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border-color: #94a3b8;
+        }
+        
+        .animal-card.rare {
+            background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .animal-card.epic {
+            background: linear-gradient(135deg, #f3e8ff 0%, #c084fc 100%);
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+            animation: epic-glow 2s ease-in-out infinite alternate;
+        }
+        
+        .animal-card.legendary {
+            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
+            border-color: #d97706;
+            box-shadow: 0 0 25px rgba(217, 119, 6, 0.5);
+            animation: legendary-glow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes epic-glow {
+            from { box-shadow: 0 0 20px rgba(139, 92, 246, 0.4); }
+            to { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6); }
+        }
+        
+        @keyframes legendary-glow {
+            from { box-shadow: 0 0 25px rgba(217, 119, 6, 0.5); }
+            to { box-shadow: 0 0 35px rgba(217, 119, 6, 0.7); }
+        }
+        
+        .gacha-button {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+        
+        .gacha-button:hover {
+            background: linear-gradient(45deg, #1d4ed8, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        .gacha-animation {
+            animation: gacha-shake 0.6s ease-in-out;
+        }
+        
+        @keyframes gacha-shake {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-2deg); }
+            20%, 40%, 60%, 80% { transform: rotate(2deg); }
+        }
+        
+        .animal-appear {
+            animation: animal-appear 1s ease-out;
+        }
+        
+        @keyframes animal-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px);
+            }
+            50% {
+                transform: scale(1.1) translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+        }
+        
+        .tier-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <button onclick="goHome()" class="absolute left-4 top-6 text-2xl hover:scale-110 transition-transform">
+                🏠
+            </button>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">🦎 동물 수집</h1>
+            <div class="text-sm text-gray-600">
+                보유 뽑기권: <span id="ticketCount" class="font-bold text-blue-600">0</span>개
+            </div>
+        </div>
+
+        <!-- Gacha Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="text-center mb-4">
+                <div class="text-6xl mb-4" id="gachaBox">📦</div>
+                <h2 class="text-lg font-bold text-gray-800 mb-2">동물 뽑기</h2>
+                <div class="text-xs text-gray-600 mb-4">
+                    <div class="grid grid-cols-2 gap-2 text-left">
+                        <div>🔘 일반: 60%</div>
+                        <div>🔵 레어: 30%</div>
+                        <div>🟣 에픽: 9%</div>
+                        <div>🟡 전설: 1%</div>
+                    </div>
+                </div>
+                <button 
+                    id="gachaButton"
+                    onclick="drawAnimal()" 
+                    class="gacha-button text-white px-6 py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                    disabled>
+                    뽑기권이 부족합니다
+                </button>
+            </div>
+        </div>
+
+        <!-- Latest Draw Result -->
+        <div id="latestDraw" class="bg-white rounded-xl shadow-lg p-6 mb-6 hidden">
+            <h3 class="font-bold text-gray-800 mb-3 text-center">🎉 새로운 동물!</h3>
+            <div id="newAnimalCard" class="animal-card rounded-lg p-4 text-center animal-appear">
+                <!-- New animal will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Collection -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                📚 나의 도감 
+                <span id="collectionCount" class="ml-2 text-sm bg-blue-100 text-blue-600 px-2 py-1 rounded-full">0/40</span>
+            </h2>
+            
+            <div id="collectionGrid" class="collection-grid">
+                <!-- Animal collection will be displayed here -->
+            </div>
+            
+            <div class="mt-4 text-center space-y-2">
+                <button onclick="window.location.href='hall-of-fame.html'" class="block w-full px-4 py-2 bg-purple-500 text-white rounded-lg text-sm hover:bg-purple-600 transition-colors">
+                    🏛️ 명예의 전당
+                </button>
+                <button onclick="clearCollection()" class="text-xs text-gray-500 hover:text-red-500 transition-colors">
+                    🗑️ 컬렉션 초기화
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">📊 수집 통계</h2>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-gray-700" id="totalDraws">0</div>
+                    <div class="text-xs text-gray-500">총 뽑기 횟수</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-yellow-600" id="legendaryCount">0</div>
+                    <div class="text-xs text-gray-500">전설 동물 수</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animal database
+        const animals = {
+            common: [
+                { id: 'dog', name: '강아지', emoji: '🐕', power: 1 },
+                { id: 'cat', name: '고양이', emoji: '🐱', power: 1 },
+                { id: 'rabbit', name: '토끼', emoji: '🐰', power: 1 },
+                { id: 'hamster', name: '햄스터', emoji: '🐹', power: 1 },
+                { id: 'bird', name: '새', emoji: '🐦', power: 1 },
+                { id: 'fish', name: '물고기', emoji: '🐠', power: 1 },
+                { id: 'turtle', name: '거북이', emoji: '🐢', power: 1 },
+                { id: 'frog', name: '개구리', emoji: '🐸', power: 1 },
+                { id: 'chicken', name: '닭', emoji: '🐔', power: 1 },
+                { id: 'pig', name: '돼지', emoji: '🐷', power: 1 },
+                { id: 'cow', name: '소', emoji: '🐄', power: 1 },
+                { id: 'sheep', name: '양', emoji: '🐑', power: 1 },
+                { id: 'mouse', name: '쥐', emoji: '🐭', power: 1 },
+                { id: 'bear', name: '곰', emoji: '🐻', power: 1 },
+                { id: 'koala', name: '코알라', emoji: '🐨', power: 1 }
+            ],
+            rare: [
+                { id: 'fox', name: '여우', emoji: '🦊', power: 2 },
+                { id: 'wolf', name: '늑대', emoji: '🐺', power: 2 },
+                { id: 'lion', name: '사자', emoji: '🦁', power: 2 },
+                { id: 'tiger', name: '호랑이', emoji: '🐯', power: 2 },
+                { id: 'elephant', name: '코끼리', emoji: '🐘', power: 2 },
+                { id: 'giraffe', name: '기린', emoji: '🦒', power: 2 },
+                { id: 'zebra', name: '얼룩말', emoji: '🦓', power: 2 },
+                { id: 'panda', name: '판다', emoji: '🐼', power: 2 },
+                { id: 'monkey', name: '원숭이', emoji: '🐵', power: 2 },
+                { id: 'penguin', name: '펭귄', emoji: '🐧', power: 2 },
+                { id: 'owl', name: '부엉이', emoji: '🦉', power: 2 },
+                { id: 'eagle', name: '독수리', emoji: '🦅', power: 2 }
+            ],
+            epic: [
+                { id: 'dragon', name: '용', emoji: '🐉', power: 5 },
+                { id: 'unicorn', name: '유니콘', emoji: '🦄', power: 5 },
+                { id: 'phoenix', name: '불사조', emoji: '🔥🐦', power: 5 },
+                { id: 'griffin', name: '그리핀', emoji: '🦅🦁', power: 5 },
+                { id: 'pegasus', name: '페가수스', emoji: '🐴💫', power: 5 }
+            ],
+            legendary: [
+                { id: 'celestial_dragon', name: '천룡', emoji: '✨🐉', power: 10 },
+                { id: 'golden_phoenix', name: '황금 불사조', emoji: '🌟🔥', power: 10 },
+                { id: 'divine_unicorn', name: '신성한 유니콘', emoji: '🌈🦄', power: 10 }
+            ]
+        };
+
+        // Game state
+        let gameState = {
+            tickets: 0,
+            collection: {},
+            stats: {
+                totalDraws: 0,
+                legendaryCount: 0
+            }
+        };
+
+        // Load game state
+        function loadGameState() {
+            const saved = localStorage.getItem('animalCollection');
+            if (saved) {
+                gameState = { ...gameState, ...JSON.parse(saved) };
+            }
+            
+            // Get tickets from other systems
+            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
+            const quizState = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+            
+            // Calculate tickets from learning progress
+            let earnedTickets = 0;
+            if (quizState.totalCorrect) {
+                earnedTickets = Math.floor(quizState.totalCorrect / 25); // 1 ticket per 25 correct answers
+            }
+            
+            gameState.tickets = earnedTickets;
+            
+            updateDisplay();
+        }
+
+        // Save game state
+        function saveGameState() {
+            localStorage.setItem('animalCollection', JSON.stringify(gameState));
+        }
+
+        // Draw animal with gacha mechanics
+        function drawAnimal() {
+            if (gameState.tickets <= 0) return;
+
+            // Use ticket
+            gameState.tickets--;
+            gameState.stats.totalDraws++;
+
+            // Animate gacha box
+            const gachaBox = document.getElementById('gachaBox');
+            gachaBox.classList.add('gacha-animation');
+            
+            setTimeout(() => {
+                gachaBox.classList.remove('gacha-animation');
+                
+                // Determine tier based on probability
+                const rand = Math.random();
+                let tier, animal;
+                
+                if (rand < 0.01) { // 1% legendary
+                    tier = 'legendary';
+                } else if (rand < 0.10) { // 9% epic
+                    tier = 'epic';
+                } else if (rand < 0.40) { // 30% rare
+                    tier = 'rare';
+                } else { // 60% common
+                    tier = 'common';
+                }
+                
+                // Select random animal from tier
+                const tierAnimals = animals[tier];
+                animal = tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
+                
+                // Add to collection
+                if (!gameState.collection[animal.id]) {
+                    gameState.collection[animal.id] = { ...animal, tier, count: 0 };
+                }
+                gameState.collection[animal.id].count++;
+                
+                // Update legendary count
+                if (tier === 'legendary') {
+                    gameState.stats.legendaryCount++;
+                }
+                
+                // Show new animal
+                showNewAnimal(animal, tier);
+                
+                // Play sound
+                playDrawSound(tier);
+                
+                // Vibrate
+                if (navigator.vibrate) {
+                    const pattern = tier === 'legendary' ? [100, 50, 100, 50, 200] :
+                                  tier === 'epic' ? [100, 50, 150] :
+                                  tier === 'rare' ? [100, 100] : [100];
+                    navigator.vibrate(pattern);
+                }
+                
+                saveGameState();
+                updateDisplay();
+                
+            }, 600);
+        }
+
+        // Show new animal
+        function showNewAnimal(animal, tier) {
+            const latestDraw = document.getElementById('latestDraw');
+            const newAnimalCard = document.getElementById('newAnimalCard');
+            
+            // Set tier class
+            newAnimalCard.className = `animal-card ${tier} rounded-lg p-4 text-center animal-appear`;
+            
+            newAnimalCard.innerHTML = `
+                <div class="tier-label ${getTierColor(tier)} mb-2">${getTierName(tier)}</div>
+                <div class="text-4xl mb-2">${animal.emoji}</div>
+                <div class="font-bold text-gray-800">${animal.name}</div>
+                <div class="text-xs text-gray-600 mt-1">파워: ${animal.power}</div>
+                <div class="text-xs text-gray-500 mt-1">
+                    보유: ${gameState.collection[animal.id]?.count || 0}마리
+                </div>
+            `;
+            
+            latestDraw.classList.remove('hidden');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                latestDraw.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Play draw sound
+        function playDrawSound(tier) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const frequencies = {
+                legendary: [523.25, 659.25, 783.99, 1046.50], // C5-E5-G5-C6
+                epic: [523.25, 659.25, 783.99], // C5-E5-G5
+                rare: [523.25, 659.25], // C5-E5
+                common: [523.25] // C5
+            };
+            
+            frequencies[tier].forEach((freq, index) => {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    oscillator.type = 'triangle';
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.3);
+                }, index * 150);
+            });
+        }
+
+        // Get tier display info
+        function getTierName(tier) {
+            const names = {
+                common: '일반',
+                rare: '레어',
+                epic: '에픽',
+                legendary: '전설'
+            };
+            return names[tier] || tier;
+        }
+
+        function getTierColor(tier) {
+            const colors = {
+                common: 'text-gray-600',
+                rare: 'text-blue-600',
+                epic: 'text-purple-600',
+                legendary: 'text-yellow-600'
+            };
+            return colors[tier] || 'text-gray-600';
+        }
+
+        // Update display
+        function updateDisplay() {
+            // Update ticket count
+            document.getElementById('ticketCount').textContent = gameState.tickets;
+            
+            // Update gacha button
+            const gachaButton = document.getElementById('gachaButton');
+            if (gameState.tickets > 0) {
+                gachaButton.disabled = false;
+                gachaButton.textContent = '동물 뽑기 (1장 사용)';
+            } else {
+                gachaButton.disabled = true;
+                gachaButton.textContent = '뽑기권이 부족합니다';
+            }
+            
+            // Update collection
+            updateCollectionDisplay();
+            
+            // Update stats
+            document.getElementById('totalDraws').textContent = gameState.stats.totalDraws;
+            document.getElementById('legendaryCount').textContent = gameState.stats.legendaryCount;
+        }
+
+        // Update collection display
+        function updateCollectionDisplay() {
+            const grid = document.getElementById('collectionGrid');
+            const collectionCount = document.getElementById('collectionCount');
+            
+            const ownedAnimals = Object.values(gameState.collection);
+            const totalPossible = Object.values(animals).flat().length;
+            
+            collectionCount.textContent = `${ownedAnimals.length}/${totalPossible}`;
+            
+            // Create all possible animals with owned status
+            const allAnimals = [];
+            Object.keys(animals).forEach(tier => {
+                animals[tier].forEach(animal => {
+                    const owned = gameState.collection[animal.id];
+                    allAnimals.push({
+                        ...animal,
+                        tier,
+                        owned: !!owned,
+                        count: owned?.count || 0
+                    });
+                });
+            });
+            
+            // Sort by tier and name
+            const tierOrder = { legendary: 0, epic: 1, rare: 2, common: 3 };
+            allAnimals.sort((a, b) => {
+                if (tierOrder[a.tier] !== tierOrder[b.tier]) {
+                    return tierOrder[a.tier] - tierOrder[b.tier];
+                }
+                return a.name.localeCompare(b.name);
+            });
+            
+            grid.innerHTML = allAnimals.map(animal => `
+                <div class="animal-card ${animal.tier} ${!animal.owned ? 'opacity-30' : ''} rounded-lg p-3 text-center cursor-pointer hover:scale-105 transition-transform"
+                     onclick="showAnimalDetails('${animal.id}')" >
+                    <div class="tier-label ${getTierColor(animal.tier)} mb-1">${getTierName(animal.tier)}</div>
+                    <div class="text-2xl mb-1">${animal.owned ? animal.emoji : '❓'}</div>
+                    <div class="text-xs font-bold text-gray-800">${animal.owned ? animal.name : '???'}</div>
+                    ${animal.owned ? `<div class="text-xs text-gray-600 mt-1">${animal.count}마리</div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Show animal details (for future expansion)
+        function showAnimalDetails(animalId) {
+            const animal = gameState.collection[animalId];
+            if (!animal) return;
+            
+            alert(`${animal.name}\n등급: ${getTierName(animal.tier)}\n파워: ${animal.power}\n보유 수: ${animal.count}마리`);
+        }
+
+        // Clear collection (for testing)
+        function clearCollection() {
+            if (confirm('정말로 컬렉션을 초기화하시겠습니까?')) {
+                gameState.collection = {};
+                gameState.stats = { totalDraws: 0, legendaryCount: 0 };
+                saveGameState();
+                updateDisplay();
+            }
+        }
+
+        // Go home
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGameState();
+            
+            // Auto-refresh tickets every 10 seconds
+            setInterval(loadGameState, 10000);
+        });
+    </script>
+</body>
+</html>

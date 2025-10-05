@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 현황 - EduPet Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        
+        .progress-card {
+            transition: all 0.3s ease;
+        }
+        
+        .progress-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.8s ease;
+        }
+        
+        .badge-glow {
+            animation: badge-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes badge-glow {
+            from { box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); }
+            to { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+        }
+        
+        .streak-flame {
+            animation: flame-flicker 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes flame-flicker {
+            from { transform: scale(1) rotate(-1deg); }
+            to { transform: scale(1.05) rotate(1deg); }
+        }
+        
+        .achievement-unlock {
+            animation: achievement-unlock 1s ease-out;
+        }
+        
+        @keyframes achievement-unlock {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <button onclick="goHome()" class="absolute left-4 top-6 text-2xl hover:scale-110 transition-transform">
+                🏠
+            </button>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">📊 학습 현황</h1>
+            <div class="text-sm text-gray-600">
+                초롱이님의 학습 여정
+            </div>
+        </div>
+
+        <!-- Overall Stats -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">🎯 전체 통계</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600" id="totalQuestions">0</div>
+                    <div class="text-sm text-gray-500">총 문제 수</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600" id="correctAnswers">0</div>
+                    <div class="text-sm text-gray-500">정답 수</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600" id="accuracyRate">0%</div>
+                    <div class="text-sm text-gray-500">정답률</div>
+                </div>
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-1">
+                        <span class="text-2xl streak-flame" id="streakEmoji">🔥</span>
+                        <span class="text-2xl font-bold text-orange-600" id="streakDays">0</span>
+                    </div>
+                    <div class="text-sm text-gray-500">연속 학습일</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subject Progress -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">📚 과목별 진행률</h2>
+            <div id="subjectProgress" class="space-y-4">
+                <!-- Subject progress bars will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Daily Learning Activity -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">📅 최근 학습 활동</h2>
+            <div class="grid grid-cols-7 gap-2 text-center">
+                <div class="text-xs text-gray-500">월</div>
+                <div class="text-xs text-gray-500">화</div>
+                <div class="text-xs text-gray-500">수</div>
+                <div class="text-xs text-gray-500">목</div>
+                <div class="text-xs text-gray-500">금</div>
+                <div class="text-xs text-gray-500">토</div>
+                <div class="text-xs text-gray-500">일</div>
+                
+                <div id="weeklyActivity" class="contents">
+                    <!-- Weekly activity cells will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">🏆 성취 뱃지</h2>
+            <div id="achievementGrid" class="grid grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Achievement badges will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Learning Recommendations -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">💡 학습 추천</h2>
+            <div id="recommendations" class="space-y-3">
+                <!-- Recommendations will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Achievement definitions
+        const achievements = {
+            first_correct: {
+                id: 'first_correct',
+                name: '첫 발걸음',
+                description: '첫 번째 정답',
+                emoji: '👶',
+                requirement: 1,
+                type: 'correct_answers'
+            },
+            streak_3: {
+                id: 'streak_3',
+                name: '꾸준함의 시작',
+                description: '3일 연속 학습',
+                emoji: '🌱',
+                requirement: 3,
+                type: 'streak_days'
+            },
+            streak_7: {
+                id: 'streak_7',
+                name: '일주일 챌린저',
+                description: '7일 연속 학습',
+                emoji: '🔥',
+                requirement: 7,
+                type: 'streak_days'
+            },
+            streak_30: {
+                id: 'streak_30',
+                name: '한 달 마스터',
+                description: '30일 연속 학습',
+                emoji: '💎',
+                requirement: 30,
+                type: 'streak_days'
+            },
+            correct_25: {
+                id: 'correct_25',
+                name: '실력자',
+                description: '25개 정답',
+                emoji: '⭐',
+                requirement: 25,
+                type: 'correct_answers'
+            },
+            correct_100: {
+                id: 'correct_100',
+                name: '백점 만점',
+                description: '100개 정답',
+                emoji: '🌟',
+                requirement: 100,
+                type: 'correct_answers'
+            },
+            accuracy_90: {
+                id: 'accuracy_90',
+                name: '정확도 마스터',
+                description: '정답률 90% 이상',
+                emoji: '🎯',
+                requirement: 90,
+                type: 'accuracy'
+            },
+            all_subjects: {
+                id: 'all_subjects',
+                name: '만능 학습자',
+                description: '모든 과목 학습',
+                emoji: '🧠',
+                requirement: 10,
+                type: 'subjects_studied'
+            }
+        };
+
+        // Subject configuration
+        const subjects = {
+            english: { name: '영어', emoji: '🇺🇸', color: 'blue' },
+            math: { name: '수학', emoji: '🔢', color: 'green' },
+            science: { name: '과학', emoji: '🔬', color: 'purple' },
+            korean: { name: '국어', emoji: '🇰🇷', color: 'red' },
+            social: { name: '사회', emoji: '🌍', color: 'yellow' },
+            common: { name: '상식', emoji: '🧩', color: 'indigo' },
+            idiom: { name: '사자성어', emoji: '📜', color: 'pink' },
+            person: { name: '인물', emoji: '👥', color: 'teal' },
+            economy: { name: '경제', emoji: '💰', color: 'orange' },
+            etc: { name: '기타', emoji: '📚', color: 'gray' }
+        };
+
+        // Game state
+        let progressData = {
+            totalQuestions: 0,
+            correctAnswers: 0,
+            subjectStats: {},
+            dailyActivity: {},
+            streakDays: 0,
+            lastStudyDate: null,
+            unlockedAchievements: [],
+            studyStartDate: Date.now()
+        };
+
+        function loadProgressData() {
+            const saved = localStorage.getItem('learningProgress');
+            if (saved) {
+                progressData = { ...progressData, ...JSON.parse(saved) };
+            }
+
+            // Load quiz progress
+            const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+            if (quizProgress.totalCorrect) {
+                progressData.correctAnswers = quizProgress.totalCorrect;
+                progressData.totalQuestions = quizProgress.totalAnswered || quizProgress.totalCorrect;
+            }
+
+            // Load subject-specific data
+            Object.keys(subjects).forEach(subject => {
+                if (!progressData.subjectStats[subject]) {
+                    progressData.subjectStats[subject] = {
+                        questions: 0,
+                        correct: 0,
+                        lastStudied: null,
+                        level: 1,
+                        experience: 0
+                    };
+                }
+            });
+
+            updateProgressDisplay();
+        }
+
+        function saveProgressData() {
+            localStorage.setItem('learningProgress', JSON.stringify(progressData));
+        }
+
+        function updateProgressDisplay() {
+            updateOverallStats();
+            updateSubjectProgress();
+            updateWeeklyActivity();
+            updateAchievements();
+            updateRecommendations();
+        }
+
+        function updateOverallStats() {
+            document.getElementById('totalQuestions').textContent = progressData.totalQuestions;
+            document.getElementById('correctAnswers').textContent = progressData.correctAnswers;
+            
+            const accuracy = progressData.totalQuestions > 0 
+                ? Math.round((progressData.correctAnswers / progressData.totalQuestions) * 100)
+                : 0;
+            document.getElementById('accuracyRate').textContent = accuracy + '%';
+            
+            // Update streak
+            updateStreakDays();
+            document.getElementById('streakDays').textContent = progressData.streakDays;
+        }
+
+        function updateStreakDays() {
+            const today = new Date().toDateString();
+            const lastStudy = progressData.lastStudyDate ? new Date(progressData.lastStudyDate).toDateString() : null;
+            
+            if (lastStudy === today) {
+                // Already studied today, maintain streak
+                return;
+            }
+            
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toDateString();
+            
+            if (lastStudy === yesterdayStr) {
+                // Studied yesterday, can continue streak if study today
+                // This will be handled when actually studying
+            } else if (lastStudy && lastStudy !== today) {
+                // Streak broken
+                progressData.streakDays = 0;
+            }
+        }
+
+        function updateSubjectProgress() {
+            const container = document.getElementById('subjectProgress');
+            container.innerHTML = '';
+
+            Object.keys(subjects).forEach(subjectId => {
+                const subject = subjects[subjectId];
+                const stats = progressData.subjectStats[subjectId];
+                
+                const accuracy = stats.questions > 0 ? Math.round((stats.correct / stats.questions) * 100) : 0;
+                const level = Math.floor(stats.experience / 100) + 1;
+                const expProgress = stats.experience % 100;
+                
+                const card = document.createElement('div');
+                card.className = 'progress-card bg-gray-50 rounded-lg p-4 hover:bg-gray-100 cursor-pointer transition-all';
+                card.onclick = () => startSubjectQuiz(subjectId);
+                
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">${subject.emoji}</span>
+                            <div>
+                                <div class="font-bold text-gray-800">${subject.name}</div>
+                                <div class="text-sm text-gray-600">Lv.${level} (${stats.correct}/${stats.questions})</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-${subject.color}-600">${accuracy}%</div>
+                            <div class="text-xs text-gray-500">정답률</div>
+                        </div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                        <div class="skill-bar h-2 rounded-full" style="width: ${expProgress}%"></div>
+                    </div>
+                    <div class="text-xs text-gray-500 text-right">${expProgress}/100 EXP</div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function updateWeeklyActivity() {
+            const container = document.getElementById('weeklyActivity');
+            container.innerHTML = '';
+            
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toDateString();
+                
+                const hasActivity = progressData.dailyActivity[dateStr] > 0;
+                const activityLevel = progressData.dailyActivity[dateStr] || 0;
+                
+                let bgColor = 'bg-gray-100';
+                if (activityLevel > 0) {
+                    if (activityLevel >= 20) bgColor = 'bg-green-500';
+                    else if (activityLevel >= 10) bgColor = 'bg-green-400';
+                    else if (activityLevel >= 5) bgColor = 'bg-green-300';
+                    else bgColor = 'bg-green-200';
+                }
+                
+                const cell = document.createElement('div');
+                cell.className = `w-8 h-8 ${bgColor} rounded text-xs flex items-center justify-center text-white font-bold`;
+                cell.textContent = activityLevel || '';
+                cell.title = `${date.toLocaleDateString()} - ${activityLevel}문제`;
+                
+                container.appendChild(cell);
+            }
+        }
+
+        function updateAchievements() {
+            const container = document.getElementById('achievementGrid');
+            container.innerHTML = '';
+
+            Object.values(achievements).forEach(achievement => {
+                const isUnlocked = checkAchievementUnlocked(achievement);
+                
+                const badge = document.createElement('div');
+                badge.className = `text-center p-3 rounded-lg transition-all ${
+                    isUnlocked 
+                        ? 'bg-yellow-100 border-2 border-yellow-400 badge-glow cursor-pointer' 
+                        : 'bg-gray-100 border-2 border-gray-300 opacity-50'
+                }`;
+                
+                badge.innerHTML = `
+                    <div class="text-3xl mb-1">${isUnlocked ? achievement.emoji : '🔒'}</div>
+                    <div class="text-xs font-bold ${isUnlocked ? 'text-yellow-800' : 'text-gray-500'}">${achievement.name}</div>
+                    <div class="text-xs ${isUnlocked ? 'text-yellow-600' : 'text-gray-400'}">${achievement.description}</div>
+                `;
+                
+                if (isUnlocked) {
+                    badge.onclick = () => showAchievementDetail(achievement);
+                }
+                
+                container.appendChild(badge);
+            });
+        }
+
+        function checkAchievementUnlocked(achievement) {
+            switch (achievement.type) {
+                case 'correct_answers':
+                    return progressData.correctAnswers >= achievement.requirement;
+                case 'streak_days':
+                    return progressData.streakDays >= achievement.requirement;
+                case 'accuracy':
+                    const accuracy = progressData.totalQuestions > 0 
+                        ? (progressData.correctAnswers / progressData.totalQuestions) * 100 
+                        : 0;
+                    return accuracy >= achievement.requirement;
+                case 'subjects_studied':
+                    const studiedSubjects = Object.values(progressData.subjectStats)
+                        .filter(stats => stats.questions > 0).length;
+                    return studiedSubjects >= achievement.requirement;
+                default:
+                    return false;
+            }
+        }
+
+        function showAchievementDetail(achievement) {
+            alert(`🏆 ${achievement.name}\n\n${achievement.description}\n\n축하합니다! 이 뱃지를 획득하셨습니다.`);
+        }
+
+        function updateRecommendations() {
+            const container = document.getElementById('recommendations');
+            const recommendations = generateRecommendations();
+            
+            container.innerHTML = recommendations.map(rec => `
+                <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                    <span class="text-2xl">${rec.emoji}</span>
+                    <div class="flex-1">
+                        <div class="font-bold text-blue-800">${rec.title}</div>
+                        <div class="text-sm text-blue-600">${rec.description}</div>
+                    </div>
+                    ${rec.action ? `
+                        <button onclick="${rec.action}" class="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600 transition-colors">
+                            시작
+                        </button>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function generateRecommendations() {
+            const recommendations = [];
+            
+            // Find weakest subject
+            let weakestSubject = null;
+            let lowestAccuracy = 100;
+            
+            Object.keys(subjects).forEach(subjectId => {
+                const stats = progressData.subjectStats[subjectId];
+                if (stats.questions >= 5) {
+                    const accuracy = (stats.correct / stats.questions) * 100;
+                    if (accuracy < lowestAccuracy) {
+                        lowestAccuracy = accuracy;
+                        weakestSubject = subjectId;
+                    }
+                }
+            });
+            
+            if (weakestSubject && lowestAccuracy < 70) {
+                recommendations.push({
+                    emoji: '📈',
+                    title: `${subjects[weakestSubject].name} 복습 추천`,
+                    description: `정답률 ${Math.round(lowestAccuracy)}%로 개선이 필요합니다`,
+                    action: `startSubjectQuiz('${weakestSubject}')`
+                });
+            }
+            
+            // Streak recommendations
+            if (progressData.streakDays === 0) {
+                recommendations.push({
+                    emoji: '🔥',
+                    title: '연속 학습 시작하기',
+                    description: '매일 조금씩 학습하여 연속 기록을 만들어보세요',
+                    action: `window.location.href='subject-select.html'`
+                });
+            } else if (progressData.streakDays < 7) {
+                recommendations.push({
+                    emoji: '🎯',
+                    title: '일주일 챌린지',
+                    description: `현재 ${progressData.streakDays}일째! 일주일 연속 학습을 목표로 해보세요`,
+                });
+            }
+            
+            // New subject recommendation
+            const unstudiedSubjects = Object.keys(subjects).filter(id => 
+                progressData.subjectStats[id].questions === 0
+            );
+            
+            if (unstudiedSubjects.length > 0) {
+                const randomSubject = unstudiedSubjects[Math.floor(Math.random() * unstudiedSubjects.length)];
+                recommendations.push({
+                    emoji: '🌟',
+                    title: `새로운 과목 도전: ${subjects[randomSubject].name}`,
+                    description: '아직 시도하지 않은 과목에 도전해보세요',
+                    action: `startSubjectQuiz('${randomSubject}')`
+                });
+            }
+            
+            return recommendations;
+        }
+
+        function startSubjectQuiz(subjectId) {
+            localStorage.setItem('selectedSubjects', JSON.stringify([subjectId]));
+            localStorage.setItem('currentSubjectIndex', '0');
+            window.location.href = 'quiz-adaptive.html';
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Simulate progress update (for demo)
+        function addProgress(subject, correct, total) {
+            const stats = progressData.subjectStats[subject];
+            stats.questions += total;
+            stats.correct += correct;
+            stats.experience += correct * 10;
+            stats.lastStudied = Date.now();
+            
+            progressData.totalQuestions += total;
+            progressData.correctAnswers += correct;
+            
+            // Update daily activity
+            const today = new Date().toDateString();
+            progressData.dailyActivity[today] = (progressData.dailyActivity[today] || 0) + total;
+            
+            // Update streak
+            if (!progressData.lastStudyDate || new Date(progressData.lastStudyDate).toDateString() !== today) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                if (progressData.lastStudyDate && new Date(progressData.lastStudyDate).toDateString() === yesterday.toDateString()) {
+                    progressData.streakDays++;
+                } else {
+                    progressData.streakDays = 1;
+                }
+                
+                progressData.lastStudyDate = Date.now();
+            }
+            
+            saveProgressData();
+            updateProgressDisplay();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgressData();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(loadProgressData, 30000);
+        });
+
+        // For testing - remove in production
+        window.addTestProgress = function() {
+            addProgress('english', 8, 10);
+            addProgress('math', 7, 10);
+            addProgress('science', 9, 10);
+        };
+    </script>
+</body>
+</html>

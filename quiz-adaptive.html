@@ -799,6 +799,16 @@
             const accuracy = Math.round((sessionStats.correct / totalAnswered) * 100);
             const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
             
+            // 학습 진행률 시스템 업데이트
+            updateLearningProgress(selectedSubjects[currentSubjectIndex], sessionStats.correct, totalAnswered);
+            
+            // 완벽한 퀴즈 세션 체크 (업적용)
+            if (accuracy >= 100 && totalAnswered >= 5) {
+                const existingProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+                existingProgress.perfectSessions = (existingProgress.perfectSessions || 0) + 1;
+                localStorage.setItem('quizProgress', JSON.stringify(existingProgress));
+            }
+            
             // 정답률에 따른 보상 계산
             let coinReward = Math.floor(sessionStats.correct * 10); // 기본: 정답 1개당 10코인
             let bonusCoins = 0;
@@ -835,10 +845,36 @@
                 }
             }));
             
-            // 농장에 물방울 추가 (심플 농장 시스템)
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"water": 0}');
+            // 농장에 물방울 추가 및 식물 성장 가속 (심플 농장 시스템)
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"water": 0, "plants": [null, null]}');
             const waterReward = Math.floor(sessionStats.correct / 10) + 3; // 기본 3개 + 정답 10개당 1개 추가
             simpleFarmState.water = (simpleFarmState.water || 0) + waterReward;
+            
+            // 학습 완료 시 식물 성장 촉진 (각 식물의 돌봄 정도 증가)
+            const growthBonus = Math.min(sessionStats.correct * 2, 20); // 정답 1개당 2% 성장, 최대 20%
+            if (simpleFarmState.plants) {
+                [1, 2].forEach(potIndex => {
+                    const plant = simpleFarmState.plants[potIndex - 1];
+                    if (plant && !plant.isHarvested) {
+                        plant.care = Math.min((plant.care || 0) + growthBonus, 100);
+                        plant.lastStudied = Date.now(); // 학습 시간 업데이트로 등급 하락 방지
+                        
+                        // 성장 상태 재계산
+                        const daysPassed = Math.floor((Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30)); // 30배 가속
+                        const gradeInfo = {
+                            common: { growthDays: 3 },
+                            advanced: { growthDays: 7 },
+                            epic: { growthDays: 14 },
+                            legendary: { growthDays: 28 }
+                        }[plant.grade] || { growthDays: 3 };
+                        
+                        if (daysPassed >= gradeInfo.growthDays && plant.care >= 80) {
+                            plant.isFullyGrown = true;
+                        }
+                    }
+                });
+            }
+            
             localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
             
             // 농장으로 이동하여 보상 확인
@@ -863,6 +899,154 @@
             if (vibrationEnabled && navigator.vibrate) {
                 navigator.vibrate(50); // 짧은 확인 진동
             }
+        }
+
+        // 학습 진행률 업데이트 함수
+        function updateLearningProgress(subject, correctAnswers, totalQuestions) {
+            // 기존 진행률 데이터 로드
+            let progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+            
+            // 기본 구조 초기화
+            if (!progressData.subjectStats) progressData.subjectStats = {};
+            if (!progressData.dailyActivity) progressData.dailyActivity = {};
+            if (!progressData.unlockedAchievements) progressData.unlockedAchievements = [];
+            
+            // 과목별 통계 초기화
+            if (!progressData.subjectStats[subject]) {
+                progressData.subjectStats[subject] = {
+                    questions: 0,
+                    correct: 0,
+                    lastStudied: null,
+                    level: 1,
+                    experience: 0
+                };
+            }
+            
+            // 전체 통계 업데이트
+            progressData.totalQuestions = (progressData.totalQuestions || 0) + totalQuestions;
+            progressData.correctAnswers = (progressData.correctAnswers || 0) + correctAnswers;
+            
+            // 과목별 통계 업데이트
+            const subjectStats = progressData.subjectStats[subject];
+            subjectStats.questions += totalQuestions;
+            subjectStats.correct += correctAnswers;
+            subjectStats.experience += correctAnswers * 10; // 정답 1개당 10 경험치
+            subjectStats.lastStudied = Date.now();
+            
+            // 일일 활동 업데이트
+            const today = new Date().toDateString();
+            progressData.dailyActivity[today] = (progressData.dailyActivity[today] || 0) + totalQuestions;
+            
+            // 연속 학습일 업데이트
+            if (!progressData.lastStudyDate || new Date(progressData.lastStudyDate).toDateString() !== today) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                if (progressData.lastStudyDate && new Date(progressData.lastStudyDate).toDateString() === yesterday.toDateString()) {
+                    // 어제 공부했으면 연속일 증가
+                    progressData.streakDays = (progressData.streakDays || 0) + 1;
+                } else {
+                    // 연속일 리셋
+                    progressData.streakDays = 1;
+                }
+                
+                progressData.lastStudyDate = Date.now();
+            }
+            
+            // 퀴즈 진행률 별도 저장 (기존 시스템 호환)
+            const existingQuizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+            const quizProgress = {
+                totalCorrect: progressData.correctAnswers,
+                totalAnswered: progressData.totalQuestions,
+                sessionCount: (existingQuizProgress.sessionCount || 0) + 1,
+                perfectSessions: existingQuizProgress.perfectSessions || 0,
+                lastUpdated: Date.now()
+            };
+            localStorage.setItem('quizProgress', JSON.stringify(quizProgress));
+            
+            // 새로운 성취 확인 및 알림
+            checkNewAchievements(progressData);
+            
+            // 업데이트된 진행률 저장
+            localStorage.setItem('learningProgress', JSON.stringify(progressData));
+            
+            console.log('학습 진행률 업데이트 완료:', {
+                subject,
+                correctAnswers,
+                totalQuestions,
+                streakDays: progressData.streakDays,
+                totalExp: subjectStats.experience
+            });
+        }
+        
+        // 새로운 성취 확인
+        function checkNewAchievements(progressData) {
+            const achievements = [
+                { id: 'first_correct', name: '첫 발걸음', requirement: 1, type: 'correct_answers', emoji: '👶' },
+                { id: 'streak_3', name: '꾸준함의 시작', requirement: 3, type: 'streak_days', emoji: '🌱' },
+                { id: 'streak_7', name: '일주일 챌린저', requirement: 7, type: 'streak_days', emoji: '🔥' },
+                { id: 'correct_25', name: '실력자', requirement: 25, type: 'correct_answers', emoji: '⭐' },
+                { id: 'correct_100', name: '백점 만점', requirement: 100, type: 'correct_answers', emoji: '🌟' }
+            ];
+            
+            achievements.forEach(achievement => {
+                if (progressData.unlockedAchievements.includes(achievement.id)) return;
+                
+                let isUnlocked = false;
+                switch (achievement.type) {
+                    case 'correct_answers':
+                        isUnlocked = progressData.correctAnswers >= achievement.requirement;
+                        break;
+                    case 'streak_days':
+                        isUnlocked = progressData.streakDays >= achievement.requirement;
+                        break;
+                    case 'accuracy':
+                        const accuracy = progressData.totalQuestions > 0 
+                            ? (progressData.correctAnswers / progressData.totalQuestions) * 100 
+                            : 0;
+                        isUnlocked = accuracy >= achievement.requirement;
+                        break;
+                }
+                
+                if (isUnlocked) {
+                    progressData.unlockedAchievements.push(achievement.id);
+                    
+                    // 성취 알림 표시
+                    setTimeout(() => {
+                        showAchievementUnlock(achievement);
+                    }, 2000); // 퀴즈 완료 메시지 후에 표시
+                }
+            });
+        }
+        
+        // 성취 해제 알림 표시
+        function showAchievementUnlock(achievement) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-4 right-4 bg-yellow-400 text-yellow-900 px-6 py-4 rounded-xl shadow-lg z-50 achievement-unlock';
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl">${achievement.emoji}</span>
+                    <div>
+                        <div class="font-bold">🏆 새로운 성취!</div>
+                        <div class="text-sm">${achievement.name}</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // 3초 후 제거
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+            
+            // 성취 사운드 재생
+            playCorrectSound();
         }
 
         // 진동 버튼 UI 업데이트
