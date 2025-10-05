@@ -168,28 +168,28 @@
             <div class="mb-4">
                 <h4 class="text-sm font-semibold text-gray-700 mb-3">필수 과목</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <button onclick="startQuickQuiz('english')" class="bg-green-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover">
+                    <button id="english-btn" onclick="startQuickQuiz('english')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🇺🇸</span>
                             <span class="font-medium">영어</span>
                         </div>
-                        <div class="text-xs opacity-80">✅ 완료</div>
+                        <div id="english-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                     
-                    <button onclick="startQuickQuiz('math')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button id="math-btn" onclick="startQuickQuiz('math')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔢</span>
                             <span class="font-medium">수학</span>
                         </div>
-                        <div class="text-xs opacity-80">7.5분 남음</div>
+                        <div id="math-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                     
-                    <button onclick="startQuickQuiz('science')" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button id="science-btn" onclick="startQuickQuiz('science')" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔬</span>
                             <span class="font-medium">과학</span>
                         </div>
-                        <div class="text-xs opacity-80">7.5분 남음</div>
+                        <div id="science-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                 </div>
             </div>
@@ -535,6 +535,43 @@
             }
         }
 
+        // 과목별 학습 진도 업데이트
+        function updateSubjectProgress() {
+            const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+            const today = new Date().toDateString();
+            
+            const subjects = [
+                { id: 'english', name: '영어', emoji: '🇺🇸' },
+                { id: 'math', name: '수학', emoji: '🔢' },
+                { id: 'science', name: '과학', emoji: '🔬' }
+            ];
+            
+            subjects.forEach(subject => {
+                const btn = document.getElementById(`${subject.id}-btn`);
+                const status = document.getElementById(`${subject.id}-status`);
+                
+                if (btn && status) {
+                    const subjectProgress = progressData[subject.id] || {};
+                    const todayStudy = subjectProgress[today];
+                    
+                    if (todayStudy && todayStudy.completed) {
+                        // 완료된 과목
+                        btn.className = 'bg-green-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
+                        status.textContent = '✅ 완료';
+                    } else if (todayStudy && todayStudy.questionsAnswered > 0) {
+                        // 진행 중인 과목
+                        btn.className = 'bg-blue-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
+                        const progress = Math.round((todayStudy.questionsAnswered / 10) * 100);
+                        status.textContent = `${progress}% 진행중`;
+                    } else {
+                        // 아직 시작하지 않은 과목
+                        btn.className = 'border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50';
+                        status.textContent = '시작하기';
+                    }
+                }
+            });
+        }
+
         // 첫 방문 체크 및 온보딩
         function checkFirstVisit() {
             if (localStorage.getItem('eduPetOnboardingCompleted') !== 'true') {
@@ -545,6 +582,19 @@
             return true;
         }
 
+        // 빠른 퀴즈 시작 함수
+        function startQuickQuiz(subject) {
+            // 선택한 과목으로 퀴즈 페이지로 이동
+            const subjectMap = {
+                'english': 'english',
+                'math': 'math', 
+                'science': 'science'
+            };
+            
+            const selectedSubject = subjectMap[subject] || 'english';
+            window.location.href = `subject-select.html?quick=${selectedSubject}`;
+        }
+
         adjustFontSize();
         
         // 첫 방문이 아닌 경우에만 나머지 초기화
@@ -552,11 +602,13 @@
             updateGardenStatus();
             updateTicketDisplay();
             updateStreakDisplay();
+            updateSubjectProgress();
             
             // 주기적으로 뽑기권 개수 및 연속 학습일 업데이트
             setInterval(() => {
                 updateTicketDisplay();
                 updateStreakDisplay();
+                updateSubjectProgress();
             }, 5000);
         }
     </script>

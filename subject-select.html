@@ -452,18 +452,55 @@
 
         // 학습 시작
         function startLearning() {
-            // 영어 학습 정보를 localStorage에 저장
-            localStorage.setItem('selectedSubjects', JSON.stringify(['english']));
+            // URL 파라미터에서 빠른 퀴즈 과목 확인
+            const urlParams = new URLSearchParams(window.location.search);
+            const quickSubject = urlParams.get('quick');
+            
+            let selectedSubject = ['english']; // 기본값
+            
+            if (quickSubject) {
+                // 빠른 퀴즈 모드
+                selectedSubject = [quickSubject];
+            }
+            
+            // 선택된 과목 정보를 localStorage에 저장
+            localStorage.setItem('selectedSubjects', JSON.stringify(selectedSubject));
             localStorage.setItem('currentSubjectIndex', '0');
             
             // 적응형 퀴즈 페이지로 이동
             window.location.href = 'quiz-adaptive.html';
         }
 
-        // 초기화 - 영어 전용 학습
+        // 초기화 - 영어 전용 학습 (또는 빠른 퀴즈 모드)
         document.addEventListener('DOMContentLoaded', function() {
-            // 영어 학습이 기본으로 선택되어 있고 바로 시작 가능
-            console.log('영어 적응형 학습 시스템 준비 완료');
+            const urlParams = new URLSearchParams(window.location.search);
+            const quickSubject = urlParams.get('quick');
+            
+            if (quickSubject) {
+                // 빠른 퀴즈 모드인 경우 바로 시작
+                const subjectNames = {
+                    'english': '영어',
+                    'math': '수학', 
+                    'science': '과학'
+                };
+                
+                const subjectName = subjectNames[quickSubject] || '영어';
+                console.log(`${subjectName} 빠른 퀴즈 모드 준비 완료`);
+                
+                // 페이지 제목과 설명 업데이트
+                const titleElement = document.querySelector('h1');
+                if (titleElement) {
+                    titleElement.textContent = `${subjectName} 빠른 학습`;
+                }
+                
+                // 자동으로 학습 시작 (1초 후)
+                setTimeout(() => {
+                    startLearning();
+                }, 1000);
+            } else {
+                // 일반 영어 학습 모드
+                console.log('영어 적응형 학습 시스템 준비 완료');
+            }
         });
     </script>
 </body>
