@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>적응형 학습 - EduPet Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .font-game {
+            font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+            font-weight: 600;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, 
+                rgba(76, 175, 80, 0.1) 0%, 
+                rgba(255, 152, 0, 0.1) 50%, 
+                rgba(33, 150, 243, 0.1) 100%
+            );
+        }
+        
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .option-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .option-btn.correct {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #10b981;
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .option-btn.incorrect {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-color: #ef4444;
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .option-btn.neutral {
+            background-color: #e5e7eb;
+            border-color: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        .correct-animation {
+            animation: gentleBounce 0.6s ease-out;
+        }
+        
+        @keyframes gentleBounce {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.08); }
+            60% { transform: scale(0.98); }
+            100% { transform: scale(1.02); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-fill {
+            transition: width 0.8s ease-out;
+        }
+        
+        .difficulty-badge {
+            position: relative;
+        }
+        
+        .difficulty-badge.easy {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+        }
+        
+        .difficulty-badge.medium {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .difficulty-badge.hard {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .achievement-popup {
+            animation: achievementSlide 2s ease-out;
+        }
+        
+        @keyframes achievementSlide {
+            0% { transform: translateY(-100px); opacity: 0; }
+            20% { transform: translateY(0); opacity: 1; }
+            80% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#4CAF50', 600: '#16a34a' },
+                        secondary: { 500: '#FF9800', 600: '#ea580c' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- 성취 알림 -->
+    <div id="achievement-popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 hidden">
+        <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full shadow-lg achievement-popup">
+            <div class="flex items-center space-x-2">
+                <span class="text-lg">🏆</span>
+                <span class="font-bold" id="achievement-text">난이도 상승!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 퀴즈 컨테이너 -->
+    <div class="container mx-auto px-4 py-6 max-w-2xl">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+                <button onclick="confirmExit()" class="p-2 rounded-lg hover:bg-white hover:shadow-md transition-all">
+                    ← 나가기
+                </button>
+                <div class="flex items-center space-x-2">
+                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" id="current-subject">
+                        🇺🇸 영어
+                    </span>
+                    <span class="px-2 py-1 rounded-full text-xs font-medium difficulty-badge" id="difficulty-badge">
+                        쉬움
+                    </span>
+                </div>
+            </div>
+            
+            <div class="text-right">
+                <div class="flex items-center justify-end space-x-2 mb-2">
+                    <button onclick="toggleVibration()" id="vibration-toggle" 
+                            class="p-2 rounded-lg transition-all text-sm" 
+                            title="진동 설정">
+                        📳
+                    </button>
+                </div>
+                <div class="text-xs text-gray-500 mb-1">목표 시간</div>
+                <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium" id="target-time">
+                    10분
+                </span>
+            </div>
+        </div>
+
+        <!-- 진행률 및 통계 -->
+        <div class="bg-white rounded-xl p-4 mb-6 shadow-md">
+            <!-- 전체 진행률 -->
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-sm font-medium text-gray-700">학습 진행률</span>
+                <span class="text-sm font-bold text-primary-600" id="overall-progress">1 / 30 문제</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                <div class="bg-primary-500 h-3 rounded-full progress-fill" id="overall-progress-bar" style="width: 3.33%;"></div>
+            </div>
+            
+            <!-- 난이도별 현황 -->
+            <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="p-3 bg-green-50 rounded-lg border border-green-200" id="easy-status">
+                    <div class="text-lg font-bold text-green-600">0/30</div>
+                    <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
+                </div>
+                <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200" id="medium-status">
+                    <div class="text-lg font-bold text-yellow-600">0/20</div>
+                    <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
+                </div>
+                <div class="p-3 bg-red-50 rounded-lg border border-red-200" id="hard-status">
+                    <div class="text-lg font-bold text-red-600">0/10</div>
+                    <div class="text-xs text-red-700">어려움 (45초/문제)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 퀴즈 카드 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 slide-in" id="quiz-card">
+            <!-- 문제 -->
+            <div class="mb-6">
+                <div class="flex items-start justify-between">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 flex-1" id="question-text">
+                        문제를 불러오는 중...
+                    </h2>
+                    
+                    <!-- TTS 버튼 -->
+                    <button id="tts-btn" onclick="playTTS()" class="ml-4 px-3 py-1 border-2 border-primary-500 text-primary-500 rounded-lg text-sm hover:bg-primary-500 hover:text-white transition-all hidden">
+                        🔊 발음
+                    </button>
+                </div>
+            </div>
+
+            <!-- 보기 -->
+            <div class="space-y-3 mb-6" id="options-container">
+                <!-- 동적으로 생성됩니다 -->
+            </div>
+
+            <!-- 해설 (처음엔 숨김) -->
+            <div id="explanation" class="hidden mb-6">
+                <div class="p-4 rounded-xl border-2 bg-green-50 border-green-200">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl" id="result-icon">🎉</span>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2" id="result-text">정답입니다!</h4>
+                            <p class="text-gray-700 leading-relaxed" id="explanation-text">
+                                해설이 여기에 표시됩니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 다음/완료 버튼 (처음엔 숨김) -->
+            <div id="next-section" class="hidden text-center">
+                <button onclick="nextQuestion()" class="px-8 py-3 bg-primary-500 text-white rounded-xl text-lg font-bold hover:bg-primary-600 transition-all" id="next-btn">
+                    다음 문제 ➡️
+                </button>
+            </div>
+        </div>
+
+        <!-- 학습 통계 -->
+        <div class="bg-white rounded-xl shadow-lg p-4">
+            <div class="flex items-center justify-between mb-3">
+                <span class="font-medium text-gray-700">현재 세션 통계</span>
+                <span class="text-sm text-blue-600" id="session-accuracy">정답률 0%</span>
+            </div>
+            <div class="grid grid-cols-4 gap-4 text-center">
+                <div>
+                    <div class="text-xl font-bold text-green-600" id="total-correct">0</div>
+                    <div class="text-xs text-gray-600">정답</div>
+                </div>
+                <div>
+                    <div class="text-xl font-bold text-red-600" id="total-incorrect">0</div>
+                    <div class="text-xs text-gray-600">오답</div>
+                </div>
+                <div>
+                    <div class="text-xl font-bold text-purple-600" id="difficulty-level">1</div>
+                    <div class="text-xs text-gray-600">현재 레벨</div>
+                </div>
+                <div>
+                    <div class="text-xl font-bold text-orange-600" id="time-elapsed">0:00</div>
+                    <div class="text-xs text-gray-600">소요 시간</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 전역 변수
+        let selectedSubjects = [];
+        let currentSubjectIndex = 0;
+        let questions = {};
+        let currentDifficulty = 1; // 1: 쉬움, 2: 보통, 3: 어려움
+        let questionCounts = { easy: 0, medium: 0, hard: 0 };
+        let targetCounts = { easy: 30, medium: 20, hard: 10 };
+        let currentQuestionPool = [];
+        let currentQuestionIndex = 0;
+        let isAnswered = false;
+        let shuffledOptions = [];
+        let sessionStats = { correct: 0, incorrect: 0, startTime: Date.now() };
+        let recentAnswers = []; // 최근 5문제 정답 여부
+        let vibrationEnabled = true; // 진동 기능 활성화 여부
+
+        // 정답 사운드 및 진동 효과 함수
+        function playCorrectSound() {
+            // 진동 효과 (모바일)
+            if (vibrationEnabled && navigator.vibrate) {
+                // 정답: 경쾌한 패턴 - 짧게 2번 (성취감)
+                navigator.vibrate([100, 50, 100]); // 진동 100ms → 멈춤 50ms → 진동 100ms
+            }
+            
+            try {
+                // Web Audio API를 사용하여 경쾌한 효과음 생성
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // 첫 번째 음 (높은 음)
+                const oscillator1 = audioContext.createOscillator();
+                const gainNode1 = audioContext.createGain();
+                
+                oscillator1.connect(gainNode1);
+                gainNode1.connect(audioContext.destination);
+                
+                oscillator1.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+                oscillator1.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                
+                gainNode1.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode1.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                
+                oscillator1.start(audioContext.currentTime);
+                oscillator1.stop(audioContext.currentTime + 0.3);
+                
+                // 두 번째 음 (화음)
+                const oscillator2 = audioContext.createOscillator();
+                const gainNode2 = audioContext.createGain();
+                
+                oscillator2.connect(gainNode2);
+                gainNode2.connect(audioContext.destination);
+                
+                oscillator2.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                oscillator2.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+                
+                gainNode2.gain.setValueAtTime(0, audioContext.currentTime + 0.1);
+                gainNode2.gain.linearRampToValueAtTime(0.25, audioContext.currentTime + 0.11);
+                gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+                
+                oscillator2.start(audioContext.currentTime + 0.1);
+                oscillator2.stop(audioContext.currentTime + 0.4);
+                
+            } catch (error) {
+                // Web Audio API를 지원하지 않는 경우 무시
+                console.log('Audio not supported:', error);
+            }
+        }
+
+        // 오답 사운드 및 진동 효과 함수 (띠띠 경고음)
+        function playIncorrectSound() {
+            // 진동 효과 (모바일)
+            if (vibrationEnabled && navigator.vibrate) {
+                // 오답: 길게 한 번 (알림, 하지만 너무 강하지 않게)
+                navigator.vibrate(200); // 진동 200ms
+            }
+            
+            try {
+                // Web Audio API를 사용하여 경고음 생성
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // 첫 번째 "띠" 소리 (낮은 경고음)
+                const oscillator1 = audioContext.createOscillator();
+                const gainNode1 = audioContext.createGain();
+                
+                oscillator1.connect(gainNode1);
+                gainNode1.connect(audioContext.destination);
+                
+                oscillator1.frequency.setValueAtTime(220, audioContext.currentTime); // A3 (낮은 톤)
+                oscillator1.type = 'square'; // 경고음 느낌의 사각파
+                
+                gainNode1.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode1.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+                
+                oscillator1.start(audioContext.currentTime);
+                oscillator1.stop(audioContext.currentTime + 0.15);
+                
+                // 두 번째 "띠" 소리 (약간의 간격 후)
+                const oscillator2 = audioContext.createOscillator();
+                const gainNode2 = audioContext.createGain();
+                
+                oscillator2.connect(gainNode2);
+                gainNode2.connect(audioContext.destination);
+                
+                oscillator2.frequency.setValueAtTime(220, audioContext.currentTime + 0.2); // 같은 톤 반복
+                oscillator2.type = 'square';
+                
+                gainNode2.gain.setValueAtTime(0, audioContext.currentTime + 0.2);
+                gainNode2.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.21);
+                gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.35);
+                
+                oscillator2.start(audioContext.currentTime + 0.2);
+                oscillator2.stop(audioContext.currentTime + 0.35);
+                
+            } catch (error) {
+                // Web Audio API를 지원하지 않는 경우 무시
+                console.log('Audio not supported:', error);
+            }
+        }
+
+        // 과목 정보
+        const subjects = {
+            english: { name: '영어', icon: '🇺🇸', targetTime: 10 }
+        };
+
+        // 난이도별 설정
+        const difficultyConfig = {
+            1: { name: '쉬움', class: 'easy', targetCount: 30, timePerQuestion: 20 },
+            2: { name: '보통', class: 'medium', targetCount: 20, timePerQuestion: 22.5 },
+            3: { name: '어려움', class: 'hard', targetCount: 10, timePerQuestion: 45 }
+        };
+
+        // 초기화
+        async function initializeQuiz() {
+            // localStorage에서 선택된 과목 가져오기
+            const stored = localStorage.getItem('selectedSubjects');
+            if (!stored) {
+                selectedSubjects = ['english']; // 기본값
+            } else {
+                selectedSubjects = JSON.parse(stored);
+            }
+
+            currentSubjectIndex = parseInt(localStorage.getItem('currentSubjectIndex') || '0');
+
+            // 문제 데이터 로드
+            await loadQuestions();
+            
+            // 진동 설정 로드
+            const savedVibration = localStorage.getItem('quizVibrationEnabled');
+            if (savedVibration !== null) {
+                vibrationEnabled = JSON.parse(savedVibration);
+            }
+            
+            // UI 초기화
+            updateUI();
+            updateVibrationButton(); // 진동 버튼 상태 초기화
+            generateQuestionPool();
+            loadCurrentQuestion();
+            startTimer();
+        }
+
+        // 문제 데이터 로드
+        async function loadQuestions() {
+            try {
+                const response = await fetch('src/data/questions/expanded-questions.json');
+                const allQuestions = await response.json();
+                
+                // 과목별로 난이도별 분류
+                const currentSubject = selectedSubjects[currentSubjectIndex];
+                questions = {
+                    easy: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 1),
+                    medium: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 2),
+                    hard: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 3)
+                };
+
+                console.log('문제 로드 완료:', {
+                    easy: questions.easy.length,
+                    medium: questions.medium.length, 
+                    hard: questions.hard.length
+                });
+            } catch (error) {
+                console.error('문제 로드 실패:', error);
+                // 폴백으로 기본 문제 사용
+                loadFallbackQuestions();
+            }
+        }
+
+        // 폴백 문제
+        function loadFallbackQuestions() {
+            questions = {
+                easy: Array(30).fill().map((_, i) => ({
+                    id: `eng_easy_${i+1}`,
+                    subject: 'english',
+                    question: `쉬운 영어 문제 ${i+1}번입니다.`,
+                    options: ['정답', '오답1', '오답2', '오답3'],
+                    correctIndex: 0,
+                    explanation: `문제 ${i+1}번의 해설입니다.`,
+                    difficulty: 1,
+                    audioText: 'sample'
+                })),
+                medium: Array(20).fill().map((_, i) => ({
+                    id: `eng_medium_${i+1}`,
+                    subject: 'english', 
+                    question: `보통 영어 문제 ${i+1}번입니다.`,
+                    options: ['정답', '오답1', '오답2', '오답3'],
+                    correctIndex: 0,
+                    explanation: `문제 ${i+1}번의 해설입니다.`,
+                    difficulty: 2
+                })),
+                hard: Array(10).fill().map((_, i) => ({
+                    id: `eng_hard_${i+1}`,
+                    subject: 'english',
+                    question: `어려운 영어 문제 ${i+1}번입니다.`,
+                    options: ['정답', '오답1', '오답2', '오답3'],
+                    correctIndex: 0,
+                    explanation: `문제 ${i+1}번의 해설입니다.`,
+                    difficulty: 3
+                }))
+            };
+        }
+
+        // 문제 풀 생성
+        function generateQuestionPool() {
+            const config = difficultyConfig[currentDifficulty];
+            const difficultyKey = config.class;
+            
+            currentQuestionPool = [...questions[difficultyKey]];
+            // 문제 순서 셔플
+            for (let i = currentQuestionPool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentQuestionPool[i], currentQuestionPool[j]] = [currentQuestionPool[j], currentQuestionPool[i]];
+            }
+            
+            currentQuestionIndex = 0;
+        }
+
+        // 현재 문제 로드
+        function loadCurrentQuestion() {
+            if (isSessionComplete()) {
+                completeSession();
+                return;
+            }
+
+            // 난이도별 문제 개수 체크
+            const config = difficultyConfig[currentDifficulty];
+            const difficultyKey = config.class;
+            const currentCount = questionCounts[difficultyKey];
+            const targetCount = config.targetCount;
+
+            if (currentCount >= targetCount) {
+                // 현재 난이도 완료, 다음 난이도로
+                upgradeDifficulty();
+                return;
+            }
+
+            if (currentQuestionIndex >= currentQuestionPool.length) {
+                // 문제 풀 재생성
+                generateQuestionPool();
+            }
+
+            const question = currentQuestionPool[currentQuestionIndex];
+            shuffledOptions = shuffleOptions(question);
+            isAnswered = false;
+
+            // UI 업데이트
+            updateQuestionDisplay(question);
+            updateProgressDisplay();
+        }
+
+        // 문제 표시 업데이트
+        function updateQuestionDisplay(question) {
+            document.getElementById('question-text').textContent = question.question;
+            
+            // 보기 생성
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = shuffledOptions.map((option, index) => `
+                <button class="option-btn w-full p-4 text-left rounded-xl border-2 border-gray-300 hover:border-primary-500 hover:bg-primary-50 font-medium transition-all" onclick="selectOption(${index})">
+                    <span class="inline-block w-8 h-8 rounded-full bg-gray-100 text-center leading-8 mr-3 text-sm font-bold">
+                        ${String.fromCharCode(65 + index)}
+                    </span>
+                    ${option.text}
+                </button>
+            `).join('');
+
+            // TTS 버튼
+            const ttsBtn = document.getElementById('tts-btn');
+            if (question.audioText) {
+                ttsBtn.classList.remove('hidden');
+            } else {
+                ttsBtn.classList.add('hidden');
+            }
+
+            // 해설과 다음 버튼 숨김
+            document.getElementById('explanation').classList.add('hidden');
+            document.getElementById('next-section').classList.add('hidden');
+        }
+
+        // 진행률 표시 업데이트
+        function updateProgressDisplay() {
+            const totalCompleted = questionCounts.easy + questionCounts.medium + questionCounts.hard;
+            const totalTarget = targetCounts.easy + targetCounts.medium + targetCounts.hard;
+            
+            document.getElementById('overall-progress').textContent = `${totalCompleted} / ${totalTarget} 문제`;
+            
+            const progress = (totalCompleted / totalTarget) * 100;
+            document.getElementById('overall-progress-bar').style.width = progress + '%';
+
+            // 난이도별 현황 업데이트
+            document.getElementById('easy-status').innerHTML = `
+                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/30</div>
+                <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
+            `;
+            document.getElementById('medium-status').innerHTML = `
+                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/20</div>
+                <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
+            `;
+            document.getElementById('hard-status').innerHTML = `
+                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/10</div>
+                <div class="text-xs text-red-700">어려움 (45초/문제)</div>
+            `;
+        }
+
+        // UI 업데이트
+        function updateUI() {
+            const currentSubject = selectedSubjects[currentSubjectIndex];
+            const subjectInfo = subjects[currentSubject];
+            
+            document.getElementById('current-subject').textContent = `${subjectInfo.icon} ${subjectInfo.name}`;
+            document.getElementById('target-time').textContent = `${subjectInfo.targetTime}분`;
+            
+            const config = difficultyConfig[currentDifficulty];
+            const difficultyBadge = document.getElementById('difficulty-badge');
+            difficultyBadge.textContent = config.name;
+            difficultyBadge.className = `px-2 py-1 rounded-full text-xs font-medium difficulty-badge ${config.class}`;
+
+            // 세션 통계 업데이트
+            const totalAnswered = sessionStats.correct + sessionStats.incorrect;
+            const accuracy = totalAnswered > 0 ? Math.round((sessionStats.correct / totalAnswered) * 100) : 0;
+            
+            document.getElementById('total-correct').textContent = sessionStats.correct;
+            document.getElementById('total-incorrect').textContent = sessionStats.incorrect;
+            document.getElementById('difficulty-level').textContent = currentDifficulty;
+            document.getElementById('session-accuracy').textContent = `정답률 ${accuracy}%`;
+        }
+
+        // 보기 셔플
+        function shuffleOptions(question) {
+            const options = question.options.map((text, index) => ({ text, originalIndex: index }));
+            const shuffled = [...options];
+            
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            return shuffled;
+        }
+
+        // 옵션 선택
+        function selectOption(shuffledIndex) {
+            if (isAnswered) return;
+
+            const question = currentQuestionPool[currentQuestionIndex];
+            const selectedOriginalIndex = shuffledOptions[shuffledIndex].originalIndex;
+            const isCorrect = selectedOriginalIndex === question.correctIndex;
+            
+            isAnswered = true;
+
+            // 통계 업데이트
+            if (isCorrect) {
+                sessionStats.correct++;
+                recentAnswers.push(true);
+            } else {
+                sessionStats.incorrect++;
+                recentAnswers.push(false);
+            }
+
+            // 최근 5문제만 유지
+            if (recentAnswers.length > 5) {
+                recentAnswers.shift();
+            }
+
+            // 난이도별 카운트 증가
+            const config = difficultyConfig[currentDifficulty];
+            const difficultyKey = config.class;
+            questionCounts[difficultyKey]++;
+
+            // 버튼 상태 업데이트
+            updateOptionButtons(shuffledIndex, question.correctIndex);
+            
+            // 해설 표시
+            setTimeout(() => {
+                showExplanation(isCorrect, question.explanation);
+                updateUI();
+                updateProgressDisplay();
+                checkDifficultyAdjustment();
+            }, 1000);
+        }
+
+        // 옵션 버튼 상태 업데이트
+        function updateOptionButtons(selectedIndex, correctIndex) {
+            const options = document.querySelectorAll('.option-btn');
+            
+            options.forEach((btn, index) => {
+                const originalIndex = shuffledOptions[index].originalIndex;
+                
+                if (originalIndex === correctIndex) {
+                    btn.classList.add('correct');
+                    btn.innerHTML += ' <span class="ml-2 text-xl">✅</span>';
+                } else if (index === selectedIndex) {
+                    btn.classList.add('incorrect');
+                    btn.innerHTML += ' <span class="ml-2 text-xl">❌</span>';
+                } else {
+                    btn.classList.add('neutral');
+                }
+                
+                btn.onclick = null;
+            });
+
+            if (selectedIndex !== -1 && shuffledOptions[selectedIndex].originalIndex === correctIndex) {
+                options[selectedIndex].classList.add('correct-animation');
+                
+                // 정답 사운드 효과 (Web Audio API 사용)
+                playCorrectSound();
+            } else if (selectedIndex !== -1) {
+                // 오답 사운드 효과 (띠띠 경고음)
+                playIncorrectSound();
+            }
+        }
+
+        // 해설 표시
+        function showExplanation(isCorrect, explanation) {
+            const explanationDiv = document.getElementById('explanation');
+            const resultIcon = document.getElementById('result-icon');
+            const resultText = document.getElementById('result-text');
+            const explanationText = document.getElementById('explanation-text');
+
+            if (isCorrect) {
+                resultIcon.textContent = '🎉';
+                resultText.textContent = '정답입니다!';
+                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-green-50 border-green-200';
+            } else {
+                resultIcon.textContent = '💡';
+                resultText.textContent = '아쉽네요! 정답을 확인해보세요.';
+                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-blue-50 border-blue-200';
+            }
+
+            explanationText.textContent = explanation;
+            explanationDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                document.getElementById('next-section').classList.remove('hidden');
+            }, 500);
+        }
+
+        // 난이도 조정 확인
+        function checkDifficultyAdjustment() {
+            if (recentAnswers.length < 5) return;
+
+            const recentCorrectCount = recentAnswers.filter(answer => answer).length;
+            const accuracy = recentCorrectCount / recentAnswers.length;
+
+            // 정답률 80% 이상이면 난이도 상승
+            if (accuracy >= 0.8 && currentDifficulty < 3) {
+                const config = difficultyConfig[currentDifficulty];
+                const difficultyKey = config.class;
+                const currentCount = questionCounts[difficultyKey];
+                const minRequired = Math.floor(config.targetCount * 0.3); // 최소 30% 진행
+
+                if (currentCount >= minRequired) {
+                    upgradeDifficulty();
+                    showAchievement('🚀 난이도 상승!');
+                }
+            }
+            // 정답률 40% 이하면 난이도 하락 (2단계 이상에서만)
+            else if (accuracy <= 0.4 && currentDifficulty > 1) {
+                downgradeDifficulty();
+                showAchievement('📖 난이도 조정됨');
+            }
+        }
+
+        // 난이도 상승
+        function upgradeDifficulty() {
+            if (currentDifficulty < 3) {
+                currentDifficulty++;
+                generateQuestionPool();
+                recentAnswers = [];
+            }
+        }
+
+        // 난이도 하락
+        function downgradeDifficulty() {
+            if (currentDifficulty > 1) {
+                currentDifficulty--;
+                generateQuestionPool();
+                recentAnswers = [];
+            }
+        }
+
+        // 성취 알림 표시
+        function showAchievement(message) {
+            const popup = document.getElementById('achievement-popup');
+            document.getElementById('achievement-text').textContent = message;
+            popup.classList.remove('hidden');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 2000);
+        }
+
+        // 세션 완료 확인
+        function isSessionComplete() {
+            return questionCounts.easy >= targetCounts.easy && 
+                   questionCounts.medium >= targetCounts.medium && 
+                   questionCounts.hard >= targetCounts.hard;
+        }
+
+        // 다음 문제
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadCurrentQuestion();
+        }
+
+        // 세션 완료
+        function completeSession() {
+            const totalAnswered = sessionStats.correct + sessionStats.incorrect;
+            const accuracy = Math.round((sessionStats.correct / totalAnswered) * 100);
+            const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
+            
+            // 정답률에 따른 보상 계산
+            let coinReward = Math.floor(sessionStats.correct * 10); // 기본: 정답 1개당 10코인
+            let bonusCoins = 0;
+            
+            if (accuracy >= 90) {
+                bonusCoins = 200; // 90% 이상: 보너스 200코인
+            } else if (accuracy >= 80) {
+                bonusCoins = 150; // 80% 이상: 보너스 150코인
+            } else if (accuracy >= 70) {
+                bonusCoins = 100; // 70% 이상: 보너스 100코인
+            } else if (accuracy >= 60) {
+                bonusCoins = 50; // 60% 이상: 보너스 50코인
+            }
+            
+            const totalReward = coinReward + bonusCoins;
+            
+            // 농장 시스템에 보상 추가
+            const farmState = JSON.parse(localStorage.getItem('eduPetFarmState') || '{"coins": 0}');
+            farmState.coins = (farmState.coins || 0) + totalReward;
+            localStorage.setItem('eduPetFarmState', JSON.stringify(farmState));
+            
+            alert(`🎉 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분\n\n💰 획득 보상:\n기본 코인: ${coinReward}\n보너스: ${bonusCoins}\n총 ${totalReward} EduCoin!\n\n식물이 자랐어요! 🌱`);
+            
+            // 학습 결과 저장
+            localStorage.setItem('adaptiveQuizResults', JSON.stringify({
+                subject: selectedSubjects[currentSubjectIndex],
+                stats: sessionStats,
+                questionCounts,
+                completedAt: new Date().toISOString(),
+                reward: {
+                    coins: coinReward,
+                    bonus: bonusCoins,
+                    total: totalReward
+                }
+            }));
+            
+            // 농장에 물방울 추가 (심플 농장 시스템)
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"water": 0}');
+            const waterReward = Math.floor(sessionStats.correct / 10) + 3; // 기본 3개 + 정답 10개당 1개 추가
+            simpleFarmState.water = (simpleFarmState.water || 0) + waterReward;
+            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
+            
+            // 농장으로 이동하여 보상 확인
+            setTimeout(() => {
+                if (confirm(`🎉 물방울 ${waterReward}개 획득!\\n식물친구들에게 물을 주러 가시겠습니까?`)) {
+                    window.location.href = 'simple-farm.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
+        }
+
+        // 진동 설정 토글
+        function toggleVibration() {
+            vibrationEnabled = !vibrationEnabled;
+            updateVibrationButton();
+            
+            // 설정을 localStorage에 저장
+            localStorage.setItem('quizVibrationEnabled', vibrationEnabled);
+            
+            // 테스트 진동 (설정 피드백)
+            if (vibrationEnabled && navigator.vibrate) {
+                navigator.vibrate(50); // 짧은 확인 진동
+            }
+        }
+
+        // 진동 버튼 UI 업데이트
+        function updateVibrationButton() {
+            const button = document.getElementById('vibration-toggle');
+            
+            // 진동 API 지원 여부 확인
+            if (!navigator.vibrate) {
+                button.textContent = '📵';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-gray-100 text-gray-400 cursor-not-allowed';
+                button.title = '이 기기는 진동을 지원하지 않습니다';
+                button.disabled = true;
+                return;
+            }
+            
+            button.disabled = false;
+            if (vibrationEnabled) {
+                button.textContent = '📳';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-blue-100 text-blue-700 hover:bg-blue-200';
+                button.title = '진동 켜짐 (클릭하여 끄기)';
+            } else {
+                button.textContent = '🔇';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-gray-100 text-gray-500 hover:bg-gray-200';
+                button.title = '진동 꺼짐 (클릭하여 켜기)';
+            }
+        }
+
+        // 타이머
+        function startTimer() {
+            setInterval(() => {
+                const elapsed = Math.floor((Date.now() - sessionStats.startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                document.getElementById('time-elapsed').textContent = 
+                    `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // TTS 재생
+        function playTTS() {
+            const question = currentQuestionPool[currentQuestionIndex];
+            
+            if (question.audioText && 'speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(question.audioText);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // 나가기 확인
+        function confirmExit() {
+            if (confirm('학습을 중단하시겠습니까? 진행 상황이 저장되지 않을 수 있습니다.')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // 초기화 실행
+        document.addEventListener('DOMContentLoaded', initializeQuiz);
+    </script>
+</body>
+</html>

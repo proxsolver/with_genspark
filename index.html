@@ -40,14 +40,15 @@
             animation: pulse 3s infinite;
         }
         
-        .animate-confetti {
-            animation: confetti 0.8s ease-out;
+        .animate-gentle-bounce {
+            animation: gentleBounce 0.6s ease-out;
         }
         
-        @keyframes confetti {
-            0% { transform: scale(0) rotate(0deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
-            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        @keyframes gentleBounce {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.08); }
+            60% { transform: scale(0.98); }
+            100% { transform: scale(1.02); }
         }
         
         .card-hover {
@@ -175,7 +176,7 @@
                         <div class="text-xs opacity-80">✅ 완료</div>
                     </button>
                     
-                    <button class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔢</span>
                             <span class="font-medium">수학</span>
@@ -183,7 +184,7 @@
                         <div class="text-xs opacity-80">7.5분</div>
                     </button>
                     
-                    <button class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center">
+                    <button onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔬</span>
                             <span class="font-medium">과학</span>
@@ -209,95 +210,110 @@
             </div>
         </div>
 
-        <!-- 농장 현황 -->
+        <!-- 작은 정원 현황 -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-6 card-hover opacity-0" style="animation: slideUp 1s ease-out 0.4s forwards;">
-            <div class="flex items-center space-x-2 mb-4">
-                <span class="text-xl">🌱</span>
-                <h2 class="text-xl font-bold font-game">농장 현황</h2>
-                <span class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">2 / 2</span>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">🌱</span>
+                    <h2 class="text-xl font-bold font-game">초롱이의 작은 정원</h2>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">
+                        💧 <span id="waterCount">12</span>방울
+                    </span>
+                    <button onclick="window.location.href='simple-farm.html'" class="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm hover:bg-primary-200 transition-colors">
+                        정원 보기
+                    </button>
+                </div>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- 에픽 키위 -->
-                <div class="rarity-epic rounded-xl p-4 relative">
+                <!-- 화분 1 -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-100 border-2 border-green-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
                     <div class="text-center">
                         <div class="relative mb-3">
-                            <span class="text-4xl">🥝</span>
+                            <span class="text-4xl" id="plant1Display">🌱</span>
                             <div class="absolute -top-2 -right-2">
-                                <span class="inline-flex items-center px-2 py-1 bg-green-500 text-white rounded-full text-xs">
-                                    🛡️
-                                </span>
+                                <span class="text-lg animate-pulse">💭</span>
                             </div>
                         </div>
                         
-                        <h4 class="font-bold mb-2">에픽 키위</h4>
-                        <div class="inline-flex items-center px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs mb-3">
-                            🟣 에픽
+                        <h4 class="font-bold mb-2 text-green-800">아기 새싹이</h4>
+                        <div class="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs mb-3">
+                            🌱 새싹 단계
                         </div>
                         
                         <div class="mb-3">
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">성장 진행률</span>
-                                <span class="text-xs font-medium">12 / 14일</span>
+                                <span class="text-xs text-gray-600">행복도</span>
+                                <span class="text-xs font-medium">85%</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-purple-500 h-2 rounded-full progress-bar" style="width: 86%;"></div>
+                                <div class="bg-green-500 h-2 rounded-full progress-bar" style="width: 85%;"></div>
                             </div>
                         </div>
                         
-                        <div class="inline-flex items-center px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs animate-pulse-slow">
-                            <span class="mr-1">🛡️</span>
-                            보호됨
-                        </div>
-                        
-                        <div class="mt-2 text-xs text-green-700 bg-green-50 rounded-lg p-2">
-                            🐉 화염 드래곤이 보호 중
+                        <div class="text-xs text-green-700 bg-green-50 rounded-lg p-2">
+                            "안녕! 나는 아기 새싹이야! 물을 주면서 함께 배워요~"
                         </div>
                     </div>
                 </div>
 
-                <!-- 일반 토마토 -->
-                <div class="rarity-common rounded-xl p-4">
+                <!-- 화분 2 -->
+                <div class="bg-gradient-to-br from-blue-50 to-sky-100 border-2 border-blue-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
                     <div class="text-center">
-                        <div class="mb-3">
-                            <span class="text-4xl">🍅</span>
+                        <div class="relative mb-3">
+                            <span class="text-4xl" id="plant2Display">🌰</span>
+                            <div class="absolute -top-2 -right-2">
+                                <span class="text-lg animate-pulse">😴</span>
+                            </div>
                         </div>
                         
-                        <h4 class="font-bold mb-2">일반 토마토</h4>
+                        <h4 class="font-bold mb-2 text-blue-800">빈 화분</h4>
                         <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3">
-                            ⚪ 일반
+                            🌰 씨앗 대기
                         </div>
                         
                         <div class="mb-3">
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">성장 진행률</span>
-                                <span class="text-xs font-medium">1 / 3일</span>
+                                <span class="text-xs text-gray-600">준비 상태</span>
+                                <span class="text-xs font-medium">대기중</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 33%;"></div>
+                                <div class="bg-gray-400 h-2 rounded-full progress-bar" style="width: 0%;"></div>
                             </div>
                         </div>
                         
-                        <div class="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
-                            <span class="mr-1">🔄</span>
-                            진행중
+                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
+                            씨앗을 심어 새로운 친구를 만들어보세요!
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 정원 관리 팁 -->
+            <div class="mt-4 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-xl p-3">
+                <div class="flex items-start space-x-2">
+                    <span class="text-lg">💡</span>
+                    <div>
+                        <h4 class="font-semibold text-amber-800 text-sm mb-1">정원 관리 팁</h4>
+                        <p class="text-amber-700 text-xs">매일 학습하여 물방울을 모으고, 식물에게 물을 주면서 교육 내용을 배워보세요!</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 위험 알림 -->
-        <div class="bg-red-50 border-l-4 border-l-red-500 rounded-xl p-4 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.6s forwards;">
+        <!-- 식물 친구들의 메시지 -->
+        <div class="bg-green-50 border-l-4 border-l-green-500 rounded-xl p-4 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.6s forwards;">
             <div class="flex items-start space-x-3">
-                <span class="text-2xl">⚠️</span>
+                <span class="text-2xl">🌱</span>
                 <div class="flex-1">
-                    <h4 class="font-bold text-red-800 mb-1">에픽 키위가 내일 위험해요!</h4>
-                    <p class="text-red-700 text-sm mb-3">오늘 학습을 완료하지 않으면 고급 등급으로 떨어질 수 있습니다.</p>
+                    <h4 class="font-bold text-green-800 mb-1">아기 새싹이가 말해요!</h4>
+                    <p class="text-green-700 text-sm mb-3">"오늘도 함께 학습해서 물방울을 모아주세요! 저는 물을 마실 때마다 더 많은 걸 배울 수 있어요!"</p>
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm text-red-600">🐉이 도와줄 수 있어요</span>
-                        <button class="px-3 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600 transition-colors">
-                            보호하기
+                        <span class="text-sm text-green-600">🌱 함께 자라요!</span>
+                        <button onclick="window.location.href='simple-farm.html'" class="px-3 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-colors">
+                            정원 보러가기
                         </button>
                     </div>
                 </div>
@@ -306,34 +322,34 @@
 
         <!-- 하단 네비게이션 -->
         <div class="grid grid-cols-3 gap-4 mb-8 opacity-0" style="animation: slideUp 1s ease-out 0.8s forwards;">
-            <button class="bg-secondary-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
+            <button onclick="window.location.href='simple-farm.html'" class="bg-green-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
                 <div class="flex items-center space-x-1 mb-1">
-                    <span>🎫</span>
-                    <span class="font-medium">뽑기</span>
+                    <span>🌱</span>
+                    <span class="font-medium">작은정원</span>
                 </div>
-                <div class="text-xs opacity-80">일반 2장, 특별 0장</div>
+                <div class="text-xs opacity-80">식물친구 키우기</div>
             </button>
             
-            <button class="bg-accent-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
+            <button onclick="window.location.href='simple-farm.html'" class="bg-blue-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
                 <div class="flex items-center space-x-1 mb-1">
-                    <span>🏆</span>
-                    <span class="font-medium">랭킹</span>
+                    <span>💧</span>
+                    <span class="font-medium">물주기</span>
                 </div>
-                <div class="text-xs opacity-80">순위 확인하기</div>
+                <div class="text-xs opacity-80">식물돌보기</div>
             </button>
             
-            <button class="bg-secondary-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
+            <button onclick="window.location.href='subject-select.html'" class="bg-purple-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
                 <div class="flex items-center space-x-1 mb-1">
-                    <span>👑</span>
-                    <span class="font-medium">수집도감</span>
+                    <span>📚</span>
+                    <span class="font-medium">학습하기</span>
                 </div>
-                <div class="text-xs opacity-80">동물 컬렉션</div>
+                <div class="text-xs opacity-80">물방울 얻기</div>
             </button>
         </div>
 
         <!-- 학습 시작 버튼 -->
         <div class="text-center opacity-0" style="animation: slideUp 1s ease-out 1s forwards;">
-            <button class="w-full bg-primary-500 text-white py-4 px-8 rounded-xl text-xl font-bold font-game mb-4 card-hover">
+            <button onclick="window.location.href='subject-select.html'" class="w-full bg-primary-500 text-white py-4 px-8 rounded-xl text-xl font-bold font-game mb-4 card-hover">
                 <span class="mr-2">📚</span>
                 오늘의 학습 시작하기
             </button>
@@ -379,9 +395,9 @@
                     this.style.transform = '';
                 }, 150);
                 
-                // 학습 시작 버튼 클릭 시 퀴즈 페이지로 이동
+                // 학습 시작 버튼 클릭 시 과목 선택 페이지로 이동
                 if (this.textContent.includes('학습 시작하기')) {
-                    window.location.href = 'quiz.html';
+                    window.location.href = 'subject-select.html';
                 }
             });
         });
@@ -392,7 +408,47 @@
             document.documentElement.style.setProperty('--user-font-size', fontSize + 'rem');
         }
 
+        // 작은 정원 상태 업데이트
+        function updateGardenStatus() {
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || {
+                water: 12,
+                plants: [null, null]
+            };
+            
+            // 물방울 개수 업데이트
+            const waterCountElement = document.getElementById('waterCount');
+            if (waterCountElement) {
+                waterCountElement.textContent = simpleFarmState.water || 12;
+            }
+            
+            // 식물 상태 업데이트
+            const plant1Display = document.getElementById('plant1Display');
+            const plant2Display = document.getElementById('plant2Display');
+            
+            if (plant1Display && simpleFarmState.plants && simpleFarmState.plants[0]) {
+                const plant = simpleFarmState.plants[0];
+                plant1Display.textContent = getPlantEmoji(plant.stage);
+            }
+            
+            if (plant2Display && simpleFarmState.plants && simpleFarmState.plants[1]) {
+                const plant = simpleFarmState.plants[1];
+                plant2Display.textContent = getPlantEmoji(plant.stage);
+            }
+        }
+        
+        function getPlantEmoji(stage) {
+            switch(stage) {
+                case 'seed': return '🌰';
+                case 'sprout': return '🌱';
+                case 'stem': return '🌿';
+                case 'flower': return '🌸';
+                case 'fruit': return '🍎';
+                default: return '🌰';
+            }
+        }
+
         adjustFontSize();
+        updateGardenStatus();
     </script>
 </body>
 </html>

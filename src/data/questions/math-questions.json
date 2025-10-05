@@ -1,0 +1,35 @@
+[
+  {
+    "id": "math_easy_001",
+    "subject": "math",
+    "question": "5 + 3 = ?",
+    "options": ["8", "6", "9", "7"],
+    "correctIndex": 0,
+    "explanation": "5와 3을 더하면 8입니다. 간단한 덧셈 문제예요.",
+    "difficulty": 1,
+    "tags": ["addition", "basic"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "math_easy_002",
+    "subject": "math",
+    "question": "10 - 4 = ?",
+    "options": ["5", "6", "7", "8"],
+    "correctIndex": 1,
+    "explanation": "10에서 4를 빼면 6입니다.",
+    "difficulty": 1,
+    "tags": ["subtraction", "basic"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "math_easy_003",
+    "subject": "math",
+    "question": "2 × 4 = ?",
+    "options": ["6", "8", "10", "12"],
+    "correctIndex": 1,
+    "explanation": "2에 4를 곱하면 8입니다. 곱셈표를 기억하세요!",
+    "difficulty": 1,
+    "tags": ["multiplication", "basic"],
+    "gradeRange": [3, 4]
+  }
+]

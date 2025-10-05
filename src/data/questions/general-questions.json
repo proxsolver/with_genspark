@@ -1,0 +1,35 @@
+[
+  {
+    "id": "gen_easy_001",
+    "subject": "general",
+    "question": "일 년은 몇 개월일까요?",
+    "options": ["10개월", "11개월", "12개월", "13개월"],
+    "correctIndex": 2,
+    "explanation": "일 년은 12개월입니다. 1월부터 12월까지예요.",
+    "difficulty": 1,
+    "tags": ["time", "calendar", "basic"],
+    "gradeRange": [3, 4]
+  },
+  {
+    "id": "gen_easy_002",
+    "subject": "general",
+    "question": "무지개는 몇 가지 색깔로 이루어져 있을까요?",
+    "options": ["5가지", "6가지", "7가지", "8가지"],
+    "correctIndex": 2,
+    "explanation": "무지개는 7가지 색깔로 이루어져 있습니다. 빨주노초파남보예요.",
+    "difficulty": 1,
+    "tags": ["colors", "nature", "basic"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "gen_easy_003",
+    "subject": "general",
+    "question": "사람의 손가락은 모두 몇 개일까요?",
+    "options": ["8개", "10개", "12개", "14개"],
+    "correctIndex": 1,
+    "explanation": "사람의 손가락은 모두 10개입니다. 양손에 각각 5개씩 있어요.",
+    "difficulty": 1,
+    "tags": ["human-body", "counting"],
+    "gradeRange": [3, 4]
+  }
+]

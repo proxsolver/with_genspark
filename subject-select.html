@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과목 선택 - EduPet Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .font-game {
+            font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+            font-weight: 600;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, 
+                rgba(76, 175, 80, 0.1) 0%, 
+                rgba(255, 152, 0, 0.1) 50%, 
+                rgba(33, 150, 243, 0.1) 100%
+            );
+        }
+        
+        .subject-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .subject-card.selected {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        .subject-card.required {
+            border: 3px solid #FF9800;
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+        }
+        
+        .subject-card.ai-recommended {
+            border: 3px solid #2196F3;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            position: relative;
+        }
+        
+        .ai-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #2196F3, #1976d2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+        }
+        
+        .progress-indicator {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            transition: width 0.5s ease;
+        }
+        
+        .slide-in {
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#4CAF50', 600: '#16a34a' },
+                        secondary: { 500: '#FF9800', 600: '#ea580c' },
+                        accent: { 500: '#2196F3', 600: '#2563eb' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-4xl">
+        <!-- 헤더 -->
+        <div class="text-center mb-8 slide-in">
+            <div class="flex items-center justify-between mb-4">
+                <button onclick="window.location.href='index.html'" class="flex items-center space-x-2 p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <span>←</span>
+                    <span>돌아가기</span>
+                </button>
+                
+                <div class="flex-1 text-center">
+                    <h1 class="text-2xl font-bold text-gray-900 font-game">📚 오늘의 학습 과목 선택</h1>
+                    <p class="text-sm text-gray-600 mt-1">영어 집중 학습 - 난이도별 적응형 시스템!</p>
+                </div>
+                
+                <div class="text-right">
+                    <div class="text-sm text-gray-600 mb-1">목표 시간</div>
+                    <div class="font-bold text-primary-600">25분</div>
+                </div>
+            </div>
+            
+            <!-- 진행 상태 -->
+            <div class="bg-white rounded-xl p-4 shadow-md">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-medium text-gray-700">적응형 학습 시스템</span>
+                    <span class="text-sm font-bold text-primary-600">영어 집중</span>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3 mb-3">
+                    <div class="text-center p-3 bg-green-50 rounded-lg border border-green-200">
+                        <div class="text-lg font-bold text-green-600">30문제</div>
+                        <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
+                    </div>
+                    <div class="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <div class="text-lg font-bold text-yellow-600">20문제</div>
+                        <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
+                    </div>
+                    <div class="text-center p-3 bg-red-50 rounded-lg border border-red-200">
+                        <div class="text-lg font-bold text-red-600">10문제</div>
+                        <div class="text-xs text-red-700">어려움 (45초/문제)</div>
+                    </div>
+                </div>
+                
+                <div class="text-xs text-gray-600 text-center">
+                    💡 정답률에 따라 자동으로 난이도가 조정됩니다
+                </div>
+            </div>
+        </div>
+
+        <!-- 적응형 시스템 설명 -->
+        <div class="mb-8 slide-in" style="animation-delay: 0.2s;">
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-2xl">🎯</span>
+                    <div>
+                        <h3 class="font-bold text-blue-900">적응형 학습 시스템</h3>
+                        <p class="text-sm text-blue-700">초롱이님의 실력에 맞춰 자동으로 난이도가 조정됩니다</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                        <span class="text-green-500 text-xl">📈</span>
+                        <div>
+                            <div class="font-medium text-gray-800">정답률 80% 이상</div>
+                            <div class="text-sm text-gray-600">→ 더 어려운 문제로 자동 업그레이드</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                        <span class="text-orange-500 text-xl">📊</span>
+                        <div>
+                            <div class="font-medium text-gray-800">정답률 40% 이하</div>
+                            <div class="text-sm text-gray-600">→ 쉬운 문제로 자동 조정</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                        <span class="text-blue-500 text-xl">🎯</span>
+                        <div>
+                            <div class="font-medium text-gray-800">총 60문제 완주</div>
+                            <div class="text-sm text-gray-600">→ 약 10분 완성형 학습</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 영어 학습 소개 -->
+        <div class="mb-8 slide-in" style="animation-delay: 0.4s;">
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-xl p-6">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">🇺🇸</span>
+                    <div>
+                        <h3 class="font-bold text-green-900 text-xl">영어 집중 학습</h3>
+                        <p class="text-sm text-green-700">초롱이님을 위한 맞춤형 영어 학습 프로그램</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
+                        <span class="text-green-500 text-2xl">📚</span>
+                        <div>
+                            <div class="font-medium text-gray-800">어휘 학습</div>
+                            <div class="text-sm text-gray-600">기초 단어부터 고급 어휘까지</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
+                        <span class="text-blue-500 text-2xl">🔊</span>
+                        <div>
+                            <div class="font-medium text-gray-800">발음 연습</div>
+                            <div class="text-sm text-gray-600">TTS로 정확한 발음 학습</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
+                        <span class="text-purple-500 text-2xl">🎯</span>
+                        <div>
+                            <div class="font-medium text-gray-800">적응형 시스템</div>
+                            <div class="text-sm text-gray-600">실력에 맞는 맞춤 학습</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 선택된 과목 요약 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 slide-in" style="animation-delay: 0.6s;">
+            <h3 class="font-bold text-gray-900 mb-4 flex items-center">
+                <span class="mr-2">📝</span>
+                선택된 학습 계획
+            </h3>
+            
+            <div class="space-y-3" id="selected-summary">
+                <!-- 선택된 과목 요약이 여기에 표시됩니다 -->
+                <div class="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🇺🇸</span>
+                        <div>
+                            <div class="font-medium text-orange-800">영어 (필수)</div>
+                            <div class="text-sm text-orange-600">10분 학습</div>
+                        </div>
+                    </div>
+                    <div class="px-3 py-1 bg-orange-200 text-orange-800 rounded-full text-sm font-medium">
+                        필수 과목
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-600">총 예상 학습 시간</span>
+                    <span class="font-bold text-primary-600" id="total-time">10분 / 25분</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 학습 시작 버튼 -->
+        <div class="text-center slide-in" style="animation-delay: 0.8s;">
+            <button 
+                id="start-button"
+                onclick="startLearning()" 
+                class="w-full py-4 px-8 bg-primary-500 text-white rounded-xl text-xl font-bold font-game hover:bg-primary-600 transition-all cursor-pointer mb-4"
+            >
+                🚀 영어 적응형 학습 시작하기!
+            </button>
+            
+            <p class="text-sm text-gray-600">
+                💡 적응형 학습 시스템이 초롱이님의 실력에 맞춰 난이도를 자동으로 조정합니다
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 과목 데이터
+        const subjects = {
+            english: { name: '영어', icon: '🇺🇸', color: 'orange', required: true, time: 10 },
+            math: { name: '수학', icon: '🔢', color: 'blue', time: 7.5 },
+            science: { name: '과학', icon: '🔬', color: 'green', time: 7.5 },
+            general: { name: '상식', icon: '🧠', color: 'purple', time: 7.5 },
+            idiom: { name: '사자성어', icon: '📜', color: 'yellow', time: 7.5 },
+            person: { name: '인물', icon: '👤', color: 'indigo', time: 7.5 },
+            korean: { name: '국어', icon: '📚', color: 'red', time: 7.5 },
+            social: { name: '사회', icon: '🏛️', color: 'gray', time: 7.5 },
+            economy: { name: '경제', icon: '💰', color: 'yellow', time: 7.5 },
+            etc: { name: '기타', icon: '🎲', color: 'pink', time: 7.5 }
+        };
+
+        // 사용자 학습 이력 (모의 데이터)
+        const userHistory = {
+            english: { studyCount: 15, correctRate: 0.85, lastStudied: '2024-10-04', weakPoints: [] },
+            math: { studyCount: 8, correctRate: 0.65, lastStudied: '2024-10-02', weakPoints: ['division', 'multiplication'] },
+            science: { studyCount: 5, correctRate: 0.55, lastStudied: '2024-10-01', weakPoints: ['biology', 'chemistry'] },
+            general: { studyCount: 12, correctRate: 0.75, lastStudied: '2024-10-03', weakPoints: [] },
+            idiom: { studyCount: 2, correctRate: 0.40, lastStudied: '2024-09-28', weakPoints: ['meaning', 'pronunciation'] },
+            person: { studyCount: 7, correctRate: 0.70, lastStudied: '2024-10-01', weakPoints: [] },
+            korean: { studyCount: 10, correctRate: 0.80, lastStudied: '2024-10-03', weakPoints: [] },
+            social: { studyCount: 6, correctRate: 0.60, lastStudied: '2024-09-30', weakPoints: ['geography'] },
+            economy: { studyCount: 1, correctRate: 0.30, lastStudied: '2024-09-25', weakPoints: ['basic-concepts'] },
+            etc: { studyCount: 9, correctRate: 0.77, lastStudied: '2024-10-02', weakPoints: [] }
+        };
+
+        // 선택된 과목 상태 (영어 고정)
+        let selectedSubjects = ['english'];
+        const maxSelections = 1;
+
+        // AI 추천 알고리즘
+        function getAIRecommendations() {
+            const recommendations = [];
+            const today = new Date('2024-10-05');
+
+            Object.keys(subjects).forEach(subject => {
+                if (subject === 'english') return; // 영어는 이미 필수
+
+                const history = userHistory[subject];
+                let score = 0;
+
+                // 정답률이 60% 미만인 약점 과목 가중치
+                if (history.correctRate < 0.6) {
+                    score += 0.5;
+                }
+
+                // 최근 학습하지 않은 과목 가중치
+                const lastStudied = new Date(history.lastStudied);
+                const daysSinceLastStudy = Math.floor((today - lastStudied) / (1000 * 60 * 60 * 24));
+                if (daysSinceLastStudy > 2) {
+                    score += 0.3;
+                }
+
+                // 한 번도 학습하지 않았거나 학습 횟수가 적은 과목
+                if (history.studyCount < 3) {
+                    score += 1.0;
+                }
+
+                // 약점이 있는 과목
+                if (history.weakPoints.length > 0) {
+                    score += 0.2;
+                }
+
+                recommendations.push({ subject, score, reason: getRecommendationReason(subject, history, daysSinceLastStudy) });
+            });
+
+            // 점수순 정렬 후 상위 2개 반환
+            return recommendations
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 2);
+        }
+
+        function getRecommendationReason(subject, history, daysSinceLastStudy) {
+            if (history.studyCount < 3) {
+                return '새로운 과목 도전!';
+            }
+            if (history.correctRate < 0.6) {
+                return `정답률 ${Math.round(history.correctRate * 100)}% - 복습 필요`;
+            }
+            if (daysSinceLastStudy > 2) {
+                return `${daysSinceLastStudy}일 전 학습 - 기억 되살리기`;
+            }
+            return '균형잡힌 학습을 위한 추천';
+        }
+
+        // AI 추천 과목 렌더링
+        function renderAIRecommendations() {
+            const recommendations = getAIRecommendations();
+            const container = document.getElementById('ai-recommendations');
+            
+            container.innerHTML = recommendations.map(rec => {
+                const subjectData = subjects[rec.subject];
+                return `
+                    <div class="subject-card ai-recommended" onclick="toggleSubject('${rec.subject}')" id="card-${rec.subject}">
+                        <div class="ai-badge">AI 추천</div>
+                        <div class="p-4 text-center">
+                            <div class="text-3xl mb-2">${subjectData.icon}</div>
+                            <div class="font-bold text-gray-900 mb-1">${subjectData.name}</div>
+                            <div class="text-xs text-blue-700 mb-2">${rec.reason}</div>
+                            <div class="text-xs text-gray-600">${subjectData.time}분</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 전체 과목 렌더링
+        function renderAllSubjects() {
+            const container = document.getElementById('all-subjects');
+            const recommendations = getAIRecommendations().map(r => r.subject);
+            
+            container.innerHTML = Object.keys(subjects).map(subject => {
+                const subjectData = subjects[subject];
+                const isRequired = subjectData.required;
+                const isRecommended = recommendations.includes(subject);
+                
+                let cardClass = 'subject-card';
+                if (isRequired) cardClass += ' required';
+                else if (isRecommended) cardClass += ' ai-recommended';
+                
+                const history = userHistory[subject];
+                const statusText = isRequired ? '필수 과목' : 
+                    `정답률 ${Math.round(history.correctRate * 100)}%`;
+
+                return `
+                    <div class="${cardClass}" onclick="toggleSubject('${subject}')" id="card-${subject}">
+                        ${isRecommended && !isRequired ? '<div class="ai-badge">AI 추천</div>' : ''}
+                        <div class="p-4 text-center">
+                            <div class="text-3xl mb-2">${subjectData.icon}</div>
+                            <div class="font-bold mb-1">${subjectData.name}</div>
+                            <div class="text-xs text-gray-600 mb-1">${statusText}</div>
+                            <div class="text-xs">${subjectData.time}분</div>
+                            ${isRequired ? '<div class="text-xs text-orange-600 font-medium mt-1">필수</div>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 초기 선택 상태 적용
+            updateCardStates();
+        }
+
+        // 영어 전용 학습 - 과목 선택 기능 없음
+
+        // 영어 전용 학습 - UI 업데이트 불필요
+
+        // 영어 전용 학습 - 카드 상태 업데이트 불필요
+
+        // 영어 전용 학습 - 선택 개수 업데이트 불필요
+
+        // 영어 전용 학습 - 진행률 바 업데이트 불필요
+
+        // 영어 전용 학습 - 과목 요약 고정됨 (HTML에서 직접 설정)
+
+        // 영어 전용 학습 - 시작 버튼 항상 활성화
+
+        // 영어 전용 학습 - 메시지 표시 불필요
+
+        // 학습 시작
+        function startLearning() {
+            // 영어 학습 정보를 localStorage에 저장
+            localStorage.setItem('selectedSubjects', JSON.stringify(['english']));
+            localStorage.setItem('currentSubjectIndex', '0');
+            
+            // 적응형 퀴즈 페이지로 이동
+            window.location.href = 'quiz-adaptive.html';
+        }
+
+        // 초기화 - 영어 전용 학습
+        document.addEventListener('DOMContentLoaded', function() {
+            // 영어 학습이 기본으로 선택되어 있고 바로 시작 가능
+            console.log('영어 적응형 학습 시스템 준비 완료');
+        });
+    </script>
+</body>
+</html>
