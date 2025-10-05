@@ -184,12 +184,12 @@
                         <div id="math-status" class="text-xs opacity-80">시작하기</div>
                     </button>
                     
-                    <button id="science-btn" onclick="startQuickQuiz('science')" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button id="all-subjects-btn" onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
-                            <span>🔬</span>
-                            <span class="font-medium">과학</span>
+                            <span>📚</span>
+                            <span class="font-medium">전체 과목</span>
                         </div>
-                        <div id="science-status" class="text-xs opacity-80">시작하기</div>
+                        <div id="all-subjects-status" class="text-xs opacity-80">선택하기</div>
                     </button>
                 </div>
             </div>
@@ -229,62 +229,56 @@
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <!-- 화분 1 -->
-                <div class="bg-gradient-to-br from-green-50 to-emerald-100 border-2 border-green-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
                     <div class="text-center">
                         <div class="relative mb-3">
-                            <span class="text-4xl" id="plant1Display">🌱</span>
-                            <div class="absolute -top-2 -right-2">
-                                <span class="text-lg animate-pulse">💭</span>
-                            </div>
+                            <span class="text-4xl" id="plant1Display">🌰</span>
                         </div>
                         
-                        <h4 class="font-bold mb-2 text-green-800">아기 새싹이</h4>
-                        <div class="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs mb-3">
-                            🌱 새싹 단계
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">행복도</span>
-                                <span class="text-xs font-medium">85%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full progress-bar" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="text-xs text-green-700 bg-green-50 rounded-lg p-2">
-                            "안녕! 나는 아기 새싹이야! 물을 주면서 함께 배워요~"
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 화분 2 -->
-                <div class="bg-gradient-to-br from-blue-50 to-sky-100 border-2 border-blue-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
-                    <div class="text-center">
-                        <div class="relative mb-3">
-                            <span class="text-4xl" id="plant2Display">🌰</span>
-                            <div class="absolute -top-2 -right-2">
-                                <span class="text-lg animate-pulse">😴</span>
-                            </div>
-                        </div>
-                        
-                        <h4 class="font-bold mb-2 text-blue-800">빈 화분</h4>
-                        <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3">
+                        <h4 class="font-bold mb-2 text-gray-800" id="plant1Name">빈 화분</h4>
+                        <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3" id="plant1Stage">
                             🌰 씨앗 대기
                         </div>
                         
                         <div class="mb-3">
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">준비 상태</span>
-                                <span class="text-xs font-medium">대기중</span>
+                                <span class="text-xs text-gray-600">행복도</span>
+                                <span class="text-xs font-medium" id="plant1Happiness">0%</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gray-400 h-2 rounded-full progress-bar" style="width: 0%;"></div>
+                                <div class="bg-gray-400 h-2 rounded-full progress-bar" id="plant1ProgressBar" style="width: 0%;"></div>
                             </div>
                         </div>
                         
-                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
+                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2" id="plant1Message">
+                            씨앗을 심어 새로운 친구를 만들어보세요!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 화분 2 -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
+                    <div class="text-center">
+                        <div class="relative mb-3">
+                            <span class="text-4xl" id="plant2Display">🌰</span>
+                        </div>
+                        
+                        <h4 class="font-bold mb-2 text-gray-800" id="plant2Name">빈 화분</h4>
+                        <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3" id="plant2Stage">
+                            🌰 씨앗 대기
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-xs text-gray-600">행복도</span>
+                                <span class="text-xs font-medium" id="plant2Happiness">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-gray-400 h-2 rounded-full progress-bar" id="plant2ProgressBar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2" id="plant2Message">
                             씨앗을 심어 새로운 친구를 만들어보세요!
                         </div>
                     </div>
@@ -449,41 +443,46 @@
 
         // 작은 정원 상태 업데이트
         function updateGardenStatus() {
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || {
-                water: 12,
-                plants: [null, null]
-            };
-            
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || { water: 0, plants: {1: null, 2: null} };
+
             // 물방울 개수 업데이트
             const waterCountElement = document.getElementById('waterCount');
             if (waterCountElement) {
-                waterCountElement.textContent = simpleFarmState.water || 12;
+                waterCountElement.textContent = simpleFarmState.water || 0;
             }
-            
-            // 식물 상태 업데이트
-            const plant1Display = document.getElementById('plant1Display');
-            const plant2Display = document.getElementById('plant2Display');
-            
-            if (plant1Display && simpleFarmState.plants && simpleFarmState.plants[0]) {
-                const plant = simpleFarmState.plants[0];
-                plant1Display.textContent = getPlantEmoji(plant.stage);
-            }
-            
-            if (plant2Display && simpleFarmState.plants && simpleFarmState.plants[1]) {
-                const plant = simpleFarmState.plants[1];
-                plant2Display.textContent = getPlantEmoji(plant.stage);
-            }
-        }
-        
-        function getPlantEmoji(stage) {
-            switch(stage) {
-                case 'seed': return '🌰';
-                case 'sprout': return '🌱';
-                case 'stem': return '🌿';
-                case 'flower': return '🌸';
-                case 'fruit': return '🍎';
-                default: return '🌰';
-            }
+
+            [1, 2].forEach(potNumber => {
+                const plant = simpleFarmState.plants[potNumber];
+                
+                const display = document.getElementById(`plant${potNumber}Display`);
+                const name = document.getElementById(`plant${potNumber}Name`);
+                const stageEl = document.getElementById(`plant${potNumber}Stage`);
+                const happiness = document.getElementById(`plant${potNumber}Happiness`);
+                const progressBar = document.getElementById(`plant${potNumber}ProgressBar`);
+                const message = document.getElementById(`plant${potNumber}Message`);
+
+                if (plant) {
+                    const plantStages = ['🌰', '🌱', '🌿', '🌸', '🍎'];
+                    const stageNames = ['씨앗', '새싹', '줄기', '꽃', '열매'];
+                    const plantEmoji = plant.finalResult || plantStages[plant.stage] || '🌰';
+
+                    display.textContent = plantEmoji;
+                    name.textContent = `${plant.grade || '일반'} 등급 식물`;
+                    stageEl.textContent = `${plantEmoji} ${stageNames[plant.stage] || '씨앗 대기'}`;
+                    
+                    const care = Math.min(plant.care || 0, 100);
+                    happiness.textContent = `${care}%`;
+                    progressBar.style.width = `${care}%`;
+                    message.textContent = '정성껏 돌봐주세요!';
+                } else {
+                    display.textContent = '🌰';
+                    name.textContent = '빈 화분';
+                    stageEl.textContent = '🌰 씨앗 대기';
+                    happiness.textContent = '0%';
+                    progressBar.style.width = '0%';
+                    message.textContent = '씨앗을 심어 새로운 친구를 만들어보세요!';
+                }
+            });
         }
 
         // 빠른 퀴즈 시작 함수
@@ -574,11 +573,8 @@
 
         // 돈 표시 업데이트
         function updateMoneyDisplay() {
-            const farmState = JSON.parse(localStorage.getItem('eduPetFarmState') || '{"coins": 0}');
             const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"money": 0}');
-            
-            // 두 농장 시스템의 돈을 합산
-            const totalMoney = (farmState.coins || 0) + (simpleFarmState.money || 0);
+            const totalMoney = simpleFarmState.money || 0;
             
             const moneyDisplay = document.getElementById('moneyDisplay');
             if (moneyDisplay) {
@@ -678,18 +674,7 @@
             return true;
         }
 
-        // 빠른 퀴즈 시작 함수
-        function startQuickQuiz(subject) {
-            // 선택한 과목으로 퀴즈 페이지로 이동
-            const subjectMap = {
-                'english': 'english',
-                'math': 'math', 
-                'science': 'science'
-            };
-            
-            const selectedSubject = subjectMap[subject] || 'english';
-            window.location.href = `subject-select.html?quick=${selectedSubject}`;
-        }
+
 
         adjustFontSize();
         

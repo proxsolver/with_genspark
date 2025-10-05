@@ -408,6 +408,13 @@
     </style>
 </head>
 <body>
+    <!-- Loading Indicator -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="text-2xl animate-spin">🌐</div>
+            <div class="mt-2 font-bold text-gray-700">소셜 허브를 불러오는 중...</div>
+        </div>
+    </div>
     <div class="container">
         <div class="header">
             <h1>🌐 EduPet 소셜 허브</h1>
@@ -536,31 +543,32 @@
         let leaderboardListeners = [];
 
         // 페이지 초기화
-        window.addEventListener('load', async () => {
-            try {
-                // Firebase 초기화
-                const firebaseReady = await initFirebase();
-                if (!firebaseReady) {
-                    showError('Firebase 연결에 실패했습니다. 페이지를 새로고침해주세요.');
-                    return;
-                }
+        window.addEventListener('DOMContentLoaded', async () => {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            loadingOverlay.classList.remove('hidden');
 
-                // 인증 상태 리스너
+            try {
+                // eduPetAuth and eduPetFirebaseIntegration가 정의될 때까지 기다림
+                await new Promise(resolve => {
+                    const interval = setInterval(() => {
+                        if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                            clearInterval(interval);
+                            resolve();
+                        }
+                    }, 50);
+                });
+
+                // 인증 상태 리스너를 먼저 설정합니다.
                 eduPetAuth.addAuthStateListener(onAuthStateChanged);
 
-                // 기존 로컬 사용자 확인
-                const localUser = eduPetAuth.loadFromLocalStorage();
-                if (localUser) {
-                    showAuthStatus('기존 사용자 복원 중...');
-                    await eduPetAuth.signInAnonymously();
-                } else {
-                    showAuthStatus('새 사용자입니다. 시작하려면 로그인하세요.');
-                    showAuthControls(false);
-                }
+                // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
+                await eduPetFirebaseIntegration.initialize();
+                console.log('Firebase Integration is ready.');
 
             } catch (error) {
-                console.error('초기화 실패:', error);
+                console.error('초기화 중 오류 발생:', error);
                 showError('앱 초기화에 실패했습니다.');
+                loadingOverlay.classList.add('hidden');
             }
         });
 
@@ -577,6 +585,7 @@
                 showAuthControls(false);
                 clearSocialData();
             }
+            document.getElementById('loading-overlay').classList.add('hidden');
         }
 
         // 인증 상태 표시

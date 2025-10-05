@@ -4,6 +4,13 @@ class EduPetAuth {
         this.currentUser = null;
         this.userData = null;
         this.authStateListeners = [];
+        this.authReadyPromise = new Promise(resolve => {
+            this.resolveAuthReady = resolve;
+        });
+    }
+
+    waitForAuthInit() {
+        return this.authReadyPromise;
     }
 
     // 익명 로그인 (아이들을 위한 간단한 방식)
@@ -214,6 +221,9 @@ class EduPetAuth {
 
     // 인증 상태 변경 알림
     notifyAuthStateChange(state) {
+        if (state === 'signed_in') {
+            this.resolveAuthReady(); // 인증 완료 신호
+        }
         this.authStateListeners.forEach(callback => {
             try {
                 callback(state, this.userData);

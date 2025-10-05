@@ -1,0 +1,47 @@
+[
+  {
+    "id": "person_hard_2_1",
+    "subject": "person",
+    "question": "인물 문제 3-2-1",
+    "options": ["정답", "오답1", "오답2", "오답3"],
+    "correctIndex": 0,
+    "explanation": "설명",
+    "difficulty": 3
+  },
+  {
+    "id": "person_hard_2_2",
+    "subject": "person",
+    "question": "인물 문제 3-2-2",
+    "options": ["정답", "오답1", "오답2", "오답3"],
+    "correctIndex": 0,
+    "explanation": "설명",
+    "difficulty": 3
+  },
+  {
+    "id": "person_hard_2_3",
+    "subject": "person",
+    "question": "인물 문제 3-2-3",
+    "options": ["정답", "오답1", "오답2", "오답3"],
+    "correctIndex": 0,
+    "explanation": "설명",
+    "difficulty": 3
+  },
+  {
+    "id": "person_hard_2_4",
+    "subject": "person",
+    "question": "인물 문제 3-2-4",
+    "options": ["정답", "오답1", "오답2", "오답3"],
+    "correctIndex": 0,
+    "explanation": "설명",
+    "difficulty": 3
+  },
+  {
+    "id": "person_hard_2_5",
+    "subject": "person",
+    "question": "인물 문제 3-2-5",
+    "options": ["정답", "오답1", "오답2", "오답3"],
+    "correctIndex": 0,
+    "explanation": "설명",
+    "difficulty": 3
+  }
+]

@@ -149,9 +149,25 @@
             }
         }
     </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Firebase 통합 스크립트 -->
+    <script defer src="firebase-config.js"></script>
+    <script defer src="firebase-auth.js"></script>
+    <script defer src="firebase-integration.js"></script>
 </head>
 <body class="gradient-bg min-h-screen">
-    <div class="container mx-auto px-4 py-6 max-w-4xl">
+    <!-- Loading Indicator -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="text-2xl animate-spin">🌱</div>
+            <div class="mt-2 font-bold text-gray-700">데이터를 불러오는 중...</div>
+        </div>
+    </div>
+
         <!-- 헤더 -->
         <div class="flex items-center justify-between mb-6">
             <button onclick="window.location.href='index.html'" class="flex items-center space-x-2 p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-all">
@@ -552,8 +568,8 @@
         ];
 
         // 초기화
-        function initializeGarden() {
-            loadGameState();
+        async function initializeGarden() {
+            await loadGameState();
             updateDisplay();
         }
 
@@ -1054,49 +1070,50 @@
         }
 
         // 게임 상태 저장/로드
-        function saveGameState() {
+        async function saveGameState() {
+            gameState.lastUpdated = Date.now();
             localStorage.setItem('simpleFarmState', JSON.stringify(gameState));
+            
+            if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                await eduPetFirebaseIntegration.saveFarmState(gameState);
+            }
         }
 
-        function loadGameState() {
-            const saved = localStorage.getItem('simpleFarmState');
-            if (saved) {
-                const savedState = JSON.parse(saved);
-                gameState = { ...gameState, ...savedState };
-                
-                // 기존 식물에 새로운 필드 추가 (마이그레이션)
-                [1, 2].forEach(potNumber => {
-                    const plant = gameState.plants[potNumber];
-                    if (plant) {
-                        // 등급이 없으면 일반으로 설정
-                        if (!plant.grade) {
-                            plant.grade = 'common';
-                        }
-                        
-                        // 새로운 경제 시스템 필드 추가
-                        const gradeInfo = seedGrades[plant.grade];
-                        if (!plant.growthDays) plant.growthDays = gradeInfo.growthDays;
-                        if (!plant.harvestAmount) plant.harvestAmount = gradeInfo.harvestAmount;
-                        if (plant.isFullyGrown === undefined) plant.isFullyGrown = false;
-                        if (plant.isHarvested === undefined) plant.isHarvested = false;
-                        
-                        // 마지막 학습 시간이 없으면 심은 시간으로 설정
-                        if (!plant.lastStudied) {
-                            plant.lastStudied = plant.plantedAt;
-                        }
-                        
-                        // 기존 dailyIncome 필드 제거
-                        delete plant.dailyIncome;
-                    }
-                });
-                
-                // 새로운 필드들 기본값 설정
-                if (gameState.money === undefined) gameState.money = 500;
-                
-                // 구형 필드 제거
-                delete gameState.monthlyEarnings;
-                delete gameState.lastReset;
+        async function loadGameState() {
+            const localState = JSON.parse(localStorage.getItem('simpleFarmState'));
+            const serverState = await eduPetFirebaseIntegration.loadFarmState();
+
+            if (serverState && (!localState || serverState.lastUpdated >= localState.lastUpdated)) {
+                // 서버 데이터가 최신이거나 로컬 데이터가 없을 때
+                console.log('서버 데이터로 상태를 초기화합니다.');
+                gameState = { ...gameState, ...serverState };
+            } else if (localState) {
+                // 로컬 데이터가 최신일 때
+                console.log('로컬 데이터로 상태를 초기화합니다.');
+                gameState = { ...gameState, ...localState };
             }
+            
+            // 마이그레이션 로직은 유지
+            [1, 2].forEach(potNumber => {
+                const plant = gameState.plants[potNumber];
+                if (plant) {
+                    if (!plant.grade) plant.grade = 'common';
+                    const gradeInfo = seedGrades[plant.grade];
+                    if (!plant.growthDays) plant.growthDays = gradeInfo.growthDays;
+                    if (!plant.harvestAmount) plant.harvestAmount = gradeInfo.harvestAmount;
+                    if (plant.isFullyGrown === undefined) plant.isFullyGrown = false;
+                    if (plant.isHarvested === undefined) plant.isHarvested = false;
+                    if (!plant.lastStudied) plant.lastStudied = plant.plantedAt;
+                    delete plant.dailyIncome;
+                }
+            });
+
+            if (gameState.money === undefined) gameState.money = 500;
+            delete gameState.monthlyEarnings;
+            delete gameState.lastReset;
+
+            // 최종 병합된 상태를 다시 저장하여 동기화
+            await saveGameState(); 
         }
 
 
@@ -1213,12 +1230,50 @@
         }
 
         // 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeGarden();
-            
+        document.addEventListener('DOMContentLoaded', async function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            loadingOverlay.classList.remove('hidden');
+
+            try {
+                // eduPetAuth와 eduPetFirebaseIntegration가 정의될 때까지 기다림
+                await new Promise(resolve => {
+                    const interval = setInterval(() => {
+                        if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                            clearInterval(interval);
+                            resolve();
+                        }
+                    }, 50);
+                });
+
+                // 인증 상태 리스너를 먼저 설정합니다.
+                eduPetAuth.addAuthStateListener(async (state, userData) => {
+                    if (state === 'signed_in') {
+                        console.log('Auth state is signed in. Initializing garden.');
+                        await initializeGarden();
+                        loadingOverlay.classList.add('hidden');
+                    } else {
+                        // 로그인되지 않은 상태 처리
+                        console.log('User is not signed in. Running in offline mode.');
+                        await initializeGarden(); // 로컬 데이터로만 실행
+                        loadingOverlay.classList.add('hidden');
+                    }
+                });
+
+                // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거됩니다)
+                await eduPetFirebaseIntegration.initialize();
+                console.log('Firebase Integration process started.');
+
+            } catch (error) {
+                console.error('초기화 중 오류 발생:', error);
+                // 오프라인 모드로 계속 진행
+                await initializeGarden();
+                loadingOverlay.classList.add('hidden');
+            }
+
+            // 주기적인 작업들은 여기에서 계속 실행합니다.
             // 초기 등급 하락 체크
             checkPlantDowngrade();
-            
+
             // 10초마다 식물 상태 체크
             setInterval(() => {
                 [1, 2].forEach(potNumber => {
@@ -1227,7 +1282,7 @@
                     }
                 });
             }, 10000);
-            
+
             // 1시간마다 등급 하락 체크
             setInterval(() => {
                 checkPlantDowngrade();

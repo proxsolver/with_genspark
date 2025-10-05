@@ -140,6 +140,48 @@ class EduPetFirebaseIntegration {
         }
     }
 
+    // Firebase에서 농장 상태 불러오기
+    async loadFarmState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load farm state.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/farmState`).once('value');
+            const farmState = snapshot.val();
+            if (farmState) {
+                console.log('Firebase에서 농장 상태를 불러왔습니다.', farmState);
+                return farmState;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 농장 상태 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // Firebase에 농장 상태 저장하기
+    async saveFarmState(gameState) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing farm state save.');
+            this.queueForLater('saveFarmState', gameState);
+            return;
+        }
+
+        try {
+            const stateToSave = {
+                ...gameState,
+                lastUpdated: Date.now()
+            };
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/farmState`).set(stateToSave);
+            console.log('Firebase에 농장 상태를 저장했습니다.');
+        } catch (error) {
+            console.error('Firebase에 농장 상태 저장 실패:', error);
+            this.queueForLater('saveFarmState', gameState);
+        }
+    }
+
     // 오프라인 큐에 작업 추가
     queueForLater(action, data) {
         this.offlineQueue.push({
@@ -181,6 +223,9 @@ class EduPetFirebaseIntegration {
             for (const item of this.offlineQueue) {
                 try {
                     switch (item.action) {
+                        case 'saveFarmState':
+                            await this.saveFarmState(item.data);
+                            break;
                         case 'updateQuizStats':
                             if (item.data.stats) {
                                 await eduPetAuth.updateUserStats(item.data.stats);
@@ -296,16 +341,7 @@ class EduPetFirebaseIntegration {
 // 전역 인스턴스 생성
 const eduPetFirebaseIntegration = new EduPetFirebaseIntegration();
 
-// 페이지 로드 시 Firebase 통합 초기화 (선택적)
-document.addEventListener('DOMContentLoaded', () => {
-    // Firebase 스크립트가 있는 페이지에서만 초기화
-    const firebaseScripts = document.querySelectorAll('script[src*="firebase"]');
-    if (firebaseScripts.length > 0) {
-        setTimeout(async () => {
-            await eduPetFirebaseIntegration.initialize();
-        }, 1000);
-    }
-});
+
 
 // 기존 게임 함수들을 위한 헬퍼 함수들
 window.updateFirebaseStats = {

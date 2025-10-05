@@ -8,6 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Firebase 통합 스크립트 -->
+    <script defer src="firebase-config.js"></script>
+    <script defer src="firebase-auth.js"></script>
+    <script defer src="firebase-integration.js"></script>
+
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; }
         
@@ -106,6 +116,13 @@
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Loading Indicator -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="text-2xl animate-spin">🐾</div>
+            <div class="mt-2 font-bold text-gray-700">데이터를 불러오는 중...</div>
+        </div>
+    </div>
     <div class="container mx-auto px-4 py-6 max-w-md">
         <!-- Header -->
         <div class="text-center mb-6">
@@ -245,7 +262,7 @@
         };
 
         // Load game state
-        function loadGameState() {
+        async function loadGameState() {
             const saved = localStorage.getItem('animalCollection');
             if (saved) {
                 gameState = { ...gameState, ...JSON.parse(saved) };
@@ -514,9 +531,37 @@
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            loadGameState();
-            
+        document.addEventListener('DOMContentLoaded', async function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            loadingOverlay.classList.remove('hidden');
+
+            try {
+                // eduPetFirebaseIntegration가 정의될 때까지 기다림
+                await new Promise(resolve => {
+                    const interval = setInterval(() => {
+                        if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                            clearInterval(interval);
+                            resolve();
+                        }
+                    }, 50);
+                });
+
+                // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
+                await eduPetFirebaseIntegration.initialize();
+                console.log('Firebase Integration is ready.');
+
+                // 이제 컬렉션을 초기화합니다.
+                await loadGameState();
+
+            } catch (error) {
+                console.error('초기화 중 오류 발생:', error);
+                // 오프라인 모드로 계속 진행
+                await loadGameState();
+            } finally {
+                // 데이터 로드가 완료되면 로딩 오버레이를 숨깁니다.
+                loadingOverlay.classList.add('hidden');
+            }
+
             // Auto-refresh tickets every 10 seconds
             setInterval(loadGameState, 10000);
         });

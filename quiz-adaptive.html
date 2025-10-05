@@ -125,8 +125,24 @@
             }
         }
     </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Firebase 통합 스크립트 -->
+    <script defer src="firebase-config.js"></script>
+    <script defer src="firebase-auth.js"></script>
+    <script defer src="firebase-integration.js"></script>
 </head>
 <body class="gradient-bg min-h-screen">
+    <!-- Loading Indicator -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="text-2xl animate-spin">🌱</div>
+            <div class="mt-2 font-bold text-gray-700">데이터를 불러오는 중...</div>
+        </div>
+    </div>
     <!-- 성취 알림 -->
     <div id="achievement-popup" class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 hidden">
         <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full shadow-lg achievement-popup">
@@ -163,10 +179,7 @@
                         📳
                     </button>
                 </div>
-                <div class="text-xs text-gray-500 mb-1">목표 시간</div>
-                <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium" id="target-time">
-                    10분
-                </span>
+
             </div>
         </div>
 
@@ -185,15 +198,15 @@
             <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="p-3 bg-green-50 rounded-lg border border-green-200" id="easy-status">
                     <div class="text-lg font-bold text-green-600">0/30</div>
-                    <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
+                    <div class="text-xs text-green-700">쉬움</div>
                 </div>
                 <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200" id="medium-status">
                     <div class="text-lg font-bold text-yellow-600">0/20</div>
-                    <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
+                    <div class="text-xs text-yellow-700">보통</div>
                 </div>
                 <div class="p-3 bg-red-50 rounded-lg border border-red-200" id="hard-status">
                     <div class="text-lg font-bold text-red-600">0/10</div>
-                    <div class="text-xs text-red-700">어려움 (45초/문제)</div>
+                    <div class="text-xs text-red-700">어려움</div>
                 </div>
             </div>
         </div>
@@ -277,13 +290,14 @@
         let questions = {};
         let currentDifficulty = 1; // 1: 쉬움, 2: 보통, 3: 어려움
         let questionCounts = { easy: 0, medium: 0, hard: 0 };
-        let targetCounts = { easy: 30, medium: 20, hard: 10 };
+        let targetCounts = { easy: 3, medium: 2, hard: 1 };
         let currentQuestionPool = [];
         let currentQuestionIndex = 0;
         let isAnswered = false;
         let shuffledOptions = [];
         let sessionStats = { correct: 0, incorrect: 0, startTime: Date.now() };
-        let recentAnswers = []; // 최근 5문제 정답 여부
+        let consecutiveCorrectAnswers = 0;
+        let consecutiveIncorrectAnswers = 0;
         let vibrationEnabled = true; // 진동 기능 활성화 여부
 
         // 정답 사운드 및 진동 효과 함수
@@ -392,16 +406,16 @@
 
         // 과목 정보
         const subjects = {
-            english: { name: '영어', icon: '🇺🇸', targetTime: 10 },
-            math: { name: '수학', icon: '🔢', targetTime: 10 },
-            science: { name: '과학', icon: '🔬', targetTime: 10 },
-            korean: { name: '국어', icon: '📚', targetTime: 10 },
-            social: { name: '사회', icon: '🏛️', targetTime: 10 },
-            common: { name: '상식', icon: '🧠', targetTime: 7.5 },
-            idiom: { name: '사자성어', icon: '📜', targetTime: 7.5 },
-            person: { name: '인물', icon: '👤', targetTime: 7.5 },
-            economy: { name: '경제', icon: '💰', targetTime: 7.5 },
-            etc: { name: '기타', icon: '🎲', targetTime: 7.5 }
+            english: { name: '영어', icon: '🇺🇸' },
+            math: { name: '수학', icon: '🔢' },
+            science: { name: '과학', icon: '🔬' },
+            korean: { name: '국어', icon: '📚' },
+            social: { name: '사회', icon: '🏛️' },
+            common: { name: '상식', icon: '🧠' },
+            idiom: { name: '사자성어', icon: '📜' },
+            person: { name: '인물', icon: '👤' },
+            economy: { name: '경제', icon: '💰' },
+            etc: { name: '기타', icon: '🎲' }
         };
 
         // 난이도별 설정
@@ -443,20 +457,31 @@
         // 문제 데이터 로드
         async function loadQuestions() {
             try {
-                const response = await fetch('src/data/questions/expanded-questions.json');
-                const allQuestions = await response.json();
-                
-                // 과목별로 난이도별 분류
+                const today = new Date();
+                const dayOfMonth = today.getDate();
+                const daySuffix = dayOfMonth % 2 !== 0 ? '-1' : '-2';
+
                 const currentSubject = selectedSubjects[currentSubjectIndex];
+
+                const easyFile = `level1${daySuffix}.json`;
+                const mediumFile = `level2${daySuffix}.json`;
+                const hardFile = `level3${daySuffix}.json`;
+
+                const [easyQuestions, mediumQuestions, hardQuestions] = await Promise.all([
+                    fetch(`src/data/questions/${currentSubject}/${easyFile}`).then(res => res.json()),
+                    fetch(`src/data/questions/${currentSubject}/${mediumFile}`).then(res => res.json()),
+                    fetch(`src/data/questions/${currentSubject}/${hardFile}`).then(res => res.json())
+                ]);
+
                 questions = {
-                    easy: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 1),
-                    medium: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 2),
-                    hard: allQuestions.filter(q => q.subject === currentSubject && q.difficulty === 3)
+                    easy: easyQuestions,
+                    medium: mediumQuestions,
+                    hard: hardQuestions
                 };
 
                 console.log('문제 로드 완료:', {
                     easy: questions.easy.length,
-                    medium: questions.medium.length, 
+                    medium: questions.medium.length,
                     hard: questions.hard.length
                 });
             } catch (error) {
@@ -589,15 +614,15 @@
             // 난이도별 현황 업데이트
             document.getElementById('easy-status').innerHTML = `
                 <div class="text-lg font-bold text-green-600">${questionCounts.easy}/30</div>
-                <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
+                <div class="text-xs text-green-700">쉬움</div>
             `;
             document.getElementById('medium-status').innerHTML = `
                 <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/20</div>
-                <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
+                <div class="text-xs text-yellow-700">보통</div>
             `;
             document.getElementById('hard-status').innerHTML = `
                 <div class="text-lg font-bold text-red-600">${questionCounts.hard}/10</div>
-                <div class="text-xs text-red-700">어려움 (45초/문제)</div>
+                <div class="text-xs text-red-700">어려움</div>
             `;
         }
 
@@ -607,7 +632,7 @@
             const subjectInfo = subjects[currentSubject];
             
             document.getElementById('current-subject').textContent = `${subjectInfo.icon} ${subjectInfo.name}`;
-            document.getElementById('target-time').textContent = `${subjectInfo.targetTime}분`;
+
             
             const config = difficultyConfig[currentDifficulty];
             const difficultyBadge = document.getElementById('difficulty-badge');
@@ -650,15 +675,12 @@
             // 통계 업데이트
             if (isCorrect) {
                 sessionStats.correct++;
-                recentAnswers.push(true);
+                consecutiveCorrectAnswers++;
+                consecutiveIncorrectAnswers = 0;
             } else {
                 sessionStats.incorrect++;
-                recentAnswers.push(false);
-            }
-
-            // 최근 5문제만 유지
-            if (recentAnswers.length > 5) {
-                recentAnswers.shift();
+                consecutiveIncorrectAnswers++;
+                consecutiveCorrectAnswers = 0;
             }
 
             // 난이도별 카운트 증가
@@ -736,25 +758,10 @@
 
         // 난이도 조정 확인
         function checkDifficultyAdjustment() {
-            if (recentAnswers.length < 5) return;
-
-            const recentCorrectCount = recentAnswers.filter(answer => answer).length;
-            const accuracy = recentCorrectCount / recentAnswers.length;
-
-            // 정답률 80% 이상이면 난이도 상승
-            if (accuracy >= 0.8 && currentDifficulty < 3) {
-                const config = difficultyConfig[currentDifficulty];
-                const difficultyKey = config.class;
-                const currentCount = questionCounts[difficultyKey];
-                const minRequired = Math.floor(config.targetCount * 0.3); // 최소 30% 진행
-
-                if (currentCount >= minRequired) {
-                    upgradeDifficulty();
-                    showAchievement('🚀 난이도 상승!');
-                }
-            }
-            // 정답률 40% 이하면 난이도 하락 (2단계 이상에서만)
-            else if (accuracy <= 0.4 && currentDifficulty > 1) {
+            if (consecutiveCorrectAnswers >= 3 && currentDifficulty < 3) {
+                upgradeDifficulty();
+                showAchievement('🚀 난이도 상승!');
+            } else if (consecutiveIncorrectAnswers >= 2 && currentDifficulty > 1) {
                 downgradeDifficulty();
                 showAchievement('📖 난이도 조정됨');
             }
@@ -765,7 +772,7 @@
             if (currentDifficulty < 3) {
                 currentDifficulty++;
                 generateQuestionPool();
-                recentAnswers = [];
+                consecutiveCorrectAnswers = 0;
             }
         }
 
@@ -774,7 +781,7 @@
             if (currentDifficulty > 1) {
                 currentDifficulty--;
                 generateQuestionPool();
-                recentAnswers = [];
+                consecutiveIncorrectAnswers = 0;
             }
         }
 
@@ -791,9 +798,14 @@
 
         // 세션 완료 확인
         function isSessionComplete() {
-            return questionCounts.easy >= targetCounts.easy && 
-                   questionCounts.medium >= targetCounts.medium && 
-                   questionCounts.hard >= targetCounts.hard;
+            const totalAnswered = questionCounts.easy + questionCounts.medium + questionCounts.hard;
+
+            return (
+                questionCounts.easy >= targetCounts.easy ||
+                questionCounts.medium >= targetCounts.medium ||
+                questionCounts.hard >= targetCounts.hard ||
+                totalAnswered >= 30
+            );
         }
 
         // 다음 문제
@@ -834,10 +846,9 @@
             
             const totalReward = coinReward + bonusCoins;
             
-            // 농장 시스템에 보상 추가
-            const farmState = JSON.parse(localStorage.getItem('eduPetFarmState') || '{"coins": 0}');
-            farmState.coins = (farmState.coins || 0) + totalReward;
-            localStorage.setItem('eduPetFarmState', JSON.stringify(farmState));
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"money": 0, "water": 0}');
+            simpleFarmState.money = (simpleFarmState.money || 0) + totalReward;
+            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
             
             alert(`🎉 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분\n\n💰 획득 보상:\n기본 코인: ${coinReward}\n보너스: ${bonusCoins}\n총 ${totalReward} EduCoin!\n\n식물이 자랐어요! 🌱`);
             
@@ -1125,8 +1136,37 @@
             }
         }
 
-        // 초기화 실행
-        document.addEventListener('DOMContentLoaded', initializeQuiz);
+        document.addEventListener('DOMContentLoaded', async function() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            if(loadingOverlay) loadingOverlay.classList.remove('hidden');
+
+            try {
+                // eduPetFirebaseIntegration가 정의될 때까지 기다림
+                await new Promise(resolve => {
+                    const interval = setInterval(() => {
+                        if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                            clearInterval(interval);
+                            resolve();
+                        }
+                    }, 50);
+                });
+
+                // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
+                await eduPetFirebaseIntegration.initialize();
+                console.log('Firebase Integration is ready.');
+
+                // 이제 퀴즈를 초기화합니다.
+                await initializeQuiz();
+
+            } catch (error) {
+                console.error('초기화 중 오류 발생:', error);
+                // 오프라인 모드로 계속 진행
+                await initializeQuiz();
+            } finally {
+                // 데이터 로드가 완료되면 로딩 오버레이를 숨깁니다.
+                if(loadingOverlay) loadingOverlay.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 </html>
