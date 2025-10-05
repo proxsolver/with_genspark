@@ -141,12 +141,17 @@
                 <p class="text-sm text-gray-600">사랑으로 키우는 우리 식물친구들</p>
             </div>
             
-            <div class="text-right">
-                <div class="flex items-center space-x-2 text-blue-600 font-bold">
+            <div class="text-right space-y-2">
+                <div class="flex items-center justify-end space-x-2 text-green-600 font-bold">
+                    <span>💰</span>
+                    <span id="money-count">500</span>
+                    <span class="text-sm">원</span>
+                </div>
+                <div class="flex items-center justify-end space-x-2 text-blue-600 font-bold">
                     <span>💧</span>
                     <span id="water-count">5</span>
                 </div>
-                <div class="text-xs text-gray-500">물방울</div>
+                <div class="text-xs text-gray-500">돈 / 물방울</div>
             </div>
         </div>
 
@@ -200,6 +205,7 @@
                 <!-- 식물 정보 -->
                 <div id="plant1-info" class="mt-4 text-center hidden">
                     <div class="text-sm text-gray-600" id="plant1-stage">단계: 씨앗</div>
+                    <div class="text-sm text-gray-600" id="plant1-grade">등급: ⚪ 일반 • 일일 수익: 0원</div>
                     <div class="text-sm text-gray-600" id="plant1-care">돌봄 정도: 0%</div>
                     <div class="mt-2">
                         <div class="bg-gray-200 rounded-full h-2">
@@ -245,6 +251,7 @@
                 <!-- 식물 정보 -->
                 <div id="plant2-info" class="mt-4 text-center hidden">
                     <div class="text-sm text-gray-600" id="plant2-stage">단계: 씨앗</div>
+                    <div class="text-sm text-gray-600" id="plant2-grade">등급: ⚪ 일반 • 일일 수익: 0원</div>
                     <div class="text-sm text-gray-600" id="plant2-care">돌봄 정도: 0%</div>
                     <div class="mt-2">
                         <div class="bg-gray-200 rounded-full h-2">
@@ -273,39 +280,92 @@
 
     <!-- 씨앗 선택 모달 -->
     <div id="seed-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-xl p-6 max-w-md w-full modal-enter">
+        <div class="bg-white rounded-xl p-6 max-w-lg w-full modal-enter">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-bold">🌰 씨앗 선택하기</h3>
+                <h3 class="text-lg font-bold">🌰 씨앗 구매하기</h3>
                 <button onclick="closeSeedModal()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
             </div>
+            
+            <div class="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div class="flex items-center space-x-2 text-sm text-yellow-800">
+                    <span>ℹ️</span>
+                    <div>
+                        <div class="font-semibold">농장 시스템 안내</div>
+                        <div>매일 25분 학습 완료 시 등급 유지 • 1일 미관리 시 등급 하락 • 월 수익 상한: 10,000원</div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="space-y-3">
-                <button onclick="selectSeed('mystery')" class="w-full p-4 text-left rounded-lg border-2 border-green-300 hover:bg-green-50 transition-all">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-3xl">🎁</span>
-                        <div>
-                            <div class="font-bold text-gray-800">신비한 씨앗</div>
-                            <div class="text-sm text-gray-600">무엇이 나올까요? 정성껏 키워보세요!</div>
+                <!-- 일반 등급 (무료) -->
+                <button onclick="selectSeed('common', 'mystery')" class="w-full p-4 text-left rounded-lg border-2 border-gray-300 hover:bg-gray-50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">⚪</span>
+                            <div>
+                                <div class="font-bold text-gray-800">일반 씨앗</div>
+                                <div class="text-sm text-gray-600">무료 씨앗이에요 • 수익 없음</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-green-600">무료</div>
                         </div>
                     </div>
                 </button>
-                <button onclick="selectSeed('flower')" class="w-full p-4 text-left rounded-lg border-2 border-pink-300 hover:bg-pink-50 transition-all">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-3xl">🌸</span>
-                        <div>
-                            <div class="font-bold text-gray-800">꽃 씨앗</div>
-                            <div class="text-sm text-gray-600">예쁜 꽃이 필 가능성이 높아요</div>
+                
+                <!-- 고급 등급 -->
+                <button onclick="selectSeed('advanced', 'mystery')" class="w-full p-4 text-left rounded-lg border-2 border-blue-300 hover:bg-blue-50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">🔵</span>
+                            <div>
+                                <div class="font-bold text-blue-800">고급 씨앗</div>
+                                <div class="text-sm text-blue-600">하루에 10원 수익</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-blue-600">100원</div>
                         </div>
                     </div>
                 </button>
-                <button onclick="selectSeed('fruit')" class="w-full p-4 text-left rounded-lg border-2 border-orange-300 hover:bg-orange-50 transition-all">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-3xl">🍎</span>
-                        <div>
-                            <div class="font-bold text-gray-800">과일 씨앗</div>
-                            <div class="text-sm text-gray-600">맛있는 과일이 열릴 가능성이 높아요</div>
+                
+                <!-- 에픽 등급 -->
+                <button onclick="selectSeed('epic', 'mystery')" class="w-full p-4 text-left rounded-lg border-2 border-purple-300 hover:bg-purple-50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">🟣</span>
+                            <div>
+                                <div class="font-bold text-purple-800">에픽 씨앗</div>
+                                <div class="text-sm text-purple-600">하루에 50원 수익</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-purple-600">1,000원</div>
                         </div>
                     </div>
                 </button>
+                
+                <!-- 전설 등급 -->
+                <button onclick="selectSeed('legendary', 'mystery')" class="w-full p-4 text-left rounded-lg border-2 border-yellow-300 hover:bg-yellow-50 transition-all">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">🟡</span>
+                            <div>
+                                <div class="font-bold text-yellow-800">전설 씨앗</div>
+                                <div class="text-sm text-yellow-600">하루에 100원 수익</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-yellow-600">3,000원</div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <div class="text-sm text-gray-500">
+                    보유 금액: <span class="font-bold text-green-600" id="modal-money-display">500원</span>
+                </div>
             </div>
         </div>
     </div>
@@ -361,16 +421,55 @@
         // 게임 상태
         let gameState = {
             water: 5,
+            money: 500, // 초기 돈 500원
             plants: {
                 1: null,
                 2: null
-            }
+            },
+            monthlyEarnings: 0, // 월 수익
+            lastReset: new Date().getMonth() // 마지막 리셋 월
         };
 
         let currentPot = null;
         let selectedSeedType = null;
 
-        // 식물 데이터
+        // 등급별 씨앗 데이터
+        const seedGrades = {
+            common: {
+                name: '일반',
+                price: 0,
+                color: 'gray',
+                icon: '⚪',
+                dailyIncome: 0,
+                description: '무료 씨앗이에요'
+            },
+            advanced: {
+                name: '고급',
+                price: 100,
+                color: 'blue', 
+                icon: '🔵',
+                dailyIncome: 10,
+                description: '하루에 10원 수익'
+            },
+            epic: {
+                name: '에픽',
+                price: 1000,
+                color: 'purple',
+                icon: '🟣',
+                dailyIncome: 50,
+                description: '하루에 50원 수익'
+            },
+            legendary: {
+                name: '전설',
+                price: 3000,
+                color: 'yellow',
+                icon: '🟡',
+                dailyIncome: 100,
+                description: '하루에 100원 수익'
+            }
+        };
+
+        // 식물 타입별 데이터  
         const plantTypes = {
             mystery: {
                 name: '신비한 식물',
@@ -382,7 +481,7 @@
                 possibleResults: ['🌸', '🌺', '🌻', '🌷', '🌹', '🪷']
             },
             flower: {
-                name: '꽃식물',
+                name: '꽃식물', 
                 stages: [
                     { icon: '🌰', name: '꽃씨', speech: '안녕! 나는 예쁜 꽃이 될 씨앗이야!' },
                     { icon: '🌱', name: '꽃새싹', speech: '물을 마시니까 기분이 좋아!' },
@@ -434,25 +533,48 @@
             }
             
             currentPot = potNumber;
+            
+            // 모달에 현재 돈 표시 업데이트
+            document.getElementById('modal-money-display').textContent = `${gameState.money}원`;
             document.getElementById('seed-modal').classList.remove('hidden');
         }
 
-        function selectSeed(type) {
+        function selectSeed(grade, type) {
+            const seedInfo = seedGrades[grade];
+            
+            // 돈이 부족한지 확인
+            if (gameState.money < seedInfo.price) {
+                alert(`돈이 부족해요! ${seedInfo.price}원이 필요하지만 ${gameState.money}원만 가지고 있어요.`);
+                return;
+            }
+            
+            // 돈 차감
+            gameState.money -= seedInfo.price;
+            
             selectedSeedType = type;
             
-            // 새로운 식물 생성
+            // 새로운 식물 생성 (등급 정보 포함)
             gameState.plants[currentPot] = {
                 type: type,
+                grade: grade,
                 stage: 0,
                 care: 0,
                 plantedAt: Date.now(),
                 lastWatered: 0,
-                finalResult: null
+                lastStudied: Date.now(), // 마지막 학습 시간
+                finalResult: null,
+                dailyIncome: seedInfo.dailyIncome
             };
             
             closeSeedModal();
             updatePlantDisplay(currentPot);
-            showPlantSpeech(`${plantTypes[type].stages[0].speech}`);
+            updateDisplay();
+            
+            const message = seedInfo.price > 0 
+                ? `${seedInfo.name} 등급 씨앗을 ${seedInfo.price}원에 구매했어요! ${plantTypes[type].stages[0].speech}`
+                : `${plantTypes[type].stages[0].speech}`;
+            
+            showPlantSpeech(message);
             
             saveGameState();
         }
@@ -581,6 +703,10 @@
         // 디스플레이 업데이트
         function updateDisplay() {
             document.getElementById('water-count').textContent = gameState.water;
+            document.getElementById('money-count').textContent = gameState.money;
+            
+            // 월간 수익 리셋 체크
+            checkMonthlyReset();
             
             // 각 화분 업데이트
             [1, 2].forEach(potNumber => {
@@ -614,8 +740,9 @@
                 
                 const plantTypeInfo = plantTypes[plant.type];
                 const currentStage = plantTypeInfo.stages[plant.stage];
+                const gradeInfo = seedGrades[plant.grade];
                 
-                potName.textContent = plantTypeInfo.name;
+                potName.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} ${plantTypeInfo.name}`;
                 
                 let displayIcon = currentStage.icon;
                 if (plant.finalResult && plant.stage === plantTypeInfo.stages.length - 1) {
@@ -629,6 +756,12 @@
                 document.getElementById(`plant${potNumber}-stage`).textContent = `단계: ${currentStage.name}`;
                 document.getElementById(`plant${potNumber}-care`).textContent = `돌봄 정도: ${Math.min(plant.care, 100)}%`;
                 document.getElementById(`plant${potNumber}-progress`).style.width = `${Math.min(plant.care, 100)}%`;
+                
+                // 등급 및 수익 정보 표시
+                const gradeDisplay = document.getElementById(`plant${potNumber}-grade`);
+                if (gradeDisplay) {
+                    gradeDisplay.innerHTML = `등급: ${gradeInfo.icon} ${gradeInfo.name} • 일일 수익: ${plant.dailyIncome || 0}원`;
+                }
                 
                 actions.innerHTML = `
                     <button onclick="interactWithPlant(${potNumber})" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all">
@@ -681,12 +814,109 @@
             if (saved) {
                 const savedState = JSON.parse(saved);
                 gameState = { ...gameState, ...savedState };
+                
+                // 기존 식물에 새로운 필드 추가 (마이그레이션)
+                [1, 2].forEach(potNumber => {
+                    const plant = gameState.plants[potNumber];
+                    if (plant) {
+                        // 등급이 없으면 일반으로 설정
+                        if (!plant.grade) {
+                            plant.grade = 'common';
+                            plant.dailyIncome = 0;
+                        }
+                        // 마지막 학습 시간이 없으면 심은 시간으로 설정
+                        if (!plant.lastStudied) {
+                            plant.lastStudied = plant.plantedAt;
+                        }
+                    }
+                });
+                
+                // 새로운 필드들 기본값 설정
+                if (gameState.money === undefined) gameState.money = 500;
+                if (gameState.monthlyEarnings === undefined) gameState.monthlyEarnings = 0;
+                if (gameState.lastReset === undefined) gameState.lastReset = new Date().getMonth();
             }
         }
 
+        // 월간 수익 리셋 체크
+        function checkMonthlyReset() {
+            const currentMonth = new Date().getMonth();
+            if (gameState.lastReset !== currentMonth) {
+                gameState.monthlyEarnings = 0;
+                gameState.lastReset = currentMonth;
+                showPlantSpeech('새로운 달이 시작되었어요! 월 수익이 리셋됐습니다.');
+            }
+        }
+        
+        // 등급 하락 체크 (매일 25분 학습 미완료 시)
+        function checkPlantDowngrade() {
+            [1, 2].forEach(potNumber => {
+                const plant = gameState.plants[potNumber];
+                if (!plant) return;
+                
+                const lastStudied = plant.lastStudied || plant.plantedAt;
+                const daysSinceStudy = (Date.now() - lastStudied) / (1000 * 60 * 60 * 24);
+                
+                // 1일 이상 학습 안함
+                if (daysSinceStudy >= 1) {
+                    const currentGrade = plant.grade;
+                    const gradeKeys = Object.keys(seedGrades);
+                    const currentIndex = gradeKeys.indexOf(currentGrade);
+                    
+                    if (currentIndex > 0) {
+                        // 한 등급 하락
+                        const newGrade = gradeKeys[currentIndex - 1];
+                        plant.grade = newGrade;
+                        plant.dailyIncome = seedGrades[newGrade].dailyIncome;
+                        
+                        showPlantSpeech(`${potNumber}번 화분의 식물이 관리 부족으로 ${seedGrades[newGrade].name} 등급으로 하락했어요!`);
+                        updatePlantDisplay(potNumber);
+                    }
+                }
+            });
+        }
+        
+        // 일일 수익 지급
+        function giveDailyIncome() {
+            let totalIncome = 0;
+            [1, 2].forEach(potNumber => {
+                const plant = gameState.plants[potNumber];
+                if (plant && plant.dailyIncome > 0) {
+                    // 월 수익 상한 확인 (10,000원)
+                    if (gameState.monthlyEarnings < 10000) {
+                        const income = Math.min(plant.dailyIncome, 10000 - gameState.monthlyEarnings);
+                        totalIncome += income;
+                        gameState.monthlyEarnings += income;
+                    }
+                }
+            });
+            
+            if (totalIncome > 0) {
+                gameState.money += totalIncome;
+                showPlantSpeech(`오늘의 수익 ${totalIncome}원을 받았어요! (월 누적: ${gameState.monthlyEarnings}원)`);
+            }
+        }
+        
+        // 학습 완료 시 호출되는 함수 (25분 학습 완료)
+        function onStudyComplete() {
+            // 모든 식물의 lastStudied 업데이트
+            [1, 2].forEach(potNumber => {
+                const plant = gameState.plants[potNumber];
+                if (plant) {
+                    plant.lastStudied = Date.now();
+                }
+            });
+            
+            // 일일 수익 지급
+            giveDailyIncome();
+            
+            saveGameState();
+        }
+        
         // 물 충전 (학습 완료 시 호출될 함수)
         function addWater(amount = 3) {
             gameState.water += amount;
+            onStudyComplete(); // 학습 완료 처리
             updateDisplay();
             saveGameState();
         }
@@ -694,6 +924,9 @@
         // 초기화
         document.addEventListener('DOMContentLoaded', function() {
             initializeGarden();
+            
+            // 초기 등급 하락 체크
+            checkPlantDowngrade();
             
             // 10초마다 식물 상태 체크
             setInterval(() => {
@@ -703,6 +936,11 @@
                     }
                 });
             }, 10000);
+            
+            // 1시간마다 등급 하락 체크
+            setInterval(() => {
+                checkPlantDowngrade();
+            }, 60 * 60 * 1000);
         });
 
         // 외부에서 호출할 수 있는 함수들
