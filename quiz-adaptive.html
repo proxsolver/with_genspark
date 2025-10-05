@@ -673,17 +673,50 @@
             const accuracy = Math.round((sessionStats.correct / totalAnswered) * 100);
             const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
             
-            alert(`🎉 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분\n\n식물이 자랐어요! 🌱`);
+            // 정답률에 따른 보상 계산
+            let coinReward = Math.floor(sessionStats.correct * 10); // 기본: 정답 1개당 10코인
+            let bonusCoins = 0;
             
-            // 결과 저장
+            if (accuracy >= 90) {
+                bonusCoins = 200; // 90% 이상: 보너스 200코인
+            } else if (accuracy >= 80) {
+                bonusCoins = 150; // 80% 이상: 보너스 150코인
+            } else if (accuracy >= 70) {
+                bonusCoins = 100; // 70% 이상: 보너스 100코인
+            } else if (accuracy >= 60) {
+                bonusCoins = 50; // 60% 이상: 보너스 50코인
+            }
+            
+            const totalReward = coinReward + bonusCoins;
+            
+            // 농장 시스템에 보상 추가
+            const farmState = JSON.parse(localStorage.getItem('eduPetFarmState') || '{"coins": 0}');
+            farmState.coins = (farmState.coins || 0) + totalReward;
+            localStorage.setItem('eduPetFarmState', JSON.stringify(farmState));
+            
+            alert(`🎉 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분\n\n💰 획득 보상:\n기본 코인: ${coinReward}\n보너스: ${bonusCoins}\n총 ${totalReward} EduCoin!\n\n식물이 자랐어요! 🌱`);
+            
+            // 학습 결과 저장
             localStorage.setItem('adaptiveQuizResults', JSON.stringify({
                 subject: selectedSubjects[currentSubjectIndex],
                 stats: sessionStats,
                 questionCounts,
-                completedAt: new Date().toISOString()
+                completedAt: new Date().toISOString(),
+                reward: {
+                    coins: coinReward,
+                    bonus: bonusCoins,
+                    total: totalReward
+                }
             }));
             
-            window.location.href = 'index.html';
+            // 농장으로 이동하여 보상 확인
+            setTimeout(() => {
+                if (confirm('농장에서 보상을 확인하시겠습니까?')) {
+                    window.location.href = 'farm.html';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
         }
 
         // 타이머

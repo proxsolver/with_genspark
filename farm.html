@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>농장 관리 - EduPet Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .font-game {
+            font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+            font-weight: 600;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, 
+                rgba(76, 175, 80, 0.1) 0%, 
+                rgba(255, 152, 0, 0.1) 50%, 
+                rgba(33, 150, 243, 0.1) 100%
+            );
+        }
+        
+        .plant-slot {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .plant-slot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plant-growing {
+            animation: grow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes grow {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .plant-mature {
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .coin-animation {
+            animation: coinFlip 0.6s ease-out;
+        }
+        
+        @keyframes coinFlip {
+            0% { transform: scale(1) rotateY(0deg); }
+            50% { transform: scale(1.5) rotateY(180deg); }
+            100% { transform: scale(1) rotateY(360deg); }
+        }
+        
+        .threat-pulse {
+            animation: threatPulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes threatPulse {
+            0%, 100% { background-color: rgba(239, 68, 68, 0.1); }
+            50% { background-color: rgba(239, 68, 68, 0.3); }
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#4CAF50', 600: '#16a34a' },
+                        secondary: { 500: '#FF9800', 600: '#ea580c' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-6xl">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-6">
+            <button onclick="window.location.href='index.html'" class="flex items-center space-x-2 p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-all">
+                <span>←</span>
+                <span>홈으로</span>
+            </button>
+            
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-gray-900 font-game">🌱 초롱이의 농장</h1>
+                <p class="text-sm text-gray-600">학습으로 키우는 스마트 농장</p>
+            </div>
+            
+            <div class="text-right">
+                <div class="flex items-center space-x-2 text-yellow-600 font-bold">
+                    <span>💰</span>
+                    <span id="coin-count">1,250</span>
+                </div>
+                <div class="text-xs text-gray-500">EduCoin</div>
+            </div>
+        </div>
+
+        <!-- 농장 상태 요약 -->
+        <div class="bg-white rounded-xl p-4 mb-6 shadow-md">
+            <div class="grid grid-cols-3 gap-4 text-center">
+                <div class="p-3 bg-green-50 rounded-lg">
+                    <div class="text-2xl font-bold text-green-600" id="total-plants">8</div>
+                    <div class="text-xs text-green-700">총 식물</div>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-lg">
+                    <div class="text-2xl font-bold text-blue-600" id="mature-plants">3</div>
+                    <div class="text-xs text-blue-700">수확 가능</div>
+                </div>
+                <div class="p-3 bg-red-50 rounded-lg">
+                    <div class="text-2xl font-bold text-red-600" id="threatened-plants">2</div>
+                    <div class="text-xs text-red-700">위험 상태</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 위험 알림 -->
+        <div id="threat-alert" class="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 threat-pulse">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">⚠️</span>
+                <div>
+                    <h3 class="font-bold text-red-900">농장에 해충이 나타났습니다!</h3>
+                    <p class="text-sm text-red-700">동물들을 보내서 식물을 보호하세요. 방치하면 수확량이 감소합니다.</p>
+                </div>
+                <button onclick="openAnimalDefense()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all">
+                    동물 보내기
+                </button>
+            </div>
+        </div>
+
+        <!-- 농장 그리드 -->
+        <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold text-gray-900">🏡 농장 현황</h2>
+                <button onclick="openPlantShop()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all">
+                    씨앗 구매
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-4 md:grid-cols-6 gap-3" id="farm-grid">
+                <!-- 동적으로 생성됩니다 -->
+            </div>
+        </div>
+
+        <!-- 동물 컬렉션 -->
+        <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-bold text-gray-900">🦝 동물 컬렉션</h2>
+                <button onclick="openAnimalGacha()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all">
+                    동물 뽑기
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-5 md:grid-cols-8 gap-3" id="animal-collection">
+                <!-- 동적으로 생성됩니다 -->
+            </div>
+        </div>
+
+        <!-- 하루 수확 요약 -->
+        <div class="bg-white rounded-xl p-6 shadow-md">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">📊 오늘의 수확</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                    <div class="text-3xl mb-2">🍎</div>
+                    <div class="font-bold text-yellow-800">150 코인</div>
+                    <div class="text-xs text-yellow-600">사과 3개</div>
+                </div>
+                <div class="text-center p-4 bg-orange-50 rounded-lg">
+                    <div class="text-3xl mb-2">🥕</div>
+                    <div class="font-bold text-orange-800">80 코인</div>
+                    <div class="text-xs text-orange-600">당근 2개</div>
+                </div>
+                <div class="text-center p-4 bg-red-50 rounded-lg">
+                    <div class="text-3xl mb-2">🍅</div>
+                    <div class="font-bold text-red-800">200 코인</div>
+                    <div class="text-xs text-red-600">토마토 4개</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-3xl mb-2">💰</div>
+                    <div class="font-bold text-green-800">430 코인</div>
+                    <div class="text-xs text-green-600">총 수익</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 씨앗 구매 모달 -->
+    <div id="plant-shop-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full max-h-96 overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">🌱 씨앗 상점</h3>
+                <button onclick="closePlantShop()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <div class="space-y-3" id="plant-shop-items">
+                <!-- 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 동물 가챠 모달 -->
+    <div id="animal-gacha-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">🎲 동물 뽑기</h3>
+                <button onclick="closeAnimalGacha()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <div class="text-center mb-4">
+                <div class="text-6xl mb-4" id="gacha-result">🎁</div>
+                <p class="text-gray-600 mb-4">100 EduCoin으로 랜덤 동물을 획득하세요!</p>
+                <button onclick="drawAnimal()" class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all font-bold">
+                    동물 뽑기 (100 코인)
+                </button>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+                <div>• 일반 (60%): 병아리, 토끼, 햄스터</div>
+                <div>• 레어 (30%): 고양이, 강아지, 앵무새</div>
+                <div>• 에픽 (9%): 팬더, 여우, 부엉이</div>
+                <div>• 레전드 (1%): 유니콘, 용, 불사조</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 동물 방어 모달 -->
+    <div id="animal-defense-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">🛡️ 식물 보호</h3>
+                <button onclick="closeAnimalDefense()" class="text-gray-400 hover:text-gray-600">✕</button>
+            </div>
+            <div class="mb-4">
+                <p class="text-gray-700 mb-4">동물을 보내서 해충을 물리치세요. 보낸 동물은 사라지지만 식물을 구할 수 있습니다.</p>
+                <div class="grid grid-cols-3 gap-3" id="available-animals">
+                    <!-- 동적으로 생성됩니다 -->
+                </div>
+            </div>
+            <div class="text-xs text-gray-500">
+                💡 팁: 강한 동물일수록 더 많은 식물을 보호할 수 있습니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 게임 상태 관리
+        let gameState = {
+            coins: 1250,
+            plants: [],
+            animals: [],
+            farmSlots: 24, // 4x6 그리드
+            threats: []
+        };
+
+        // 식물 데이터
+        const plantData = {
+            tomato: { name: '토마토', icon: '🍅', price: 50, growTime: 180, value: 80, rarity: 'common' },
+            carrot: { name: '당근', icon: '🥕', price: 30, growTime: 120, value: 50, rarity: 'common' },
+            apple: { name: '사과', icon: '🍎', price: 100, growTime: 300, value: 150, rarity: 'rare' },
+            corn: { name: '옥수수', icon: '🌽', price: 70, growTime: 240, value: 100, rarity: 'common' },
+            strawberry: { name: '딸기', icon: '🍓', price: 80, growTime: 200, value: 120, rarity: 'rare' },
+            kiwi: { name: '키위', icon: '🥝', price: 200, growTime: 600, value: 350, rarity: 'epic' }
+        };
+
+        // 동물 데이터
+        const animalData = {
+            // 일반 (60%)
+            chick: { name: '병아리', icon: '🐤', rarity: 'common', power: 1 },
+            rabbit: { name: '토끼', icon: '🐰', rarity: 'common', power: 1 },
+            hamster: { name: '햄스터', icon: '🐹', rarity: 'common', power: 1 },
+            
+            // 레어 (30%)
+            cat: { name: '고양이', icon: '🐱', rarity: 'rare', power: 2 },
+            dog: { name: '강아지', icon: '🐶', rarity: 'rare', power: 2 },
+            parrot: { name: '앵무새', icon: '🦜', rarity: 'rare', power: 2 },
+            
+            // 에픽 (9%)
+            panda: { name: '팬더', icon: '🐼', rarity: 'epic', power: 4 },
+            fox: { name: '여우', icon: '🦊', rarity: 'epic', power: 4 },
+            owl: { name: '부엉이', icon: '🦉', rarity: 'epic', power: 4 },
+            
+            // 레전드 (1%)
+            unicorn: { name: '유니콘', icon: '🦄', rarity: 'legendary', power: 10 },
+            dragon: { name: '용', icon: '🐉', rarity: 'legendary', power: 10 },
+            phoenix: { name: '불사조', icon: '🔥', rarity: 'legendary', power: 10 }
+        };
+
+        // 초기화
+        function initializeFarm() {
+            // 샘플 데이터 생성
+            gameState.plants = [
+                { id: 1, type: 'tomato', slot: 0, plantedAt: Date.now() - 120000, threatened: false },
+                { id: 2, type: 'carrot', slot: 2, plantedAt: Date.now() - 80000, threatened: true },
+                { id: 3, type: 'apple', slot: 5, plantedAt: Date.now() - 200000, threatened: false },
+                { id: 4, type: 'corn', slot: 8, plantedAt: Date.now() - 160000, threatened: true },
+                { id: 5, type: 'strawberry', slot: 12, plantedAt: Date.now() - 150000, threatened: false },
+                { id: 6, type: 'kiwi', slot: 15, plantedAt: Date.now() - 400000, threatened: false },
+                { id: 7, type: 'tomato', slot: 18, plantedAt: Date.now() - 190000, threatened: false },
+                { id: 8, type: 'carrot', slot: 21, plantedAt: Date.now() - 130000, threatened: false }
+            ];
+
+            gameState.animals = [
+                { id: 1, type: 'chick', acquired: true },
+                { id: 2, type: 'rabbit', acquired: true },
+                { id: 3, type: 'cat', acquired: true },
+                { id: 4, type: 'dog', acquired: true },
+                { id: 5, type: 'panda', acquired: true },
+                { id: 6, type: 'hamster', acquired: true },
+                { id: 7, type: 'parrot', acquired: true }
+            ];
+
+            renderFarm();
+            renderAnimals();
+            updateStats();
+            loadGameState();
+        }
+
+        // 농장 렌더링
+        function renderFarm() {
+            const farmGrid = document.getElementById('farm-grid');
+            farmGrid.innerHTML = '';
+
+            for (let i = 0; i < gameState.farmSlots; i++) {
+                const plant = gameState.plants.find(p => p.slot === i);
+                const slot = document.createElement('div');
+                
+                if (plant) {
+                    const plantInfo = plantData[plant.type];
+                    const growthTime = Date.now() - plant.plantedAt;
+                    const progress = Math.min(growthTime / (plantInfo.growTime * 1000), 1);
+                    const isMatured = progress >= 1;
+                    
+                    slot.className = `plant-slot aspect-square bg-green-100 rounded-lg border-2 border-green-200 flex flex-col items-center justify-center p-2 ${
+                        plant.threatened ? 'border-red-400 bg-red-50' : ''
+                    } ${
+                        isMatured ? 'plant-mature' : (progress > 0.3 ? 'plant-growing' : '')
+                    }`;
+                    
+                    slot.innerHTML = `
+                        <div class="text-2xl mb-1">${plantInfo.icon}</div>
+                        <div class="text-xs font-medium text-center">${plantInfo.name}</div>
+                        ${plant.threatened ? '<div class="text-xs text-red-600">⚠️ 위험</div>' : ''}
+                        <div class="w-full bg-gray-200 rounded-full h-1 mt-1">
+                            <div class="bg-green-500 h-1 rounded-full transition-all" style="width: ${progress * 100}%"></div>
+                        </div>
+                        ${isMatured ? '<div class="text-xs text-green-600 mt-1">수확가능</div>' : ''}
+                    `;
+                    
+                    if (isMatured) {
+                        slot.onclick = () => harvestPlant(plant.id);
+                    }
+                } else {
+                    slot.className = 'plant-slot aspect-square bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center';
+                    slot.innerHTML = '<span class="text-gray-400 text-2xl">+</span>';
+                    slot.onclick = () => openPlantShop();
+                }
+                
+                farmGrid.appendChild(slot);
+            }
+        }
+
+        // 동물 컬렉션 렌더링
+        function renderAnimals() {
+            const animalCollection = document.getElementById('animal-collection');
+            animalCollection.innerHTML = '';
+
+            Object.keys(animalData).forEach(type => {
+                const animal = animalData[type];
+                const owned = gameState.animals.filter(a => a.type === type && a.acquired);
+                const slot = document.createElement('div');
+                
+                slot.className = `aspect-square rounded-lg border-2 flex flex-col items-center justify-center p-2 cursor-pointer transition-all ${
+                    owned.length > 0 ? `rarity-${animal.rarity}` : 'bg-gray-100 border-gray-300'
+                }`;
+                
+                slot.innerHTML = `
+                    <div class="text-2xl">${owned.length > 0 ? animal.icon : '❓'}</div>
+                    <div class="text-xs font-medium text-center mt-1">${owned.length > 0 ? animal.name : '???'}</div>
+                    ${owned.length > 1 ? `<div class="text-xs font-bold text-blue-600">×${owned.length}</div>` : ''}
+                `;
+                
+                animalCollection.appendChild(slot);
+            });
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            const totalPlants = gameState.plants.length;
+            const maturePlants = gameState.plants.filter(p => {
+                const plantInfo = plantData[p.type];
+                const growthTime = Date.now() - p.plantedAt;
+                return growthTime >= plantInfo.growTime * 1000;
+            }).length;
+            const threatenedPlants = gameState.plants.filter(p => p.threatened).length;
+
+            document.getElementById('total-plants').textContent = totalPlants;
+            document.getElementById('mature-plants').textContent = maturePlants;
+            document.getElementById('threatened-plants').textContent = threatenedPlants;
+            document.getElementById('coin-count').textContent = gameState.coins.toLocaleString();
+
+            // 위험 알림 표시/숨김
+            document.getElementById('threat-alert').style.display = threatenedPlants > 0 ? 'block' : 'none';
+        }
+
+        // 식물 수확
+        function harvestPlant(plantId) {
+            const plant = gameState.plants.find(p => p.id === plantId);
+            if (!plant) return;
+
+            const plantInfo = plantData[plant.type];
+            const coins = Math.floor(plantInfo.value * (plant.threatened ? 0.5 : 1)); // 위험상태면 50% 감소
+            
+            gameState.coins += coins;
+            gameState.plants = gameState.plants.filter(p => p.id !== plantId);
+            
+            // 코인 애니메이션
+            const coinElement = document.getElementById('coin-count');
+            coinElement.classList.add('coin-animation');
+            setTimeout(() => coinElement.classList.remove('coin-animation'), 600);
+
+            renderFarm();
+            updateStats();
+            saveGameState();
+            
+            // 성공 메시지
+            alert(`${plantInfo.name}을 수확했습니다! +${coins} EduCoin`);
+        }
+
+        // 씨앗 상점 열기
+        function openPlantShop() {
+            const modal = document.getElementById('plant-shop-modal');
+            const itemsContainer = document.getElementById('plant-shop-items');
+            
+            itemsContainer.innerHTML = '';
+            
+            Object.keys(plantData).forEach(type => {
+                const plant = plantData[type];
+                const item = document.createElement('div');
+                
+                item.className = `flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:bg-gray-50 ${
+                    gameState.coins >= plant.price ? 'border-green-300' : 'border-gray-300 opacity-50'
+                }`;
+                
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">${plant.icon}</span>
+                        <div>
+                            <div class="font-medium">${plant.name}</div>
+                            <div class="text-xs text-gray-500">${Math.floor(plant.growTime / 60)}분 성장</div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-bold text-yellow-600">${plant.price} 코인</div>
+                        <div class="text-xs text-gray-500">${plant.value} 코인 수익</div>
+                    </div>
+                `;
+                
+                if (gameState.coins >= plant.price) {
+                    item.onclick = () => buyPlant(type);
+                }
+                
+                itemsContainer.appendChild(item);
+            });
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closePlantShop() {
+            document.getElementById('plant-shop-modal').classList.add('hidden');
+        }
+
+        // 식물 구매
+        function buyPlant(type) {
+            const plant = plantData[type];
+            if (gameState.coins < plant.price) return;
+
+            // 빈 슬롯 찾기
+            const emptySlot = Array.from({length: gameState.farmSlots}, (_, i) => i)
+                .find(slot => !gameState.plants.some(p => p.slot === slot));
+            
+            if (emptySlot === undefined) {
+                alert('농장에 빈 자리가 없습니다!');
+                return;
+            }
+
+            gameState.coins -= plant.price;
+            gameState.plants.push({
+                id: Date.now(),
+                type: type,
+                slot: emptySlot,
+                plantedAt: Date.now(),
+                threatened: false
+            });
+
+            closePlantShop();
+            renderFarm();
+            updateStats();
+            saveGameState();
+        }
+
+        // 동물 가챠 열기
+        function openAnimalGacha() {
+            document.getElementById('animal-gacha-modal').classList.remove('hidden');
+            document.getElementById('gacha-result').textContent = '🎁';
+        }
+
+        function closeAnimalGacha() {
+            document.getElementById('animal-gacha-modal').classList.add('hidden');
+        }
+
+        // 동물 뽑기
+        function drawAnimal() {
+            if (gameState.coins < 100) {
+                alert('코인이 부족합니다!');
+                return;
+            }
+
+            gameState.coins -= 100;
+
+            // 확률 계산
+            const rand = Math.random();
+            let animalType;
+            
+            if (rand < 0.6) { // 60% 일반
+                const commons = ['chick', 'rabbit', 'hamster'];
+                animalType = commons[Math.floor(Math.random() * commons.length)];
+            } else if (rand < 0.9) { // 30% 레어
+                const rares = ['cat', 'dog', 'parrot'];
+                animalType = rares[Math.floor(Math.random() * rares.length)];
+            } else if (rand < 0.99) { // 9% 에픽
+                const epics = ['panda', 'fox', 'owl'];
+                animalType = epics[Math.floor(Math.random() * epics.length)];
+            } else { // 1% 레전드
+                const legendaries = ['unicorn', 'dragon', 'phoenix'];
+                animalType = legendaries[Math.floor(Math.random() * legendaries.length)];
+            }
+
+            const animal = animalData[animalType];
+            gameState.animals.push({
+                id: Date.now(),
+                type: animalType,
+                acquired: true
+            });
+
+            // 결과 표시
+            document.getElementById('gacha-result').textContent = animal.icon;
+            
+            setTimeout(() => {
+                alert(`${animal.name}을 획득했습니다! (${animal.rarity})`);
+                renderAnimals();
+                updateStats();
+                saveGameState();
+            }, 500);
+        }
+
+        // 동물 방어 시스템 열기
+        function openAnimalDefense() {
+            const modal = document.getElementById('animal-defense-modal');
+            const availableAnimals = document.getElementById('available-animals');
+            
+            availableAnimals.innerHTML = '';
+            
+            // 보유한 동물들 표시
+            const uniqueAnimals = [...new Set(gameState.animals.filter(a => a.acquired).map(a => a.type))];
+            
+            uniqueAnimals.forEach(type => {
+                const animal = animalData[type];
+                const count = gameState.animals.filter(a => a.type === type && a.acquired).length;
+                const item = document.createElement('div');
+                
+                item.className = `text-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 ${
+                    count > 0 ? `rarity-${animal.rarity}` : 'border-gray-300 opacity-50'
+                }`;
+                
+                item.innerHTML = `
+                    <div class="text-2xl mb-1">${animal.icon}</div>
+                    <div class="text-xs font-medium">${animal.name}</div>
+                    <div class="text-xs text-gray-500">×${count}</div>
+                    <div class="text-xs font-bold text-blue-600">방어력 ${animal.power}</div>
+                `;
+                
+                if (count > 0) {
+                    item.onclick = () => useAnimalForDefense(type);
+                }
+                
+                availableAnimals.appendChild(item);
+            });
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeAnimalDefense() {
+            document.getElementById('animal-defense-modal').classList.add('hidden');
+        }
+
+        // 동물로 방어하기
+        function useAnimalForDefense(animalType) {
+            const animal = animalData[animalType];
+            const ownedAnimal = gameState.animals.find(a => a.type === animalType && a.acquired);
+            
+            if (!ownedAnimal) return;
+
+            // 동물 제거 (희생)
+            const animalIndex = gameState.animals.findIndex(a => a.type === animalType && a.acquired);
+            gameState.animals.splice(animalIndex, 1);
+
+            // 위험 상태인 식물들을 방어력만큼 치료
+            const threatenedPlants = gameState.plants.filter(p => p.threatened);
+            const plantsToSave = threatenedPlants.slice(0, animal.power);
+            
+            plantsToSave.forEach(plant => {
+                plant.threatened = false;
+            });
+
+            closeAnimalDefense();
+            renderFarm();
+            renderAnimals();
+            updateStats();
+            saveGameState();
+
+            alert(`${animal.name}이 ${plantsToSave.length}개의 식물을 구했습니다! 동물은 사라졌습니다.`);
+        }
+
+        // 게임 상태 저장/로드
+        function saveGameState() {
+            localStorage.setItem('eduPetFarmState', JSON.stringify(gameState));
+        }
+
+        function loadGameState() {
+            const saved = localStorage.getItem('eduPetFarmState');
+            if (saved) {
+                const savedState = JSON.parse(saved);
+                gameState = { ...gameState, ...savedState };
+                updateStats();
+            }
+        }
+
+        // 시간 경과에 따른 위협 시뮬레이션
+        function simulateThreats() {
+            // 5% 확률로 랜덤 식물에 위협 발생
+            if (Math.random() < 0.05 && gameState.plants.length > 0) {
+                const healthyPlants = gameState.plants.filter(p => !p.threatened);
+                if (healthyPlants.length > 0) {
+                    const randomPlant = healthyPlants[Math.floor(Math.random() * healthyPlants.length)];
+                    randomPlant.threatened = true;
+                    renderFarm();
+                    updateStats();
+                    saveGameState();
+                }
+            }
+        }
+
+        // 초기화 및 정기 업데이트
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFarm();
+            
+            // 30초마다 위협 시뮬레이션 및 화면 업데이트
+            setInterval(() => {
+                simulateThreats();
+                renderFarm(); // 성장 진행률 업데이트
+            }, 30000);
+            
+            // 5초마다 화면 업데이트 (성장 진행률)
+            setInterval(() => {
+                renderFarm();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
