@@ -709,10 +709,16 @@
                 }
             }));
             
+            // 농장에 물방울 추가 (심플 농장 시스템)
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"water": 0}');
+            const waterReward = Math.floor(sessionStats.correct / 10) + 3; // 기본 3개 + 정답 10개당 1개 추가
+            simpleFarmState.water = (simpleFarmState.water || 0) + waterReward;
+            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
+            
             // 농장으로 이동하여 보상 확인
             setTimeout(() => {
-                if (confirm('농장에서 보상을 확인하시겠습니까?')) {
-                    window.location.href = 'farm.html';
+                if (confirm(`🎉 물방울 ${waterReward}개 획득!\\n식물친구들에게 물을 주러 가시겠습니까?`)) {
+                    window.location.href = 'simple-farm.html';
                 } else {
                     window.location.href = 'index.html';
                 }

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초롱이의 작은 정원 - EduPet Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .font-game {
+            font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
+            font-weight: 600;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, 
+                #e8f5e8 0%, 
+                #f0f9ff 50%, 
+                #fef3c7 100%
+            );
+        }
+        
+        .plant-pot {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .plant-pot:hover {
+            transform: scale(1.05);
+        }
+        
+        .plant-growing {
+            animation: gentleGrow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes gentleGrow {
+            from { transform: scale(1); }
+            to { transform: scale(1.02); }
+        }
+        
+        .plant-happy {
+            animation: happyBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes happyBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .water-drop {
+            animation: waterFall 1s ease-out;
+        }
+        
+        @keyframes waterFall {
+            0% { 
+                transform: translateY(-50px) scale(0); 
+                opacity: 0; 
+            }
+            50% { 
+                transform: translateY(0) scale(1); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(20px) scale(0.5); 
+                opacity: 0; 
+            }
+        }
+        
+        .love-heart {
+            animation: loveFloat 2s ease-out;
+        }
+        
+        @keyframes loveFloat {
+            0% { 
+                transform: translateY(0) scale(0); 
+                opacity: 0; 
+            }
+            30% { 
+                transform: translateY(-20px) scale(1); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-60px) scale(0.5); 
+                opacity: 0; 
+            }
+        }
+        
+        .speech-bubble {
+            animation: bubblePop 0.5s ease-out;
+        }
+        
+        @keyframes bubblePop {
+            0% { transform: scale(0) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .modal-enter {
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#4CAF50', 600: '#16a34a' },
+                        secondary: { 500: '#FF9800', 600: '#ea580c' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-4xl">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-6">
+            <button onclick="window.location.href='index.html'" class="flex items-center space-x-2 p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-all">
+                <span>←</span>
+                <span>홈으로</span>
+            </button>
+            
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-gray-900 font-game">🌱 초롱이의 작은 정원</h1>
+                <p class="text-sm text-gray-600">사랑으로 키우는 우리 식물친구들</p>
+            </div>
+            
+            <div class="text-right">
+                <div class="flex items-center space-x-2 text-blue-600 font-bold">
+                    <span>💧</span>
+                    <span id="water-count">5</span>
+                </div>
+                <div class="text-xs text-gray-500">물방울</div>
+            </div>
+        </div>
+
+        <!-- 안내 메시지 -->
+        <div class="bg-white rounded-xl p-4 mb-6 shadow-md border-l-4 border-green-400">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">💚</span>
+                <div>
+                    <h3 class="font-bold text-gray-900">정원 가꾸기 안내</h3>
+                    <p class="text-sm text-gray-600">
+                        최대 2개의 식물을 키울 수 있어요. 물을 주면서 학습하고, 사랑으로 돌봐주세요! 🌿
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 식물 화분 구역 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- 화분 1 -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200">
+                <div class="text-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">🪴 화분 #1</h3>
+                    <div class="text-xs text-gray-500" id="pot1-name">빈 화분</div>
+                </div>
+                
+                <div class="relative">
+                    <!-- 화분 영역 -->
+                    <div class="plant-pot bg-amber-100 rounded-lg border-4 border-amber-300 h-48 flex flex-col items-center justify-end p-4 relative overflow-hidden" 
+                         id="pot1" onclick="interactWithPlant(1)">
+                        
+                        <!-- 식물 표시 영역 -->
+                        <div id="plant1-display" class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                            <!-- 동적으로 생성 -->
+                        </div>
+                        
+                        <!-- 빈 화분 표시 -->
+                        <div id="empty-pot1" class="text-center">
+                            <div class="text-4xl mb-2">🕳️</div>
+                            <div class="text-sm text-gray-500">씨앗을 심어보세요</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 상호작용 버튼들 -->
+                    <div class="mt-4 flex justify-center space-x-2" id="pot1-actions">
+                        <button onclick="plantSeed(1)" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-all">
+                            🌰 씨앗 심기
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 식물 정보 -->
+                <div id="plant1-info" class="mt-4 text-center hidden">
+                    <div class="text-sm text-gray-600" id="plant1-stage">단계: 씨앗</div>
+                    <div class="text-sm text-gray-600" id="plant1-care">돌봄 정도: 0%</div>
+                    <div class="mt-2">
+                        <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full transition-all duration-500" 
+                                 id="plant1-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 화분 2 -->
+            <div class="bg-white rounded-xl p-6 shadow-lg border-2 border-green-200">
+                <div class="text-center mb-4">
+                    <h3 class="text-lg font-bold text-gray-800">🪴 화분 #2</h3>
+                    <div class="text-xs text-gray-500" id="pot2-name">빈 화분</div>
+                </div>
+                
+                <div class="relative">
+                    <!-- 화분 영역 -->
+                    <div class="plant-pot bg-amber-100 rounded-lg border-4 border-amber-300 h-48 flex flex-col items-center justify-end p-4 relative overflow-hidden" 
+                         id="pot2" onclick="interactWithPlant(2)">
+                        
+                        <!-- 식물 표시 영역 -->
+                        <div id="plant2-display" class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                            <!-- 동적으로 생성 -->
+                        </div>
+                        
+                        <!-- 빈 화분 표시 -->
+                        <div id="empty-pot2" class="text-center">
+                            <div class="text-4xl mb-2">🕳️</div>
+                            <div class="text-sm text-gray-500">씨앗을 심어보세요</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 상호작용 버튼들 -->
+                    <div class="mt-4 flex justify-center space-x-2" id="pot2-actions">
+                        <button onclick="plantSeed(2)" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-all">
+                            🌰 씨앗 심기
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 식물 정보 -->
+                <div id="plant2-info" class="mt-4 text-center hidden">
+                    <div class="text-sm text-gray-600" id="plant2-stage">단계: 씨앗</div>
+                    <div class="text-sm text-gray-600" id="plant2-care">돌봄 정도: 0%</div>
+                    <div class="mt-2">
+                        <div class="bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full transition-all duration-500" 
+                                 id="plant2-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 물주기 안내 -->
+        <div class="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+            <div class="text-center">
+                <h3 class="font-bold text-blue-900 mb-2">💧 물주기 방법</h3>
+                <p class="text-sm text-blue-700 mb-3">
+                    식물을 클릭하면 물을 주면서 학습할 수 있어요!<br>
+                    문제의 정답과 해설을 보면서 식물과 함께 배워보세요.
+                </p>
+                <div class="text-xs text-blue-600">
+                    💡 팁: 자주 물을 줄수록 더 예쁜 식물로 자라납니다!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 씨앗 선택 모달 -->
+    <div id="seed-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full modal-enter">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold">🌰 씨앗 선택하기</h3>
+                <button onclick="closeSeedModal()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+            </div>
+            <div class="space-y-3">
+                <button onclick="selectSeed('mystery')" class="w-full p-4 text-left rounded-lg border-2 border-green-300 hover:bg-green-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-3xl">🎁</span>
+                        <div>
+                            <div class="font-bold text-gray-800">신비한 씨앗</div>
+                            <div class="text-sm text-gray-600">무엇이 나올까요? 정성껏 키워보세요!</div>
+                        </div>
+                    </div>
+                </button>
+                <button onclick="selectSeed('flower')" class="w-full p-4 text-left rounded-lg border-2 border-pink-300 hover:bg-pink-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-3xl">🌸</span>
+                        <div>
+                            <div class="font-bold text-gray-800">꽃 씨앗</div>
+                            <div class="text-sm text-gray-600">예쁜 꽃이 필 가능성이 높아요</div>
+                        </div>
+                    </div>
+                </button>
+                <button onclick="selectSeed('fruit')" class="w-full p-4 text-left rounded-lg border-2 border-orange-300 hover:bg-orange-50 transition-all">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-3xl">🍎</span>
+                        <div>
+                            <div class="font-bold text-gray-800">과일 씨앗</div>
+                            <div class="text-sm text-gray-600">맛있는 과일이 열릴 가능성이 높아요</div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 물주기 학습 모달 -->
+    <div id="watering-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-lg w-full modal-enter">
+            <div class="text-center mb-4">
+                <div class="text-4xl mb-2" id="plant-character">🌱</div>
+                <h3 class="text-lg font-bold" id="plant-speech">안녕! 나에게 물을 줘!</h3>
+            </div>
+            
+            <!-- 학습 내용 -->
+            <div class="bg-blue-50 rounded-lg p-4 mb-4" id="learning-content">
+                <div class="font-bold text-blue-900 mb-2" id="question-title">오늘의 학습</div>
+                <div class="text-sm text-blue-800 mb-3" id="question-text">
+                    문제: 다음 중 'apple'의 뜻은?
+                </div>
+                <div class="text-sm text-green-800 mb-2" id="answer-text">
+                    <strong>정답:</strong> 사과
+                </div>
+                <div class="text-sm text-gray-700" id="explanation-text">
+                    <strong>해설:</strong> Apple은 사과를 의미합니다. 영어에서 가장 기본적인 과일 단어 중 하나예요.
+                </div>
+            </div>
+            
+            <div class="text-center mb-4">
+                <button onclick="giveWater()" class="px-8 py-3 bg-blue-500 text-white rounded-xl font-bold hover:bg-blue-600 transition-all">
+                    💧 물 주기
+                </button>
+            </div>
+            
+            <div class="text-center">
+                <button onclick="closeWateringModal()" class="text-gray-500 text-sm hover:text-gray-700">
+                    나중에 하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 식물 대화 팝업 -->
+    <div id="plant-speech-popup" class="hidden fixed top-20 left-1/2 transform -translate-x-1/2 bg-white rounded-xl shadow-lg border-2 border-green-300 p-4 z-40">
+        <div class="speech-bubble text-center">
+            <div class="text-sm font-medium text-gray-800" id="popup-text">안녕하세요!</div>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                <div class="w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-green-300"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 게임 상태
+        let gameState = {
+            water: 5,
+            plants: {
+                1: null,
+                2: null
+            }
+        };
+
+        let currentPot = null;
+        let selectedSeedType = null;
+
+        // 식물 데이터
+        const plantTypes = {
+            mystery: {
+                name: '신비한 식물',
+                stages: [
+                    { icon: '🌰', name: '씨앗', speech: '안녕! 나는 신비한 씨앗이야!' },
+                    { icon: '🌱', name: '새싹', speech: '물을 줘서 고마워! 쑥쑥 자라고 있어!' },
+                    { icon: '🌿', name: '줄기', speech: '이제 곧 뭔가 특별한 게 생길 것 같아!' }
+                ],
+                possibleResults: ['🌸', '🌺', '🌻', '🌷', '🌹', '🪷']
+            },
+            flower: {
+                name: '꽃식물',
+                stages: [
+                    { icon: '🌰', name: '꽃씨', speech: '안녕! 나는 예쁜 꽃이 될 씨앗이야!' },
+                    { icon: '🌱', name: '꽃새싹', speech: '물을 마시니까 기분이 좋아!' },
+                    { icon: '🌿', name: '꽃줄기', speech: '곧 예쁜 꽃이 필 거야!' }
+                ],
+                possibleResults: ['🌸', '🌺', '🌻', '🌷', '🌹']
+            },
+            fruit: {
+                name: '과일나무',
+                stages: [
+                    { icon: '🌰', name: '과일씨', speech: '안녕! 나는 맛있는 과일이 될 씨앗이야!' },
+                    { icon: '🌱', name: '과일새싹', speech: '물을 주니까 힘이 나!' },
+                    { icon: '🌿', name: '과일줄기', speech: '맛있는 과일을 만들어줄게!' }
+                ],
+                possibleResults: ['🍎', '🍊', '🍌', '🍓', '🍑', '🥝']
+            }
+        };
+
+        // 학습 문제 샘플 (실제로는 API에서 가져올 것)
+        const sampleQuestions = [
+            {
+                question: "다음 중 'apple'의 뜻은?",
+                answer: "사과",
+                explanation: "Apple은 사과를 의미합니다. 영어에서 가장 기본적인 과일 단어 중 하나예요."
+            },
+            {
+                question: "'cat'의 뜻은?",
+                answer: "고양이", 
+                explanation: "Cat은 고양이를 의미합니다. 귀여운 동물이죠!"
+            },
+            {
+                question: "5 + 3 = ?",
+                answer: "8",
+                explanation: "5와 3을 더하면 8입니다. 간단한 덧셈 문제예요."
+            }
+        ];
+
+        // 초기화
+        function initializeGarden() {
+            loadGameState();
+            updateDisplay();
+        }
+
+        // 씨앗 심기
+        function plantSeed(potNumber) {
+            if (gameState.plants[potNumber]) {
+                showPlantSpeech(`화분 ${potNumber}에 이미 식물이 있어요!`);
+                return;
+            }
+            
+            currentPot = potNumber;
+            document.getElementById('seed-modal').classList.remove('hidden');
+        }
+
+        function selectSeed(type) {
+            selectedSeedType = type;
+            
+            // 새로운 식물 생성
+            gameState.plants[currentPot] = {
+                type: type,
+                stage: 0,
+                care: 0,
+                plantedAt: Date.now(),
+                lastWatered: 0,
+                finalResult: null
+            };
+            
+            closeSeedModal();
+            updatePlantDisplay(currentPot);
+            showPlantSpeech(`${plantTypes[type].stages[0].speech}`);
+            
+            saveGameState();
+        }
+
+        function closeSeedModal() {
+            document.getElementById('seed-modal').classList.add('hidden');
+            currentPot = null;
+            selectedSeedType = null;
+        }
+
+        // 식물과 상호작용
+        function interactWithPlant(potNumber) {
+            const plant = gameState.plants[potNumber];
+            
+            if (!plant) {
+                plantSeed(potNumber);
+                return;
+            }
+
+            if (gameState.water <= 0) {
+                showPlantSpeech('물이 부족해요! 학습을 완료하면 물을 얻을 수 있어요.');
+                return;
+            }
+
+            // 물주기 모달 열기
+            openWateringModal(potNumber);
+        }
+
+        // 물주기 모달 열기
+        function openWateringModal(potNumber) {
+            const plant = gameState.plants[potNumber];
+            const plantInfo = plantTypes[plant.type];
+            const currentStage = plantInfo.stages[plant.stage];
+            
+            // 랜덤 학습 문제 선택
+            const question = sampleQuestions[Math.floor(Math.random() * sampleQuestions.length)];
+            
+            document.getElementById('plant-character').textContent = currentStage.icon;
+            document.getElementById('plant-speech').textContent = currentStage.speech;
+            document.getElementById('question-text').textContent = question.question;
+            document.getElementById('answer-text').innerHTML = `<strong>정답:</strong> ${question.answer}`;
+            document.getElementById('explanation-text').innerHTML = `<strong>해설:</strong> ${question.explanation}`;
+            
+            currentPot = potNumber;
+            document.getElementById('watering-modal').classList.remove('hidden');
+        }
+
+        function closeWateringModal() {
+            document.getElementById('watering-modal').classList.add('hidden');
+            currentPot = null;
+        }
+
+        // 물 주기
+        function giveWater() {
+            if (gameState.water <= 0 || !currentPot) return;
+            
+            const plant = gameState.plants[currentPot];
+            const potElement = document.getElementById(`pot${currentPot}`);
+            
+            // 물 소모
+            gameState.water--;
+            
+            // 식물 돌봄 증가
+            plant.care += 20;
+            plant.lastWatered = Date.now();
+            
+            // 물방울 애니메이션
+            showWaterAnimation(potElement);
+            
+            // 하트 애니메이션
+            setTimeout(() => {
+                showLoveAnimation(potElement);
+            }, 500);
+            
+            // 성장 체크
+            checkPlantGrowth(currentPot);
+            
+            closeWateringModal();
+            updateDisplay();
+            saveGameState();
+            
+            showPlantSpeech('고마워! 물이 정말 시원해!');
+        }
+
+        // 식물 성장 체크
+        function checkPlantGrowth(potNumber) {
+            const plant = gameState.plants[potNumber];
+            const plantInfo = plantTypes[plant.type];
+            
+            // 하루가 지났고 돌봄이 충분하면 다음 단계로
+            const daysPassed = (Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24);
+            
+            if (daysPassed >= 0.1 && plant.care >= 40 && plant.stage < plantInfo.stages.length - 1) { // 테스트용으로 0.1일로 설정
+                plant.stage++;
+                showPlantSpeech(`와! 한 단계 더 자랐어요! 이제 ${plantInfo.stages[plant.stage].name}이에요!`);
+                
+                // 최종 단계에서 결과 결정
+                if (plant.stage === plantInfo.stages.length - 1) {
+                    determineFinalResult(potNumber);
+                }
+            }
+            
+            updatePlantDisplay(potNumber);
+        }
+
+        // 최종 결과 결정
+        function determineFinalResult(potNumber) {
+            const plant = gameState.plants[potNumber];
+            const plantInfo = plantTypes[plant.type];
+            
+            // 돌봄 정도에 따라 더 좋은 결과
+            let resultIndex = Math.floor(Math.random() * plantInfo.possibleResults.length);
+            
+            if (plant.care >= 80) {
+                // 80% 이상 돌봄: 더 좋은 결과 확률 증가
+                resultIndex = Math.min(resultIndex + 1, plantInfo.possibleResults.length - 1);
+            }
+            
+            plant.finalResult = plantInfo.possibleResults[resultIndex];
+            
+            setTimeout(() => {
+                showPlantSpeech(`짜잔! 내가 바로 ${plant.finalResult}이야! 정성껏 키워줘서 고마워!`);
+            }, 1000);
+        }
+
+        // 디스플레이 업데이트
+        function updateDisplay() {
+            document.getElementById('water-count').textContent = gameState.water;
+            
+            // 각 화분 업데이트
+            [1, 2].forEach(potNumber => {
+                updatePlantDisplay(potNumber);
+            });
+        }
+
+        function updatePlantDisplay(potNumber) {
+            const plant = gameState.plants[potNumber];
+            const emptyElement = document.getElementById(`empty-pot${potNumber}`);
+            const plantDisplay = document.getElementById(`plant${potNumber}-display`);
+            const plantInfo = document.getElementById(`plant${potNumber}-info`);
+            const potName = document.getElementById(`pot${potNumber}-name`);
+            const actions = document.getElementById(`pot${potNumber}-actions`);
+            
+            if (!plant) {
+                // 빈 화분
+                emptyElement.classList.remove('hidden');
+                plantDisplay.innerHTML = '';
+                plantInfo.classList.add('hidden');
+                potName.textContent = '빈 화분';
+                actions.innerHTML = `
+                    <button onclick="plantSeed(${potNumber})" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-all">
+                        🌰 씨앗 심기
+                    </button>
+                `;
+            } else {
+                // 식물이 있는 화분
+                emptyElement.classList.add('hidden');
+                plantInfo.classList.remove('hidden');
+                
+                const plantTypeInfo = plantTypes[plant.type];
+                const currentStage = plantTypeInfo.stages[plant.stage];
+                
+                potName.textContent = plantTypeInfo.name;
+                
+                let displayIcon = currentStage.icon;
+                if (plant.finalResult && plant.stage === plantTypeInfo.stages.length - 1) {
+                    displayIcon = plant.finalResult;
+                }
+                
+                plantDisplay.innerHTML = `
+                    <div class="text-6xl plant-growing ${plant.care > 50 ? 'plant-happy' : ''}">${displayIcon}</div>
+                `;
+                
+                document.getElementById(`plant${potNumber}-stage`).textContent = `단계: ${currentStage.name}`;
+                document.getElementById(`plant${potNumber}-care`).textContent = `돌봄 정도: ${Math.min(plant.care, 100)}%`;
+                document.getElementById(`plant${potNumber}-progress`).style.width = `${Math.min(plant.care, 100)}%`;
+                
+                actions.innerHTML = `
+                    <button onclick="interactWithPlant(${potNumber})" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all">
+                        💧 물주기
+                    </button>
+                `;
+            }
+        }
+
+        // 애니메이션 함수들
+        function showWaterAnimation(potElement) {
+            const waterDrop = document.createElement('div');
+            waterDrop.innerHTML = '💧';
+            waterDrop.className = 'absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl water-drop pointer-events-none';
+            potElement.appendChild(waterDrop);
+            
+            setTimeout(() => {
+                potElement.removeChild(waterDrop);
+            }, 1000);
+        }
+
+        function showLoveAnimation(potElement) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💚';
+            heart.className = 'absolute bottom-8 left-1/2 transform -translate-x-1/2 text-xl love-heart pointer-events-none';
+            potElement.appendChild(heart);
+            
+            setTimeout(() => {
+                potElement.removeChild(heart);
+            }, 2000);
+        }
+
+        function showPlantSpeech(message) {
+            const popup = document.getElementById('plant-speech-popup');
+            document.getElementById('popup-text').textContent = message;
+            popup.classList.remove('hidden');
+            
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 3000);
+        }
+
+        // 게임 상태 저장/로드
+        function saveGameState() {
+            localStorage.setItem('simpleFarmState', JSON.stringify(gameState));
+        }
+
+        function loadGameState() {
+            const saved = localStorage.getItem('simpleFarmState');
+            if (saved) {
+                const savedState = JSON.parse(saved);
+                gameState = { ...gameState, ...savedState };
+            }
+        }
+
+        // 물 충전 (학습 완료 시 호출될 함수)
+        function addWater(amount = 3) {
+            gameState.water += amount;
+            updateDisplay();
+            saveGameState();
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGarden();
+            
+            // 10초마다 식물 상태 체크
+            setInterval(() => {
+                [1, 2].forEach(potNumber => {
+                    if (gameState.plants[potNumber]) {
+                        checkPlantGrowth(potNumber);
+                    }
+                });
+            }, 10000);
+        });
+
+        // 외부에서 호출할 수 있는 함수들
+        window.simpleFarm = {
+            addWater: addWater,
+            getGameState: () => gameState
+        };
+    </script>
+</body>
+</html>
