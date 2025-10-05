@@ -156,6 +156,13 @@
             </div>
             
             <div class="text-right">
+                <div class="flex items-center justify-end space-x-2 mb-2">
+                    <button onclick="toggleVibration()" id="vibration-toggle" 
+                            class="p-2 rounded-lg transition-all text-sm" 
+                            title="진동 설정">
+                        📳
+                    </button>
+                </div>
                 <div class="text-xs text-gray-500 mb-1">목표 시간</div>
                 <span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium" id="target-time">
                     10분
@@ -277,9 +284,16 @@
         let shuffledOptions = [];
         let sessionStats = { correct: 0, incorrect: 0, startTime: Date.now() };
         let recentAnswers = []; // 최근 5문제 정답 여부
+        let vibrationEnabled = true; // 진동 기능 활성화 여부
 
-        // 정답 사운드 효과 함수
+        // 정답 사운드 및 진동 효과 함수
         function playCorrectSound() {
+            // 진동 효과 (모바일)
+            if (vibrationEnabled && navigator.vibrate) {
+                // 정답: 경쾌한 패턴 - 짧게 2번 (성취감)
+                navigator.vibrate([100, 50, 100]); // 진동 100ms → 멈춤 50ms → 진동 100ms
+            }
+            
             try {
                 // Web Audio API를 사용하여 경쾌한 효과음 생성
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -324,8 +338,14 @@
             }
         }
 
-        // 오답 사운드 효과 함수 (띠띠 경고음)
+        // 오답 사운드 및 진동 효과 함수 (띠띠 경고음)
         function playIncorrectSound() {
+            // 진동 효과 (모바일)
+            if (vibrationEnabled && navigator.vibrate) {
+                // 오답: 길게 한 번 (알림, 하지만 너무 강하지 않게)
+                navigator.vibrate(200); // 진동 200ms
+            }
+            
             try {
                 // Web Audio API를 사용하여 경고음 생성
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -397,8 +417,15 @@
             // 문제 데이터 로드
             await loadQuestions();
             
+            // 진동 설정 로드
+            const savedVibration = localStorage.getItem('quizVibrationEnabled');
+            if (savedVibration !== null) {
+                vibrationEnabled = JSON.parse(savedVibration);
+            }
+            
             // UI 초기화
             updateUI();
+            updateVibrationButton(); // 진동 버튼 상태 초기화
             generateQuestionPool();
             loadCurrentQuestion();
             startTimer();
@@ -822,6 +849,45 @@
                     window.location.href = 'index.html';
                 }
             }, 1000);
+        }
+
+        // 진동 설정 토글
+        function toggleVibration() {
+            vibrationEnabled = !vibrationEnabled;
+            updateVibrationButton();
+            
+            // 설정을 localStorage에 저장
+            localStorage.setItem('quizVibrationEnabled', vibrationEnabled);
+            
+            // 테스트 진동 (설정 피드백)
+            if (vibrationEnabled && navigator.vibrate) {
+                navigator.vibrate(50); // 짧은 확인 진동
+            }
+        }
+
+        // 진동 버튼 UI 업데이트
+        function updateVibrationButton() {
+            const button = document.getElementById('vibration-toggle');
+            
+            // 진동 API 지원 여부 확인
+            if (!navigator.vibrate) {
+                button.textContent = '📵';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-gray-100 text-gray-400 cursor-not-allowed';
+                button.title = '이 기기는 진동을 지원하지 않습니다';
+                button.disabled = true;
+                return;
+            }
+            
+            button.disabled = false;
+            if (vibrationEnabled) {
+                button.textContent = '📳';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-blue-100 text-blue-700 hover:bg-blue-200';
+                button.title = '진동 켜짐 (클릭하여 끄기)';
+            } else {
+                button.textContent = '🔇';
+                button.className = 'p-2 rounded-lg transition-all text-sm bg-gray-100 text-gray-500 hover:bg-gray-200';
+                button.title = '진동 꺼짐 (클릭하여 켜기)';
+            }
         }
 
         // 타이머
