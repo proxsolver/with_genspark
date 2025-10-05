@@ -290,8 +290,8 @@
                 <div class="flex items-center space-x-2 text-sm text-yellow-800">
                     <span>ℹ️</span>
                     <div>
-                        <div class="font-semibold">농장 시스템 안내</div>
-                        <div>매일 25분 학습 완료 시 등급 유지 • 1일 미관리 시 등급 하락 • 월 수익 상한: 10,000원</div>
+                        <div class="font-semibold">농장 경제 시스템</div>
+                        <div>등급별 성장기간: 일반(3일) • 고급(7일) • 에픽(14일) • 전설(28일) • 1일 미관리 시 등급 하락</div>
                     </div>
                 </div>
             </div>
@@ -304,7 +304,7 @@
                             <span class="text-3xl">⚪</span>
                             <div>
                                 <div class="font-bold text-gray-800">일반 씨앗</div>
-                                <div class="text-sm text-gray-600">무료 씨앗이에요 • 수익 없음</div>
+                                <div class="text-sm text-gray-600">3일 성장 • 수확 100원 • 등급하락 없음</div>
                             </div>
                         </div>
                         <div class="text-right">
@@ -320,7 +320,7 @@
                             <span class="text-3xl">🔵</span>
                             <div>
                                 <div class="font-bold text-blue-800">고급 씨앗</div>
-                                <div class="text-sm text-blue-600">하루에 10원 수익</div>
+                                <div class="text-sm text-blue-600">7일 성장 • 수확 1,000원 • 1일 빠지면 일반으로</div>
                             </div>
                         </div>
                         <div class="text-right">
@@ -336,7 +336,7 @@
                             <span class="text-3xl">🟣</span>
                             <div>
                                 <div class="font-bold text-purple-800">에픽 씨앗</div>
-                                <div class="text-sm text-purple-600">하루에 50원 수익</div>
+                                <div class="text-sm text-purple-600">14일 성장 • 수확 3,000원 • 1일 빠지면 고급으로</div>
                             </div>
                         </div>
                         <div class="text-right">
@@ -352,7 +352,7 @@
                             <span class="text-3xl">🟡</span>
                             <div>
                                 <div class="font-bold text-yellow-800">전설 씨앗</div>
-                                <div class="text-sm text-yellow-600">하루에 100원 수익</div>
+                                <div class="text-sm text-yellow-600">28일 성장 • 수확 10,000원 • 1일 빠지면 에픽으로</div>
                             </div>
                         </div>
                         <div class="text-right">
@@ -425,47 +425,56 @@
             plants: {
                 1: null,
                 2: null
-            },
-            monthlyEarnings: 0, // 월 수익
-            lastReset: new Date().getMonth() // 마지막 리셋 월
+            }
         };
 
         let currentPot = null;
         let selectedSeedType = null;
 
-        // 등급별 씨앗 데이터
+        // 등급별 씨앗 데이터 - 새로운 경제 시스템
         const seedGrades = {
             common: {
                 name: '일반',
                 price: 0,
                 color: 'gray',
                 icon: '⚪',
-                dailyIncome: 0,
-                description: '무료 씨앗이에요'
+                growthDays: 3,
+                harvestAmount: 100,
+                canDowngrade: false,
+                description: '3일 성장 • 수확 100원'
             },
             advanced: {
                 name: '고급',
                 price: 100,
                 color: 'blue', 
                 icon: '🔵',
-                dailyIncome: 10,
-                description: '하루에 10원 수익'
+                growthDays: 7,
+                harvestAmount: 1000,
+                canDowngrade: true,
+                downgradeTo: 'common',
+                description: '7일 성장 • 수확 1,000원'
             },
             epic: {
                 name: '에픽',
                 price: 1000,
                 color: 'purple',
                 icon: '🟣',
-                dailyIncome: 50,
-                description: '하루에 50원 수익'
+                growthDays: 14,
+                harvestAmount: 3000,
+                canDowngrade: true,
+                downgradeTo: 'advanced',
+                description: '14일 성장 • 수확 3,000원'
             },
             legendary: {
                 name: '전설',
                 price: 3000,
                 color: 'yellow',
                 icon: '🟡',
-                dailyIncome: 100,
-                description: '하루에 100원 수익'
+                growthDays: 28,
+                harvestAmount: 10000,
+                canDowngrade: true,
+                downgradeTo: 'epic',
+                description: '28일 성장 • 수확 10,000원'
             }
         };
 
@@ -553,7 +562,7 @@
             
             selectedSeedType = type;
             
-            // 새로운 식물 생성 (등급 정보 포함)
+            // 새로운 식물 생성 (새로운 경제 시스템)
             gameState.plants[currentPot] = {
                 type: type,
                 grade: grade,
@@ -563,7 +572,10 @@
                 lastWatered: 0,
                 lastStudied: Date.now(), // 마지막 학습 시간
                 finalResult: null,
-                dailyIncome: seedInfo.dailyIncome
+                growthDays: seedInfo.growthDays,
+                harvestAmount: seedInfo.harvestAmount,
+                isFullyGrown: false,
+                isHarvested: false
             };
             
             closeSeedModal();
@@ -659,22 +671,36 @@
             showPlantSpeech('고마워! 물이 정말 시원해!');
         }
 
-        // 식물 성장 체크
+        // 식물 성장 체크 - 새로운 등급별 성장기간 시스템
         function checkPlantGrowth(potNumber) {
             const plant = gameState.plants[potNumber];
+            if (!plant || plant.isHarvested) return;
+            
             const plantInfo = plantTypes[plant.type];
+            const gradeInfo = seedGrades[plant.grade];
             
-            // 하루가 지났고 돌봄이 충분하면 다음 단계로
-            const daysPassed = (Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24);
+            // 경과 일수 계산 (테스트용으로 30배 가속)
+            const daysPassed = (Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30);
             
-            if (daysPassed >= 0.1 && plant.care >= 40 && plant.stage < plantInfo.stages.length - 1) { // 테스트용으로 0.1일로 설정
-                plant.stage++;
+            // 성장 단계 결정 (등급별 성장기간에 따라)
+            const growthProgress = Math.min(daysPassed / gradeInfo.growthDays, 1);
+            const targetStage = Math.floor(growthProgress * (plantInfo.stages.length - 1));
+            
+            if (targetStage > plant.stage && plant.care >= 20) { // 최소 돌봄 필요
+                plant.stage = targetStage;
                 showPlantSpeech(`와! 한 단계 더 자랐어요! 이제 ${plantInfo.stages[plant.stage].name}이에요!`);
+            }
+            
+            // 완전 성장 체크
+            if (daysPassed >= gradeInfo.growthDays && !plant.isFullyGrown) {
+                plant.isFullyGrown = true;
+                plant.stage = plantInfo.stages.length - 1;
+                determineFinalResult(potNumber);
                 
-                // 최종 단계에서 결과 결정
-                if (plant.stage === plantInfo.stages.length - 1) {
-                    determineFinalResult(potNumber);
-                }
+                // 수확 가능 알림
+                setTimeout(() => {
+                    showPlantSpeech(`🎉 ${gradeInfo.growthDays}일간의 성장이 완료되었어요! 이제 수확할 수 있습니다! 💰${gradeInfo.harvestAmount}원을 받을 수 있어요!`);
+                }, 1000);
             }
             
             updatePlantDisplay(potNumber);
@@ -704,9 +730,6 @@
         function updateDisplay() {
             document.getElementById('water-count').textContent = gameState.water;
             document.getElementById('money-count').textContent = gameState.money;
-            
-            // 월간 수익 리셋 체크
-            checkMonthlyReset();
             
             // 각 화분 업데이트
             [1, 2].forEach(potNumber => {
@@ -757,17 +780,43 @@
                 document.getElementById(`plant${potNumber}-care`).textContent = `돌봄 정도: ${Math.min(plant.care, 100)}%`;
                 document.getElementById(`plant${potNumber}-progress`).style.width = `${Math.min(plant.care, 100)}%`;
                 
-                // 등급 및 수익 정보 표시
+                // 등급 및 성장 정보 표시
                 const gradeDisplay = document.getElementById(`plant${potNumber}-grade`);
                 if (gradeDisplay) {
-                    gradeDisplay.innerHTML = `등급: ${gradeInfo.icon} ${gradeInfo.name} • 일일 수익: ${plant.dailyIncome || 0}원`;
+                    const daysPassed = Math.floor((Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30)); // 테스트용 30배 가속
+                    const gradeInfo = seedGrades[plant.grade];
+                    
+                    if (plant.isFullyGrown && !plant.isHarvested) {
+                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • 🎉 수확 가능! ${gradeInfo.harvestAmount}원`;
+                    } else if (plant.isHarvested) {
+                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • ✅ 수확 완료 (${gradeInfo.harvestAmount}원 획득)`;
+                    } else {
+                        gradeDisplay.innerHTML = `${gradeInfo.icon} ${gradeInfo.name} • 성장 ${daysPassed}/${gradeInfo.growthDays}일`;
+                    }
                 }
                 
-                actions.innerHTML = `
-                    <button onclick="interactWithPlant(${potNumber})" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all">
-                        💧 물주기
-                    </button>
-                `;
+                if (plant.isFullyGrown && !plant.isHarvested) {
+                    // 수확 가능
+                    actions.innerHTML = `
+                        <button onclick="harvestPlant(${potNumber})" class="px-4 py-2 bg-yellow-500 text-white rounded-lg text-sm hover:bg-yellow-600 transition-all">
+                            🌾 수확하기 (${seedGrades[plant.grade].harvestAmount}원)
+                        </button>
+                    `;
+                } else if (plant.isHarvested) {
+                    // 수확 완료
+                    actions.innerHTML = `
+                        <button onclick="removePlant(${potNumber})" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-all">
+                            🌱 새 씨앗 심기
+                        </button>
+                    `;
+                } else {
+                    // 성장 중
+                    actions.innerHTML = `
+                        <button onclick="interactWithPlant(${potNumber})" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm hover:bg-blue-600 transition-all">
+                            💧 물주기
+                        </button>
+                    `;
+                }
             }
         }
 
@@ -822,79 +871,76 @@
                         // 등급이 없으면 일반으로 설정
                         if (!plant.grade) {
                             plant.grade = 'common';
-                            plant.dailyIncome = 0;
                         }
+                        
+                        // 새로운 경제 시스템 필드 추가
+                        const gradeInfo = seedGrades[plant.grade];
+                        if (!plant.growthDays) plant.growthDays = gradeInfo.growthDays;
+                        if (!plant.harvestAmount) plant.harvestAmount = gradeInfo.harvestAmount;
+                        if (plant.isFullyGrown === undefined) plant.isFullyGrown = false;
+                        if (plant.isHarvested === undefined) plant.isHarvested = false;
+                        
                         // 마지막 학습 시간이 없으면 심은 시간으로 설정
                         if (!plant.lastStudied) {
                             plant.lastStudied = plant.plantedAt;
                         }
+                        
+                        // 기존 dailyIncome 필드 제거
+                        delete plant.dailyIncome;
                     }
                 });
                 
                 // 새로운 필드들 기본값 설정
                 if (gameState.money === undefined) gameState.money = 500;
-                if (gameState.monthlyEarnings === undefined) gameState.monthlyEarnings = 0;
-                if (gameState.lastReset === undefined) gameState.lastReset = new Date().getMonth();
+                
+                // 구형 필드 제거
+                delete gameState.monthlyEarnings;
+                delete gameState.lastReset;
             }
         }
 
-        // 월간 수익 리셋 체크
-        function checkMonthlyReset() {
-            const currentMonth = new Date().getMonth();
-            if (gameState.lastReset !== currentMonth) {
-                gameState.monthlyEarnings = 0;
-                gameState.lastReset = currentMonth;
-                showPlantSpeech('새로운 달이 시작되었어요! 월 수익이 리셋됐습니다.');
-            }
-        }
+
         
         // 등급 하락 체크 (매일 25분 학습 미완료 시)
         function checkPlantDowngrade() {
             [1, 2].forEach(potNumber => {
                 const plant = gameState.plants[potNumber];
-                if (!plant) return;
+                if (!plant || plant.isHarvested) return;
                 
                 const lastStudied = plant.lastStudied || plant.plantedAt;
-                const daysSinceStudy = (Date.now() - lastStudied) / (1000 * 60 * 60 * 24);
+                const daysSinceStudy = (Date.now() - lastStudied) / (1000 * 60 * 60 * 24 / 30); // 테스트용 30배 가속
                 
-                // 1일 이상 학습 안함
+                // 1일 이상 학습 안함 - 등급 하락
                 if (daysSinceStudy >= 1) {
-                    const currentGrade = plant.grade;
-                    const gradeKeys = Object.keys(seedGrades);
-                    const currentIndex = gradeKeys.indexOf(currentGrade);
+                    const currentGradeInfo = seedGrades[plant.grade];
                     
-                    if (currentIndex > 0) {
-                        // 한 등급 하락
-                        const newGrade = gradeKeys[currentIndex - 1];
-                        plant.grade = newGrade;
-                        plant.dailyIncome = seedGrades[newGrade].dailyIncome;
+                    // 일반 등급이 아니고 하락 가능한 경우
+                    if (currentGradeInfo.canDowngrade && currentGradeInfo.downgradeTo) {
+                        const newGrade = currentGradeInfo.downgradeTo;
+                        const newGradeInfo = seedGrades[newGrade];
                         
-                        showPlantSpeech(`${potNumber}번 화분의 식물이 관리 부족으로 ${seedGrades[newGrade].name} 등급으로 하락했어요!`);
+                        plant.grade = newGrade;
+                        plant.growthDays = newGradeInfo.growthDays;
+                        plant.harvestAmount = newGradeInfo.harvestAmount;
+                        
+                        // 성장기간이 줄어들었으므로 성장 상태 재계산
+                        const daysPassed = (Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30); // 테스트용 30배 가속
+                        if (daysPassed >= newGradeInfo.growthDays) {
+                            plant.isFullyGrown = true;
+                        }
+                        
+                        showPlantSpeech(`${potNumber}번 화분의 식물이 관리 부족으로 ${newGradeInfo.name} 등급으로 하락했어요!`);
                         updatePlantDisplay(potNumber);
+                        
+                        // 다시 학습 시간 업데이트 (연속 하락 방지)
+                        plant.lastStudied = Date.now();
+                    } else if (plant.grade === 'common') {
+                        // 일반 등급은 성장만 멈춤
+                        showPlantSpeech(`${potNumber}번 화분의 일반 식물이 성장을 멈췄어요! 학습을 완료해야 다시 자랍니다.`);
+                        plant.lastStudied = Date.now(); // 알림 후 시간 업데이트
                     }
                 }
             });
-        }
-        
-        // 일일 수익 지급
-        function giveDailyIncome() {
-            let totalIncome = 0;
-            [1, 2].forEach(potNumber => {
-                const plant = gameState.plants[potNumber];
-                if (plant && plant.dailyIncome > 0) {
-                    // 월 수익 상한 확인 (10,000원)
-                    if (gameState.monthlyEarnings < 10000) {
-                        const income = Math.min(plant.dailyIncome, 10000 - gameState.monthlyEarnings);
-                        totalIncome += income;
-                        gameState.monthlyEarnings += income;
-                    }
-                }
-            });
-            
-            if (totalIncome > 0) {
-                gameState.money += totalIncome;
-                showPlantSpeech(`오늘의 수익 ${totalIncome}원을 받았어요! (월 누적: ${gameState.monthlyEarnings}원)`);
-            }
         }
         
         // 학습 완료 시 호출되는 함수 (25분 학습 완료)
@@ -907,10 +953,50 @@
                 }
             });
             
-            // 일일 수익 지급
-            giveDailyIncome();
-            
             saveGameState();
+        }
+        
+        // 수확 기능
+        function harvestPlant(potNumber) {
+            const plant = gameState.plants[potNumber];
+            if (!plant || !plant.isFullyGrown || plant.isHarvested) return;
+            
+            const gradeInfo = seedGrades[plant.grade];
+            
+            // 돈 획득
+            gameState.money += gradeInfo.harvestAmount;
+            plant.isHarvested = true;
+            
+            // 수확 애니메이션 및 메시지
+            const potElement = document.getElementById(`pot${potNumber}`);
+            showHarvestAnimation(potElement, gradeInfo.harvestAmount);
+            
+            showPlantSpeech(`🎉 수확 완료! ${gradeInfo.harvestAmount}원을 획득했어요! 이제 새로운 씨앗을 심을 수 있습니다.`);
+            
+            updateDisplay();
+            saveGameState();
+        }
+        
+        // 식물 제거 (새 씨앗 심기 위해)
+        function removePlant(potNumber) {
+            gameState.plants[potNumber] = null;
+            updateDisplay();
+            saveGameState();
+            showPlantSpeech('화분이 비워졌어요! 새로운 씨앗을 심어보세요.');
+        }
+        
+        // 수확 애니메이션
+        function showHarvestAnimation(potElement, amount) {
+            const coin = document.createElement('div');
+            coin.innerHTML = `💰+${amount}원`;
+            coin.className = 'absolute bottom-8 left-1/2 transform -translate-x-1/2 text-lg font-bold text-yellow-600 love-heart pointer-events-none';
+            potElement.appendChild(coin);
+            
+            setTimeout(() => {
+                if (potElement.contains(coin)) {
+                    potElement.removeChild(coin);
+                }
+            }, 3000);
         }
         
         // 물 충전 (학습 완료 시 호출될 함수)
