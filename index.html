@@ -711,7 +711,64 @@
                 updateMoneyDisplay();
                 updateUserNameDisplay();
                 updateTodayProgress();
+                updateGardenMessage();
             }, 5000);
+        }
+        
+        // 정원 메시지 업데이트
+        function updateGardenMessage() {
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || {
+                plants: [null, null]
+            };
+            
+            const iconElement = document.getElementById('gardenMessageIcon');
+            const titleElement = document.getElementById('gardenMessageTitle');
+            const textElement = document.getElementById('gardenMessageText');
+            
+            // 가장 성장한 식물 찾기
+            let mostGrown = null;
+            let maxStageIndex = -1;
+            
+            const stageOrder = ['seed', 'sprout', 'stem', 'flower', 'fruit'];
+            
+            if (simpleFarmState.plants) {
+                simpleFarmState.plants.forEach(plant => {
+                    if (plant) {
+                        const stageIndex = stageOrder.indexOf(plant.stage);
+                        if (stageIndex > maxStageIndex) {
+                            maxStageIndex = stageIndex;
+                            mostGrown = plant;
+                        }
+                    }
+                });
+            }
+            
+            if (mostGrown) {
+                const emoji = getPlantEmoji(mostGrown.stage);
+                const plantName = getPlantName(mostGrown.type, mostGrown.stage);
+                
+                if (iconElement) iconElement.textContent = emoji;
+                if (titleElement) titleElement.textContent = `${plantName}이 말해요!`;
+                
+                const messageTexts = {
+                    'seed': '"따뜻하게 보살펴 주세요! 곧 싹이 날 거예요!"',
+                    'sprout': '"오늘도 함께 학습해서 물방울을 모아주세요! 저는 물을 마실 때마다 더 많은 걸 배울 수 있어요!"',
+                    'stem': '"쑥쑥 자라고 있어요! 학습하면서 더 튼튼해져요!"',
+                    'flower': '"예쁜 꽃이 피었어요! 학습 덕분이에요~ 향기를 맡아보세요!"',
+                    'fruit': '"드디어 열매가 열렸어요! 함께 키워주셔서 정말 감사해요!"'
+                };
+                
+                if (textElement) {
+                    textElement.textContent = messageTexts[mostGrown.stage] || messageTexts.sprout;
+                }
+            } else {
+                // 식물이 없는 경우 기본 메시지
+                if (iconElement) iconElement.textContent = '🌰';
+                if (titleElement) titleElement.textContent = '정원이 기다리고 있어요!';
+                if (textElement) {
+                    textElement.textContent = '"학습을 통해 물방울을 모으고, 씨앗을 심어 나만의 정원을 만들어보세요!"';
+                }
+            }
         }
     </script>
 </body>
