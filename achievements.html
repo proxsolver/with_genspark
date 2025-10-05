@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성과 및 업적 - EduPet Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        
+        .achievement-card {
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card.completed {
+            background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 100%);
+            border-color: #d97706;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .achievement-card.locked {
+            opacity: 0.6;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .achievement-progress {
+            transition: width 0.5s ease;
+        }
+        
+        .celebration {
+            animation: celebrate 1s ease-out;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            50% { transform: scale(1.15) rotate(5deg); }
+            75% { transform: scale(1.05) rotate(-2deg); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-yellow-50 to-orange-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <button onclick="goHome()" class="absolute left-4 top-6 text-2xl hover:scale-110 transition-transform">
+                🏠
+            </button>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">🏆 성과 및 업적</h1>
+            <div class="text-sm text-gray-600">
+                학습 목표를 달성하고 보상을 받으세요!
+            </div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                📊 전체 통계
+            </h2>
+            <div class="grid grid-cols-3 gap-4 text-sm">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-blue-600" id="totalCorrect">0</div>
+                    <div class="text-xs text-gray-500">총 정답 수</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-green-600" id="totalSessions">0</div>
+                    <div class="text-xs text-gray-500">학습 세션</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-yellow-600" id="completedAchievements">0</div>
+                    <div class="text-xs text-gray-500">달성 업적</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="space-y-4">
+            <h2 class="text-lg font-bold text-gray-800">🎯 업적 목록</h2>
+            
+            <div id="achievementsList">
+                <!-- Achievements will be populated here -->
+            </div>
+        </div>
+
+        <!-- Claim Rewards Button -->
+        <div class="mt-6 text-center">
+            <button id="claimRewardsBtn" onclick="claimAllRewards()" 
+                    class="w-full px-6 py-3 bg-yellow-500 text-white rounded-xl font-bold hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled>
+                🎁 모든 보상 수령 (0개)
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Achievement definitions
+        const achievements = [
+            {
+                id: 'first_quiz',
+                name: '첫걸음',
+                description: '첫 번째 퀴즈 완료하기',
+                icon: '🎯',
+                requirement: { type: 'sessions', value: 1 },
+                reward: { water: 5, money: 100 },
+                tier: 'bronze'
+            },
+            {
+                id: 'correct_10',
+                name: '학습 새싹',
+                description: '정답 10개 달성',
+                icon: '🌱',
+                requirement: { type: 'totalCorrect', value: 10 },
+                reward: { water: 10, money: 200 },
+                tier: 'bronze'
+            },
+            {
+                id: 'correct_25',
+                name: '뽑기 마스터',
+                description: '정답 25개 달성 (첫 뽑기권!)',
+                icon: '🎫',
+                requirement: { type: 'totalCorrect', value: 25 },
+                reward: { water: 15, money: 300, tickets: 1 },
+                tier: 'silver'
+            },
+            {
+                id: 'correct_50',
+                name: '지식의 빛',
+                description: '정답 50개 달성',
+                icon: '💡',
+                requirement: { type: 'totalCorrect', value: 50 },
+                reward: { water: 20, money: 500 },
+                tier: 'silver'
+            },
+            {
+                id: 'correct_100',
+                name: '학습 달인',
+                description: '정답 100개 달성',
+                icon: '🧠',
+                requirement: { type: 'totalCorrect', value: 100 },
+                reward: { water: 30, money: 1000, tickets: 2 },
+                tier: 'gold'
+            },
+            {
+                id: 'sessions_5',
+                name: '꾸준함의 힘',
+                description: '학습 세션 5회 완료',
+                icon: '⭐',
+                requirement: { type: 'sessions', value: 5 },
+                reward: { water: 25, money: 750 },
+                tier: 'silver'
+            },
+            {
+                id: 'sessions_10',
+                name: '성실한 학생',
+                description: '학습 세션 10회 완료',
+                icon: '📚',
+                requirement: { type: 'sessions', value: 10 },
+                reward: { water: 40, money: 1500, tickets: 3 },
+                tier: 'gold'
+            },
+            {
+                id: 'perfect_quiz',
+                name: '완벽주의자',
+                description: '100% 정답률 달성',
+                icon: '💎',
+                requirement: { type: 'perfectAccuracy', value: 1 },
+                reward: { water: 50, money: 2000, tickets: 5 },
+                tier: 'diamond'
+            },
+            {
+                id: 'animal_collector',
+                name: '동물 수집가',
+                description: '동물 10마리 수집',
+                icon: '🦎',
+                requirement: { type: 'animalsCollected', value: 10 },
+                reward: { water: 35, money: 1200, tickets: 2 },
+                tier: 'gold'
+            },
+            {
+                id: 'plant_protector',
+                name: '식물 수호자',
+                description: '동물로 식물 보호하기',
+                icon: '🛡️',
+                requirement: { type: 'plantsProtected', value: 1 },
+                reward: { water: 60, money: 2500, tickets: 5 },
+                tier: 'diamond'
+            }
+        ];
+
+        let userProgress = {};
+        let unclaimedRewards = [];
+
+        function loadUserProgress() {
+            // Load quiz progress
+            const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
+            
+            userProgress = {
+                totalCorrect: quizProgress.totalCorrect || 0,
+                sessions: quizProgress.sessionCount || 0,
+                perfectAccuracy: quizProgress.perfectSessions || 0,
+                animalsCollected: Object.keys(animalCollection.collection || {}).length,
+                plantsProtected: animalCollection.hallOfFame ? animalCollection.hallOfFame.length : 0
+            };
+            
+            // Load achievement states
+            const savedAchievements = JSON.parse(localStorage.getItem('achievements') || '{}');
+            userProgress.achievements = savedAchievements;
+        }
+
+        function checkAchievements() {
+            let newAchievements = [];
+            
+            achievements.forEach(achievement => {
+                const isCompleted = userProgress.achievements[achievement.id]?.completed || false;
+                const isClaimed = userProgress.achievements[achievement.id]?.claimed || false;
+                
+                if (!isCompleted) {
+                    let requirementMet = false;
+                    const req = achievement.requirement;
+                    
+                    switch (req.type) {
+                        case 'totalCorrect':
+                        case 'sessions':
+                        case 'perfectAccuracy':
+                        case 'animalsCollected':
+                        case 'plantsProtected':
+                            requirementMet = userProgress[req.type] >= req.value;
+                            break;
+                    }
+                    
+                    if (requirementMet) {
+                        // Mark as completed
+                        if (!userProgress.achievements[achievement.id]) {
+                            userProgress.achievements[achievement.id] = {};
+                        }
+                        userProgress.achievements[achievement.id].completed = true;
+                        userProgress.achievements[achievement.id].completedAt = Date.now();
+                        newAchievements.push(achievement);
+                    }
+                }
+                
+                // Check for unclaimed rewards
+                if (isCompleted && !isClaimed) {
+                    unclaimedRewards.push(achievement);
+                }
+            });
+            
+            // Save updated achievements
+            localStorage.setItem('achievements', JSON.stringify(userProgress.achievements));
+            
+            // Show celebration for new achievements
+            if (newAchievements.length > 0) {
+                showAchievementNotification(newAchievements);
+            }
+            
+            return newAchievements.length > 0;
+        }
+
+        function displayAchievements() {
+            const container = document.getElementById('achievementsList');
+            
+            container.innerHTML = achievements.map(achievement => {
+                const isCompleted = userProgress.achievements[achievement.id]?.completed || false;
+                const isClaimed = userProgress.achievements[achievement.id]?.claimed || false;
+                const progress = getAchievementProgress(achievement);
+                
+                const cardClass = isCompleted ? 'completed' : 'locked';
+                const rewardText = formatReward(achievement.reward);
+                
+                return `
+                    <div class="achievement-card ${cardClass} rounded-lg border-2 p-4 ${isCompleted && !isClaimed ? 'celebration' : ''}">
+                        <div class="flex items-start space-x-3">
+                            <div class="text-3xl">${achievement.icon}</div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="font-bold text-gray-800">${achievement.name}</div>
+                                    <div class="text-xs px-2 py-1 rounded-full ${getTierColor(achievement.tier)}">${getTierName(achievement.tier)}</div>
+                                </div>
+                                <div class="text-sm text-gray-600 mb-2">${achievement.description}</div>
+                                
+                                <!-- Progress Bar -->
+                                <div class="bg-gray-200 rounded-full h-2 mb-2">
+                                    <div class="achievement-progress bg-blue-500 h-2 rounded-full" 
+                                         style="width: ${Math.min(progress.current / progress.total * 100, 100)}%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500 mb-2">
+                                    ${progress.current}/${progress.total} ${progress.unit}
+                                </div>
+                                
+                                <!-- Reward -->
+                                <div class="text-xs ${isCompleted ? 'text-yellow-700' : 'text-gray-500'}">
+                                    🎁 보상: ${rewardText}
+                                </div>
+                                
+                                <!-- Status -->
+                                <div class="mt-2">
+                                    ${isCompleted && isClaimed ? 
+                                        '<span class="text-xs px-2 py-1 bg-green-100 text-green-600 rounded-full">✅ 수령 완료</span>' :
+                                        isCompleted && !isClaimed ?
+                                        '<span class="text-xs px-2 py-1 bg-yellow-100 text-yellow-600 rounded-full">🎁 수령 대기</span>' :
+                                        '<span class="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full">⏳ 진행 중</span>'
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getAchievementProgress(achievement) {
+            const req = achievement.requirement;
+            let current = 0;
+            let unit = '';
+            
+            switch (req.type) {
+                case 'totalCorrect':
+                    current = userProgress.totalCorrect;
+                    unit = '정답';
+                    break;
+                case 'sessions':
+                    current = userProgress.sessions;
+                    unit = '세션';
+                    break;
+                case 'perfectAccuracy':
+                    current = userProgress.perfectAccuracy;
+                    unit = '완벽한 퀴즈';
+                    break;
+                case 'animalsCollected':
+                    current = userProgress.animalsCollected;
+                    unit = '동물';
+                    break;
+                case 'plantsProtected':
+                    current = userProgress.plantsProtected;
+                    unit = '보호';
+                    break;
+            }
+            
+            return { current, total: req.value, unit };
+        }
+
+        function getTierColor(tier) {
+            const colors = {
+                bronze: 'bg-orange-100 text-orange-600',
+                silver: 'bg-gray-100 text-gray-600', 
+                gold: 'bg-yellow-100 text-yellow-600',
+                diamond: 'bg-blue-100 text-blue-600'
+            };
+            return colors[tier] || colors.bronze;
+        }
+
+        function getTierName(tier) {
+            const names = {
+                bronze: '브론즈',
+                silver: '실버',
+                gold: '골드', 
+                diamond: '다이아'
+            };
+            return names[tier] || tier;
+        }
+
+        function formatReward(reward) {
+            const parts = [];
+            if (reward.water) parts.push(`💧${reward.water}`);
+            if (reward.money) parts.push(`💰${reward.money}원`);
+            if (reward.tickets) parts.push(`🎫${reward.tickets}장`);
+            return parts.join(', ');
+        }
+
+        function updateStats() {
+            document.getElementById('totalCorrect').textContent = userProgress.totalCorrect;
+            document.getElementById('totalSessions').textContent = userProgress.sessions;
+            
+            const completedCount = achievements.filter(a => 
+                userProgress.achievements[a.id]?.completed
+            ).length;
+            document.getElementById('completedAchievements').textContent = completedCount;
+            
+            // Update claim button
+            const claimBtn = document.getElementById('claimRewardsBtn');
+            if (unclaimedRewards.length > 0) {
+                claimBtn.disabled = false;
+                claimBtn.textContent = `🎁 모든 보상 수령 (${unclaimedRewards.length}개)`;
+            } else {
+                claimBtn.disabled = true;
+                claimBtn.textContent = '🎁 수령할 보상 없음';
+            }
+        }
+
+        function claimAllRewards() {
+            if (unclaimedRewards.length === 0) return;
+            
+            let totalRewards = { water: 0, money: 0, tickets: 0 };
+            
+            unclaimedRewards.forEach(achievement => {
+                const reward = achievement.reward;
+                if (reward.water) totalRewards.water += reward.water;
+                if (reward.money) totalRewards.money += reward.money;
+                if (reward.tickets) totalRewards.tickets += reward.tickets;
+                
+                // Mark as claimed
+                userProgress.achievements[achievement.id].claimed = true;
+            });
+            
+            // Apply rewards to game state
+            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
+            farmState.water = (farmState.water || 0) + totalRewards.water;
+            farmState.money = (farmState.money || 0) + totalRewards.money;
+            localStorage.setItem('simpleFarmState', JSON.stringify(farmState));
+            
+            // Save achievement states
+            localStorage.setItem('achievements', JSON.stringify(userProgress.achievements));
+            
+            // Show reward notification
+            alert(`🎉 보상을 받았습니다!\n\n💧 물방울: ${totalRewards.water}개\n💰 돈: ${totalRewards.money}원\n🎫 뽑기권: ${totalRewards.tickets}장\n\n계속해서 목표를 달성해보세요!`);
+            
+            // Refresh display
+            unclaimedRewards = [];
+            updateStats();
+            displayAchievements();
+        }
+
+        function showAchievementNotification(newAchievements) {
+            const messages = newAchievements.map(a => `🏆 ${a.name} 달성!`).join('\n');
+            alert(`축하합니다!\n\n${messages}\n\n업적 페이지에서 보상을 받으세요!`);
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUserProgress();
+            checkAchievements();
+            updateStats();
+            displayAchievements();
+        });
+    </script>
+</body>
+</html>

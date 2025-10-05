@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPet Collection 시작하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        
+        .tutorial-slide {
+            transition: all 0.5s ease;
+            min-height: 500px;
+        }
+        
+        .slide-enter {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+        
+        .floating-icon {
+            animation: float 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.6); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Progress Bar -->
+        <div class="mb-6">
+            <div class="bg-gray-200 rounded-full h-2 mb-2">
+                <div id="progressBar" class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 16.67%"></div>
+            </div>
+            <div class="text-center text-sm text-gray-600">
+                <span id="currentStep">1</span> / 6
+            </div>
+        </div>
+
+        <!-- Tutorial Slides -->
+        <div id="tutorialContainer" class="bg-white rounded-xl shadow-lg p-6">
+            <!-- Slide 1: Welcome -->
+            <div id="slide1" class="tutorial-slide">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🌱</div>
+                    <h1 class="text-2xl font-bold text-gray-800 mb-4">EduPet Collection에<br>오신 것을 환영합니다!</h1>
+                    <div class="text-gray-600 mb-6 space-y-2">
+                        <p>학습하며 식물을 키우고</p>
+                        <p>귀여운 동물들을 수집하는</p>
+                        <p>교육 게임입니다</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <div class="text-sm text-blue-700">
+                            <div class="flex items-center justify-center space-x-2 mb-2">
+                                <span>📚</span>
+                                <span>→</span>
+                                <span>🌱</span>
+                                <span>→</span>
+                                <span>🦎</span>
+                                <span>→</span>
+                                <span>🛡️</span>
+                            </div>
+                            <div class="font-medium">학습 → 성장 → 수집 → 보호</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: Learning -->
+            <div id="slide2" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">📚</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">1단계: 학습하기</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="bg-yellow-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🎯</span>
+                                <span class="font-medium">퀴즈 풀기</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                10개 과목의 문제를 풀고<br>
+                                정답률에 따라 보상 획득!
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">💧</span>
+                                <span class="font-medium">물방울 획득</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                정답 10개당 물방울 1개<br>
+                                + 기본 3개 지급
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Farming -->
+            <div id="slide3" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🌱</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">2단계: 식물 키우기</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="bg-green-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🌰</span>
+                                <span class="font-medium">씨앗 심기</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                4가지 등급: 일반→고급→에픽→전설<br>
+                                등급이 높을수록 더 많은 보상!
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">💧</span>
+                                <span class="font-medium">물주기</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                물을 주며 교육 내용 학습<br>
+                                식물의 성장 단계별 대화
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Collection -->
+            <div id="slide4" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🦎</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">3단계: 동물 수집</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="bg-purple-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🎫</span>
+                                <span class="font-medium">뽑기권 획득</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                퀴즈 정답 25개당 뽑기권 1장<br>
+                                열심히 공부하면 더 많이!
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-gray-50 rounded p-2 text-xs text-center">
+                                <div>🔘 일반 60%</div>
+                            </div>
+                            <div class="bg-blue-50 rounded p-2 text-xs text-center">
+                                <div>🔵 레어 30%</div>
+                            </div>
+                            <div class="bg-purple-50 rounded p-2 text-xs text-center">
+                                <div>🟣 에픽 9%</div>
+                            </div>
+                            <div class="bg-yellow-50 rounded p-2 text-xs text-center">
+                                <div>🟡 전설 1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Protection -->
+            <div id="slide5" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🛡️</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">4단계: 식물 보호</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="bg-purple-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🦄</span>
+                                <span class="font-medium">에픽/전설 동물</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                특별한 동물들은 식물을<br>
+                                등급 하락으로부터 보호할 수 있어요
+                            </div>
+                        </div>
+                        <div class="bg-yellow-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🏛️</span>
+                                <span class="font-medium">명예의 전당</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                희생한 동물들은<br>
+                                영원히 기억됩니다
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Start -->
+            <div id="slide6" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🎉</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">이제 시작해보세요!</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="bg-green-50 rounded-lg p-4">
+                            <div class="text-sm text-green-700 space-y-1">
+                                <div class="font-medium mb-2">🎁 시작 보너스</div>
+                                <div>💰 초기 자금: 500원</div>
+                                <div>💧 물방울: 12개</div>
+                                <div>🌰 무료 씨앗 1개</div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            언제든지 도움이 필요하면<br>
+                            각 페이지의 안내를 확인하세요!
+                        </div>
+                    </div>
+                    <button onclick="completeOnboarding()" class="w-full px-6 py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600 transition-colors pulse-glow">
+                        🚀 EduPet 세계로 출발!
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex justify-between mt-6">
+            <button id="prevBtn" onclick="prevSlide()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                ← 이전
+            </button>
+            <button id="skipBtn" onclick="completeOnboarding()" class="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors">
+                건너뛰기
+            </button>
+            <button id="nextBtn" onclick="nextSlide()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                다음 →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+
+        function updateUI() {
+            // Hide all slides
+            for (let i = 1; i <= totalSlides; i++) {
+                document.getElementById(`slide${i}`).classList.add('hidden');
+            }
+            
+            // Show current slide with animation
+            const currentSlideEl = document.getElementById(`slide${currentSlide}`);
+            currentSlideEl.classList.remove('hidden');
+            currentSlideEl.classList.add('slide-enter');
+            
+            setTimeout(() => {
+                currentSlideEl.classList.remove('slide-enter');
+            }, 500);
+            
+            // Update progress
+            document.getElementById('progressBar').style.width = `${(currentSlide / totalSlides) * 100}%`;
+            document.getElementById('currentStep').textContent = currentSlide;
+            
+            // Update buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentSlide === totalSlides) {
+                nextBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateUI();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateUI();
+            }
+        }
+
+        function completeOnboarding() {
+            // Mark onboarding as completed
+            localStorage.setItem('eduPetOnboardingCompleted', 'true');
+            
+            // Grant starter bonuses
+            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
+            simpleFarmState.money = 500;
+            simpleFarmState.water = 12;
+            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
+            
+            // Show completion message
+            alert('🎉 EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 500원\n💧 물방울 12개\n\n이제 첫 번째 퀴즈를 풀어보세요!');
+            
+            // Redirect to main page
+            window.location.href = 'index.html';
+        }
+
+        // Check if user has already completed onboarding
+        function checkOnboarding() {
+            if (localStorage.getItem('eduPetOnboardingCompleted') === 'true') {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'Escape') completeOnboarding();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkOnboarding();
+            updateUI();
+        });
+    </script>
+</body>
+</html>

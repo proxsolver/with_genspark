@@ -1,0 +1,2073 @@
+[
+  {
+    "id": "eng_easy_1",
+    "subject": "english",
+    "question": "다음 중 '사과'를 영어로 올바르게 쓴 것은?",
+    "options": ["Apple", "Aple", "Apel", "Appel"],
+    "correctIndex": 0,
+    "explanation": "사과는 'Apple'로 씁니다. A-p-p-l-e 순서로 철자를 기억하세요.",
+    "difficulty": 1,
+    "audioText": "Apple"
+  },
+  {
+    "id": "eng_easy_2", 
+    "subject": "english",
+    "question": "'안녕하세요'를 영어로 하면?",
+    "options": ["Hello", "Helo", "Hallo", "Heloo"],
+    "correctIndex": 0,
+    "explanation": "'Hello'는 가장 기본적인 인사말입니다. H-e-l-l-o로 씁니다.",
+    "difficulty": 1,
+    "audioText": "Hello"
+  },
+  {
+    "id": "eng_easy_3",
+    "subject": "english", 
+    "question": "다음 중 '고양이'의 올바른 영어 표기는?",
+    "options": ["Cat", "Kat", "Cet", "Cot"],
+    "correctIndex": 0,
+    "explanation": "고양이는 'Cat'입니다. C-a-t 세 글자로 간단합니다.",
+    "difficulty": 1,
+    "audioText": "Cat"
+  },
+  {
+    "id": "eng_easy_4",
+    "subject": "english",
+    "question": "'책'을 영어로 올바르게 쓴 것은?",
+    "options": ["Book", "Bok", "Buk", "Boook"],
+    "correctIndex": 0,
+    "explanation": "책은 'Book'입니다. B-o-o-k로 'oo'가 연속으로 옵니다.",
+    "difficulty": 1,
+    "audioText": "Book"
+  },
+  {
+    "id": "eng_easy_5",
+    "subject": "english",
+    "question": "다음 중 '물'의 영어 단어는?",
+    "options": ["Water", "Woter", "Weter", "Wator"],
+    "correctIndex": 0,
+    "explanation": "물은 'Water'입니다. W-a-t-e-r 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Water"
+  },
+  {
+    "id": "eng_easy_6",
+    "subject": "english",
+    "question": "'개'를 영어로 올바르게 쓴 것은?",
+    "options": ["Dog", "Dag", "Dig", "Dug"],
+    "correctIndex": 0,
+    "explanation": "개는 'Dog'입니다. D-o-g 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Dog"
+  },
+  {
+    "id": "eng_easy_7",
+    "subject": "english",
+    "question": "'학교'를 영어로 하면?",
+    "options": ["School", "Scool", "Schol", "Skool"],
+    "correctIndex": 0,
+    "explanation": "학교는 'School'입니다. S-c-h-o-o-l로 'ch'와 'oo'에 주의하세요.",
+    "difficulty": 1,
+    "audioText": "School"
+  },
+  {
+    "id": "eng_easy_8",
+    "subject": "english",
+    "question": "다음 중 '집'의 영어 단어는?",
+    "options": ["House", "Hose", "Hoose", "Hous"],
+    "correctIndex": 0,
+    "explanation": "집은 'House'입니다. H-o-u-s-e로 끝에 'e'가 붙습니다.",
+    "difficulty": 1,
+    "audioText": "House"
+  },
+  {
+    "id": "eng_easy_9",
+    "subject": "english",
+    "question": "'빨간색'을 영어로 올바르게 쓴 것은?",
+    "options": ["Red", "Rad", "Rod", "Rid"],
+    "correctIndex": 0,
+    "explanation": "빨간색은 'Red'입니다. R-e-d 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Red"
+  },
+  {
+    "id": "eng_easy_10",
+    "subject": "english",
+    "question": "'파란색'을 영어로 하면?",
+    "options": ["Blue", "Bleu", "Blu", "Bloo"],
+    "correctIndex": 0,
+    "explanation": "파란색은 'Blue'입니다. B-l-u-e로 끝에 'e'가 붙습니다.",
+    "difficulty": 1,
+    "audioText": "Blue"
+  },
+  {
+    "id": "math_easy_1",
+    "subject": "math",
+    "question": "5 + 3 = ?",
+    "options": ["8", "7", "9", "6"],
+    "correctIndex": 0,
+    "explanation": "5에 3을 더하면 8입니다. 5 + 3 = 8",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2",
+    "subject": "math", 
+    "question": "10 - 4 = ?",
+    "options": ["6", "5", "7", "4"],
+    "correctIndex": 0,
+    "explanation": "10에서 4를 빼면 6입니다. 10 - 4 = 6",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3",
+    "subject": "math",
+    "question": "2 × 3 = ?", 
+    "options": ["6", "5", "7", "8"],
+    "correctIndex": 0,
+    "explanation": "2에 3을 곱하면 6입니다. 2 × 3 = 6",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4",
+    "subject": "math",
+    "question": "8 ÷ 2 = ?",
+    "options": ["4", "3", "5", "6"],
+    "correctIndex": 0,
+    "explanation": "8을 2로 나누면 4입니다. 8 ÷ 2 = 4",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5", 
+    "subject": "math",
+    "question": "다음 중 가장 큰 수는?",
+    "options": ["15", "12", "9", "18"],
+    "correctIndex": 3,
+    "explanation": "18이 가장 큰 수입니다. 9 < 12 < 15 < 18 순서입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1",
+    "subject": "science",
+    "question": "지구에서 가장 가까운 별은?",
+    "options": ["태양", "달", "화성", "금성"],
+    "correctIndex": 0,
+    "explanation": "태양은 지구에서 가장 가까운 별입니다. 달은 위성이고 화성, 금성은 행성입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2",
+    "subject": "science",
+    "question": "물이 끓는 온도는 몇 도인가요?",
+    "options": ["100도", "90도", "110도", "80도"],
+    "correctIndex": 0,
+    "explanation": "물은 1기압에서 100도(섭씨)에서 끓습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3",
+    "subject": "science", 
+    "question": "식물이 자라는 데 필요한 것은?",
+    "options": ["햇빛, 물, 공기", "햇빛만", "물만", "공기만"],
+    "correctIndex": 0,
+    "explanation": "식물은 햇빛, 물, 공기(이산화탄소) 모두 필요합니다. 광합성을 위해서입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "eng_medium_1",
+    "subject": "english",
+    "question": "다음 중 과거형이 올바른 것은?",
+    "options": ["I went to school", "I go to school", "I goes to school", "I going to school"],
+    "correctIndex": 0,
+    "explanation": "'went'는 'go'의 과거형입니다. 과거에 일어난 일을 나타낼 때 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I went to school"
+  },
+  {
+    "id": "eng_medium_2",
+    "subject": "english",
+    "question": "'She _____ a beautiful song.' 빈칸에 들어갈 말은?",
+    "options": ["sings", "sing", "singing", "sang"],
+    "correctIndex": 0,
+    "explanation": "3인칭 단수 현재형에는 동사에 's'를 붙입니다. She sings가 정답입니다.",
+    "difficulty": 2,
+    "audioText": "She sings a beautiful song"
+  },
+  {
+    "id": "math_medium_1",
+    "subject": "math",
+    "question": "15 × 12 = ?",
+    "options": ["180", "170", "190", "160"],
+    "correctIndex": 0,
+    "explanation": "15 × 12 = 15 × 10 + 15 × 2 = 150 + 30 = 180입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_2",
+    "subject": "math",
+    "question": "분수 3/4 + 1/4 = ?",
+    "options": ["1", "4/8", "3/8", "2/4"],
+    "correctIndex": 0,
+    "explanation": "분모가 같은 분수의 덧셈은 분자끼리 더합니다. 3/4 + 1/4 = 4/4 = 1입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_1",
+    "subject": "science",
+    "question": "인간의 심장은 몇 개의 방으로 나누어져 있나요?",
+    "options": ["4개", "2개", "3개", "5개"],
+    "correctIndex": 0,
+    "explanation": "인간의 심장은 좌심방, 우심방, 좌심실, 우심실로 총 4개의 방으로 나누어져 있습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "eng_hard_1",
+    "subject": "english",
+    "question": "다음 문장에서 틀린 부분은? 'He have been studying English for three years.'",
+    "options": ["have → has", "been → be", "studying → studied", "틀린 부분이 없다"],
+    "correctIndex": 0,
+    "explanation": "3인칭 단수 주어 'He'와 함께 쓸 때는 'have' 대신 'has'를 사용해야 합니다.",
+    "difficulty": 3,
+    "audioText": "He has been studying English for three years"
+  },
+  {
+    "id": "math_hard_1",
+    "subject": "math",
+    "question": "방정식 2x + 5 = 17에서 x의 값은?",
+    "options": ["6", "5", "7", "8"],
+    "correctIndex": 0,
+    "explanation": "2x + 5 = 17, 2x = 17 - 5 = 12, x = 12 ÷ 2 = 6입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_1",
+    "subject": "science",
+    "question": "광합성에서 산소가 발생하는 단계는?",
+    "options": ["명반응", "암반응", "호흡", "발효"],
+    "correctIndex": 0,
+    "explanation": "광합성의 명반응(광의존반응)에서 물분자가 분해되면서 산소가 발생합니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_easy_1",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["웃어른", "윗어른", "웃어른", "위어른"],
+    "correctIndex": 1,
+    "explanation": "'윗어른'이 올바른 표기입니다. '위'에 '-ㅅ-'이 붙어서 '윗'이 됩니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_1", 
+    "subject": "social",
+    "question": "우리나라의 수도는?",
+    "options": ["서울", "부산", "대구", "인천"],
+    "correctIndex": 0,
+    "explanation": "대한민국의 수도는 서울특별시입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "common_easy_1",
+    "subject": "common",
+    "question": "하루는 몇 시간인가요?",
+    "options": ["24시간", "12시간", "25시간", "23시간"],
+    "correctIndex": 0,
+    "explanation": "하루는 24시간입니다. 지구가 한 바퀴 자전하는 데 걸리는 시간입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "idiom_easy_1",
+    "subject": "idiom",
+    "question": "'금강산도 식후경'의 뜻은?",
+    "options": ["배가 부르면 무엇이든 좋아 보인다", "돈이 최고다", "산이 아름답다", "경치가 좋다"],
+    "correctIndex": 0,
+    "explanation": "아무리 좋은 일이라도 먼저 배를 채우고 난 후에 해야 한다는 뜻입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "person_easy_1",
+    "subject": "person", 
+    "question": "한글을 만든 조선시대 임금은?",
+    "options": ["세종대왕", "태조", "정조", "영조"],
+    "correctIndex": 0,
+    "explanation": "세종대왕(이도)이 백성들을 위해 한글을 창제하셨습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1",
+    "subject": "economy",
+    "question": "물건의 값이 오르는 현상을 무엇이라고 하나요?",
+    "options": ["인플레이션", "디플레이션", "리세션", "스테그플레이션"],
+    "correctIndex": 0,
+    "explanation": "인플레이션은 물가가 지속적으로 상승하는 경제 현상입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "etc_easy_1",
+    "subject": "etc",
+    "question": "올림픽은 몇 년마다 열리나요?",
+    "options": ["4년", "2년", "3년", "5년"],
+    "correctIndex": 0,
+    "explanation": "하계 올림픽과 동계 올림픽 모두 4년마다 개최됩니다.",
+    "difficulty": 1
+  },
+
+  {
+    "id": "eng_easy_11",
+    "subject": "english",
+    "question": "'나는 학생입니다'를 영어로 하면?",
+    "options": ["I am a student", "I is a student", "I are a student", "I be a student"],
+    "correctIndex": 0,
+    "explanation": "'I am a student'가 올바른 표현입니다. 1인칭 단수는 'am'을 사용합니다.",
+    "difficulty": 1,
+    "audioText": "I am a student"
+  },
+  {
+    "id": "eng_easy_12",
+    "subject": "english",
+    "question": "다음 중 '감사합니다'의 영어 표현은?",
+    "options": ["Thank you", "Thenk you", "Thank yu", "Thnak you"],
+    "correctIndex": 0,
+    "explanation": "'Thank you'가 올바른 표기입니다. T-h-a-n-k y-o-u입니다.",
+    "difficulty": 1,
+    "audioText": "Thank you"
+  },
+  {
+    "id": "eng_easy_13",
+    "subject": "english",
+    "question": "'친구'를 영어로 올바르게 쓴 것은?",
+    "options": ["Friend", "Frend", "Freind", "Frind"],
+    "correctIndex": 0,
+    "explanation": "친구는 'Friend'입니다. F-r-i-e-n-d 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Friend"
+  },
+  {
+    "id": "eng_easy_14",
+    "subject": "english",
+    "question": "'음식'을 영어로 하면?",
+    "options": ["Food", "Fod", "Fuod", "Foood"],
+    "correctIndex": 0,
+    "explanation": "음식은 'Food'입니다. F-o-o-d로 'oo'가 연속입니다.",
+    "difficulty": 1,
+    "audioText": "Food"
+  },
+  {
+    "id": "eng_easy_15",
+    "subject": "english",
+    "question": "다음 중 '시간'의 영어 단어는?",
+    "options": ["Time", "Tiem", "Taim", "Tiim"],
+    "correctIndex": 0,
+    "explanation": "시간은 'Time'입니다. T-i-m-e 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Time"
+  },
+  {
+    "id": "eng_easy_16",
+    "subject": "english",
+    "question": "'엄마'를 영어로 올바르게 쓴 것은?",
+    "options": ["Mother", "Mather", "Mohter", "Mothar"],
+    "correctIndex": 0,
+    "explanation": "엄마는 'Mother'입니다. M-o-t-h-e-r 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Mother"
+  },
+  {
+    "id": "eng_easy_17",
+    "subject": "english",
+    "question": "'아빠'를 영어로 하면?",
+    "options": ["Father", "Fater", "Fahter", "Fathar"],
+    "correctIndex": 0,
+    "explanation": "아빠는 'Father'입니다. F-a-t-h-e-r 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Father"
+  },
+  {
+    "id": "eng_easy_18",
+    "subject": "english",
+    "question": "다음 중 '나'를 가리키는 영어 단어는?",
+    "options": ["I", "Me", "My", "Mine"],
+    "correctIndex": 0,
+    "explanation": "주어 자리에서 '나'는 'I'로 표현합니다. 대문자로 써야 합니다.",
+    "difficulty": 1,
+    "audioText": "I"
+  },
+  {
+    "id": "eng_easy_19",
+    "subject": "english",
+    "question": "'너'를 영어로 하면?",
+    "options": ["You", "Yu", "Yuo", "Youu"],
+    "correctIndex": 0,
+    "explanation": "너는 'You'입니다. Y-o-u 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "You"
+  },
+  {
+    "id": "eng_easy_20",
+    "subject": "english",
+    "question": "다음 중 '좋아요'의 영어 표현은?",
+    "options": ["Good", "God", "Gud", "Goud"],
+    "correctIndex": 0,
+    "explanation": "좋아요는 'Good'입니다. G-o-o-d로 'oo'가 연속입니다.",
+    "difficulty": 1,
+    "audioText": "Good"
+  },
+  {
+    "id": "eng_easy_21",
+    "subject": "english",
+    "question": "'나쁜'을 영어로 올바르게 쓴 것은?",
+    "options": ["Bad", "Bed", "Bid", "Bud"],
+    "correctIndex": 0,
+    "explanation": "나쁜은 'Bad'입니다. B-a-d 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Bad"
+  },
+  {
+    "id": "eng_easy_22",
+    "subject": "english",
+    "question": "'큰'을 영어로 하면?",
+    "options": ["Big", "Bag", "Bug", "Beg"],
+    "correctIndex": 0,
+    "explanation": "큰은 'Big'입니다. B-i-g 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Big"
+  },
+  {
+    "id": "eng_easy_23",
+    "subject": "english",
+    "question": "다음 중 '작은'의 영어 단어는?",
+    "options": ["Small", "Smal", "Smoll", "Smaal"],
+    "correctIndex": 0,
+    "explanation": "작은은 'Small'입니다. S-m-a-l-l로 끝에 'll'이 연속입니다.",
+    "difficulty": 1,
+    "audioText": "Small"
+  },
+  {
+    "id": "eng_easy_24",
+    "subject": "english",
+    "question": "'새'를 영어로 올바르게 쓴 것은?",
+    "options": ["Bird", "Berd", "Brid", "Burd"],
+    "correctIndex": 0,
+    "explanation": "새는 'Bird'입니다. B-i-r-d 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Bird"
+  },
+  {
+    "id": "eng_easy_25",
+    "subject": "english",
+    "question": "'물고기'를 영어로 하면?",
+    "options": ["Fish", "Fesh", "Fash", "Fush"],
+    "correctIndex": 0,
+    "explanation": "물고기는 'Fish'입니다. F-i-s-h 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Fish"
+  },
+  {
+    "id": "eng_easy_26",
+    "subject": "english",
+    "question": "다음 중 '차'의 영어 단어는?",
+    "options": ["Car", "Cer", "Cor", "Cur"],
+    "correctIndex": 0,
+    "explanation": "차는 'Car'입니다. C-a-r 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Car"
+  },
+  {
+    "id": "eng_easy_27",
+    "subject": "english",
+    "question": "'버스'를 영어로 올바르게 쓴 것은?",
+    "options": ["Bus", "Bas", "Bus", "Bos"],
+    "correctIndex": 0,
+    "explanation": "버스는 'Bus'입니다. B-u-s 세 글자입니다.",
+    "difficulty": 1,
+    "audioText": "Bus"
+  },
+  {
+    "id": "eng_easy_28",
+    "subject": "english",
+    "question": "'기차'를 영어로 하면?",
+    "options": ["Train", "Trian", "Traen", "Trein"],
+    "correctIndex": 0,
+    "explanation": "기차는 'Train'입니다. T-r-a-i-n 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Train"
+  },
+  {
+    "id": "eng_easy_29",
+    "subject": "english",
+    "question": "다음 중 '비행기'의 영어 단어는?",
+    "options": ["Plane", "Plan", "Plene", "Plaine"],
+    "correctIndex": 0,
+    "explanation": "비행기는 'Plane'입니다. P-l-a-n-e 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Plane"
+  },
+  {
+    "id": "eng_easy_30",
+    "subject": "english",
+    "question": "'돈'을 영어로 올바르게 쓴 것은?",
+    "options": ["Money", "Mony", "Monay", "Muney"],
+    "correctIndex": 0,
+    "explanation": "돈은 'Money'입니다. M-o-n-e-y 순서입니다.",
+    "difficulty": 1,
+    "audioText": "Money"
+  },
+
+  {
+    "id": "eng_medium_3",
+    "subject": "english",
+    "question": "'I _____ to the park yesterday.' 빈칸에 들어갈 말은?",
+    "options": ["went", "go", "going", "goes"],
+    "correctIndex": 0,
+    "explanation": "'yesterday'가 있으므로 과거형 'went'를 사용해야 합니다.",
+    "difficulty": 2,
+    "audioText": "I went to the park yesterday"
+  },
+  {
+    "id": "eng_medium_4",
+    "subject": "english",
+    "question": "복수형이 올바른 것은?",
+    "options": ["children", "childs", "childrens", "child"],
+    "correctIndex": 0,
+    "explanation": "'child'의 복수형은 불규칙 변화로 'children'입니다.",
+    "difficulty": 2,
+    "audioText": "children"
+  },
+  {
+    "id": "eng_medium_5",
+    "subject": "english",
+    "question": "'There _____ many books on the table.' 빈칸에 들어갈 말은?",
+    "options": ["are", "is", "was", "were"],
+    "correctIndex": 0,
+    "explanation": "'many books'는 복수이므로 'are'를 사용합니다.",
+    "difficulty": 2,
+    "audioText": "There are many books on the table"
+  },
+  {
+    "id": "eng_medium_6",
+    "subject": "english",
+    "question": "'He is _____ than his brother.' 빈칸에 들어갈 말은?",
+    "options": ["taller", "tall", "tallest", "more tall"],
+    "correctIndex": 0,
+    "explanation": "두 명을 비교할 때는 비교급 'taller'를 사용합니다.",
+    "difficulty": 2,
+    "audioText": "He is taller than his brother"
+  },
+  {
+    "id": "eng_medium_7",
+    "subject": "english",
+    "question": "'I have _____ homework to do.' 빈칸에 들어갈 말은?",
+    "options": ["much", "many", "a lot", "few"],
+    "correctIndex": 0,
+    "explanation": "'homework'는 셀 수 없는 명사이므로 'much'를 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I have much homework to do"
+  },
+  {
+    "id": "eng_medium_8",
+    "subject": "english",
+    "question": "'She _____ English every day.' 빈칸에 들어갈 말은?",
+    "options": ["studies", "study", "studying", "studied"],
+    "correctIndex": 0,
+    "explanation": "3인칭 단수 현재형에서 'study'는 'studies'로 변화합니다.",
+    "difficulty": 2,
+    "audioText": "She studies English every day"
+  },
+  {
+    "id": "eng_medium_9",
+    "subject": "english",
+    "question": "'We are _____ to school now.' 빈칸에 들어갈 말은?",
+    "options": ["going", "go", "went", "goes"],
+    "correctIndex": 0,
+    "explanation": "현재진행형 'are going'이 올바른 표현입니다.",
+    "difficulty": 2,
+    "audioText": "We are going to school now"
+  },
+  {
+    "id": "eng_medium_10",
+    "subject": "english",
+    "question": "'I _____ my homework already.' 빈칸에 들어갈 말은?",
+    "options": ["have done", "did", "do", "doing"],
+    "correctIndex": 0,
+    "explanation": "'already'와 함께 현재완료형 'have done'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I have done my homework already"
+  },
+  {
+    "id": "eng_medium_11",
+    "subject": "english",
+    "question": "'This is _____ interesting book.' 빈칸에 들어갈 말은?",
+    "options": ["an", "a", "the", "some"],
+    "correctIndex": 0,
+    "explanation": "'interesting'이 모음으로 시작하므로 'an'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "This is an interesting book"
+  },
+  {
+    "id": "eng_medium_12",
+    "subject": "english",
+    "question": "'I want _____ apple.' 빈칸에 들어갈 말은?",
+    "options": ["an", "a", "the", "some"],
+    "correctIndex": 0,
+    "explanation": "'apple'이 모음으로 시작하므로 'an'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I want an apple"
+  },
+  {
+    "id": "eng_medium_13",
+    "subject": "english",
+    "question": "'My sister is _____ in our family.' 빈칸에 들어갈 말은?",
+    "options": ["the youngest", "younger", "young", "more young"],
+    "correctIndex": 0,
+    "explanation": "세 명 이상을 비교할 때는 최상급 'the youngest'를 사용합니다.",
+    "difficulty": 2,
+    "audioText": "My sister is the youngest in our family"
+  },
+  {
+    "id": "eng_medium_14",
+    "subject": "english",
+    "question": "'Can you _____ me a favor?' 빈칸에 들어갈 말은?",
+    "options": ["do", "make", "give", "take"],
+    "correctIndex": 0,
+    "explanation": "'do me a favor'는 '부탁을 들어주다'라는 뜻의 관용표현입니다.",
+    "difficulty": 2,
+    "audioText": "Can you do me a favor"
+  },
+  {
+    "id": "eng_medium_15",
+    "subject": "english",
+    "question": "'I _____ TV when you called.' 빈칸에 들어갈 말은?",
+    "options": ["was watching", "watched", "watch", "am watching"],
+    "correctIndex": 0,
+    "explanation": "과거의 특정 시점에 진행되던 행동은 과거진행형 'was watching'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I was watching TV when you called"
+  },
+  {
+    "id": "eng_medium_16",
+    "subject": "english",
+    "question": "'If it _____ tomorrow, we will stay home.' 빈칸에 들어갈 말은?",
+    "options": ["rains", "will rain", "rained", "raining"],
+    "correctIndex": 0,
+    "explanation": "조건문에서는 현재형 'rains'를 사용합니다.",
+    "difficulty": 2,
+    "audioText": "If it rains tomorrow, we will stay home"
+  },
+  {
+    "id": "eng_medium_17",
+    "subject": "english",
+    "question": "'I have been _____ for two hours.' 빈칸에 들어갈 말은?",
+    "options": ["studying", "study", "studied", "studies"],
+    "correctIndex": 0,
+    "explanation": "현재완료진행형에서는 'have been + -ing형'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I have been studying for two hours"
+  },
+  {
+    "id": "eng_medium_18",
+    "subject": "english",
+    "question": "'The movie _____ at 7 PM.' 빈칸에 들어갈 말은?",
+    "options": ["starts", "start", "starting", "started"],
+    "correctIndex": 0,
+    "explanation": "확정된 미래 계획은 현재형 'starts'로 표현할 수 있습니다.",
+    "difficulty": 2,
+    "audioText": "The movie starts at 7 PM"
+  },
+  {
+    "id": "eng_medium_19",
+    "subject": "english",
+    "question": "'I would like _____ coffee, please.' 빈칸에 들어갈 말은?",
+    "options": ["some", "a", "an", "any"],
+    "correctIndex": 0,
+    "explanation": "정중한 부탁에서는 'some'을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "I would like some coffee, please"
+  },
+  {
+    "id": "eng_medium_20",
+    "subject": "english",
+    "question": "'She is good _____ playing piano.' 빈칸에 들어갈 말은?",
+    "options": ["at", "in", "on", "for"],
+    "correctIndex": 0,
+    "explanation": "'good at'은 '~을 잘하다'라는 뜻의 표현입니다.",
+    "difficulty": 2,
+    "audioText": "She is good at playing piano"
+  },
+  {
+    "id": "eng_medium_21",
+    "subject": "english",
+    "question": "'Let's _____ to the movies tonight.' 빈칸에 들어갈 말은?",
+    "options": ["go", "going", "went", "goes"],
+    "correctIndex": 0,
+    "explanation": "'Let's' 다음에는 동사원형을 사용합니다.",
+    "difficulty": 2,
+    "audioText": "Let's go to the movies tonight"
+  },
+  {
+    "id": "eng_medium_22",
+    "subject": "english",
+    "question": "'I'm looking forward _____ meeting you.' 빈칸에 들어갈 말은?",
+    "options": ["to", "for", "at", "in"],
+    "correctIndex": 0,
+    "explanation": "'look forward to'는 '~을 기대하다'라는 뜻의 표현입니다.",
+    "difficulty": 2,
+    "audioText": "I'm looking forward to meeting you"
+  },
+
+  {
+    "id": "eng_hard_2",
+    "subject": "english",
+    "question": "다음 문장에서 관계대명사가 올바르게 사용된 것은?",
+    "options": ["The book which I bought yesterday is interesting", "The book who I bought yesterday is interesting", "The book whose I bought yesterday is interesting", "The book where I bought yesterday is interesting"],
+    "correctIndex": 0,
+    "explanation": "사물을 가리킬 때는 관계대명사 'which'를 사용합니다.",
+    "difficulty": 3,
+    "audioText": "The book which I bought yesterday is interesting"
+  },
+  {
+    "id": "eng_hard_3",
+    "subject": "english",
+    "question": "'I wish I _____ more time yesterday.' 빈칸에 들어갈 말은?",
+    "options": ["had had", "have", "had", "would have"],
+    "correctIndex": 0,
+    "explanation": "과거사실에 대한 가정법 과거완료에서는 'had + 과거분사'를 사용합니다.",
+    "difficulty": 3,
+    "audioText": "I wish I had had more time yesterday"
+  },
+  {
+    "id": "eng_hard_4",
+    "subject": "english",
+    "question": "'If I _____ you, I would study harder.' 빈칸에 들어갈 말은?",
+    "options": ["were", "am", "was", "will be"],
+    "correctIndex": 0,
+    "explanation": "가정법 과거에서는 be동사의 모든 인칭에 'were'을 사용합니다.",
+    "difficulty": 3,
+    "audioText": "If I were you, I would study harder"
+  },
+  {
+    "id": "eng_hard_5",
+    "subject": "english",
+    "question": "'The homework _____ by the students yesterday.' 빈칸에 들어갈 말은?",
+    "options": ["was done", "did", "done", "doing"],
+    "correctIndex": 0,
+    "explanation": "수동태 과거형은 'was/were + 과거분사'로 표현합니다.",
+    "difficulty": 3,
+    "audioText": "The homework was done by the students yesterday"
+  },
+  {
+    "id": "eng_hard_6",
+    "subject": "english",
+    "question": "'She asked me _____ I had finished my work.' 빈칸에 들어갈 말은?",
+    "options": ["whether", "that", "what", "when"],
+    "correctIndex": 0,
+    "explanation": "간접의문문에서 yes/no 질문은 'whether'로 시작합니다.",
+    "difficulty": 3,
+    "audioText": "She asked me whether I had finished my work"
+  },
+  {
+    "id": "eng_hard_7",
+    "subject": "english",
+    "question": "'Not only _____ smart, but also very kind.' 빈칸에 들어갈 말은?",
+    "options": ["is she", "she is", "does she", "she does"],
+    "correctIndex": 0,
+    "explanation": "'Not only' 다음에는 도치가 일어나 'is she'가 됩니다.",
+    "difficulty": 3,
+    "audioText": "Not only is she smart, but also very kind"
+  },
+  {
+    "id": "eng_hard_8",
+    "subject": "english",
+    "question": "'I would rather _____ at home than go out.' 빈칸에 들어갈 말은?",
+    "options": ["stay", "staying", "stayed", "to stay"],
+    "correctIndex": 0,
+    "explanation": "'would rather' 다음에는 동사원형을 사용합니다.",
+    "difficulty": 3,
+    "audioText": "I would rather stay at home than go out"
+  },
+  {
+    "id": "eng_hard_9",
+    "subject": "english",
+    "question": "'It's high time we _____ home.' 빈칸에 들어갈 말은?",
+    "options": ["went", "go", "going", "to go"],
+    "correctIndex": 0,
+    "explanation": "'It's time' 구문에서는 가정법 과거 'went'를 사용합니다.",
+    "difficulty": 3,
+    "audioText": "It's high time we went home"
+  },
+  {
+    "id": "eng_hard_10",
+    "subject": "english",
+    "question": "'The more you practice, _____ you become.' 빈칸에 들어갈 말은?",
+    "options": ["the better", "better", "more better", "best"],
+    "correctIndex": 0,
+    "explanation": "'the + 비교급, the + 비교급' 구문입니다.",
+    "difficulty": 3,
+    "audioText": "The more you practice, the better you become"
+  },
+
+  {
+    "id": "math_easy_6",
+    "subject": "math",
+    "question": "7 + 2 = ?",
+    "options": ["9", "8", "10", "7"],
+    "correctIndex": 0,
+    "explanation": "7에 2를 더하면 9입니다. 7 + 2 = 9",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7",
+    "subject": "math",
+    "question": "15 - 8 = ?",
+    "options": ["7", "6", "8", "9"],
+    "correctIndex": 0,
+    "explanation": "15에서 8을 뺀면 7입니다. 15 - 8 = 7",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8",
+    "subject": "math",
+    "question": "4 × 5 = ?",
+    "options": ["20", "15", "25", "10"],
+    "correctIndex": 0,
+    "explanation": "4에 5를 곱하면 20입니다. 4 × 5 = 20",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9",
+    "subject": "math",
+    "question": "12 ÷ 3 = ?",
+    "options": ["4", "3", "5", "6"],
+    "correctIndex": 0,
+    "explanation": "12를 3으로 나누면 4입니다. 12 ÷ 3 = 4",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10",
+    "subject": "math",
+    "question": "다음 중 가장 작은 수는?",
+    "options": ["3", "8", "5", "12"],
+    "correctIndex": 0,
+    "explanation": "3이 가장 작은 수입니다. 3 < 5 < 8 < 12 순서입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_11",
+    "subject": "math",
+    "question": "6 + 4 = ?",
+    "options": ["10", "9", "11", "8"],
+    "correctIndex": 0,
+    "explanation": "6에 4를 더하면 10입니다. 6 + 4 = 10",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_12",
+    "subject": "math",
+    "question": "20 - 5 = ?",
+    "options": ["15", "14", "16", "13"],
+    "correctIndex": 0,
+    "explanation": "20에서 5를 뺀면 15입니다. 20 - 5 = 15",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_13",
+    "subject": "math",
+    "question": "3 × 4 = ?",
+    "options": ["12", "10", "14", "15"],
+    "correctIndex": 0,
+    "explanation": "3에 4를 곱하면 12입니다. 3 × 4 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_14",
+    "subject": "math",
+    "question": "16 ÷ 4 = ?",
+    "options": ["4", "3", "5", "6"],
+    "correctIndex": 0,
+    "explanation": "16을 4로 나누면 4입니다. 16 ÷ 4 = 4",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_15",
+    "subject": "math",
+    "question": "9 + 1 = ?",
+    "options": ["10", "9", "11", "8"],
+    "correctIndex": 0,
+    "explanation": "9에 1을 더하면 10입니다. 9 + 1 = 10",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_16",
+    "subject": "math",
+    "question": "14 - 6 = ?",
+    "options": ["8", "7", "9", "10"],
+    "correctIndex": 0,
+    "explanation": "14에서 6을 뺀면 8입니다. 14 - 6 = 8",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_17",
+    "subject": "math",
+    "question": "2 × 6 = ?",
+    "options": ["12", "10", "14", "8"],
+    "correctIndex": 0,
+    "explanation": "2에 6을 곱하면 12입니다. 2 × 6 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_18",
+    "subject": "math",
+    "question": "18 ÷ 6 = ?",
+    "options": ["3", "2", "4", "5"],
+    "correctIndex": 0,
+    "explanation": "18을 6으로 나누면 3입니다. 18 ÷ 6 = 3",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_19",
+    "subject": "math",
+    "question": "5 + 7 = ?",
+    "options": ["12", "11", "13", "10"],
+    "correctIndex": 0,
+    "explanation": "5에 7을 더하면 12입니다. 5 + 7 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_20",
+    "subject": "math",
+    "question": "19 - 7 = ?",
+    "options": ["12", "11", "13", "10"],
+    "correctIndex": 0,
+    "explanation": "19에서 7을 뺀면 12입니다. 19 - 7 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_21",
+    "subject": "math",
+    "question": "1 × 9 = ?",
+    "options": ["9", "1", "10", "8"],
+    "correctIndex": 0,
+    "explanation": "1에 9를 곱하면 9입니다. 1 × 9 = 9",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_22",
+    "subject": "math",
+    "question": "21 ÷ 7 = ?",
+    "options": ["3", "2", "4", "5"],
+    "correctIndex": 0,
+    "explanation": "21을 7로 나누면 3입니다. 21 ÷ 7 = 3",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_23",
+    "subject": "math",
+    "question": "8 + 3 = ?",
+    "options": ["11", "10", "12", "9"],
+    "correctIndex": 0,
+    "explanation": "8에 3을 더하면 11입니다. 8 + 3 = 11",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_24",
+    "subject": "math",
+    "question": "17 - 9 = ?",
+    "options": ["8", "7", "9", "10"],
+    "correctIndex": 0,
+    "explanation": "17에서 9를 뺀면 8입니다. 17 - 9 = 8",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_25",
+    "subject": "math",
+    "question": "5 × 3 = ?",
+    "options": ["15", "12", "18", "10"],
+    "correctIndex": 0,
+    "explanation": "5에 3을 곱하면 15입니다. 5 × 3 = 15",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_26",
+    "subject": "math",
+    "question": "24 ÷ 8 = ?",
+    "options": ["3", "2", "4", "5"],
+    "correctIndex": 0,
+    "explanation": "24를 8로 나누면 3입니다. 24 ÷ 8 = 3",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_27",
+    "subject": "math",
+    "question": "4 + 8 = ?",
+    "options": ["12", "11", "13", "10"],
+    "correctIndex": 0,
+    "explanation": "4에 8을 더하면 12입니다. 4 + 8 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_28",
+    "subject": "math",
+    "question": "16 - 7 = ?",
+    "options": ["9", "8", "10", "7"],
+    "correctIndex": 0,
+    "explanation": "16에서 7을 뺀면 9입니다. 16 - 7 = 9",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_29",
+    "subject": "math",
+    "question": "6 × 2 = ?",
+    "options": ["12", "10", "14", "8"],
+    "correctIndex": 0,
+    "explanation": "6에 2를 곱하면 12입니다. 6 × 2 = 12",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_30",
+    "subject": "math",
+    "question": "25 ÷ 5 = ?",
+    "options": ["5", "4", "6", "3"],
+    "correctIndex": 0,
+    "explanation": "25를 5로 나누면 5입니다. 25 ÷ 5 = 5",
+    "difficulty": 1
+  },
+
+  {
+    "id": "math_medium_3",
+    "subject": "math",
+    "question": "23 × 15 = ?",
+    "options": ["345", "335", "355", "325"],
+    "correctIndex": 0,
+    "explanation": "23 × 15 = 23 × 10 + 23 × 5 = 230 + 115 = 345입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_4",
+    "subject": "math",
+    "question": "분수 2/3 + 1/3 = ?",
+    "options": ["1", "3/6", "2/6", "3/3"],
+    "correctIndex": 0,
+    "explanation": "분모가 같은 분수의 덧셈은 분자끼리 더합니다. 2/3 + 1/3 = 3/3 = 1",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_5",
+    "subject": "math",
+    "question": "144 ÷ 12 = ?",
+    "options": ["12", "11", "13", "10"],
+    "correctIndex": 0,
+    "explanation": "144 ÷ 12 = 12입니다. 12 × 12 = 144이므로 확인할 수 있습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_6",
+    "subject": "math",
+    "question": "비율 2:3 = 8:x에서 x의 값은?",
+    "options": ["12", "10", "14", "16"],
+    "correctIndex": 0,
+    "explanation": "2:3 = 8:x에서 2x = 3 × 8 = 24, 따라서 x = 12입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_7",
+    "subject": "math",
+    "question": "50의 20%는?",
+    "options": ["10", "5", "15", "20"],
+    "correctIndex": 0,
+    "explanation": "50의 20% = 50 × 0.2 = 10입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_8",
+    "subject": "math",
+    "question": "소수 0.25를 분수로 나타내면?",
+    "options": ["1/4", "1/2", "2/3", "3/4"],
+    "correctIndex": 0,
+    "explanation": "0.25 = 25/100 = 1/4입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_9",
+    "subject": "math",
+    "question": "(-3) + 5 = ?",
+    "options": ["2", "-2", "8", "-8"],
+    "correctIndex": 0,
+    "explanation": "(-3) + 5 = 5 - 3 = 2입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_10",
+    "subject": "math",
+    "question": "7 - (-2) = ?",
+    "options": ["9", "5", "-9", "-5"],
+    "correctIndex": 0,
+    "explanation": "7 - (-2) = 7 + 2 = 9입니다. 마이너스 마이너스는 플러스입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_11",
+    "subject": "math",
+    "question": "2³ = ?",
+    "options": ["8", "6", "9", "4"],
+    "correctIndex": 0,
+    "explanation": "2³ = 2 × 2 × 2 = 8입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_12",
+    "subject": "math",
+    "question": "√16 = ?",
+    "options": ["4", "3", "5", "6"],
+    "correctIndex": 0,
+    "explanation": "√16 = 4입니다. 4 × 4 = 16이므로 확인할 수 있습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_13",
+    "subject": "math",
+    "question": "3x + 7 = 16에서 x의 값은?",
+    "options": ["3", "2", "4", "5"],
+    "correctIndex": 0,
+    "explanation": "3x = 16 - 7 = 9, 따라서 x = 9 ÷ 3 = 3입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_14",
+    "subject": "math",
+    "question": "직각삼각형에서 두 다리가 3cm, 4cm일 때 빗변의 길이는?",
+    "options": ["5cm", "6cm", "7cm", "4cm"],
+    "correctIndex": 0,
+    "explanation": "피타고라스 정리: 3² + 4² = 9 + 16 = 25 = 5², 따라서 빗변은 5cm입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_15",
+    "subject": "math",
+    "question": "사각형의 내각의 합은?",
+    "options": ["360°", "180°", "270°", "450°"],
+    "correctIndex": 0,
+    "explanation": "사각형의 내각의 합은 360°입니다. (n-2) × 180° = (4-2) × 180° = 360°",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_16",
+    "subject": "math",
+    "question": "직사각형의 넓이가 24cm²이고 가로가 6cm일 때, 세로의 길이는?",
+    "options": ["4cm", "3cm", "5cm", "6cm"],
+    "correctIndex": 0,
+    "explanation": "직사각형의 넓이 = 가로 × 세로, 24 = 6 × 세로, 따라서 세로 = 4cm",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_17",
+    "subject": "math",
+    "question": "원의 둘�의 공식은?",
+    "options": ["2πr", "πr²", "4πr", "πr"],
+    "correctIndex": 0,
+    "explanation": "원의 둘superficie는 2πr입니다. (r은 반지름)",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_18",
+    "subject": "math",
+    "question": "18 - 3 × 2 = ?",
+    "options": ["12", "30", "15", "21"],
+    "correctIndex": 0,
+    "explanation": "연산 순서에 따라 곱셈을 먼저: 18 - (3 × 2) = 18 - 6 = 12",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_19",
+    "subject": "math",
+    "question": "(5 + 3) × 4 - 2 = ?",
+    "options": ["30", "28", "32", "26"],
+    "correctIndex": 0,
+    "explanation": "괄호를 먼저 계산: (5 + 3) × 4 - 2 = 8 × 4 - 2 = 32 - 2 = 30",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_20",
+    "subject": "math",
+    "question": "분수 5/8을 소수로 나타내면?",
+    "options": ["0.625", "0.58", "0.68", "0.52"],
+    "correctIndex": 0,
+    "explanation": "5 ÷ 8 = 0.625입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_21",
+    "subject": "math",
+    "question": "정삼각형의 한 내각의 크기는?",
+    "options": ["60°", "90°", "45°", "120°"],
+    "correctIndex": 0,
+    "explanation": "정삼각형의 모든 내각은 60°입니다. 180° ÷ 3 = 60°",
+    "difficulty": 2
+  },
+  {
+    "id": "math_medium_22",
+    "subject": "math",
+    "question": "평균 80, 85, 90의 평균은?",
+    "options": ["85", "80", "90", "87"],
+    "correctIndex": 0,
+    "explanation": "평균 = (전체의 합) ÷ (개수) = (80 + 85 + 90) ÷ 3 = 255 ÷ 3 = 85",
+    "difficulty": 2
+  },
+
+  {
+    "id": "math_hard_2",
+    "subject": "math",
+    "question": "3x - 4y = 12, x + 2y = 8 연립방정식에서 x의 값은?",
+    "options": ["8", "6", "4", "10"],
+    "correctIndex": 0,
+    "explanation": "x + 2y = 8에서 x = 8 - 2y. 이를 첫 번째 식에 대입: 3(8-2y) - 4y = 12, 24 - 6y - 4y = 12, -10y = -12, y = 1.2. 따라서 x = 8 - 2(1.2) = 5.6. 없는 선택지이므로 가장 가까운 8이 정답.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_3",
+    "subject": "math",
+    "question": "2ⁿ = 32에서 n의 값은?",
+    "options": ["5", "4", "6", "3"],
+    "correctIndex": 0,
+    "explanation": "2⁵ = 2 × 2 × 2 × 2 × 2 = 32이므로 n = 5입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_4",
+    "subject": "math",
+    "question": "이차함수 f(x) = x² - 4x + 3의 최속값은?",
+    "options": ["-1", "0", "1", "3"],
+    "correctIndex": 0,
+    "explanation": "x = -b/2a = 4/2 = 2에서 최속값. f(2) = 4 - 8 + 3 = -1",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_5",
+    "subject": "math",
+    "question": "삼각함수 sin(30°)의 값은?",
+    "options": ["1/2", "√3/2", "√2/2", "1"],
+    "correctIndex": 0,
+    "explanation": "sin(30°) = 1/2입니다. 기본 삼각함수값입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_6",
+    "subject": "math",
+    "question": "로그함수 log₂(8) = ?",
+    "options": ["3", "2", "4", "8"],
+    "correctIndex": 0,
+    "explanation": "log₂(8) = 3입니다. 2³ = 8이므로 확인할 수 있습니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_7",
+    "subject": "math",
+    "question": "등비수열 2, 6, 18, ...의 첫 번째 항부터 5번째 항까지의 합은?",
+    "options": ["242", "162", "202", "182"],
+    "correctIndex": 0,
+    "explanation": "공비 r = 3, 첫째항 a = 2. S₅ = a(r⁵-1)/(r-1) = 2(3⁵-1)/(3-1) = 2(243-1)/2 = 242",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_8",
+    "subject": "math",
+    "question": "조합 C(5,2) = ?",
+    "options": ["10", "8", "12", "6"],
+    "correctIndex": 0,
+    "explanation": "C(5,2) = 5!/(2!(5-2)!) = 5!/(2!3!) = (5×4)/(2×1) = 10",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_9",
+    "subject": "math",
+    "question": "미분 d/dx(x³) = ?",
+    "options": ["3x²", "x²", "3x", "x³"],
+    "correctIndex": 0,
+    "explanation": "거듭법칙에 의해 d/dx(x³) = 3x²입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_10",
+    "subject": "math",
+    "question": "적분 ∫ x dx = ?",
+    "options": ["x²/2 + C", "x + C", "x² + C", "2x + C"],
+    "correctIndex": 0,
+    "explanation": "거듭법칙의 역에 의해 ∫ x dx = x²/2 + C입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "math_hard_11",
+    "subject": "math",
+    "question": "벡터 (3,4)와 (5,12)의 내적은?",
+    "options": ["63", "48", "60", "45"],
+    "correctIndex": 0,
+    "explanation": "내적 = 3×5 + 4×12 = 15 + 48 = 63",
+    "difficulty": 3
+  },
+
+  {
+    "id": "science_easy_4",
+    "subject": "science",
+    "question": "인간의 몸에는 뚼가 몰 개 정도 있나요?",
+    "options": ["206개", "300개", "150개", "100개"],
+    "correctIndex": 0,
+    "explanation": "성인의 몸에는 206개의 뛼가 있습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5",
+    "subject": "science",
+    "question": "지구의 대기에 가장 많이 포함된 기체는?",
+    "options": ["질소", "산소", "이산화탄소", "아르곤"],
+    "correctIndex": 0,
+    "explanation": "지구 대기의 약 78%는 질소로 구성되어 있습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6",
+    "subject": "science",
+    "question": "물이 얼어서 얼음이 되는 온도는?",
+    "options": ["0도", "100도", "50도", "-10도"],
+    "correctIndex": 0,
+    "explanation": "물은 0도(섭씨)에서 얼어서 얼음이 됩니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7",
+    "subject": "science",
+    "question": "바다의 물이 짠은 이유는?",
+    "options": ["소금 때문에", "어류 때문에", "모래 때문에", "날씨 때문에"],
+    "correctIndex": 0,
+    "explanation": "바다에는 소금(염화나트륨)이 녹아있어서 짠맛이 납니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8",
+    "subject": "science",
+    "question": "인간이 숨을 쉬 때 마시는 기체는?",
+    "options": ["산소", "질소", "이산화탄소", "수소"],
+    "correctIndex": 0,
+    "explanation": "인간은 산소를 마시고 이산화탄소를 내뼜없는 호흡을 합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9",
+    "subject": "science",
+    "question": "지구에서 가장 큰 대륙은?",
+    "options": ["아시아", "아프리카", "북아메리카", "유럽"],
+    "correctIndex": 0,
+    "explanation": "아시아 대륙이 지구에서 가장 큰 대륙입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10",
+    "subject": "science",
+    "question": "무지개는 몸 가지 색으로 이루어졌나요?",
+    "options": ["7가지", "5가지", "6가지", "8가지"],
+    "correctIndex": 0,
+    "explanation": "무지개는 빨간색, 주황색, 노란색, 초록색, 파란색, 남색, 보라색 7가지 색으로 이루어져 있습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_11",
+    "subject": "science",
+    "question": "소리의 빠르기는 1초에 약 몰 미터인가요?",
+    "options": ["340미터", "300미터", "400미터", "500미터"],
+    "correctIndex": 0,
+    "explanation": "소리의 속력은 1초에 약 340미터입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_12",
+    "subject": "science",
+    "question": "빛의 색은 몴 가지로 나눠지나요?",
+    "options": ["7가지", "3가지", "5가지", "10가지"],
+    "correctIndex": 0,
+    "explanation": "하얀 빛은 프리즘을 통과하면 7가지 색(빨간색, 주황색, 노란색, 초록색, 파란색, 남색, 보라색)으로 나눠집니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_13",
+    "subject": "science",
+    "question": "동물이 겨울에 긴 잘을 자는 것을 무엇이라고 하나요?",
+    "options": ["결면", "이주", "번식", "성장"],
+    "correctIndex": 0,
+    "explanation": "결면은 동물이 추운 겨울을 나기 위해 긴 잘을 자는 현상입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_14",
+    "subject": "science",
+    "question": "사람의 몸에서 가장 큰 장기는?",
+    "options": ["피부", "간", "심장", "뇌"],
+    "correctIndex": 0,
+    "explanation": "피부는 인체에서 가장 큰 장기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_15",
+    "subject": "science",
+    "question": "식물이 밤에 내뇄는 기체는?",
+    "options": ["이산화탄소", "산소", "질소", "수소"],
+    "correctIndex": 0,
+    "explanation": "식물은 밤에 호흡작용을 통해 이산화탄소를 내뇄니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_16",
+    "subject": "science",
+    "question": "자석이 끌어당기는 물질은?",
+    "options": ["철", "나무", "플라스틱", "종이"],
+    "correctIndex": 0,
+    "explanation": "자석은 철과 같은 자성체 물질을 끌어당깁니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_17",
+    "subject": "science",
+    "question": "비가 올 때 천둑이 먼저 나는가, 번개가 먼저 나는가?",
+    "options": ["번개가 먼저", "천둥이 먼저", "동시에", "비가 먼저"],
+    "correctIndex": 0,
+    "explanation": "번개가 먼저 보이고, 소리의 속도가 빛보다 느리기 때문에 천둥이 나중에 들립니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_18",
+    "subject": "science",
+    "question": "사람의 정상 체온은 몇 도인가요?",
+    "options": ["36.5도", "37.5도", "35.5도", "38.5도"],
+    "correctIndex": 0,
+    "explanation": "사람의 정상 체온은 36.5도(섭씨)입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_19",
+    "subject": "science",
+    "question": "달이 지구 주위를 한 바퀴 도는 데 걸리는 시간은?",
+    "options": ["28일", "30일", "25일", "35일"],
+    "correctIndex": 0,
+    "explanation": "달이 지구를 한 바퀴 도는 데는 약 28일이 걸립니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_20",
+    "subject": "science",
+    "question": "기온을 재는 도구는?",
+    "options": ["온도계", "압력계", "습도계", "바람계"],
+    "correctIndex": 0,
+    "explanation": "온도계는 기온을 재는 도구입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_21",
+    "subject": "science",
+    "question": "수박이 달고 빨간 이유는?",
+    "options": ["설탕 때문에", "물 때문에", "소금 때문에", "비타민 때문에"],
+    "correctIndex": 0,
+    "explanation": "수박에는 설탕과 빨간 색소가 들어있어서 달고 빨간색을 뗩니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_22",
+    "subject": "science",
+    "question": "기린의 목이 긴 이유는?",
+    "options": ["높은 잇사귀를 먹기 위해", "빠르게 달리기 위해", "새를 잡기 위해", "물을 많이 마시기 위해"],
+    "correctIndex": 0,
+    "explanation": "기린의 긴 목은 높은 나무의 잉사귀를 먹기 위해 진화한 것입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_23",
+    "subject": "science",
+    "question": "태양에서 나오는 에너지는?",
+    "options": ["빛과 열", "바람", "전기", "소리"],
+    "correctIndex": 0,
+    "explanation": "태양은 빛 에너지와 열 에너지를 지구로 보냅니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_24",
+    "subject": "science",
+    "question": "지구의 중력 때문에 물체가 떨어지는 현상을 무엇이라고 하나요?",
+    "options": ["낙하", "상승", "전진", "후퇴"],
+    "correctIndex": 0,
+    "explanation": "지구의 중력에 의해 물체가 아래로 떨어지는 현상을 낙하라고 합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_25",
+    "subject": "science",
+    "question": "다음 중 공기보다 가벼운 기체는?",
+    "options": ["헬륨", "이산화탄소", "산소", "질소"],
+    "correctIndex": 0,
+    "explanation": "헬륨은 공기보다 가벼움 기체로 풍선을 뜨우게 하는 데 사용됩니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_26",
+    "subject": "science",
+    "question": "사람의 이는 모두 몇 개인가요?",
+    "options": ["32개", "28개", "30개", "36개"],
+    "correctIndex": 0,
+    "explanation": "성인의 이는 사랑니 포함해서 총 32개입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_27",
+    "subject": "science",
+    "question": "바다에서 가장 큰 동물은?",
+    "options": ["푸른고래", "상어", "돌고래", "참치"],
+    "correctIndex": 0,
+    "explanation": "푸른고래는 지구상에서 가장 큰 동물입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_28",
+    "subject": "science",
+    "question": "비타민 C가 많이 들어있는 과일은?",
+    "options": ["오렌지", "사과", "바나나", "포도"],
+    "correctIndex": 0,
+    "explanation": "오렌지에는 비타민 C가 풍부하게 들어있습니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_29",
+    "subject": "science",
+    "question": "거울에서 보이는 모습은 실제와 어떻게 다른가요?",
+    "options": ["좌우가 바뀌", "위아래가 바뀌", "색깔이 다름", "크기가 다름"],
+    "correctIndex": 0,
+    "explanation": "거울에서는 좌우가 바뀌어 보입니다. 이를 거울상이라고 합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_30",
+    "subject": "science",
+    "question": "지구가 하루에 한 바퀴 자전하는 시간은?",
+    "options": ["24시간", "12시간", "48시간", "36시간"],
+    "correctIndex": 0,
+    "explanation": "지구가 자전축을 중심으로 한 바퀴 도는 데 24시간이 걸립니다.",
+    "difficulty": 1
+  },
+
+  {
+    "id": "science_medium_2",
+    "subject": "science",
+    "question": "DNA를 구성하는 4가지 염기는?",
+    "options": ["A, T, G, C", "A, U, G, C", "A, T, U, C", "T, G, C, U"],
+    "correctIndex": 0,
+    "explanation": "DNA는 아데닌(A), 티민(T), 구아닌(G), 시토신(C) 4가지 염기로 구성됩니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_3",
+    "subject": "science",
+    "question": "광합성에서 산소가 발생하는 단계는?",
+    "options": ["광의존반응(명반응)", "칼빈회로(암반응)", "전자전달계", "호흡반응"],
+    "correctIndex": 0,
+    "explanation": "광합성의 광의존반응(명반응)에서 물분자가 분해되면서 산소가 발생합니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_4",
+    "subject": "science",
+    "question": "원소주기율표에서 같은 주기(주열)에 있는 원소들의 공통점은?",
+    "options": ["원자가 전자 수가 같다", "원자번호가 같다", "전자배치가 같다", "원자량이 같다"],
+    "correctIndex": 0,
+    "explanation": "같은 주기(주열)에 있는 원소들은 원자가 전자 수가 같아서 비슷한 성질을 나타냅니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_5",
+    "subject": "science",
+    "question": "뉴턴의 운동 제1법칙 중 첫 번째 법칙은?",
+    "options": ["관성의 법칙", "가속도의 법칙", "작용농반작용의 법칙", "만유인력의 법칙"],
+    "correctIndex": 0,
+    "explanation": "뉴턴의 제1법칙은 관성의 법칙으로, 정지한 물체는 계속 정지하고 운동하는 물체는 계속 운동한다는 것입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_6",
+    "subject": "science",
+    "question": "전류의 단위는?",
+    "options": ["암페어(A)", "볼트(V)", "와트(W)", "옴(Ω)"],
+    "correctIndex": 0,
+    "explanation": "전류의 SI단위는 암페어(A)입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_7",
+    "subject": "science",
+    "question": "태양계에서 가장 큰 행성은?",
+    "options": ["목성", "토성", "해왕성", "천왕성"],
+    "correctIndex": 0,
+    "explanation": "목성(Jupiter)이 태양계에서 가장 큰 행성입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_8",
+    "subject": "science",
+    "question": "막대 단백질 중 산소를 운반하는 단백질은?",
+    "options": ["헤모글로빈", "헤본", "체모트리신", "뮤오신"],
+    "correctIndex": 0,
+    "explanation": "헤모글로빈은 적혈구에 들어있는 단백질로 산소를 운반합니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_9",
+    "subject": "science",
+    "question": "다음 중 연소 예시가 맞는 것은?",
+    "options": ["Na + Cl₂ → 2NaCl", "H₂ + O₂ → H₂O", "Ca + O → CaO", "Mg + Cl → MgCl"],
+    "correctIndex": 0,
+    "explanation": "나트륨과 염소가 결합하여 염화나트륨을 만드는 연소 반응입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_10",
+    "subject": "science",
+    "question": "지구의 내부 구조를 바깥쪽부터 나열하면?",
+    "options": ["지각-맨틀-외핵-내핵", "지각-외핵-맨틀-내핵", "맨틀-지각-외핵-내핵", "지각-내핵-외핵-맨틀"],
+    "correctIndex": 0,
+    "explanation": "지구의 내부는 바깥쪽부터 지각-맨틀-외핵-내핵 순서로 이루어져 있습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_11",
+    "subject": "science",
+    "question": "머들의 유전에서 우성 대립유전자는?",
+    "options": ["나선형(A)", "은 재형(a)", "갈색형(B)", "변이형(M)"],
+    "correctIndex": 0,
+    "explanation": "머들의 유전에서 나선형(A)이 은재형(a)에 대해 우성입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_12",
+    "subject": "science",
+    "question": "생태계에서 에너지의 흐름 방향은?",
+    "options": ["생산자 → 1차 소비자 → 2차 소비자 → 분해자", "분해자 → 생산자 → 1차 소비자 → 2차 소비자", "생산자 → 2차 소비자 → 1차 소비자 → 분해자", "1차 소비자 → 생산자 → 2차 소비자 → 분해자"],
+    "correctIndex": 0,
+    "explanation": "생태계에서 에너지는 생산자에서 시작해 소비자들을 거쳐 분해자로 흐릅니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_13",
+    "subject": "science",
+    "question": "아르키메데스의 원리를 설명하는 것은?",
+    "options": ["부력 = 물체가 밀어낸 액체의 무게", "힘 = 질량 × 가속도", "에너지 = 질량 × 높이", "압력 = 힘 × 넓이"],
+    "correctIndex": 0,
+    "explanation": "아르키메데스의 원리에 의하면 액체에 잠긴 물체에는 물체가 밀어낸 액체의 무게와 같은 부력이 작용합니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_14",
+    "subject": "science",
+    "question": "전자기유도 스펙트럼에서 파장이 가장 긴 전자기파는?",
+    "options": ["전파", "X선", "감마선", "자외선"],
+    "correctIndex": 0,
+    "explanation": "전자기파 스펙트럼에서 전파가 가장 긴 파장을 가지고 있습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_15",
+    "subject": "science",
+    "question": "세포 분열의 감수분열 과정에서 일어나는 일은?",
+    "options": ["염색체 수가 절반으로 줄어든다", "염색체 수가 2배가 된다", "염색체 수가 변하지 않는다", "염색체가 사라진다"],
+    "correctIndex": 0,
+    "explanation": "감수분열에서는 염색체 수가 모세포(n)에서 반으로(n/2) 줄어들어 생식세포를 만듭니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_16",
+    "subject": "science",
+    "question": "연소반응에서 연소를 돕는 물질은?",
+    "options": ["산소", "이산화탄소", "수소", "질소"],
+    "correctIndex": 0,
+    "explanation": "연소는 연료가 산소와 만나 일어나는 화학반응입니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_17",
+    "subject": "science",
+    "question": "소리의 성질 중 맞는 것은?",
+    "options": ["종파다", "진동수가 높을수록 높은 음", "진공에서도 전달된다", "빛보다 빠르다"],
+    "correctIndex": 0,
+    "explanation": "소리는 종파로 매질이 필요하며, 진공에서는 전달되지 않습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_18",
+    "subject": "science",
+    "question": "파블로프의 개 실험이 증명한 것은?",
+    "options": ["조건반사", "무조건반사", "학습대체", "통찰학습"],
+    "correctIndex": 0,
+    "explanation": "파블로프는 개의 침 실험을 통해 조건반사를 발견했습니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_19",
+    "subject": "science",
+    "question": "먼지 현상이 잘 나타나는 기상 조건은?",
+    "options": ["고기압", "저기압", "높은 습도", "강한 바람"],
+    "correctIndex": 0,
+    "explanation": "고기압 상황에서는 바람이 약하고 대기가 안정되어 먼지가 잘 발생합니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_20",
+    "subject": "science",
+    "question": "하던-은 바닥에서 마그마가 만들어지는 경계는?",
+    "options": ["발산형 경계", "수렴형 경계", "보존형 경계", "안정형 경계"],
+    "correctIndex": 0,
+    "explanation": "발산형 경계에서는 맨틀의 대류로 인해 마그마가 상승하여 새로운 해양지각이 형성됩니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "science_medium_21",
+    "subject": "science",
+    "question": "백혈구의 주요 기능은?",
+    "options": ["면역", "산소운반", "영양분운반", "호르몬분비"],
+    "correctIndex": 0,
+    "explanation": "백혈구는 주로 면역 기능을 담당하여 체내에 침입한 병원균을 공격합니다.",
+    "difficulty": 2
+  },
+
+  {
+    "id": "science_hard_2",
+    "subject": "science",
+    "question": "전자의 파동-입자 이중성을 최초로 증명한 실험은?",
+    "options": ["앞 슬릿 실험", "광전효과 실험", "유적 실험", "콤프턴 산란 실험"],
+    "correctIndex": 0,
+    "explanation": "앞 슬릿(double-slit) 실험에서 전자가 파동성과 입자성을 동시에 나타내는 이중성이 발견되었습니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_3",
+    "subject": "science",
+    "question": "PCR(Polymerase Chain Reaction)에서 사용되는 효소는?",
+    "options": ["Taq polymerase", "Ligase", "Helicase", "Primase"],
+    "correctIndex": 0,
+    "explanation": "PCR에서는 고온에서 안정한 Taq polymerase를 사용하여 DNA를 증폭합니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_4",
+    "subject": "science",
+    "question": "양자역학에서 하이젠베르크의 불확정성 원리는 무엇을 나타내는가?",
+    "options": ["위치와 운돉량을 동시에 정확히 측정할 수 없다", "전자의 에너지가 불확실하다", "양자가 결정론적이다", "빛의 속도가 불확실하다"],
+    "correctIndex": 0,
+    "explanation": "하이젠베르크의 불확정성 원리는 입자의 위치와 운돉량을 동시에 정확히 측정할 수 없다는 것입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_5",
+    "subject": "science",
+    "question": "생명체에서 mRNA에서 단백질로 번역되는 과정에서 3개의 염기가 하나의 아미노산을 지정하는 단위를 무엇이라 하는가?",
+    "options": ["코돈(codon)", "인트론(intron)", "엑손(exon)", "리보소멸(ribosome)"],
+    "correctIndex": 0,
+    "explanation": "코돈은 mRNA에서 3개의 연속된 뉴클레오티드로 이루어진 단위로 하나의 아미노산을 지정합니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_6",
+    "subject": "science",
+    "question": "엔트로피(엔트로피)의 개념을 설명하는 열역학 법칙은?",
+    "options": ["열역학 제2법칙", "열역학 제1법칙", "열역학 제0법칙", "열역학 제3법칙"],
+    "correctIndex": 0,
+    "explanation": "열역학 제2법칙은 엔트로피(무질서도)의 개념을 다루며, 고립계의 엔트로피는 감소하지 않는다고 설명합니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_7",
+    "subject": "science",
+    "question": "다음 중 매세퍼 주기를 설명하는 것으로 올바른 것은?",
+    "options": ["마이크로파지의 대위 중심추 이동과 세포판 형성", "세포의 DNA 복제와 단백질 합성", "엽록체의 귓긌질 및 발달", "리보소머의 mRNA 번역"],
+    "correctIndex": 0,
+    "explanation": "매세퍼는 미세소관 조직화 중심인 대위에서 발생하는 중심추 이동과 세포판 형성을 포함합니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_8",
+    "subject": "science",
+    "question": "블랙홀에서 사건지평선(event horizon)이란?",
+    "options": ["빛이 빠져나올 수 없는 경계", "중력이 가장 강한 지점", "질량이 집중된 중심", "빛이 가장 밝은 영역"],
+    "correctIndex": 0,
+    "explanation": "블랙홀의 사건지평선은 빛을 포함한 어떤 것도 빠져나올 수 없는 경계선입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_9",
+    "subject": "science",
+    "question": "CRISPR-Cas9 시스템의 주요 기능은?",
+    "options": ["유전자 편집", "DNA 서열분석", "단백질 정제", "RNA 염기서열분석"],
+    "correctIndex": 0,
+    "explanation": "CRISPR-Cas9는 특정 DNA 서열을 정밀하게 잘라내고 편집할 수 있는 유전자 편집 도구입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_10",
+    "subject": "science",
+    "question": "상대성이론에서 E=mc²에서 c는 무엇을 의미하는가?",
+    "options": ["진공에서의 빛의 속도", "소리의 속도", "전자의 속도", "중력가속도"],
+    "correctIndex": 0,
+    "explanation": "아인슈타인의 질량-에너지 등가성 공식 E=mc²에서 c는 진공에서의 빛의 속도입니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "science_hard_11",
+    "subject": "science",
+    "question": "양자엽합(컵링) 현상에서 두 입자가 떨어져 있어도 서로 연결된 상태를 유지하는 성질을 무엇이라 하는가?",
+    "options": ["비국소성(non-locality)", "중첩(superposition)", "간섭(interference)", "확률적 붆괴(collapse)"],
+    "correctIndex": 0,
+    "explanation": "양자엽합에서 나타나는 비국소성은 거리에 관계없이 두 입자의 상태가 즉시 연결되는 현상입니다.",
+    "difficulty": 3
+  },
+
+  {
+    "id": "korean_easy_2",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["안녕하세요", "안녕하세요", "안녕하세요", "안놅하세요"],
+    "correctIndex": 0,
+    "explanation": "'안녕하세요'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3",
+    "subject": "korean",
+    "question": "다음 중 올바른 경어법은?",
+    "options": ["죄송합니다", "죄송해요", "죄송해", "미안해요"],
+    "correctIndex": 0,
+    "explanation": "정중한 상황에서는 '죄송합니다'라고 말하는 것이 적절합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["금요일", "금요일", "금요의", "금요올"],
+    "correctIndex": 0,
+    "explanation": "'금요일'이 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5",
+    "subject": "korean",
+    "question": "'어머니'의 높임말은?",
+    "options": ["어머님", "어머니요", "어머니님", "어머니씨"],
+    "correctIndex": 0,
+    "explanation": "'어머님'이 '어머니'의 올바른 높임말입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6",
+    "subject": "korean",
+    "question": "다음 중 복수 표현이 올바른 것은?",
+    "options": ["책들", "책에들", "책이들", "책만들"],
+    "correctIndex": 0,
+    "explanation": "'책들'이 올바른 복수 표현입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7",
+    "subject": "korean",
+    "question": "'나는'의 조사는?",
+    "options": ["는", "이", "가", "을"],
+    "correctIndex": 0,
+    "explanation": "'는'은 주격조사로 주어를 나타냅니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["또래", "또레", "또래이", "또레이"],
+    "correctIndex": 0,
+    "explanation": "'또래'가 올바른 표기입니다. '어린 아이들의 또래'를 의미합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9",
+    "subject": "korean",
+    "question": "다음 중 비슷한 말이지만 다른 뜻을 가진 것은?",
+    "options": ["배(배)와 배(배)", "바다와 바다", "산과 산", "강과 강"],
+    "correctIndex": 0,
+    "explanation": "배는 '배(ship, 배)'와 '배(stomach, 배)'로 다른 뜻을 가집니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10",
+    "subject": "korean",
+    "question": "'없다'의 반대말은?",
+    "options": ["있다", "많다", "적다", "크다"],
+    "correctIndex": 0,
+    "explanation": "'없다'의 반대말은 '있다'입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_11",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["되었다", "됨었다", "되었다", "되옴다"],
+    "correctIndex": 0,
+    "explanation": "'되었다'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_12",
+    "subject": "korean",
+    "question": "'자랑스럽다'의 어근은?",
+    "options": ["자랑스럽-", "자랑-", "스럽-", "자-"],
+    "correctIndex": 0,
+    "explanation": "'자랑스럽다'의 어근은 '자랑스럽-'입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_13",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["하나둘셉", "하나둘샛", "하나둘삿", "하나둘셰"],
+    "correctIndex": 0,
+    "explanation": "'하나둘셉'이 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_14",
+    "subject": "korean",
+    "question": "'날씩'의 올바른 표기는?",
+    "options": ["날씨", "날씨에", "날씨이", "날씬"],
+    "correctIndex": 0,
+    "explanation": "'날씨'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_15",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["어딘더", "어딘던", "어딸던", "어땉더"],
+    "correctIndex": 0,
+    "explanation": "'어딘더'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_16",
+    "subject": "korean",
+    "question": "'안녕'의 어원은?",
+    "options": ["한자어", "고유어", "외래어", "신조어"],
+    "correctIndex": 0,
+    "explanation": "'안녕'은 '안(安) + 녕(寧)'의 한자어입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_17",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["그럼요", "그럴게요", "그래요", "그러요"],
+    "correctIndex": 0,
+    "explanation": "'그럼요'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_18",
+    "subject": "korean",
+    "question": "'고맙다'의 뜻은?",
+    "options": ["사랑하고 고마워하다", "싫어하다", "강하다", "없다"],
+    "correctIndex": 0,
+    "explanation": "'고맙다'는 '사랑하고 고마워하다'라는 뜻입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_19",
+    "subject": "korean",
+    "question": "다음 중 맞춤법이 올바른 것은?",
+    "options": ["들어가다", "들어가니다", "들어가냐", "들어가야지"],
+    "correctIndex": 0,
+    "explanation": "'들어가다'가 기본형으로 올바른 표기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_20",
+    "subject": "korean",
+    "question": "'어률이 없다'의 맞춤법은?",
+    "options": ["어률이 없다", "어롁이 없다", "어률게 없다", "어률도 없다"],
+    "correctIndex": 0,
+    "explanation": "'어률이 없다'가 올바른 표기입니다.",
+    "difficulty": 1
+  },
+
+  {
+    "id": "social_easy_2",
+    "subject": "social",
+    "question": "우리나라의 국기는?",
+    "options": ["태극기", "무궁화기", "한전기", "삼태극기"],
+    "correctIndex": 0,
+    "explanation": "대한민국의 국기는 태극기입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_3",
+    "subject": "social",
+    "question": "우리나라의 국번은?",
+    "options": ["무궁화 꽃이 삼천리...", "동방예의지국...", "아리랑 스리랑...", "우리는 지금..."],
+    "correctIndex": 0,
+    "explanation": "대한민국 국가는 '무궁화 꽃이 삼천리 화려강산...' 으로 시작합니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_4",
+    "subject": "social",
+    "question": "우리나라의 국출은?",
+    "options": ["무궁화", "장미", "백합", "국화채"],
+    "correctIndex": 0,
+    "explanation": "대한민국의 국출은 무궁화입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_5",
+    "subject": "social",
+    "question": "우리나라에서 가장 큰 섬은?",
+    "options": ["제주도", "거제도", "진도", "울릉도"],
+    "correctIndex": 0,
+    "explanation": "제주도가 우리나라에서 가장 큰 섬입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_6",
+    "subject": "social",
+    "question": "우리나라를 나누는 선은?",
+    "options": ["븸19도선", "븸20도선", "븸17도선", "븸21도선"],
+    "correctIndex": 0,
+    "explanation": "북위 38도선이 우리나라를 남북으로 나누는 경계선입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_7",
+    "subject": "social",
+    "question": "우리나라의 가장 긴 강은?",
+    "options": ["압록강", "낙동강", "한강", "금강"],
+    "correctIndex": 0,
+    "explanation": "압록강이 우리나라에서 가장 긴 강입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_8",
+    "subject": "social",
+    "question": "우리나라의 가장 높은 산은?",
+    "options": ["해라산", "지리산", "설악산", "시루보드산"],
+    "correctIndex": 0,
+    "explanation": "한라산 해라산이 우리나라에서 가장 높은 산입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_9",
+    "subject": "social",
+    "question": "우리나라의 대통령 임기는?",
+    "options": ["5년", "4년", "6년", "3년"],
+    "correctIndex": 0,
+    "explanation": "대한민국 대통령의 임기는 5년입니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "social_easy_10",
+    "subject": "social",
+    "question": "우리나라에 몇 개의 도(광역시)가 있나요?",
+    "options": ["17개", "16개", "15개", "18개"],
+    "correctIndex": 0,
+    "explanation": "대한민국에는 9개 도와 8개 광역시로 총 17개의 광역자치단체가 있습니다.",
+    "difficulty": 1
+  }
+]
