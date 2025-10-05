@@ -588,25 +588,11 @@
 
         // 사용자 이름 업데이트
         function updateUserNameDisplay() {
-            // Firebase에서 닉네임을 가져오거나 기본값 사용
             let userName = '학습자';
             
-            // Firebase 사용자 데이터 확인
-            const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
-            if (firebaseUser) {
-                try {
-                    const userData = JSON.parse(firebaseUser);
-                    if (userData.userData?.profile?.nickname) {
-                        userName = userData.userData.profile.nickname;
-                    }
-                } catch (error) {
-                    console.log('Firebase 사용자 데이터 로드 실패:', error);
-                }
-            }
-            
-            // 로컬 설정에서 이름 확인 (백업)
+            // 1순위: 튜토리얼에서 설정한 로컬 별명
             const localSettings = localStorage.getItem('eduPetSettings');
-            if (localSettings && !firebaseUser) {
+            if (localSettings) {
                 try {
                     const settings = JSON.parse(localSettings);
                     if (settings.userName) {
@@ -614,6 +600,19 @@
                     }
                 } catch (error) {
                     console.log('로컬 설정 로드 실패:', error);
+                }
+            }
+            
+            // 2순위: Firebase 소셜 허브에서 설정한 닉네임
+            const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
+            if (firebaseUser && userName === '학습자') {
+                try {
+                    const userData = JSON.parse(firebaseUser);
+                    if (userData.userData?.profile?.nickname) {
+                        userName = userData.userData.profile.nickname;
+                    }
+                } catch (error) {
+                    console.log('Firebase 사용자 데이터 로드 실패:', error);
                 }
             }
             
