@@ -175,7 +175,7 @@
                         <div class="text-xs opacity-80">✅ 완료</div>
                     </button>
                     
-                    <button class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                    <button onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔢</span>
                             <span class="font-medium">수학</span>
@@ -183,7 +183,7 @@
                         <div class="text-xs opacity-80">7.5분</div>
                     </button>
                     
-                    <button class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center">
+                    <button onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🔬</span>
                             <span class="font-medium">과학</span>
@@ -379,9 +379,9 @@
                     this.style.transform = '';
                 }, 150);
                 
-                // 학습 시작 버튼 클릭 시 퀴즈 페이지로 이동
+                // 학습 시작 버튼 클릭 시 과목 선택 페이지로 이동
                 if (this.textContent.includes('학습 시작하기')) {
-                    window.location.href = 'quiz.html';
+                    window.location.href = 'subject-select.html';
                 }
             });
         });
