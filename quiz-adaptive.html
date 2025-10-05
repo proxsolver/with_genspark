@@ -57,14 +57,15 @@
             color: #6b7280;
         }
         
-        .confetti-animation {
-            animation: confetti 1s ease-out;
+        .correct-animation {
+            animation: gentleBounce 0.6s ease-out;
         }
         
-        @keyframes confetti {
-            0% { transform: scale(0) rotate(0deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
-            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        @keyframes gentleBounce {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.08); }
+            60% { transform: scale(0.98); }
+            100% { transform: scale(1.02); }
         }
         
         .slide-in {
@@ -276,6 +277,52 @@
         let shuffledOptions = [];
         let sessionStats = { correct: 0, incorrect: 0, startTime: Date.now() };
         let recentAnswers = []; // 최근 5문제 정답 여부
+
+        // 정답 사운드 효과 함수
+        function playCorrectSound() {
+            try {
+                // Web Audio API를 사용하여 경쾌한 효과음 생성
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // 첫 번째 음 (높은 음)
+                const oscillator1 = audioContext.createOscillator();
+                const gainNode1 = audioContext.createGain();
+                
+                oscillator1.connect(gainNode1);
+                gainNode1.connect(audioContext.destination);
+                
+                oscillator1.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
+                oscillator1.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                
+                gainNode1.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode1.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                
+                oscillator1.start(audioContext.currentTime);
+                oscillator1.stop(audioContext.currentTime + 0.3);
+                
+                // 두 번째 음 (화음)
+                const oscillator2 = audioContext.createOscillator();
+                const gainNode2 = audioContext.createGain();
+                
+                oscillator2.connect(gainNode2);
+                gainNode2.connect(audioContext.destination);
+                
+                oscillator2.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
+                oscillator2.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
+                
+                gainNode2.gain.setValueAtTime(0, audioContext.currentTime + 0.1);
+                gainNode2.gain.linearRampToValueAtTime(0.25, audioContext.currentTime + 0.11);
+                gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+                
+                oscillator2.start(audioContext.currentTime + 0.1);
+                oscillator2.stop(audioContext.currentTime + 0.4);
+                
+            } catch (error) {
+                // Web Audio API를 지원하지 않는 경우 무시
+                console.log('Audio not supported:', error);
+            }
+        }
 
         // 과목 정보
         const subjects = {
@@ -570,7 +617,10 @@
             });
 
             if (selectedIndex !== -1 && shuffledOptions[selectedIndex].originalIndex === correctIndex) {
-                options[selectedIndex].classList.add('confetti-animation');
+                options[selectedIndex].classList.add('correct-animation');
+                
+                // 정답 사운드 효과 (Web Audio API 사용)
+                playCorrectSound();
             }
         }
 
