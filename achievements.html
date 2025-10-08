@@ -55,6 +55,15 @@
             </div>
         </div>
 
+        <!-- Claim Rewards Button -->
+        <div class="mb-6 text-center">
+            <button id="claimRewardsBtn" onclick="claimAllRewards()"
+                    class="w-full px-6 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl text-xl font-bold hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
+                    disabled>
+                🎁 모든 보상 수령 (0개)
+            </button>
+        </div>
+
         <!-- Summary Stats -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
             <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
@@ -79,115 +88,136 @@
         <!-- Achievements -->
         <div class="space-y-4">
             <h2 class="text-lg font-bold text-gray-800">🎯 업적 목록</h2>
-            
+
             <div id="achievementsList">
                 <!-- Achievements will be populated here -->
             </div>
-        </div>
-
-        <!-- Claim Rewards Button -->
-        <div class="mt-6 text-center">
-            <button id="claimRewardsBtn" onclick="claimAllRewards()" 
-                    class="w-full px-6 py-3 bg-yellow-500 text-white rounded-xl font-bold hover:bg-yellow-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled>
-                🎁 모든 보상 수령 (0개)
-            </button>
         </div>
     </div>
 
     <script>
         // Achievement definitions
         const achievements = [
-            {
-                id: 'first_quiz',
-                name: '첫걸음',
-                description: '첫 번째 퀴즈 완료하기',
-                icon: '🎯',
-                requirement: { type: 'sessions', value: 1 },
-                reward: { water: 5, money: 100 },
-                tier: 'bronze'
-            },
-            {
-                id: 'correct_10',
-                name: '학습 새싹',
-                description: '정답 10개 달성',
-                icon: '🌱',
-                requirement: { type: 'totalCorrect', value: 10 },
-                reward: { water: 10, money: 200 },
-                tier: 'bronze'
-            },
-            {
-                id: 'correct_25',
-                name: '뽑기 마스터',
-                description: '정답 25개 달성 (첫 뽑기권!)',
-                icon: '🎫',
-                requirement: { type: 'totalCorrect', value: 25 },
-                reward: { water: 15, money: 300, tickets: 1 },
-                tier: 'silver'
-            },
-            {
-                id: 'correct_50',
-                name: '지식의 빛',
-                description: '정답 50개 달성',
-                icon: '💡',
-                requirement: { type: 'totalCorrect', value: 50 },
-                reward: { water: 20, money: 500 },
-                tier: 'silver'
-            },
-            {
-                id: 'correct_100',
-                name: '학습 달인',
-                description: '정답 100개 달성',
-                icon: '🧠',
-                requirement: { type: 'totalCorrect', value: 100 },
-                reward: { water: 30, money: 1000, tickets: 2 },
-                tier: 'gold'
-            },
-            {
-                id: 'sessions_5',
-                name: '꾸준함의 힘',
-                description: '학습 세션 5회 완료',
-                icon: '⭐',
-                requirement: { type: 'sessions', value: 5 },
-                reward: { water: 25, money: 750 },
-                tier: 'silver'
-            },
-            {
-                id: 'sessions_10',
-                name: '성실한 학생',
-                description: '학습 세션 10회 완료',
-                icon: '📚',
-                requirement: { type: 'sessions', value: 10 },
-                reward: { water: 40, money: 1500, tickets: 3 },
-                tier: 'gold'
-            },
-            {
-                id: 'perfect_quiz',
-                name: '완벽주의자',
-                description: '100% 정답률 달성',
-                icon: '💎',
-                requirement: { type: 'perfectAccuracy', value: 1 },
-                reward: { water: 50, money: 2000, tickets: 5 },
-                tier: 'diamond'
-            },
-            {
-                id: 'animal_collector',
-                name: '동물 수집가',
-                description: '동물 10마리 수집',
-                icon: '🦎',
-                requirement: { type: 'animalsCollected', value: 10 },
-                reward: { water: 35, money: 1200, tickets: 2 },
-                tier: 'gold'
-            },
-            {
-                id: 'plant_protector',
-                name: '식물 수호자',
-                description: '동물로 식물 보호하기',
-                icon: '🛡️',
-                requirement: { type: 'plantsProtected', value: 1 },
-                reward: { water: 60, money: 2500, tickets: 5 },
-                tier: 'diamond'
-            }
+            // 기초 학습 업적 (1-20)
+            { id: 'first_quiz', name: '첫걸음', description: '첫 번째 퀴즈 완료하기', icon: '🎯', requirement: { type: 'sessions', value: 1 }, reward: { money: 10, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'correct_5', name: '학습 시작', description: '정답 5개 달성', icon: '📝', requirement: { type: 'totalCorrect', value: 5 }, reward: { money: 20 }, tier: 'bronze' },
+            { id: 'correct_10', name: '학습 새싹', description: '정답 10개 달성', icon: '🌱', requirement: { type: 'totalCorrect', value: 10 }, reward: { money: 30, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'correct_25', name: '뽑기 마스터', description: '정답 25개 달성', icon: '🎫', requirement: { type: 'totalCorrect', value: 25 }, reward: { money: 50, normalTickets: 2 }, tier: 'bronze' },
+            { id: 'correct_50', name: '지식의 빛', description: '정답 50개 달성', icon: '💡', requirement: { type: 'totalCorrect', value: 50 }, reward: { money: 80, normalTickets: 3 }, tier: 'silver' },
+            { id: 'correct_75', name: '꾸준한 노력', description: '정답 75개 달성', icon: '📚', requirement: { type: 'totalCorrect', value: 75 }, reward: { money: 100, normalTickets: 3 }, tier: 'silver' },
+            { id: 'correct_100', name: '학습 달인', description: '정답 100개 달성', icon: '🧠', requirement: { type: 'totalCorrect', value: 100 }, reward: { money: 100, normalTickets: 5 }, tier: 'silver' },
+            { id: 'correct_150', name: '지식 탐구자', description: '정답 150개 달성', icon: '🔍', requirement: { type: 'totalCorrect', value: 150 }, reward: { money: 100, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'correct_200', name: '학습 챔피언', description: '정답 200개 달성', icon: '🏆', requirement: { type: 'totalCorrect', value: 200 }, reward: { money: 100, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'correct_300', name: '지식의 거장', description: '정답 300개 달성', icon: '👑', requirement: { type: 'totalCorrect', value: 300 }, reward: { money: 500 }, tier: 'gold' },
+            { id: 'correct_400', name: '학습의 신', description: '정답 400개 달성', icon: '✨', requirement: { type: 'totalCorrect', value: 400 }, reward: { money: 500 }, tier: 'diamond' },
+            { id: 'correct_500', name: '전설의 시작', description: '정답 500개 달성', icon: '🌟', requirement: { type: 'totalCorrect', value: 500 }, reward: { money: 1000, premiumTickets: 1 }, tier: 'diamond' },
+            { id: 'correct_750', name: '지식의 바다', description: '정답 750개 달성', icon: '🌊', requirement: { type: 'totalCorrect', value: 750 }, reward: { money: 1000 }, tier: 'diamond' },
+            { id: 'correct_1000', name: '천재 학습자', description: '정답 1000개 달성', icon: '🎓', requirement: { type: 'totalCorrect', value: 1000 }, reward: { money: 1000, premiumTickets: 1 }, tier: 'diamond' },
+
+            // 학습 세션 업적 (15-34)
+            { id: 'sessions_3', name: '시작이 반', description: '학습 세션 3회 완료', icon: '🌅', requirement: { type: 'sessions', value: 3 }, reward: { money: 30 }, tier: 'bronze' },
+            { id: 'sessions_5', name: '꾸준함의 힘', description: '학습 세션 5회 완료', icon: '⭐', requirement: { type: 'sessions', value: 5 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'sessions_10', name: '성실한 학생', description: '학습 세션 10회 완료', icon: '📚', requirement: { type: 'sessions', value: 10 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'sessions_15', name: '학습 습관', description: '학습 세션 15회 완료', icon: '🎯', requirement: { type: 'sessions', value: 15 }, reward: { money: 150, normalTickets: 3 }, tier: 'silver' },
+            { id: 'sessions_20', name: '꾸준한 발걸음', description: '학습 세션 20회 완료', icon: '👣', requirement: { type: 'sessions', value: 20 }, reward: { money: 200, normalTickets: 4 }, tier: 'silver' },
+            { id: 'sessions_30', name: '한 달 학습', description: '학습 세션 30회 완료', icon: '📅', requirement: { type: 'sessions', value: 30 }, reward: { money: 300, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'sessions_50', name: '마라톤 러너', description: '학습 세션 50회 완료', icon: '🏃', requirement: { type: 'sessions', value: 50 }, reward: { money: 500, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'sessions_75', name: '학습 마스터', description: '학습 세션 75회 완료', icon: '🎖️', requirement: { type: 'sessions', value: 75 }, reward: { money: 700, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'sessions_100', name: '백전노장', description: '학습 세션 100회 완료', icon: '💪', requirement: { type: 'sessions', value: 100 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+            { id: 'sessions_150', name: '초인의 의지', description: '학습 세션 150회 완료', icon: '🔥', requirement: { type: 'sessions', value: 150 }, reward: { money: 1000, premiumTickets: 7 }, tier: 'diamond' },
+
+            // 완벽 학습 업적 (25-39)
+            { id: 'perfect_1', name: '완벽주의자', description: '100% 정답률 1회 달성', icon: '💎', requirement: { type: 'perfectAccuracy', value: 1 }, reward: { money: 100, normalTickets: 3 }, tier: 'silver' },
+            { id: 'perfect_3', name: '정확한 학습', description: '100% 정답률 3회 달성', icon: '🎯', requirement: { type: 'perfectAccuracy', value: 3 }, reward: { money: 200, normalTickets: 5 }, tier: 'silver' },
+            { id: 'perfect_5', name: '완벽의 달인', description: '100% 정답률 5회 달성', icon: '✨', requirement: { type: 'perfectAccuracy', value: 5 }, reward: { money: 300, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'perfect_10', name: '완벽의 신', description: '100% 정답률 10회 달성', icon: '👑', requirement: { type: 'perfectAccuracy', value: 10 }, reward: { money: 500, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'perfect_20', name: '절대 정확', description: '100% 정답률 20회 달성', icon: '🌟', requirement: { type: 'perfectAccuracy', value: 20 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 동물 수집 업적 (30-54)
+            { id: 'animal_1', name: '첫 번째 친구', description: '동물 1마리 수집', icon: '🐣', requirement: { type: 'animalsCollected', value: 1 }, reward: { money: 20 }, tier: 'bronze' },
+            { id: 'animal_3', name: '작은 가족', description: '동물 3마리 수집', icon: '🐾', requirement: { type: 'animalsCollected', value: 3 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'animal_5', name: '동물 친구들', description: '동물 5마리 수집', icon: '🦊', requirement: { type: 'animalsCollected', value: 5 }, reward: { money: 80, normalTickets: 2 }, tier: 'bronze' },
+            { id: 'animal_10', name: '동물 수집가', description: '동물 10마리 수집', icon: '🦎', requirement: { type: 'animalsCollected', value: 10 }, reward: { money: 150, normalTickets: 3 }, tier: 'silver' },
+            { id: 'animal_15', name: '동물원 관장', description: '동물 15마리 수집', icon: '🎪', requirement: { type: 'animalsCollected', value: 15 }, reward: { money: 200, normalTickets: 4 }, tier: 'silver' },
+            { id: 'animal_20', name: '동물 애호가', description: '동물 20마리 수집', icon: '🐘', requirement: { type: 'animalsCollected', value: 20 }, reward: { money: 250, premiumTickets: 1 }, tier: 'silver' },
+            { id: 'animal_30', name: '동물 박사', description: '동물 30마리 수집', icon: '🔬', requirement: { type: 'animalsCollected', value: 30 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'animal_40', name: '전설의 수집가', description: '동물 40마리 수집', icon: '🏆', requirement: { type: 'animalsCollected', value: 40 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'animal_50', name: '동물 마스터', description: '동물 50마리 수집', icon: '👑', requirement: { type: 'animalsCollected', value: 50 }, reward: { money: 700, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 희귀 동물 수집 업적 (39-53)
+            { id: 'rare_1', name: '희귀한 만남', description: '레어 동물 1마리 수집', icon: '💙', requirement: { type: 'rareAnimals', value: 1 }, reward: { money: 50, normalTickets: 2 }, tier: 'bronze' },
+            { id: 'rare_3', name: '레어 컬렉터', description: '레어 동물 3마리 수집', icon: '💎', requirement: { type: 'rareAnimals', value: 3 }, reward: { money: 100, normalTickets: 3 }, tier: 'silver' },
+            { id: 'rare_5', name: '레어 마스터', description: '레어 동물 5마리 수집', icon: '🎭', requirement: { type: 'rareAnimals', value: 5 }, reward: { money: 200, premiumTickets: 1 }, tier: 'silver' },
+            { id: 'epic_1', name: '에픽의 영광', description: '에픽 동물 1마리 수집', icon: '💜', requirement: { type: 'epicAnimals', value: 1 }, reward: { money: 150, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'epic_3', name: '에픽 컬렉터', description: '에픽 동물 3마리 수집', icon: '🌌', requirement: { type: 'epicAnimals', value: 3 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'epic_5', name: '에픽 마스터', description: '에픽 동물 5마리 수집', icon: '👑', requirement: { type: 'epicAnimals', value: 5 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'legendary_1', name: '전설의 시작', description: '레전더리 동물 1마리 수집', icon: '⭐', requirement: { type: 'legendaryAnimals', value: 1 }, reward: { money: 300, premiumTickets: 3 }, tier: 'diamond' },
+            { id: 'legendary_2', name: '전설 컬렉터', description: '레전더리 동물 2마리 수집', icon: '🌟', requirement: { type: 'legendaryAnimals', value: 2 }, reward: { money: 500, premiumTickets: 5 }, tier: 'diamond' },
+            { id: 'legendary_3', name: '전설의 주인', description: '레전더리 동물 3마리 수집', icon: '✨', requirement: { type: 'legendaryAnimals', value: 3 }, reward: { money: 1000, premiumTickets: 10 }, tier: 'diamond' },
+
+            // 식물 보호 업적 (48-62)
+            { id: 'protect_1', name: '식물 수호자', description: '동물로 식물 보호 1회', icon: '🛡️', requirement: { type: 'plantsProtected', value: 1 }, reward: { money: 100, normalTickets: 3 }, tier: 'silver' },
+            { id: 'protect_3', name: '충성스런 친구', description: '동물로 식물 보호 3회', icon: '🏅', requirement: { type: 'plantsProtected', value: 3 }, reward: { money: 200, normalTickets: 5 }, tier: 'silver' },
+            { id: 'protect_5', name: '수호의 달인', description: '동물로 식물 보호 5회', icon: '⚔️', requirement: { type: 'plantsProtected', value: 5 }, reward: { money: 300, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'protect_10', name: '전설의 수호자', description: '동물로 식물 보호 10회', icon: '🛡️', requirement: { type: 'plantsProtected', value: 10 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'protect_20', name: '절대 수호', description: '동물로 식물 보호 20회', icon: '👼', requirement: { type: 'plantsProtected', value: 20 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 식물 성장 업적 (53-67)
+            { id: 'plant_1', name: '첫 번째 식물', description: '식물 1개 키우기', icon: '🌰', requirement: { type: 'plantsGrown', value: 1 }, reward: { money: 20 }, tier: 'bronze' },
+            { id: 'plant_3', name: '작은 정원', description: '식물 3개 키우기', icon: '🌿', requirement: { type: 'plantsGrown', value: 3 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'plant_5', name: '정원사', description: '식물 5개 키우기', icon: '🌱', requirement: { type: 'plantsGrown', value: 5 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'plant_10', name: '숙련된 정원사', description: '식물 10개 키우기', icon: '🌸', requirement: { type: 'plantsGrown', value: 10 }, reward: { money: 200, normalTickets: 3 }, tier: 'silver' },
+            { id: 'plant_15', name: '정원의 달인', description: '식물 15개 키우기', icon: '🌺', requirement: { type: 'plantsGrown', value: 15 }, reward: { money: 300, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'plant_legendary', name: '전설의 식물', description: '레전더리 식물 1개 달성', icon: '🍎', requirement: { type: 'legendaryPlants', value: 1 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'plant_legendary_3', name: '전설의 정원', description: '레전더리 식물 3개 달성', icon: '🌳', requirement: { type: 'legendaryPlants', value: 3 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'plant_legendary_5', name: '신화의 정원', description: '레전더리 식물 5개 달성', icon: '🎄', requirement: { type: 'legendaryPlants', value: 5 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 연속 학습 업적 (61-75)
+            { id: 'streak_3', name: '3일 연속 학습', description: '3일 연속으로 학습하기', icon: '🔥', requirement: { type: 'streak', value: 3 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'streak_7', name: '일주일 달성', description: '7일 연속으로 학습하기', icon: '📆', requirement: { type: 'streak', value: 7 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'streak_14', name: '2주 마라톤', description: '14일 연속으로 학습하기', icon: '🏃', requirement: { type: 'streak', value: 14 }, reward: { money: 200, normalTickets: 3 }, tier: 'silver' },
+            { id: 'streak_30', name: '한 달 챌린지', description: '30일 연속으로 학습하기', icon: '📅', requirement: { type: 'streak', value: 30 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'streak_60', name: '두 달 챌린지', description: '60일 연속으로 학습하기', icon: '🎖️', requirement: { type: 'streak', value: 60 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'streak_100', name: '백일장', description: '100일 연속으로 학습하기', icon: '🌟', requirement: { type: 'streak', value: 100 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 과목별 학습 업적 (67-81)
+            { id: 'subject_math_50', name: '수학 전문가', description: '수학 50문제 정답', icon: '➗', requirement: { type: 'subjectCorrect', subject: 'math', value: 50 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'subject_english_50', name: '영어 전문가', description: '영어 50문제 정답', icon: '🔤', requirement: { type: 'subjectCorrect', subject: 'english', value: 50 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'subject_science_50', name: '과학 전문가', description: '과학 50문제 정답', icon: '🔬', requirement: { type: 'subjectCorrect', subject: 'science', value: 50 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'subject_korean_50', name: '국어 전문가', description: '국어 50문제 정답', icon: '📖', requirement: { type: 'subjectCorrect', subject: 'korean', value: 50 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'subject_social_50', name: '사회 전문가', description: '사회 50문제 정답', icon: '🌍', requirement: { type: 'subjectCorrect', subject: 'social', value: 50 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'subject_math_100', name: '수학 마스터', description: '수학 100문제 정답', icon: '🧮', requirement: { type: 'subjectCorrect', subject: 'math', value: 100 }, reward: { money: 200, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'subject_english_100', name: '영어 마스터', description: '영어 100문제 정답', icon: '📚', requirement: { type: 'subjectCorrect', subject: 'english', value: 100 }, reward: { money: 200, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'subject_science_100', name: '과학 마스터', description: '과학 100문제 정답', icon: '⚗️', requirement: { type: 'subjectCorrect', subject: 'science', value: 100 }, reward: { money: 200, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'subject_all_subjects', name: '만능 학습자', description: '모든 과목 10문제 이상 정답', icon: '🎓', requirement: { type: 'allSubjects', value: 10 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+
+            // 난이도별 업적 (76-85)
+            { id: 'hard_10', name: '어려운 도전', description: '어려운 문제 10개 정답', icon: '💪', requirement: { type: 'hardQuestions', value: 10 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'hard_25', name: '난관 돌파', description: '어려운 문제 25개 정답', icon: '🏔️', requirement: { type: 'hardQuestions', value: 25 }, reward: { money: 200, normalTickets: 3 }, tier: 'silver' },
+            { id: 'hard_50', name: '고난의 정복자', description: '어려운 문제 50개 정답', icon: '⛰️', requirement: { type: 'hardQuestions', value: 50 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'hard_100', name: '난이도의 신', description: '어려운 문제 100개 정답', icon: '🗻', requirement: { type: 'hardQuestions', value: 100 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+
+            // 시간 관련 업적 (80-89)
+            { id: 'fast_answer_10', name: '빠른 손', description: '5초 안에 정답 10회', icon: '⚡', requirement: { type: 'fastAnswers', value: 10 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'fast_answer_25', name: '번개같은 두뇌', description: '5초 안에 정답 25회', icon: '⚡', requirement: { type: 'fastAnswers', value: 25 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'fast_answer_50', name: '초고속 학습', description: '5초 안에 정답 50회', icon: '🚀', requirement: { type: 'fastAnswers', value: 50 }, reward: { money: 200, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'study_time_1h', name: '1시간 학습', description: '총 1시간 학습하기', icon: '⏰', requirement: { type: 'studyTime', value: 60 }, reward: { money: 50, normalTickets: 1 }, tier: 'bronze' },
+            { id: 'study_time_5h', name: '5시간 학습', description: '총 5시간 학습하기', icon: '⏳', requirement: { type: 'studyTime', value: 300 }, reward: { money: 150, normalTickets: 3 }, tier: 'silver' },
+            { id: 'study_time_10h', name: '10시간 학습', description: '총 10시간 학습하기', icon: '📚', requirement: { type: 'studyTime', value: 600 }, reward: { money: 300, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'study_time_24h', name: '하루 학습', description: '총 24시간 학습하기', icon: '🌙', requirement: { type: 'studyTime', value: 1440 }, reward: { money: 500, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'study_time_50h', name: '학습왕', description: '총 50시간 학습하기', icon: '👑', requirement: { type: 'studyTime', value: 3000 }, reward: { money: 1000, premiumTickets: 5 }, tier: 'diamond' },
+
+            // 특수 업적 (88-100)
+            { id: 'comeback', name: '재기의 달인', description: '틀린 후 연속 5개 정답', icon: '🔄', requirement: { type: 'comeback', value: 5 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'no_skip', name: '포기란 없다', description: '스킵 없이 세션 10회 완료', icon: '💯', requirement: { type: 'noSkip', value: 10 }, reward: { money: 200, normalTickets: 3 }, tier: 'silver' },
+            { id: 'early_bird', name: '아침 학습자', description: '오전 7시 이전 학습 5회', icon: '🌅', requirement: { type: 'earlyBird', value: 5 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'night_owl', name: '밤의 학습자', description: '오후 9시 이후 학습 5회', icon: '🦉', requirement: { type: 'nightOwl', value: 5 }, reward: { money: 100, normalTickets: 2 }, tier: 'silver' },
+            { id: 'weekend_warrior', name: '주말 전사', description: '주말 학습 10회', icon: '🎉', requirement: { type: 'weekend', value: 10 }, reward: { money: 150, normalTickets: 3 }, tier: 'silver' },
+            { id: 'gacha_addict', name: '뽑기 중독', description: '뽑기 50회 수행', icon: '🎰', requirement: { type: 'gachaCount', value: 50 }, reward: { money: 200, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'gacha_master', name: '뽑기 마스터', description: '뽑기 100회 수행', icon: '🎲', requirement: { type: 'gachaCount', value: 100 }, reward: { money: 300, premiumTickets: 3 }, tier: 'gold' },
+            { id: 'money_saver', name: '저축의 달인', description: '1000원 모으기', icon: '💰', requirement: { type: 'moneySaved', value: 1000 }, reward: { money: 100, premiumTickets: 1 }, tier: 'gold' },
+            { id: 'ticket_collector', name: '티켓 수집가', description: '뽑기권 20장 획득', icon: '🎫', requirement: { type: 'ticketsEarned', value: 20 }, reward: { money: 200, premiumTickets: 2 }, tier: 'gold' },
+            { id: 'ultimate_learner', name: '궁극의 학습자', description: '모든 업적 달성', icon: '🏆', requirement: { type: 'allAchievements', value: 99 }, reward: { money: 1000, premiumTickets: 10 }, tier: 'diamond' }
         ];
 
         let userProgress = {};
@@ -198,15 +228,79 @@
             const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
             const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
             const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
-            
+            const plantSystemUser = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+            const plantSystemPlants = JSON.parse(localStorage.getItem('plantSystemPlants') || '{}');
+            const learningProgress = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+
+            // Count rare animals by rarity
+            const collection = animalCollection.collection || {};
+            let rareCount = 0, epicCount = 0, legendaryCount = 0;
+            Object.values(collection).forEach(animal => {
+                if (animal.rarity === 'Rare') rareCount++;
+                else if (animal.rarity === 'Epic') epicCount++;
+                else if (animal.rarity === 'Legendary') legendaryCount++;
+            });
+
+            // Count plants grown and legendary plants
+            const plants = Object.values(plantSystemPlants);
+            const plantsGrown = plants.length;
+            const legendaryPlants = plants.filter(p => p.stage === 4).length; // Stage 4 = fruit/legendary
+
+            // Count subject-specific progress
+            const subjectProgress = {};
+            if (learningProgress.subjects) {
+                Object.keys(learningProgress.subjects).forEach(subject => {
+                    subjectProgress[subject] = learningProgress.subjects[subject].correct || 0;
+                });
+            }
+
             userProgress = {
+                // Basic stats
                 totalCorrect: quizProgress.totalCorrect || 0,
                 sessions: quizProgress.sessionCount || 0,
                 perfectAccuracy: quizProgress.perfectSessions || 0,
-                animalsCollected: Object.keys(animalCollection.collection || {}).length,
-                plantsProtected: animalCollection.hallOfFame ? animalCollection.hallOfFame.length : 0
+
+                // Animal collection
+                animalsCollected: Object.keys(collection).length,
+                rareAnimals: rareCount,
+                epicAnimals: epicCount,
+                legendaryAnimals: legendaryCount,
+                plantsProtected: animalCollection.hallOfFame ? animalCollection.hallOfFame.length : 0,
+
+                // Plant system
+                plantsGrown: plantsGrown,
+                legendaryPlants: legendaryPlants,
+
+                // Streak
+                streak: quizProgress.streakDays || 0,
+
+                // Subject-specific (placeholder - needs tracking implementation)
+                subjectProgress: subjectProgress,
+
+                // Difficulty tracking (placeholder - needs tracking implementation)
+                hardQuestions: quizProgress.hardCorrect || 0,
+
+                // Time tracking (placeholder - needs tracking implementation)
+                fastAnswers: quizProgress.fastAnswers || 0,
+                studyTime: quizProgress.totalStudyTime || 0, // in minutes
+
+                // Special achievements (placeholder - needs tracking implementation)
+                comeback: quizProgress.comebackCount || 0,
+                noSkip: quizProgress.noSkipSessions || 0,
+                earlyBird: quizProgress.earlyBirdCount || 0,
+                nightOwl: quizProgress.nightOwlCount || 0,
+                weekend: quizProgress.weekendCount || 0,
+
+                // Gacha stats
+                gachaCount: animalCollection.gachaCount || 0,
+
+                // Money saved
+                moneySaved: farmState.money || 0,
+
+                // Tickets earned (placeholder - needs tracking implementation)
+                ticketsEarned: quizProgress.ticketsEarned || 0
             };
-            
+
             // Load achievement states
             const savedAchievements = JSON.parse(localStorage.getItem('achievements') || '{}');
             userProgress.achievements = savedAchievements;
@@ -214,25 +308,60 @@
 
         function checkAchievements() {
             let newAchievements = [];
-            
+
             achievements.forEach(achievement => {
                 const isCompleted = userProgress.achievements[achievement.id]?.completed || false;
                 const isClaimed = userProgress.achievements[achievement.id]?.claimed || false;
-                
+
                 if (!isCompleted) {
                     let requirementMet = false;
                     const req = achievement.requirement;
-                    
+
                     switch (req.type) {
                         case 'totalCorrect':
                         case 'sessions':
                         case 'perfectAccuracy':
                         case 'animalsCollected':
                         case 'plantsProtected':
+                        case 'rareAnimals':
+                        case 'epicAnimals':
+                        case 'legendaryAnimals':
+                        case 'plantsGrown':
+                        case 'legendaryPlants':
+                        case 'streak':
+                        case 'hardQuestions':
+                        case 'fastAnswers':
+                        case 'studyTime':
+                        case 'comeback':
+                        case 'noSkip':
+                        case 'earlyBird':
+                        case 'nightOwl':
+                        case 'weekend':
+                        case 'gachaCount':
+                        case 'moneySaved':
+                        case 'ticketsEarned':
                             requirementMet = userProgress[req.type] >= req.value;
                             break;
+                        case 'subjectCorrect':
+                            const subjectCorrect = userProgress.subjectProgress[req.subject] || 0;
+                            requirementMet = subjectCorrect >= req.value;
+                            break;
+                        case 'allSubjects':
+                            // Check if all subjects have at least req.value correct answers
+                            const subjects = ['math', 'english', 'science', 'korean', 'social', 'general', 'idiom', 'person', 'economy', 'etc'];
+                            requirementMet = subjects.every(subject =>
+                                (userProgress.subjectProgress[subject] || 0) >= req.value
+                            );
+                            break;
+                        case 'allAchievements':
+                            // Count completed achievements (excluding this one)
+                            const completedCount = achievements.filter(a =>
+                                a.id !== achievement.id && userProgress.achievements[a.id]?.completed
+                            ).length;
+                            requirementMet = completedCount >= req.value;
+                            break;
                     }
-                    
+
                     if (requirementMet) {
                         // Mark as completed
                         if (!userProgress.achievements[achievement.id]) {
@@ -243,21 +372,21 @@
                         newAchievements.push(achievement);
                     }
                 }
-                
+
                 // Check for unclaimed rewards
                 if (isCompleted && !isClaimed) {
                     unclaimedRewards.push(achievement);
                 }
             });
-            
+
             // Save updated achievements
             localStorage.setItem('achievements', JSON.stringify(userProgress.achievements));
-            
+
             // Show celebration for new achievements
             if (newAchievements.length > 0) {
                 showAchievementNotification(newAchievements);
             }
-            
+
             return newAchievements.length > 0;
         }
 
@@ -317,7 +446,7 @@
             const req = achievement.requirement;
             let current = 0;
             let unit = '';
-            
+
             switch (req.type) {
                 case 'totalCorrect':
                     current = userProgress.totalCorrect;
@@ -335,12 +464,95 @@
                     current = userProgress.animalsCollected;
                     unit = '동물';
                     break;
+                case 'rareAnimals':
+                    current = userProgress.rareAnimals;
+                    unit = '레어 동물';
+                    break;
+                case 'epicAnimals':
+                    current = userProgress.epicAnimals;
+                    unit = '에픽 동물';
+                    break;
+                case 'legendaryAnimals':
+                    current = userProgress.legendaryAnimals;
+                    unit = '레전더리 동물';
+                    break;
                 case 'plantsProtected':
                     current = userProgress.plantsProtected;
                     unit = '보호';
                     break;
+                case 'plantsGrown':
+                    current = userProgress.plantsGrown;
+                    unit = '식물';
+                    break;
+                case 'legendaryPlants':
+                    current = userProgress.legendaryPlants;
+                    unit = '레전더리 식물';
+                    break;
+                case 'streak':
+                    current = userProgress.streak;
+                    unit = '일';
+                    break;
+                case 'subjectCorrect':
+                    current = userProgress.subjectProgress[req.subject] || 0;
+                    unit = '정답';
+                    break;
+                case 'allSubjects':
+                    const subjects = ['math', 'english', 'science', 'korean', 'social', 'general', 'idiom', 'person', 'economy', 'etc'];
+                    current = subjects.filter(s => (userProgress.subjectProgress[s] || 0) >= req.value).length;
+                    unit = '과목';
+                    break;
+                case 'hardQuestions':
+                    current = userProgress.hardQuestions;
+                    unit = '어려운 문제';
+                    break;
+                case 'fastAnswers':
+                    current = userProgress.fastAnswers;
+                    unit = '빠른 정답';
+                    break;
+                case 'studyTime':
+                    current = userProgress.studyTime;
+                    unit = '분';
+                    break;
+                case 'comeback':
+                    current = userProgress.comeback;
+                    unit = '재기';
+                    break;
+                case 'noSkip':
+                    current = userProgress.noSkip;
+                    unit = '세션';
+                    break;
+                case 'earlyBird':
+                    current = userProgress.earlyBird;
+                    unit = '회';
+                    break;
+                case 'nightOwl':
+                    current = userProgress.nightOwl;
+                    unit = '회';
+                    break;
+                case 'weekend':
+                    current = userProgress.weekend;
+                    unit = '회';
+                    break;
+                case 'gachaCount':
+                    current = userProgress.gachaCount;
+                    unit = '뽑기';
+                    break;
+                case 'moneySaved':
+                    current = userProgress.moneySaved;
+                    unit = '원';
+                    break;
+                case 'ticketsEarned':
+                    current = userProgress.ticketsEarned;
+                    unit = '티켓';
+                    break;
+                case 'allAchievements':
+                    current = achievements.filter(a =>
+                        a.id !== achievement.id && userProgress.achievements[a.id]?.completed
+                    ).length;
+                    unit = '업적';
+                    break;
             }
-            
+
             return { current, total: req.value, unit };
         }
 
@@ -366,9 +578,9 @@
 
         function formatReward(reward) {
             const parts = [];
-            if (reward.water) parts.push(`💧${reward.water}`);
             if (reward.money) parts.push(`💰${reward.money}원`);
-            if (reward.tickets) parts.push(`🎫${reward.tickets}장`);
+            if (reward.normalTickets) parts.push(`🎫일반 ${reward.normalTickets}장`);
+            if (reward.premiumTickets) parts.push(`🎟️프리미엄 ${reward.premiumTickets}장`);
             return parts.join(', ');
         }
 
@@ -394,31 +606,53 @@
 
         function claimAllRewards() {
             if (unclaimedRewards.length === 0) return;
-            
-            let totalRewards = { water: 0, money: 0, tickets: 0 };
-            
+
+            let totalRewards = { money: 0, normalTickets: 0, premiumTickets: 0 };
+
             unclaimedRewards.forEach(achievement => {
                 const reward = achievement.reward;
-                if (reward.water) totalRewards.water += reward.water;
                 if (reward.money) totalRewards.money += reward.money;
-                if (reward.tickets) totalRewards.tickets += reward.tickets;
-                
+                if (reward.normalTickets) totalRewards.normalTickets += reward.normalTickets;
+                if (reward.premiumTickets) totalRewards.premiumTickets += reward.premiumTickets;
+
                 // Mark as claimed
                 userProgress.achievements[achievement.id].claimed = true;
             });
-            
+
             // Apply rewards to game state
             const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
-            farmState.water = (farmState.water || 0) + totalRewards.water;
             farmState.money = (farmState.money || 0) + totalRewards.money;
             localStorage.setItem('simpleFarmState', JSON.stringify(farmState));
-            
+
+            // Apply tickets to plant-system
+            try {
+                const plantSystemUser = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+                if (!plantSystemUser.rewards) {
+                    plantSystemUser.rewards = {
+                        growthTickets: [],
+                        normalGachaTickets: 0,
+                        premiumGachaTickets: 0
+                    };
+                }
+                plantSystemUser.rewards.normalGachaTickets = (plantSystemUser.rewards.normalGachaTickets || 0) + totalRewards.normalTickets;
+                plantSystemUser.rewards.premiumGachaTickets = (plantSystemUser.rewards.premiumGachaTickets || 0) + totalRewards.premiumTickets;
+                localStorage.setItem('plantSystemUser', JSON.stringify(plantSystemUser));
+                console.log('✅ Tickets added to plant-system:', totalRewards);
+            } catch (e) {
+                console.error('Error adding tickets to plant-system:', e);
+            }
+
             // Save achievement states
             localStorage.setItem('achievements', JSON.stringify(userProgress.achievements));
-            
+
             // Show reward notification
-            alert(`🎉 보상을 받았습니다!\n\n💧 물방울: ${totalRewards.water}개\n💰 돈: ${totalRewards.money}원\n🎫 뽑기권: ${totalRewards.tickets}장\n\n계속해서 목표를 달성해보세요!`);
-            
+            const rewardMessages = [];
+            if (totalRewards.money > 0) rewardMessages.push(`💰 돈: ${totalRewards.money}원`);
+            if (totalRewards.normalTickets > 0) rewardMessages.push(`🎫 일반 뽑기권: ${totalRewards.normalTickets}장`);
+            if (totalRewards.premiumTickets > 0) rewardMessages.push(`🎟️ 프리미엄 뽑기권: ${totalRewards.premiumTickets}장`);
+
+            alert(`🎉 보상을 받았습니다!\n\n${rewardMessages.join('\n')}\n\n계속해서 목표를 달성해보세요!`);
+
             // Refresh display
             unclaimedRewards = [];
             updateStats();

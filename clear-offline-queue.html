@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오프라인 큐 초기화 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-lg p-8 max-w-md w-full">
+        <h1 class="text-2xl font-bold text-gray-900 mb-4">🔧 오프라인 큐 초기화</h1>
+
+        <div class="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-4 mb-6">
+            <p class="text-sm text-gray-700">
+                Firebase 오프라인 큐에 오래된 데이터가 쌓여 오류가 발생할 수 있습니다.
+                이 페이지는 오프라인 큐를 초기화합니다.
+            </p>
+        </div>
+
+        <div id="status" class="mb-6 text-sm text-gray-600">
+            현재 큐 상태를 확인 중...
+        </div>
+
+        <button onclick="clearQueue()" class="w-full px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all mb-3">
+            🗑️ 오프라인 큐 초기화
+        </button>
+
+        <button onclick="window.location.href='index.html'" class="w-full px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-bold transition-all">
+            🏠 홈으로
+        </button>
+
+        <div id="result" class="mt-6 p-4 rounded-lg hidden"></div>
+    </div>
+
+    <script>
+        // 큐 상태 확인
+        function checkQueue() {
+            const queue = JSON.parse(localStorage.getItem('firebaseOfflineQueue') || '[]');
+            const statusDiv = document.getElementById('status');
+
+            if (queue.length === 0) {
+                statusDiv.innerHTML = '✅ 오프라인 큐가 비어있습니다.';
+                statusDiv.className = 'mb-6 text-sm text-green-600 font-medium';
+            } else {
+                statusDiv.innerHTML = `⚠️ 오프라인 큐에 ${queue.length}개의 항목이 있습니다.`;
+                statusDiv.className = 'mb-6 text-sm text-orange-600 font-medium';
+            }
+        }
+
+        // 큐 초기화
+        function clearQueue() {
+            if (!confirm('정말 오프라인 큐를 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                return;
+            }
+
+            const queue = JSON.parse(localStorage.getItem('firebaseOfflineQueue') || '[]');
+            const count = queue.length;
+
+            localStorage.removeItem('firebaseOfflineQueue');
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'mt-6 p-4 rounded-lg bg-green-50 border-2 border-green-200';
+            resultDiv.innerHTML = `
+                <div class="text-green-800 font-bold mb-2">✅ 초기화 완료</div>
+                <div class="text-sm text-green-700">${count}개의 항목이 제거되었습니다.</div>
+            `;
+            resultDiv.classList.remove('hidden');
+
+            checkQueue();
+        }
+
+        // 페이지 로드 시 상태 확인
+        checkQueue();
+    </script>
+</body>
+</html>

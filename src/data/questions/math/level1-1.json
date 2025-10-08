@@ -2,46 +2,901 @@
   {
     "id": "math_easy_1_1",
     "subject": "math",
-    "question": "수학 문제 1-1-1",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "수빈이는 빨간 구슬 15개를 가지고 있었어요. 친구가 파란 구슬 23개를 선물로 주었어요. 수빈이가 가진 구슬은 모두 몇 개일까요?",
+    "options": ["38개", "42개", "35개", "40개"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "빨간 구슬 15개와 파란 구슬 23개를 모두 더해야 해요. 15 + 23 = 38개가 됩니다. 십의 자리끼리 더하면 10 + 20 = 30, 일의 자리끼리 더하면 5 + 3 = 8, 합치면 38개예요!",
     "difficulty": 1
   },
   {
     "id": "math_easy_1_2",
     "subject": "math",
-    "question": "수학 문제 1-1-2",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "동물원에 코끼리가 47마리 있었어요. 그 중 12마리가 다른 동물원으로 이사를 갔어요. 남은 코끼리는 몇 마리일까요?",
+    "options": ["35마리", "39마리", "33마리", "37마리"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "47 - 12 = 35예요. 47에서 10을 빼면 37, 거기서 2를 더 빼면 35마리가 남습니다!",
     "difficulty": 1
   },
   {
     "id": "math_easy_1_3",
     "subject": "math",
-    "question": "수학 문제 1-1-3",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "민수는 풍선 34개를 가지고 있었어요. 동생이 25개를 더 불어주었어요. 민수가 가진 풍선은 모두 몇 개일까요?",
+    "options": ["59개", "49개", "69개", "55개"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "34 + 25 = 59예요. 30 + 20 = 50, 4 + 5 = 9, 합치면 59개입니다!",
     "difficulty": 1
   },
   {
     "id": "math_easy_1_4",
     "subject": "math",
-    "question": "수학 문제 1-1-4",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "책장에 책이 68권 있었어요. 도서관에 33권을 기증했어요. 남은 책은 몇 권일까요?",
+    "options": ["35권", "31권", "45권", "38권"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "68 - 33 = 35예요. 68에서 30을 빼면 38, 거기서 3을 더 빼면 35권이 남아요!",
     "difficulty": 1
   },
   {
     "id": "math_easy_1_5",
     "subject": "math",
-    "question": "수학 문제 1-1-5",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "바구니에 사과가 56개 있었어요. 할머니가 32개를 더 담아주셨어요. 이제 사과는 모두 몇 개일까요?",
+    "options": ["88개", "78개", "98개", "82개"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "56 + 32 = 88이에요. 50 + 30 = 80, 6 + 2 = 8, 합치면 88개입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_6",
+    "subject": "math",
+    "question": "운동장에 학생이 75명 있었어요. 26명이 교실로 들어갔어요. 운동장에 남은 학생은 몇 명일까요?",
+    "options": ["49명", "51명", "45명", "53명"],
+    "correctIndex": 0,
+    "explanation": "75 - 26 = 49예요. 75에서 20을 빼면 55, 거기서 6을 더 빼면 49명이 남아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_7",
+    "subject": "math",
+    "question": "주차장에 자동차가 42대 있었어요. 17대가 더 들어왔어요. 주차장에 있는 자동차는 모두 몇 대일까요?",
+    "options": ["59대", "55대", "65대", "49대"],
+    "correctIndex": 0,
+    "explanation": "42 + 17 = 59예요. 40 + 10 = 50, 2 + 7 = 9, 합치면 59대입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_8",
+    "subject": "math",
+    "question": "우체국에서 우표를 63장 샀어요. 그 중 28장을 사용했어요. 남은 우표는 몇 장일까요?",
+    "options": ["35장", "31장", "45장", "38장"],
+    "correctIndex": 0,
+    "explanation": "63 - 28 = 35예요. 63에서 20을 빼면 43, 거기서 8을 더 빼면 35장이 남아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_9",
+    "subject": "math",
+    "question": "연못에 오리가 29마리 있었어요. 36마리가 더 날아왔어요. 연못에 있는 오리는 모두 몇 마리일까요?",
+    "options": ["65마리", "55마리", "75마리", "60마리"],
+    "correctIndex": 0,
+    "explanation": "29 + 36 = 65예요. 20 + 30 = 50, 9 + 6 = 15, 합치면 65마리입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_10",
+    "subject": "math",
+    "question": "상자에 크레파스가 84개 있었어요. 친구들과 나눠 쓰느라 39개를 꺼냈어요. 상자에 남은 크레파스는 몇 개일까요?",
+    "options": ["45개", "43개", "55개", "47개"],
+    "correctIndex": 0,
+    "explanation": "84 - 39 = 45예요. 84에서 30을 빼면 54, 거기서 9를 더 빼면 45개가 남아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_1",
+    "subject": "math",
+    "question": "강아지 한 마리는 다리가 4개예요. 강아지 5마리는 다리가 모두 몇 개일까요?",
+    "options": ["20개", "15개", "25개", "18개"],
+    "correctIndex": 0,
+    "explanation": "강아지 한 마리당 다리가 4개씩 있어요. 5마리니까 4 + 4 + 4 + 4 + 4 = 20개예요. 곱셈으로 하면 4 × 5 = 20개가 됩니다. 구구단 4단이죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_2",
+    "subject": "math",
+    "question": "3 × 6 = ?",
+    "options": ["18", "15", "21", "12"],
+    "correctIndex": 0,
+    "explanation": "3 × 6 = 18이에요. 3을 6번 더하면 3 + 3 + 3 + 3 + 3 + 3 = 18입니다. 구구단 3단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_3",
+    "subject": "math",
+    "question": "한 상자에 계란이 6개씩 들어있어요. 4상자에는 계란이 모두 몇 개일까요?",
+    "options": ["24개", "20개", "28개", "30개"],
+    "correctIndex": 0,
+    "explanation": "6 × 4 = 24예요. 6개씩 4상자니까 6 + 6 + 6 + 6 = 24개입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_4",
+    "subject": "math",
+    "question": "2 × 8 = ?",
+    "options": ["16", "18", "14", "12"],
+    "correctIndex": 0,
+    "explanation": "2 × 8 = 16이에요. 2를 8번 더하면 16입니다. 구구단 2단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_5",
+    "subject": "math",
+    "question": "한 접시에 쿠키가 5개씩 놓여있어요. 7접시에는 쿠키가 모두 몇 개일까요?",
+    "options": ["35개", "30개", "40개", "32개"],
+    "correctIndex": 0,
+    "explanation": "5 × 7 = 35예요. 5개씩 7접시니까 5 + 5 + 5 + 5 + 5 + 5 + 5 = 35개입니다. 구구단 5단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_6",
+    "subject": "math",
+    "question": "4 × 7 = ?",
+    "options": ["28", "24", "32", "21"],
+    "correctIndex": 0,
+    "explanation": "4 × 7 = 28이에요. 4를 7번 더하면 28입니다. 구구단 4단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_7",
+    "subject": "math",
+    "question": "한 묶음에 색종이가 8장씩 들어있어요. 3묶음에는 색종이가 모두 몇 장일까요?",
+    "options": ["24장", "21장", "27장", "18장"],
+    "correctIndex": 0,
+    "explanation": "8 × 3 = 24예요. 8장씩 3묶음이니까 8 + 8 + 8 = 24장입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_8",
+    "subject": "math",
+    "question": "5 × 4 = ?",
+    "options": ["20", "25", "15", "24"],
+    "correctIndex": 0,
+    "explanation": "5 × 4 = 20이에요. 5를 4번 더하면 5 + 5 + 5 + 5 = 20입니다. 구구단 5단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_9",
+    "subject": "math",
+    "question": "한 줄에 의자가 6개씩 놓여있어요. 5줄에는 의자가 모두 몇 개일까요?",
+    "options": ["30개", "35개", "25개", "24개"],
+    "correctIndex": 0,
+    "explanation": "6 × 5 = 30이에요. 6개씩 5줄이니까 6 + 6 + 6 + 6 + 6 = 30개입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_10",
+    "subject": "math",
+    "question": "3 × 9 = ?",
+    "options": ["27", "24", "30", "21"],
+    "correctIndex": 0,
+    "explanation": "3 × 9 = 27이에요. 3을 9번 더하면 27입니다. 구구단 3단이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_1",
+    "subject": "math",
+    "question": "사탕 12개를 3명이 똑같이 나눠 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["4개", "5개", "3개", "6개"],
+    "correctIndex": 0,
+    "explanation": "12 ÷ 3 = 4예요. 12개를 3으로 나누면 한 사람당 4개씩 받을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_2",
+    "subject": "math",
+    "question": "연필 20자루를 친구 4명이 똑같이 나눠 가지려고 해요. 한 명이 몇 자루씩 가질까요?",
+    "options": ["5자루", "6자루", "4자루", "7자루"],
+    "correctIndex": 0,
+    "explanation": "20 ÷ 4 = 5예요. 20을 4로 나누면 5자루씩 나눠가질 수 있습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_3",
+    "subject": "math",
+    "question": "15 ÷ 5 = ?",
+    "options": ["3", "4", "5", "2"],
+    "correctIndex": 0,
+    "explanation": "15 ÷ 5 = 3이에요. 15를 5로 나누면 3이 됩니다. 5 × 3 = 15와 같은 뜻이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_4",
+    "subject": "math",
+    "question": "귤 18개를 바구니 6개에 똑같이 담으려고 해요. 한 바구니에 귤을 몇 개씩 담아야 할까요?",
+    "options": ["3개", "4개", "2개", "5개"],
+    "correctIndex": 0,
+    "explanation": "18 ÷ 6 = 3이에요. 18개를 6개의 바구니에 똑같이 나누면 한 바구니에 3개씩 담을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_5",
+    "subject": "math",
+    "question": "24 ÷ 8 = ?",
+    "options": ["3", "4", "2", "5"],
+    "correctIndex": 0,
+    "explanation": "24 ÷ 8 = 3이에요. 24를 8로 나누면 3이 됩니다. 8 × 3 = 24와 같아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_6",
+    "subject": "math",
+    "question": "쿠키 30개를 접시 5개에 똑같이 담으려고 해요. 한 접시에 쿠키를 몇 개씩 담아야 할까요?",
+    "options": ["6개", "7개", "5개", "8개"],
+    "correctIndex": 0,
+    "explanation": "30 ÷ 5 = 6이에요. 30개를 5개의 접시에 똑같이 나누면 한 접시에 6개씩 담을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_7",
+    "subject": "math",
+    "question": "16 ÷ 4 = ?",
+    "options": ["4", "5", "3", "6"],
+    "correctIndex": 0,
+    "explanation": "16 ÷ 4 = 4예요. 16을 4로 나누면 4가 됩니다. 4 × 4 = 16이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_8",
+    "subject": "math",
+    "question": "초콜릿 21개를 친구 7명이 똑같이 나눠 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["3개", "4개", "2개", "5개"],
+    "correctIndex": 0,
+    "explanation": "21 ÷ 7 = 3이에요. 21개를 7명이 똑같이 나누면 한 명당 3개씩 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_9",
+    "subject": "math",
+    "question": "32 ÷ 8 = ?",
+    "options": ["4", "5", "3", "6"],
+    "correctIndex": 0,
+    "explanation": "32 ÷ 8 = 4예요. 32를 8로 나누면 4가 됩니다. 8 × 4 = 32와 같아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_10",
+    "subject": "math",
+    "question": "구슬 35개를 친구 5명이 똑같이 나눠 가지려고 해요. 한 명이 몇 개씩 가질까요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "35 ÷ 5 = 7이에요. 35개를 5명이 똑같이 나누면 한 명당 7개씩 가질 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_1",
+    "subject": "math",
+    "question": "지금 시각이 오전 9시예요. 2시간 후에는 몇 시일까요?",
+    "options": ["오전 11시", "오전 10시", "오후 12시", "오후 1시"],
+    "correctIndex": 0,
+    "explanation": "9시에서 1시간 지나면 10시, 2시간 지나면 11시가 돼요. 9 + 2 = 11이니까 오전 11시가 됩니다. 아직 정오(12시)가 되지 않았으니까 오전이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_2",
+    "subject": "math",
+    "question": "시계가 3시 30분을 가리키고 있어요. 긴바늘이 가리키는 숫자는 무엇일까요?",
+    "options": ["6", "3", "12", "9"],
+    "correctIndex": 0,
+    "explanation": "30분일 때 긴바늘(분침)은 6을 가리켜요. 30분은 반바퀴니까 12에서 6으로 내려옵니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_3",
+    "subject": "math",
+    "question": "지금이 오후 2시예요. 3시간 전에는 몇 시였을까요?",
+    "options": ["오전 11시", "오전 10시", "오후 12시", "오전 9시"],
+    "correctIndex": 0,
+    "explanation": "오후 2시는 14시예요. 3시간 전이면 14 - 3 = 11시, 11시는 오전이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_4",
+    "subject": "math",
+    "question": "시계가 7시 정각을 가리키고 있어요. 짧은바늘이 가리키는 숫자는 무엇일까요?",
+    "options": ["7", "12", "6", "8"],
+    "correctIndex": 0,
+    "explanation": "정각일 때 짧은바늘(시침)은 정확히 시간 숫자를 가리켜요. 7시 정각이니까 7을 가리킵니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_5",
+    "subject": "math",
+    "question": "지금 시각이 오전 10시예요. 1시간 30분 후에는 몇 시일까요?",
+    "options": ["오전 11시 30분", "오후 12시", "오전 10시 30분", "오전 11시"],
+    "correctIndex": 0,
+    "explanation": "10시에서 1시간 지나면 11시, 거기서 30분 더 지나면 11시 30분이에요. 아직 정오 전이니까 오전 11시 30분입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_6",
+    "subject": "math",
+    "question": "시계가 6시 15분을 가리키고 있어요. 긴바늘이 가리키는 숫자는 무엇일까요?",
+    "options": ["3", "6", "12", "9"],
+    "correctIndex": 0,
+    "explanation": "15분일 때 긴바늘(분침)은 3을 가리켜요. 15분은 1/4바퀴니까 12에서 3으로 갑니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_7",
+    "subject": "math",
+    "question": "지금 시각이 오후 4시예요. 5시간 후에는 몇 시일까요?",
+    "options": ["오후 9시", "오후 8시", "오후 10시", "오후 7시"],
+    "correctIndex": 0,
+    "explanation": "오후 4시에서 5시간 후면 4 + 5 = 9시예요. 오후 9시가 됩니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_8",
+    "subject": "math",
+    "question": "시계가 12시 45분을 가리키고 있어요. 긴바늘이 가리키는 숫자는 무엇일까요?",
+    "options": ["9", "12", "6", "3"],
+    "correctIndex": 0,
+    "explanation": "45분일 때 긴바늘(분침)은 9를 가리켜요. 45분은 3/4바퀴니까 12에서 9로 갑니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_9",
+    "subject": "math",
+    "question": "지금 시각이 오전 8시예요. 4시간 후에는 몇 시일까요?",
+    "options": ["오후 12시", "오전 12시", "오후 1시", "오전 11시"],
+    "correctIndex": 0,
+    "explanation": "8시에서 4시간 후면 8 + 4 = 12시예요. 12시는 정오이고, 오후 12시라고 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_10",
+    "subject": "math",
+    "question": "시계가 5시 정각을 가리키고 있어요. 30분 후에는 몇 시 몇 분일까요?",
+    "options": ["5시 30분", "6시", "5시 15분", "4시 30분"],
+    "correctIndex": 0,
+    "explanation": "5시에서 30분 후면 5시 30분이에요. 5시는 그대로고 30분이 더해집니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_1",
+    "subject": "math",
+    "question": "연필의 길이가 15cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["150mm", "15mm", "1500mm", "1.5mm"],
+    "correctIndex": 0,
+    "explanation": "1cm = 10mm이므로, 15cm = 150mm예요. cm를 mm로 바꾸려면 10을 곱하면 됩니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_2",
+    "subject": "math",
+    "question": "책상의 가로 길이가 80cm예요. 이것은 몇 m 몇 cm일까요?",
+    "options": ["0m 80cm", "8m 0cm", "0m 8cm", "80m 0cm"],
+    "correctIndex": 0,
+    "explanation": "100cm = 1m이므로, 80cm는 1m가 안 돼요. 그래서 0m 80cm입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_3",
+    "subject": "math",
+    "question": "우유팩의 높이가 20cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["200mm", "20mm", "2000mm", "2mm"],
+    "correctIndex": 0,
+    "explanation": "20cm = 200mm예요. 1cm = 10mm이므로 20cm는 20 × 10 = 200mm입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_4",
+    "subject": "math",
+    "question": "교실의 길이가 1m 50cm예요. 이것을 cm로만 나타내면 얼마일까요?",
+    "options": ["150cm", "15cm", "1050cm", "105cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 1m 50cm = 100 + 50 = 150cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_5",
+    "subject": "math",
+    "question": "자의 길이가 30cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["300mm", "30mm", "3000mm", "3mm"],
+    "correctIndex": 0,
+    "explanation": "30cm = 300mm예요. 1cm = 10mm이므로 30 × 10 = 300mm입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_6",
+    "subject": "math",
+    "question": "복도의 길이가 2m예요. 이것을 cm로 나타내면 얼마일까요?",
+    "options": ["200cm", "20cm", "2000cm", "2cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 2m = 200cm예요. m를 cm로 바꾸려면 100을 곱하면 됩니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_7",
+    "subject": "math",
+    "question": "지우개의 길이가 40mm예요. 이것을 cm로 나타내면 얼마일까요?",
+    "options": ["4cm", "40cm", "0.4cm", "400cm"],
+    "correctIndex": 0,
+    "explanation": "10mm = 1cm이므로, 40mm = 4cm예요. mm를 cm로 바꾸려면 10으로 나누면 됩니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_8",
+    "subject": "math",
+    "question": "책의 두께가 2cm 5mm예요. 이것을 mm로만 나타내면 얼마일까요?",
+    "options": ["25mm", "250mm", "205mm", "7mm"],
+    "correctIndex": 0,
+    "explanation": "2cm = 20mm이므로, 2cm 5mm = 20 + 5 = 25mm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_9",
+    "subject": "math",
+    "question": "줄넘기의 길이가 3m예요. 이것을 cm로 나타내면 얼마일까요?",
+    "options": ["300cm", "30cm", "3000cm", "3cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 3m = 300cm예요. 3 × 100 = 300cm입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_10",
+    "subject": "math",
+    "question": "클립의 길이가 50mm예요. 이것을 cm로 나타내면 얼마일까요?",
+    "options": ["5cm", "50cm", "0.5cm", "500cm"],
+    "correctIndex": 0,
+    "explanation": "10mm = 1cm이므로, 50mm = 5cm예요. 50 ÷ 10 = 5cm입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_1",
+    "subject": "math",
+    "question": "지우개 1개에 500원이에요. 3개를 사면 얼마를 내야 할까요?",
+    "options": ["1,500원", "1,000원", "2,000원", "2,500원"],
+    "correctIndex": 0,
+    "explanation": "500 × 3 = 1,500원이에요. 500원짜리 3개니까 500 + 500 + 500 = 1,500원입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_2",
+    "subject": "math",
+    "question": "민지는 2,000원을 가지고 있어요. 1,200원짜리 공책을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["800원", "700원", "900원", "600원"],
+    "correctIndex": 0,
+    "explanation": "2,000 - 1,200 = 800원이에요. 2,000원에서 1,200원을 쓰면 800원이 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_3",
+    "subject": "math",
+    "question": "사탕 한 개에 300원이에요. 5개를 사면 얼마를 내야 할까요?",
+    "options": ["1,500원", "1,200원", "1,800원", "2,000원"],
+    "correctIndex": 0,
+    "explanation": "300 × 5 = 1,500원이에요. 300원짜리 5개니까 300 + 300 + 300 + 300 + 300 = 1,500원입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_4",
+    "subject": "math",
+    "question": "수빈이는 5,000원을 가지고 있어요. 3,500원짜리 인형을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["1,500원", "1,000원", "2,000원", "2,500원"],
+    "correctIndex": 0,
+    "explanation": "5,000 - 3,500 = 1,500원이에요. 5,000원에서 3,500원을 쓰면 1,500원이 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_5",
+    "subject": "math",
+    "question": "연필 한 자루에 400원이에요. 4자루를 사면 얼마를 내야 할까요?",
+    "options": ["1,600원", "1,200원", "2,000원", "1,400원"],
+    "correctIndex": 0,
+    "explanation": "400 × 4 = 1,600원이에요. 400원짜리 4자루니까 400 + 400 + 400 + 400 = 1,600원입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_6",
+    "subject": "math",
+    "question": "준호는 3,000원을 가지고 있어요. 1,800원짜리 장난감을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["1,200원", "1,000원", "1,500원", "800원"],
+    "correctIndex": 0,
+    "explanation": "3,000 - 1,800 = 1,200원이에요. 3,000원에서 1,800원을 쓰면 1,200원이 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_7",
+    "subject": "math",
+    "question": "빵 한 개에 600원이에요. 3개를 사면 얼마를 내야 할까요?",
+    "options": ["1,800원", "1,500원", "2,100원", "2,400원"],
+    "correctIndex": 0,
+    "explanation": "600 × 3 = 1,800원이에요. 600원짜리 3개니까 600 + 600 + 600 = 1,800원입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_8",
+    "subject": "math",
+    "question": "영희는 4,000원을 가지고 있어요. 2,700원짜리 색연필을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["1,300원", "1,500원", "1,200원", "1,000원"],
+    "correctIndex": 0,
+    "explanation": "4,000 - 2,700 = 1,300원이에요. 4,000원에서 2,700원을 쓰면 1,300원이 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_9",
+    "subject": "math",
+    "question": "우유 한 팩에 1,000원이에요. 4팩을 사면 얼마를 내야 할까요?",
+    "options": ["4,000원", "3,000원", "5,000원", "3,500원"],
+    "correctIndex": 0,
+    "explanation": "1,000 × 4 = 4,000원이에요. 1,000원짜리 4팩이니까 1,000 + 1,000 + 1,000 + 1,000 = 4,000원입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_10",
+    "subject": "math",
+    "question": "동수는 10,000원을 가지고 있어요. 7,500원짜리 공을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["2,500원", "3,000원", "2,000원", "3,500원"],
+    "correctIndex": 0,
+    "explanation": "10,000 - 7,500 = 2,500원이에요. 10,000원에서 7,500원을 쓰면 2,500원이 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_1",
+    "subject": "math",
+    "question": "그림에 삼각형이 5개, 사각형이 3개 있어요. 도형은 모두 몇 개일까요?",
+    "options": ["8개", "7개", "9개", "10개"],
+    "correctIndex": 0,
+    "explanation": "5 + 3 = 8개예요. 삼각형과 사각형을 모두 더하면 8개의 도형이 있습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_2",
+    "subject": "math",
+    "question": "빨간 공 4개, 파란 공 6개가 있어요. 공은 모두 몇 개일까요?",
+    "options": ["10개", "11개", "9개", "12개"],
+    "correctIndex": 0,
+    "explanation": "4 + 6 = 10개예요. 빨간 공과 파란 공을 모두 합치면 10개입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_3",
+    "subject": "math",
+    "question": "삼각형은 꼭짓점이 몇 개일까요?",
+    "options": ["3개", "4개", "5개", "2개"],
+    "correctIndex": 0,
+    "explanation": "삼각형은 꼭짓점이 3개예요. 삼각형은 세 개의 꼭짓점을 이은 도형입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_4",
+    "subject": "math",
+    "question": "사각형은 변이 몇 개일까요?",
+    "options": ["4개", "3개", "5개", "6개"],
+    "correctIndex": 0,
+    "explanation": "사각형은 변이 4개예요. 사각형은 네 개의 변으로 이루어진 도형입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_5",
+    "subject": "math",
+    "question": "그림에 원이 7개, 삼각형이 2개 있어요. 도형은 모두 몇 개일까요?",
+    "options": ["9개", "10개", "8개", "11개"],
+    "correctIndex": 0,
+    "explanation": "7 + 2 = 9개예요. 원과 삼각형을 모두 더하면 9개의 도형이 있습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_6",
+    "subject": "math",
+    "question": "정사각형은 변의 길이가 모두 같은 사각형이에요. 한 변이 5cm면 네 변의 길이의 합은 몇 cm일까요?",
+    "options": ["20cm", "15cm", "25cm", "10cm"],
+    "correctIndex": 0,
+    "explanation": "정사각형은 네 변의 길이가 모두 같아요. 5 + 5 + 5 + 5 = 20cm 또는 5 × 4 = 20cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_7",
+    "subject": "math",
+    "question": "오각형은 꼭짓점이 몇 개일까요?",
+    "options": ["5개", "4개", "6개", "3개"],
+    "correctIndex": 0,
+    "explanation": "오각형은 꼭짓점이 5개예요. 오각형은 다섯 개의 꼭짓점을 이은 도형입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_8",
+    "subject": "math",
+    "question": "그림에 노란 별 8개, 빨간 하트 5개가 있어요. 모양은 모두 몇 개일까요?",
+    "options": ["13개", "12개", "14개", "15개"],
+    "correctIndex": 0,
+    "explanation": "8 + 5 = 13개예요. 별과 하트를 모두 더하면 13개의 모양이 있습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_9",
+    "subject": "math",
+    "question": "육각형은 변이 몇 개일까요?",
+    "options": ["6개", "5개", "7개", "4개"],
+    "correctIndex": 0,
+    "explanation": "육각형은 변이 6개예요. 육각형은 여섯 개의 변으로 이루어진 도형입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_10",
+    "subject": "math",
+    "question": "직사각형의 가로가 6cm, 세로가 4cm예요. 네 변의 길이의 합은 몇 cm일까요?",
+    "options": ["20cm", "10cm", "24cm", "16cm"],
+    "correctIndex": 0,
+    "explanation": "직사각형은 가로 2개, 세로 2개가 있어요. 6 + 6 + 4 + 4 = 20cm 또는 (6 + 4) × 2 = 20cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_1",
+    "subject": "math",
+    "question": "35와 42 중에서 더 큰 수는 무엇일까요?",
+    "options": ["42", "35", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "42가 더 커요. 십의 자리가 3과 4인데, 4가 3보다 크니까 42가 더 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_2",
+    "subject": "math",
+    "question": "58과 65 중에서 더 작은 수는 무엇일까요?",
+    "options": ["58", "65", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "58이 더 작아요. 십의 자리가 5와 6인데, 5가 6보다 작으니까 58이 더 작습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_3",
+    "subject": "math",
+    "question": "27, 35, 19 중에서 가장 큰 수는 무엇일까요?",
+    "options": ["35", "27", "19", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "35가 가장 커요. 십의 자리를 비교하면 3, 3, 1인데, 십의 자리가 3인 것 중에서 일의 자리가 5인 35가 가장 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_4",
+    "subject": "math",
+    "question": "73과 37 중에서 더 큰 수는 무엇일까요?",
+    "options": ["73", "37", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "73이 더 커요. 십의 자리가 7과 3인데, 7이 3보다 크니까 73이 더 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_5",
+    "subject": "math",
+    "question": "48, 52, 45 중에서 가장 작은 수는 무엇일까요?",
+    "options": ["45", "48", "52", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "45가 가장 작아요. 십의 자리를 비교하면 4, 5, 4인데, 십의 자리가 4인 것 중에서 일의 자리가 5인 45가 가장 작습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_6",
+    "subject": "math",
+    "question": "89와 98 중에서 더 작은 수는 무엇일까요?",
+    "options": ["89", "98", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "89가 더 작아요. 십의 자리가 8과 9인데, 8이 9보다 작으니까 89가 더 작습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_7",
+    "subject": "math",
+    "question": "64, 46, 56 중에서 가장 큰 수는 무엇일까요?",
+    "options": ["64", "46", "56", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "64가 가장 커요. 십의 자리를 비교하면 6, 4, 5인데, 6이 가장 크니까 64가 가장 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_8",
+    "subject": "math",
+    "question": "21과 12 중에서 더 큰 수는 무엇일까요?",
+    "options": ["21", "12", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "21이 더 커요. 십의 자리가 2와 1인데, 2가 1보다 크니까 21이 더 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_9",
+    "subject": "math",
+    "question": "31, 28, 36 중에서 가장 작은 수는 무엇일까요?",
+    "options": ["28", "31", "36", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "28이 가장 작아요. 십의 자리를 비교하면 3, 2, 3인데, 2가 가장 작으니까 28이 가장 작습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_10",
+    "subject": "math",
+    "question": "75와 57 중에서 더 큰 수는 무엇일까요?",
+    "options": ["75", "57", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "75가 더 커요. 십의 자리가 7과 5인데, 7이 5보다 크니까 75가 더 큽니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_1",
+    "subject": "math",
+    "question": "2, 4, 6, 8, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["10", "12", "9", "11"],
+    "correctIndex": 0,
+    "explanation": "2씩 커지는 규칙이에요. 8 다음은 8 + 2 = 10입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_2",
+    "subject": "math",
+    "question": "5, 10, 15, 20, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["25", "30", "22", "24"],
+    "correctIndex": 0,
+    "explanation": "5씩 커지는 규칙이에요. 20 다음은 20 + 5 = 25입니다! 5의 배수죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_3",
+    "subject": "math",
+    "question": "3, 6, 9, 12, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["15", "18", "13", "14"],
+    "correctIndex": 0,
+    "explanation": "3씩 커지는 규칙이에요. 12 다음은 12 + 3 = 15입니다! 3의 배수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_4",
+    "subject": "math",
+    "question": "10, 20, 30, 40, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["50", "60", "45", "55"],
+    "correctIndex": 0,
+    "explanation": "10씩 커지는 규칙이에요. 40 다음은 40 + 10 = 50입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_5",
+    "subject": "math",
+    "question": "1, 3, 5, 7, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["9", "8", "10", "11"],
+    "correctIndex": 0,
+    "explanation": "2씩 커지는 규칙이에요. 7 다음은 7 + 2 = 9입니다! 홀수들이죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_6",
+    "subject": "math",
+    "question": "4, 8, 12, 16, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["20", "24", "18", "22"],
+    "correctIndex": 0,
+    "explanation": "4씩 커지는 규칙이에요. 16 다음은 16 + 4 = 20입니다! 4의 배수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_7",
+    "subject": "math",
+    "question": "15, 20, 25, 30, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["35", "40", "32", "33"],
+    "correctIndex": 0,
+    "explanation": "5씩 커지는 규칙이에요. 30 다음은 30 + 5 = 35입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_8",
+    "subject": "math",
+    "question": "6, 12, 18, 24, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["30", "36", "28", "32"],
+    "correctIndex": 0,
+    "explanation": "6씩 커지는 규칙이에요. 24 다음은 24 + 6 = 30입니다! 6의 배수죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_9",
+    "subject": "math",
+    "question": "11, 13, 15, 17, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["19", "18", "20", "21"],
+    "correctIndex": 0,
+    "explanation": "2씩 커지는 규칙이에요. 17 다음은 17 + 2 = 19입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_10",
+    "subject": "math",
+    "question": "8, 16, 24, 32, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["40", "48", "36", "38"],
+    "correctIndex": 0,
+    "explanation": "8씩 커지는 규칙이에요. 32 다음은 32 + 8 = 40입니다! 8의 배수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_1",
+    "subject": "math",
+    "question": "현우는 어제 책을 12쪽 읽었어요. 오늘은 15쪽을 읽었어요. 이틀 동안 읽은 쪽수는 모두 몇 쪽일까요?",
+    "options": ["27쪽", "25쪽", "30쪽", "23쪽"],
+    "correctIndex": 0,
+    "explanation": "어제 12쪽과 오늘 15쪽을 더해요. 12 + 15 = 27쪽입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_2",
+    "subject": "math",
+    "question": "화단에 꽃이 38송이 피어있었어요. 그 중 16송이를 꺾어서 꽃병에 꽂았어요. 화단에 남은 꽃은 몇 송이일까요?",
+    "options": ["22송이", "24송이", "20송이", "26송이"],
+    "correctIndex": 0,
+    "explanation": "38송이에서 16송이를 빼요. 38 - 16 = 22송이가 남습니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_3",
+    "subject": "math",
+    "question": "수지는 하루에 우유를 2팩씩 마셔요. 5일 동안 마신 우유는 모두 몇 팩일까요?",
+    "options": ["10팩", "12팩", "8팩", "15팩"],
+    "correctIndex": 0,
+    "explanation": "하루에 2팩씩 5일이니까 2 × 5 = 10팩입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_4",
+    "subject": "math",
+    "question": "운동장에 학생들이 3줄로 서있어요. 한 줄에 8명씩 있어요. 학생들은 모두 몇 명일까요?",
+    "options": ["24명", "21명", "27명", "18명"],
+    "correctIndex": 0,
+    "explanation": "3줄에 8명씩이니까 3 × 8 = 24명입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_5",
+    "subject": "math",
+    "question": "바구니에 딸기가 36개 있었어요. 친구 4명이 똑같이 나눠 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["9개", "8개", "10개", "7개"],
+    "correctIndex": 0,
+    "explanation": "36개를 4명이 나눠 먹으니까 36 ÷ 4 = 9개씩 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_6",
+    "subject": "math",
+    "question": "영수는 아침에 25분 동안 걸어서 학교에 갔어요. 오후에 30분 동안 걸어서 집에 왔어요. 영수가 걸은 시간은 모두 몇 분일까요?",
+    "options": ["55분", "50분", "60분", "45분"],
+    "correctIndex": 0,
+    "explanation": "아침 25분과 오후 30분을 더해요. 25 + 30 = 55분입니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_7",
+    "subject": "math",
+    "question": "미술 시간에 한 명당 크레파스를 6개씩 나눠줬어요. 7명에게 나눠줬다면 크레파스는 모두 몇 개 필요할까요?",
+    "options": ["42개", "35개", "48개", "40개"],
+    "correctIndex": 0,
+    "explanation": "한 명당 6개씩 7명이니까 6 × 7 = 42개가 필요해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_8",
+    "subject": "math",
+    "question": "주차장에 자동차가 53대 있었어요. 그 중 27대가 나갔어요. 주차장에 남은 자동차는 몇 대일까요?",
+    "options": ["26대", "24대", "28대", "30대"],
+    "correctIndex": 0,
+    "explanation": "53대에서 27대가 나갔으니까 53 - 27 = 26대가 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_9",
+    "subject": "math",
+    "question": "준희는 한 상자에 사과를 4개씩 담고 있어요. 상자가 9개 있다면 사과는 모두 몇 개 필요할까요?",
+    "options": ["36개", "32개", "40개", "35개"],
+    "correctIndex": 0,
+    "explanation": "한 상자에 4개씩 9상자니까 4 × 9 = 36개가 필요해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_10",
+    "subject": "math",
+    "question": "동화책을 45쪽 읽었어요. 그런데 아직 28쪽이 더 남았어요. 이 동화책은 모두 몇 쪽일까요?",
+    "options": ["73쪽", "17쪽", "63쪽", "83쪽"],
+    "correctIndex": 0,
+    "explanation": "읽은 45쪽과 남은 28쪽을 더해요. 45 + 28 = 73쪽입니다!",
     "difficulty": 1
   }
 ]

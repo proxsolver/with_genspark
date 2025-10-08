@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 분석 콘솔 - EduPet Collection</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 한글 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg,
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(255, 152, 0, 0.1) 50%,
+                rgba(33, 150, 243, 0.1) 100%
+            );
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .difficulty-tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
+        .difficulty-easy { background: #22c55e; color: white; }
+        .difficulty-medium { background: #f59e0b; color: white; }
+        .difficulty-hard { background: #ef4444; color: white; }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">📊 학습 분석 콘솔</h1>
+                <p class="text-gray-600 mt-1">과목별 학습 패턴 및 난이도 조정 데이터 분석</p>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="exportData()" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-all">
+                    📥 데이터 내보내기
+                </button>
+                <button onclick="clearData()" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg font-medium transition-all">
+                    🗑️ 데이터 초기화
+                </button>
+                <button onclick="window.location.href='index.html'" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-all">
+                    🏠 홈으로
+                </button>
+            </div>
+        </div>
+
+        <!-- 학습자 선택 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xl">👥</span>
+                    <h2 class="text-xl font-bold">학습자 선택</h2>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <select id="learner-select" onchange="loadLearnerData()" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:outline-none">
+                        <option value="local">현재 기기 (로컬)</option>
+                    </select>
+                    <button onclick="refreshLearners()" class="px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg text-sm transition-all">
+                        🔄 새로고침
+                    </button>
+                </div>
+            </div>
+            <div id="learner-info" class="mt-4 text-sm text-gray-600">
+                현재 기기의 학습 데이터를 표시하고 있습니다
+            </div>
+        </div>
+
+        <!-- 전체 통계 -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
+                <div class="text-sm text-gray-600 mb-2">총 학습 세션</div>
+                <div class="text-3xl font-bold text-blue-600" id="total-sessions">0</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
+                <div class="text-sm text-gray-600 mb-2">평균 정답률</div>
+                <div class="text-3xl font-bold text-green-600" id="avg-accuracy">0%</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
+                <div class="text-sm text-gray-600 mb-2">평균 학습 시간</div>
+                <div class="text-3xl font-bold text-orange-600" id="avg-time">0분</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
+                <div class="text-sm text-gray-600 mb-2">최다 완료 타입</div>
+                <div class="text-2xl font-bold text-purple-600" id="most-completion-type">-</div>
+            </div>
+        </div>
+
+        <!-- 완료 타입별 통계 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">📈 완료 타입별 분포</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-4 bg-green-50 rounded-lg border-2 border-green-200">
+                    <div class="text-sm text-green-700 mb-1">쉬움만 20문제</div>
+                    <div class="text-2xl font-bold text-green-600" id="type-easy-only">0</div>
+                    <div class="text-xs text-green-600 mt-1" id="type-easy-percent">0%</div>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200">
+                    <div class="text-sm text-yellow-700 mb-1">보통 7문제 완료</div>
+                    <div class="text-2xl font-bold text-yellow-600" id="type-medium-complete">0</div>
+                    <div class="text-xs text-yellow-600 mt-1" id="type-medium-percent">0%</div>
+                </div>
+                <div class="p-4 bg-red-50 rounded-lg border-2 border-red-200">
+                    <div class="text-sm text-red-700 mb-1">어려움 3문제 완료</div>
+                    <div class="text-2xl font-bold text-red-600" id="type-hard-complete">0</div>
+                    <div class="text-xs text-red-600 mt-1" id="type-hard-percent">0%</div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg border-2 border-blue-200">
+                    <div class="text-sm text-blue-700 mb-1">혼합 15문제 이상</div>
+                    <div class="text-2xl font-bold text-blue-600" id="type-mixed-15">0</div>
+                    <div class="text-xs text-blue-600 mt-1" id="type-mixed-percent">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 과목별 통계 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">📚 과목별 분석</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left py-3 px-4">과목</th>
+                            <th class="text-center py-3 px-4">세션 수</th>
+                            <th class="text-center py-3 px-4">평균 정답률</th>
+                            <th class="text-center py-3 px-4">평균 시간</th>
+                            <th class="text-center py-3 px-4">주요 완료 타입</th>
+                            <th class="text-center py-3 px-4">난이도 도달</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subject-stats-table">
+                        <!-- 동적으로 생성 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 최근 학습 기록 -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold">📝 최근 학습 기록</h2>
+                <select id="filter-subject" onchange="filterRecords()" class="px-4 py-2 border-2 border-gray-300 rounded-lg">
+                    <option value="all">전체 과목</option>
+                </select>
+            </div>
+            <div class="space-y-3" id="recent-records">
+                <!-- 동적으로 생성 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 로거 시스템 -->
+    <script src="logger.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script>
+        const subjects = {
+            english: { name: '영어', icon: '🇺🇸' },
+            math: { name: '수학', icon: '🔢' },
+            science: { name: '과학', icon: '🔬' },
+            korean: { name: '국어', icon: '📚' },
+            social: { name: '사회', icon: '🏛️' },
+            common: { name: '상식', icon: '🧠' },
+            idiom: { name: '사자성어', icon: '📜' },
+            person: { name: '인물', icon: '👤' },
+            economy: { name: '경제', icon: '💰' },
+            production: { name: '생산', icon: '🏭' },
+            toeic: { name: 'TOEIC', icon: '📖' },
+            ai: { name: 'AI', icon: '🤖' }
+        };
+
+        const completionTypeNames = {
+            'easy_only': '쉬움만 20문제',
+            'medium_complete': '보통 7문제 완료',
+            'hard_complete': '어려움 3문제 완료',
+            'mixed_15': '혼합 15문제 이상'
+        };
+
+        let analyticsData = [];
+        let currentLearnerId = 'local';
+        let allLearners = {};
+
+        // Firebase 초기화
+        async function initFirebase() {
+            try {
+                if (typeof firebase === 'undefined') {
+                    console.log('Firebase not available');
+                    return false;
+                }
+
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebaseConfig);
+                }
+
+                // 익명 로그인
+                const auth = firebase.auth();
+                if (!auth.currentUser) {
+                    await auth.signInAnonymously();
+                }
+
+                return true;
+            } catch (error) {
+                console.error('Firebase init error:', error);
+                return false;
+            }
+        }
+
+        // 모든 학습자 데이터 가져오기
+        async function refreshLearners() {
+            try {
+                const firebaseReady = await initFirebase();
+                if (!firebaseReady) {
+                    alert('Firebase에 연결할 수 없습니다. 로컬 데이터만 사용합니다.');
+                    return;
+                }
+
+                const db = firebase.database();
+                const snapshot = await db.ref('users').once('value');
+                const users = snapshot.val() || {};
+
+                allLearners = { local: { name: '현재 기기 (로컬)', data: [] } };
+
+                for (const [userId, userData] of Object.entries(users)) {
+                    // 여러 경로에서 닉네임 찾기
+                    let nickname = null;
+
+                    // 경로 1: userData.profile.nickname
+                    if (userData.userData?.profile?.nickname) {
+                        nickname = userData.userData.profile.nickname;
+                    }
+                    // 경로 2: userData.nickname (하위 호환)
+                    else if (userData.nickname) {
+                        nickname = userData.nickname;
+                    }
+                    // 경로 3: settings에서
+                    else if (userData.settings?.userName) {
+                        nickname = userData.settings.userName;
+                    }
+                    // 기본값: UID 앞 8자
+                    else {
+                        nickname = `사용자_${userId.substring(0, 8)}`;
+                    }
+
+                    // analytics 데이터를 users 하위에서 가져오기
+                    const analyticsHistory = userData.analytics || [];
+
+                    console.log(`[Analytics Console] 학습자 발견: ${nickname} (${userId.substring(0, 8)}), 세션: ${Array.isArray(analyticsHistory) ? analyticsHistory.length : Object.keys(analyticsHistory).length}개`);
+
+                    allLearners[userId] = {
+                        name: nickname,
+                        uid: userId,
+                        data: Array.isArray(analyticsHistory) ? analyticsHistory : Object.values(analyticsHistory)
+                    };
+                }
+
+                updateLearnerSelect();
+                alert(`✅ ${Object.keys(allLearners).length - 1}명의 학습자 데이터를 불러왔습니다!`);
+            } catch (error) {
+                console.error('학습자 데이터 로드 실패:', error);
+                alert('❌ 학습자 데이터를 불러올 수 없습니다: ' + error.message);
+            }
+        }
+
+        // 학습자 선택 드롭다운 업데이트
+        function updateLearnerSelect() {
+            const select = document.getElementById('learner-select');
+            select.innerHTML = '<option value="local">현재 기기 (로컬)</option>';
+
+            // 별명 순으로 정렬
+            const sortedLearners = Object.entries(allLearners)
+                .filter(([userId]) => userId !== 'local')
+                .sort((a, b) => a[1].name.localeCompare(b[1].name));
+
+            for (const [userId, learner] of sortedLearners) {
+                const option = document.createElement('option');
+                option.value = userId;
+                // 별명만 표시 (UID는 괄호 안에)
+                option.textContent = `${learner.name}`;
+                select.appendChild(option);
+            }
+
+            console.log('[Analytics Console] 학습자 목록 업데이트:', sortedLearners.map(([id, l]) => l.name));
+        }
+
+        // 선택한 학습자 데이터 로드
+        function loadLearnerData() {
+            const select = document.getElementById('learner-select');
+            currentLearnerId = select.value;
+
+            console.log('[Analytics Console] 학습자 데이터 로드:', currentLearnerId);
+
+            if (currentLearnerId === 'local') {
+                const stored = localStorage.getItem('quizAnalyticsHistory');
+                console.log('[Analytics Console] localStorage 데이터:', stored);
+
+                analyticsData = JSON.parse(stored || '[]');
+                console.log('[Analytics Console] 로드된 분석 데이터:', analyticsData);
+
+                document.getElementById('learner-info').textContent = `현재 기기의 학습 데이터를 표시하고 있습니다 (총 ${analyticsData.length}개 세션)`;
+            } else {
+                analyticsData = allLearners[currentLearnerId]?.data || [];
+                const learnerName = allLearners[currentLearnerId]?.name || 'Unknown';
+                console.log('[Analytics Console] Firebase 데이터:', analyticsData);
+                document.getElementById('learner-info').textContent = `${learnerName} 학습자의 데이터를 표시하고 있습니다 (총 ${analyticsData.length}개 세션)`;
+            }
+
+            loadAnalytics();
+        }
+
+        function loadAnalytics() {
+            if (analyticsData.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            updateOverallStats();
+            updateCompletionTypeStats();
+            updateSubjectStats();
+            updateRecentRecords();
+            populateSubjectFilter();
+        }
+
+        function showEmptyState() {
+            document.getElementById('total-sessions').textContent = '0';
+            document.getElementById('avg-accuracy').textContent = '0%';
+            document.getElementById('avg-time').textContent = '0분';
+            document.getElementById('most-completion-type').textContent = '-';
+
+            document.getElementById('recent-records').innerHTML = `
+                <div class="text-center py-12 text-gray-400">
+                    <div class="text-4xl mb-4">📭</div>
+                    <div class="text-lg font-medium">학습 데이터가 없습니다</div>
+                    <div class="text-sm mt-2">퀴즈를 풀면 분석 데이터가 표시됩니다</div>
+                </div>
+            `;
+        }
+
+        function updateOverallStats() {
+            const totalSessions = analyticsData.length;
+            const totalAccuracy = analyticsData.reduce((sum, session) => sum + session.stats.accuracy, 0);
+            const avgAccuracy = totalSessions > 0 ? Math.round(totalAccuracy / totalSessions) : 0;
+            const totalTime = analyticsData.reduce((sum, session) => sum + session.stats.timeSpent, 0);
+            const avgTime = totalSessions > 0 ? (totalTime / totalSessions).toFixed(1) : 0;
+
+            // 가장 많은 완료 타입
+            const typeCounts = {};
+            analyticsData.forEach(session => {
+                const type = session.completionType || 'unknown';
+                typeCounts[type] = (typeCounts[type] || 0) + 1;
+            });
+
+            const mostCommonType = Object.entries(typeCounts)
+                .sort((a, b) => b[1] - a[1])[0];
+
+            document.getElementById('total-sessions').textContent = totalSessions;
+            document.getElementById('avg-accuracy').textContent = avgAccuracy + '%';
+            document.getElementById('avg-time').textContent = avgTime + '분';
+            document.getElementById('most-completion-type').textContent =
+                mostCommonType ? completionTypeNames[mostCommonType[0]] || mostCommonType[0] : '-';
+        }
+
+        function updateCompletionTypeStats() {
+            const typeCounts = {
+                'easy_only': 0,
+                'medium_complete': 0,
+                'hard_complete': 0,
+                'mixed_15': 0
+            };
+
+            analyticsData.forEach(session => {
+                const type = session.completionType;
+                if (typeCounts.hasOwnProperty(type)) {
+                    typeCounts[type]++;
+                }
+            });
+
+            const total = analyticsData.length;
+
+            document.getElementById('type-easy-only').textContent = typeCounts.easy_only;
+            document.getElementById('type-easy-percent').textContent =
+                total > 0 ? Math.round(typeCounts.easy_only / total * 100) + '%' : '0%';
+
+            document.getElementById('type-medium-complete').textContent = typeCounts.medium_complete;
+            document.getElementById('type-medium-percent').textContent =
+                total > 0 ? Math.round(typeCounts.medium_complete / total * 100) + '%' : '0%';
+
+            document.getElementById('type-hard-complete').textContent = typeCounts.hard_complete;
+            document.getElementById('type-hard-percent').textContent =
+                total > 0 ? Math.round(typeCounts.hard_complete / total * 100) + '%' : '0%';
+
+            document.getElementById('type-mixed-15').textContent = typeCounts.mixed_15;
+            document.getElementById('type-mixed-percent').textContent =
+                total > 0 ? Math.round(typeCounts.mixed_15 / total * 100) + '%' : '0%';
+        }
+
+        function updateSubjectStats() {
+            const subjectData = {};
+
+            analyticsData.forEach(session => {
+                const subject = session.subject;
+                if (!subjectData[subject]) {
+                    subjectData[subject] = {
+                        sessions: 0,
+                        totalAccuracy: 0,
+                        totalTime: 0,
+                        completionTypes: {},
+                        maxDifficulty: 1
+                    };
+                }
+
+                const data = subjectData[subject];
+                data.sessions++;
+                data.totalAccuracy += session.stats.accuracy;
+                data.totalTime += session.stats.timeSpent;
+
+                const type = session.completionType || 'unknown';
+                data.completionTypes[type] = (data.completionTypes[type] || 0) + 1;
+
+                // 최대 난이도 확인
+                if (session.difficultyHistory && session.difficultyHistory.length > 0) {
+                    const maxDiff = Math.max(...session.difficultyHistory.map(h => h.difficulty));
+                    data.maxDifficulty = Math.max(data.maxDifficulty, maxDiff);
+                }
+            });
+
+            const tableBody = document.getElementById('subject-stats-table');
+            tableBody.innerHTML = '';
+
+            Object.entries(subjectData).forEach(([subjectId, data]) => {
+                const avgAccuracy = Math.round(data.totalAccuracy / data.sessions);
+                const avgTime = (data.totalTime / data.sessions).toFixed(1);
+
+                const mostCommonType = Object.entries(data.completionTypes)
+                    .sort((a, b) => b[1] - a[1])[0];
+
+                const difficultyBadge = data.maxDifficulty === 3 ?
+                    '<span class="difficulty-tag difficulty-hard">어려움</span>' :
+                    data.maxDifficulty === 2 ?
+                    '<span class="difficulty-tag difficulty-medium">보통</span>' :
+                    '<span class="difficulty-tag difficulty-easy">쉬움</span>';
+
+                const row = `
+                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                        <td class="py-3 px-4">
+                            <span class="font-medium">${subjects[subjectId]?.icon || ''} ${subjects[subjectId]?.name || subjectId}</span>
+                        </td>
+                        <td class="text-center py-3 px-4">${data.sessions}</td>
+                        <td class="text-center py-3 px-4 font-medium text-green-600">${avgAccuracy}%</td>
+                        <td class="text-center py-3 px-4">${avgTime}분</td>
+                        <td class="text-center py-3 px-4 text-sm">${completionTypeNames[mostCommonType[0]] || '-'}</td>
+                        <td class="text-center py-3 px-4">${difficultyBadge}</td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function updateRecentRecords() {
+            const recentData = [...analyticsData].reverse().slice(0, 20);
+            const container = document.getElementById('recent-records');
+            container.innerHTML = '';
+
+            recentData.forEach(session => {
+                const completedDate = new Date(session.completedAt);
+                const dateStr = completedDate.toLocaleString('ko-KR', {
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                const difficultyBadges = {
+                    'easy_only': '<span class="difficulty-tag difficulty-easy">쉬움 전용</span>',
+                    'medium_complete': '<span class="difficulty-tag difficulty-medium">보통 완료</span>',
+                    'hard_complete': '<span class="difficulty-tag difficulty-hard">어려움 완료</span>',
+                    'mixed_15': '<span class="difficulty-tag difficulty-medium">혼합 15+</span>'
+                };
+
+                const record = `
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all" data-subject="${session.subject}">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">${subjects[session.subject]?.icon || '📚'}</span>
+                                <div>
+                                    <div class="font-bold text-gray-900">${session.subjectName || subjects[session.subject]?.name}</div>
+                                    <div class="text-sm text-gray-600">${dateStr}</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    ${difficultyBadges[session.completionType] || ''}
+                                </div>
+                                <div class="text-sm text-gray-600">
+                                    정답률 <span class="font-bold text-green-600">${session.stats.accuracy}%</span> ·
+                                    ${session.stats.totalAnswered}문제 ·
+                                    ${session.stats.timeSpent}분
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">
+                                    쉬움 ${session.questionCounts.easy} / 보통 ${session.questionCounts.medium} / 어려움 ${session.questionCounts.hard}
+                                </div>
+                            </div>
+                        </div>
+                        ${session.difficultyHistory && session.difficultyHistory.length > 0 ? `
+                            <details class="mt-3">
+                                <summary class="cursor-pointer text-sm text-blue-600 hover:text-blue-700">난이도 변화 히스토리 보기</summary>
+                                <div class="mt-2 space-y-1">
+                                    ${session.difficultyHistory.map((h, i) => `
+                                        <div class="text-xs text-gray-600 pl-4">
+                                            ${i + 1}번 문제: ${h.difficultyName} ${h.isCorrect ? '✅' : '❌'}
+                                            ${h.consecutiveCorrect >= 3 ? '🔥 3연속' : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </details>
+                        ` : ''}
+                    </div>
+                `;
+                container.innerHTML += record;
+            });
+        }
+
+        function populateSubjectFilter() {
+            const subjects_set = new Set(analyticsData.map(s => s.subject));
+            const filterSelect = document.getElementById('filter-subject');
+
+            subjects_set.forEach(subjectId => {
+                const option = document.createElement('option');
+                option.value = subjectId;
+                option.textContent = subjects[subjectId]?.name || subjectId;
+                filterSelect.appendChild(option);
+            });
+        }
+
+        function filterRecords() {
+            const selectedSubject = document.getElementById('filter-subject').value;
+            const records = document.querySelectorAll('#recent-records > div');
+
+            records.forEach(record => {
+                if (selectedSubject === 'all' || record.dataset.subject === selectedSubject) {
+                    record.style.display = 'block';
+                } else {
+                    record.style.display = 'none';
+                }
+            });
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(analyticsData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `quiz-analytics-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+
+            alert('✅ 분석 데이터를 JSON 파일로 내보냈습니다!');
+        }
+
+        function clearData() {
+            if (confirm('⚠️ 모든 분석 데이터를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                localStorage.removeItem('quizAnalyticsHistory');
+                alert('✅ 분석 데이터가 초기화되었습니다.');
+                location.reload();
+            }
+        }
+
+        // 페이지 로드 시 데이터 로드
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('[Analytics Console] 페이지 로드 - 로컬 데이터 로드 시작');
+            loadLearnerData(); // 로컬 데이터 자동 로드
+        });
+    </script>
+</body>
+</html>

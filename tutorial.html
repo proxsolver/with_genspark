@@ -62,7 +62,7 @@
                 <div id="progressBar" class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 16.67%"></div>
             </div>
             <div class="text-center text-sm text-gray-600">
-                <span id="currentStep">1</span> / 6
+                <span id="currentStep">1</span> / 7
             </div>
         </div>
 
@@ -104,21 +104,23 @@
                         <div class="bg-yellow-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
                                 <span class="text-2xl">🎯</span>
-                                <span class="font-medium">퀴즈 풀기</span>
+                                <span class="font-medium">과목 완료하기</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                10개 과목의 문제를 풀고<br>
-                                정답률에 따라 보상 획득!
+                                10개 과목 중 하나를 선택해<br>
+                                퀴즈를 완료하세요!
                             </div>
                         </div>
                         <div class="bg-blue-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
-                                <span class="text-2xl">💧</span>
-                                <span class="font-medium">물방울 획득</span>
+                                <span class="text-2xl">🎁</span>
+                                <span class="font-medium">보상 받기</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                정답 10개당 물방울 1개<br>
-                                + 기본 3개 지급
+                                • 3과목 완료: 성장권 1장<br>
+                                • 5과목 완료: 일반 뽑기권 1장<br>
+                                • 6과목 완료: 성장권 1장 추가<br>
+                                • 9과목 완료: 프리미엄 뽑기권 1장!
                             </div>
                         </div>
                     </div>
@@ -134,21 +136,31 @@
                         <div class="bg-green-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
                                 <span class="text-2xl">🌰</span>
-                                <span class="font-medium">씨앗 심기</span>
+                                <span class="font-medium">씨앗 심고 물주기</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                4가지 등급: 일반→고급→에픽→전설<br>
-                                등급이 높을수록 더 많은 보상!
+                                화분에 씨앗을 심고<br>
+                                20번의 물을 주세요!
                             </div>
                         </div>
                         <div class="bg-blue-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
-                                <span class="text-2xl">💧</span>
-                                <span class="font-medium">물주기</span>
+                                <span class="text-2xl">⏰</span>
+                                <span class="font-medium">24시간 기다리기</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                물을 주며 교육 내용 학습<br>
-                                식물의 성장 단계별 대화
+                                물 20개 + 24시간 경과하면<br>
+                                식물이 성장 준비 완료!
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🎫</span>
+                                <span class="font-medium">성장권 사용</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                학습으로 얻은 성장권으로<br>
+                                식물을 즉시 성장시키세요!
                             </div>
                         </div>
                     </div>
@@ -161,58 +173,75 @@
                     <div class="text-6xl mb-4 floating-icon">🦎</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">3단계: 동물 수집</h2>
                     <div class="text-gray-600 mb-6 space-y-3">
-                        <div class="bg-purple-50 rounded-lg p-4 text-left">
+                        <div class="bg-blue-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
                                 <span class="text-2xl">🎫</span>
-                                <span class="font-medium">뽑기권 획득</span>
+                                <span class="font-medium">일반 뽑기</span>
                             </div>
-                            <div class="text-sm text-gray-700">
-                                퀴즈 정답 25개당 뽑기권 1장<br>
-                                열심히 공부하면 더 많이!
+                            <div class="text-sm text-gray-700 mb-2">
+                                5과목 완료 시 획득!
+                            </div>
+                            <div class="grid grid-cols-2 gap-1 text-xs">
+                                <div>일반 60%</div>
+                                <div>레어 30%</div>
+                                <div>에픽 9%</div>
+                                <div>전설 1%</div>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-gray-50 rounded p-2 text-xs text-center">
-                                <div>🔘 일반 60%</div>
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 text-left border-2 border-purple-200">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">✨</span>
+                                <span class="font-medium text-purple-800">프리미엄 뽑기</span>
                             </div>
-                            <div class="bg-blue-50 rounded p-2 text-xs text-center">
-                                <div>🔵 레어 30%</div>
+                            <div class="text-sm text-purple-700 mb-2">
+                                9과목 완료 시 획득!
                             </div>
-                            <div class="bg-purple-50 rounded p-2 text-xs text-center">
-                                <div>🟣 에픽 9%</div>
+                            <div class="grid grid-cols-2 gap-1 text-xs text-purple-700">
+                                <div>에픽 90%</div>
+                                <div>전설 10%</div>
                             </div>
-                            <div class="bg-yellow-50 rounded p-2 text-xs text-center">
-                                <div>🟡 전설 1%</div>
+                            <div class="text-xs text-center mt-2 font-bold text-purple-600">
+                                🎁 에픽 이상 확정!
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: Protection -->
+            <!-- Slide 5: Daily System -->
             <div id="slide5" class="tutorial-slide hidden">
                 <div class="text-center">
-                    <div class="text-6xl mb-4 floating-icon">🛡️</div>
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">4단계: 식물 보호</h2>
+                    <div class="text-6xl mb-4 floating-icon">📅</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">4단계: 매일 새로운 시작</h2>
                     <div class="text-gray-600 mb-6 space-y-3">
-                        <div class="bg-purple-50 rounded-lg p-4 text-left">
+                        <div class="bg-green-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
-                                <span class="text-2xl">🦄</span>
-                                <span class="font-medium">에픽/전설 동물</span>
+                                <span class="text-2xl">🔄</span>
+                                <span class="font-medium">일일 초기화</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                특별한 동물들은 식물을<br>
-                                등급 하락으로부터 보호할 수 있어요
+                                매일 새벽 4시에 과목 진행도가<br>
+                                초기화되어 다시 도전할 수 있어요!
                             </div>
                         </div>
                         <div class="bg-yellow-50 rounded-lg p-4 text-left">
                             <div class="flex items-center space-x-2 mb-2">
-                                <span class="text-2xl">🏛️</span>
-                                <span class="font-medium">명예의 전당</span>
+                                <span class="text-2xl">⏰</span>
+                                <span class="font-medium">성장권 유효기간</span>
                             </div>
                             <div class="text-sm text-gray-700">
-                                희생한 동물들은<br>
-                                영원히 기억됩니다
+                                성장권은 24시간 후 만료되니<br>
+                                빠르게 사용하세요!
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-left">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-2xl">🎯</span>
+                                <span class="font-medium">꾸준한 학습</span>
+                            </div>
+                            <div class="text-sm text-gray-700">
+                                매일 조금씩 학습하면<br>
+                                식물도 자라고 동물도 모을 수 있어요!
                             </div>
                         </div>
                     </div>
@@ -281,9 +310,9 @@
                         <div class="bg-green-50 rounded-lg p-4">
                             <div class="text-sm text-green-700 space-y-1">
                                 <div class="font-medium mb-2">🎁 시작 보너스</div>
-                                <div>💰 초기 자금: 500원</div>
+                                <div>💰 초기 자금: 100원</div>
                                 <div>💧 물방울: 12개</div>
-                                <div>🌰 무료 씨앗 1개</div>
+                                <div>🎫 프리미엄 뽑기권: 1장 (에픽 이상 확정!)</div>
                             </div>
                         </div>
                         <div class="text-sm text-gray-500">
@@ -458,13 +487,32 @@
         function completeOnboarding() {
             // Mark onboarding as completed
             localStorage.setItem('eduPetOnboardingCompleted', 'true');
-            
-            // Grant starter bonuses
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
-            simpleFarmState.money = 500;
-            simpleFarmState.water = 12;
-            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
-            
+
+            // Grant starter bonuses - 100원 + 프리미엄 뽑기권 (plantSystem 사용)
+            if (typeof plantSystem !== 'undefined') {
+                plantSystem.setMoney(100);
+                console.log('✅ 튜토리얼 완료: 100원 지급');
+
+                // Grant premium gacha ticket (Epic+ guaranteed)
+                const plantSystemUser = plantSystem.getUserData();
+                if (!plantSystemUser.rewards) {
+                    plantSystemUser.rewards = {
+                        growthTickets: [],
+                        normalGachaTickets: 0,
+                        premiumGachaTickets: 0
+                    };
+                }
+                plantSystemUser.rewards.premiumGachaTickets += 1;
+                plantSystem.saveUserData(plantSystemUser);
+                console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
+            }
+
+            // Initialize quiz progress
+            const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+            if (!quizProgress.totalCorrect) quizProgress.totalCorrect = 0;
+            if (!quizProgress.streakDays) quizProgress.streakDays = 0;
+            localStorage.setItem('quizProgress', JSON.stringify(quizProgress));
+
             // Get user nickname for personalized message
             let nickname = '학습자';
             try {
@@ -475,19 +523,19 @@
             } catch (error) {
                 console.log('사용자 설정 로드 실패:', error);
             }
-            
+
             // Show completion message
-            alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 500원\n💧 물방울 12개\n\n이제 첫 번째 퀴즈를 풀어보세요!`);
-            
+            alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100원\n💧 물방울 12개\n🎫 프리미엄 뽑기권 1장 (에픽 이상 확정!)\n\n이제 첫 번째 퀴즈를 풀어보세요!`);
+
             // Redirect to main page
             window.location.href = 'index.html';
         }
 
         // Check if user has already completed onboarding
         function checkOnboarding() {
-            if (localStorage.getItem('eduPetOnboardingCompleted') === 'true') {
-                window.location.href = 'index.html';
-            }
+            // Allow revisiting tutorial for review purposes
+            // Don't redirect if user explicitly came here
+            return;
         }
 
         // Keyboard navigation

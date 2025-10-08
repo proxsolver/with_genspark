@@ -2,46 +2,900 @@
   {
     "id": "science_easy_1_1",
     "subject": "science",
-    "question": "과학 문제 1-1-1",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🦁 동물원 탐험! 사자는 고기를 먹어요. 사자처럼 고기를 주로 먹는 동물을 뭐라고 부를까요?",
+    "options": ["육식동물", "초식동물", "잡식동물", "해양동물"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "고기를 주로 먹는 동물은 육식동물이에요! 🍖 사자, 호랑이, 늑대가 대표적인 육식동물입니다! 관찰 성공!",
     "difficulty": 1
   },
   {
     "id": "science_easy_1_2",
     "subject": "science",
-    "question": "과학 문제 1-1-2",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🦒 키다리 기린! 기린은 나뭇잎을 먹고 살아요. 기린처럼 식물을 주로 먹는 동물을 뭐라고 부를까요?",
+    "options": ["초식동물", "육식동물", "잡식동물", "양서류"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "정답! 식물을 먹는 동물은 초식동물이라고 해요. 🌱 코끼리, 토끼, 사슴도 초식동물이랍니다. 대단해요!",
     "difficulty": 1
   },
   {
     "id": "science_easy_1_3",
     "subject": "science",
-    "question": "과학 문제 1-1-3",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🦋 곤충 채집! 다음 중 날개가 있고, 다리가 6개인 곤충은 누구일까요?",
+    "options": ["나비", "거미", "지렁이", "문어"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "맞아요! 나비는 다리가 6개인 곤충이에요. 🕷️ 거미는 다리가 8개라서 곤충이 아니랍니다. 신기하죠?",
     "difficulty": 1
   },
   {
     "id": "science_easy_1_4",
     "subject": "science",
-    "question": "과학 문제 1-1-4",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🐧 펭귄의 비밀! 펭귄은 날지 못하지만 새끼를 낳지 않고 알을 낳아요. 펭귄은 어떤 동물 무리에 속할까요?",
+    "options": ["조류", "포유류", "어류", "파충류"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "딩동댕! 펭귄은 날개와 깃털이 있는 '조류'랍니다. 알을 낳는 것도 조류의 특징 중 하나예요. 🥚 발견!",
     "difficulty": 1
   },
   {
     "id": "science_easy_1_5",
     "subject": "science",
-    "question": "과학 문제 1-1-5",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🐻 곰의 겨울잠! 곰은 추운 겨울이 오면 따뜻한 굴에 들어가 오랫동안 잠을 자요. 이것을 무엇이라고 할까요?",
+    "options": ["겨울잠", "낮잠", "휴가", "숨바꼭질"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "바로 '겨울잠'이에요! 😴 겨울잠을 자면서 추운 겨울 동안 에너지를 아끼는 거랍니다. 똑똑한 곰이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1_6",
+    "subject": "science",
+    "question": "🐸 개구리 변신! 올챙이가 자라서 앞다리와 뒷다리가 쑥 나오면 어떤 동물이 될까요?",
+    "options": ["개구리", "도마뱀", "물고기", "거북이"],
+    "correctIndex": 0,
+    "explanation": "폴짝! 개구리가 정답이에요. 올챙이가 개구리로 변하는 과정을 '탈바꿈'이라고 한답니다. 🪄 정말 신기한 변신이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1_7",
+    "subject": "science",
+    "question": "🐟 물고기의 숨쉬기! 물고기는 물속에서 무엇으로 숨을 쉴까요?",
+    "options": ["아가미", "코", "피부", "입"],
+    "correctIndex": 0,
+    "explanation": "맞아요, 아가미로 숨을 쉬어요! 뻐끔뻐끔 물을 마시는 것 같지만, 물속의 산소를 아가미로 얻는 중이랍니다. 🌊",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1_8",
+    "subject": "science",
+    "question": "🦖 공룡 탐험! 다음 중 하늘을 날아다녔던 공룡의 이름은 무엇일까요?",
+    "options": ["프테라노돈", "티라노사우루스", "트리케라톱스", "브라키오사우루스"],
+    "correctIndex": 0,
+    "explanation": "프테라노돈이 정답! 프테라노돈은 날개가 있는 익룡의 한 종류였어요. 하늘의 왕이었답니다! 🦕",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1_9",
+    "subject": "science",
+    "question": "🐪 사막의 배! 혹은 등에 영양분을 저장해서 사막에서 오랫동안 버틸 수 있는 동물은 누구일까요?",
+    "options": ["낙타", "사자", "코끼리", "기린"],
+    "correctIndex": 0,
+    "explanation": "바로 낙타예요! 낙타의 혹은 지방 덩어리로 되어 있어서, 오랫동안 굶어도 괜찮아요. 사막 탐험 성공!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_1_10",
+    "subject": "science",
+    "question": "🐬 바다의 똑똑이! 초음파를 사용해서 친구들과 이야기하고, 물고기를 사냥하는 똑똑한 바다 동물은 누구일까요?",
+    "options": ["돌고래", "상어", "고래", "오징어"],
+    "correctIndex": 0,
+    "explanation": "돌고래가 정답이에요! 돌고래는 우리처럼 새끼를 낳아 젖을 먹여 키우는 포유류랍니다. 정말 똑똑하죠? 🤩",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_1",
+    "subject": "science",
+    "question": "🌻 식물 관찰! 식물이 햇빛을 받아서 스스로 양분을 만드는 작용을 뭐라고 할까요?",
+    "options": ["광합성", "호흡", "증산작용", "발아"],
+    "correctIndex": 0,
+    "explanation": "식물이 햇빛, 물, 이산화탄소를 이용해 양분을 만드는 걸 광합성이라고 해요! ☀️ 잎의 초록색 엽록소가 이 일을 한답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_2",
+    "subject": "science",
+    "question": "🌱 씨앗의 여행! 씨앗에서 뿌리가 나오고 싹이 트는 것을 무엇이라고 할까요?",
+    "options": ["발아", "성장", "광합성", "열매"],
+    "correctIndex": 0,
+    "explanation": "'발아'라고 해요! 🌱 씨앗이 발아하려면 적당한 물과 온도가 필요하답니다. 작은 생명의 시작이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_3",
+    "subject": "science",
+    "question": "🌳 나무의 기둥! 식물이 넘어지지 않게 튼튼하게 지탱해주고, 물과 양분이 이동하는 통로 역할을 하는 부분은 어디일까요?",
+    "options": ["줄기", "뿌리", "잎", "꽃"],
+    "correctIndex": 0,
+    "explanation": "바로 줄기예요! 줄기는 식물의 기둥과 같답니다. 튼튼한 줄기 덕분에 식물이 쑥쑥 자랄 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_4",
+    "subject": "science",
+    "question": "🥕 땅속의 보물! 식물을 땅에 단단히 고정시키고, 땅속의 물을 빨아들이는 부분은 어디일까요?",
+    "options": ["뿌리", "줄기", "열매", "잎"],
+    "correctIndex": "바로 뿌리예요! 우리는 당근, 고구마처럼 식물의 뿌리를 먹기도 한답니다. 냠냠! 😋",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_5",
+    "subject": "science",
+    "question": "🌷 예쁜 꽃! 꽃이 활짝 핀 후에 씨앗을 만들기 위해, 벌과 나비가 꽃가루를 옮겨주는 것을 무엇이라고 할까요?",
+    "options": ["수분", "광합성", "발아", "성장"],
+    "correctIndex": 0,
+    "explanation": "정답은 '수분'이에요. 🐝 벌과 나비 덕분에 식물이 열매를 맺고 씨앗을 만들 수 있답니다. 고마운 친구들이죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_6",
+    "subject": "science",
+    "question": "🍁 나뭇잎 색깔! 가을이 되면 초록색 나뭇잎이 빨갛거나 노랗게 변해요. 잎 속에 있던 어떤 색소가 드러나는 걸까요?",
+    "options": ["카로티노이드, 안토시아닌", "엽록소", "멜라닌", "비타민"],
+    "correctIndex": 0,
+    "explanation": "카로티노이드(노란색)와 안토시아닌(빨간색) 색소 때문이에요! 가을이 되어 엽록소(초록색)가 사라지면서 숨어있던 색들이 나타나는 거랍니다. 🍂",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_7",
+    "subject": "science",
+    "question": "🌵 사막의 식물! 잎이 뾰족한 가시 모양으로 변해서 물이 빠져나가는 것을 막는 사막 식물은 무엇일까요?",
+    "options": ["선인장", "장미", "민들레", "소나무"],
+    "correctIndex": 0,
+    "explanation": "바로 선인장이에요! 뾰족한 가시는 동물로부터 자신을 보호하는 역할도 한답니다. 똑똑한 식물이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_8",
+    "subject": "science",
+    "question": "🍓 맛있는 이것! 꽃이 지고 난 뒤, 씨를 품고 있는 부분을 우리는 맛있게 먹기도 해요. 이것은 무엇일까요?",
+    "options": ["열매", "뿌리", "줄기", "잎"],
+    "correctIndex": 0,
+    "explanation": "맞아요, 열매예요! 🍎 우리는 사과, 딸기, 포도 같은 맛있는 열매를 먹어요. 열매는 씨앗을 보호하고 퍼뜨리는 중요한 역할을 해요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_9",
+    "subject": "science",
+    "question": "🌲 늘 푸른 나무! 소나무나 잣나무처럼 겨울에도 잎이 떨어지지 않고 늘 푸른 나무를 무엇이라고 부를까요?",
+    "options": ["상록수", "낙엽수", "활엽수", "침엽수"],
+    "correctIndex": 0,
+    "explanation": "'상록수'라고 불러요! '상록'은 항상 푸르다는 뜻이랍니다. 추운 겨울에도 꿋꿋하게 서 있는 멋진 나무예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_2_10",
+    "subject": "science",
+    "question": "🌿 식물의 숨쉬기! 식물의 잎 뒷면에 있는 작은 구멍으로 숨을 쉬고, 물을 내보내는 곳은 어디일까요?",
+    "options": ["기공", "뿌리털", "줄기", "꽃잎"],
+    "correctIndex": 0,
+    "explanation": "정답은 '기공'이에요! 우리 눈에는 잘 보이지 않는 아주 작은 구멍이랍니다. 식물의 코와 입 같은 곳이에요. 😮",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_1",
+    "subject": "science",
+    "question": "💪 우리 몸 탐험! 우리 몸을 튼튼하게 지탱해주고, 중요한 뇌나 심장을 보호해주는 것은 무엇일까요?",
+    "options": ["뼈", "근육", "피부", "지방"],
+    "correctIndex": 0,
+    "explanation": "바로 '뼈'예요! 💀 우리 몸에는 약 206개의 뼈가 모여 몸의 형태를 만들고 우리를 보호해준답니다. 정말 중요하죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_2",
+    "subject": "science",
+    "question": "🧠 생각 주머니! 우리가 생각하고, 느끼고, 몸의 모든 부분에 명령을 내리는 중요한 기관은 어디일까요?",
+    "options": ["뇌", "심장", "위", "폐"],
+    "correctIndex": 0,
+    "explanation": "정답은 '뇌'예요! 뇌는 우리 몸의 사령관과 같아요. 뇌가 있어서 우리가 공부도 하고, 친구들과 놀 수도 있는 거랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_3",
+    "subject": "science",
+    "question": "❤️ 두근두근! 온몸에 피를 보내서 산소와 영양분을 전달해주는, 펌프처럼 생긴 기관은 무엇일까요?",
+    "options": ["심장", "간", "콩팥", "폐"],
+    "correctIndex": 0,
+    "explanation": "두근두근! 바로 '심장'이에요. 심장은 우리가 잠자는 동안에도 쉬지 않고 열심히 일해서 우리를 건강하게 지켜줘요. 고마운 심장!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_4",
+    "subject": "science",
+    "question": "😮‍💨 숨쉬기 대장! 우리가 숨을 쉴 때, 공기 중의 산소를 받아들이고 이산화탄소를 내보내는 기관은 어디일까요?",
+    "options": ["폐", "심장", "위", "코"],
+    "correctIndex": 0,
+    "explanation": "정답은 '폐'예요! 폐는 우리 가슴 양쪽에 하나씩 있어요. 신선한 공기를 마시면 폐가 건강해져요. 후하~",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_5",
+    "subject": "science",
+    "question": "냠냠! 우리가 먹은 음식을 잘게 부수고 소화시켜서 영양분으로 만드는 기관은 어디일까요?",
+    "options": ["위", "뇌", "폐", "심장"],
+    "correctIndex": 0,
+    "explanation": "'위'가 정답이에요! 위는 주머니처럼 생겨서 음식을 저장하고, 위액을 내보내 음식을 녹여준답니다. 밥을 꼭꼭 씹어 먹으면 위가 좋아해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_6",
+    "subject": "science",
+    "question": "👀 반짝반짝! 우리가 세상을 보고, 색깔과 모양을 구별할 수 있게 해주는 감각 기관은 무엇일까요?",
+    "options": ["눈", "코", "귀", "혀"],
+    "correctIndex": 0,
+    "explanation": "바로 '눈'이에요! 눈은 세상의 아름다운 모습을 우리에게 보여주는 소중한 창문과 같아요. 🖼️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_7",
+    "subject": "science",
+    "question": "😋 맛을 보는 혀! 혀에서 느끼는 맛이 아닌 것은 무엇일까요?",
+    "options": ["매운맛", "단맛", "짠맛", "신맛"],
+    "correctIndex": 0,
+    "explanation": "정답은 '매운맛'이에요! 매운맛은 혀가 느끼는 맛이 아니라, 아픔을 느끼는 '통증'이랍니다. 🥵 신기하죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_8",
+    "subject": "science",
+    "question": "🏃‍♂️ 달리기 선수! 뼈에 붙어서 몸을 움직이게 해주고, 힘을 내게 해주는 것은 무엇일까요?",
+    "options": ["근육", "신경", "혈관", "지방"],
+    "correctIndex": 0,
+    "explanation": "바로 '근육'이에요! 💪 우리가 팔을 구부리고, 달리고, 점프할 수 있는 건 모두 근육 덕분이랍니다. 운동을 하면 근육이 튼튼해져요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_9",
+    "subject": "science",
+    "question": "✨ 우리 몸 보호막! 우리 몸 전체를 감싸서 외부의 세균으로부터 우리를 보호해주는 가장 큰 기관은 무엇일까요?",
+    "options": ["피부", "뼈", "근육", "털"],
+    "correctIndex": 0,
+    "explanation": "정답은 '피부'예요! 피부는 우리 몸의 옷과 같아요. 땀을 내보내서 체온을 조절하기도 하는 중요한 역할을 한답니다. 💧",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_3_10",
+    "subject": "science",
+    "question": "🦷 튼튼한 이! 음식물을 잘게 부수는 역할을 하는 우리 입속의 뼈는 무엇일까요?",
+    "options": ["이(치아)", "잇몸", "혀", "턱뼈"],
+    "correctIndex": 0,
+    "explanation": "바로 '이(치아)'예요! 이는 우리 몸의 뼈 중에서 가장 단단하답니다. 음식을 잘 먹으려면 이를 깨끗하게 잘 닦아야겠죠? 😁",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_1",
+    "subject": "science",
+    "question": "🧊 물질 변신! 차가운 얼음(고체)이 녹아서 물(액체)로 변하는 현상을 뭐라고 부를까요?",
+    "options": ["융해", "응고", "기화", "액화"],
+    "correctIndex": 0,
+    "explanation": "'융해'라고 해요! 고체가 액체로 녹는 현상을 말해요. 날씨가 따뜻해지면 얼음이 녹는 것과 같아요. ☀️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_2",
+    "subject": "science",
+    "question": "💧 물질 탐험! 모양은 변하지만 부피는 변하지 않고, 흐르는 성질을 가진 물질의 상태는 무엇일까요?",
+    "options": ["액체", "고체", "기체", "플라스마"],
+    "correctIndex": 0,
+    "explanation": "바로 '액체'예요! 물이나 주스처럼, 액체는 담는 그릇에 따라 모양이 바뀌어요. 컵에 담으면 컵 모양, 병에 담으면 병 모양이 되죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_3",
+    "subject": "science",
+    "question": "💨 눈에 안 보여요! 모양과 부피가 일정하지 않고, 어디든 퍼져나가는 성질을 가진 물질의 상태는 무엇일까요?",
+    "options": ["기체", "액체", "고체", "젤리"],
+    "correctIndex": 0,
+    "explanation": "'기체'가 정답! 공기나 방귀처럼 기체는 눈에 잘 보이지 않고, 넓은 공간으로 흩어져요. 🎈 풍선 속에 가득 찬 것도 기체랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_4",
+    "subject": "science",
+    "question": "💎 단단한 친구! 모양과 부피가 일정해서 잘 변하지 않는 단단한 성질을 가진 물질의 상태는 무엇일까요?",
+    "options": ["고체", "액체", "기체", "물"],
+    "correctIndex": 0,
+    "explanation": "정답은 '고체'예요. 책상, 의자, 돌멩이처럼 고체는 정해진 모양이 있어서 손으로 잡아도 모양이 변하지 않아요. 🧱",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_5",
+    "subject": "science",
+    "question": "💧 물이 얼음으로! 액체인 물을 냉동실에 넣으면 얼음(고체)이 돼요. 이 현상을 뭐라고 부를까요?",
+    "options": ["응고", "융해", "기화", "승화"],
+    "correctIndex": 0,
+    "explanation": "바로 '응고'예요! 액체가 고체로 변하는 현상이랍니다. 꽁꽁! ❄️ 겨울에 강물이 어는 것도 응고 현상이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_6",
+    "subject": "science",
+    "question": "☁️ 수증기 변신! 주전자의 물을 끓이면 수증기(기체)가 나와요. 액체가 기체로 변하는 이 현상을 뭐라고 할까요?",
+    "options": ["기화", "액화", "응고", "융해"],
+    "correctIndex": 0,
+    "explanation": "'기화'라고 해요! 빨래가 마르는 것도 물이 수증기로 기화하는 현상이랍니다. 뽀송뽀송! 👕",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_7",
+    "subject": "science",
+    "question": "🔍 물질 찾기! 다음 중 고체, 액체, 기체 상태로 모두 변할 수 있는 물질은 무엇일까요?",
+    "options": ["물", "나무", "철", "공기"],
+    "correctIndex": 0,
+    "explanation": "정답은 '물'이에요! 물은 얼음(고체), 물(액체), 수증기(기체) 세 가지 모습으로 변신할 수 있는 신기한 물질이랍니다. 💧",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_8",
+    "subject": "science",
+    "question": "🧂 소금물 마술! 소금을 물에 넣고 저으면 소금이 사라지는 것처럼 보여요. 이 현상을 무엇이라고 할까요?",
+    "options": ["용해", "분리", "혼합", "증발"],
+    "correctIndex": 0,
+    "explanation": "바로 '용해'예요! 소금 알갱이가 아주 작게 나누어져서 물속에 골고루 섞이는 거랍니다. 사라진 게 아니에요! ✨",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_9",
+    "subject": "science",
+    "question": "🥄 물에 녹는 것 찾기! 다음 중 물에 넣었을 때 잘 녹는 물질은 무엇일까요?",
+    "options": ["설탕", "모래", "쇠구슬", "나뭇조각"],
+    "correctIndex": 0,
+    "explanation": "설탕이 정답! 설탕은 물에 잘 녹아서 단맛을 내는 용액이 돼요. 🍭 모래나 쇠구슬은 녹지 않아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_4_10",
+    "subject": "science",
+    "question": "🥛 우유는 무엇일까? 우유는 한 가지 물질일까요, 여러 물질이 섞인 것일까요?",
+    "options": ["여러 물질이 섞여 있다 (혼합물)", "한 가지 물질이다 (순물질)", "고체이다", "기체이다"],
+    "correctIndex": 0,
+    "explanation": "우유는 물, 지방, 단백질 등 여러 물질이 섞여 있는 '혼합물'이에요. 우리 주변에는 혼합물이 아주 많답니다! 🤩",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_1",
+    "subject": "science",
+    "question": "🧲 자석 놀이! 자석에는 N극과 S극이 있어요. 서로 다른 극(N극과 S극)을 가까이하면 어떻게 될까요?",
+    "options": ["서로 끌어당긴다", "서로 밀어낸다", "아무 일도 일어나지 않는다", "자석이 뜨거워진다"],
+    "correctIndex": 0,
+    "explanation": "착! 서로 끌어당겨요! 자석은 다른 극끼리는 서로 좋아해서 찰싹 달라붙는답니다. 신기한 자석의 힘!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_2",
+    "subject": "science",
+    "question": "🧲 자석 밀어내기! 자석의 같은 극(N극과 N극, S극과 S극)끼리 가까이하면 어떻게 될까요?",
+    "options": ["서로 밀어낸다", "서로 끌어당긴다", "색깔이 변한다", "자석이 부서진다"],
+    "correctIndex": 0,
+    "explanation": "통! 서로 밀어내요! 자석은 같은 극끼리는 서로 싫어해서 가까이 오지 못하게 민답니다. 마치 보이지 않는 벽이 있는 것 같아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_3",
+    "subject": "science",
+    "question": "📎 무엇이 붙을까? 다음 중 자석에 잘 붙는 물체는 무엇일까요?",
+    "options": ["클립", "지우개", "플라스틱 컵", "유리구슬"],
+    "correctIndex": 0,
+    "explanation": "정답은 클립이에요! 자석은 철로 만들어진 물체를 끌어당기는 성질이 있어요. 쇠붙이를 찾아내는 탐정 같죠? 🕵️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_4",
+    "subject": "science",
+    "question": "🧭 방향 탐험가! 바늘이 항상 북쪽을 가리켜서 방향을 알려주는 도구는 무엇일까요?",
+    "options": ["나침반", "시계", "온도계", "저울"],
+    "correctIndex": 0,
+    "explanation": "바로 '나침반'이에요! 나침반의 바늘은 작은 자석으로 되어 있어서 지구의 북쪽을 가리킨답니다. 길을 잃지 않게 도와주는 고마운 친구예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_5",
+    "subject": "science",
+    "question": "💡 반짝반짝 전기! 전기가 잘 통하는 물체를 뭐라고 부를까요?",
+    "options": ["도체", "부도체", "반도체", "자석"],
+    "correctIndex": 0,
+    "explanation": "'도체'라고 불러요. 쇠, 구리, 금처럼 전기가 잘 흐르는 친구들이랍니다. 전깃줄 안에는 구리가 들어있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_6",
+    "subject": "science",
+    "question": "🔌 전기 안전! 전기가 잘 통하지 않아서 우리를 감전의 위험으로부터 보호해주는 물체는 무엇일까요?",
+    "options": ["고무장갑", "쇠젓가락", "알루미늄 포일", "동전"],
+    "correctIndex": 0,
+    "explanation": "고무장갑이 정답이에요! 고무, 플라스틱, 나무처럼 전기가 잘 통하지 않는 물체를 '부도체'라고 해요. 우리를 안전하게 지켜준답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_7",
+    "subject": "science",
+    "question": "💡 전구 켜기! 전구에 불을 켜려면 전지, 전선, 전구를 어떻게 연결해야 할까요?",
+    "options": ["끊어지지 않게 모두 연결한다", "전선 하나만 연결한다", "전구만 연결한다", "전지만 연결한다"],
+    "correctIndex": 0,
+    "explanation": "정답! 전기가 흐르는 길(회로)이 끊어지지 않게 모두 연결해야 불이 켜져요. ✨ 전기의 길이 완성되는 거예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_8",
+    "subject": "science",
+    "question": "⚡️ 찌릿찌릿! 겨울에 스웨터를 벗을 때 '따끔'하고 느끼는 전기는 무엇일까요?",
+    "options": ["정전기", "번개", "건전지", "발전소"],
+    "correctIndex": 0,
+    "explanation": "바로 '정전기'예요! 물체들이 마찰하면서 생긴 전기가 잠시 모여 있다가 통하는 현상이랍니다. 깜짝 놀랐죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_9",
+    "subject": "science",
+    "question": "🔋 에너지 창고! 장난감 자동차를 움직이게 하고, 손전등을 밝히는 전기 에너지를 담고 있는 것은 무엇일까요?",
+    "options": ["건전지", "자석", "물", "태양"],
+    "correctIndex": 0,
+    "explanation": "정답은 '건전지'예요! 건전지는 전기를 저장해 두었다가 필요할 때마다 꺼내 쓸 수 있는 작은 발전소와 같아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_5_10",
+    "subject": "science",
+    "question": "🧲 자석의 힘! 자석의 힘이 가장 센 부분은 어디일까요?",
+    "options": ["양쪽 끝(N극과 S극)", "가운데 부분", "모든 부분이 똑같다", "힘이 없다"],
+    "correctIndex": 0,
+    "explanation": "자석의 양쪽 끝, 즉 N극과 S극이 힘이 가장 세요! 클립을 붙여보면 양쪽 끝에 가장 많이 붙는 것을 확인할 수 있답니다. 실험 성공!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_1",
+    "subject": "science",
+    "question": "⚽️ 공을 뻥! 멈춰 있는 축구공을 발로 차서 멀리 날아가게 하는 것은 무엇의 예시일까요?",
+    "options": ["힘", "속도", "무게", "온도"],
+    "correctIndex": 0,
+    "explanation": "바로 '힘'이에요! 힘은 물체의 모양이나 움직임을 바꾸는 원인이랍니다. 우리가 밀고, 당기고, 차는 모든 것이 힘이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_2",
+    "subject": "science",
+    "question": "🍎 사과가 뚝! 나무에 매달려 있던 사과가 아래로 뚝 떨어지게 만드는 힘은 무엇일까요?",
+    "options": ["중력", "마찰력", "자력", "탄성력"],
+    "correctIndex": 0,
+    "explanation": "지구가 물체를 끌어당기는 힘, '중력' 때문이에요! 중력 덕분에 우리가 땅에 발을 딛고 서 있을 수 있답니다. 고마운 힘이죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_3",
+    "subject": "science",
+    "question": "🚗 미끄럼 방지! 자동차 바퀴가 바닥에 착 붙어서 미끄러지지 않고 굴러갈 수 있게 하는 힘은 무엇일까요?",
+    "options": ["마찰력", "중력", "부력", "자력"],
+    "correctIndex": 0,
+    "explanation": "정답은 '마찰력'이에요! 마찰력은 물체가 움직이는 것을 방해하는 힘이에요. 마찰력 덕분에 우리가 걷다가 넘어지지 않는 거랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_4",
+    "subject": "science",
+    "question": "🚀 로켓 발사! 로켓이 가스를 아래로 뿜으면서 위로 솟아오르는 것은 어떤 원리일까요?",
+    "options": ["작용-반작용", "중력", "관성", "마찰력"],
+    "correctIndex": 0,
+    "explanation": "'작용-반작용'의 원리예요! 가스를 아래로 미는 힘(작용)이 있으면, 로켓을 위로 미는 힘(반작용)이 생기는 거랍니다. 신나는 우주여행!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_5",
+    "subject": "science",
+    "question": "⚖️ 누가 더 무거울까? 물체의 무거운 정도를 나타내는 것을 무엇이라고 할까요?",
+    "options": ["무게", "길이", "부피", "온도"],
+    "correctIndex": 0,
+    "explanation": "바로 '무게'예요! 무게는 지구가 물체를 끌어당기는 힘(중력)의 크기랍니다. 코끼리는 무겁고, 깃털은 가벼워요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_6",
+    "subject": "science",
+    "question": "🎈 고무줄 총! 고무줄을 잡아당겼다가 놓으면 원래 모양으로 돌아가려는 힘은 무엇일까요?",
+    "options": ["탄성력", "중력", "마찰력", "자기력"],
+    "correctIndex": 0,
+    "explanation": "'탄성력'이라고 해요! 용수철이나 고무공처럼 변형된 물체가 원래 모습으로 돌아가려는 힘이랍니다. 팅~",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_7",
+    "subject": "science",
+    "question": "⛵️ 물에 뜨는 배! 커다란 배가 물에 가라앉지 않고 뜰 수 있게 해주는, 물이 물체를 밀어 올리는 힘은 무엇일까요?",
+    "options": ["부력", "중력", "탄성력", "마찰력"],
+    "correctIndex": 0,
+    "explanation": "정답은 '부력'이에요! 수영장에서 우리 몸이 잘 뜨는 것도 부력 때문이랍니다. 신기한 물의 힘!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_8",
+    "subject": "science",
+    "question": "🚲 속도를 내자! 자전거 페달을 더 빨리 밟으면 자전거의 움직임은 어떻게 될까요?",
+    "options": ["더 빨라진다", "더 느려진다", "멈춘다", "뒤로 간다"],
+    "correctIndex": 0,
+    "explanation": "더 빨라져요! 힘을 더 크게 주면 물체의 속도가 변한답니다. 쌩쌩~ 바람을 가르며 달려요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_9",
+    "subject": "science",
+    "question": "🎳 볼링핀 쓰러뜨리기! 굴러가던 볼링공이 볼링핀에 부딪히면 볼링핀은 어떻게 될까요?",
+    "options": ["쓰러진다", "하늘로 솟는다", "사라진다", "가만히 있는다"],
+    "correctIndex": 0,
+    "explanation": "와르르~ 쓰러져요! 움직이는 물체는 다른 물체에 힘을 전달해서 움직이게 할 수 있어요. 스트라이크! 🎳",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_6_10",
+    "subject": "science",
+    "question": "🌬️ 바람의 힘! 바람이 쌩쌩 불면 깃발이 더 세게 펄럭여요. 바람은 어떤 힘을 가지고 있을까요?",
+    "options": ["미는 힘", "당기는 힘", "중력", "자력"],
+    "correctIndex": 0,
+    "explanation": "바람은 공기가 움직이면서 생기는 '미는 힘'을 가지고 있어요. 풍차를 돌리고, 돛단배를 움직이게 하는 강력한 힘이랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_1",
+    "subject": "science",
+    "question": "🌞 지구의 하루! 지구가 스스로 한 바퀴 도는 것을 무엇이라고 할까요? 이것 때문에 낮과 밤이 생겨요.",
+    "options": ["자전", "공전", "일식", "월식"],
+    "correctIndex": 0,
+    "explanation": "지구의 '자전'이라고 해요! 지구가 팽이처럼 빙글빙글 돌면서 햇빛을 받는 쪽은 낮, 받지 못하는 쪽은 밤이 된답니다. 🌍",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_2",
+    "subject": "science",
+    "question": "🌸 지구의 1년! 지구가 태양 주위를 한 바퀴 도는 것을 무엇이라고 할까요? 이것 때문에 계절이 바뀌어요.",
+    "options": ["공전", "자전", "자력", "중력"],
+    "correctIndex": 0,
+    "explanation": "지구의 '공전'이 정답이에요! 지구가 태양 주변을 여행하면서 봄, 여름, 가을, 겨울이 생긴답니다. 🌷☀️🍂❄️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_3",
+    "subject": "science",
+    "question": "🌕 달의 변신! 밤하늘의 달 모양이 매일 조금씩 바뀌는 이유는 무엇일까요?",
+    "options": ["달이 지구 주위를 돌기 때문에", "달이 스스로 빛을 내기 때문에", "구름이 달을 가리기 때문에", "달이 찌그러지기 때문에"],
+    "correctIndex": 0,
+    "explanation": "달이 지구 주위를 돌면서(공전하면서) 햇빛을 받는 부분이 다르게 보이기 때문이에요. 달의 멋진 변신 쇼랍니다! 🌙",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_4",
+    "subject": "science",
+    "question": "⭐ 스스로 빛나는 별! 태양계에서 스스로 빛과 열을 내는 유일한 별은 무엇일까요?",
+    "options": ["태양", "지구", "달", "화성"],
+    "correctIndex": 0,
+    "explanation": "바로 '태양'이에요! 태양은 거대한 불덩어리 별로, 지구의 모든 생명에게 에너지를 준답니다. 고마운 태양! ☀️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_5",
+    "subject": "science",
+    "question": "🔭 우주 탐험! 태양 주위를 도는 지구, 화성, 목성 같은 행성들의 모임을 무엇이라고 할까요?",
+    "options": ["태양계", "은하수", "별자리", "성운"],
+    "correctIndex": 0,
+    "explanation": "'태양계'라고 불러요! 태양계는 태양이라는 별과 그 주위를 도는 8개의 행성 친구들로 이루어져 있답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_6",
+    "subject": "science",
+    "question": "🌎 우리가 사는 행성! 태양계 행성 중 유일하게 생명체가 살고 있는 곳은 어디일까요?",
+    "options": ["지구", "화성", "목성", "수성"],
+    "correctIndex": 0,
+    "explanation": "바로 우리가 살고 있는 '지구'예요! 물과 공기, 적당한 온도가 있어서 생명이 살 수 있는 특별한 행성이랍니다. 💙",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_7",
+    "subject": "science",
+    "question": "影子놀이! 그림자가 가장 길어지는 때는 언제일까요?",
+    "options": ["아침과 저녁", "점심(한낮)", "밤", "비 오는 날"],
+    "correctIndex": 0,
+    "explanation": "아침과 저녁에 그림자가 가장 길어져요! 해가 낮게 떠 있을수록 그림자가 길어진답니다. 신기한 그림자 놀이!  그림자 발견!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_8",
+    "subject": "science",
+    "question": "✨ 밤하늘의 그림! 밤하늘의 별들을 연결해서 신화 속 동물이나 인물 모양을 만든 것을 무엇이라고 할까요?",
+    "options": ["별자리", "은하수", "인공위성", "행성"],
+    "correctIndex": 0,
+    "explanation": "정답은 '별자리'예요! 북두칠성, 카시오페이아자리처럼 옛날 사람들은 별자리를 보고 길을 찾거나 계절을 알았답니다. 🌟",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_9",
+    "subject": "science",
+    "question": "🌚 달의 숨바꼭질! 달이 지구 그림자에 가려져서 보이지 않는 현상을 무엇이라고 할까요?",
+    "options": ["월식", "일식", "자전", "공전"],
+    "correctIndex": 0,
+    "explanation": "바로 '월식'이에요! 태양-지구-달 순서로 나란히 서게 될 때 일어나는 신기한 우주 쇼랍니다. 😮",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_7_10",
+    "subject": "science",
+    "question": "붉은 행성! 표면이 붉은색 흙으로 덮여 있어서 '붉은 행성'이라는 별명을 가진 행성은 무엇일까요?",
+    "options": ["화성", "지구", "수성", "해왕성"],
+    "correctIndex": 0,
+    "explanation": "'화성'이 정답이에요! 과학자들은 화성에 생명체가 살았었는지, 또는 살 수 있는지 열심히 연구하고 있답니다. 🚀",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_1",
+    "subject": "science",
+    "question": "🌡️ 덥고 추워요! 공기의 덥고 추운 정도를 숫자로 나타낸 것을 무엇이라고 할까요?",
+    "options": ["기온", "습도", "바람", "날씨"],
+    "correctIndex": 0,
+    "explanation": "'기온'이라고 해요! 우리는 온도계를 사용해서 기온을 잴 수 있어요. 오늘은 몇 도일까요? ☀️",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_2",
+    "subject": "science",
+    "question": "🌬️ 공기의 움직임! 나뭇가지를 흔들고, 깃발을 펄럭이게 하는 공기의 움직임을 무엇이라고 할까요?",
+    "options": ["바람", "구름", "비", "안개"],
+    "correctIndex": 0,
+    "explanation": "정답은 '바람'이에요! 바람은 시원하게 해주기도 하고, 때로는 강하게 불어서 물건을 날려버리기도 해요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_3",
+    "subject": "science",
+    "question": "☁️ 뭉게뭉게! 하늘에 떠 있는 작은 물방울이나 얼음 알갱이들의 모임을 무엇이라고 할까요?",
+    "options": ["구름", "바람", "햇빛", "별"],
+    "correctIndex": 0,
+    "explanation": "바로 '구름'이에요! 구름의 모양을 보고 날씨를 예측할 수 있어요. 솜사탕 같은 구름, 먹구름 등 종류도 다양하답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_4",
+    "subject": "science",
+    "question": "💧 하늘에서 뚝뚝! 구름 속 물방울들이 무거워져서 땅으로 떨어지는 현상은 무엇일까요?",
+    "options": ["비", "눈", "안개", "이슬"],
+    "correctIndex": 0,
+    "explanation": "정답은 '비'예요! 🌧️ 비는 식물이 자라게 하고, 우리가 쓸 물을 만들어주는 고마운 존재랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_5",
+    "subject": "science",
+    "question": "❄️ 하얀 눈송이! 날씨가 매우 추울 때, 구름 속 물방울이 얼어서 떨어지는 것은 무엇일까요?",
+    "options": ["눈", "비", "우박", "서리"],
+    "correctIndex": 0,
+    "explanation": "바로 '눈'이에요! 🌨️ 눈 결정은 자세히 보면 모두 다른 모양을 하고 있대요. 정말 신기하죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_6",
+    "subject": "science",
+    "question": "🌈 알록달록 다리! 비가 온 뒤 햇빛이 비칠 때, 공기 중의 물방울에 의해 생기는 일곱 빛깔 띠는 무엇일까요?",
+    "options": ["무지개", "번개", "구름", "노을"],
+    "correctIndex": 0,
+    "explanation": "예쁜 '무지개'예요! 빨강, 주황, 노랑, 초록, 파랑, 남색, 보라색의 아름다운 빛의 다리랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_7",
+    "subject": "science",
+    "question": "💧 풀잎의 아침! 이른 아침, 풀잎이나 나뭇잎에 작은 물방울이 송골송골 맺혀 있는 것을 무엇이라고 할까요?",
+    "options": ["이슬", "비", "눈물", "땀"],
+    "correctIndex": 0,
+    "explanation": "정답은 '이슬'이에요! 밤사이 공기 중의 수증기가 차가운 풀잎에 닿아 물방울로 변한 거랍니다. 아침의 작은 보석 같아요! ✨",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_8",
+    "subject": "science",
+    "question": "🌫️ 뿌연 세상! 땅 가까운 곳에 구름이 생긴 것처럼, 작은 물방울들이 뿌옇게 떠 있는 현상을 무엇이라고 할까요?",
+    "options": ["안개", "미세먼지", "비", "바람"],
+    "correctIndex": 0,
+    "explanation": "바로 '안개'예요! 안개가 낀 날에는 앞이 잘 보이지 않으니 자동차를 운전할 때 조심해야 해요. 🚗",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_9",
+    "subject": "science",
+    "question": "⚡️ 번쩍! 우르릉! 먹구름 속에서 전기 때문에 번쩍이는 빛과 큰 소리가 나는 현상은 무엇일까요?",
+    "options": ["번개와 천둥", "무지개", "폭설", "태풍"],
+    "correctIndex": 0,
+    "explanation": "'번개와 천둥'이에요! 번쩍이는 빛이 번개, 우르릉 쾅쾅 소리가 천둥이랍니다. 무섭지만 신기한 자연 현상이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_8_10",
+    "subject": "science",
+    "question": "🌀 뱅글뱅글! 여름철에 바다에서 만들어져 강한 비와 바람을 몰고 오는 것은 무엇일까요?",
+    "options": ["태풍", "회오리바람", "눈보라", "지진"],
+    "correctIndex": 0,
+    "explanation": "정답은 '태풍'이에요. 태풍은 많은 피해를 주기도 하지만, 더위를 식혀주고 물 부족을 해결해 주기도 한답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_1",
+    "subject": "science",
+    "question": "💧 물의 여행! 바닷물이 햇빛을 받아 수증기가 되고, 하늘로 올라가 구름이 되었다가, 다시 비나 눈으로 내리는 과정을 무엇이라고 할까요?",
+    "options": ["물의 순환", "물의 증발", "물의 응결", "물의 오염"],
+    "correctIndex": 0,
+    "explanation": "바로 '물의 순환'이에요! 🌍 물은 이렇게 끊임없이 여행하면서 지구의 모든 생명체가 살아갈 수 있게 도와준답니다. 대단해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_2",
+    "subject": "science",
+    "question": "☀️ 빨래가 마르는 이유! 젖은 빨래를 햇볕에 널어두면 물이 사라져 뽀송뽀송해져요. 물이 수증기로 변해 날아가는 이 현상은 무엇일까요?",
+    "options": ["증발", "응결", "융해", "순환"],
+    "correctIndex": 0,
+    "explanation": "'증발'이 정답이에요! 물이 열을 받아서 눈에 보이지 않는 수증기(기체)로 변하는 현상이랍니다. 관찰 성공!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_3",
+    "subject": "science",
+    "question": "🥤 차가운 컵의 물방울! 차가운 음료수 컵 표면에 물방울이 맺히는 이유는 무엇일까요?",
+    "options": ["공기 중의 수증기가 물방울로 변해서", "컵에서 물이 새어 나와서", "음료수가 넘쳐서", "컵이 울어서"],
+    "correctIndex": 0,
+    "explanation": "공기 중의 수증기가 차가운 컵 표면에 닿아서 물방울(액체)로 변하는 '응결' 현상 때문이에요! 신기하죠? ✨",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_4",
+    "subject": "science",
+    "question": "🧊 물의 변신! 물이 얼어서 된 '이것'은 물에 동동 떠요. '이것'은 무엇일까요?",
+    "options": ["얼음", "돌멩이", "소금", "설탕"],
+    "correctIndex": 0,
+    "explanation": "정답은 '얼음'이에요! ❄️ 물은 얼음(고체)이 되면 부피가 커지고 가벼워져서 물에 뜬답니다. 다른 물질과는 다른 특별한 성질이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_5",
+    "subject": "science",
+    "question": "🌊 지구의 물! 지구 표면의 대부분을 덮고 있는 짜디짠 물은 무엇일까요?",
+    "options": ["바닷물", "강물", "빗물", "지하수"],
+    "correctIndex": 0,
+    "explanation": "바로 '바닷물'이에요! 지구에 있는 물의 약 97%가 바닷물이랍니다. 하지만 너무 짜서 마실 수는 없어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_6",
+    "subject": "science",
+    "question": "💧 우리가 마시는 물! 우리가 마시거나 생활에 사용하는, 짜지 않은 물을 뭐라고 부를까요?",
+    "options": ["민물", "바닷물", "소금물", "탄산수"],
+    "correctIndex": 0,
+    "explanation": "'민물'이라고 불러요. 강, 호수, 지하수 등이 민물이랍니다. 지구의 물 중에서 아주 적은 양이라 아껴 써야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_7",
+    "subject": "science",
+    "question": "🧼 더러운 물 깨끗하게! 더러워진 물을 깨끗하게 만들어 다시 사용할 수 있게 하는 곳은 어디일까요?",
+    "options": ["하수 처리장", "수영장", "발전소", "소방서"],
+    "correctIndex": 0,
+    "explanation": "'하수 처리장'이에요! 이곳에서 여러 단계를 거쳐 물을 깨끗하게 만들어 강이나 바다로 돌려보낸답니다. 물을 위한 병원 같아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_8",
+    "subject": "science",
+    "question": "💧 물 절약 퀴즈! 다음 중 물을 아껴 쓰는 좋은 습관은 무엇일까요?",
+    "options": ["양치할 때 컵 사용하기", "물을 계속 틀어놓고 설거지하기", "매일 욕조에 물 받아 목욕하기", "세탁기 조금씩 자주 돌리기"],
+    "correctIndex": 0,
+    "explanation": "양치컵을 사용하는 것이 정답! 컵을 사용하면 물을 엄청나게 아낄 수 있답니다. 지구를 지키는 작은 실천이에요. 🌍",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_9",
+    "subject": "science",
+    "question": "🌧️ 비가 모이는 곳! 비가 내리면 모여서 흐르는 작은 물줄기들이 합쳐져 만들어지는 것은 무엇일까요?",
+    "options": ["강", "바다", "호수", "저수지"],
+    "correctIndex": 0,
+    "explanation": "바로 '강'이에요! 작은 시냇물들이 모여 큰 강을 이루고, 강물은 흘러서 넓은 바다로 간답니다. 물의 대장정이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_9_10",
+    "subject": "science",
+    "question": "💦 끓는 물 조심! 물을 끓이면 투명한 '이것'이 나오는데, 매우 뜨거우니 조심해야 해요. '이것'은 무엇일까요?",
+    "options": ["수증기", "얼음", "연기", "안개"],
+    "correctIndex": 0,
+    "explanation": "정답은 '수증기'예요! 물이 끓어서 기체로 변한 것이랍니다. 눈에 보이지 않아도 아주 뜨거우니 항상 조심해야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_1",
+    "subject": "science",
+    "question": "♻️ 분리수거 탐험! 다 쓴 플라스틱 병이나 종이 상자를 다시 새로운 물건으로 만드는 것을 무엇이라고 할까요?",
+    "options": ["재활용", "쓰레기", "에너지", "오염"],
+    "correctIndex": 0,
+    "explanation": "바로 '재활용'이에요! 분리수거를 잘하면 쓰레기를 줄이고 지구의 자원을 아낄 수 있답니다. 지구를 구하는 영웅!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_2",
+    "subject": "science",
+    "question": "💡 에너지 절약 미션! 사용하지 않는 방의 불을 끄는 행동은 어떤 에너지를 절약하는 것일까요?",
+    "options": ["전기 에너지", "음식 에너지", "운동 에너지", "열에너지"],
+    "correctIndex": 0,
+    "explanation": "정답은 '전기 에너지'예요! 작은 습관 하나하나가 모여서 소중한 에너지를 아끼고 환경을 보호할 수 있어요. 미션 성공!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_3",
+    "subject": "science",
+    "question": "💨 나쁜 공기! 자동차 매연이나 공장 연기 때문에 공기가 더러워지는 것을 무엇이라고 할까요?",
+    "options": ["대기 오염", "수질 오염", "토양 오염", "소음 공해"],
+    "correctIndex": 0,
+    "explanation": "'대기 오염'이라고 해요. 우리가 숨 쉬는 공기가 더러워지면 건강에 나빠요. 맑은 공기를 위해 나무를 많이 심어야 해요. 🌳",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_4",
+    "subject": "science",
+    "question": "🌳 숲의 중요성! 나무와 숲이 우리에게 주는 고마운 점이 아닌 것은 무엇일까요?",
+    "options": ["자동차를 만들어준다", "맑은 산소를 만들어준다", "홍수를 막아준다", "동물들의 집이 되어준다"],
+    "correctIndex": 0,
+    "explanation": "자동차는 나무가 만들어주지 않아요! 숲은 맑은 공기를 만들고, 시원한 그늘을 제공하며, 많은 생명의 터전이 되는 소중한 곳이랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_5",
+    "subject": "science",
+    "question": "🛍️ 환경 보호 실천! 가게에서 물건을 살 때, 비닐봉투 대신 사용하면 좋은 것은 무엇일까요?",
+    "options": ["장바구니", "일회용 컵", "플라스틱 포장지", "비닐봉투 많이"],
+    "correctIndex": 0,
+    "explanation": "바로 '장바구니'예요! 장바구니를 사용하면 썩지 않는 비닐 쓰레기를 크게 줄일 수 있어요. 멋진 환경 지킴이!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_6",
+    "subject": "science",
+    "question": "💧 더러운 강! 공장에서 나온 폐수나 생활하수가 강으로 흘러 들어가 물이 더러워지는 것을 무엇이라고 할까요?",
+    "options": ["수질 오염", "대기 오염", "빛 공해", "에너지 낭비"],
+    "correctIndex": 0,
+    "explanation": "'수질 오염'이에요. 물이 오염되면 물고기들이 살 수 없고, 우리가 마실 물도 없어져요. 샴푸나 세제는 적당히 사용해야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_7",
+    "subject": "science",
+    "question": "☀️ 착한 에너지! 햇빛, 바람, 물처럼 계속해서 사용할 수 있고 환경을 오염시키지 않는 에너지를 뭐라고 부를까요?",
+    "options": ["신재생 에너지", "석탄 에너지", "석유 에너지", "화학 에너지"],
+    "correctIndex": 0,
+    "explanation": "'신재생 에너지'라고 해요. 태양광 발전, 풍력 발전 등이 있어요. 지구를 아프지 않게 하는 착한 에너지랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_8",
+    "subject": "science",
+    "question": "🌎 지구가 더워져요! 공기 중의 나쁜 가스 때문에 지구의 온도가 점점 올라가는 현상을 무엇이라고 할까요?",
+    "options": ["지구 온난화", "지구 냉각화", "사막화", "오존층 파괴"],
+    "correctIndex": 0,
+    "explanation": "바로 '지구 온난화'예요. 지구가 뜨거워지면 북극의 얼음이 녹고, 이상한 날씨가 계속될 수 있어요. 우리가 지구를 지켜줘야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_9",
+    "subject": "science",
+    "question": "🐾 멸종 위기 동물! 환경이 파괴되거나 사람들이 너무 많이 사냥해서, 사라질 위기에 처한 동물을 보호해야 하는 이유는 무엇일까요?",
+    "options": ["지구의 모든 생명은 소중하니까", "키우면 돈이 되니까", "맛있으니까", "쓸모가 없으니까"],
+    "correctIndex": 0,
+    "explanation": "지구의 모든 생명은 서로 연결되어 있고 모두 소중하기 때문이에요! 🐯🐼 우리와 함께 살아가는 친구들을 지켜주는 것이 중요해요.",
+    "difficulty": 1
+  },
+  {
+    "id": "science_easy_10_10",
+    "subject": "science",
+    "question": "🥫 분리배출 퀴즈! 다 먹은 참치 캔은 어떻게 버려야 할까요?",
+    "options": ["내용물을 비우고 헹궈서 캔류로", "그냥 일반 쓰레기로", "플라스틱류로", "음식물 쓰레기로"],
+    "correctIndex": 0,
+    "explanation": "정답! 내용물을 깨끗이 비우고 물로 헹궈서 캔류(고철)로 분리배출해야 멋지게 재활용될 수 있답니다. 분리배출 박사님이네요! 🎓",
     "difficulty": 1
   }
 ]

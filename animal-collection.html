@@ -13,6 +13,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+    <!-- Plant System -->
+    <script src="plant-system.js"></script>
+
     <!-- Firebase 통합 스크립트 -->
     <script defer src="firebase-config.js"></script>
     <script defer src="firebase-auth.js"></script>
@@ -106,6 +109,30 @@
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 12px;
         }
+
+        /* 태블릿 이상 */
+        @media (min-width: 768px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        /* PC 화면 */
+        @media (min-width: 1024px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        /* 큰 PC 화면 */
+        @media (min-width: 1440px) {
+            .collection-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 24px;
+            }
+        }
         
         .tier-label {
             font-size: 10px;
@@ -123,15 +150,22 @@
             <div class="mt-2 font-bold text-gray-700">데이터를 불러오는 중...</div>
         </div>
     </div>
-    <div class="container mx-auto px-4 py-6 max-w-md">
+    <div class="container mx-auto px-4 py-6 max-w-md lg:max-w-6xl xl:max-w-7xl">
         <!-- Header -->
         <div class="text-center mb-6">
             <button onclick="goHome()" class="absolute left-4 top-6 text-2xl hover:scale-110 transition-transform">
                 🏠
             </button>
             <h1 class="text-2xl font-bold text-gray-800 mb-2">🦎 동물 수집</h1>
-            <div class="text-sm text-gray-600">
-                보유 뽑기권: <span id="ticketCount" class="font-bold text-blue-600">0</span>개
+            <div class="text-sm text-gray-600 space-y-1">
+                <div>
+                    일반 뽑기권: <span id="ticketCount" class="font-bold text-blue-600">0</span>개
+                    <span class="mx-2">|</span>
+                    보유 코인: <span id="coinCount" class="font-bold text-yellow-600">0</span>
+                </div>
+                <div>
+                    <span class="text-purple-600">✨ 프리미엄 뽑기권: <span id="premiumTicketCount" class="font-bold">0</span>개</span>
+                </div>
             </div>
         </div>
 
@@ -140,21 +174,58 @@
             <div class="text-center mb-4">
                 <div class="text-6xl mb-4" id="gachaBox">📦</div>
                 <h2 class="text-lg font-bold text-gray-800 mb-2">동물 뽑기</h2>
-                <div class="text-xs text-gray-600 mb-4">
-                    <div class="grid grid-cols-2 gap-2 text-left">
-                        <div>🔘 일반: 60%</div>
-                        <div>🔵 레어: 30%</div>
-                        <div>🟣 에픽: 9%</div>
-                        <div>🟡 전설: 1%</div>
+
+                <!-- Regular Gacha -->
+                <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+                    <h3 class="text-sm font-bold text-blue-800 mb-2">일반 뽑기</h3>
+                    <div class="text-xs text-gray-600 mb-3">
+                        <div class="grid grid-cols-2 gap-2 text-left">
+                            <div>🔘 일반: 60%</div>
+                            <div>🔵 레어: 30%</div>
+                            <div>🟣 에픽: 9%</div>
+                            <div>🟡 전설: 1%</div>
+                        </div>
                     </div>
+                    <button
+                        id="gachaButton"
+                        onclick="drawAnimal()"
+                        class="gacha-button text-white px-6 py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full"
+                        disabled>
+                        뽑기권이 부족합니다
+                    </button>
+                    <button
+                        id="buyTicketButton"
+                        onclick="buyTicket()"
+                        class="mt-2 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full text-sm">
+                        일반 뽑기권 구매 (100 코인)
+                    </button>
                 </div>
-                <button 
-                    id="gachaButton"
-                    onclick="drawAnimal()" 
-                    class="gacha-button text-white px-6 py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full"
-                    disabled>
-                    뽑기권이 부족합니다
-                </button>
+
+                <!-- Premium Gacha -->
+                <div class="p-3 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg border-2 border-purple-300">
+                    <h3 class="text-sm font-bold text-purple-800 mb-2">✨ 프리미엄 뽑기</h3>
+                    <div class="text-xs text-purple-700 mb-3">
+                        <div class="grid grid-cols-2 gap-2 text-left">
+                            <div>🔘 일반: 5%</div>
+                            <div>🔵 레어: 62%</div>
+                            <div>🟣 에픽: 30%</div>
+                            <div>🟡 전설: 3%</div>
+                        </div>
+                    </div>
+                    <button
+                        id="premiumGachaButton"
+                        onclick="drawPremiumAnimal()"
+                        class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-6 py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full transition-all"
+                        disabled>
+                        프리미엄 뽑기권이 부족합니다
+                    </button>
+                    <button
+                        id="buyPremiumTicketButton"
+                        onclick="buyPremiumTicket()"
+                        class="mt-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed w-full text-sm">
+                        프리미엄 뽑기권 구매 (500 코인)
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -170,7 +241,7 @@
         <div class="bg-white rounded-xl shadow-lg p-6">
             <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
                 📚 나의 도감 
-                <span id="collectionCount" class="ml-2 text-sm bg-blue-100 text-blue-600 px-2 py-1 rounded-full">0/40</span>
+                <span id="collectionCount" class="ml-2 text-sm bg-blue-100 text-blue-600 px-2 py-1 rounded-full">0/500</span>
             </h2>
             
             <div id="collectionGrid" class="collection-grid">
@@ -203,57 +274,187 @@
         </div>
     </div>
 
+    <!-- 동물 상세 정보 모달 -->
+    <div id="animalDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" onclick="closeAnimalDetail()">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4 transform transition-all" onclick="event.stopPropagation()">
+            <!-- 닫기 버튼 -->
+            <button onclick="closeAnimalDetail()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">×</button>
+
+            <!-- 동물 정보 -->
+            <div id="animalDetailContent" class="text-center">
+                <!-- 동적으로 생성됩니다 -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Animal database
+        // 동물 이모지와 실제 이름 매핑
+        const animalDatabase = [
+            { emoji: '🐕', names: ['골든리트리버', '진돗개', '비글', '포메라니안', '허스키', '치와와', '웰시코기', '불독', '시바견', '말티즈'] },
+            { emoji: '🐱', names: ['페르시안', '러시안블루', '샴고양이', '스핑크스', '메인쿤', '뱅갈', '랙돌', '아비시니안', '브리티시숏헤어', '코리안숏헤어'] },
+            { emoji: '🐰', names: ['앙고라토끼', '롭이어', '네덜란드드워프', '플레미시자이언트', '라이온헤드', '렉스토끼', '미니롭', '하얀토끼', '회색토끼', '얼룩토끼'] },
+            { emoji: '🐹', names: ['골든햄스터', '드워프햄스터', '시리안햄스터', '로보로브스키', '캠벨햄스터', '차이니즈햄스터', '윈터화이트', '펄화이트', '푸딩햄스터', '블랙햄스터'] },
+            { emoji: '🐦', names: ['참새', '까치', '까마귀', '비둘기', '직박구리', '박새', '동박새', '멧새', '촉새', '붉은머리오목눈이'] },
+            { emoji: '🐠', names: ['열대어', '구피', '네온테트라', '엔젤피쉬', '베타', '디스커스', '라미레지', '플라티', '몰리', '테트라'] },
+            { emoji: '🐢', names: ['붉은귀거북', '늑대거북', '육지거북', '자라', '바다거북', '갈라파고스거북', '레오파드거북', '육지거북', '머스크터틀', '스네이크넥'] },
+            { emoji: '🐸', names: ['청개구리', '황소개구리', '무당개구리', '트리프록', '옥색개구리', '수리남개구리', '아프리카발톱개구리', '양서류', '붉은개구리', '우는개구리'] },
+            { emoji: '🐔', names: ['로드아일랜드', '레그혼', '코친', '오골계', '실키', '플리머스락', '와이언도트', '브라마', '오르핑턴', '서섹스'] },
+            { emoji: '🐷', names: ['랜드레이스', '요크셔', '듀록', '버크셔', '햄프셔', '체스터화이트', '피에트레인', '스팟', '탬워스', '라지화이트'] },
+            { emoji: '🐄', names: ['홀스타인', '저지', '한우', '앵거스', '헤리퍼드', '브라만', '샤롤레', '림무진', '심멘탈', '벨지안블루'] },
+            { emoji: '🐑', names: ['메리노', '서퍽', '도셋', '램부예', '링컨', '코리데일', '롬니', '서프다운', '체비엇', '컬럼비아'] },
+            { emoji: '🐭', names: ['생쥐', '시궁쥐', '들쥐', '집쥐', '흰쥐', '하얀생쥐', '검은쥐', '갈색쥐', '작은쥐', '큰쥐'] },
+            { emoji: '🐻', names: ['반달가슴곰', '불곰', '회색곰', '흑곰', '말레이곰', '안경곰', '나무늘보곰', '큰곰', '작은곰', '산곰'] },
+            { emoji: '🐨', names: ['코알라', '퀸즐랜드코알라', '빅토리아코알라', '뉴사우스웨일스코알라'] },
+            { emoji: '🦊', names: ['붉은여우', '북극여우', '사막여우', '회색여우', '페넥여우', '은여우', '대리석여우', '십자여우', '카라칼여우', '코르삭여우'] },
+            { emoji: '🐺', names: ['회색늑대', '북극늑대', '티베트늑대', '시베리아늑대', '검은늑대', '흰늑대', '붉은늑대', '멕시코늑대', '이집트늑대', '히말라야늑대'] },
+            { emoji: '🦁', names: ['아프리카사자', '아시아사자', '바바리사자', '케이프사자', '트란스발사자', '콩고사자', '세네갈사자', '카타리나사자', '백사자', '검은갈기사자'] },
+            { emoji: '🐯', names: ['벵골호랑이', '시베리아호랑이', '수마트라호랑이', '인도차이나호랑이', '백호', '말레이호랑이', '아무르호랑이', '카스피호랑이', '자바호랑이', '발리호랑이'] },
+            { emoji: '🐘', names: ['아프리카코끼리', '아시아코끼리', '사바나코끼리', '숲코끼리', '인도코끼리', '스리랑카코끼리', '수마트라코끼리', '보르네오코끼리', '매머드', '마스토돈'] },
+            { emoji: '🦒', names: ['마사이기린', '레티큘레이티드기린', '로스차일드기린', '소말리아기린', '남아프리카기린', '앙골라기린', '코르도판기린', '누비아기린', '우간다기린'] },
+            { emoji: '🦓', names: ['평원얼룩말', '산악얼룩말', '그레비얼룩말', '버첼얼룩말', '채프만얼룩말', '크와가얼룩말', '하트만산악얼룩말'] },
+            { emoji: '🐼', names: ['자이언트판다', '레서판다', '붉은판다', '큰판다', '작은판다', '쓰촨판다', '친링판다'] },
+            { emoji: '🐵', names: ['일본원숭이', '붉은털원숭이', '게잡이원숭이', '다람쥐원숭이', '마모셋', '타마린', '카푸친원숭이', '맨드릴', '비비', '히히'] },
+            { emoji: '🐧', names: ['황제펭귄', '젠투펭귄', '아델리펭귄', '킹펭귄', '마카로니펭귄', '로열펭귄', '록호퍼펭귄', '펭귄', '작은펭귄', '갈라파고스펭귄'] },
+            { emoji: '🦉', names: ['수리부엉이', '올빼미', '소쩍새', '쇠부엉이', '흰올빼미', '붉은올빼미', '큰소쩍새', '긴꼬리올빼미', '칡부엉이', '솔부엉이'] },
+            { emoji: '🦅', names: ['독수리', '흰머리수리', '검독수리', '황금독수리', '참수리', '쇠수리', '흰꼬리수리', '검은독수리', '왕독수리', '비단뱀수리'] },
+            { emoji: '🦆', names: ['청둥오리', '흰뺨검둥오리', '쇠오리', '고방오리', '흑오리', '가창오리', '알락오리', '넓적부리', '비오리', '원앙'] },
+            { emoji: '🦢', names: ['혹고니', '큰고니', '고니', '흑고니', '코스코로바고니', '트럼펫고니', '휘파람고니'] },
+            { emoji: '🦜', names: ['금강앵무', '유황앵무', '회색앵무', '코뉴어', '모란앵무', '사랑앵무', '아마존앵무', '마코앵무', '코카투', '로리'] },
+            { emoji: '🦩', names: ['홍학', '칠레홍학', '카리브홍학', '제임스홍학', '안데스홍학', '작은홍학', '큰홍학'] },
+            { emoji: '🦚', names: ['인도공작', '녹공작', '백공작', '청공작', '공고공작'] },
+            { emoji: '🦃', names: ['칠면조', '야생칠면조', '가축칠면조', '브론즈칠면조', '화이트칠면조'] },
+            { emoji: '🐓', names: ['수탉', '투계', '꼬꼬댁', '장끼', '우는닭'] },
+            { emoji: '🐤', names: ['병아리', '노란병아리', '흰병아리', '갈색병아리', '검은병아리'] },
+            { emoji: '🦇', names: ['큰박쥐', '작은박쥐', '과일박쥐', '흡혈박쥐', '관박쥐', '말굽박쥐', '여우박쥐', '긴가락박쥐', '집박쥐', '동굴박쥐'] },
+            { emoji: '🐝', names: ['꿀벌', '호박벌', '땅벌', '목수벌', '가위벌', '무침벌', '고치벌', '말벌', '왕벌', '일벌'] },
+            { emoji: '🐛', names: ['애벌레', '누에', '청충', '나비애벌레', '나방애벌레', '천막벌레', '솔나방', '매미나방', '박각시', '밤나방'] },
+            { emoji: '🦋', names: ['호랑나비', '제비나비', '청띠제비나비', '산호랑나비', '남방노랑나비', '배추흰나비', '큰줄흰나비', '먹그림나비', '왕오색나비', '작은멋쟁이나비'] },
+            { emoji: '🐌', names: ['달팽이', '아프리카왕달팽이', '포도달팽이', '정원달팽이', '민달팽이', '붉은달팽이', '거북달팽이', '달팽이류'] },
+            { emoji: '🐞', names: ['무당벌레', '칠성무당벌레', '이십팔점박이무당벌레', '이십이점박이무당벌레', '애기무당벌레', '큰이십팔점박이무당벌레', '콩무당벌레', '남색무당벌레'] },
+            { emoji: '🐜', names: ['개미', '불개미', '목수개미', '행군개미', '잎꾼개미', '일개미', '여왕개미', '수개미', '흰개미', '불독개미'] },
+            { emoji: '🦗', names: ['귀뚜라미', '방울벌레', '여치', '메뚜기', '베짱이', '왕귀뚜라미', '땅강아지', '긴꼬리귀뚜라미', '꿀벌레', '쌕쌔기'] },
+            { emoji: '🕷️', names: ['왕거미', '무당거미', '깡충거미', '늑대거미', '타란툴라', '독거미', '집거미', '황금거미', '십자거미', '게거미'] },
+            { emoji: '🦂', names: ['전갈', '황금전갈', '검은전갈', '붉은전갈', '황제전갈', '독전갈', '사막전갈', '숲전갈', '나무전갈', '돌전갈'] },
+            { emoji: '🐙', names: ['문어', '대왕문어', '작은문어', '표범문어', '청문어', '돌문어', '주꾸미', '낙지', '연어문어', '갑오징어'] },
+            { emoji: '🦑', names: ['오징어', '갑오징어', '대왕오징어', '화살오징어', '살오징어', '꼴뚜기', '한치', '반딧불오징어', '깊은바다오징어'] },
+            { emoji: '🦐', names: ['새우', '대하', '보리새우', '닭새우', '흰다리새우', '왕새우', '풀새우', '젓새우', '민물새우', '가시새우'] },
+            { emoji: '🦞', names: ['바닷가재', '랍스터', '닭새우', '가시바닷가재', '왕바닷가재', '유럽바닷가재', '미국바닷가재', '노르웨이바닷가재'] },
+            { emoji: '🦀', names: ['게', '꽃게', '대게', '털게', '민꽃게', '붉은대게', '참게', '바위게', '달랑게', '방게'] },
+            { emoji: '🐡', names: ['복어', '황복', '검복', '까치복', '흰점복', '별복', '매끈복', '참복', '거북복', '흑복'] },
+            { emoji: '🐟', names: ['물고기', '잉어', '붕어', '향어', '초어', '피라미', '송사리', '메기', '미꾸라지', '미꾸리'] },
+            { emoji: '🐬', names: ['돌고래', '큰돌고래', '참돌고래', '남방큰돌고래', '흰돌고래', '검은돌고래', '쇠돌고래', '물돌고래', '상괭이', '큰상괭이'] },
+            { emoji: '🐳', names: ['고래', '흰수염고래', '긴수염고래', '귀신고래', '참고래', '밍크고래', '보리고래', '흑고래', '대왕고래', '혹등고래'] },
+            { emoji: '🐋', names: ['향유고래', '범고래', '흰긴수염고래', '쇠고래', '부리고래', '참부리고래', '남방긴수염고래', '북극고래', '남극밍크고래'] },
+            { emoji: '🦈', names: ['상어', '백상아리', '청상아리', '귀상어', '돔상어', '흑기흉상어', '백기흉상어', '고래상어', '망치상어', '톱상어'] },
+            { emoji: '🐊', names: ['악어', '나일악어', '바다악어', '미시시피악어', '아메리카악어', '카이만', '앨리게이터', '가비알', '큰악어', '작은악어'] },
+            { emoji: '🐅', names: ['호랑이', '백호', '흑호', '금호', '청호'] },
+            { emoji: '🐆', names: ['표범', '아프리카표범', '아무르표범', '페르시아표범', '인도차이나표범', '자바표범', '스리랑카표범', '아라비아표범', '흑표범', '설표범'] },
+            { emoji: '🦍', names: ['고릴라', '마운틴고릴라', '동부저지대고릴라', '서부저지대고릴라', '크로스리버고릴라', '실버백고릴라'] },
+            { emoji: '🦧', names: ['오랑우탄', '보르네오오랑우탄', '수마트라오랑우탄', '타파눌리오랑우탄'] },
+            { emoji: '🐪', names: ['단봉낙타', '아라비아낙타', '드로메다리'] },
+            { emoji: '🐫', names: ['쌍봉낙타', '박트리아낙타', '몽골낙타', '야생낙타'] },
+            { emoji: '🦙', names: ['라마', '알파카', '과나코', '비쿠냐'] },
+            { emoji: '🦘', names: ['캥거루', '붉은캥거루', '동부회색캥거루', '서부회색캥거루', '나무캥거루', '왈라비', '왈라루'] },
+            { emoji: '🦥', names: ['나무늘보', '세발가락나무늘보', '두발가락나무늘보', '갈색목나무늘보', '창백목나무늘보', '피그미나무늘보'] },
+            { emoji: '🦦', names: ['수달', '유라시아수달', '해달', '작은발톱수달', '민물수달', '큰수달', '거대수달', '매끄러운수달'] },
+            { emoji: '🦨', names: ['스컹크', '줄무늬스컹크', '점박이스컹크', '돼지코스컹크', '후드스컹크'] },
+            { emoji: '🦡', names: ['오소리', '유라시아오소리', '아메리카오소리', '꿀오소리', '족제비오소리', '돼지오소리'] },
+            { emoji: '🐩', names: ['푸들', '토이푸들', '미니어처푸들', '스탠다드푸들'] }
+        ];
+
+        // 동물 500개 자동 생성
+        function generateAnimals() {
+            const animals = { common: [], rare: [], epic: [], legendary: [] };
+            let idCounter = 1;
+
+            // Common (300개) - power 1
+            let commonIndex = 0;
+            for (let i = 0; i < 300; i++) {
+                const animalData = animalDatabase[commonIndex % animalDatabase.length];
+                const nameIndex = Math.floor(i / animalDatabase.length) % animalData.names.length;
+                animals.common.push({
+                    id: `common_${idCounter++}`,
+                    name: animalData.names[nameIndex],
+                    emoji: animalData.emoji,
+                    power: 1
+                });
+                commonIndex++;
+            }
+
+            // Rare (150개) - power 2-3
+            let rareIndex = 0;
+            for (let i = 0; i < 150; i++) {
+                const animalData = animalDatabase[rareIndex % animalDatabase.length];
+                const nameIndex = Math.floor(i / animalDatabase.length) % animalData.names.length;
+                const baseName = animalData.names[nameIndex];
+                const prefixes = ['용맹한', '민첩한', '지혜로운', '강인한', '날렵한', '영리한', '당당한', '위풍당당한', '멋진', '빛나는'];
+                animals.rare.push({
+                    id: `rare_${idCounter++}`,
+                    name: `${prefixes[i % prefixes.length]} ${baseName}`,
+                    emoji: animalData.emoji,
+                    power: 2 + (i % 2)
+                });
+                rareIndex++;
+            }
+
+            // Epic (45개) - power 5-7
+            let epicIndex = 0;
+            for (let i = 0; i < 45; i++) {
+                const animalData = animalDatabase[epicIndex % animalDatabase.length];
+                const nameIndex = Math.floor(i / animalDatabase.length) % animalData.names.length;
+                const baseName = animalData.names[nameIndex];
+                const prefixes = ['전설의', '신화의', '고대의', '환상의', '신비한', '마법의', '천상의', '영광의', '찬란한'];
+                animals.epic.push({
+                    id: `epic_${idCounter++}`,
+                    name: `${prefixes[i % prefixes.length]} ${baseName}`,
+                    emoji: animalData.emoji + '✨',
+                    power: 5 + (i % 3)
+                });
+                epicIndex++;
+            }
+
+            // Legendary (5개) - power 10-15
+            const legendaryAnimals = [
+                { emoji: '🦁', name: '우주사자 레오' },
+                { emoji: '🐉', name: '시공룡 크로노스' },
+                { emoji: '🦅', name: '광명독수리 루미너스' },
+                { emoji: '🐺', name: '암흑늑대 페네스' },
+                { emoji: '🦉', name: '지혜부엉이 소피아' }
+            ];
+            for (let i = 0; i < 5; i++) {
+                animals.legendary.push({
+                    id: `legendary_${i + 1}`,
+                    name: legendaryAnimals[i].name,
+                    emoji: legendaryAnimals[i].emoji + '🌟💫',
+                    power: 10 + i
+                });
+            }
+
+            return animals;
+        }
+
+        // Animal database (500개)
+        const generatedAnimals = generateAnimals();
+
+        // 전역으로 사용할 animals 객체 (티어별 분류)
         const animals = {
-            common: [
-                { id: 'dog', name: '강아지', emoji: '🐕', power: 1 },
-                { id: 'cat', name: '고양이', emoji: '🐱', power: 1 },
-                { id: 'rabbit', name: '토끼', emoji: '🐰', power: 1 },
-                { id: 'hamster', name: '햄스터', emoji: '🐹', power: 1 },
-                { id: 'bird', name: '새', emoji: '🐦', power: 1 },
-                { id: 'fish', name: '물고기', emoji: '🐠', power: 1 },
-                { id: 'turtle', name: '거북이', emoji: '🐢', power: 1 },
-                { id: 'frog', name: '개구리', emoji: '🐸', power: 1 },
-                { id: 'chicken', name: '닭', emoji: '🐔', power: 1 },
-                { id: 'pig', name: '돼지', emoji: '🐷', power: 1 },
-                { id: 'cow', name: '소', emoji: '🐄', power: 1 },
-                { id: 'sheep', name: '양', emoji: '🐑', power: 1 },
-                { id: 'mouse', name: '쥐', emoji: '🐭', power: 1 },
-                { id: 'bear', name: '곰', emoji: '🐻', power: 1 },
-                { id: 'koala', name: '코알라', emoji: '🐨', power: 1 }
-            ],
-            rare: [
-                { id: 'fox', name: '여우', emoji: '🦊', power: 2 },
-                { id: 'wolf', name: '늑대', emoji: '🐺', power: 2 },
-                { id: 'lion', name: '사자', emoji: '🦁', power: 2 },
-                { id: 'tiger', name: '호랑이', emoji: '🐯', power: 2 },
-                { id: 'elephant', name: '코끼리', emoji: '🐘', power: 2 },
-                { id: 'giraffe', name: '기린', emoji: '🦒', power: 2 },
-                { id: 'zebra', name: '얼룩말', emoji: '🦓', power: 2 },
-                { id: 'panda', name: '판다', emoji: '🐼', power: 2 },
-                { id: 'monkey', name: '원숭이', emoji: '🐵', power: 2 },
-                { id: 'penguin', name: '펭귄', emoji: '🐧', power: 2 },
-                { id: 'owl', name: '부엉이', emoji: '🦉', power: 2 },
-                { id: 'eagle', name: '독수리', emoji: '🦅', power: 2 }
-            ],
-            epic: [
-                { id: 'dragon', name: '용', emoji: '🐉', power: 5 },
-                { id: 'unicorn', name: '유니콘', emoji: '🦄', power: 5 },
-                { id: 'phoenix', name: '불사조', emoji: '🔥🐦', power: 5 },
-                { id: 'griffin', name: '그리핀', emoji: '🦅🦁', power: 5 },
-                { id: 'pegasus', name: '페가수스', emoji: '🐴💫', power: 5 }
-            ],
-            legendary: [
-                { id: 'celestial_dragon', name: '천룡', emoji: '✨🐉', power: 10 },
-                { id: 'golden_phoenix', name: '황금 불사조', emoji: '🌟🔥', power: 10 },
-                { id: 'divine_unicorn', name: '신성한 유니콘', emoji: '🌈🦄', power: 10 }
-            ]
+            common: generatedAnimals.common,
+            rare: generatedAnimals.rare,
+            epic: generatedAnimals.epic,
+            legendary: generatedAnimals.legendary
         };
+
+        const allAnimals = [
+            ...generatedAnimals.common,
+            ...generatedAnimals.rare,
+            ...generatedAnimals.epic,
+            ...generatedAnimals.legendary
+        ];
+        console.log(`✅ 동물 ${allAnimals.length}개 생성 완료!`);
 
         // Game state
         let gameState = {
-            tickets: 0,
+            animals: allAnimals,  // 500마리 동물 데이터베이스
             collection: {},
             stats: {
                 totalDraws: 0,
@@ -261,26 +462,107 @@
             }
         };
 
+        // Get tickets from plant-system
+        function getTicketsFromPlantSystem() {
+            try {
+                const userData = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+                return {
+                    normal: userData?.rewards?.normalGachaTickets || 0,
+                    premium: userData?.rewards?.premiumGachaTickets || 0
+                };
+            } catch (e) {
+                console.error('Error reading tickets from plant-system:', e);
+                return { normal: 0, premium: 0 };
+            }
+        }
+
+        // Use a ticket from plant-system
+        function useTicketFromPlantSystem(isPremium = false) {
+            try {
+                const userData = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+                if (!userData.rewards) return false;
+
+                if (isPremium) {
+                    if (userData.rewards.premiumGachaTickets > 0) {
+                        userData.rewards.premiumGachaTickets--;
+                        localStorage.setItem('plantSystemUser', JSON.stringify(userData));
+                        return true;
+                    }
+                } else {
+                    if (userData.rewards.normalGachaTickets > 0) {
+                        userData.rewards.normalGachaTickets--;
+                        localStorage.setItem('plantSystemUser', JSON.stringify(userData));
+                        return true;
+                    }
+                }
+                return false;
+            } catch (e) {
+                console.error('Error using ticket:', e);
+                return false;
+            }
+        }
+
+        // Migrate old animal data to new level system
+        function migrateAnimalData() {
+            let needsSave = false;
+
+            Object.keys(gameState.collection).forEach(animalId => {
+                const animal = gameState.collection[animalId];
+
+                // 레벨 필드가 없으면 추가
+                if (!animal.level) {
+                    animal.level = 1;
+                    needsSave = true;
+                }
+
+                // 경험치 필드가 없으면 추가
+                if (animal.exp === undefined) {
+                    animal.exp = 0;
+                    needsSave = true;
+                }
+
+                // 중복 카드 개수가 없으면 추가 (count - 1로 계산)
+                if (animal.duplicates === undefined) {
+                    animal.duplicates = Math.max(0, (animal.count || 1) - 1);
+                    needsSave = true;
+                }
+
+                // totalPower가 없으면 계산
+                if (!animal.totalPower) {
+                    animal.totalPower = (animal.power || 1) * (animal.level || 1);
+                    needsSave = true;
+                }
+            });
+
+            if (needsSave) {
+                saveGameState();
+                console.log('✅ 동물 데이터 마이그레이션 완료!');
+            }
+        }
+
         // Load game state
         async function loadGameState() {
             const saved = localStorage.getItem('animalCollection');
             if (saved) {
-                gameState = { ...gameState, ...JSON.parse(saved) };
+                const savedData = JSON.parse(saved);
+
+                // animals 배열이 없으면 초기 생성된 500마리 유지
+                gameState = {
+                    animals: savedData.animals || allAnimals,  // 저장된 데이터 없으면 초기 500마리 사용
+                    collection: savedData.collection || {},
+                    stats: savedData.stats || { totalDraws: 0, legendaryCount: 0 }
+                };
+
+                // 기존 데이터 마이그레이션
+                migrateAnimalData();
+            } else {
+                console.log('⚠️ 첫 방문입니다. 500마리 동물 데이터베이스로 시작합니다.');
+                // gameState는 이미 allAnimals로 초기화되어 있음
             }
-            
-            // Get tickets from other systems
-            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
-            const quizState = JSON.parse(localStorage.getItem('quizProgress') || '{}');
-            
-            // Calculate tickets from learning progress
-            let earnedTickets = 0;
-            if (quizState.totalCorrect) {
-                earnedTickets = Math.floor(quizState.totalCorrect / 25); // 1 ticket per 25 correct answers
-            }
-            
-            gameState.tickets = earnedTickets;
-            
-            updateDisplay();
+
+            // plantSystem에서 돈 가져오기
+            const money = plantSystem.getMoney();
+            updateDisplay(money);
         }
 
         // Save game state
@@ -288,12 +570,196 @@
             localStorage.setItem('animalCollection', JSON.stringify(gameState));
         }
 
+        // ========== 레벨업 시스템 ==========
+
+        // 레벨별 필요 중복 카드 수
+        const LEVEL_UP_REQUIREMENTS = {
+            1: { duplicates: 1, nextLevel: 2 },  // Lv1→2: 중복 1장
+            2: { duplicates: 2, nextLevel: 3 },  // Lv2→3: 중복 2장
+            3: { duplicates: 3, nextLevel: 4 },  // Lv3→4: 중복 3장
+            4: { duplicates: 5, nextLevel: 5 },  // Lv4→5: 중복 5장
+            5: { duplicates: 0, nextLevel: 5 }   // MAX level
+        };
+
+        // 레벨별 능력치 계산 (파워만)
+        function calculateAnimalAbilities(animal) {
+            if (!animal) return { totalPower: 0 };
+
+            const level = animal.level || 1;
+            const basePower = animal.power || 1;
+
+            return {
+                // 총 파워 (기본 파워 * 레벨)
+                totalPower: basePower * level
+            };
+        }
+
+        // 레벨업 가능 여부 확인
+        function canLevelUp(animalId) {
+            const animal = gameState.collection[animalId];
+            if (!animal) return false;
+
+            const currentLevel = animal.level || 1;
+            if (currentLevel >= 5) return false; // MAX 레벨
+
+            const requirement = LEVEL_UP_REQUIREMENTS[currentLevel];
+            return animal.duplicates >= requirement.duplicates;
+        }
+
+        // 동물 레벨업 실행
+        function levelUpAnimal(animalId) {
+            const animal = gameState.collection[animalId];
+            if (!animal) {
+                console.error('동물을 찾을 수 없습니다:', animalId);
+                return false;
+            }
+
+            const currentLevel = animal.level || 1;
+            if (currentLevel >= 5) {
+                alert('이미 최대 레벨입니다!');
+                return false;
+            }
+
+            const requirement = LEVEL_UP_REQUIREMENTS[currentLevel];
+            if (animal.duplicates < requirement.duplicates) {
+                alert(`레벨업에 중복 카드가 ${requirement.duplicates}장 필요합니다.\n현재: ${animal.duplicates}장`);
+                return false;
+            }
+
+            // 레벨업 실행
+            animal.duplicates -= requirement.duplicates;
+            animal.level = requirement.nextLevel;
+
+            // 파워 재계산
+            const abilities = calculateAnimalAbilities(animal);
+            animal.totalPower = abilities.totalPower;
+
+            saveGameState();
+
+            console.log(`✨ ${animal.name} 레벨업! Lv.${currentLevel} → Lv.${animal.level}`);
+            console.log('새로운 능력:', abilities);
+
+            return {
+                success: true,
+                newLevel: animal.level,
+                abilities: abilities,
+                animal: animal
+            };
+        }
+
+        // 경험치 추가 (학습 시 사용)
+        function addAnimalExp(animalId, exp) {
+            const animal = gameState.collection[animalId];
+            if (!animal) return;
+
+            animal.exp = (animal.exp || 0) + exp;
+            saveGameState();
+        }
+
+        // Buy a ticket with coins
+        function buyTicket() {
+            const ticketPrice = 100;
+
+            // plantSystem을 사용해서 돈 차감
+            const result = plantSystem.spendMoney(ticketPrice);
+
+            if (result.success) {
+                // Add ticket to plant-system
+                try {
+                    const plantSystemUser = plantSystem.getUserData();
+                    if (!plantSystemUser.rewards) {
+                        plantSystemUser.rewards = {
+                            growthTickets: [],
+                            normalGachaTickets: 0,
+                            premiumGachaTickets: 0
+                        };
+                    }
+                    plantSystemUser.rewards.normalGachaTickets = (plantSystemUser.rewards.normalGachaTickets || 0) + 1;
+                    plantSystem.saveUserData(plantSystemUser);
+
+                    console.log('✅ Normal ticket purchased and added to plant-system');
+
+                    alert('일반 뽑기권 1개를 100코인으로 구매했습니다!');
+
+                    // Update the entire display
+                    updateDisplay(result.currentMoney);
+
+                    // Firebase 통계 업데이트
+                    if (typeof updateFirebaseStats !== 'undefined') {
+                        updateFirebaseStats.animal({
+                            action: 'buy_ticket',
+                            cost: ticketPrice
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error adding ticket to plant-system:', e);
+                    alert('뽑기권 구매 중 오류가 발생했습니다.');
+                }
+
+            } else {
+                alert(`코인이 부족합니다. (현재 코인: ${result.currentMoney})`);
+            }
+        }
+
+        // Buy a premium ticket with coins
+        function buyPremiumTicket() {
+            const ticketPrice = 500;
+
+            // plantSystem을 사용해서 돈 차감
+            const result = plantSystem.spendMoney(ticketPrice);
+
+            if (result.success) {
+                // Add premium ticket to plant-system
+                try {
+                    const plantSystemUser = plantSystem.getUserData();
+                    if (!plantSystemUser.rewards) {
+                        plantSystemUser.rewards = {
+                            growthTickets: [],
+                            normalGachaTickets: 0,
+                            premiumGachaTickets: 0
+                        };
+                    }
+                    plantSystemUser.rewards.premiumGachaTickets = (plantSystemUser.rewards.premiumGachaTickets || 0) + 1;
+                    plantSystem.saveUserData(plantSystemUser);
+
+                    console.log('✅ Premium ticket purchased and added to plant-system');
+
+                    alert('프리미엄 뽑기권 1개를 500코인으로 구매했습니다!');
+
+                    // Update the entire display
+                    updateDisplay(result.currentMoney);
+
+                    // Firebase 통계 업데이트
+                    if (typeof updateFirebaseStats !== 'undefined') {
+                        updateFirebaseStats.animal({
+                            action: 'buy_premium_ticket',
+                            cost: ticketPrice
+                        });
+                    }
+                } catch (e) {
+                    console.error('Error adding premium ticket to plant-system:', e);
+                    alert('프리미엄 뽑기권 구매 중 오류가 발생했습니다.');
+                }
+
+            } else {
+                alert(`코인이 부족합니다. (현재 코인: ${result.currentMoney})`);
+            }
+        }
+
         // Draw animal with gacha mechanics
         function drawAnimal() {
-            if (gameState.tickets <= 0) return;
+            const tickets = getTicketsFromPlantSystem();
+            if (tickets.normal <= 0) {
+                alert('일반 뽑기권이 부족합니다!');
+                return;
+            }
 
-            // Use ticket
-            gameState.tickets--;
+            // Use ticket from plant-system
+            if (!useTicketFromPlantSystem(false)) {
+                alert('티켓 사용에 실패했습니다.');
+                return;
+            }
+
             gameState.stats.totalDraws++;
 
             // Animate gacha box
@@ -321,10 +787,25 @@
                 const tierAnimals = animals[tier];
                 animal = tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
                 
-                // Add to collection
+                // Add to collection with level system
                 if (!gameState.collection[animal.id]) {
-                    gameState.collection[animal.id] = { ...animal, tier, count: 0 };
+                    gameState.collection[animal.id] = {
+                        ...animal,
+                        tier,
+                        count: 0,
+                        level: 1,              // 레벨 (1-5)
+                        exp: 0,                // 경험치
+                        duplicates: 0,         // 중복 카드 개수 (합성에 사용)
+                        totalPower: animal.power // 실제 파워 (레벨 * 기본 파워)
+                    };
                 }
+
+                // 중복 카드 획득 시
+                if (gameState.collection[animal.id].count > 0) {
+                    gameState.collection[animal.id].duplicates++;
+                    console.log(`🔥 중복 카드 획득! ${animal.name} - 중복 ${gameState.collection[animal.id].duplicates}장`);
+                }
+
                 gameState.collection[animal.id].count++;
                 
                 // Update legendary count
@@ -358,13 +839,115 @@
                 }
                 
                 saveGameState();
-                updateDisplay();
+                // We need to reload money status to update display correctly
+                const money = plantSystem.getMoney();
+                updateDisplay(money);
                 
             }, 600);
         }
 
+        // Draw premium animal (Common:5%, Rare:62%, Epic:30%, Legendary:3%)
+        function drawPremiumAnimal() {
+            const tickets = getTicketsFromPlantSystem();
+            if (tickets.premium <= 0) {
+                alert('프리미엄 뽑기권이 부족합니다!');
+                return;
+            }
+
+            // Use premium ticket from plant-system
+            if (!useTicketFromPlantSystem(true)) {
+                alert('티켓 사용에 실패했습니다.');
+                return;
+            }
+
+            gameState.stats.totalDraws++;
+
+            // Animate gacha box
+            const gachaBox = document.getElementById('gachaBox');
+            gachaBox.classList.add('gacha-animation');
+
+            setTimeout(() => {
+                gachaBox.classList.remove('gacha-animation');
+
+                // Premium gacha: Common 5%, Rare 62%, Epic 30%, Legendary 3%
+                const rand = Math.random();
+                let tier, animal;
+
+                if (rand < 0.03) { // 3% legendary
+                    tier = 'legendary';
+                } else if (rand < 0.33) { // 30% epic (0.03 + 0.30 = 0.33)
+                    tier = 'epic';
+                } else if (rand < 0.95) { // 62% rare (0.33 + 0.62 = 0.95)
+                    tier = 'rare';
+                } else { // 5% common (0.95 + 0.05 = 1.00)
+                    tier = 'common';
+                }
+
+                // Select random animal from tier
+                const tierAnimals = animals[tier];
+                animal = tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
+
+                // Add to collection with level system
+                if (!gameState.collection[animal.id]) {
+                    gameState.collection[animal.id] = {
+                        ...animal,
+                        tier,
+                        count: 0,
+                        level: 1,              // 레벨 (1-5)
+                        exp: 0,                // 경험치
+                        duplicates: 0,         // 중복 카드 개수 (합성에 사용)
+                        totalPower: animal.power // 실제 파워 (레벨 * 기본 파워)
+                    };
+                }
+
+                // 중복 카드 획득 시
+                if (gameState.collection[animal.id].count > 0) {
+                    gameState.collection[animal.id].duplicates++;
+                    console.log(`🔥 중복 카드 획득! ${animal.name} - 중복 ${gameState.collection[animal.id].duplicates}장`);
+                }
+
+                gameState.collection[animal.id].count++;
+
+                // Update legendary count
+                if (tier === 'legendary') {
+                    gameState.stats.legendaryCount++;
+                }
+
+                // Show new animal with premium indicator
+                showNewAnimal(animal, tier, true);
+
+                // Play sound
+                playDrawSound(tier);
+
+                // Enhanced vibration for premium
+                if (navigator.vibrate) {
+                    const pattern = tier === 'legendary' ? [100, 50, 100, 50, 200, 50, 100] :
+                                  [100, 50, 150, 50, 100];
+                    navigator.vibrate(pattern);
+                }
+
+                // Firebase 통계 업데이트
+                if (typeof updateFirebaseStats !== 'undefined') {
+                    updateFirebaseStats.animal({
+                        animalId: animal.id,
+                        name: animal.name,
+                        tier: tier,
+                        cost: 0, // 프리미엄 뽑기권 사용 (코인 소모 없음)
+                        isNewAnimal: gameState.collection[animal.id].count === 1,
+                        isPremium: true
+                    });
+                }
+
+                saveGameState();
+                // We need to reload money status to update display correctly
+                const money = plantSystem.getMoney();
+                updateDisplay(money);
+
+            }, 600);
+        }
+
         // Show new animal
-        function showNewAnimal(animal, tier) {
+        function showNewAnimal(animal, tier, isPremium = false) {
             const latestDraw = document.getElementById('latestDraw');
             const newAnimalCard = document.getElementById('newAnimalCard');
             
@@ -372,6 +955,7 @@
             newAnimalCard.className = `animal-card ${tier} rounded-lg p-4 text-center animal-appear`;
             
             newAnimalCard.innerHTML = `
+                ${isPremium ? '<div class="text-xs bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-1 rounded-full mb-2 inline-block">✨ 프리미엄</div>' : ''}
                 <div class="tier-label ${getTierColor(tier)} mb-2">${getTierName(tier)}</div>
                 <div class="text-4xl mb-2">${animal.emoji}</div>
                 <div class="font-bold text-gray-800">${animal.name}</div>
@@ -441,18 +1025,70 @@
         }
 
         // Update display
-        function updateDisplay() {
-            // Update ticket count
-            document.getElementById('ticketCount').textContent = gameState.tickets;
-            
-            // Update gacha button
+        function updateDisplay(money) {
+            const ticketPrice = 100;
+
+            // Get tickets from plant-system
+            const tickets = getTicketsFromPlantSystem();
+
+            // Update regular ticket count
+            document.getElementById('ticketCount').textContent = tickets.normal;
+
+            // Update premium ticket count
+            const premiumTicketCountEl = document.getElementById('premiumTicketCount');
+            if (premiumTicketCountEl) {
+                premiumTicketCountEl.textContent = tickets.premium;
+            }
+
+            // Update coin count
+            const coinCountEl = document.getElementById('coinCount');
+            if (coinCountEl) {
+                coinCountEl.textContent = `${money || 0} 코인`;
+            }
+
+            // Update regular gacha button
             const gachaButton = document.getElementById('gachaButton');
-            if (gameState.tickets > 0) {
+            if (tickets.normal > 0) {
                 gachaButton.disabled = false;
-                gachaButton.textContent = '동물 뽑기 (1장 사용)';
+                gachaButton.textContent = `동물 뽑기 (1장 사용)`;
             } else {
                 gachaButton.disabled = true;
                 gachaButton.textContent = '뽑기권이 부족합니다';
+            }
+
+            // Update premium gacha button
+            const premiumGachaButton = document.getElementById('premiumGachaButton');
+            if (premiumGachaButton) {
+                if (tickets.premium > 0) {
+                    premiumGachaButton.disabled = false;
+                    premiumGachaButton.textContent = `✨ 프리미엄 뽑기 (1장 사용)`;
+                } else {
+                    premiumGachaButton.disabled = true;
+                    premiumGachaButton.textContent = '프리미엄 뽑기권이 부족합니다';
+                }
+            }
+
+            // Update buy ticket button
+            const buyTicketButton = document.getElementById('buyTicketButton');
+            if (buyTicketButton) {
+                buyTicketButton.disabled = money < ticketPrice;
+                if (money < ticketPrice) {
+                    buyTicketButton.textContent = `코인 부족 (100 코인 필요)`;
+                } else {
+                    buyTicketButton.textContent = `일반 뽑기권 구매 (100 코인)`;
+                }
+            }
+
+            // Update buy premium ticket button
+            const buyPremiumTicketButton = document.getElementById('buyPremiumTicketButton');
+            if (buyPremiumTicketButton) {
+                const premiumTicketPrice = 500;
+                buyPremiumTicketButton.disabled = money < premiumTicketPrice;
+                if (money < premiumTicketPrice) {
+                    buyPremiumTicketButton.textContent = `코인 부족 (500 코인 필요)`;
+                } else {
+                    buyPremiumTicketButton.textContent = `프리미엄 뽑기권 구매 (500 코인)`;
+                }
             }
             
             // Update collection
@@ -496,23 +1132,155 @@
                 return a.name.localeCompare(b.name);
             });
             
-            grid.innerHTML = allAnimals.map(animal => `
-                <div class="animal-card ${animal.tier} ${!animal.owned ? 'opacity-30' : ''} rounded-lg p-3 text-center cursor-pointer hover:scale-105 transition-transform"
+            grid.innerHTML = allAnimals.map(animal => {
+                const level = animal.level || 1;
+                const stars = '⭐'.repeat(level);
+                const abilities = animal.owned ? calculateAnimalAbilities(animal) : null;
+
+                return `
+                <div class="animal-card ${animal.tier} ${!animal.owned ? 'opacity-30' : ''} rounded-lg p-3 text-center cursor-pointer hover:scale-105 transition-transform relative"
                      onclick="showAnimalDetails('${animal.id}')" >
                     <div class="tier-label ${getTierColor(animal.tier)} mb-1">${getTierName(animal.tier)}</div>
+
+                    ${animal.owned && level > 1 ? `
+                    <div class="absolute top-1 right-1 text-xs bg-yellow-400 text-yellow-900 px-2 py-0.5 rounded-full font-bold">
+                        Lv.${level}
+                    </div>
+                    ` : ''}
+
                     <div class="text-2xl mb-1">${animal.owned ? animal.emoji : '❓'}</div>
                     <div class="text-xs font-bold text-gray-800">${animal.owned ? animal.name : '???'}</div>
-                    ${animal.owned ? `<div class="text-xs text-gray-600 mt-1">${animal.count}마리</div>` : ''}
+
+                    ${animal.owned ? `
+                    <div class="text-xs text-yellow-500 mt-1">${stars}</div>
+                    <div class="text-xs text-purple-600 font-bold">⚡${abilities.totalPower}</div>
+                    <div class="text-xs text-gray-500 mt-1">${animal.count}마리</div>
+                    ${animal.duplicates > 0 ? `<div class="text-xs text-orange-600 font-bold">🔥 +${animal.duplicates}</div>` : ''}
+                    ` : ''}
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
-        // Show animal details (for future expansion)
+        // Show animal details with level system
         function showAnimalDetails(animalId) {
             const animal = gameState.collection[animalId];
             if (!animal) return;
-            
-            alert(`${animal.name}\n등급: ${getTierName(animal.tier)}\n파워: ${animal.power}\n보유 수: ${animal.count}마리`);
+
+            const abilities = calculateAnimalAbilities(animal);
+            const canLevel = canLevelUp(animalId);
+            const requirement = LEVEL_UP_REQUIREMENTS[animal.level || 1];
+
+            // 레벨별 별 표시
+            const stars = '⭐'.repeat(animal.level || 1);
+
+            // 레벨업 버튼 표시 조건
+            const levelUpButton = animal.level < 5 ? `
+                <button
+                    onclick="handleLevelUp('${animalId}')"
+                    class="${canLevel ? 'bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600' : 'bg-gray-300 cursor-not-allowed'}
+                           text-white px-6 py-3 rounded-xl font-bold text-lg transition-all transform ${canLevel ? 'hover:scale-105' : ''}"
+                    ${!canLevel ? 'disabled' : ''}>
+                    ${canLevel ? '🔥 레벨업 하기!' : `중복 카드 ${requirement.duplicates}장 필요`}
+                </button>
+                <div class="text-xs text-gray-500 mt-2">
+                    보유 중복: ${animal.duplicates}장 / 필요: ${requirement.duplicates}장
+                </div>
+            ` : `
+                <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl font-bold text-lg">
+                    👑 MAX LEVEL
+                </div>
+            `;
+
+            const modalContent = `
+                <!-- 티어 배지 -->
+                <div class="mb-4">
+                    <span class="px-4 py-2 rounded-full text-white font-bold text-sm ${getTierColor(animal.tier)}">
+                        ${getTierName(animal.tier)}
+                    </span>
+                </div>
+
+                <!-- 동물 이모지 & 이름 -->
+                <div class="text-6xl mb-2">${animal.emoji}</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-1">${animal.name}</h2>
+                <div class="text-yellow-500 text-2xl mb-4">${stars}</div>
+
+                <!-- 레벨 & 파워 -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4">
+                        <div class="text-sm text-gray-600 mb-1">레벨</div>
+                        <div class="text-3xl font-bold text-blue-600">Lv.${animal.level || 1}</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4">
+                        <div class="text-sm text-gray-600 mb-1">파워</div>
+                        <div class="text-3xl font-bold text-purple-600">⚡${abilities.totalPower}</div>
+                    </div>
+                </div>
+
+                <!-- 파워 정보 -->
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 mb-4">
+                    <h3 class="font-bold text-gray-800 mb-3 text-center">⚡ 파워</h3>
+                    <div class="text-center">
+                        <div class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                            ${abilities.totalPower}
+                        </div>
+                        <div class="text-sm text-gray-600 mt-2">
+                            기본 파워 ${animal.power} × 레벨 ${animal.level || 1}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 다음 레벨 미리보기 -->
+                ${animal.level < 5 ? `
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4 mb-4 border-2 border-yellow-200">
+                    <h3 class="font-bold text-orange-700 mb-2 text-center">🌟 다음 레벨 (Lv.${requirement.nextLevel})</h3>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-600">
+                            ⚡ ${abilities.totalPower} → ${animal.power * requirement.nextLevel}
+                        </div>
+                        <div class="text-xs text-gray-600 mt-1">
+                            파워가 증가합니다!
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+
+                <!-- 레벨업 버튼 -->
+                <div class="mt-6">
+                    ${levelUpButton}
+                </div>
+
+                <!-- 보유 정보 -->
+                <div class="mt-4 text-sm text-gray-500">
+                    보유: ${animal.count || 0}마리 | 중복 카드: ${animal.duplicates || 0}장
+                </div>
+            `;
+
+            document.getElementById('animalDetailContent').innerHTML = modalContent;
+            document.getElementById('animalDetailModal').classList.remove('hidden');
+            document.getElementById('animalDetailModal').classList.add('flex');
+        }
+
+        // Close animal detail modal
+        function closeAnimalDetail() {
+            document.getElementById('animalDetailModal').classList.add('hidden');
+            document.getElementById('animalDetailModal').classList.remove('flex');
+        }
+
+        // Handle level up from modal
+        function handleLevelUp(animalId) {
+            const result = levelUpAnimal(animalId);
+            if (result && result.success) {
+                // 레벨업 성공 애니메이션
+                const stars = '⭐'.repeat(result.newLevel);
+                alert(`✨ 레벨업 성공!\n\n${result.animal.name}가 Lv.${result.newLevel}이 되었습니다!\n${stars}\n\n⚡ 파워: ${result.abilities.totalPower}`);
+
+                // 모달 업데이트
+                showAnimalDetails(animalId);
+
+                // 컬렉션 화면 업데이트
+                updateDisplay();
+            }
         }
 
         // Clear collection (for testing)
@@ -520,9 +1288,62 @@
             if (confirm('정말로 컬렉션을 초기화하시겠습니까?')) {
                 gameState.collection = {};
                 gameState.stats = { totalDraws: 0, legendaryCount: 0 };
+                gameState.tickets = 0; // Also reset tickets
                 saveGameState();
-                updateDisplay();
+
+                loadGameState(); // Reload to update display
             }
+        }
+
+        // 동물 도감 데이터 복구 헬퍼 (개발자 도구에서 사용)
+        function restoreAnimalCollection(backupData) {
+            if (!backupData) {
+                console.error('❌ 백업 데이터가 필요합니다.');
+                console.log('사용법: restoreAnimalCollection(백업데이터)');
+                return;
+            }
+
+            try {
+                const restored = typeof backupData === 'string' ? JSON.parse(backupData) : backupData;
+
+                // gameState에 복구
+                if (restored.animals) {
+                    gameState.animals = restored.animals;
+                }
+                if (restored.collection) {
+                    gameState.collection = restored.collection;
+                }
+                if (restored.stats) {
+                    gameState.stats = restored.stats;
+                }
+
+                saveGameState();
+                loadGameState();
+
+                console.log('✅ 동물 도감 데이터가 복구되었습니다!');
+                console.log('복구된 동물 수:', gameState.animals?.length || 0);
+
+                return true;
+            } catch (e) {
+                console.error('❌ 복구 실패:', e);
+                return false;
+            }
+        }
+
+        // 현재 동물 도감 데이터 백업 (개발자 도구에서 사용)
+        function backupAnimalCollection() {
+            const backup = {
+                animals: gameState.animals || [],
+                collection: gameState.collection || {},
+                stats: gameState.stats || { totalDraws: 0, legendaryCount: 0 },
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('📦 동물 도감 백업 데이터:');
+            console.log(JSON.stringify(backup, null, 2));
+            console.log('\n복구 방법: restoreAnimalCollection(' + JSON.stringify(backup) + ')');
+
+            return backup;
         }
 
         // Go home
@@ -562,7 +1383,7 @@
                 loadingOverlay.classList.add('hidden');
             }
 
-            // Auto-refresh tickets every 10 seconds
+            // Auto-refresh data every 10 seconds to sync coin changes from other tabs
             setInterval(loadGameState, 10000);
         });
     </script>

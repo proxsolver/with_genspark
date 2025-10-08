@@ -7,9 +7,16 @@
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- 한글 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 로거 시스템 (가장 먼저 로드) -->
+    <script src="logger.js"></script>
+
+    <!-- 식물 시스템 스크립트 -->
+    <script defer src="plant-system.js"></script>
+    <script defer src="weakness-learning.js"></script>
     
     <style>
         body {
@@ -168,13 +175,22 @@
                     <span class="px-2 py-1 rounded-full text-xs font-medium difficulty-badge" id="difficulty-badge">
                         쉬움
                     </span>
+                    <!-- 추가 학습 모드 배지 -->
+                    <span id="extra-mode-badge" class="hidden px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-bold">
+                        ✨ 추가 학습
+                    </span>
                 </div>
             </div>
-            
+
             <div class="text-right">
                 <div class="flex items-center justify-end space-x-2 mb-2">
-                    <button onclick="toggleVibration()" id="vibration-toggle" 
-                            class="p-2 rounded-lg transition-all text-sm" 
+                    <!-- 추가 학습 모드 종료 버튼 -->
+                    <button id="extra-mode-exit-btn" onclick="exitExtraMode()"
+                            class="hidden px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-sm font-bold transition-all shadow-md">
+                        🏁 학습 종료
+                    </button>
+                    <button onclick="toggleVibration()" id="vibration-toggle"
+                            class="p-2 rounded-lg transition-all text-sm"
                             title="진동 설정">
                         📳
                     </button>
@@ -197,15 +213,15 @@
             <!-- 난이도별 현황 -->
             <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="p-3 bg-green-50 rounded-lg border border-green-200" id="easy-status">
-                    <div class="text-lg font-bold text-green-600">0/30</div>
+                    <div class="text-lg font-bold text-green-600">0/20</div>
                     <div class="text-xs text-green-700">쉬움</div>
                 </div>
                 <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200" id="medium-status">
-                    <div class="text-lg font-bold text-yellow-600">0/20</div>
+                    <div class="text-lg font-bold text-yellow-600">0/7</div>
                     <div class="text-xs text-yellow-700">보통</div>
                 </div>
                 <div class="p-3 bg-red-50 rounded-lg border border-red-200" id="hard-status">
-                    <div class="text-lg font-bold text-red-600">0/10</div>
+                    <div class="text-lg font-bold text-red-600">0/3</div>
                     <div class="text-xs text-red-700">어려움</div>
                 </div>
             </div>
@@ -290,15 +306,22 @@
         let questions = {};
         let currentDifficulty = 1; // 1: 쉬움, 2: 보통, 3: 어려움
         let questionCounts = { easy: 0, medium: 0, hard: 0 };
-        let targetCounts = { easy: 3, medium: 2, hard: 1 };
+        let targetCounts = { easy: 20, medium: 7, hard: 3 }; // 새로운 완료 기준
         let currentQuestionPool = [];
         let currentQuestionIndex = 0;
         let isAnswered = false;
         let shuffledOptions = [];
-        let sessionStats = { correct: 0, incorrect: 0, startTime: Date.now() };
+        let sessionStats = {
+            correct: 0,
+            incorrect: 0,
+            startTime: Date.now(),
+            difficultyHistory: [], // 난이도 변화 추적
+            completionType: null // 완료 타입 추적
+        };
         let consecutiveCorrectAnswers = 0;
         let consecutiveIncorrectAnswers = 0;
         let vibrationEnabled = true; // 진동 기능 활성화 여부
+        let extraLearningMode = false; // 추가 학습 모드 (완료한 과목 추가 학습)
 
         // 정답 사운드 및 진동 효과 함수
         function playCorrectSound() {
@@ -415,14 +438,16 @@
             idiom: { name: '사자성어', icon: '📜' },
             person: { name: '인물', icon: '👤' },
             economy: { name: '경제', icon: '💰' },
-            etc: { name: '기타', icon: '🎲' }
+            production: { name: '생산', icon: '🏭' },
+            toeic: { name: 'TOEIC', icon: '📖' },
+            ai: { name: 'AI', icon: '🤖' }
         };
 
         // 난이도별 설정
         const difficultyConfig = {
-            1: { name: '쉬움', class: 'easy', targetCount: 30, timePerQuestion: 20 },
-            2: { name: '보통', class: 'medium', targetCount: 20, timePerQuestion: 22.5 },
-            3: { name: '어려움', class: 'hard', targetCount: 10, timePerQuestion: 45 }
+            1: { name: '쉬움', class: 'easy', targetCount: 20, timePerQuestion: 20 },
+            2: { name: '보통', class: 'medium', targetCount: 7, timePerQuestion: 22.5 },
+            3: { name: '어려움', class: 'hard', targetCount: 3, timePerQuestion: 45 }
         };
 
         // 초기화
@@ -436,6 +461,10 @@
             }
 
             currentSubjectIndex = parseInt(localStorage.getItem('currentSubjectIndex') || '0');
+
+            // 추가 학습 모드 확인
+            const extraMode = localStorage.getItem('extraLearningMode');
+            extraLearningMode = extraMode === 'true';
 
             // 문제 데이터 로드
             await loadQuestions();
@@ -613,15 +642,15 @@
 
             // 난이도별 현황 업데이트
             document.getElementById('easy-status').innerHTML = `
-                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/30</div>
+                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/20</div>
                 <div class="text-xs text-green-700">쉬움</div>
             `;
             document.getElementById('medium-status').innerHTML = `
-                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/20</div>
+                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/7</div>
                 <div class="text-xs text-yellow-700">보통</div>
             `;
             document.getElementById('hard-status').innerHTML = `
-                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/10</div>
+                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/3</div>
                 <div class="text-xs text-red-700">어려움</div>
             `;
         }
@@ -630,19 +659,28 @@
         function updateUI() {
             const currentSubject = selectedSubjects[currentSubjectIndex];
             const subjectInfo = subjects[currentSubject];
-            
+
             document.getElementById('current-subject').textContent = `${subjectInfo.icon} ${subjectInfo.name}`;
 
-            
+
             const config = difficultyConfig[currentDifficulty];
             const difficultyBadge = document.getElementById('difficulty-badge');
             difficultyBadge.textContent = config.name;
             difficultyBadge.className = `px-2 py-1 rounded-full text-xs font-medium difficulty-badge ${config.class}`;
 
+            // 추가 학습 모드 UI 표시
+            if (extraLearningMode) {
+                document.getElementById('extra-mode-badge').classList.remove('hidden');
+                document.getElementById('extra-mode-exit-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('extra-mode-badge').classList.add('hidden');
+                document.getElementById('extra-mode-exit-btn').classList.add('hidden');
+            }
+
             // 세션 통계 업데이트
             const totalAnswered = sessionStats.correct + sessionStats.incorrect;
             const accuracy = totalAnswered > 0 ? Math.round((sessionStats.correct / totalAnswered) * 100) : 0;
-            
+
             document.getElementById('total-correct').textContent = sessionStats.correct;
             document.getElementById('total-incorrect').textContent = sessionStats.incorrect;
             document.getElementById('difficulty-level').textContent = currentDifficulty;
@@ -687,6 +725,15 @@
             const config = difficultyConfig[currentDifficulty];
             const difficultyKey = config.class;
             questionCounts[difficultyKey]++;
+
+            // 난이도 히스토리 기록
+            sessionStats.difficultyHistory.push({
+                difficulty: currentDifficulty,
+                difficultyName: config.name,
+                isCorrect: isCorrect,
+                consecutiveCorrect: consecutiveCorrectAnswers,
+                timestamp: Date.now()
+            });
 
             // 버튼 상태 업데이트
             updateOptionButtons(shuffledIndex, question.correctIndex);
@@ -761,9 +808,10 @@
             if (consecutiveCorrectAnswers >= 3 && currentDifficulty < 3) {
                 upgradeDifficulty();
                 showAchievement('🚀 난이도 상승!');
-            } else if (consecutiveIncorrectAnswers >= 2 && currentDifficulty > 1) {
+            } else if (consecutiveIncorrectAnswers >= 1 && currentDifficulty > 1) {
+                // 1문제만 틀려도 난이도 하락
                 downgradeDifficulty();
-                showAchievement('📖 난이도 조정됨');
+                showAchievement('📖 난이도 하락');
             }
         }
 
@@ -798,14 +846,45 @@
 
         // 세션 완료 확인
         function isSessionComplete() {
-            const totalAnswered = questionCounts.easy + questionCounts.medium + questionCounts.hard;
+            // 추가 학습 모드에서는 세션을 완료하지 않고 계속 학습
+            if (extraLearningMode) {
+                return false;
+            }
 
-            return (
-                questionCounts.easy >= targetCounts.easy ||
-                questionCounts.medium >= targetCounts.medium ||
-                questionCounts.hard >= targetCounts.hard ||
-                totalAnswered >= 30
-            );
+            const totalAnswered = questionCounts.easy + questionCounts.medium + questionCounts.hard;
+            const hasMixedDifficulty = (questionCounts.medium > 0 || questionCounts.hard > 0);
+
+            // 완료 조건:
+            // 1. 쉬움만 20문제
+            // 2. 보통 6문제 완료
+            // 3. 어려움 3문제 완료
+            // 4. 보통/어려움 포함 총 15문제 이상
+
+            if (questionCounts.easy >= 20 && questionCounts.medium === 0 && questionCounts.hard === 0) {
+                // 쉬움만 20문제 완료
+                sessionStats.completionType = 'easy_only';
+                return true;
+            }
+
+            if (questionCounts.medium >= 7) {
+                // 보통 7문제 완료
+                sessionStats.completionType = 'medium_complete';
+                return true;
+            }
+
+            if (questionCounts.hard >= 3) {
+                // 어려움 3문제 완료 (최상위 달성)
+                sessionStats.completionType = 'hard_complete';
+                return true;
+            }
+
+            if (hasMixedDifficulty && totalAnswered >= 15) {
+                // 보통/어려움 포함 15문제 이상
+                sessionStats.completionType = 'mixed_15';
+                return true;
+            }
+
+            return false;
         }
 
         // 다음 문제
@@ -814,109 +893,247 @@
             loadCurrentQuestion();
         }
 
+        // 추가 학습 모드 종료 함수
+        function exitExtraMode() {
+            const totalAnswered = sessionStats.correct + sessionStats.incorrect;
+            const accuracy = totalAnswered > 0 ? Math.round((sessionStats.correct / totalAnswered) * 100) : 0;
+            const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
+
+            // 학습 시간만 저장 (보상 없음)
+            const currentSubject = selectedSubjects[currentSubjectIndex];
+
+            // 학습 진행률 업데이트 (시간만)
+            updateLearningProgress(currentSubject, sessionStats.correct, totalAnswered);
+
+            alert(`✨ 추가 학습 완료!\n\n` +
+                  `총 ${totalAnswered}문제 풀이\n` +
+                  `정답률: ${accuracy}%\n` +
+                  `학습 시간: ${timeSpent}분\n\n` +
+                  `학습 시간이 기록되었습니다!`);
+
+            // localStorage 정리
+            localStorage.removeItem('extraLearningMode');
+            localStorage.removeItem('selectedSubjects');
+            localStorage.removeItem('currentSubjectIndex');
+
+            // 홈으로 이동
+            window.location.href = 'index.html';
+        }
+
         // 세션 완료
         function completeSession() {
             const totalAnswered = sessionStats.correct + sessionStats.incorrect;
             const accuracy = Math.round((sessionStats.correct / totalAnswered) * 100);
             const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
-            
+
             // 학습 진행률 시스템 업데이트
             updateLearningProgress(selectedSubjects[currentSubjectIndex], sessionStats.correct, totalAnswered);
-            
+
             // 완벽한 퀴즈 세션 체크 (업적용)
             if (accuracy >= 100 && totalAnswered >= 5) {
                 const existingProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
                 existingProgress.perfectSessions = (existingProgress.perfectSessions || 0) + 1;
                 localStorage.setItem('quizProgress', JSON.stringify(existingProgress));
             }
-            
-            // 정답률에 따른 보상 계산
-            let coinReward = Math.floor(sessionStats.correct * 10); // 기본: 정답 1개당 10코인
-            let bonusCoins = 0;
-            
-            if (accuracy >= 90) {
-                bonusCoins = 200; // 90% 이상: 보너스 200코인
-            } else if (accuracy >= 80) {
-                bonusCoins = 150; // 80% 이상: 보너스 150코인
-            } else if (accuracy >= 70) {
-                bonusCoins = 100; // 70% 이상: 보너스 100코인
-            } else if (accuracy >= 60) {
-                bonusCoins = 50; // 60% 이상: 보너스 50코인
+
+            // === 새로운 식물 시스템 연동 ===
+            let plantSystemMessage = '';
+            let rewardSummary = {
+                completedCount: 0,
+                growthTickets: 0,
+                normalGacha: 0,
+                premiumGacha: 0,
+                newRewards: {}
+            };
+
+            if (typeof plantSystem !== 'undefined') {
+                try {
+                    const user = plantSystem.getUserData();
+                    const subjectName = selectedSubjects[currentSubjectIndex];
+
+                    // 추가 학습 모드에서는 과목 완료 처리 안 함
+                    if (!extraLearningMode) {
+                        // 과목 완료 처리
+                        const result = plantSystem.completeSubject(user, subjectName, subjectName);
+
+                        if (result.success) {
+                            rewardSummary.completedCount = result.completedCount;
+                            rewardSummary.newRewards = result.rewards;
+
+                            plantSystemMessage = `\n\n📚 과목 완료 (${result.completedCount}/9)`;
+
+                            if (result.rewards.growthTickets) {
+                                rewardSummary.growthTickets = result.rewards.growthTickets;
+                                plantSystemMessage += `\n🎫 성장권 ${result.rewards.growthTickets}개 획득!`;
+                            }
+                            if (result.rewards.normalGacha) {
+                                rewardSummary.normalGacha = result.rewards.normalGacha;
+                                plantSystemMessage += `\n🎁 일반 뽑기권 ${result.rewards.normalGacha}개 획득!`;
+                            }
+                            if (result.rewards.premiumGacha) {
+                                rewardSummary.premiumGacha = result.rewards.premiumGacha;
+                                plantSystemMessage += `\n💎 프리미엄 뽑기권 ${result.rewards.premiumGacha}개 획득!`;
+                            }
+
+                            // Firebase 동기화
+                            if (window.plantSystemFirebase) {
+                                plantSystemFirebase.syncSubject({
+                                    questionsCompleted: totalAnswered,
+                                    correctAnswers: sessionStats.correct
+                                });
+                            }
+                        } else if (result.alreadyCompleted) {
+                            plantSystemMessage = '\n\n⚠️ 이미 완료한 과목입니다';
+                        }
+                    } else {
+                        plantSystemMessage = '\n\n✨ 추가 학습 모드 (보상 없음)';
+                    }
+
+                    // 약점 학습 업데이트
+                    if (typeof weaknessLearning !== 'undefined') {
+                        weaknessLearning.updateLearningProgress(user, subjectName, sessionStats.correct > 0);
+                    }
+                } catch (error) {
+                    console.error('식물 시스템 연동 오류:', error);
+                }
             }
-            
-            const totalReward = coinReward + bonusCoins;
-            
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"money": 0, "water": 0}');
-            simpleFarmState.money = (simpleFarmState.money || 0) + totalReward;
-            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
-            
-            alert(`🎉 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분\n\n💰 획득 보상:\n기본 코인: ${coinReward}\n보너스: ${bonusCoins}\n총 ${totalReward} EduCoin!\n\n식물이 자랐어요! 🌱`);
-            
-            // 학습 결과 저장
+
+            alert(`🎉 과목 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분${plantSystemMessage}`);
+
+            // 학습 결과 저장 (분석용 데이터 포함)
+            const quizAnalytics = {
+                subject: selectedSubjects[currentSubjectIndex],
+                subjectName: subjects[selectedSubjects[currentSubjectIndex]].name,
+                completionType: sessionStats.completionType,
+                stats: {
+                    correct: sessionStats.correct,
+                    incorrect: sessionStats.incorrect,
+                    totalAnswered: totalAnswered,
+                    accuracy: accuracy,
+                    timeSpent: timeSpent
+                },
+                questionCounts: questionCounts,
+                difficultyHistory: sessionStats.difficultyHistory,
+                completedAt: new Date().toISOString()
+            };
+
+            // 기존 분석 데이터 로드
+            let analyticsHistory = JSON.parse(localStorage.getItem('quizAnalyticsHistory') || '[]');
+            analyticsHistory.push(quizAnalytics);
+
+            // 최근 100개만 유지
+            if (analyticsHistory.length > 100) {
+                analyticsHistory = analyticsHistory.slice(-100);
+            }
+
+            localStorage.setItem('quizAnalyticsHistory', JSON.stringify(analyticsHistory));
+
+            // Firebase에도 분석 데이터 저장 (users 하위에 저장)
+            if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+                const userId = firebase.auth().currentUser.uid;
+                firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
+                    .then(() => console.log('✅ Firebase 분석 데이터 업로드 완료'))
+                    .catch(err => console.error('❌ Firebase 분석 데이터 업로드 실패:', err));
+            }
+
+            // 기존 결과도 저장 (하위 호환성)
             localStorage.setItem('adaptiveQuizResults', JSON.stringify({
                 subject: selectedSubjects[currentSubjectIndex],
                 stats: sessionStats,
                 questionCounts,
-                completedAt: new Date().toISOString(),
-                reward: {
-                    coins: coinReward,
-                    bonus: bonusCoins,
-                    total: totalReward
-                }
+                completedAt: new Date().toISOString()
             }));
-            
-            // 농장에 물방울 추가 및 식물 성장 가속 (심플 농장 시스템)
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"water": 0, "plants": [null, null]}');
-            const waterReward = Math.floor(sessionStats.correct / 10) + 3; // 기본 3개 + 정답 10개당 1개 추가
-            simpleFarmState.water = (simpleFarmState.water || 0) + waterReward;
-            
-            // 학습 완료 시 식물 성장 촉진 (각 식물의 돌봄 정도 증가)
-            const growthBonus = Math.min(sessionStats.correct * 2, 20); // 정답 1개당 2% 성장, 최대 20%
-            if (simpleFarmState.plants) {
-                [1, 2].forEach(potIndex => {
-                    const plant = simpleFarmState.plants[potIndex - 1];
-                    if (plant && !plant.isHarvested) {
-                        plant.care = Math.min((plant.care || 0) + growthBonus, 100);
-                        plant.lastStudied = Date.now(); // 학습 시간 업데이트로 등급 하락 방지
-                        
-                        // 성장 상태 재계산
-                        const daysPassed = Math.floor((Date.now() - plant.plantedAt) / (1000 * 60 * 60 * 24 / 30)); // 30배 가속
-                        const gradeInfo = {
-                            common: { growthDays: 3 },
-                            advanced: { growthDays: 7 },
-                            epic: { growthDays: 14 },
-                            legendary: { growthDays: 28 }
-                        }[plant.grade] || { growthDays: 3 };
-                        
-                        if (daysPassed >= gradeInfo.growthDays && plant.care >= 80) {
-                            plant.isFullyGrown = true;
-                        }
-                    }
-                });
-            }
-            
-            localStorage.setItem('simpleFarmState', JSON.stringify(simpleFarmState));
-            
+
             // Firebase 통계 업데이트
             if (typeof updateFirebaseStats !== 'undefined') {
                 updateFirebaseStats.quiz({
                     totalQuestions: totalAnswered,
                     correctAnswers: sessionStats.correct,
-                    moneyEarned: totalReward,
-                    waterEarned: waterReward,
                     accuracy: accuracy,
                     subject: selectedSubjects[currentSubjectIndex]
                 });
             }
-            
-            // 농장으로 이동하여 보상 확인
-            setTimeout(() => {
-                if (confirm(`🎉 물방울 ${waterReward}개 획득!\\n식물친구들에게 물을 주러 가시겠습니까?`)) {
+
+            // 다음 행동 선택
+            showNextActionDialog(rewardSummary);
+        }
+
+        // 다음 행동 선택 다이얼로그
+        function showNextActionDialog(rewardSummary) {
+            const { completedCount, growthTickets, normalGacha, premiumGacha, newRewards } = rewardSummary;
+
+            // 9과목 완료 시 (프리미엄 뽑기권) - 학습 완료
+            if (completedCount === 9 && premiumGacha) {
+                const choice = confirm(`🏆 최고입니다! 9과목 모두 완료!\n💎 프리미엄 동물 뽑기권 ${premiumGacha}개 획득!\n🎫 성장권 1개 추가 획득!\n\n식물에게 물을 주러 가시겠습니까?\n(취소를 누르면 홈으로 이동합니다)`);
+
+                if (choice) {
                     window.location.href = 'simple-farm.html';
                 } else {
                     window.location.href = 'index.html';
                 }
-            }, 1000);
+                return;
+            }
+
+            // 3과목 완료 시 (성장권 1개)
+            if (completedCount === 3 && newRewards.growthTickets) {
+                const choice = confirm(`🎊 축하합니다! 3과목 완료!\n🎫 성장권 ${growthTickets}개를 획득했습니다!\n\n식물에게 물을 주러 가시겠습니까?\n(취소를 누르면 다음 과목으로 이동합니다)`);
+
+                if (choice) {
+                    window.location.href = 'simple-farm.html';
+                } else {
+                    moveToNextSubject();
+                }
+                return;
+            }
+
+            // 6과목 완료 시 (성장권 추가 1개)
+            if (completedCount === 6 && newRewards.growthTickets) {
+                const choice = confirm(`🎊 대단합니다! 6과목 완료!\n🎫 성장권 ${growthTickets}개를 추가로 획득했습니다!\n(누적 성장권: 2개)\n\n식물에게 물을 주러 가시겠습니까?\n(취소를 누르면 다음 과목으로 이동합니다)`);
+
+                if (choice) {
+                    window.location.href = 'simple-farm.html';
+                } else {
+                    moveToNextSubject();
+                }
+                return;
+            }
+
+            // 5과목 완료 시 (일반 뽑기권) - 축하 후 자동으로 다음 과목
+            if (completedCount === 5 && normalGacha) {
+                alert(`🎉 훌륭합니다! 5과목 완료!\n🎁 일반 동물 뽑기권 ${normalGacha}개를 획득했습니다!\n\n다음 과목으로 이동합니다.`);
+                setTimeout(() => {
+                    moveToNextSubject();
+                }, 500);
+                return;
+            }
+
+            // 일반적인 경우 - 자동으로 다음 과목으로 이동 (9과목까지)
+            if (completedCount < 9) {
+                setTimeout(() => {
+                    moveToNextSubject();
+                }, 1000);
+            } else {
+                // 9과목 초과 시 홈으로
+                window.location.href = 'index.html';
+            }
+        }
+
+        // 다음 과목으로 이동
+        function moveToNextSubject() {
+            currentSubjectIndex++;
+
+            if (currentSubjectIndex >= selectedSubjects.length) {
+                // 모든 선택된 과목 완료
+                alert('선택한 모든 과목을 완료했습니다!\n홈으로 이동합니다.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // 다음 과목 데이터 저장
+            localStorage.setItem('currentSubjectIndex', currentSubjectIndex.toString());
+
+            // 페이지 새로고침하여 다음 과목 시작
+            window.location.reload();
         }
 
         // 진동 설정 토글
@@ -937,70 +1154,97 @@
         function updateLearningProgress(subject, correctAnswers, totalQuestions) {
             // 기존 진행률 데이터 로드
             let progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
-            
+
+            // 오늘 날짜 (ISO format: YYYY-MM-DD)
+            const today = new Date().toISOString().split('T')[0];
+
             // 기본 구조 초기화
             if (!progressData.subjectStats) progressData.subjectStats = {};
             if (!progressData.dailyActivity) progressData.dailyActivity = {};
             if (!progressData.unlockedAchievements) progressData.unlockedAchievements = [];
-            
-            // 과목별 통계 초기화
+
+            // 과목별 통계 초기화 (subjectStats와 루트 레벨 모두에 저장)
             if (!progressData.subjectStats[subject]) {
                 progressData.subjectStats[subject] = {
                     questions: 0,
                     correct: 0,
                     lastStudied: null,
+                    lastStudyDate: null,
                     level: 1,
                     experience: 0
                 };
             }
-            
+
+            // 루트 레벨에도 과목 데이터 저장 (index.html 호환성)
+            if (!progressData[subject]) {
+                progressData[subject] = {
+                    questions: 0,
+                    correct: 0,
+                    lastStudyDate: null
+                };
+            }
+
             // 전체 통계 업데이트
             progressData.totalQuestions = (progressData.totalQuestions || 0) + totalQuestions;
             progressData.correctAnswers = (progressData.correctAnswers || 0) + correctAnswers;
-            
-            // 과목별 통계 업데이트
+
+            // 날짜가 바뀌면 오늘 데이터 리셋
+            if (progressData.lastActivityDate !== today) {
+                progressData.totalMinutesToday = 0;
+                progressData.totalCorrectToday = 0;
+                progressData.lastActivityDate = today;
+            }
+
+            // 오늘 총 학습 시간 업데이트 (문제당 약 10초 = totalQuestions * 10 / 60분)
+            const estimatedMinutes = Math.ceil(totalQuestions * 10 / 60);
+            progressData.totalMinutesToday = (progressData.totalMinutesToday || 0) + estimatedMinutes;
+
+            // 오늘 총 정답 수 업데이트
+            progressData.totalCorrectToday = (progressData.totalCorrectToday || 0) + correctAnswers;
+
+            // 과목별 통계 업데이트 (subjectStats)
             const subjectStats = progressData.subjectStats[subject];
             subjectStats.questions += totalQuestions;
             subjectStats.correct += correctAnswers;
             subjectStats.experience += correctAnswers * 10; // 정답 1개당 10 경험치
             subjectStats.lastStudied = Date.now();
-            
+            subjectStats.lastStudyDate = today;
+
+            // 루트 레벨 과목 데이터도 업데이트
+            progressData[subject].questions += totalQuestions;
+            progressData[subject].correct += correctAnswers;
+            progressData[subject].lastStudyDate = today;
+
             // 일일 활동 업데이트
-            const today = new Date().toDateString();
             progressData.dailyActivity[today] = (progressData.dailyActivity[today] || 0) + totalQuestions;
-            
+
             // 연속 학습일 업데이트
-            if (!progressData.lastStudyDate || new Date(progressData.lastStudyDate).toDateString() !== today) {
+            if (!progressData.lastStudyDate || progressData.lastStudyDate !== today) {
                 const yesterday = new Date();
                 yesterday.setDate(yesterday.getDate() - 1);
-                
-                if (progressData.lastStudyDate && new Date(progressData.lastStudyDate).toDateString() === yesterday.toDateString()) {
+                const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+                if (progressData.lastStudyDate === yesterdayStr) {
                     // 어제 공부했으면 연속일 증가
                     progressData.streakDays = (progressData.streakDays || 0) + 1;
                 } else {
                     // 연속일 리셋
                     progressData.streakDays = 1;
                 }
-                
-                progressData.lastStudyDate = Date.now();
+
+                progressData.lastStudyDate = today;
             }
-            
-            // 퀴즈 진행률 별도 저장 (기존 시스템 호환)
-            const existingQuizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
-            const quizProgress = {
-                totalCorrect: progressData.correctAnswers,
-                totalAnswered: progressData.totalQuestions,
-                sessionCount: (existingQuizProgress.sessionCount || 0) + 1,
-                perfectSessions: existingQuizProgress.perfectSessions || 0,
-                lastUpdated: Date.now()
-            };
-            localStorage.setItem('quizProgress', JSON.stringify(quizProgress));
             
             // 새로운 성취 확인 및 알림
             checkNewAchievements(progressData);
             
             // 업데이트된 진행률 저장
             localStorage.setItem('learningProgress', JSON.stringify(progressData));
+
+            // Firebase에 전체 진행률 동기화
+            if (window.updateFirebaseStats) {
+                window.updateFirebaseStats.learningProgress(progressData);
+            }
             
             console.log('학습 진행률 업데이트 완료:', {
                 subject,

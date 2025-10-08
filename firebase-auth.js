@@ -168,23 +168,72 @@ class EduPetAuth {
     // 사용자 통계 업데이트
     async updateUserStats(statsUpdate) {
         try {
-            if (!this.currentUser || !this.userData) return false;
+            console.log('[Firebase Auth] updateUserStats 호출됨:', statsUpdate);
+
+            if (!this.currentUser) {
+                console.warn('[Firebase Auth] 현재 사용자가 없습니다');
+                return false;
+            }
+
+            if (!this.userData) {
+                console.warn('[Firebase Auth] 사용자 데이터가 없습니다');
+                return false;
+            }
+
+            // statsUpdate가 유효한 객체인지 확인
+            if (!statsUpdate || typeof statsUpdate !== 'object') {
+                console.error('[Firebase Auth] Invalid statsUpdate:', statsUpdate);
+                return false;
+            }
+
+            if (!this.userData.stats) {
+                console.warn('[Firebase Auth] userData.stats가 없습니다. 초기화합니다.');
+                this.userData.stats = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    totalMoney: 0,
+                    totalWater: 0,
+                    plantsGrown: 0,
+                    animalsCollected: 0,
+                    totalLearningTime: 0
+                };
+            }
 
             const updates = {};
+            const skippedKeys = [];
+
             Object.keys(statsUpdate).forEach(key => {
                 if (key in this.userData.stats) {
                     const newValue = this.userData.stats[key] + (statsUpdate[key] || 0);
                     updates[`users/${this.currentUser.uid}/stats/${key}`] = newValue;
                     this.userData.stats[key] = newValue;
+                } else {
+                    skippedKeys.push(key);
                 }
             });
 
-            await firebase_db.ref().update(updates);
-            this.saveToLocalStorage();
-            
+            if (skippedKeys.length > 0) {
+                console.warn('[Firebase Auth] 스킵된 키:', skippedKeys);
+            }
+
+            if (Object.keys(updates).length > 0) {
+                console.log('[Firebase Auth] 업데이트할 통계:', updates);
+                await firebase_db.ref().update(updates);
+                this.saveToLocalStorage();
+                console.log('[Firebase Auth] ✅ 통계 업데이트 성공');
+            } else {
+                console.warn('[Firebase Auth] 업데이트할 통계가 없습니다');
+            }
+
             return true;
         } catch (error) {
-            console.error('사용자 통계 업데이트 실패:', error);
+            console.error('[Firebase Auth] ❌ 사용자 통계 업데이트 실패:', error);
+            console.error('[Firebase Auth] 에러 상세:', {
+                message: error.message,
+                stack: error.stack,
+                statsUpdate: statsUpdate,
+                userData: this.userData
+            });
             return false;
         }
     }

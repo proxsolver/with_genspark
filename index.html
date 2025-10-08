@@ -5,88 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduPet Collection - 학습으로 키우는 경제 생태계</title>
     <meta name="description" content="초등학생을 위한 통합 학습 게임 앱. 학습, 농장 경영, 동물 수집이 하나로!">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- 한글 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- PWA 관련 메타태그 -->
     <meta name="theme-color" content="#4CAF50">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="EduPet Collection">
-    
+
+    <!-- 로거 시스템 (가장 먼저 로드) -->
+    <script src="logger.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <style>
         body {
             font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        
+
         .font-game {
             font-family: 'Noto Sans KR', 'Comic Sans MS', cursive;
             font-weight: 600;
         }
-        
+
         .gradient-bg {
-            background: linear-gradient(135deg, 
-                rgba(76, 175, 80, 0.1) 0%, 
-                rgba(255, 152, 0, 0.1) 50%, 
+            background: linear-gradient(135deg,
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(255, 152, 0, 0.1) 50%,
                 rgba(33, 150, 243, 0.1) 100%
             );
         }
-        
-        .animate-pulse-slow {
-            animation: pulse 3s infinite;
-        }
-        
-        .animate-gentle-bounce {
-            animation: gentleBounce 0.6s ease-out;
-        }
-        
-        @keyframes gentleBounce {
-            0% { transform: scale(1); }
-            30% { transform: scale(1.08); }
-            60% { transform: scale(0.98); }
-            100% { transform: scale(1.02); }
-        }
-        
+
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .card-hover:hover {
             transform: translateY(-4px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-        
+
         .progress-bar {
             transition: width 1s ease-out;
         }
-        
-        /* 등급별 색상 */
-        .rarity-common {
-            background: linear-gradient(to br, #f9fafb, #f3f4f6);
-            border: 2px solid #9ca3af;
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .rarity-rare {
-            background: linear-gradient(to br, #eff6ff, #dbeafe);
-            border: 2px solid #3b82f6;
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .rarity-epic {
-            background: linear-gradient(to br, #f5f3ff, #e5e7eb);
-            border: 2px solid #8b5cf6;
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
-        
-        .rarity-legendary {
-            background: linear-gradient(to br, #fffbeb, #fef3c7);
-            border: 2px solid #f59e0b;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+
+        @keyframes coinBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .harvest-modal-show {
+            animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .coin-bounce {
+            animation: coinBounce 0.6s ease-in-out infinite;
         }
     </style>
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -122,37 +129,93 @@
 <body class="gradient-bg min-h-screen">
     <!-- 메인 컨테이너 -->
     <div class="container mx-auto px-4 py-6 max-w-4xl">
-        <!-- 헤더 -->
-        <div class="text-center mb-8 opacity-0 animate-fade-in" style="animation: fadeIn 1s ease-out forwards;">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center space-x-3">
-                    <span class="text-3xl">🌱</span>
-                    <div>
-                        <h1 class="text-2xl font-bold text-gray-900 font-game">EduPet Collection</h1>
-                        <p class="text-sm text-gray-600"><span id="userNameDisplay">학습자</span>님의 학습 농장</p>
-                    </div>
+        <!-- 타이틀 섹션 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 opacity-0 animate-fade-in">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 font-game mb-2">
+                        🌱 EduPet Collection
+                    </h1>
+                    <p class="text-sm text-gray-600"><span id="userNameDisplay">학습자</span>님, 환영합니다!</p>
                 </div>
-                
+
                 <div class="text-right">
-                    <div class="flex items-center justify-end space-x-2 mb-1">
+                    <div class="flex items-center justify-end space-x-2 mb-2">
                         <span class="text-2xl">💰</span>
-                        <span id="moneyDisplay" class="text-xl font-bold text-primary-600">0원</span>
+                        <span id="moneyDisplay" class="text-2xl font-bold text-primary-600">0 코인</span>
                     </div>
-                    <div class="inline-flex items-center px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">
-                        🔥 <span id="streakDisplay">0일째</span>
+                    <div class="text-sm text-gray-600 mb-1">
+                        🔥 <span id="streakDisplay">0일째</span> 플레이 중
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        🐾 <span id="animalCountDisplay">0마리</span>의 팻 보유
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 오늘의 학습 미션 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 card-hover opacity-0" style="animation: slideUp 1s ease-out 0.2s forwards;">
+        <!-- 오늘의 학습 (약점 보완) -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.2s forwards;">
+            <div class="flex items-start space-x-4">
+                <div class="text-6xl" id="highestAnimalDisplay">🐰</div>
+                <div class="flex-1">
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="text-xl">💡</span>
+                        <h2 class="text-xl font-bold font-game">오늘의 학습</h2>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-semibold">약점 보완</span>
+                    </div>
+
+                    <!-- 말풍선 스타일의 문제 표시 -->
+                    <div class="bg-white rounded-xl p-4 mb-3 shadow-md relative">
+                        <div class="absolute -left-3 top-4">
+                            <div class="w-0 h-0 border-t-8 border-b-8 border-r-8 border-transparent border-r-white"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="text-lg" id="weaknessSubjectIcon">📚</span>
+                                <span class="font-bold text-gray-800" id="weaknessSubjectName">약점 과목</span>
+                                <span class="px-2 py-1 bg-orange-100 text-orange-800 rounded text-xs">보통</span>
+                            </div>
+                            <p class="text-gray-700 mb-3" id="weaknessQuestion">
+                                오늘의 문제가 여기에 표시됩니다
+                            </p>
+                        </div>
+
+                        <!-- 정답 표시 -->
+                        <div class="bg-green-50 border-2 border-green-200 rounded-lg p-3 mb-2">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-lg">✅</span>
+                                <span class="font-bold text-green-900">정답</span>
+                            </div>
+                            <p class="text-sm text-green-800" id="weaknessAnswer">정답이 여기에 표시됩니다</p>
+                        </div>
+
+                        <!-- 해설 표시 -->
+                        <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-3">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-lg">💡</span>
+                                <span class="font-bold text-blue-900">해설</span>
+                            </div>
+                            <p class="text-sm text-gray-700" id="weaknessExplanation">해설이 여기에 표시됩니다</p>
+                        </div>
+                    </div>
+
+                    <button onclick="loadNewWeaknessQuestion()" class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition-colors">
+                        다음 문제 보기
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 오늘 학습 미션 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.4s forwards;">
             <div class="flex items-center space-x-2 mb-4">
                 <span class="text-xl">📚</span>
                 <h2 class="text-xl font-bold font-game">오늘의 학습 미션</h2>
-                <span id="studyTimeDisplay" class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">0분 / 25분</span>
+                <span id="dailyProgressDisplay" class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm font-semibold">0/9 과목</span>
             </div>
-            
+
             <!-- 진행률 바 -->
             <div class="mb-4">
                 <div class="flex justify-between items-center mb-2">
@@ -167,439 +230,565 @@
             <!-- 필수 과목 -->
             <div class="mb-4">
                 <h4 class="text-sm font-semibold text-gray-700 mb-3">필수 과목</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <button id="english-btn" onclick="startQuickQuiz('english')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+                <div class="grid grid-cols-3 gap-3">
+                    <button id="english-btn" onclick="startQuickQuiz('english')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>🇺🇸</span>
                             <span class="font-medium">영어</span>
                         </div>
-                        <div id="english-status" class="text-xs opacity-80">시작하기</div>
+                        <div id="english-status" class="text-xs opacity-80">필수</div>
                     </button>
-                    
-                    <button id="math-btn" onclick="startQuickQuiz('math')" class="border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+
+                    <button id="weakness-btn" onclick="startWeaknessQuiz()" class="border-2 border-orange-300 text-gray-700 p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover hover:border-orange-500 hover:bg-orange-50">
                         <div class="flex items-center space-x-1 mb-1">
-                            <span>🔢</span>
-                            <span class="font-medium">수학</span>
+                            <span id="weaknessIcon">📊</span>
+                            <span class="font-medium" id="weaknessLabel">약한과목</span>
                         </div>
-                        <div id="math-status" class="text-xs opacity-80">시작하기</div>
+                        <div id="weakness-status" class="text-xs opacity-80">필수</div>
                     </button>
-                    
-                    <button id="all-subjects-btn" onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
+
+                    <button id="all-subjects-btn" onclick="window.location.href='subject-select.html'" class="border-2 border-gray-300 text-gray-500 p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50">
                         <div class="flex items-center space-x-1 mb-1">
                             <span>📚</span>
-                            <span class="font-medium">전체 과목</span>
+                            <span class="font-medium">과목선택</span>
                         </div>
                         <div id="all-subjects-status" class="text-xs opacity-80">선택하기</div>
                     </button>
                 </div>
             </div>
-
-            <!-- 보너스 미션 -->
-            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-4">
-                <div class="flex items-center justify-between mb-2">
-                    <h4 class="font-semibold text-yellow-800 flex items-center space-x-2">
-                        <span>🎁</span>
-                        <span>보너스 미션</span>
-                    </h4>
-                    <span class="px-2 py-1 bg-yellow-200 text-yellow-800 rounded-full text-xs">1 / 9과목</span>
-                </div>
-                <p class="text-sm text-yellow-700 mb-2">9과목 완주 시 특별 뽑기권 획득!</p>
-                <div class="w-full bg-yellow-200 rounded-full h-2">
-                    <div class="bg-yellow-500 h-2 rounded-full progress-bar" style="width: 11%;"></div>
-                </div>
-            </div>
         </div>
 
-        <!-- 작은 정원 현황 -->
-        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 card-hover opacity-0" style="animation: slideUp 1s ease-out 0.4s forwards;">
+        <!-- 나의 농장 -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.6s forwards;">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-2">
                     <span class="text-xl">🌱</span>
-                    <h2 class="text-xl font-bold font-game"><span id="gardenOwnerDisplay">학습자</span>의 작은 정원</h2>
+                    <h2 class="text-xl font-bold font-game">나의 농장</h2>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <span class="px-3 py-1 bg-secondary-100 text-secondary-800 rounded-full text-sm">
-                        💧 <span id="waterCount">12</span>방울
-                    </span>
-                    <button onclick="window.location.href='simple-farm.html'" class="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-sm hover:bg-primary-200 transition-colors">
-                        정원 보기
+                <div class="flex items-center space-x-3">
+                    <div class="text-right">
+                        <div class="text-sm text-gray-600">🎫 성장권</div>
+                        <div class="font-bold text-green-600" id="farm-growth-tickets">0개</div>
+                    </div>
+                    <button onclick="showHomeFarmDevMenu()" class="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm border border-red-200">
+                        ⚙️
                     </button>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <!-- 다음 보상 안내 -->
+            <div class="bg-blue-50 rounded-lg p-3 mb-4 border border-blue-200">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg">🎯</span>
+                    <div class="flex-1">
+                        <p class="text-xs text-blue-700" id="farm-next-reward">3과목 달성 시: 성장권 1개</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 화분 영역 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <!-- 화분 1 -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
-                    <div class="text-center">
-                        <div class="relative mb-3">
-                            <span class="text-4xl" id="plant1Display">🌰</span>
-                        </div>
-                        
-                        <h4 class="font-bold mb-2 text-gray-800" id="plant1Name">빈 화분</h4>
-                        <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3" id="plant1Stage">
-                            🌰 씨앗 대기
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">행복도</span>
-                                <span class="text-xs font-medium" id="plant1Happiness">0%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gray-400 h-2 rounded-full progress-bar" id="plant1ProgressBar" style="width: 0%;"></div>
+                <div class="bg-white rounded-lg p-4 shadow-md border-2 border-green-200">
+                    <div class="text-center mb-2">
+                        <h3 class="text-sm font-bold text-gray-800">🪴 화분 #1</h3>
+                    </div>
+
+                    <div class="relative" id="home-pot1-container">
+                        <div class="bg-amber-100 rounded-lg border-4 border-amber-300 h-32 flex flex-col items-center justify-end p-3 relative overflow-hidden"
+                             id="home-pot1" style="cursor: pointer;">
+                            <div id="home-plant1-display" class="absolute bottom-3 left-1/2 transform -translate-x-1/2"></div>
+                            <div id="home-empty-pot1" class="text-center">
+                                <div class="text-3xl mb-1">🕳️</div>
+                                <div class="text-xs text-gray-500">씨앗 심기</div>
                             </div>
                         </div>
-                        
-                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2" id="plant1Message">
-                            씨앗을 심어 새로운 친구를 만들어보세요!
+
+                        <div id="home-plant1-info" class="mt-2 text-center hidden">
+                            <div class="text-xs text-gray-600 mb-1" id="home-plant1-status">성장 중</div>
+                            <div class="mb-2">
+                                <div class="flex justify-between text-xs text-gray-600 mb-1">
+                                    <span>💧 물</span>
+                                    <span id="home-plant1-water">0/20</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-1.5">
+                                    <div class="bg-blue-500 h-1.5 rounded-full transition-all" id="home-plant1-water-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-600" id="home-plant1-time">⏰ 24시간</div>
+                        </div>
+
+                        <div class="mt-2" id="home-pot1-actions">
+                            <button onclick="homePlantSeed(1)" class="w-full px-3 py-2 bg-green-500 text-white rounded-lg text-xs hover:bg-green-600 transition-all">
+                                🌰 씨앗 심기
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- 화분 2 -->
-                <div class="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 rounded-xl p-4 relative cursor-pointer hover:shadow-lg transition-all" onclick="window.location.href='simple-farm.html'">
-                    <div class="text-center">
-                        <div class="relative mb-3">
-                            <span class="text-4xl" id="plant2Display">🌰</span>
-                        </div>
-                        
-                        <h4 class="font-bold mb-2 text-gray-800" id="plant2Name">빈 화분</h4>
-                        <div class="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs mb-3" id="plant2Stage">
-                            🌰 씨앗 대기
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-xs text-gray-600">행복도</span>
-                                <span class="text-xs font-medium" id="plant2Happiness">0%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-gray-400 h-2 rounded-full progress-bar" id="plant2ProgressBar" style="width: 0%;"></div>
+                <div class="bg-white rounded-lg p-4 shadow-md border-2 border-green-200">
+                    <div class="text-center mb-2">
+                        <h3 class="text-sm font-bold text-gray-800">🪴 화분 #2</h3>
+                    </div>
+
+                    <div class="relative" id="home-pot2-container">
+                        <div class="bg-amber-100 rounded-lg border-4 border-amber-300 h-32 flex flex-col items-center justify-end p-3 relative overflow-hidden"
+                             id="home-pot2" style="cursor: pointer;">
+                            <div id="home-plant2-display" class="absolute bottom-3 left-1/2 transform -translate-x-1/2"></div>
+                            <div id="home-empty-pot2" class="text-center">
+                                <div class="text-3xl mb-1">🕳️</div>
+                                <div class="text-xs text-gray-500">씨앗 심기</div>
                             </div>
                         </div>
-                        
-                        <div class="text-xs text-gray-600 bg-gray-50 rounded-lg p-2" id="plant2Message">
-                            씨앗을 심어 새로운 친구를 만들어보세요!
+
+                        <div id="home-plant2-info" class="mt-2 text-center hidden">
+                            <div class="text-xs text-gray-600 mb-1" id="home-plant2-status">성장 중</div>
+                            <div class="mb-2">
+                                <div class="flex justify-between text-xs text-gray-600 mb-1">
+                                    <span>💧 물</span>
+                                    <span id="home-plant2-water">0/20</span>
+                                </div>
+                                <div class="bg-gray-200 rounded-full h-1.5">
+                                    <div class="bg-blue-500 h-1.5 rounded-full transition-all" id="home-plant2-water-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-600" id="home-plant2-time">⏰ 24시간</div>
+                        </div>
+
+                        <div class="mt-2" id="home-pot2-actions">
+                            <button onclick="homePlantSeed(2)" class="w-full px-3 py-2 bg-green-500 text-white rounded-lg text-xs hover:bg-green-600 transition-all">
+                                🌰 씨앗 심기
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- 정원 관리 팁 -->
-            <div class="mt-4 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200 rounded-xl p-3">
-                <div class="flex items-start space-x-2">
-                    <span class="text-lg">💡</span>
-                    <div>
-                        <h4 class="font-semibold text-amber-800 text-sm mb-1">정원 관리 팁</h4>
-                        <p class="text-amber-700 text-xs">매일 학습하여 물방울을 모으고, 식물에게 물을 주면서 교육 내용을 배워보세요!</p>
+
+            <!-- 물주기 안내 -->
+            <div class="bg-blue-50 rounded-lg p-3 border border-blue-200">
+                <div class="text-center">
+                    <p class="text-xs text-blue-700 mb-1">
+                        💧 식물을 클릭하면 약점 과목 문제로 물을 줄 수 있어요!
+                    </p>
+                    <div class="text-xs text-blue-600">
+                        💡 물 20개 + 24시간 + 성장권 1개 = 성장!
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 식물 친구들의 메시지 -->
-        <div class="bg-green-50 border-l-4 border-l-green-500 rounded-xl p-4 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.6s forwards;">
-            <div class="flex items-start space-x-3">
-                <span class="text-2xl">🌱</span>
+        <!-- 성과 및 업적 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.8s forwards;">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">🏆</span>
+                    <h2 class="text-xl font-bold font-game">성과 및 업적</h2>
+                </div>
+                <button onclick="window.location.href='achievements.html'" class="px-3 py-1 bg-yellow-500 text-white rounded-full text-sm hover:bg-yellow-600 transition-colors">
+                    전체보기
+                </button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <!-- 최근 성과 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 rounded-lg p-3">
+                    <div class="text-2xl mb-2">📈</div>
+                    <div class="text-xs text-gray-600 mb-1">최근 성과</div>
+                    <div class="font-bold text-blue-900" id="recentAchievement">첫 학습 완료</div>
+                </div>
+
+                <!-- 획득 뱃지 -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 rounded-lg p-3">
+                    <div class="text-2xl mb-2">🎖️</div>
+                    <div class="text-xs text-gray-600 mb-1">획득 뱃지</div>
+                    <div class="font-bold text-purple-900" id="badgeCount">3개</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 최근 학습 활동 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 0.9s forwards;">
+            <h2 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <span class="mr-2">📅</span>
+                최근 학습 활동
+            </h2>
+
+            <!-- 오늘의 학습 현황 -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-3 text-center">
+                    <div class="text-xs text-gray-600 mb-1">오늘 푼 문제</div>
+                    <div class="text-2xl font-bold text-blue-600" id="todayQuestions">0</div>
+                    <div class="text-xs text-gray-500">문제</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-3 text-center">
+                    <div class="text-xs text-gray-600 mb-1">정답률</div>
+                    <div class="text-2xl font-bold text-purple-600" id="todayAccuracy">0</div>
+                    <div class="text-xs text-gray-500">%</div>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-3 text-center">
+                    <div class="text-xs text-gray-600 mb-1">학습 시간</div>
+                    <div class="text-2xl font-bold text-green-600" id="todayMinutes">0</div>
+                    <div class="text-xs text-gray-500">분</div>
+                </div>
+            </div>
+
+            <!-- 주간 활동 그래프 -->
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-bold text-gray-700">최근 7일 활동</h3>
+                <div class="text-sm">
+                    <span class="text-orange-600 font-bold" id="streakDays">0</span>
+                    <span class="text-gray-600">일 연속 🔥</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-7 gap-2 text-center">
+                <div id="weeklyLabels" class="contents">
+                    <!-- Day labels will be inserted here -->
+                </div>
+
+                <div id="weeklyActivity" class="contents">
+                    <!-- Weekly activity cells will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 동물 수집 -->
+        <div class="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 1s forwards;">
+            <div class="flex items-start space-x-4">
+                <div class="text-6xl" id="topAnimalDisplay">🦎</div>
                 <div class="flex-1">
-                    <h4 class="font-bold text-green-800 mb-1">아기 새싹이가 말해요!</h4>
-                    <p class="text-green-700 text-sm mb-3">"오늘도 함께 학습해서 물방울을 모아주세요! 저는 물을 마실 때마다 더 많은 걸 배울 수 있어요!"</p>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-sm text-green-600">🌱 함께 자라요!</span>
-                        <button onclick="window.location.href='simple-farm.html'" class="px-3 py-1 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition-colors">
-                            정원 보러가기
+                    <div class="flex items-center space-x-2 mb-3">
+                        <span class="text-xl">✨</span>
+                        <h2 class="text-xl font-bold font-game">동물 수집</h2>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-4 mb-3 shadow-md">
+                        <p class="text-sm text-gray-700 mb-3" id="animalMessage">
+                            "안녕! 나는 <span id="topAnimalName">도마뱀</span>이야! 현재 뽑기권이 <span id="ticketCount" class="font-bold text-purple-600">0장</span> 있어. 25문제를 풀면 새로운 친구를 만날 수 있어!"
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+                            <div class="bg-gray-50 rounded p-2">
+                                <div class="text-gray-600">일반 뽑기권</div>
+                                <div class="font-bold" id="normalTickets">0장</div>
+                            </div>
+                            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded p-2">
+                                <div class="text-gray-600">프리미엄 뽑기권</div>
+                                <div class="font-bold text-yellow-700" id="premiumTickets">0장</div>
+                            </div>
+                        </div>
+
+                        <button onclick="window.location.href='animal-collection.html'" class="w-full px-4 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition-colors">
+                            동물 컬렉션 보기
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 하단 네비게이션 -->
-        <div class="grid grid-cols-2 gap-3 mb-4 opacity-0" style="animation: slideUp 1s ease-out 0.8s forwards;">
-            <button onclick="window.location.href='simple-farm.html'" class="bg-green-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
-                <div class="flex items-center space-x-1 mb-1">
-                    <span>🌱</span>
-                    <span class="font-medium text-sm">작은정원</span>
-                </div>
-                <div class="text-xs opacity-80">식물 키우기</div>
-            </button>
-            
-            <button onclick="window.location.href='animal-collection.html'" class="bg-purple-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
-                <div class="flex items-center space-x-1 mb-1">
-                    <span>🦎</span>
-                    <span class="font-medium text-sm">동물수집</span>
-                </div>
-                <div class="text-xs opacity-80 flex items-center">
-                    <span id="ticketDisplay">0장</span>
-                </div>
-            </button>
-        </div>
-        
-        <!-- 추가 기능 네비게이션 -->
-        <div class="grid grid-cols-2 gap-3 mb-8 opacity-0" style="animation: slideUp 1s ease-out 0.9s forwards;">
-            <button onclick="window.location.href='progress-dashboard.html'" class="bg-blue-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
-                <div class="flex items-center space-x-1 mb-1">
-                    <span>📊</span>
-                    <span class="font-medium text-sm">학습현황</span>
-                </div>
-                <div class="text-xs opacity-80 flex items-center">
-                    <span id="streakDisplay">0일째</span>
-                </div>
-            </button>
-            
-            <button onclick="window.location.href='simple-farm.html'" class="bg-cyan-500 text-white p-4 rounded-xl h-20 flex flex-col items-center justify-center card-hover">
-                <div class="flex items-center space-x-1 mb-1">
-                    <span>💧</span>
-                    <span class="font-medium text-sm">물주기</span>
-                </div>
-                <div class="text-xs opacity-80">식물 돌보기</div>
-            </button>
-        </div>
+        <!-- 그 외 메뉴 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6 opacity-0" style="animation: slideUp 1s ease-out 1.2s forwards;">
+            <h3 class="font-bold text-gray-800 mb-4 flex items-center space-x-2">
+                <span>⚙️</span>
+                <span>그 외 메뉴</span>
+            </h3>
 
-        <!-- 학습 및 업적 버튼 -->
-        <div class="text-center opacity-0" style="animation: slideUp 1s ease-out 1s forwards;">
-            <button onclick="window.location.href='subject-select.html'" class="w-full bg-primary-500 text-white py-4 px-8 rounded-xl text-xl font-bold font-game mb-3 card-hover">
-                <span class="mr-2">📚</span>
-                전체 과목 학습하기
-            </button>
-            
-            <div class="grid grid-cols-2 gap-3 mb-4">
-                <button onclick="window.location.href='achievements.html'" class="bg-yellow-500 text-white py-3 px-4 rounded-xl text-sm font-bold font-game card-hover">
-                    <span class="mr-1">🏆</span>
-                    성과 및 업적
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="window.location.href='progress-dashboard.html'" class="border-2 border-gray-200 text-gray-700 p-3 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors text-left">
+                    <div class="text-2xl mb-1">📊</div>
+                    <div class="text-sm font-semibold">학습 현황</div>
                 </button>
-                <button onclick="window.location.href='data-manager.html'" class="bg-indigo-500 text-white py-3 px-4 rounded-xl text-sm font-bold font-game card-hover">
-                    <span class="mr-1">💾</span>
-                    데이터 관리
+
+                <button onclick="window.location.href='social-hub.html'" class="border-2 border-gray-200 text-gray-700 p-3 rounded-lg hover:border-green-500 hover:bg-green-50 transition-colors text-left">
+                    <div class="text-2xl mb-1">💬</div>
+                    <div class="text-sm font-semibold">소통하기</div>
+                </button>
+
+                <button onclick="window.location.href='data-manager.html'" class="border-2 border-gray-200 text-gray-700 p-3 rounded-lg hover:border-indigo-500 hover:bg-indigo-50 transition-colors text-left">
+                    <div class="text-2xl mb-1">💾</div>
+                    <div class="text-sm font-semibold">데이터 관리</div>
+                </button>
+
+                <button onclick="window.location.href='analytics-console.html'" class="border-2 border-gray-200 text-gray-700 p-3 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-colors text-left">
+                    <div class="text-2xl mb-1">📈</div>
+                    <div class="text-sm font-semibold">학습 분석</div>
+                </button>
+
+                <button onclick="restartTutorial()" class="border-2 border-gray-200 text-gray-700 p-3 rounded-lg hover:border-cyan-500 hover:bg-cyan-50 transition-colors text-left">
+                    <div class="text-2xl mb-1">📖</div>
+                    <div class="text-sm font-semibold">튜토리얼 다시보기</div>
                 </button>
             </div>
 
-            <!-- 소셜 기능 -->
-            <div class="grid grid-cols-1 gap-3 mb-4">
-                <button onclick="window.location.href='social-hub.html'" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-4 rounded-xl text-lg font-bold font-game card-hover relative overflow-hidden">
-                    <span class="mr-2">🌐</span>
-                    친구들과 소통하기
-                    <div class="absolute top-1 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full animate-pulse">NEW!</div>
-                    <div class="text-xs opacity-90 mt-1">순위표 • 친구 추가 • 동물 자랑하기</div>
+            <div class="mt-3 text-center space-y-2">
+                <button class="text-sm text-gray-400 hover:text-gray-600 cursor-not-allowed" disabled>
+                    💰 보상 요청 (향후 구현)
                 </button>
+                <div class="flex flex-col space-y-1">
+                    <button onclick="window.location.href='debug-console.html'" class="text-xs text-blue-500 hover:text-blue-700">
+                        🐛 디버그 콘솔
+                    </button>
+                    <button onclick="window.location.href='clear-offline-queue.html'" class="text-xs text-red-500 hover:text-red-700">
+                        🔧 오프라인 큐 초기화
+                    </button>
+                </div>
             </div>
-            
-            <p class="text-sm text-gray-600">
-                <span class="font-semibold">빠른 시작:</span> 위의 필수 과목 버튼을 클릭<br>
-                <span class="font-semibold">전체 선택:</span> 아래 버튼으로 모든 과목 보기 🌱
-            </p>
         </div>
     </div>
 
-    <!-- 애니메이션 CSS -->
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <!-- 물주기 학습 모달 -->
+    <div id="home-watering-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-lg w-full">
+            <div class="text-center mb-4">
+                <div class="text-4xl mb-2">🌱</div>
+                <h3 class="text-lg font-bold">물주기 학습</h3>
+            </div>
 
-    <!-- 간단한 JavaScript 상호작용 -->
+            <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                <div class="flex items-center mb-2">
+                    <span class="text-2xl mr-2" id="home-question-subject-icon">📚</span>
+                    <div class="font-bold text-blue-900" id="home-question-title">약점 과목 학습</div>
+                </div>
+                <div class="text-sm text-blue-800 mb-3" id="home-question-text">
+                    문제가 여기에 표시됩니다
+                </div>
+
+                <div class="mb-3 p-3 bg-green-50 border-2 border-green-300 rounded-lg">
+                    <div class="flex items-start space-x-2 mb-2">
+                        <span class="text-lg">✅</span>
+                        <div>
+                            <div class="font-bold text-green-900 mb-1">정답</div>
+                            <div class="text-sm text-green-800" id="home-correct-answer"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-2 mt-2 pt-2 border-t border-green-200">
+                        <span class="text-lg">💡</span>
+                        <div>
+                            <div class="font-bold text-blue-900 mb-1">해설</div>
+                            <div class="text-sm text-gray-700" id="home-explanation-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="home-water-confirm-btn" onclick="homeConfirmWater()" disabled
+                        class="w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all">
+                    <span id="home-water-btn-text">💧 문제를 읽어주세요 (<span id="home-countdown">5</span>초)</span>
+                </button>
+            </div>
+
+            <div class="text-center">
+                <button onclick="homeCloseWateringModal()" class="text-gray-500 text-sm hover:text-gray-700">
+                    나중에 하기
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개발자 메뉴 모달 -->
+    <div id="home-dev-menu-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-red-600">⚙️ 농장 개발자 메뉴</h3>
+                <button onclick="closeHomeFarmDevMenu()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="homeSkipPlantTime()" class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-left">
+                    ⏰ 식물 시간 건너뛰기 (24시간)
+                    <div class="text-xs text-blue-100 mt-1">모든 식물을 24시간 경과 상태로 변경</div>
+                </button>
+
+                <button onclick="homeAddTestTickets()" class="w-full px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 text-left">
+                    🎫 테스트 성장권 추가
+                    <div class="text-xs text-green-100 mt-1">성장권 5개 즉시 지급</div>
+                </button>
+
+                <button onclick="homeResetPlants()" class="w-full px-4 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 text-left">
+                    🌱 식물만 초기화
+                    <div class="text-xs text-orange-100 mt-1">모든 식물 제거 (보상은 유지)</div>
+                </button>
+
+                <button onclick="homeResetDaily()" class="w-full px-4 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 text-left">
+                    📅 일일 진행률 초기화
+                    <div class="text-xs text-yellow-100 mt-1">오늘 완료한 과목 리셋</div>
+                </button>
+
+                <button onclick="homeAddWaterToPlant()" class="w-full px-4 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 text-left">
+                    💧 식물에 물 10개 추가
+                    <div class="text-xs text-cyan-100 mt-1">첫 번째 식물에 물 10개 즉시 지급</div>
+                </button>
+
+                <button onclick="homeTestHarvestPopup()" class="w-full px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 text-left">
+                    🎉 수확 팝업 테스트
+                    <div class="text-xs text-purple-100 mt-1">수확 보상 팝업 미리보기 (100원)</div>
+                </button>
+
+                <button onclick="homeAddTestMoney()" class="w-full px-4 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 text-left">
+                    💰 테스트 돈 추가
+                    <div class="text-xs text-pink-100 mt-1">1000원 즉시 지급</div>
+                </button>
+
+                <button onclick="homeCompleteLearningMissions()" class="w-full px-4 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 text-left">
+                    ✅ 학습 미션 모두 완료
+                    <div class="text-xs text-indigo-100 mt-1">9과목 모두 완료 처리 (보상 포함)</div>
+                </button>
+
+                <button onclick="homeResetLearningMissions()" class="w-full px-4 py-3 bg-slate-500 text-white rounded-lg hover:bg-slate-600 text-left">
+                    🔄 학습 미션 초기화
+                    <div class="text-xs text-slate-100 mt-1">모든 과목 미완료 상태로 리셋</div>
+                </button>
+            </div>
+
+            <div class="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
+                ⚠️ 이 메뉴는 개발/테스트용입니다. 실제 데이터가 변경될 수 있습니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- 수확 보상 팝업 -->
+    <div id="home-harvest-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center transform transition-all scale-95" id="home-harvest-content">
+            <div class="text-7xl mb-4 animate-bounce">🎉</div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-3">수확 완료!</h2>
+
+            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-xl p-6 mb-4">
+                <div class="text-6xl mb-3">💰</div>
+                <div class="text-4xl font-bold text-orange-600" id="home-harvest-money">+100 코인</div>
+            </div>
+
+            <div class="text-gray-600 mb-6" id="home-harvest-message">
+                식물을 성공적으로 수확했습니다!
+            </div>
+
+            <button onclick="closeHarvestModal()" class="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-bold hover:from-green-600 hover:to-green-700 transition-all shadow-lg">
+                확인
+            </button>
+        </div>
+    </div>
+
+    <!-- 토스트 알림 -->
+    <div id="home-toast" class="hidden fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div id="home-toast-message"></div>
+    </div>
+
+    <!-- 필수 스크립트 -->
+    <script src="firebase-config.js"></script>
+    <script src="firebase-integration.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="daily-reset.js"></script>
+    <script src="weakness-learning.js"></script>
+
+    <!-- 메인 JavaScript -->
     <script>
-        // 진행률 바 애니메이션
+        let currentUser = null;
+
+        // 초기화
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-bar');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 500);
-                });
-            }, 1000);
+            // 첫 방문 체크
+            if (!checkFirstVisit()) return;
+
+            // 데이터 로드
+            loadUserData();
+            loadWeaknessQuestion();
+            updateAllDisplays();
+
+            // 이벤트 기반 업데이트 등록
+            setupEventListeners();
         });
 
-        // 버튼 클릭 효과
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-                
-                // 학습 시작 버튼 클릭 시 과목 선택 페이지로 이동
-                if (this.textContent.includes('학습 시작하기')) {
-                    window.location.href = 'subject-select.html';
+        // 이벤트 리스너 설정
+        function setupEventListeners() {
+            // localStorage 변경 감지 (다른 탭에서의 변경)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'simpleFarmState' ||
+                    e.key === 'plantSystemUser' ||
+                    e.key === 'animalCollection' ||
+                    e.key === 'quizProgress' ||
+                    e.key === 'learningProgress') {
+                    updateAllDisplays();
                 }
             });
-        });
 
-        // 반응형 텍스트 크기 조정
-        function adjustFontSize() {
-            const fontSize = localStorage.getItem('fontSize') || '1';
-            document.documentElement.style.setProperty('--user-font-size', fontSize + 'rem');
-        }
-
-        // 작은 정원 상태 업데이트
-        function updateGardenStatus() {
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || { water: 0, plants: {1: null, 2: null} };
-
-            // 물방울 개수 업데이트
-            const waterCountElement = document.getElementById('waterCount');
-            if (waterCountElement) {
-                waterCountElement.textContent = simpleFarmState.water || 0;
-            }
-
-            [1, 2].forEach(potNumber => {
-                const plant = simpleFarmState.plants[potNumber];
-                
-                const display = document.getElementById(`plant${potNumber}Display`);
-                const name = document.getElementById(`plant${potNumber}Name`);
-                const stageEl = document.getElementById(`plant${potNumber}Stage`);
-                const happiness = document.getElementById(`plant${potNumber}Happiness`);
-                const progressBar = document.getElementById(`plant${potNumber}ProgressBar`);
-                const message = document.getElementById(`plant${potNumber}Message`);
-
-                if (plant) {
-                    const plantStages = ['🌰', '🌱', '🌿', '🌸', '🍎'];
-                    const stageNames = ['씨앗', '새싹', '줄기', '꽃', '열매'];
-                    const plantEmoji = plant.finalResult || plantStages[plant.stage] || '🌰';
-
-                    display.textContent = plantEmoji;
-                    name.textContent = `${plant.grade || '일반'} 등급 식물`;
-                    stageEl.textContent = `${plantEmoji} ${stageNames[plant.stage] || '씨앗 대기'}`;
-                    
-                    const care = Math.min(plant.care || 0, 100);
-                    happiness.textContent = `${care}%`;
-                    progressBar.style.width = `${care}%`;
-                    message.textContent = '정성껏 돌봐주세요!';
-                } else {
-                    display.textContent = '🌰';
-                    name.textContent = '빈 화분';
-                    stageEl.textContent = '🌰 씨앗 대기';
-                    happiness.textContent = '0%';
-                    progressBar.style.width = '0%';
-                    message.textContent = '씨앗을 심어 새로운 친구를 만들어보세요!';
+            // 페이지 포커스 복귀 시 업데이트 (다른 페이지 다녀온 후)
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    loadUserData();
+                    updateAllDisplays();
                 }
+            });
+
+            // 페이지로 돌아올 때 업데이트 (뒤로가기 등)
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    loadUserData();
+                    updateAllDisplays();
+                }
+            });
+
+            // plant-system.js 이벤트 리스닝
+            window.addEventListener('plantSystemUpdated', function() {
+                updateDailyProgress();
+                updatePlantStatus();
+            });
+
+            // 커스텀 이벤트: 퀴즈 완료 시
+            window.addEventListener('quizCompleted', function() {
+                updateTickets();
+                updateDailyProgress();
+                updateStreak();
+            });
+
+            // 커스텀 이벤트: 동물 획득 시
+            window.addEventListener('animalObtained', function() {
+                updateAnimalCount();
+                updateHighestAnimal();
             });
         }
 
-        // 빠른 퀴즈 시작 함수
-        function startQuickQuiz(subject) {
-            // 선택된 과목을 저장
-            localStorage.setItem('selectedSubjects', JSON.stringify([subject]));
-            localStorage.setItem('currentSubjectIndex', '0');
-            
-            // 적응형 퀴즈로 바로 이동
-            window.location.href = 'quiz-adaptive.html';
+        // 첫 방문 체크
+        function checkFirstVisit() {
+            if (localStorage.getItem('eduPetOnboardingCompleted') !== 'true') {
+                window.location.href = 'tutorial.html';
+                return false;
+            }
+            return true;
         }
 
-        // 뽑기권 개수 업데이트
-        function updateTicketDisplay() {
-            const quizState = JSON.parse(localStorage.getItem('quizProgress') || '{}');
-            const earnedTickets = Math.floor((quizState.totalCorrect || 0) / 25);
-            
-            const ticketDisplay = document.getElementById('ticketDisplay');
-            if (ticketDisplay) {
-                ticketDisplay.textContent = earnedTickets + '장';
+        // 사용자 데이터 로드
+        function loadUserData() {
+            if (typeof plantSystem !== 'undefined') {
+                currentUser = plantSystem.getUserData();
             }
         }
 
-        // 연속 학습일 업데이트
-        function updateStreakDisplay() {
-            const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
-            let streakDays = 0;
-            
-            if (progressData.streakDays) {
-                const today = new Date().toDateString();
-                const lastStudy = progressData.lastStudyDate ? new Date(progressData.lastStudyDate).toDateString() : null;
-                
-                if (lastStudy === today) {
-                    streakDays = progressData.streakDays;
-                } else {
-                    const yesterday = new Date();
-                    yesterday.setDate(yesterday.getDate() - 1);
-                    const yesterdayStr = yesterday.toDateString();
-                    
-                    if (lastStudy === yesterdayStr) {
-                        streakDays = progressData.streakDays;
-                    }
-                }
-            }
-            
-            const streakDisplay = document.getElementById('streakDisplay');
-            if (streakDisplay) {
-                streakDisplay.textContent = streakDays + '일째';
-            }
-        }
-
-        // 과목별 학습 진도 업데이트
-        function updateSubjectProgress() {
-            const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
-            const today = new Date().toDateString();
-            
-            const subjects = [
-                { id: 'english', name: '영어', emoji: '🇺🇸' },
-                { id: 'math', name: '수학', emoji: '🔢' },
-                { id: 'science', name: '과학', emoji: '🔬' }
-            ];
-            
-            subjects.forEach(subject => {
-                const btn = document.getElementById(`${subject.id}-btn`);
-                const status = document.getElementById(`${subject.id}-status`);
-                
-                if (btn && status) {
-                    const subjectProgress = progressData[subject.id] || {};
-                    const todayStudy = subjectProgress[today];
-                    
-                    if (todayStudy && todayStudy.completed) {
-                        // 완료된 과목
-                        btn.className = 'bg-green-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
-                        status.textContent = '✅ 완료';
-                    } else if (todayStudy && todayStudy.questionsAnswered > 0) {
-                        // 진행 중인 과목
-                        btn.className = 'bg-blue-500 text-white p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover';
-                        const progress = Math.round((todayStudy.questionsAnswered / 10) * 100);
-                        status.textContent = `${progress}% 진행중`;
-                    } else {
-                        // 아직 시작하지 않은 과목
-                        btn.className = 'border-2 border-gray-300 text-gray-700 p-4 rounded-xl h-16 flex flex-col items-center justify-center card-hover hover:border-primary-500 hover:bg-primary-50';
-                        status.textContent = '시작하기';
-                    }
-                }
-            });
-        }
-
-        // 돈 표시 업데이트
-        function updateMoneyDisplay() {
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{"money": 0}');
-            const totalMoney = simpleFarmState.money || 0;
-            
-            const moneyDisplay = document.getElementById('moneyDisplay');
-            if (moneyDisplay) {
-                moneyDisplay.textContent = `${totalMoney.toLocaleString()}원`;
-            }
+        // 모든 디스플레이 업데이트
+        function updateAllDisplays() {
+            updateUserName();
+            updateMoney();
+            updateStreak();
+            updateAnimalCount();
+            updateDailyProgress();
+            updateHighestAnimal();
+            updatePlantStatus();
+            updateTickets();
+            updateWeaknessSubject();
+            loadWeaknessQuestion();
+            updateTodayActivity();
+            updateWeeklyActivity();
         }
 
         // 사용자 이름 업데이트
-        function updateUserNameDisplay() {
+        function updateUserName() {
             let userName = '학습자';
-            
-            // 1순위: 튜토리얼에서 설정한 로컬 별명
+
             const localSettings = localStorage.getItem('eduPetSettings');
             if (localSettings) {
                 try {
                     const settings = JSON.parse(localSettings);
-                    if (settings.userName) {
-                        userName = settings.userName;
-                    }
-                } catch (error) {
-                    console.log('로컬 설정 로드 실패:', error);
-                }
+                    if (settings.userName) userName = settings.userName;
+                } catch (error) {}
             }
-            
-            // 2순위: Firebase 소셜 허브에서 설정한 닉네임
+
             const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
             if (firebaseUser && userName === '학습자') {
                 try {
@@ -607,152 +796,971 @@
                     if (userData.userData?.profile?.nickname) {
                         userName = userData.userData.profile.nickname;
                     }
-                } catch (error) {
-                    console.log('Firebase 사용자 데이터 로드 실패:', error);
-                }
+                } catch (error) {}
             }
-            
-            // UI 업데이트
-            const userNameDisplay = document.getElementById('userNameDisplay');
-            const gardenOwnerDisplay = document.getElementById('gardenOwnerDisplay');
-            
-            if (userNameDisplay) userNameDisplay.textContent = userName;
-            if (gardenOwnerDisplay) gardenOwnerDisplay.textContent = userName;
+
+            document.getElementById('userNameDisplay').textContent = userName;
         }
 
-        // 오늘의 학습 진행률 업데이트
-        function updateTodayProgress() {
+        // 돈 업데이트
+        function updateMoney() {
+            if (typeof plantSystem === 'undefined') {
+                document.getElementById('moneyDisplay').textContent = '0 코인';
+                return;
+            }
+
+            const user = plantSystem.getUserData();
+
+            // wallet 필드가 없으면 생성 (하위 호환성)
+            if (!user.wallet) {
+                user.wallet = { money: 0, water: 0 };
+                plantSystem.saveUserData(user);
+            }
+
+            const money = user.wallet.money || 0;
+            document.getElementById('moneyDisplay').textContent = `${money.toLocaleString()} 코인`;
+        }
+
+        // 연속 학습일 업데이트
+        function updateStreak() {
             const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
-            const today = new Date().toDateString();
-            
-            // 오늘 모든 과목의 진행률 계산
-            const subjects = ['english', 'math', 'science'];
-            let totalQuestions = 0;
-            let totalTime = 0;
-            let completedSubjects = 0;
-            
-            subjects.forEach(subject => {
-                const subjectProgress = progressData[subject] || {};
-                const todayStudy = subjectProgress[today];
-                
-                if (todayStudy) {
-                    totalQuestions += todayStudy.questionsAnswered || 0;
-                    totalTime += todayStudy.timeSpent || 0;
-                    if (todayStudy.completed) completedSubjects++;
+            const streakDays = progressData.streakDays || 0;
+            document.getElementById('streakDisplay').textContent = streakDays + '일째';
+        }
+
+        // 동물 수 업데이트
+        function updateAnimalCount() {
+            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": []}');
+            const count = animalState.animals?.length || 0;
+            document.getElementById('animalCountDisplay').textContent = count + '마리';
+        }
+
+        // 일일 진행률 업데이트
+        function updateDailyProgress() {
+            if (typeof plantSystem === 'undefined') return;
+
+            const user = plantSystem.getUserData();
+            const completedSubjectIds = user?.daily?.completedSubjectIds || [];
+
+            // production, ai, toeic 제외한 과목만 카운트
+            const excludedSubjects = ['production', 'ai', 'toeic'];
+            const validCompletedSubjects = completedSubjectIds.filter(subject => !excludedSubjects.includes(subject));
+
+            const completed = validCompletedSubjects.length;
+            const total = 9; // english, math, science, korean, social, common, idiom, person, economy
+            const percent = Math.round((completed / total) * 100);
+
+            document.getElementById('dailyProgressDisplay').textContent = `${completed}/${total} 과목`;
+            document.getElementById('progressPercentDisplay').textContent = `${percent}%`;
+            document.getElementById('progressBarDisplay').style.width = `${percent}%`;
+        }
+
+        // 가장 높은 등급 동물 표시
+        function updateHighestAnimal() {
+            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": []}');
+            const animals = animalState.animals || [];
+
+            const rarityOrder = { 'legendary': 4, 'epic': 3, 'rare': 2, 'common': 1 };
+            let highestAnimal = null;
+            let highestRarity = 0;
+
+            animals.forEach(animal => {
+                const rarity = rarityOrder[animal.rarity] || 0;
+                if (rarity > highestRarity) {
+                    highestRarity = rarity;
+                    highestAnimal = animal;
                 }
             });
-            
-            // 진행률 계산 (목표: 3과목 완료)
-            const progressPercent = Math.round((completedSubjects / subjects.length) * 100);
-            const targetTime = 25; // 목표 시간 (분)
-            
-            // UI 업데이트
-            const studyTimeDisplay = document.getElementById('studyTimeDisplay');
-            const progressPercentDisplay = document.getElementById('progressPercentDisplay');
-            const progressBarDisplay = document.getElementById('progressBarDisplay');
-            
-            if (studyTimeDisplay) {
-                studyTimeDisplay.textContent = `${Math.round(totalTime)}분 / ${targetTime}분`;
-            }
-            
-            if (progressPercentDisplay) {
-                progressPercentDisplay.textContent = `${progressPercent}%`;
-            }
-            
-            if (progressBarDisplay) {
-                progressBarDisplay.style.width = `${progressPercent}%`;
+
+            if (highestAnimal) {
+                document.getElementById('highestAnimalDisplay').textContent = highestAnimal.emoji || '🐰';
+                document.getElementById('topAnimalDisplay').textContent = highestAnimal.emoji || '🦎';
+                document.getElementById('topAnimalName').textContent = highestAnimal.name || '동물';
             }
         }
 
-        // 첫 방문 체크 및 온보딩
-        function checkFirstVisit() {
-            if (localStorage.getItem('eduPetOnboardingCompleted') !== 'true') {
-                // 첫 방문자는 튜토리얼로 이동
-                window.location.href = 'tutorial.html';
-                return false;
+        // 식물 상태 업데이트 (농장 화분)
+        function updatePlantStatus() {
+            if (typeof plantSystem === 'undefined') {
+                console.warn('plantSystem not loaded');
+                return;
             }
-            return true;
+
+            try {
+                const user = plantSystem.getUserData();
+                const plants = plantSystem.getUserPlants(user.userId);
+                const dashboard = plantSystem.getDashboardState(user.userId);
+
+                // 성장권 개수 업데이트
+                document.getElementById('farm-growth-tickets').textContent = dashboard.tickets.growthTickets + '개';
+
+                // 다음 보상 메시지
+                document.getElementById('farm-next-reward').textContent = dashboard.learning.nextReward.message;
+
+                // 각 화분 렌더링
+                [1, 2].forEach(potNum => {
+                    renderHomePot(potNum, plants, dashboard);
+                });
+
+            } catch (error) {
+                console.error('농장 업데이트 오류:', error);
+            }
         }
 
+        // 홈 화면 화분 렌더링
+        function renderHomePot(potNum, allPlants, dashboard) {
+            const plant = dashboard.plants[potNum - 1] || null;
 
+            const emptyElement = document.getElementById(`home-empty-pot${potNum}`);
+            const plantDisplay = document.getElementById(`home-plant${potNum}-display`);
+            const plantInfo = document.getElementById(`home-plant${potNum}-info`);
+            const actions = document.getElementById(`home-pot${potNum}-actions`);
+            const potElement = document.getElementById(`home-pot${potNum}`);
 
-        adjustFontSize();
-        
-        // 첫 방문이 아닌 경우에만 나머지 초기화
-        if (checkFirstVisit()) {
-            updateGardenStatus();
-            updateTicketDisplay();
-            updateStreakDisplay();
-            updateSubjectProgress();
-            updateMoneyDisplay();
-            updateUserNameDisplay();
-            updateTodayProgress();
-            
-            // 주기적으로 모든 데이터 업데이트
-            setInterval(() => {
-                updateTicketDisplay();
-                updateStreakDisplay();
-                updateSubjectProgress();
-                updateMoneyDisplay();
-                updateUserNameDisplay();
-                updateTodayProgress();
-                updateGardenMessage();
-            }, 5000);
+            if (!plant) {
+                // 빈 화분
+                emptyElement.classList.remove('hidden');
+                plantDisplay.innerHTML = '';
+                plantInfo.classList.add('hidden');
+                potElement.onclick = () => homePlantSeed(potNum);
+                actions.innerHTML = `
+                    <button onclick="homePlantSeed(${potNum})" class="w-full px-3 py-2 bg-green-500 text-white rounded-lg text-xs hover:bg-green-600 transition-all">
+                        🌰 씨앗 심기
+                    </button>
+                `;
+            } else {
+                // 식물이 있는 화분
+                emptyElement.classList.add('hidden');
+                plantInfo.classList.remove('hidden');
+
+                const plantEmoji = plant.type || '🌱';
+                plantDisplay.innerHTML = `<div class="text-5xl">${plantEmoji}</div>`;
+
+                // 클릭 이벤트
+                if (plant.status === 'PLANTED') {
+                    potElement.onclick = () => homeWaterPlant(potNum, plant.id);
+                } else {
+                    potElement.onclick = null;
+                }
+
+                // 상태 텍스트
+                const statusText = {
+                    'PLANTED': '🌱 성장 중',
+                    'READY': '✨ 성장 준비 완료',
+                    'GROWN': '🌺 성장 완료'
+                }[plant.status];
+                document.getElementById(`home-plant${potNum}-status`).textContent = statusText;
+
+                // 물 정보
+                const waterPercent = (plant.waterCount / 20) * 100;
+                document.getElementById(`home-plant${potNum}-water`).textContent = `${plant.waterCount}/20`;
+                document.getElementById(`home-plant${potNum}-water-bar`).style.width = waterPercent + '%';
+
+                // 시간 정보
+                document.getElementById(`home-plant${potNum}-time`).textContent = `⏰ ${plant.timeRemaining}`;
+
+                // 버튼
+                if (plant.status === 'READY') {
+                    actions.innerHTML = `
+                        <button onclick="homeGrowPlant('${plant.id}')" class="w-full px-3 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg text-xs font-bold hover:from-green-600 hover:to-green-700 transition-all">
+                            🌱 성장시키기
+                        </button>
+                    `;
+                } else if (plant.status === 'PLANTED') {
+                    actions.innerHTML = `
+                        <button onclick="homeWaterPlant(${potNum}, '${plant.id}')" class="w-full px-3 py-2 bg-blue-500 text-white rounded-lg text-xs font-bold hover:bg-blue-600 transition-all">
+                            💧 물주기 (${plant.waterCount}/20)
+                        </button>
+                    `;
+                } else {
+                    actions.innerHTML = `
+                        <button onclick="homeHarvestPlant('${plant.id}')" class="w-full px-3 py-2 bg-yellow-500 text-white rounded-lg text-xs font-bold hover:bg-yellow-600 transition-all">
+                            🌺 수확하기
+                        </button>
+                    `;
+                }
+            }
         }
-        
-        // 정원 메시지 업데이트
-        function updateGardenMessage() {
-            const simpleFarmState = JSON.parse(localStorage.getItem('simpleFarmState')) || {
-                plants: [null, null]
+
+        // 티켓 업데이트
+        function updateTickets() {
+            let normalTickets = 0;
+            let premiumTickets = 0;
+
+            // plant-system에서 티켓 정보 읽기
+            if (typeof plantSystem !== 'undefined') {
+                const user = plantSystem.getUserData();
+                normalTickets = user?.rewards?.normalGachaTickets || 0;
+                premiumTickets = user?.rewards?.premiumGachaTickets || 0;
+            } else {
+                // plantSystem이 없으면 localStorage에서 직접 읽기
+                try {
+                    const userData = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+                    normalTickets = userData?.rewards?.normalGachaTickets || 0;
+                    premiumTickets = userData?.rewards?.premiumGachaTickets || 0;
+                } catch (e) {
+                    console.error('Error reading tickets:', e);
+                }
+            }
+
+            document.getElementById('ticketCount').textContent = normalTickets + premiumTickets;
+            document.getElementById('normalTickets').textContent = normalTickets + '장';
+            document.getElementById('premiumTickets').textContent = premiumTickets + '장';
+        }
+
+        // 약점 과목 업데이트
+        function updateWeaknessSubject() {
+            if (typeof weaknessLearning === 'undefined' || typeof plantSystem === 'undefined') return;
+
+            const user = plantSystem.getUserData();
+            // 버튼용: 영어 포함
+            const weakestSubject = weaknessLearning.analyzeWeakestArea(user, false);
+
+            console.log('🎯 약점 과목 분석 결과:', weakestSubject);
+            console.log('📊 과목별 점수:', user.learning.subjectScores);
+
+            const subjectIcons = {
+                '영어': '🇺🇸',
+                '수학': '🔢',
+                '과학': '🔬',
+                '국어': '📚',
+                '사회': '🏛️',
+                '상식': '🧠',
+                '사자성어': '📜',
+                '인물': '👤',
+                '경제': '💰'
             };
-            
-            const iconElement = document.getElementById('gardenMessageIcon');
-            const titleElement = document.getElementById('gardenMessageTitle');
-            const textElement = document.getElementById('gardenMessageText');
-            
-            // 가장 성장한 식물 찾기
-            let mostGrown = null;
-            let maxStageIndex = -1;
-            
-            const stageOrder = ['seed', 'sprout', 'stem', 'flower', 'fruit'];
-            
-            if (simpleFarmState.plants) {
-                simpleFarmState.plants.forEach(plant => {
-                    if (plant) {
-                        const stageIndex = stageOrder.indexOf(plant.stage);
-                        if (stageIndex > maxStageIndex) {
-                            maxStageIndex = stageIndex;
-                            mostGrown = plant;
-                        }
-                    }
+
+            const subjectIds = {
+                '영어': 'english',
+                '수학': 'math',
+                '과학': 'science',
+                '국어': 'korean',
+                '사회': 'social',
+                '상식': 'common',
+                '사자성어': 'idiom',
+                '인물': 'person',
+                '경제': 'economy'
+            };
+
+            document.getElementById('weaknessIcon').textContent = subjectIcons[weakestSubject] || '📊';
+            document.getElementById('weaknessLabel').textContent = weakestSubject || '약한과목';
+
+            // 전역 변수에 저장 (다른 함수에서 사용)
+            window.currentWeakestSubject = subjectIds[weakestSubject] || 'math';
+            window.currentWeakestSubjectName = weakestSubject;
+        }
+
+        // 약점 문제 로드
+        async function loadWeaknessQuestion() {
+            if (typeof weaknessLearning === 'undefined' || typeof plantSystem === 'undefined') return;
+
+            const user = plantSystem.getUserData();
+            // 오늘의 학습용: 영어 제외 (영어는 이미 필수 과목)
+            const weakestSubjectName = weaknessLearning.analyzeWeakestArea(user, true);
+
+            // 한글 과목명을 영어 ID로 변환
+            const subjectIds = {
+                '영어': 'english',
+                '수학': 'math',
+                '과학': 'science',
+                '국어': 'korean',
+                '사회': 'social',
+                '상식': 'common',
+                '사자성어': 'idiom',
+                '인물': 'person',
+                '경제': 'economy'
+            };
+
+            const subjectId = subjectIds[weakestSubjectName] || 'math';
+
+            // 실제 문제 은행에서 문제 로드
+            const question = await weaknessLearning.getRandomQuestionFromBank(subjectId, 'medium');
+
+            if (question) {
+                const subjectIcons = {
+                    '영어': '🇺🇸',
+                    '수학': '🔢',
+                    '과학': '🔬',
+                    '국어': '📚',
+                    '사회': '🏛️',
+                    '상식': '🧠',
+                    '사자성어': '📜',
+                    '인물': '👤',
+                    '경제': '💰'
+                };
+
+                document.getElementById('weaknessSubjectIcon').textContent = subjectIcons[weakestSubjectName] || '📚';
+                document.getElementById('weaknessSubjectName').textContent = weakestSubjectName || '과목';
+                document.getElementById('weaknessQuestion').textContent = question.q || '문제를 불러오는 중...';
+
+                const correctAnswer = question.a?.[question.correct];
+                document.getElementById('weaknessAnswer').textContent = correctAnswer || '정답';
+                document.getElementById('weaknessExplanation').textContent = question.explanation || '이 문제를 잘 기억하고 이해해보세요!';
+
+                console.log('✅ 약점 문제 로드 완료:', {
+                    과목: weakestSubjectName,
+                    문제: question.q,
+                    정답: correctAnswer
                 });
             }
-            
-            if (mostGrown) {
-                const emoji = getPlantEmoji(mostGrown.stage);
-                const plantName = getPlantName(mostGrown.type, mostGrown.stage);
-                
-                if (iconElement) iconElement.textContent = emoji;
-                if (titleElement) titleElement.textContent = `${plantName}이 말해요!`;
-                
-                const messageTexts = {
-                    'seed': '"따뜻하게 보살펴 주세요! 곧 싹이 날 거예요!"',
-                    'sprout': '"오늘도 함께 학습해서 물방울을 모아주세요! 저는 물을 마실 때마다 더 많은 걸 배울 수 있어요!"',
-                    'stem': '"쑥쑥 자라고 있어요! 학습하면서 더 튼튼해져요!"',
-                    'flower': '"예쁜 꽃이 피었어요! 학습 덕분이에요~ 향기를 맡아보세요!"',
-                    'fruit': '"드디어 열매가 열렸어요! 함께 키워주셔서 정말 감사해요!"'
+        }
+
+        // 새 약점 문제 로드
+        function loadNewWeaknessQuestion() {
+            loadWeaknessQuestion();
+        }
+
+        // 빠른 퀴즈 시작
+        function startQuickQuiz(subject) {
+            localStorage.setItem('selectedSubjects', JSON.stringify([subject]));
+            localStorage.setItem('currentSubjectIndex', '0');
+            window.location.href = 'quiz-adaptive.html';
+        }
+
+        // 약점 퀴즈 시작
+        function startWeaknessQuiz() {
+            if (typeof weaknessLearning === 'undefined' || typeof plantSystem === 'undefined') {
+                alert('약점 학습 시스템을 불러오는 중입니다. 잠시 후 다시 시도해주세요.');
+                return;
+            }
+
+            const user = plantSystem.getUserData();
+            // 퀴즈 시작용: 영어 포함
+            const weakestSubjectName = weaknessLearning.analyzeWeakestArea(user, false);
+
+            // 한글 과목명을 영어 ID로 변환
+            const subjectIds = {
+                '영어': 'english',
+                '수학': 'math',
+                '과학': 'science',
+                '국어': 'korean',
+                '사회': 'social',
+                '상식': 'common',
+                '사자성어': 'idiom',
+                '인물': 'person',
+                '경제': 'economy'
+            };
+
+            const weakestSubjectId = subjectIds[weakestSubjectName] || 'math';
+            startQuickQuiz(weakestSubjectId);
+        }
+
+        // 튜토리얼 다시 보기
+        function restartTutorial() {
+            if (confirm('튜토리얼을 다시 보시겠습니까?\n\n(현재 게임 데이터는 유지됩니다)')) {
+                localStorage.removeItem('eduPetOnboardingCompleted');
+                window.location.href = 'tutorial.html';
+            }
+        }
+
+        // 오늘의 학습 현황 업데이트
+        function updateTodayActivity() {
+            try {
+                const userData = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+                const learningProgress = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+
+                // 오늘 날짜 확인 (ISO format: YYYY-MM-DD)
+                const today = new Date().toISOString().split('T')[0];
+
+                // 오늘 푼 문제 수와 학습 시간 계산
+                let todayQuestions = 0;
+                let todayCorrect = 0;
+                let todayMinutes = 0;
+
+                // dailyActivity에서 오늘 푼 문제 수 확인
+                if (learningProgress.dailyActivity && learningProgress.dailyActivity[today]) {
+                    todayQuestions = learningProgress.dailyActivity[today];
+                }
+
+                // totalMinutesToday가 있으면 사용
+                if (learningProgress.totalMinutesToday && learningProgress.lastActivityDate === today) {
+                    todayMinutes = learningProgress.totalMinutesToday;
+                } else {
+                    // 없으면 문제 수로 추정 (문제당 약 10초 = 60문제당 10분)
+                    todayMinutes = Math.ceil(todayQuestions * 10 / 60);
+                }
+
+                // 오늘 정답 수 가져오기
+                if (learningProgress.totalCorrectToday && learningProgress.lastActivityDate === today) {
+                    todayCorrect = learningProgress.totalCorrectToday;
+                }
+
+                // 정답률 계산
+                const accuracy = todayQuestions > 0 ? Math.round((todayCorrect / todayQuestions) * 100) : 0;
+
+                // UI 업데이트
+                document.getElementById('todayQuestions').textContent = todayQuestions;
+                document.getElementById('todayAccuracy').textContent = accuracy;
+                document.getElementById('todayMinutes').textContent = todayMinutes;
+
+            } catch (e) {
+                console.error('오늘 활동 업데이트 오류:', e);
+                document.getElementById('todayQuestions').textContent = '0';
+                document.getElementById('todayAccuracy').textContent = '0';
+                document.getElementById('todayMinutes').textContent = '0';
+            }
+        }
+
+        // ===== 농장 기능 함수들 =====
+
+        let homeCurrentPlantId = null;
+        let homeCountdownInterval = null;
+
+        // 씨앗 심기
+        function homePlantSeed(potNum) {
+            try {
+                if (!currentUser) {
+                    homeShowToast('❌ 사용자 정보를 불러오는 중입니다');
+                    return;
+                }
+
+                const plants = plantSystem.getUserPlants(currentUser.userId);
+                const existingPlant = plants[potNum - 1];
+
+                if (existingPlant) {
+                    homeShowToast('❌ 이미 식물이 심어져 있습니다');
+                    return;
+                }
+
+                const plant = plantSystem.plantSeed(currentUser.userId);
+                homeShowToast('🌰 씨앗을 심었습니다!');
+                updatePlantStatus();
+            } catch (error) {
+                console.error('씨앗 심기 오류:', error);
+                homeShowToast('❌ 씨앗 심기 실패: ' + error.message);
+            }
+        }
+
+        // 물주기
+        async function homeWaterPlant(potNum, plantId) {
+            try {
+                if (!currentUser) {
+                    homeShowToast('❌ 사용자 정보를 불러오는 중입니다');
+                    return;
+                }
+
+                homeCurrentPlantId = plantId;
+
+                const questionData = await weaknessLearning.generateWaterQuestion(currentUser, plantId);
+
+                if (!questionData.success) {
+                    homeShowToast('❌ ' + questionData.message);
+                    return;
+                }
+
+                window.homeCurrentQuestionSubject = questionData.subjectName;
+
+                const subjectIcons = {
+                    'math': '🔢', 'korean': '📚', 'english': '🔤',
+                    'science': '🔬', 'social': '🌍', 'common': '🧠',
+                    'idiom': '📜', 'person': '👤', 'economy': '💰'
                 };
-                
-                if (textElement) {
-                    textElement.textContent = messageTexts[mostGrown.stage] || messageTexts.sprout;
+
+                document.getElementById('home-question-subject-icon').textContent = subjectIcons[questionData.subjectId] || '📚';
+                document.getElementById('home-question-title').textContent = questionData.subjectName + ' 학습';
+                document.getElementById('home-question-text').textContent = questionData.question.q;
+
+                const correctAnswer = questionData.question.a[questionData.question.correct];
+                document.getElementById('home-correct-answer').textContent = `${questionData.question.correct + 1}. ${correctAnswer}`;
+
+                const explanation = questionData.question.explanation || '이 문제를 잘 기억하고 이해해보세요!';
+                document.getElementById('home-explanation-text').textContent = explanation;
+
+                const waterBtn = document.getElementById('home-water-confirm-btn');
+                const waterBtnText = document.getElementById('home-water-btn-text');
+                if (waterBtn) {
+                    waterBtn.disabled = true;
+                    waterBtn.className = 'w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all';
+                }
+                if (waterBtnText) {
+                    waterBtnText.innerHTML = '💧 문제를 읽어주세요 (<span id="home-countdown">5</span>초)';
+                }
+
+                document.getElementById('home-watering-modal').classList.remove('hidden');
+
+                setTimeout(() => {
+                    homeStartCountdown();
+                }, 100);
+
+            } catch (error) {
+                console.error('물주기 오류:', error);
+                homeShowToast('❌ 물주기 실패: ' + error.message);
+            }
+        }
+
+        // 카운트다운
+        function homeStartCountdown() {
+            const btn = document.getElementById('home-water-confirm-btn');
+            const countdownSpan = document.getElementById('home-countdown');
+            const btnText = document.getElementById('home-water-btn-text');
+
+            if (!btn || !countdownSpan || !btnText) return;
+
+            let timeLeft = 5;
+
+            btn.disabled = true;
+            btn.className = 'w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all';
+            countdownSpan.textContent = timeLeft;
+
+            if (homeCountdownInterval) {
+                clearInterval(homeCountdownInterval);
+            }
+
+            homeCountdownInterval = setInterval(() => {
+                timeLeft--;
+
+                if (!countdownSpan) {
+                    clearInterval(homeCountdownInterval);
+                    homeCountdownInterval = null;
+                    return;
+                }
+
+                countdownSpan.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(homeCountdownInterval);
+                    homeCountdownInterval = null;
+
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.className = 'w-full px-4 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-all';
+                    }
+                    if (btnText) {
+                        btnText.innerHTML = '💧 이해했어요! 물주기';
+                    }
+                }
+            }, 1000);
+        }
+
+        // 물주기 확인
+        function homeConfirmWater() {
+            const result = plantSystem.waterPlant(homeCurrentPlantId);
+            if (result.success) {
+                homeShowToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/20)`);
+                homeCloseWateringModal();
+                updatePlantStatus();
+
+                if (window.homeCurrentQuestionSubject) {
+                    weaknessLearning.updateLearningProgress(currentUser, window.homeCurrentQuestionSubject, true);
+                }
+
+                // Firebase 동기화 (선택적)
+                if (typeof plantSystemFirebase !== 'undefined' && plantSystemFirebase.savePlantSystemState) {
+                    plantSystemFirebase.savePlantSystemState();
                 }
             } else {
-                // 식물이 없는 경우 기본 메시지
-                if (iconElement) iconElement.textContent = '🌰';
-                if (titleElement) titleElement.textContent = '정원이 기다리고 있어요!';
-                if (textElement) {
-                    textElement.textContent = '"학습을 통해 물방울을 모으고, 씨앗을 심어 나만의 정원을 만들어보세요!"';
+                homeShowToast('❌ ' + result.message);
+            }
+        }
+
+        // 모달 닫기
+        function homeCloseWateringModal() {
+            if (homeCountdownInterval) {
+                clearInterval(homeCountdownInterval);
+                homeCountdownInterval = null;
+            }
+            document.getElementById('home-watering-modal').classList.add('hidden');
+            homeCurrentPlantId = null;
+        }
+
+        // 성장시키기
+        function homeGrowPlant(plantId) {
+            try {
+                if (!currentUser) {
+                    homeShowToast('❌ 사용자 정보를 불러오는 중입니다');
+                    return;
                 }
+
+                const result = plantSystem.growPlant(currentUser, plantId);
+
+                if (result.success) {
+                    homeShowToast('🎉 ' + result.message);
+
+                    // Firebase 동기화 (선택적)
+                    if (typeof plantSystemFirebase !== 'undefined' && plantSystemFirebase.syncPlantGrowth) {
+                        plantSystemFirebase.syncPlantGrowth({plantId});
+                    }
+
+                    updatePlantStatus();
+                } else {
+                    homeShowToast('❌ ' + result.message);
+                }
+            } catch (error) {
+                console.error('성장 오류:', error);
+                homeShowToast('❌ 성장 실패: ' + error.message);
+            }
+        }
+
+        // 수확하기
+        function homeHarvestPlant(plantId) {
+            try {
+                if (!currentUser) {
+                    homeShowToast('❌ 사용자 정보를 불러오는 중입니다');
+                    return;
+                }
+
+                const result = plantSystem.harvestPlant(plantId);
+
+                if (result.success) {
+                    // 보상 팝업 표시
+                    showHarvestModal(result.moneyEarned || 100);
+
+                    // Firebase 동기화 (선택적)
+                    if (typeof plantSystemFirebase !== 'undefined' && plantSystemFirebase.savePlantSystemState) {
+                        plantSystemFirebase.savePlantSystemState();
+                    }
+
+                    updatePlantStatus();
+                    updateMoney();
+                } else {
+                    homeShowToast('❌ ' + result.message);
+                }
+            } catch (error) {
+                console.error('수확 오류:', error);
+                homeShowToast('❌ 수확 실패: ' + error.message);
+            }
+        }
+
+        // 수확 보상 모달 표시
+        function showHarvestModal(moneyEarned) {
+            const modal = document.getElementById('home-harvest-modal');
+            const content = document.getElementById('home-harvest-content');
+            const moneyDisplay = document.getElementById('home-harvest-money');
+
+            moneyDisplay.textContent = `+${moneyEarned.toLocaleString()} 코인`;
+
+            modal.classList.remove('hidden');
+            content.classList.add('harvest-modal-show');
+
+            // 코인 애니메이션 추가
+            setTimeout(() => {
+                const coinIcon = modal.querySelector('.text-6xl');
+                if (coinIcon) {
+                    coinIcon.classList.add('coin-bounce');
+                }
+            }, 200);
+        }
+
+        // 수확 모달 닫기
+        function closeHarvestModal() {
+            const modal = document.getElementById('home-harvest-modal');
+            const content = document.getElementById('home-harvest-content');
+
+            content.classList.remove('harvest-modal-show');
+            modal.classList.add('hidden');
+
+            // 애니메이션 클래스 제거
+            const coinIcon = modal.querySelector('.text-6xl');
+            if (coinIcon) {
+                coinIcon.classList.remove('coin-bounce');
+            }
+        }
+
+        // 토스트 알림
+        function homeShowToast(message) {
+            const toast = document.getElementById('home-toast');
+            document.getElementById('home-toast-message').textContent = message;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // ===== 개발자 메뉴 함수들 =====
+
+        function showHomeFarmDevMenu() {
+            document.getElementById('home-dev-menu-modal').classList.remove('hidden');
+        }
+
+        function closeHomeFarmDevMenu() {
+            document.getElementById('home-dev-menu-modal').classList.add('hidden');
+        }
+
+        // 식물 시간 건너뛰기
+        function homeSkipPlantTime() {
+            try {
+                const plants = plantSystem.getAllPlants();
+                let updated = 0;
+
+                Object.values(plants).forEach(plant => {
+                    if (plant.status === 'PLANTED') {
+                        plant.plantedAt = plantSystem.getCurrentTimestamp() - (25 * 60 * 60 * 1000);
+                        plantSystem.savePlant(plant);
+                        plantSystem.checkReadyStatus(plant);
+                        plantSystem.savePlant(plant);
+                        updated++;
+                    }
+                });
+
+                homeShowToast(`✅ ${updated}개 식물의 시간을 건너뛰었습니다`);
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('시간 건너뛰기 오류:', error);
+                homeShowToast('❌ 시간 건너뛰기 실패: ' + error.message);
+            }
+        }
+
+        // 테스트 성장권 추가
+        function homeAddTestTickets() {
+            try {
+                const user = plantSystem.getUserData();
+                const currentTime = plantSystem.getCurrentTimestamp();
+                const expiresAt = currentTime + (24 * 60 * 60 * 1000);
+
+                for (let i = 0; i < 5; i++) {
+                    user.rewards.growthTickets.push({
+                        ticketId: plantSystem.generateUUID(),
+                        issuedAt: currentTime,
+                        expiresAt: expiresAt
+                    });
+                }
+
+                plantSystem.saveUserData(user);
+                homeShowToast('✅ 성장권 5개가 추가되었습니다');
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('성장권 추가 오류:', error);
+                homeShowToast('❌ 성장권 추가 실패: ' + error.message);
+            }
+        }
+
+        // 식물만 초기화
+        function homeResetPlants() {
+            if (!confirm('모든 식물을 제거하시겠습니까?')) {
+                return;
+            }
+
+            try {
+                localStorage.removeItem('plantSystemPlants');
+                homeShowToast('✅ 식물이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('식물 초기화 오류:', error);
+                homeShowToast('❌ 식물 초기화 실패: ' + error.message);
+            }
+        }
+
+        // 일일 진행률 초기화
+        function homeResetDaily() {
+            if (!confirm('일일 진행률을 초기화하시겠습니까?')) {
+                return;
+            }
+
+            try {
+                const user = plantSystem.getUserData();
+                user.daily.completedSubjects = 0;
+                user.daily.completedSubjectIds = [];
+                user.daily.lastResetDate = plantSystem.getCurrentDate();
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 일일 진행률이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('일일 진행률 초기화 오류:', error);
+                homeShowToast('❌ 일일 진행률 초기화 실패: ' + error.message);
+            }
+        }
+
+        // 식물에 물 추가
+        function homeAddWaterToPlant() {
+            try {
+                const user = plantSystem.getUserData();
+                const plants = plantSystem.getUserPlants(user.userId);
+
+                if (plants.length === 0) {
+                    homeShowToast('❌ 심어진 식물이 없습니다');
+                    return;
+                }
+
+                const firstPlant = plants[0];
+                const plantData = plantSystem.getPlantById(firstPlant.plantId);
+
+                if (!plantData) {
+                    homeShowToast('❌ 식물 데이터를 찾을 수 없습니다');
+                    return;
+                }
+
+                plantData.waterCount = Math.min(plantData.waterCount + 10, 20);
+                plantSystem.savePlant(plantData);
+
+                homeShowToast(`✅ 식물에 물 10개를 추가했습니다 (현재: ${plantData.waterCount}/20)`);
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('물 추가 오류:', error);
+                homeShowToast('❌ 물 추가 실패: ' + error.message);
+            }
+        }
+
+        // 수확 팝업 테스트
+        function homeTestHarvestPopup() {
+            closeHomeFarmDevMenu();
+            showHarvestModal(100);
+        }
+
+        // 테스트 돈 추가
+        function homeAddTestMoney() {
+            try {
+                const user = plantSystem.getUserData();
+
+                if (!user.wallet) {
+                    user.wallet = { money: 0, water: 0 };
+                }
+
+                user.wallet.money += 1000;
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 1000원이 추가되었습니다');
+                closeHomeFarmDevMenu();
+                updateMoney();
+            } catch (error) {
+                console.error('돈 추가 오류:', error);
+                homeShowToast('❌ 돈 추가 실패: ' + error.message);
+            }
+        }
+
+        // 학습 미션 모두 완료
+        function homeCompleteLearningMissions() {
+            try {
+                const user = plantSystem.getUserData();
+
+                // 9과목 모두 완료 처리
+                const allSubjects = ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'person', 'economy'];
+
+                allSubjects.forEach((subject, index) => {
+                    if (!user.daily.completedSubjectIds.includes(subject)) {
+                        plantSystem.completeSubject(user, subject, subject);
+                    }
+                });
+
+                homeShowToast('✅ 9과목 모두 완료 처리되었습니다 (보상 포함)');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('학습 미션 완료 오류:', error);
+                homeShowToast('❌ 학습 미션 완료 실패: ' + error.message);
+            }
+        }
+
+        // 학습 미션 초기화
+        function homeResetLearningMissions() {
+            if (!confirm('모든 학습 미션을 초기화하시겠습니까?\n(보상은 유지됩니다)')) {
+                return;
+            }
+
+            try {
+                const user = plantSystem.getUserData();
+
+                // 일일 진행률만 초기화 (보상은 유지)
+                user.daily.completedSubjects = 0;
+                user.daily.completedSubjectIds = [];
+                user.daily.lastResetDate = plantSystem.getCurrentDate();
+
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 학습 미션이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('학습 미션 초기화 오류:', error);
+                homeShowToast('❌ 학습 미션 초기화 실패: ' + error.message);
+            }
+        }
+
+        // ===== 기존 함수들 =====
+
+        // 최근 학습 활동 업데이트
+        function updateWeeklyActivity() {
+            const labelsContainer = document.getElementById('weeklyLabels');
+            const activityContainer = document.getElementById('weeklyActivity');
+            if (!labelsContainer || !activityContainer) return;
+
+            labelsContainer.innerHTML = '';
+            activityContainer.innerHTML = '';
+
+            try {
+                const learningProgress = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+                const dailyActivity = learningProgress.dailyActivity || {};
+
+                // 연속 학습일 계산
+                let streakDays = 0;
+                const today = new Date();
+                for (let i = 0; i < 365; i++) {
+                    const checkDate = new Date(today);
+                    checkDate.setDate(today.getDate() - i);
+                    const dateStr = checkDate.toISOString().split('T')[0];
+
+                    if (dailyActivity[dateStr] && dailyActivity[dateStr] > 0) {
+                        streakDays++;
+                    } else {
+                        break;
+                    }
+                }
+
+                // 연속 학습일 UI 업데이트
+                document.getElementById('streakDays').textContent = streakDays;
+
+                // 최근 7일 활동 표시
+                for (let i = 6; i >= 0; i--) {
+                    const date = new Date();
+                    date.setDate(date.getDate() - i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
+
+                    // 요일 라벨 추가
+                    const label = document.createElement('div');
+                    label.className = 'text-xs text-gray-500';
+                    label.textContent = dayOfWeek;
+                    labelsContainer.appendChild(label);
+
+                    // 해당 날짜의 학습 기록 확인 (dailyActivity에서)
+                    const questionsCount = dailyActivity[dateStr] || 0;
+
+                    let bgColor = 'bg-gray-100';
+                    let textColor = 'text-gray-400';
+                    if (questionsCount > 0) {
+                        if (questionsCount >= 180) { // 3과목 이상
+                            bgColor = 'bg-green-500';
+                            textColor = 'text-white';
+                        } else if (questionsCount >= 120) { // 2과목
+                            bgColor = 'bg-green-400';
+                            textColor = 'text-white';
+                        } else if (questionsCount >= 60) { // 1과목
+                            bgColor = 'bg-green-300';
+                            textColor = 'text-white';
+                        } else {
+                            bgColor = 'bg-green-200';
+                            textColor = 'text-gray-700';
+                        }
+                    }
+
+                    const cell = document.createElement('div');
+                    cell.className = `w-full aspect-square ${bgColor} rounded flex flex-col items-center justify-center ${textColor} text-xs font-bold`;
+
+                    const questionsDiv = document.createElement('div');
+                    questionsDiv.textContent = questionsCount || '';
+                    questionsDiv.className = 'text-sm';
+
+                    const labelDiv = document.createElement('div');
+                    labelDiv.textContent = questionsCount > 0 ? '문제' : '';
+                    labelDiv.className = 'text-xs';
+
+                    cell.appendChild(questionsDiv);
+                    cell.appendChild(labelDiv);
+
+                    const minutes = Math.round(questionsCount / 6); // 60문제 = 10분
+                    cell.title = `${date.toLocaleDateString('ko-KR')} (${dayOfWeek})\n${questionsCount}문제 · ${minutes}분`;
+
+                    activityContainer.appendChild(cell);
+                }
+            } catch (e) {
+                console.error('주간 활동 업데이트 오류:', e);
             }
         }
     </script>

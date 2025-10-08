@@ -2,46 +2,901 @@
   {
     "id": "economy_hard_1_1",
     "subject": "economy",
-    "question": "경제 문제 3-1-1",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "💱 한국에서 1000원이면 빵 1개를 살 수 있지만, 미국에선 1달러로 빵 2개를 살 수 있어요. 이 차이를 설명하는 말은 무엇일까요?",
+    "options": ["구매력 평가", "환율 조작", "물가 사기", "통화 전쟁"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "‘구매력 평가’는 같은 돈으로 각 나라에서 얼마나 많은 물건을 살 수 있는지를 비교하는 거예요! 💰 물가 수준이 다르기 때문이에요!",
     "difficulty": 3
   },
   {
     "id": "economy_hard_1_2",
     "subject": "economy",
-    "question": "경제 문제 3-1-2",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🇰🇷 한국 돈 1400원 = 1달러일 때, 7000원은 몇 달러일까요?",
+    "options": ["5달러", "7달러", "10달러", "14달러"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "7000 ÷ 1400 = 5! 💱 환율 계산은 여행이나 수입품 살 때 꼭 필요해요!",
     "difficulty": 3
   },
   {
     "id": "economy_hard_1_3",
     "subject": "economy",
-    "question": "경제 문제 3-1-3",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🌍 한국에서 만든 자동차를 미국에 팔면, 이는 무엇일까요?",
+    "options": ["수출", "수입", "기부", "세금"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "우리나라 물건을 외국에 파는 건 ‘수출’이에요! 🚗 수출이 많아지면 나라 경제가 좋아져요!",
     "difficulty": 3
   },
   {
     "id": "economy_hard_1_4",
     "subject": "economy",
-    "question": "경제 문제 3-1-4",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "🍌 한국에서 파는 바나나는 대부분 외국에서 들어온 거예요. 이는 무엇일까요?",
+    "options": ["수입", "수출", "기부", "세금"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "외국에서 물건을 사오는 건 ‘수입’이에요! 🍌 한국에선 바나나를 키우기 어려워서 수입해요!",
     "difficulty": 3
   },
   {
     "id": "economy_hard_1_5",
     "subject": "economy",
-    "question": "경제 문제 3-1-5",
-    "options": ["정답", "오답1", "오답2", "오답3"],
+    "question": "📉 원/달러 환율이 오르면(예: 1300원 → 1400원), 한국 기업이 미국에 물건을 팔 때 어떤 영향이 있을까요?",
+    "options": ["이득이 커져요", "손해가 커져요", "변화 없어요", "공짜가 돼요"],
     "correctIndex": 0,
-    "explanation": "설명",
+    "explanation": "환율이 오르면(원이 약해지면), 미국에서 받은 달러를 원으로 바꿨을 때 더 많은 돈이 돼요! 💵 수출 기업에 유리해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_1_6",
+    "subject": "economy",
+    "question": "📈 원/달러 환율이 내리면(예: 1400원 → 1300원), 한국 사람이 미국 여행을 가는 데 어떤 영향이 있을까요?",
+    "options": ["돈이 더 들어요", "돈이 덜 들어요", "변화 없어요", "공짜가 돼요"],
+    "correctIndex": 0,
+    "explanation": "환율이 내리면(원이 강해지면), 같은 원으로 더 많은 달러를 살 수 있어요! ✈️ 여행 비용이 줄어들어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_1_7",
+    "subject": "economy",
+    "question": "📱 한국에서 만든 스마트폰을 베트남에 팔면, 이는 무엇일까요?",
+    "options": ["수출", "수입", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "한국 제품을 외국에 파는 건 ‘수출’이에요! 📱 수출은 우리나라 경제를 튼튼하게 해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_1_8",
+    "subject": "economy",
+    "question": "⚽ 유럽에서 만든 축구화를 한국에서 사면, 이는 무엇일까요?",
+    "options": ["수입", "수출", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "외국 제품을 한국에서 사는 건 ‘수입’이에요! ⚽ 수입품은 관세(세금)를 내야 해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_1_9",
+    "subject": "economy",
+    "question": "💱 환율이 자주 바뀌는 이유는 무엇일까요?",
+    "options": ["나라 간 경제 상황이 다르기 때문", "은행이 마음대로 정해서", "공짜로 바꿔서", "로봇이 정해서"],
+    "correctIndex": 0,
+    "explanation": "각 나라의 경제 상황(물가, 이자율, 정치 등)에 따라 환율이 바뀌어요! 📊 시장에서 자연스럽게 결정된답니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_1_10",
+    "subject": "economy",
+    "question": "🌏 수출과 수입의 차이를 ‘무역수지’라고 해요. 무역수지가 플러스면 어떤 뜻일까요?",
+    "options": ["수출이 수입보다 많아요", "수입이 수출보다 많아요", "수출과 수입이 같아요", "모두 공짜예요"],
+    "correctIndex": 0,
+    "explanation": "무역수지가 플러스(흑자)면 수출이 더 많아서 나라에 돈이 들어온다는 뜻이에요! 💰 경제가 건강하다는 신호예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_1",
+    "subject": "economy",
+    "question": "📦 온라인으로 신발을 샀는데, 사이즈가 안 맞아요. 어떻게 해야 할까요?",
+    "options": ["7일 이내 청약철회 가능", "영원히 못 바꿔요", "친구에게 강요해요", "버려야 해요"],
+    "correctIndex": 0,
+    "explanation": "온라인 쇼핑은 받은 날부터 7일 이내면 이유 없이 반품할 수 있어요! 📦 ‘청약철회’라는 권리예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_2",
+    "subject": "economy",
+    "question": "📱 핸드폰을 샀더니 1주일 만에 고장 났어요. 보증 기간은 1년이에요. 이럴 땐 어떻게 해야 할까요?",
+    "options": ["무상 수리 요청", "새것을 사야 해요", "친구에게 줘야 해요", "버려야 해요"],
+    "correctIndex": 0,
+    "explanation": "보증 기간 내 고장은 ‘무상 수리’를 요청할 수 있어요! 🔧 영수증과 보증서는 꼭 보관하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_3",
+    "subject": "economy",
+    "question": "🛒 물건을 사기 전에 꼭 확인해야 할 ‘소비자 3대 권리’는 무엇일까요?",
+    "options": ["알 권리, 선택권, 안전권", "공짜 권리, 버릴 권리, 환불 권리", "모두 사기 권리, 친구 따라 사기 권리, 눈 감고 사기 권리", "이름 보기 권리, 포장 보기 권리, 색 보기 권리"],
+    "correctIndex": 0,
+    "explanation": "소비자는 ‘알 권리, 선택권, 안전권’을 가져요! 📚 하지만 책임도 있어요: 계획적 소비, 영수증 보관 등!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_4",
+    "subject": "economy",
+    "question": "📞 물건 문제로 가게와 말이 안 통하면, 어디에 전화해야 할까요?",
+    "options": ["소비자센터(1372)", "경찰서(112)", "소방서(119)", "학교"],
+    "correctIndex": 0,
+    "explanation": "소비자센터(1372)에 전화하면 공정한 도움을 받을 수 있어요! ☎️ 소비자의 권리를 지켜주는 곳이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_5",
+    "subject": "economy",
+    "question": "🎁 ‘무상 수리’와 ‘유상 수리’의 차이는 무엇일까요?",
+    "options": ["무상은 공짜, 유상은 돈을 내요", "둘 다 공짜예요", "둘 다 돈을 내요", "수리 안 해줘요"],
+    "correctIndex": 0,
+    "explanation": "‘무상 수리’는 보증 기간 내라서 공짜, ‘유상 수리’는 보증 기간 지나서 돈을 내야 해요! 🔧",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_6",
+    "subject": "economy",
+    "question": "📱 게임에서 ‘무료 체험’ 후 자동 결제가 됐어요. 이럴 땐 어떻게 해야 할까요?",
+    "options": ["부모님과 소비자센터에 신고", "혼자 울기", "친구에게 말하지 않기", "다시 사기"],
+    "correctIndex": 0,
+    "explanation": "자동 결제 피해는 부모님과 소비자센터에 꼭 신고해야 해요! 💳 결제 전 ‘자동 갱신’ 설정을 꼭 확인하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_7",
+    "subject": "economy",
+    "question": "🧺 ‘필요한 것’과 ‘원하는 것’을 구분하는 이유는 무엇일까요?",
+    "options": ["현명한 소비를 하기 위해", "더 많이 사기 위해", "친구에게 자랑하기 위해", "포장지를 모으기 위해"],
+    "correctIndex": 0,
+    "explanation": "‘필요한 것’(밥, 옷)과 ‘원하는 것’(장난감, 과자)을 구분하면 돈을 더 잘 쓸 수 있어요! 🛒",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_8",
+    "subject": "economy",
+    "question": "📺 광고에서 ‘한정 수량!’이라고 하면 왜 조심해야 할까요?",
+    "options": ["급하게 사게 만들기 때문", "공짜로 주기 때문", "더 싸기 때문", "친구가 사기 때문"],
+    "correctIndex": 0,
+    "explanation": "‘한정 수량’은 소비자가 급하게 사도록 유도하는 마케팅 전략이에요! ⏳ 진짜 필요한지 생각하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_9",
+    "subject": "economy",
+    "question": "📱 유명 인플루언서가 추천하는 제품을 무조건 사야 할까요?",
+    "options": ["아니요, 직접 비교해 봐야 해요", "네, 무조건 좋아요", "공짜니까 사야 해요", "친구가 사면 따라 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "인플루언서도 광고료를 받고 추천해요! ⭐ 제품 자체를 직접 확인하고, 리뷰를 비교하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_2_10",
+    "subject": "economy",
+    "question": "🛒 광고에 속지 않기 위한 가장 좋은 방법은 무엇일까요?",
+    "options": ["여러 곳에서 가격과 후기 비교하기", "첫눈에 사기", "친구 따라 사기", "가장 비싼 걸 사기"],
+    "correctIndex": 0,
+    "explanation": "여러 가게에서 가격, 성분, 리뷰를 비교하면 광고에 속지 않아요! 🔍 ‘비교는 힘’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_1",
+    "subject": "economy",
+    "question": "🏦 은행에 10만 원을 맡기면 1년 뒤 10만 2천 원이 됐어요. 이 extra 2천 원은 무엇일까요?",
+    "options": ["이자", "세금", "수수료", "선물"],
+    "correctIndex": 0,
+    "explanation": "은행이 주는 extra 돈을 ‘이자’라고 해요! 💰 돈을 맡기면 시간이 지날수록 조금씩 늘어나요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_2",
+    "subject": "economy",
+    "question": "📈 ‘복리’란 무엇을 의미할까요?",
+    "options": ["이자에도 이자가 붙는 것", "이자가 안 붙는 것", "공짜로 주는 것", "세금을 내는 것"],
+    "correctIndex": 0,
+    "explanation": "‘복리’는 이자에 또 이자가 붙는 방식이에요! 💸 시간이 지날수록 돈이 훨씬 더 빨리 커져요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_3",
+    "subject": "economy",
+    "question": "🎯 ‘경제 계획표’를 만드는 이유는 무엇일까요?",
+    "options": ["돈을 어떻게 쓸지 미리 정하기 위해", "모두 쓰기 위해", "버리기 위해", "숨기기 위해"],
+    "correctIndex": 0,
+    "explanation": "경제 계획표는 용돈을 ‘이만큼 쓰고, 이만큼 저축하자’고 정하는 거예요! 📊 계획은 성공의 첫걸음이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_4",
+    "subject": "economy",
+    "question": "💰 10만 원을 은행에 맡기고 1년 뒤 10만 1500원이 됐다면, 이자율은 얼마일까요?",
+    "options": ["1.5%", "15%", "0.15%", "150%"],
+    "correctIndex": 0,
+    "explanation": "1500원 ÷ 10만 원 = 0.015 → 1.5% 이자율이에요! 📈 이자율은 돈이 얼마나 늘어나는지를 알려줘요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_5",
+    "subject": "economy",
+    "question": "🐷 저금통보다 은행이 더 좋은 이유는 무엇일까요?",
+    "options": ["이자가 붙고 안전하기 때문", "공짜로 주기 때문", "장난감을 주기 때문", "버리기 쉬워서"],
+    "correctIndex": 0,
+    "explanation": "은행은 이자가 붙고, 도둑이나 화재로부터 돈을 안전하게 지켜줘요! 🔒 현대의 똑똑한 저금통이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_6",
+    "subject": "economy",
+    "question": "🎯 ‘꿈을 위한 통장’을 만들려면 어떤 계좌가 좋을까요?",
+    "options": ["정기예금", "당좌예금", "신용카드", "가상화폐 지갑"],
+    "correctIndex": 0,
+    "explanation": "‘정기예금’은 일정 기간 돈을 맡기면 더 높은 이자를 주는 계좌예요! 🎓 꿈을 위한 저축에 딱이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_7",
+    "subject": "economy",
+    "question": "💰 1만 원을 매달 저축하면 2년 후에 얼마일까요? (이자 제외)",
+    "options": ["24만 원", "12만 원", "20만 원", "30만 원"],
+    "correctIndex": 0,
+    "explanation": "1만 × 12개월 × 2년 = 24만 원! 📅 꾸준함이 큰 힘이 돼요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_8",
+    "subject": "economy",
+    "question": "🏦 은행에서 ‘이자’를 주는 이유는 무엇일까요?",
+    "options": ["우리 돈으로 다른 사람에게 빌려주기 때문", "공짜로 주기 때문", "세금을 내기 때문", "장난감을 주기 때문"],
+    "correctIndex": 0,
+    "explanation": "은행은 우리 돈을 다른 사람에게 빌려주고, 그 대가로 이자를 주는 거예요! 💸 서로 도우는 경제 시스템이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_9",
+    "subject": "economy",
+    "question": "📱 ‘핀테크’란 무엇을 의미할까요?",
+    "options": ["금융+기술의 결합", "핀으로 돈 고정하기", "기술만 사용하기", "공짜 앱"],
+    "correctIndex": 0,
+    "explanation": "‘핀테크’는 금융(Fin)과 기술(Tech)이 결합한 말이에요! 💳 모바일 결제, 투자 앱 등이 대표적이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_3_10",
+    "subject": "economy",
+    "question": "💡 경제를 배우는 가장 큰 이유는 무엇일까요?",
+    "options": ["현명하게 살고, 꿈을 이루기 위해", "모두 쓰기 위해", "버리기 위해", "숨기기 위해"],
+    "correctIndex": 0,
+    "explanation": "경제를 알면 돈을 아끼고, 나누고, 꿈을 이룰 수 있어요! 💰 ‘똑똑한 어린이’가 되는 길이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_1",
+    "subject": "economy",
+    "question": "👨‍💻 프로그래머는 어떤 방식으로 소득을 얻을까요?",
+    "options": ["앱과 프로그램을 만들어서", "농사 지어서", "버스를 운전해서", "노래를 불러서"],
+    "correctIndex": 0,
+    "explanation": "프로그래머는 앱, 게임, 웹사이트를 만들어서 소득을 얻어요! 💻 디지털 시대의 중요한 직업이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_2",
+    "subject": "economy",
+    "question": "🌍 유튜버는 어떤 ‘용역’을 제공할까요?",
+    "options": ["재미있는 영상 콘텐츠", "밥을 해 줘요", "버스를 몰아요", "책을 써요"],
+    "correctIndex": 0,
+    "explanation": "유튜버는 영상으로 정보와 즐거움을 제공하는 ‘디지털 용역’을 해요! 🎥 광고 수익으로 소득을 얻어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_3",
+    "subject": "economy",
+    "question": "👩‍🍳 요리사는 ‘재화’와 ‘용역’ 중 어떤 걸 제공할까요?",
+    "options": ["둘 다", "재화만", "용역만", "아무것도 아님"],
+    "correctIndex": 0,
+    "explanation": "요리사는 음식(재화)을 만들고, 서빙과 분위기(용역)도 제공해요! 🍽️ 현대 직업은 종종 둘을 함께 제공해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_4",
+    "subject": "economy",
+    "question": "🎤 가수의 소득원은 무엇일까요?",
+    "options": ["공연, 음원, 광고", "농사", "버스 운전", "책 판매"],
+    "correctIndex": 0,
+    "explanation": "가수는 공연, 음원 판매, 광고 모델 등 다양한 방식으로 소득을 얻어요! 🎶 다각화된 수입 구조예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_5",
+    "subject": "economy",
+    "question": "🏡 프리랜서는 어떤 특징이 있을까요?",
+    "options": ["자유롭게 일하지만 소득이 불안정해요", "항상 고정 월급이에요", "회사에 꼭 출근해야 해요", "세금을 안 내요"],
+    "correctIndex": 0,
+    "explanation": "프리랜서는 자유롭게 일하지만, 월급이 일정하지 않고, 스스로 세금도 내야 해요! 💼 책임감이 필요한 직업이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_6",
+    "subject": "economy",
+    "question": "📚 작가의 ‘재화’는 무엇일까요?",
+    "options": ["책", "강의", "서명", "팬미팅"],
+    "correctIndex": 0,
+    "explanation": "작가가 만든 ‘책’은 만질 수 있는 재화예요! 📖 강의는 용역이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_7",
+    "subject": "economy",
+    "question": "🎨 화가는 어떻게 소득을 얻을까요?",
+    "options": ["그림을 팔거나 전시해서", "농사 지어서", "버스를 운전해서", "노래를 불러서"],
+    "correctIndex": 0,
+    "explanation": "화가는 그림을 팔거나, 전시회를 열어 소득을 얻어요! 🖼️ 창작 활동도 중요한 경제 활동이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_8",
+    "subject": "economy",
+    "question": "📱 앱 개발자의 ‘용역’은 무엇일까요?",
+    "options": ["앱을 만들어 주는 것", "앱을 사는 것", "앱을 버리는 것", "앱을 숨기는 것"],
+    "correctIndex": 0,
+    "explanation": "앱 개발자는 고객을 위해 앱을 만들어 주는 ‘디지털 용역’을 제공해요! 💻 문제 해결이 핵심이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_9",
+    "subject": "economy",
+    "question": "🌱 농부가 수확한 쌀은 ‘재화’일까요, ‘용역’일까요?",
+    "options": ["재화", "용역", "둘 다", "아무것도 아님"],
+    "correctIndex": 0,
+    "explanation": "쌀은 만지고 먹을 수 있는 ‘재화’예요! 🌾 농사짓는 과정은 용역이지만, 결과물은 재화랍니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_4_10",
+    "subject": "economy",
+    "question": "💼 ‘4차 산업혁명’ 시대에 중요한 직업은 무엇일까요?",
+    "options": ["인공지능 전문가", "마차꾼", "석유 등 판매원", "전신주 기사"],
+    "correctIndex": 0,
+    "explanation": "인공지능, 로봇, 빅데이터 전문가는 미래 사회를 이끌 직업이에요! 🤖 기술과 창의성이 결합된 직업이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_1",
+    "subject": "economy",
+    "question": "🍓 딸기가 제철이면 왜 가격이 내려갈까요?",
+    "options": ["공급이 많아지기 때문", "맛이 없기 때문", "색이 변하기 때문", "포장이 예쁘기 때문"],
+    "correctIndex": 0,
+    "explanation": "제철엔 딸기가 많이 나와서 ‘공급’이 많아져요. 그러면 가격이 내려가죠! 📉 ‘수요와 공급’의 법칙이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_2",
+    "subject": "economy",
+    "question": "❄️ 겨울에 난방용 석유 가격이 오르는 이유는 무엇일까요?",
+    "options": ["수요가 많아지기 때문", "공급이 많아지기 때문", "색이 변하기 때문", "포장이 예쁘기 때문"],
+    "correctIndex": 0,
+    "explanation": "겨울엔 난방을 많이 해서 석유 ‘수요’가 늘어나요. 그러면 가격이 올라가죠! 📈 수요↑ → 가격↑!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_3",
+    "subject": "economy",
+    "question": "📱 신형 스마트폰이 나왔을 때 초기 가격이 비싼 이유는 무엇일까요?",
+    "options": ["공급이 적고 수요가 많기 때문", "공급이 많기 때문", "수요가 없기 때문", "색이 예쁘기 때문"],
+    "correctIndex": 0,
+    "explanation": "처음엔 물건이 적고(공급↓), 사려는 사람이 많아서(수요↑) 가격이 비싸요! 📱 시간이 지나면 싸져요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_4",
+    "subject": "economy",
+    "question": "📉 ‘공급이 많고 수요가 적으면’ 가격은 어떻게 될까요?",
+    "options": ["내려가요", "올라가요", "그대로예요", "사라져요"],
+    "correctIndex": 0,
+    "explanation": "물건은 많은데 사는 사람은 적으면, 가게는 싸게 팔아야 해요! 📉 그래서 가격이 내려가죠!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_5",
+    "subject": "economy",
+    "question": "📈 ‘수요가 많고 공급이 적으면’ 가격은 어떻게 될까요?",
+    "options": ["올라가요", "내려가요", "그대로예요", "사라져요"],
+    "correctIndex": 0,
+    "explanation": "사려는 사람은 많은데 물건이 적으면, 가게는 비싸게 팔 수 있어요! 📈 그래서 가격이 올라가죠!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_6",
+    "subject": "economy",
+    "question": "🎪 축제 때 붕어빵 가격이 평소보다 비싼 이유는 무엇일까요?",
+    "options": ["수요가 많기 때문", "붕어빵이 커지기 때문", "색이 변하기 때문", "포장이 예쁘기 때문"],
+    "correctIndex": 0,
+    "explanation": "축제엔 붕어빵을 사려는 사람이 많아서(수요↑) 가격이 올라가요! 🐟 일시적인 수요 증가예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_7",
+    "subject": "economy",
+    "question": "🌧️ 비 오는 날 우산 가격이 오르는 현상을 무엇이라고 할까요?",
+    "options": ["수요 증가", "공급 증가", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "비 오는 날 우산을 사려는 사람이 많아져서(수요↑) 가격이 올라가요! ☔ 시장의 자연스러운 반응이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_8",
+    "subject": "economy",
+    "question": "🍎 사과 농사가 풍작이면 가격은 어떻게 될까요?",
+    "options": ["내려가요", "올라가요", "그대로예요", "사라져요"],
+    "correctIndex": 0,
+    "explanation": "풍작이면 사과가 많이 나와서(공급↑) 가격이 내려가요! 🍏 ‘공급 과잉’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_9",
+    "subject": "economy",
+    "question": "🔥 여름에 선풍기 수요가 늘어나는 이유는 무엇일까요?",
+    "options": ["날씨가 더워지기 때문", "선풍기가 싸지기 때문", "색이 변하기 때문", "포장이 예쁘기 때문"],
+    "correctIndex": 0,
+    "explanation": "여름엔 더워서 선풍기를 사려는 사람이 많아져요(수요↑)! 🌞 계절에 따라 수요가 바뀌어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_5_10",
+    "subject": "economy",
+    "question": "⚖️ ‘수요와 공급’이 만나는 지점에서 정해지는 가격을 무엇이라고 할까요?",
+    "options": ["균형 가격", "할인 가격", "공짜 가격", "세금 가격"],
+    "correctIndex": 0,
+    "explanation": "수요와 공급이 맞물리는 가격을 ‘균형 가격’이라고 해요! ⚖️ 시장이 자연스럽게 정하는 가격이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_1",
+    "subject": "economy",
+    "question": "🍕 피자 배달은 ‘재화’와 ‘용역’ 중 어떤 걸 포함할까요?",
+    "options": ["둘 다", "재화만", "용역만", "아무것도 아님"],
+    "correctIndex": 0,
+    "explanation": "피자(재화) + 배달(용역) = 둘 다! 🍕 현대 서비스는 종종 둘을 함께 제공해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_2",
+    "subject": "economy",
+    "question": "🎓 온라인 강의는 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "온라인 강의는 지식을 전달하는 ‘디지털 용역’이에요! 💻 만질 수 없지만, 가치 있는 서비스예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_3",
+    "subject": "economy",
+    "question": "📱 스마트폰은 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "스마트폰은 만지고 소유할 수 있는 ‘재화’예요! 📱 앱이나 통신 서비스는 용역이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_4",
+    "subject": "economy",
+    "question": "🎧 음원 스트리밍 서비스는 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "음원 스트리밍은 음악을 듣게 해주는 ‘디지털 용역’이에요! 🎶 파일을 소유하지 않지만, 서비스를 이용하죠!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_5",
+    "subject": "economy",
+    "question": "🏡 집을 사는 건 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "집은 만지고 소유할 수 있는 ‘재화’예요! 🏠 부동산은 대표적인 재화랍니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_6",
+    "subject": "economy",
+    "question": "🧹 청소 서비스는 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "청소는 집을 깨끗하게 해주는 ‘서비스’니까 ‘용역’이에요! 🧽 결과는 보이지만, 물건은 아니에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_7",
+    "subject": "economy",
+    "question": "📚 전자책(e-book)은 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "전자책은 파일 형태지만, 소유하고 반복 사용할 수 있어서 ‘재화’로 분류돼요! 📖 디지털 시대의 새로운 재화예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_8",
+    "subject": "economy",
+    "question": "✈️ 항공권은 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "항공권은 비행기 탑승이라는 ‘서비스’를 이용하는 권리예요! ✈️ 그래서 ‘용역’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_9",
+    "subject": "economy",
+    "question": "🎨 미술관 입장권은 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "입장권은 전시를 관람하는 ‘서비스’를 이용하는 거예요! 🖼️ 물건이 아니라 경험을 사는 거랍니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_6_10",
+    "subject": "economy",
+    "question": "💧 생수는 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "병에 든 생수는 만지고 소비할 수 있는 ‘재화’예요! 💦 수도물은 공공재지만, 생수는 재화랍니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_1",
+    "subject": "economy",
+    "question": "📺 광고에서 ‘한정 수량!’이라고 하면 왜 조심해야 할까요?",
+    "options": ["급하게 사게 만들기 때문", "공짜로 주기 때문", "더 싸기 때문", "친구가 사기 때문"],
+    "correctIndex": 0,
+    "explanation": "‘한정 수량’은 소비자가 급하게 사도록 유도하는 마케팅 전략이에요! ⏳ 진짜 필요한지 생각하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_2",
+    "subject": "economy",
+    "question": "📱 유명 인플루언서가 추천하는 제품을 무조건 사야 할까요?",
+    "options": ["아니요, 직접 비교해 봐야 해요", "네, 무조건 좋아요", "공짜니까 사야 해요", "친구가 사면 따라 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "인플루언서도 광고료를 받고 추천해요! ⭐ 제품 자체를 직접 확인하고, 리뷰를 비교하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_3",
+    "subject": "economy",
+    "question": "🛒 ‘1+1’과 ‘20% 할인’ 중 어떤 게 더 이득일까요?",
+    "options": ["상황에 따라 달라져요", "항상 1+1이 이득이에요", "항상 20%가 이득이에요", "둘 다 공짜예요"],
+    "correctIndex": 0,
+    "explanation": "1+1은 50% 할인과 같지만, 필요 없는 물건을 두 개 사면 손해예요! 🧮 꼭 필요한 양만 계산하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_4",
+    "subject": "economy",
+    "question": "📱 게임 속 ‘한정 아이템’ 광고를 보면 어떻게 해야 할까요?",
+    "options": ["부모님과 상의해요", "바로 결제해요", "친구에게 말해요", "무시해요"],
+    "correctIndex": 0,
+    "explanation": "한정 아이템은 희소성을 강조해 충동구매를 유도해요! 💰 꼭 부모님과 이야기하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_5",
+    "subject": "economy",
+    "question": "🍭 ‘건강에 좋아요!’라는 광고를 믿기 전에 꼭 확인해야 할 것은 무엇일까요?",
+    "options": ["영양 성분표", "포장 색깔", "이름 길이", "친구가 먹는지"],
+    "correctIndex": 0,
+    "explanation": "광고는 과장될 수 있어요! 📦 뒷면의 ‘영양 성분표’와 ‘원재료’를 꼭 확인하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_6",
+    "subject": "economy",
+    "question": "🛒 온라인 쇼핑에서 ‘리뷰’를 보는 가장 큰 이유는 무엇일까요?",
+    "options": ["실제 사용자의 솔직한 후기 때문", "이름 외우기 때문", "포장 보기 때문", "친구 기다리기 때문"],
+    "correctIndex": 0,
+    "explanation": "리뷰는 실제 사용자의 경험을 알려줘요! ⭐ 광고보다 신뢰할 수 있어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_7",
+    "subject": "economy",
+    "question": "🎭 광고에서 ‘전문가 추천’이라고 나오면 어떻게 해야 할까요?",
+    "options": ["누구를 위한 추천인지 확인해요", "무조건 사야 해요", "공짜니까 사야 해요", "친구가 사면 따라 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "‘전문가’가 누구인지, 어떤 기준으로 추천했는지 확인해야 해요! 🧐 광고일 수도 있으니까요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_8",
+    "subject": "economy",
+    "question": "📱 앱 다운로드 광고에서 ‘무료’라고 해도 실제로는 어떤 비용이 들 수 있을까요?",
+    "options": ["인앱 결제", "공짜로만 써요", "친구가 내줘요", "은행이 내줘요"],
+    "correctIndex": 0,
+    "explanation": "‘무료 앱’도 게임 아이템, 스킨 등 ‘인앱 결제’가 있을 수 있어요! 💳 부모님 허락 없이 결제하지 마세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_9",
+    "subject": "economy",
+    "question": "🛒 광고에 속지 않기 위한 가장 좋은 방법은 무엇일까요?",
+    "options": ["여러 곳에서 가격과 후기 비교하기", "첫눈에 사기", "친구 따라 사기", "가장 비싼 걸 사기"],
+    "correctIndex": 0,
+    "explanation": "여러 가게에서 가격, 성분, 리뷰를 비교하면 광고에 속지 않아요! 🔍 ‘비교는 힘’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_7_10",
+    "subject": "economy",
+    "question": "📺 광고를 보고 물건을 사기 전에 꼭 물어봐야 할 질문은 무엇일까요?",
+    "options": ["정말 필요한가요?", "친구가 샀나요?", "이름이 멋있나요?", "포장이 예쁘나요?"],
+    "correctIndex": 0,
+    "explanation": "‘정말 필요한가요?’라는 질문이 충동구매를 막아줘요! 🧠 현명한 소비자의 첫걸음이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_1",
+    "subject": "economy",
+    "question": "🏫 학교, 도서관, 공원은 어떤 돈으로 운영될까요?",
+    "options": ["세금", "기업 기부", "학생 모금", "은행 대출"],
+    "correctIndex": 0,
+    "explanation": "학교, 도서관, 공원은 국민이 낸 ‘세금’으로 운영돼요! 💰 모두가 함께 쓰는 ‘공공재’예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_2",
+    "subject": "economy",
+    "question": "👮‍♂️ 경찰, 소방관, 군인은 누가 월급을 줄까요?",
+    "options": ["정부(세금)", "기업", "학생", "은행"],
+    "correctIndex": 0,
+    "explanation": "경찰, 소방관, 군인은 정부가 세금으로 월급을 줘요! 🛡️ 국민의 안전을 지키는 공공 서비스예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_3",
+    "subject": "economy",
+    "question": "🛣️ 도로, 다리, 터널은 어떤 재화일까요?",
+    "options": ["공공재", "사유재", "기부품", "세금"],
+    "correctIndex": 0,
+    "explanation": "도로, 다리, 터널은 모두가 자유롭게 쓸 수 있는 ‘공공재’예요! 🚗 세금으로 만들고 유지해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_4",
+    "subject": "economy",
+    "question": "💧 수도, 전기, 가스는 ‘공공재’일까요?",
+    "options": ["아니요, 공공서비스지만 유료예요", "네, 공짜 공공재예요", "기업만 써요", "학생만 써요"],
+    "correctIndex": 0,
+    "explanation": "수도, 전기, 가스는 정부가 관리하지만, 사용한 만큼 요금을 내야 해요! 💦 ‘공공서비스’지만 공짜는 아니에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_5",
+    "subject": "economy",
+    "question": "📚 도서관 책을 공짜로 빌릴 수 있는 이유는 무엇일까요?",
+    "options": ["세금으로 운영되기 때문", "기업이 줘서", "선생님이 사서", "학생이 모아서"],
+    "correctIndex": 0,
+    "explanation": "도서관은 세금으로 운영돼서 누구나 공짜로 책을 빌릴 수 있어요! 📖 지식은 모두의 것이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_6",
+    "subject": "economy",
+    "question": "🚑 119에 전화하면 왜 공짜일까요?",
+    "options": ["생명은 돈으로 살 수 없기 때문", "기업이 줘서", "학생이 모아서", "공짜로 생겨서"],
+    "correctIndex": 0,
+    "explanation": "119는 위급할 때 누구나 도움을 받을 수 있도록 세금으로 운영돼요! 🚒 생명은 돈으로 살 수 없어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_7",
+    "subject": "economy",
+    "question": "💰 세금은 어떤 원칙으로 내야 할까요?",
+    "options": ["많이 버는 사람이 더 많이", "모두 똑같이", "학생만 내야 해요", "기업만 내야 해요"],
+    "correctIndex": 0,
+    "explanation": "‘능력에 따라 세금을 낸다’는 원칙이에요! 💼 많이 버는 사람이 더 많이 내는 게 공평하답니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_8",
+    "subject": "economy",
+    "question": "🌍 공공재를 더럽히면 어떤 문제가 생길까요?",
+    "options": ["모두가 불편하고, 세금이 더 들어요", "공짜로 줘요", "더 좋아져요", "기업이 치워줘요"],
+    "correctIndex": 0,
+    "explanation": "공원에 쓰레기를 버리면 모두가 불편하고, 세금으로 청소해야 해요! 🌱 ‘내가 지킨다’는 마음이 필요해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_9",
+    "subject": "economy",
+    "question": "🏥 병원은 공공재일까요?",
+    "options": ["일부는 공공, 일부는 사유", "모두 공공재예요", "모두 사유재예요", "학생만 써요"],
+    "correctIndex": 0,
+    "explanation": "국립병원은 공공재지만, 일반 병원은 사유재예요! 🏥 공공재는 세금으로, 사유재는 돈을 내고 이용해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_8_10",
+    "subject": "economy",
+    "question": "🚮 ‘공공재’를 잘 지키는 방법은 무엇일까요?",
+    "options": ["쓰레기 안 버리기, 아껴 쓰기", "버리기", "숨기기", "기업에 맡기기"],
+    "correctIndex": 0,
+    "explanation": "공공재는 우리 모두의 것이에요! 🌍 쓰레기 안 버리고, 아껴 쓰는 습관이 중요하답니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_1",
+    "subject": "economy",
+    "question": "🎁 기부는 ‘경제 활동’일까요?",
+    "options": ["네, 나눔 경제의 일부예요", "아니요, 경제와 무관해요", "공짜니까 안 돼요", "기업만 해요"],
+    "correctIndex": 0,
+    "explanation": "기부는 ‘나눔 경제’의 중요한 부분이에요! ❤️ 돈과 물건이 도움이 필요한 사람에게 흐르는 경제 활동이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_2",
+    "subject": "economy",
+    "question": "🧸 안 입는 옷을 기부하면 어떤 경제적 효과가 있을까요?",
+    "options": ["자원 재활용, 소비 절약", "쓰레기만 늘어나요", "기업이 이득 봐요", "세금만 나가요"],
+    "correctIndex": 0,
+    "explanation": "기부는 자원을 재활용하고, 새로운 소비를 줄이는 ‘지속 가능한 경제’를 만들어요! 🧥 나눔은 경제도 살려요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_3",
+    "subject": "economy",
+    "question": "📚 책을 기부하면 어디에 갈까요?",
+    "options": ["도서관, 학교, 멀리 사는 친구", "쓰레기장", "기업", "은행"],
+    "correctIndex": 0,
+    "explanation": "기부한 책은 도서관, 학교, 멀리 사는 친구들에게 가요! 📖 지식도 나누면 커져요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_4",
+    "subject": "economy",
+    "question": "💝 기부는 꼭 큰돈이어야 할까요?",
+    "options": ["아니요, 작은 것부터 가능해요", "네, 큰돈만 돼요", "공짜만 돼요", "기업만 해요"],
+    "correctIndex": 0,
+    "explanation": "100원도, 그림도, 편지도 기부가 될 수 있어요! 💌 마음이 가장 중요하답니다!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_5",
+    "subject": "economy",
+    "question": "🍲 급식 남은 음식을 기부하면 어떤 일이 생길까요?",
+    "options": ["배고픈 사람을 도와요", "쓰레기가 돼요", "공짜로 줘요", "기업이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "음식 기부는 배고픈 사람을 도와요! 🍚 ‘남기지 않기’도 중요한 나눔이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_6",
+    "subject": "economy",
+    "question": "🤝 나눔을 하면 경제에 어떤 영향을 미칠까요?",
+    "options": ["따뜻한 경제를 만들어요", "돈을 없애요", "기업만 좋아요", "쓰레기를 만들어요"],
+    "correctIndex": 0,
+    "explanation": "나눔은 ‘따뜻한 경제’를 만드는 힘이에요! 🌍 돈만이 아니라 마음도 흐르는 경제예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_7",
+    "subject": "economy",
+    "question": "🎁 생일에 선물 대신 기부를 요청하면 어떤 경제적 의미가 있을까요?",
+    "options": ["소비 대신 나눔을 선택하는 것", "기업이 이득 봐요", "공짜로 줘요", "세금만 나가요"],
+    "correctIndex": 0,
+    "explanation": "기부 요청은 ‘소비’ 대신 ‘나눔’을 선택하는 현명한 경제 행동이에요! 🎂 기쁨을 함께 나누는 날이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_8",
+    "subject": "economy",
+    "question": "🧸 장난감을 기부할 때 꼭 해야 할 일은 무엇일까요?",
+    "options": ["깨끗이 닦기", "버리기", "숨기기", "비싸게 팔기"],
+    "correctIndex": 0,
+    "explanation": "기부 전에 깨끗이 닦으면 받는 사람도 기뻐요! 🧼 ‘정성이 담긴 나눔’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_9",
+    "subject": "economy",
+    "question": "❤️ ‘사회적 기업’이란 무엇을 목표로 할까요?",
+    "options": ["이윤보다 사회 문제 해결", "이윤만 추구", "공짜로 주기", "세금만 내기"],
+    "correctIndex": 0,
+    "explanation": "사회적 기업은 돈을 벌면서도 장애인 고용, 환경 보호 등 사회 문제를 해결하려 해요! 🌱 ‘착한 경제’의 대표예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_9_10",
+    "subject": "economy",
+    "question": "🌱 나눔을 시작할 수 있는 가장 작은 경제 행동은 무엇일까요?",
+    "options": ["안 쓰는 물건 정리하기", "큰돈 주기", "기업에 요청하기", "버리기"],
+    "correctIndex": 0,
+    "explanation": "안 쓰는 장난감, 책, 옷을 정리하는 것부터 시작해 보세요! 📦 ‘작은 실천이 큰 변화’를 만들어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_1",
+    "subject": "economy",
+    "question": "📱 디지털 경제에서 ‘핀테크’란 무엇을 의미할까요?",
+    "options": ["금융+기술의 결합", "핀으로 돈 고정하기", "기술만 사용하기", "공짜 앱"],
+    "correctIndex": 0,
+    "explanation": "‘핀테크’는 금융(Fin)과 기술(Tech)이 결합한 말이에요! 💳 모바일 결제, 투자 앱 등이 대표적이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_2",
+    "subject": "economy",
+    "question": "🎯 꿈을 이루기 위한 경제 계획에서 가장 먼저 해야 할 일은 무엇일까요?",
+    "options": ["목표 금액과 기간 정하기", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "‘얼마를, 언제까지’ 모을지 정하는 게 경제 계획의 시작이에요! 📊 목표가 있어야 계획이 세워져요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_3",
+    "subject": "economy",
+    "question": "🤖 4차 산업혁명 시대에 필요한 경제 역량은 무엇일까요?",
+    "options": ["디지털 리터러시", "계산만 잘하기", "공짜만 찾기", "버리기만 하기"],
+    "correctIndex": 0,
+    "explanation": "디지털 기기와 온라인 경제를 이해하고 활용하는 ‘디지털 리터러시’가 중요해요! 💻 미래 경제의 기본 소양이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_4",
+    "subject": "economy",
+    "question": "🌍 ‘지속 가능한 소비’란 무엇을 의미할까요?",
+    "options": ["환경과 사람을 생각하는 소비", "가장 비싼 걸 사기", "모두 쓰기", "눈 감고 사기"],
+    "correctIndex": 0,
+    "explanation": "‘지속 가능한 소비’는 환경을 지키고, 사람을 배려하는 소비를 말해요! 🌱 예: 비닐 대신 천가방!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_5",
+    "subject": "economy",
+    "question": "💳 체크카드와 신용카드의 가장 큰 차이점은 무엇일까요?",
+    "options": ["체크카드는 통장 돈, 신용카드는 빚", "둘 다 공짜", "둘 다 통장 돈", "둘 다 빚"],
+    "correctIndex": 0,
+    "explanation": "체크카드는 내 돈으로, 신용카드는 나중에 갚는 ‘빚’으로 쓰는 거예요! 💳 어린이는 체크카드도 부모님 동의가 필요해요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_6",
+    "subject": "economy",
+    "question": "📱 온라인 쇼핑에서 ‘개인정보 유출’을 막기 위한 방법은 무엇일까요?",
+    "options": ["믿을 수 있는 사이트 이용", "모든 사이트에 정보 주기", "친구 따라 하기", "눈 감고 결제하기"],
+    "correctIndex": 0,
+    "explanation": "개인정보는 믿을 수 있는 사이트에서만 입력하세요! 🔒 ‘https://’와 자물쇠 아이콘을 확인하세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_7",
+    "subject": "economy",
+    "question": "🚀 꿈을 이루기 위한 경제 습관 중 가장 중요한 것은 무엇일까요?",
+    "options": ["계획적 소비와 저축", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "계획적 소비와 꾸준한 저축이 꿈을 이루는 지름길이에요! 🐷 ‘작은 돈, 큰 꿈’이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_8",
+    "subject": "economy",
+    "question": "📱 ‘모바일 뱅킹’의 장점은 무엇일까요?",
+    "options": ["언제 어디서나 계좌 관리", "공짜로 돈 주기", "버리기 쉬움", "숨기기 쉬움"],
+    "correctIndex": 0,
+    "explanation": "모바일 뱅킹은 스마트폰으로 계좌 확인, 이체, 저축을 할 수 있어요! 📲 편리하지만, 비밀번호는 꼭 지키세요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_9",
+    "subject": "economy",
+    "question": "🌱 ‘착한 소비’를 실천하는 방법은 무엇일까요?",
+    "options": ["공정무역 제품 구매", "가장 비싼 걸 사기", "모두 쓰기", "눈 감고 사기"],
+    "correctIndex": 0,
+    "explanation": "공정무역 제품은 생산자에게 공정한 가격을 주는 상품이에요! ☕ 착한 소비는 세상을 바꿔요!",
+    "difficulty": 3
+  },
+  {
+    "id": "economy_hard_10_10",
+    "subject": "economy",
+    "question": "💡 경제를 배우는 가장 큰 이유는 무엇일까요?",
+    "options": ["현명하게 살고, 꿈을 이루기 위해", "모두 쓰기 위해", "버리기 위해", "숨기기 위해"],
+    "correctIndex": 0,
+    "explanation": "경제를 알면 돈을 아끼고, 나누고, 꿈을 이룰 수 있어요! 💰 ‘똑똑한 어린이’가 되는 길이에요!",
     "difficulty": 3
   }
 ]

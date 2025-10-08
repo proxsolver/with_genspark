@@ -33,17 +33,54 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
+
         .subject-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         .subject-card.selected {
             background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
             transform: scale(1.05);
             box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        .subject-card.completed-today {
+            background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+            border: 2px solid #4CAF50;
+            position: relative;
+        }
+
+        .subject-card.completed-today:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+        }
+
+        .completed-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .extra-mode-badge {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
         }
         
         .subject-card.required {
@@ -133,38 +170,12 @@
                     <p id="page-subtitle" class="text-sm text-gray-600 mt-1">원하는 과목을 선택하세요</p>
                 </div>
                 
-                <div class="text-right">
+                <!-- <div class="text-right">
                     <div class="text-sm text-gray-600 mb-1">목표 시간</div>
                     <div class="font-bold text-primary-600" id="target-time">25분</div>
-                </div>
+                </div> -->
             </div>
             
-            <!-- 진행 상태 -->
-            <div class="bg-white rounded-xl p-4 shadow-md" id="difficulty-info">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-medium text-gray-700">적응형 학습 시스템</span>
-                    <span class="text-sm font-bold text-primary-600" id="subject-focus">다과목 선택</span>
-                </div>
-                
-                <div class="grid grid-cols-3 gap-3 mb-3">
-                    <div class="text-center p-3 bg-green-50 rounded-lg border border-green-200">
-                        <div class="text-lg font-bold text-green-600">30문제</div>
-                        <div class="text-xs text-green-700">쉬움 (20초/문제)</div>
-                    </div>
-                    <div class="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-                        <div class="text-lg font-bold text-yellow-600">20문제</div>
-                        <div class="text-xs text-yellow-700">보통 (22.5초/문제)</div>
-                    </div>
-                    <div class="text-center p-3 bg-red-50 rounded-lg border border-red-200">
-                        <div class="text-lg font-bold text-red-600">10문제</div>
-                        <div class="text-xs text-red-700">어려움 (45초/문제)</div>
-                    </div>
-                </div>
-                
-                <div class="text-xs text-gray-600 text-center">
-                    💡 정답률에 따라 자동으로 난이도가 조정됩니다
-                </div>
-            </div>
         </div>
 
         <!-- 과목 선택 영역 -->
@@ -174,7 +185,7 @@
                     <span class="text-2xl">🎯</span>
                     <div>
                         <h3 class="font-bold text-blue-900">학습할 과목 선택</h3>
-                        <p class="text-sm text-blue-700" id="selection-subtitle">원하는 과목을 선택하세요 (최대 3과목)</p>
+                        <p class="text-sm text-blue-700" id="selection-subtitle">원하는 과목을 선택하세요 (최대 9과목)</p>
                     </div>
                 </div>
                 
@@ -200,26 +211,41 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
-                        <span class="text-green-500 text-2xl">📈</span>
+                        <span class="text-green-500 text-2xl">🚀</span>
                         <div>
-                            <div class="font-medium text-gray-800">정답률 80% 이상</div>
-                            <div class="text-sm text-gray-600">더 어려운 문제로 업그레이드</div>
+                            <div class="font-medium text-gray-800">3문제 연속 정답</div>
+                            <div class="text-sm text-gray-600">난이도 상승 (쉬움→보통→어려움)</div>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
-                        <span class="text-orange-500 text-2xl">📊</span>
+                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-orange-200">
+                        <span class="text-orange-500 text-2xl">📉</span>
                         <div>
-                            <div class="font-medium text-gray-800">정답률 40% 이하</div>
-                            <div class="text-sm text-gray-600">쉬운 문제로 자동 조정</div>
+                            <div class="font-medium text-gray-800">1문제 오답</div>
+                            <div class="text-sm text-gray-600">난이도 즉시 하락 (어려움→보통→쉬움)</div>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-3 p-4 bg-white rounded-lg border border-green-200">
-                        <span class="text-blue-500 text-2xl">🎯</span>
-                        <div>
-                            <div class="font-medium text-gray-800">총 60문제 완주</div>
-                            <div class="text-sm text-gray-600">약 10분 완성형 학습</div>
+                </div>
+
+                <div class="bg-white rounded-lg border-2 border-blue-200 p-4">
+                    <div class="font-bold text-blue-900 mb-2">📊 완료 기준</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                        <div class="text-center p-2 bg-green-50 rounded">
+                            <div class="font-bold text-green-600">20문제</div>
+                            <div class="text-xs text-green-700">쉬움만</div>
+                        </div>
+                        <div class="text-center p-2 bg-yellow-50 rounded">
+                            <div class="font-bold text-yellow-600">7문제</div>
+                            <div class="text-xs text-yellow-700">보통 완료</div>
+                        </div>
+                        <div class="text-center p-2 bg-red-50 rounded">
+                            <div class="font-bold text-red-600">3문제</div>
+                            <div class="text-xs text-red-700">어려움 완료</div>
+                        </div>
+                        <div class="text-center p-2 bg-blue-50 rounded">
+                            <div class="font-bold text-blue-600">15문제+</div>
+                            <div class="text-xs text-blue-700">혼합</div>
                         </div>
                     </div>
                 </div>
@@ -237,12 +263,12 @@
                 <!-- 선택된 과목 요약이 여기에 표시됩니다 -->
             </div>
             
-            <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+            <!-- <div class="mt-4 p-4 bg-gray-50 rounded-lg">
                 <div class="flex justify-between items-center text-sm">
                     <span class="text-gray-600">총 예상 학습 시간</span>
                     <span class="font-bold text-primary-600" id="total-time-display">0분 / 25분</span>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- 학습 시작 버튼 -->
@@ -262,6 +288,9 @@
         </div>
     </div>
 
+    <!-- 필수 스크립트 -->
+    <script src="plant-system.js"></script>
+
     <!-- JavaScript -->
     <script>
         // 과목 데이터
@@ -275,28 +304,74 @@
             idiom: { name: '사자성어', icon: '📜', color: 'yellow', time: 7.5 },
             person: { name: '인물', icon: '👤', color: 'indigo', time: 7.5 },
             economy: { name: '경제', icon: '💰', color: 'amber', time: 7.5 },
-            etc: { name: '기타', icon: '🎲', color: 'pink', time: 7.5 }
+            production: { name: '생산', icon: '🏭', color: 'lime', time: 7.5 },
+            toeic: { name: 'TOEIC', icon: '📖', color: 'cyan', time: 10 },
+            ai: { name: 'AI', icon: '🤖', color: 'violet', time: 7.5 }
         };
 
-        // 사용자 학습 이력 (모의 데이터)
-        const userHistory = {
-            english: { studyCount: 15, correctRate: 0.85, lastStudied: '2024-10-04', weakPoints: [] },
-            math: { studyCount: 8, correctRate: 0.65, lastStudied: '2024-10-02', weakPoints: ['division', 'multiplication'] },
-            science: { studyCount: 5, correctRate: 0.55, lastStudied: '2024-10-01', weakPoints: ['biology', 'chemistry'] },
-            general: { studyCount: 12, correctRate: 0.75, lastStudied: '2024-10-03', weakPoints: [] },
-            idiom: { studyCount: 2, correctRate: 0.40, lastStudied: '2024-09-28', weakPoints: ['meaning', 'pronunciation'] },
-            person: { studyCount: 7, correctRate: 0.70, lastStudied: '2024-10-01', weakPoints: [] },
-            korean: { studyCount: 10, correctRate: 0.80, lastStudied: '2024-10-03', weakPoints: [] },
-            social: { studyCount: 6, correctRate: 0.60, lastStudied: '2024-09-30', weakPoints: ['geography'] },
-            economy: { studyCount: 1, correctRate: 0.30, lastStudied: '2024-09-25', weakPoints: ['basic-concepts'] },
-            etc: { studyCount: 9, correctRate: 0.77, lastStudied: '2024-10-02', weakPoints: [] }
-        };
+        // 오늘 완료한 과목 확인 (localStorage에서 가져오기)
+        function getTodayCompletedSubjects() {
+            try {
+                // plantSystem이 없으면 직접 localStorage에서 읽기
+                if (typeof plantSystem === 'undefined' || !plantSystem) {
+                    const userData = localStorage.getItem('plantSystemUser');
+                    if (userData) {
+                        const user = JSON.parse(userData);
+                        return user?.daily?.completedSubjectIds || [];
+                    }
+                    return [];
+                }
+
+                const user = plantSystem.getUserData();
+                return user?.daily?.completedSubjectIds || [];
+            } catch (e) {
+                console.error('Error getting completed subjects:', e);
+                return [];
+            }
+        }
+
+        // 사용자 학습 이력 로드 (localStorage에서 가져오기)
+        function getUserHistory() {
+            try {
+                let user = null;
+
+                // plantSystem이 없으면 직접 localStorage에서 읽기
+                if (typeof plantSystem === 'undefined' || !plantSystem) {
+                    const userData = localStorage.getItem('plantSystemUser');
+                    if (userData) {
+                        user = JSON.parse(userData);
+                    }
+                } else {
+                    user = plantSystem.getUserData();
+                }
+
+                if (!user) return {};
+
+                const learning = user?.learning || {};
+                const history = {};
+
+                Object.keys(subjects).forEach(subjectId => {
+                    const subjectData = learning.lastStudyDates?.[subjectId];
+                    history[subjectId] = {
+                        lastStudied: subjectData || null,
+                        studyCount: learning.studyCount?.[subjectId] || 0,
+                        correctRate: learning.correctRate?.[subjectId] || 0
+                    };
+                });
+
+                return history;
+            } catch (e) {
+                console.error('Error getting user history:', e);
+                return {};
+            }
+        }
 
         // 선택된 과목 상태
         let selectedSubjects = [];
-        const maxSelections = 3;
+        const maxSelections = 9; // 최대 9과목까지 선택 가능
         let isQuickMode = false;
         let quickSubject = null;
+        let extraLearningMode = false; // 추가 학습 모드 플래그
 
         // AI 추천 알고리즘
         function getAIRecommendations() {
@@ -413,13 +488,25 @@
         // 과목 선택 토글
         function toggleSubject(subject) {
             if (isQuickMode) return; // 빠른 모드에서는 선택 불가
-            
+
+            // 오늘 이미 완료한 과목인지 확인
+            const completedSubjects = getTodayCompletedSubjects();
+            const isCompleted = completedSubjects.includes(subject);
+
             const index = selectedSubjects.indexOf(subject);
-            
+
             if (index === -1) {
                 // 선택되지 않은 과목을 선택
                 if (selectedSubjects.length < maxSelections) {
                     selectedSubjects.push(subject);
+
+                    // 완료된 과목을 선택하면 추가 학습 모드 활성화
+                    if (isCompleted) {
+                        extraLearningMode = true;
+                        // 확인 메시지 표시
+                        showExtraLearningConfirm(subject);
+                    }
+
                     updateCardStates();
                     updateSelectedSummary();
                     updateStartButton();
@@ -427,21 +514,61 @@
             } else {
                 // 이미 선택된 과목을 선택 해제
                 selectedSubjects.splice(index, 1);
+
+                // 선택된 과목 중 완료된 과목이 없으면 추가 학습 모드 해제
+                const hasCompletedSubject = selectedSubjects.some(s => completedSubjects.includes(s));
+                if (!hasCompletedSubject) {
+                    extraLearningMode = false;
+                }
+
                 updateCardStates();
                 updateSelectedSummary();
                 updateStartButton();
             }
         }
+
+        // 추가 학습 모드 확인 메시지
+        function showExtraLearningConfirm(subject) {
+            const subjectName = subjects[subject].name;
+            const message = `✨ ${subjectName} 추가 학습 모드\n\n오늘 이미 완료한 과목입니다.\n추가 학습 모드로 학습 시간만 누적됩니다.\n(종료하기 전까지 계속 학습 가능)`;
+
+            // 간단한 알림 표시
+            setTimeout(() => {
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-4 right-4 bg-orange-500 text-white px-6 py-4 rounded-xl shadow-lg z-50 animate-bounce';
+                notification.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">✨</span>
+                        <div>
+                            <div class="font-bold">추가 학습 모드 활성화</div>
+                            <div class="text-sm">학습 시간만 누적됩니다</div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }, 100);
+        }
         
         // 카드 상태 업데이트
         function updateCardStates() {
+            const completedSubjects = getTodayCompletedSubjects();
+
             Object.keys(subjects).forEach(subject => {
                 const card = document.getElementById(`card-${subject}`);
                 if (card) {
-                    if (selectedSubjects.includes(subject)) {
-                        card.classList.add('selected');
-                    } else {
+                    // 완료된 과목 표시
+                    if (completedSubjects.includes(subject)) {
+                        card.classList.add('completed-today');
                         card.classList.remove('selected');
+                    } else if (selectedSubjects.includes(subject)) {
+                        card.classList.add('selected');
+                        card.classList.remove('completed-today');
+                    } else {
+                        card.classList.remove('selected', 'completed-today');
                     }
                 }
             });
@@ -450,32 +577,30 @@
         // 선택된 과목 요약 업데이트
         function updateSelectedSummary() {
             const container = document.getElementById('selected-summary');
-            
+            const completedSubjects = getTodayCompletedSubjects();
+
             if (selectedSubjects.length === 0) {
                 container.innerHTML = '<div class="text-gray-500 text-center py-4">과목을 선택해주세요</div>';
             } else {
                 container.innerHTML = selectedSubjects.map((subject, index) => {
                     const subjectData = subjects[subject];
+                    const isCompleted = completedSubjects.includes(subject);
                     return `
-                        <div class="flex items-center justify-between p-3 bg-${subjectData.color}-50 border border-${subjectData.color}-200 rounded-lg">
+                        <div class="flex items-center justify-between p-3 ${isCompleted ? 'bg-orange-50 border-orange-300' : 'bg-gray-50 border-gray-200'} border rounded-lg">
                             <div class="flex items-center space-x-3">
                                 <span class="text-2xl">${subjectData.icon}</span>
                                 <div>
-                                    <div class="font-medium text-${subjectData.color}-800">${subjectData.name}</div>
-                                    <div class="text-sm text-${subjectData.color}-600">${subjectData.time}분 학습</div>
+                                    <div class="font-medium text-gray-800">${subjectData.name}</div>
+                                    ${isCompleted ? '<div class="text-xs text-orange-600">추가 학습 모드 ✨</div>' : ''}
                                 </div>
                             </div>
-                            <div class="px-3 py-1 bg-${subjectData.color}-200 text-${subjectData.color}-800 rounded-full text-sm font-medium">
+                            <div class="px-3 py-1 ${isCompleted ? 'bg-orange-200 text-orange-800' : 'bg-primary-200 text-primary-800'} rounded-full text-sm font-medium">
                                 ${index + 1}번째
                             </div>
                         </div>
                     `;
                 }).join('');
             }
-            
-            // 총 시간 계산
-            const totalTime = selectedSubjects.reduce((sum, subject) => sum + subjects[subject].time, 0);
-            document.getElementById('total-time-display').textContent = `${totalTime}분 / 25분`;
         }
         
         // 시작 버튼 상태 업데이트
@@ -503,29 +628,55 @@
             }
         }
         
+        // 날짜 포맷팅 함수
+        function formatDate(dateStr) {
+            if (!dateStr) return '학습 기록 없음';
+
+            const date = new Date(dateStr);
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const compareDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+            const diffTime = today - compareDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) return '오늘';
+            if (diffDays === 1) return '어제';
+            if (diffDays < 7) return `${diffDays}일 전`;
+
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+
         // 과목 그리드 렌더링
         function renderSubjectGrid() {
             const container = document.getElementById('subject-grid');
-            
-            container.innerHTML = Object.keys(subjects).map(subject => {
-                const subjectData = subjects[subject];
-                
-                return `
-                    <div class="subject-card" onclick="toggleSubject('${subject}')" id="card-${subject}">
-                        <div class="p-4 text-center">
-                            <div class="text-3xl mb-2">${subjectData.icon}</div>
-                            <div class="font-bold mb-1">${subjectData.name}</div>
-                            <div class="text-xs text-gray-600">${subjectData.time}분</div>
+            const userHistory = getUserHistory();
+            const completedSubjects = getTodayCompletedSubjects();
+
+            container.innerHTML = Object.keys(subjects)
+                .map(subject => {
+                    const subjectData = subjects[subject];
+                    const history = userHistory[subject];
+                    const lastStudied = formatDate(history?.lastStudied);
+                    const isCompleted = completedSubjects.includes(subject);
+
+                    return `
+                        <div class="subject-card ${isCompleted ? 'completed-today' : ''}" onclick="toggleSubject('${subject}')" id="card-${subject}">
+                            ${isCompleted ? '<div class="completed-badge">완료 ✓</div>' : ''}
+                            <div class="p-4 text-center">
+                                <div class="text-3xl mb-2">${subjectData.icon}</div>
+                                <div class="font-bold mb-1">${subjectData.name}</div>
+                                <div class="text-xs text-gray-600">${isCompleted ? '추가 학습 가능' : lastStudied}</div>
+                            </div>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    `;
+                }).join('');
         }
 
         // 학습 시작
         function startLearning() {
             let subjectsToLearn;
-            
+
             if (isQuickMode) {
                 // 빠른 퀴즈 모드
                 subjectsToLearn = [quickSubject];
@@ -533,52 +684,63 @@
                 // 일반 모드
                 subjectsToLearn = selectedSubjects;
             }
-            
+
             if (subjectsToLearn.length === 0) {
                 alert('과목을 선택해주세요!');
                 return;
             }
-            
+
             // 선택된 과목 정보를 localStorage에 저장
             localStorage.setItem('selectedSubjects', JSON.stringify(subjectsToLearn));
             localStorage.setItem('currentSubjectIndex', '0');
-            
+
+            // 추가 학습 모드 플래그 저장
+            localStorage.setItem('extraLearningMode', extraLearningMode ? 'true' : 'false');
+
             // 적응형 퀴즈 페이지로 이동
             window.location.href = 'quiz-adaptive.html';
         }
 
         // 초기화
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== Subject Select 초기화 시작 ===');
+
             const urlParams = new URLSearchParams(window.location.search);
             quickSubject = urlParams.get('quick');
-            
+
             if (quickSubject) {
                 // 빠른 퀴즈 모드
                 isQuickMode = true;
                 const subjectName = subjects[quickSubject]?.name || '선택한 과목';
-                
+
                 // UI 업데이트
                 document.getElementById('page-title').textContent = `${subjectName} 빠른 학습`;
                 document.getElementById('page-subtitle').textContent = `${subjectName} 적응형 퀴즈를 시작합니다`;
                 document.getElementById('subject-focus').textContent = `${subjectName} 집중`;
                 document.getElementById('selection-subtitle').textContent = `${subjectName} 학습이 준비되었습니다`;
                 document.getElementById('selection-info').textContent = '💡 바로 시작하거나 다른 과목을 추가로 선택할 수 있습니다';
-                
+
                 // 선택된 과목으로 설정
                 selectedSubjects = [quickSubject];
-                
+
                 console.log(`${subjectName} 빠른 퀴즈 모드 준비 완료`);
             } else {
                 // 일반 모드
                 isQuickMode = false;
                 console.log('다과목 학습 시스템 준비 완료');
             }
-            
+
+            // 완료된 과목 확인
+            const completedSubjects = getTodayCompletedSubjects();
+            console.log('오늘 완료한 과목:', completedSubjects);
+
             // UI 렌더링
             renderSubjectGrid();
             updateCardStates();
             updateSelectedSummary();
             updateStartButton();
+
+            console.log('=== Subject Select 초기화 완료 ===');
         });
     </script>
 </body>

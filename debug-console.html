@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디버그 콘솔 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+        }
+        .log-entry {
+            padding: 8px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 12px;
+        }
+        .log-error { background: #fee; color: #c00; }
+        .log-warn { background: #fffbeb; color: #f59e0b; }
+        .log-info { background: #eff6ff; color: #2563eb; }
+        .log-success { background: #f0fdf4; color: #16a34a; }
+        .log-default { background: white; color: #374151; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+    <div class="max-w-6xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <!-- 헤더 -->
+            <div class="bg-gray-800 text-white p-4 flex items-center justify-between">
+                <div>
+                    <h1 class="text-xl font-bold">🐛 디버그 콘솔</h1>
+                    <p class="text-sm text-gray-300">실시간 로그 모니터링</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="copyAllLogs()" class="px-4 py-2 bg-green-500 hover:bg-green-600 rounded text-sm">
+                        📋 전체 복사
+                    </button>
+                    <button onclick="copyVisibleLogs()" class="px-4 py-2 bg-teal-500 hover:bg-teal-600 rounded text-sm">
+                        📋 보이는 것만 복사
+                    </button>
+                    <button onclick="clearLogs()" class="px-4 py-2 bg-red-500 hover:bg-red-600 rounded text-sm">
+                        🗑️ 로그 지우기
+                    </button>
+                    <button onclick="toggleAutoScroll()" id="autoscroll-btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-sm">
+                        ⬇️ 자동 스크롤: ON
+                    </button>
+                    <button onclick="window.location.href='index.html'" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded text-sm">
+                        🏠 홈으로
+                    </button>
+                </div>
+            </div>
+
+            <!-- 필터 -->
+            <div class="bg-gray-100 p-3 border-b border-gray-300 flex items-center space-x-3">
+                <span class="text-sm font-medium">필터:</span>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="filter-error" checked onchange="applyFilters()" class="mr-1">
+                    <span class="text-sm">❌ Error</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="filter-warn" checked onchange="applyFilters()" class="mr-1">
+                    <span class="text-sm">⚠️ Warn</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="filter-info" checked onchange="applyFilters()" class="mr-1">
+                    <span class="text-sm">ℹ️ Info</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="filter-log" checked onchange="applyFilters()" class="mr-1">
+                    <span class="text-sm">📝 Log</span>
+                </label>
+                <input type="text" id="search-input" placeholder="검색어 입력..."
+                    class="ml-auto px-3 py-1 border border-gray-300 rounded text-sm"
+                    oninput="applyFilters()">
+            </div>
+
+            <!-- 로그 영역 -->
+            <div id="log-container" class="h-[600px] overflow-y-auto bg-white">
+                <div class="p-4 text-gray-400 text-center">
+                    로그를 기다리는 중...
+                </div>
+            </div>
+
+            <!-- 하단 상태바 -->
+            <div class="bg-gray-800 text-white p-2 text-xs flex items-center justify-between">
+                <span id="log-count">총 로그: 0개</span>
+                <span id="timestamp">마지막 업데이트: -</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let logs = [];
+        let autoScroll = true;
+        const logContainer = document.getElementById('log-container');
+
+        // 원래 console 함수들 백업
+        const originalConsole = {
+            log: console.log.bind(console),
+            error: console.error.bind(console),
+            warn: console.warn.bind(console),
+            info: console.info.bind(console)
+        };
+
+        // console 함수 오버라이드
+        function interceptConsole() {
+            // localStorage에 console interceptor 활성화 플래그 설정
+            sessionStorage.setItem('debugConsoleActive', 'true');
+
+            console.log = function(...args) {
+                addLog('log', args);
+                originalConsole.log(...args);
+            };
+
+            console.error = function(...args) {
+                addLog('error', args);
+                originalConsole.error(...args);
+            };
+
+            console.warn = function(...args) {
+                addLog('warn', args);
+                originalConsole.warn(...args);
+            };
+
+            console.info = function(...args) {
+                addLog('info', args);
+                originalConsole.info(...args);
+            };
+
+            // 윈도우 에러도 캡처
+            window.addEventListener('error', function(event) {
+                addLog('error', [event.message, event.filename, event.lineno]);
+            });
+
+            // Promise rejection도 캡처
+            window.addEventListener('unhandledrejection', function(event) {
+                addLog('error', ['Unhandled Promise Rejection:', event.reason]);
+            });
+        }
+
+        // 로그 추가
+        function addLog(type, args) {
+            const timestamp = new Date().toLocaleTimeString('ko-KR', { hour12: false });
+            const message = args.map(arg => {
+                if (typeof arg === 'object') {
+                    try {
+                        return JSON.stringify(arg, null, 2);
+                    } catch (e) {
+                        return String(arg);
+                    }
+                }
+                return String(arg);
+            }).join(' ');
+
+            const logEntry = {
+                type,
+                timestamp,
+                message,
+                id: Date.now() + Math.random()
+            };
+
+            logs.push(logEntry);
+
+            // 최대 1000개까지만 유지
+            if (logs.length > 1000) {
+                logs.shift();
+            }
+
+            renderLog(logEntry);
+            updateStats();
+
+            if (autoScroll) {
+                scrollToBottom();
+            }
+        }
+
+        // 로그 렌더링
+        function renderLog(log) {
+            const div = document.createElement('div');
+            div.className = `log-entry log-${log.type}`;
+            div.dataset.type = log.type;
+            div.dataset.id = log.id;
+            div.dataset.rawMessage = log.message; // 원본 메시지 저장
+            div.dataset.timestamp = log.timestamp;
+            div.dataset.page = log.page || '';
+
+            const icon = {
+                error: '❌',
+                warn: '⚠️',
+                info: 'ℹ️',
+                log: '📝'
+            }[log.type] || '📝';
+
+            const displayTime = log.timestamp ? new Date(log.timestamp).toLocaleTimeString('ko-KR', { hour12: false }) : '';
+            const pageName = log.page ? `[${log.page}]` : '';
+
+            div.innerHTML = `
+                <span class="font-bold">[${displayTime}]</span>
+                ${pageName ? `<span class="text-xs text-gray-500">${pageName}</span>` : ''}
+                <span>${icon}</span>
+                <span class="ml-2" style="white-space: pre-wrap; word-break: break-all;">${escapeHtml(log.message)}</span>
+            `;
+
+            if (logContainer.firstChild && logContainer.firstChild.classList.contains('text-gray-400')) {
+                logContainer.innerHTML = '';
+            }
+
+            logContainer.appendChild(div);
+        }
+
+        // HTML 이스케이프
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 로그 지우기
+        function clearLogs() {
+            if (!confirm('모든 로그를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                return;
+            }
+
+            // 메모리의 로그 지우기
+            logs = [];
+
+            // localStorage의 로그 지우기
+            localStorage.removeItem('eduPetDebugLogs');
+
+            // 화면 초기화
+            logContainer.innerHTML = '<div class="p-4 text-gray-400 text-center">로그를 기다리는 중...</div>';
+
+            // 통계 업데이트
+            updateStats();
+
+            // 알림 표시
+            showCopyNotification('✅ 모든 로그가 삭제되었습니다');
+        }
+
+        // 자동 스크롤 토글
+        function toggleAutoScroll() {
+            autoScroll = !autoScroll;
+            const btn = document.getElementById('autoscroll-btn');
+            btn.textContent = autoScroll ? '⬇️ 자동 스크롤: ON' : '⬇️ 자동 스크롤: OFF';
+            btn.className = autoScroll ?
+                'px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-sm' :
+                'px-4 py-2 bg-gray-500 hover:bg-gray-600 rounded text-sm';
+        }
+
+        // 스크롤 맨 아래로
+        function scrollToBottom() {
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        // 필터 적용
+        function applyFilters() {
+            const showError = document.getElementById('filter-error').checked;
+            const showWarn = document.getElementById('filter-warn').checked;
+            const showInfo = document.getElementById('filter-info').checked;
+            const showLog = document.getElementById('filter-log').checked;
+            const searchText = document.getElementById('search-input').value.toLowerCase();
+
+            const entries = logContainer.querySelectorAll('.log-entry');
+            entries.forEach(entry => {
+                const type = entry.dataset.type;
+                const text = entry.textContent.toLowerCase();
+
+                const typeMatch = (
+                    (type === 'error' && showError) ||
+                    (type === 'warn' && showWarn) ||
+                    (type === 'info' && showInfo) ||
+                    (type === 'log' && showLog)
+                );
+
+                const searchMatch = searchText === '' || text.includes(searchText);
+
+                entry.style.display = (typeMatch && searchMatch) ? 'block' : 'none';
+            });
+        }
+
+        // 통계 업데이트
+        function updateStats() {
+            document.getElementById('log-count').textContent = `총 로그: ${logs.length}개`;
+            document.getElementById('timestamp').textContent =
+                `마지막 업데이트: ${new Date().toLocaleTimeString('ko-KR', { hour12: false })}`;
+        }
+
+        // 전체 로그 복사
+        function copyAllLogs() {
+            if (logs.length === 0) {
+                alert('복사할 로그가 없습니다.');
+                return;
+            }
+
+            const text = logs.map(log => {
+                const time = log.timestamp ? new Date(log.timestamp).toLocaleString('ko-KR') : '';
+                const page = log.page ? `[${log.page}]` : '';
+                const type = log.type.toUpperCase();
+                return `[${time}] ${page} [${type}] ${log.message}`;
+            }).join('\n');
+
+            copyToClipboard(text, '전체 로그');
+        }
+
+        // 보이는 로그만 복사
+        function copyVisibleLogs() {
+            const visibleEntries = Array.from(logContainer.querySelectorAll('.log-entry'))
+                .filter(entry => entry.style.display !== 'none');
+
+            if (visibleEntries.length === 0) {
+                alert('복사할 로그가 없습니다.');
+                return;
+            }
+
+            const text = visibleEntries.map(entry => {
+                const timestamp = entry.dataset.timestamp ? new Date(entry.dataset.timestamp).toLocaleString('ko-KR') : '';
+                const page = entry.dataset.page ? `[${entry.dataset.page}]` : '';
+                const type = entry.dataset.type.toUpperCase();
+                const message = entry.dataset.rawMessage || entry.textContent;
+                return `[${timestamp}] ${page} [${type}] ${message}`;
+            }).join('\n');
+
+            copyToClipboard(text, `보이는 로그 (${visibleEntries.length}개)`);
+        }
+
+        // 클립보드에 복사
+        function copyToClipboard(text, description) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        showCopyNotification(`✅ ${description}가 클립보드에 복사되었습니다!`);
+                    })
+                    .catch(err => {
+                        console.error('클립보드 복사 실패:', err);
+                        fallbackCopy(text, description);
+                    });
+            } else {
+                fallbackCopy(text, description);
+            }
+        }
+
+        // 폴백 복사 방법 (구형 브라우저 지원)
+        function fallbackCopy(text, description) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.top = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+                showCopyNotification(`✅ ${description}가 클립보드에 복사되었습니다!`);
+            } catch (err) {
+                console.error('클립보드 복사 실패:', err);
+                alert('클립보드 복사에 실패했습니다. 브라우저 설정을 확인해주세요.');
+            }
+
+            document.body.removeChild(textarea);
+        }
+
+        // 복사 알림 표시
+        function showCopyNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+            notification.style.animation = 'fadeIn 0.3s ease-in-out';
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.3s ease-in-out';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+        // localStorage에서 로그 불러오기
+        function loadLogsFromStorage() {
+            try {
+                const stored = localStorage.getItem('eduPetDebugLogs');
+                if (stored) {
+                    const storedLogs = JSON.parse(stored);
+                    logs = storedLogs;
+
+                    // 모든 로그 렌더링
+                    logContainer.innerHTML = '';
+                    storedLogs.forEach(log => {
+                        renderLog(log);
+                    });
+
+                    updateStats();
+                    if (autoScroll) {
+                        scrollToBottom();
+                    }
+                }
+            } catch (e) {
+                console.error('로그 로드 실패:', e);
+            }
+        }
+
+        // 주기적으로 새 로그 확인
+        function refreshLogs() {
+            loadLogsFromStorage();
+        }
+
+        // 초기화
+        interceptConsole();
+        loadLogsFromStorage();
+        updateStats();
+
+        // 2초마다 로그 갱신
+        setInterval(refreshLogs, 2000);
+
+        // 테스트 로그
+        setTimeout(() => {
+            console.log('디버그 콘솔이 활성화되었습니다');
+            console.info('모든 console.log, console.error, console.warn, console.info가 여기에 표시됩니다');
+            console.warn('다른 페이지에서 발생한 로그도 2초마다 자동으로 갱신됩니다');
+        }, 100);
+    </script>
+</body>
+</html>

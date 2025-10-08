@@ -26,6 +26,12 @@ class EduPetLeaderboard {
                 description: '가장 많은 돈을 모은 순위',
                 icon: '💰'
             },
+            learning_time: {
+                name: '학습왕',
+                field: 'stats/totalLearningTime',
+                description: '가장 오래 학습한 순위',
+                icon: '⏰'
+            },
             animal_collector: {
                 name: '동물 컬렉터',
                 field: 'stats/animalsCollected',
@@ -43,6 +49,12 @@ class EduPetLeaderboard {
                 field: 'daily_stats/questionsAnswered',
                 description: '오늘 가장 열심히 공부한 순위',
                 icon: '⭐'
+            },
+            daily_learning_time: {
+                name: '오늘의 학습왕',
+                field: 'daily_stats/learningTime',
+                description: '오늘 가장 오래 학습한 순위',
+                icon: '📚'
             }
         };
     }
@@ -60,12 +72,13 @@ class EduPetLeaderboard {
             }
 
             let query;
-            
-            if (type === 'daily_active') {
+
+            if (type === 'daily_active' || type === 'daily_learning_time') {
                 // 오늘 날짜 기준으로 일일 순위표 조회
                 const today = new Date().toISOString().split('T')[0];
+                const field = type === 'daily_active' ? 'questionsAnswered' : 'learningTime';
                 query = firebase_db.ref(`daily_stats/${today}`)
-                    .orderByChild('questionsAnswered')
+                    .orderByChild(field)
                     .limitToLast(limit);
             } else if (type === 'quiz_accuracy') {
                 // 정답률 계산을 위한 특별 처리

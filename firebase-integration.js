@@ -44,7 +44,8 @@ class EduPetFirebaseIntegration {
             totalQuestions: quizResult.totalQuestions || 1,
             correctAnswers: quizResult.correctAnswers || 0,
             totalMoney: quizResult.moneyEarned || 0,
-            totalWater: quizResult.waterEarned || 0
+            totalWater: quizResult.waterEarned || 0,
+            totalLearningTime: quizResult.timeSpent || 0  // 학습 시간 추가 (분 단위)
         };
 
         // 일일 통계도 업데이트
@@ -52,20 +53,29 @@ class EduPetFirebaseIntegration {
             questionsAnswered: quizResult.totalQuestions || 1,
             correctAnswers: quizResult.correctAnswers || 0,
             moneyEarned: quizResult.moneyEarned || 0,
-            waterEarned: quizResult.waterEarned || 0
+            waterEarned: quizResult.waterEarned || 0,
+            learningTime: quizResult.timeSpent || 0  // 일일 학습 시간 추가
         };
 
         if (this.isFirebaseReady && eduPetAuth.currentUser) {
             try {
                 // 사용자 통계 업데이트
                 await eduPetAuth.updateUserStats(stats);
-                
-                // 일일 통계 업데이트
-                await eduPetLeaderboard.updateDailyStats(eduPetAuth.currentUser.uid, dailyStats);
-                
-                console.log('Firebase 퀴즈 통계 업데이트 완료');
+
+                // 일일 통계 업데이트 (리더보드가 있을 경우에만)
+                if (typeof eduPetLeaderboard !== 'undefined' && eduPetLeaderboard) {
+                    await eduPetLeaderboard.updateDailyStats(eduPetAuth.currentUser.uid, dailyStats);
+                    console.log('Firebase 퀴즈 통계 업데이트 완료 (학습시간 포함)');
+                } else {
+                    console.log('Firebase 퀴즈 통계 업데이트 완료 (리더보드 없음)');
+                }
             } catch (error) {
-                console.error('Firebase 퀴즈 통계 업데이트 실패:', error);
+                console.error('Firebase 퀴즈 통계 업데이트 실패:', {
+                    message: error.message,
+                    stack: error.stack,
+                    stats: stats,
+                    dailyStats: dailyStats
+                });
                 this.queueForLater('updateQuizStats', { stats, dailyStats });
             }
         } else {
@@ -118,6 +128,110 @@ class EduPetFirebaseIntegration {
             } else {
                 this.queueForLater('updateFarmStats', stats);
             }
+        }
+    }
+
+    // ===== 새 식물 시스템 Firebase 통합 =====
+
+    // 식물 시스템 상태 저장
+    async savePlantSystemState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing plant system state save.');
+            return;
+        }
+
+        try {
+            const user = plantSystem.getUserData();
+            const plants = plantSystem.getAllPlants();
+
+            const stateToSave = {
+                user: user,
+                plants: plants,
+                lastUpdated: Date.now()
+            };
+
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/plantSystem`).set(stateToSave);
+            console.log('Firebase에 식물 시스템 상태 저장 완료');
+        } catch (error) {
+            console.error('Firebase에 식물 시스템 상태 저장 실패:', error);
+        }
+    }
+
+    // 식물 시스템 상태 불러오기
+    async loadPlantSystemState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load plant system state.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/plantSystem`).once('value');
+            const plantSystemState = snapshot.val();
+
+            if (plantSystemState) {
+                console.log('Firebase에서 식물 시스템 상태 불러오기 완료', plantSystemState);
+
+                // 로컬스토리지에 복원
+                if (plantSystemState.user) {
+                    localStorage.setItem('plantSystemUser', JSON.stringify(plantSystemState.user));
+                }
+                if (plantSystemState.plants) {
+                    localStorage.setItem('plantSystemPlants', JSON.stringify(plantSystemState.plants));
+                }
+
+                return plantSystemState;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 식물 시스템 상태 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // 과목 완료 시 Firebase 업데이트
+    async syncSubjectCompletion(subjectData) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            this.queueForLater('syncSubjectCompletion', subjectData);
+            return;
+        }
+
+        try {
+            const stats = {
+                totalQuestions: subjectData.questionsCompleted || 1,
+                correctAnswers: subjectData.correctAnswers || 0
+            };
+
+            await eduPetAuth.updateUserStats(stats);
+
+            // 식물 시스템 상태도 동기화
+            await this.savePlantSystemState();
+
+            console.log('Firebase 과목 완료 동기화 완료');
+        } catch (error) {
+            console.error('Firebase 과목 완료 동기화 실패:', error);
+            this.queueForLater('syncSubjectCompletion', subjectData);
+        }
+    }
+
+    // 식물 성장 시 Firebase 업데이트
+    async syncPlantGrowth(plantData) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            this.queueForLater('syncPlantGrowth', plantData);
+            return;
+        }
+
+        try {
+            const stats = {
+                plantsGrown: 1
+            };
+
+            await eduPetAuth.updateUserStats(stats);
+            await this.savePlantSystemState();
+
+            console.log('Firebase 식물 성장 동기화 완료');
+        } catch (error) {
+            console.error('Firebase 식물 성장 동기화 실패:', error);
+            this.queueForLater('syncPlantGrowth', plantData);
         }
     }
 
@@ -182,6 +296,48 @@ class EduPetFirebaseIntegration {
         }
     }
 
+    // Firebase에 학습 진행률 저장하기
+    async saveLearningProgress(learningProgress) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing learning progress save.');
+            this.queueForLater('saveLearningProgress', learningProgress);
+            return;
+        }
+
+        try {
+            const stateToSave = {
+                ...learningProgress,
+                lastUpdated: Date.now()
+            };
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/learningProgress`).set(stateToSave);
+            console.log('Firebase에 학습 진행률을 저장했습니다.');
+        } catch (error) {
+            console.error('Firebase에 학습 진행률 저장 실패:', error);
+            this.queueForLater('saveLearningProgress', learningProgress);
+        }
+    }
+
+    // Firebase에서 학습 진행률 불러오기
+    async loadLearningProgress() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load learning progress.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/learningProgress`).once('value');
+            const progress = snapshot.val();
+            if (progress) {
+                console.log('Firebase에서 학습 진행률을 불러왔습니다.', progress);
+                return progress;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 학습 진행률 불러오기 실패:', error);
+            return null;
+        }
+    }
+
     // 오프라인 큐에 작업 추가
     queueForLater(action, data) {
         this.offlineQueue.push({
@@ -226,11 +382,18 @@ class EduPetFirebaseIntegration {
                         case 'saveFarmState':
                             await this.saveFarmState(item.data);
                             break;
+                        case 'saveLearningProgress':
+                            await this.saveLearningProgress(item.data);
+                            break;
                         case 'updateQuizStats':
+                            console.log('[Offline Queue] 퀴즈 통계 업데이트 시도:', item.data);
                             if (item.data.stats) {
-                                await eduPetAuth.updateUserStats(item.data.stats);
+                                const result = await eduPetAuth.updateUserStats(item.data.stats);
+                                console.log('[Offline Queue] 통계 업데이트 결과:', result);
+                            } else {
+                                console.warn('[Offline Queue] item.data.stats가 없습니다:', item.data);
                             }
-                            if (item.data.dailyStats && eduPetAuth.currentUser) {
+                            if (item.data.dailyStats && eduPetAuth.currentUser && typeof eduPetLeaderboard !== 'undefined') {
                                 await eduPetLeaderboard.updateDailyStats(eduPetAuth.currentUser.uid, item.data.dailyStats);
                             }
                             break;
@@ -238,6 +401,12 @@ class EduPetFirebaseIntegration {
                         case 'updateFarmStats':
                         case 'updateAchievementStats':
                             await eduPetAuth.updateUserStats(item.data);
+                            break;
+                        case 'syncSubjectCompletion':
+                            await this.syncSubjectCompletion(item.data);
+                            break;
+                        case 'syncPlantGrowth':
+                            await this.syncPlantGrowth(item.data);
                             break;
                     }
                     processedItems.push(item);
@@ -348,8 +517,17 @@ window.updateFirebaseStats = {
     quiz: (result) => eduPetFirebaseIntegration.updateQuizStats(result),
     animal: (data) => eduPetFirebaseIntegration.updateAnimalStats(data),
     farm: (action) => eduPetFirebaseIntegration.updateFarmStats(action),
-    achievement: (data) => eduPetFirebaseIntegration.updateAchievementStats(data)
+    achievement: (data) => eduPetFirebaseIntegration.updateAchievementStats(data),
+    learningProgress: (data) => eduPetFirebaseIntegration.saveLearningProgress(data)
 };
 
 // 소셜 기능 상태 확인 함수
 window.checkSocialFeatures = () => eduPetFirebaseIntegration.isSocialFeatureAvailable();
+
+// 식물 시스템 Firebase 통합 헬퍼
+window.plantSystemFirebase = {
+    save: () => eduPetFirebaseIntegration.savePlantSystemState(),
+    load: () => eduPetFirebaseIntegration.loadPlantSystemState(),
+    syncSubject: (data) => eduPetFirebaseIntegration.syncSubjectCompletion(data),
+    syncGrowth: (data) => eduPetFirebaseIntegration.syncPlantGrowth(data)
+};

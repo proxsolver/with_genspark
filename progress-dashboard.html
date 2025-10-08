@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 식물 시스템 스크립트 -->
+    <script defer src="plant-system.js"></script>
+    <script defer src="daily-reset.js"></script>
+
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; }
         
@@ -64,6 +69,38 @@
             <h1 class="text-2xl font-bold text-gray-800 mb-2">📊 학습 현황</h1>
             <div class="text-sm text-gray-600">
                 초롱이님의 학습 여정
+            </div>
+        </div>
+
+        <!-- 일일 학습 진행률 (식물 시스템 연동) -->
+        <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl shadow-lg p-6 mb-6 border-2 border-green-200">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">🌱 오늘의 학습 미션</h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="text-center bg-white rounded-lg p-4">
+                    <div class="text-3xl font-bold text-green-600" id="daily-completed">0</div>
+                    <div class="text-sm text-gray-500">완료 과목 / 9</div>
+                </div>
+                <div class="text-center bg-white rounded-lg p-4">
+                    <div class="text-3xl font-bold text-blue-600" id="growth-tickets-count">0</div>
+                    <div class="text-sm text-gray-500">성장권</div>
+                </div>
+                <div class="text-center bg-white rounded-lg p-4">
+                    <div class="text-3xl font-bold text-purple-600" id="ready-plants-count">0</div>
+                    <div class="text-sm text-gray-500">성장 준비 식물</div>
+                </div>
+                <div class="text-center bg-white rounded-lg p-4">
+                    <div class="text-sm text-gray-600 mb-1">다음 보상</div>
+                    <div class="text-xs font-bold text-green-600" id="next-reward-text">3과목 달성</div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="flex items-center justify-between text-sm mb-2">
+                    <span class="text-gray-700">오늘의 진행률</span>
+                    <span class="font-bold text-green-600" id="daily-progress-percent">0%</span>
+                </div>
+                <div class="bg-gray-200 rounded-full h-3">
+                    <div class="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full transition-all" id="daily-progress-bar" style="width: 0%"></div>
+                </div>
             </div>
         </div>
 
@@ -216,7 +253,9 @@
             idiom: { name: '사자성어', emoji: '📜', color: 'pink' },
             person: { name: '인물', emoji: '👥', color: 'teal' },
             economy: { name: '경제', emoji: '💰', color: 'orange' },
-            etc: { name: '기타', emoji: '📚', color: 'gray' }
+            production: { name: '생산', emoji: '🏭', color: 'cyan' },
+            toeic: { name: 'TOEIC', emoji: '📖', color: 'violet' },
+            ai: { name: 'AI', emoji: '🤖', color: 'slate' }
         };
 
         // Game state
@@ -231,39 +270,102 @@
             studyStartDate: Date.now()
         };
 
-        function loadProgressData() {
-            const saved = localStorage.getItem('learningProgress');
-            if (saved) {
-                progressData = { ...progressData, ...JSON.parse(saved) };
-            }
+                async function loadProgressData() {
+                    // 1. Try to load from Firebase
+                    let firebaseProgress = null;
+                    if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
+                        firebaseProgress = await eduPetFirebaseIntegration.loadLearningProgress();
+                    }
 
-            // Load quiz progress
-            const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
-            if (quizProgress.totalCorrect) {
-                progressData.correctAnswers = quizProgress.totalCorrect;
-                progressData.totalQuestions = quizProgress.totalAnswered || quizProgress.totalCorrect;
-            }
+                    // 2. Load from localStorage (as fallback or base)
+                    const saved = localStorage.getItem('learningProgress');
+                    let localProgress = progressData; // Default empty progressData
+                    if (saved) {
+                        localProgress = { ...progressData, ...JSON.parse(saved) };
+                    }
 
-            // Load subject-specific data
-            Object.keys(subjects).forEach(subject => {
-                if (!progressData.subjectStats[subject]) {
-                    progressData.subjectStats[subject] = {
-                        questions: 0,
-                        correct: 0,
-                        lastStudied: null,
-                        level: 1,
-                        experience: 0
-                    };
+                    // 3. Decide which data to use and merge
+                    if (firebaseProgress) {
+                        // If Firebase data is newer, use it and update localStorage
+                        if (!localProgress.lastUpdated || firebaseProgress.lastUpdated >= localProgress.lastUpdated) {
+                            progressData = { ...localProgress, ...firebaseProgress };
+                            localStorage.setItem('learningProgress', JSON.stringify(progressData));
+                        } else {
+                            // Local data is newer, so use it and push it to Firebase
+                            progressData = localProgress;
+                            if(window.eduPetFirebaseIntegration) {
+                                eduPetFirebaseIntegration.saveLearningProgress(progressData);
+                            }
+                        }
+                    } else {
+                        // No Firebase data, just use local
+                        progressData = localProgress;
+                    }
+
+                    // Ensure all subject stats objects exist
+                    Object.keys(subjects).forEach(subjectId => {
+                        if (!progressData.subjectStats[subjectId]) {
+                            progressData.subjectStats[subjectId] = {
+                                questions: 0,
+                                correct: 0,
+                                lastStudied: null,
+                                level: 1,
+                                experience: 0
+                            };
+                        }
+                    });
+
+                    // 식물 시스템 연동
+                    updatePlantSystemDisplay();
+
+                    updateProgressDisplay();
                 }
-            });
 
-            updateProgressDisplay();
-        }
+                // 식물 시스템 진행률 표시
+                function updatePlantSystemDisplay() {
+                    // plantSystem이 로드되었는지 확인
+                    if (typeof plantSystem === 'undefined') {
+                        setTimeout(updatePlantSystemDisplay, 500);
+                        return;
+                    }
 
-        function saveProgressData() {
-            localStorage.setItem('learningProgress', JSON.stringify(progressData));
-        }
+                    try {
+                        const user = plantSystem.getUserData();
+                        const dashboard = plantSystem.getDashboardState(user.userId);
+                        const plants = plantSystem.getUserPlants(user.userId);
 
+                        // 일일 완료 과목
+                        document.getElementById('daily-completed').textContent = dashboard.learning.completedCount;
+
+                        // 진행률 %
+                        const percent = Math.round((dashboard.learning.completedCount / 9) * 100);
+                        document.getElementById('daily-progress-percent').textContent = percent + '%';
+                        document.getElementById('daily-progress-bar').style.width = percent + '%';
+
+                        // 성장권
+                        document.getElementById('growth-tickets-count').textContent = dashboard.tickets.growthTickets;
+
+                        // 성장 준비 식물
+                        const readyPlants = plants.filter(p => p.status === 'READY');
+                        document.getElementById('ready-plants-count').textContent = readyPlants.length;
+
+                        // 다음 보상
+                        const nextReward = dashboard.learning.nextReward;
+                        document.getElementById('next-reward-text').textContent =
+                            nextReward.remaining > 0 ? `${nextReward.remaining}과목 남음` : nextReward.message;
+
+                    } catch (error) {
+                        console.error('식물 시스템 연동 오류:', error);
+                    }
+                }
+        
+                function saveProgressData() {
+                    localStorage.setItem('learningProgress', JSON.stringify(progressData));
+                    // Also save to firebase
+                    if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
+                        eduPetFirebaseIntegration.saveLearningProgress(progressData);
+                    }
+                }
         function updateProgressDisplay() {
             updateOverallStats();
             updateSubjectProgress();
@@ -554,8 +656,13 @@
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProgressData();
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize Firebase first
+            if (window.eduPetFirebaseIntegration) {
+                await eduPetFirebaseIntegration.initialize();
+            }
+            
+            await loadProgressData(); // now it's async
             
             // Auto-refresh every 30 seconds
             setInterval(loadProgressData, 30000);

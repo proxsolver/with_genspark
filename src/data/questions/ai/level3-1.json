@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ai_hard_3_1",
+    "subject": "ai",
+    "question": "GAN(Generative Adversarial Network)의 구성 요소는?",
+    "options": ["생성자와 판별자", "입력과 출력", "인코더와 디코더", "학습과 검증"],
+    "correctIndex": 0,
+    "explanation": "GAN은 가짜 데이터를 만드는 생성자(Generator)와 진짜/가짜를 구별하는 판별자(Discriminator)가 경쟁하며 학습합니다.",
+    "difficulty": 3,
+    "tags": ["GAN", "deep learning"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_2",
+    "subject": "ai",
+    "question": "Attention Mechanism의 핵심 아이디어는?",
+    "options": ["중요한 부분에 집중", "모든 부분 균등 처리", "순차적 처리", "병렬 처리"],
+    "correctIndex": 0,
+    "explanation": "Attention은 입력 데이터의 중요한 부분에 가중치를 두어 집중하는 메커니즘입니다.",
+    "difficulty": 3,
+    "tags": ["attention", "transformer"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_3",
+    "subject": "ai",
+    "question": "Zero-shot Learning이란?",
+    "options": ["학습하지 않은 클래스 예측", "학습 데이터가 없음", "한 번만 학습", "에러가 0"],
+    "correctIndex": 0,
+    "explanation": "Zero-shot Learning은 학습 단계에서 본 적 없는 클래스도 예측할 수 있는 능력입니다.",
+    "difficulty": 3,
+    "tags": ["machine learning", "zero-shot"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_4",
+    "subject": "ai",
+    "question": "Federated Learning의 특징은?",
+    "options": ["데이터를 중앙에 모으지 않음", "빠른 학습 속도", "높은 정확도", "단순한 구조"],
+    "correctIndex": 0,
+    "explanation": "연합 학습은 데이터를 각 디바이스에 둔 채로 모델만 공유하여 프라이버시를 보호하는 학습 방식입니다.",
+    "difficulty": 3,
+    "tags": ["federated learning", "privacy"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_5",
+    "subject": "ai",
+    "question": "Explainable AI(XAI)가 중요한 이유는?",
+    "options": ["AI 결정 과정을 이해", "빠른 속도", "적은 데이터", "높은 정확도"],
+    "correctIndex": 0,
+    "explanation": "설명 가능한 AI는 AI가 어떻게 결정을 내렸는지 사람이 이해할 수 있게 하여 신뢰성과 투명성을 높입니다.",
+    "difficulty": 3,
+    "tags": ["XAI", "ethics"],
+    "gradeRange": [3, 5]
+  }
+]
