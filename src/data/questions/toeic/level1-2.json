@@ -10,7 +10,7 @@
       "Remember to clean the machine."
     ],
     "correctIndex": 1,
-    "explanation": "정답이에요! 커피 머신 사용법을 순서대로 설명하는 글이죠. 전원 버튼을 누른 후, 컵을 놓기 전까지의 과정이 필요해요. '녹색 불이 켜질 때까지 기다리세요(Wait for the green light to appear)'가 순서상 가장 자연스럽습니다. 잘했어요!",
+    "explanation": "커피 머신 사용법을 순서대로 설명하는 글이죠. 전원 버튼을 누른 후, 컵을 놓기 전까지의 과정이 필요해요. '녹색 불이 켜질 때까지 기다리세요(Wait for the green light to appear)'가 순서상 가장 자연스럽습니다. 잘했어요!",
     "difficulty": 1,
     "audioText": "Press the power button. Wait for the green light to appear. Place your cup."
   },
@@ -25,7 +25,7 @@
       "We had a great time last year."
     ],
     "correctIndex": 0,
-    "explanation": "훌륭해요! 토요일에 비가 많이 온다고 했으니, 그 결과로 야유회가 어떻게 될지를 추론해야 해요. '따라서, 행사는 연기될 것입니다(Therefore, the event will be postponed)'가 가장 논리적인 흐름입니다. 'postpone'은 '연기하다'라는 뜻의 중요 단어예요!",
+    "explanation": "토요일에 비가 많이 온다고 했으니, 그 결과로 야유회가 어떻게 될지를 추론해야 해요. '따라서, 행사는 연기될 것입니다(Therefore, the event will be postponed)'가 가장 논리적인 흐름입니다. 'postpone'은 '연기하다'라는 뜻의 중요 단어예요!",
     "difficulty": 1,
     "audioText": "predicts heavy rain, the event will be postponed"
   },
@@ -40,7 +40,7 @@
       "Please return books on time."
     ],
     "correctIndex": 2,
-    "explanation": "맞아요! 도서관 카드 발급에 필요한 것들을 나열하고 있어요. 신분증을 가져오라고 한 뒤, 추가로 필요한 절차를 설명하는 것이 자연스럽죠. '또한 짧은 양식을 작성해야 합니다(You also need to fill out a short form)'가 정답입니다.",
+    "explanation": "도서관 카드 발급에 필요한 것들을 나열하고 있어요. 신분증을 가져오라고 한 뒤, 추가로 필요한 절차를 설명하는 것이 자연스럽죠. '또한 짧은 양식을 작성해야 합니다(You also need to fill out a short form)'가 정답입니다.",
     "difficulty": 1,
     "audioText": "bring a valid ID card, fill out a short form"
   },
@@ -55,7 +55,7 @@
       "3:30 PM"
     ],
     "correctIndex": 3,
-    "explanation": "정답입니다! 진(Jin)이 늦을 것 같아서 3시 30분에 만나자고 제안했고, 미나(Mina)가 이를 수락했죠. 대화의 흐름을 잘 파악해서 최종 약속 시간을 정확히 찾아냈어요. 훌륭해요!",
+    "explanation": "진(Jin)이 늦을 것 같아서 3시 30분에 만나자고 제안했고, 미나(Mina)가 이를 수락했죠. 대화의 흐름을 잘 파악해서 최종 약속 시간을 정확히 찾아냈어요. 훌륭해요!",
     "difficulty": 1,
     "audioText": "Can we meet at 3:30 PM instead? No problem. See you at 3:30."
   },
@@ -70,7 +70,7 @@
       "To send her a file"
     ],
     "correctIndex": 2,
-    "explanation": "잘했어요! 사라(Sarah)가 톰(Tom)에게 'Could you buy me a cup of coffee?'라고 부탁했죠. 따라서 정답은 '그녀에게 음료를 사다 주기(To buy her a drink)'입니다. 문자 대화의 핵심 요청 사항을 잘 이해했어요.",
+    "explanation": "사라(Sarah)가 톰(Tom)에게 'Could you buy me a cup of coffee?'라고 부탁했죠. 따라서 정답은 '그녀에게 음료를 사다 주기(To buy her a drink)'입니다. 문자 대화의 핵심 요청 사항을 잘 이해했어요.",
     "difficulty": 1,
     "audioText": "Do you need anything? Could you buy me a cup of coffee?"
   },
@@ -85,7 +85,7 @@
       "He cannot find the support center."
     ],
     "correctIndex": 2,
-    "explanation": "맞아요! 고객이 처음에 'My Internet is not working'이라고 말했죠. 'not working' 또는 'down'은 서비스가 작동하지 않는다는 의미입니다. 문제점을 정확히 파악했네요.",
+    "explanation": "고객이 처음에 'My Internet is not working'이라고 말했죠. 'not working' 또는 'down'은 서비스가 작동하지 않는다는 의미입니다. 문제점을 정확히 파악했네요.",
     "difficulty": 1,
     "audioText": "My Internet is not working. I will send a technician."
   },
@@ -100,7 +100,7 @@
       "She thinks the task is difficult."
     ],
     "correctIndex": 2,
-    "explanation": "정답이에요! 'I'm on it'은 '제가 처리하고 있어요' 또는 '바로 시작할게요'라는 의미의 아주 흔한 비즈니스 표현입니다. 데이비드의 요청을 받아서 그 일을 처리하겠다는 뜻이죠. 아주 유용한 표현이니 꼭 기억해두세요!",
+    "explanation": "'I'm on it'은 '제가 처리하고 있어요' 또는 '바로 시작할게요'라는 의미의 아주 흔한 비즈니스 표현입니다. 데이비드의 요청을 받아서 그 일을 처리하겠다는 뜻이죠. 아주 유용한 표현이니 꼭 기억해두세요!",
     "difficulty": 1,
     "audioText": "The client needs the report. I'm on it."
   },
@@ -115,7 +115,7 @@
       "1 PM"
     ],
     "correctIndex": 2,
-    "explanation": "완벽해요! 이메일에서 금요일에 1시간짜리 회의를 잡고 싶다고 했죠. 예약 현황(Schedule)을 보면 'Available'(이용 가능)이라고 표시된 시간은 오전 11시뿐입니다. 두 정보를 잘 조합해서 정답을 찾았네요!",
+    "explanation": "이메일에서 금요일에 1시간짜리 회의를 잡고 싶다고 했죠. 예약 현황(Schedule)을 보면 'Available'(이용 가능)이라고 표시된 시간은 오전 11시뿐입니다. 두 정보를 잘 조합해서 정답을 찾았네요!",
     "difficulty": 1,
     "audioText": "schedule a one-hour meeting, Booked, Available"
   },
@@ -130,7 +130,7 @@
       "Desserts"
     ],
     "correctIndex": 1,
-    "explanation": "정확해요! 쿠폰 정보에 'Valid on any pizza order(모든 피자 주문에 유효)'라고 되어 있고, 'Not valid for drinks(음료에는 유효하지 않음)'라고 명시되어 있어요. 따라서 쿠폰은 치즈 피자에만 적용됩니다.",
+    "explanation": "쿠폰 정보에 'Valid on any pizza order(모든 피자 주문에 유효)'라고 되어 있고, 'Not valid for drinks(음료에는 유효하지 않음)'라고 명시되어 있어요. 따라서 쿠폰은 치즈 피자에만 적용됩니다.",
     "difficulty": 1,
     "audioText": "a large cheese pizza and a soda, Valid on any pizza order, Not valid for drinks"
   },
@@ -145,7 +145,7 @@
       "The basement"
     ],
     "correctIndex": 2,
-    "explanation": "잘했어요! 안내문(Notice)에서 분실물은 'Information Desk'로 가라고 알려주고 있어요. 상점 위치 정보(Mall Directory)를 보면 'Information Desk'는 3층(3rd Floor)에 있다고 나와 있죠. 두 정보를 연결해서 답을 잘 찾았어요!",
+    "explanation": "안내문(Notice)에서 분실물은 'Information Desk'로 가라고 알려주고 있어요. 상점 위치 정보(Mall Directory)를 보면 'Information Desk'는 3층(3rd Floor)에 있다고 나와 있죠. 두 정보를 연결해서 답을 잘 찾았어요!",
     "difficulty": 1,
     "audioText": "For lost items, go to the Information Desk. 3rd Floor, Information Desk."
   },
@@ -160,7 +160,7 @@
         "The weather will be sunny."
     ],
     "correctIndex": 2,
-    "explanation": "정답입니다! 사무실이 문을 닫는다고 했으므로, 그 결과로 '전화를 받을 수 있는 직원이 없을 것'이라고 이어지는 것이 가장 자연스럽습니다. 문장의 논리적인 결과를 잘 찾았어요.",
+    "explanation": "사무실이 문을 닫는다고 했으므로, 그 결과로 '전화를 받을 수 있는 직원이 없을 것'이라고 이어지는 것이 가장 자연스럽습니다. 문장의 논리적인 결과를 잘 찾았어요.",
     "difficulty": 1,
     "audioText": "Our office will be closed. No staff will be available."
   },

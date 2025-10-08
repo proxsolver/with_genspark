@@ -64,6 +64,59 @@
             from { box-shadow: 0 0 25px rgba(217, 119, 6, 0.5); }
             to { box-shadow: 0 0 35px rgba(217, 119, 6, 0.7); }
         }
+
+        /* 뽑기 결과 애니메이션 */
+        @keyframes cardReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotateY(180deg);
+            }
+            50% {
+                transform: scale(1.1) rotateY(90deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+            }
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card-reveal {
+            animation: cardReveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 24px;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        .confetti {
+            position: absolute;
+            font-size: 20px;
+            animation: confetti 3s linear;
+        }
         
         .gacha-button {
             background: linear-gradient(45deg, #3b82f6, #1d4ed8);
@@ -270,6 +323,27 @@
                     <div class="text-2xl font-bold text-yellow-600" id="legendaryCount">0</div>
                     <div class="text-xs text-gray-500">전설 동물 수</div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 동물 뽑기 결과 모달 -->
+    <div id="gachaResultModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="closeGachaResult()">
+        <div class="max-w-md w-full mx-4 transform transition-all" onclick="event.stopPropagation()">
+            <!-- 동물 카드 -->
+            <div id="gachaResultCard" class="bg-white rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden">
+                <!-- 배경 이펙트 -->
+                <div class="absolute inset-0 opacity-10" id="gachaBackgroundEffect"></div>
+
+                <!-- 컨텐츠 -->
+                <div class="relative z-10" id="gachaResultContent">
+                    <!-- 동적으로 생성됩니다 -->
+                </div>
+
+                <!-- 닫기 버튼 -->
+                <button onclick="closeGachaResult()" class="mt-6 w-full bg-gradient-to-r from-gray-500 to-gray-700 hover:from-gray-600 hover:to-gray-800 text-white px-6 py-3 rounded-xl font-bold transition-all transform hover:scale-105">
+                    확인
+                </button>
             </div>
         </div>
     </div>
@@ -828,8 +902,8 @@
                 }
                 
                 // Firebase 통계 업데이트
-                if (typeof updateFirebaseStats !== 'undefined') {
-                    updateFirebaseStats.animal({
+                if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                    eduPetFirebaseIntegration.updateAnimalStats({
                         animalId: animal.id,
                         name: animal.name,
                         tier: tier,
@@ -927,8 +1001,8 @@
                 }
 
                 // Firebase 통계 업데이트
-                if (typeof updateFirebaseStats !== 'undefined') {
-                    updateFirebaseStats.animal({
+                if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                    eduPetFirebaseIntegration.updateAnimalStats({
                         animalId: animal.id,
                         name: animal.name,
                         tier: tier,
@@ -946,31 +1020,159 @@
             }, 600);
         }
 
-        // Show new animal
+        // Show new animal in modal popup
         function showNewAnimal(animal, tier, isPremium = false) {
-            const latestDraw = document.getElementById('latestDraw');
-            const newAnimalCard = document.getElementById('newAnimalCard');
-            
-            // Set tier class
-            newAnimalCard.className = `animal-card ${tier} rounded-lg p-4 text-center animal-appear`;
-            
-            newAnimalCard.innerHTML = `
-                ${isPremium ? '<div class="text-xs bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-1 rounded-full mb-2 inline-block">✨ 프리미엄</div>' : ''}
-                <div class="tier-label ${getTierColor(tier)} mb-2">${getTierName(tier)}</div>
-                <div class="text-4xl mb-2">${animal.emoji}</div>
-                <div class="font-bold text-gray-800">${animal.name}</div>
-                <div class="text-xs text-gray-600 mt-1">파워: ${animal.power}</div>
-                <div class="text-xs text-gray-500 mt-1">
-                    보유: ${gameState.collection[animal.id]?.count || 0}마리
+            const modal = document.getElementById('gachaResultModal');
+            const card = document.getElementById('gachaResultCard');
+            const content = document.getElementById('gachaResultContent');
+            const bgEffect = document.getElementById('gachaBackgroundEffect');
+
+            const isNew = gameState.collection[animal.id]?.count === 1;
+            const isDuplicate = gameState.collection[animal.id]?.count > 1;
+
+            // 티어별 색상 설정
+            const tierColors = {
+                common: 'from-gray-100 to-gray-200',
+                rare: 'from-blue-100 to-blue-300',
+                epic: 'from-purple-100 to-purple-300',
+                legendary: 'from-yellow-100 to-yellow-300'
+            };
+
+            const tierGradients = {
+                common: 'from-gray-400 to-gray-600',
+                rare: 'from-blue-500 to-blue-700',
+                epic: 'from-purple-500 to-purple-700',
+                legendary: 'from-yellow-500 to-orange-600'
+            };
+
+            // 배경 이펙트 설정
+            bgEffect.className = `absolute inset-0 opacity-10 bg-gradient-to-br ${tierColors[tier]}`;
+
+            // 카드 애니메이션 클래스 설정
+            card.className = `bg-white rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden card-reveal ${tier}`;
+
+            // 컨텐츠 생성
+            content.innerHTML = `
+                ${isPremium ? `
+                <div class="mb-4">
+                    <span class="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold animate-pulse">
+                        ✨ 프리미엄 뽑기
+                    </span>
+                </div>
+                ` : ''}
+
+                ${isNew ? `
+                <div class="mb-4">
+                    <span class="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold animate-bounce">
+                        🎉 NEW!
+                    </span>
+                </div>
+                ` : ''}
+
+                ${isDuplicate ? `
+                <div class="mb-4">
+                    <span class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                        🔥 중복 카드 +1
+                    </span>
+                </div>
+                ` : ''}
+
+                <!-- 티어 배지 -->
+                <div class="mb-4">
+                    <span class="inline-block bg-gradient-to-r ${tierGradients[tier]} text-white px-6 py-2 rounded-full text-lg font-bold uppercase tracking-wider shadow-lg">
+                        ${getTierName(tier)}
+                    </span>
+                </div>
+
+                <!-- 동물 이모지 (대형) -->
+                <div class="text-8xl mb-4 animate-bounce" style="animation-duration: 1.5s;">
+                    ${animal.emoji}
+                </div>
+
+                <!-- 동물 이름 -->
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">
+                    ${animal.name}
+                </h2>
+
+                <!-- 레벨 및 능력치 -->
+                <div class="flex justify-center items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl px-4 py-2 border-2 border-yellow-300">
+                        <div class="text-xs text-gray-600">레벨</div>
+                        <div class="text-xl font-bold text-yellow-600">Lv.${gameState.collection[animal.id]?.level || 1}</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl px-4 py-2 border-2 border-purple-300">
+                        <div class="text-xs text-gray-600">파워</div>
+                        <div class="text-xl font-bold text-purple-600">⚡${animal.power}</div>
+                    </div>
+                </div>
+
+                <!-- 보유 정보 -->
+                <div class="mt-6 pt-4 border-t-2 border-gray-200">
+                    <div class="text-sm text-gray-600">
+                        보유: <span class="font-bold text-gray-800">${gameState.collection[animal.id]?.count || 0}</span>마리
+                        ${isDuplicate ? ` | 중복 카드: <span class="font-bold text-orange-600">${gameState.collection[animal.id]?.duplicates || 0}</span>장` : ''}
+                    </div>
                 </div>
             `;
-            
-            latestDraw.classList.remove('hidden');
-            
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                latestDraw.classList.add('hidden');
-            }, 5000);
+
+            // 반짝이 효과 추가 (레어 이상)
+            if (tier === 'rare' || tier === 'epic' || tier === 'legendary') {
+                addSparkles(card, tier === 'legendary' ? 12 : tier === 'epic' ? 8 : 5);
+            }
+
+            // 컨페티 효과 (전설 등급)
+            if (tier === 'legendary') {
+                addConfetti();
+            }
+
+            // 모달 표시
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // 반짝이 효과 추가
+        function addSparkles(container, count) {
+            const sparkleEmojis = ['✨', '💫', '⭐', '🌟'];
+
+            for (let i = 0; i < count; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 1.5 + 's';
+                container.appendChild(sparkle);
+
+                // 3초 후 제거
+                setTimeout(() => sparkle.remove(), 3000);
+            }
+        }
+
+        // 컨페티 효과 추가
+        function addConfetti() {
+            const confettiEmojis = ['🎉', '🎊', '✨', '🌟', '💫', '⭐'];
+            const confettiContainer = document.getElementById('gachaResultModal');
+
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    confettiContainer.appendChild(confetti);
+
+                    // 애니메이션 끝나면 제거
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // 뽑기 결과 모달 닫기
+        function closeGachaResult() {
+            const modal = document.getElementById('gachaResultModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
 
         // Play draw sound

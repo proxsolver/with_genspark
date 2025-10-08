@@ -241,24 +241,32 @@
                 }
 
                 const db = firebase.database();
-                const snapshot = await db.ref('users').once('value');
-                const users = snapshot.val() || {};
+                const usersSnapshot = await db.ref('users').once('value');
+                const users = usersSnapshot.val() || {};
+
+                // 그룹 정보 가져오기
+                const groupsSnapshot = await db.ref('groups').once('value');
+                const groups = groupsSnapshot.val() || {};
 
                 allLearners = { local: { name: '현재 기기 (로컬)', data: [] } };
 
                 for (const [userId, userData] of Object.entries(users)) {
-                    // 여러 경로에서 닉네임 찾기
+                    // 닉네임 찾기 (social-hub.html과 동일한 경로)
                     let nickname = null;
 
-                    // 경로 1: userData.profile.nickname
-                    if (userData.userData?.profile?.nickname) {
+                    // 경로 1: userData.profile.nickname (social-hub에서 설정)
+                    if (userData.profile?.nickname) {
+                        nickname = userData.profile.nickname;
+                    }
+                    // 경로 2: userData.userData.profile.nickname (하위 호환)
+                    else if (userData.userData?.profile?.nickname) {
                         nickname = userData.userData.profile.nickname;
                     }
-                    // 경로 2: userData.nickname (하위 호환)
+                    // 경로 3: userData.nickname (레거시)
                     else if (userData.nickname) {
                         nickname = userData.nickname;
                     }
-                    // 경로 3: settings에서
+                    // 경로 4: settings에서 (localStorage 동기화)
                     else if (userData.settings?.userName) {
                         nickname = userData.settings.userName;
                     }
@@ -267,13 +275,31 @@
                         nickname = `사용자_${userId.substring(0, 8)}`;
                     }
 
+                    // 그룹 정보 가져오기
+                    let groupName = null;
+                    if (userData.groups) {
+                        // groups는 { groupId: memberInfo } 형태
+                        const groupIds = Object.keys(userData.groups);
+                        if (groupIds.length > 0) {
+                            // 첫 번째 그룹의 정보를 가져옴 (여러 그룹 가능하지만 일단 첫 번째 사용)
+                            const firstGroupId = groupIds[0];
+                            // 그룹 정보는 groups/{groupId}에 저장되어 있음
+                            if (groups[firstGroupId]) {
+                                groupName = groups[firstGroupId].name || firstGroupId;
+                            } else {
+                                groupName = firstGroupId; // 그룹 정보가 없으면 ID 사용
+                            }
+                        }
+                    }
+
                     // analytics 데이터를 users 하위에서 가져오기
                     const analyticsHistory = userData.analytics || [];
 
-                    console.log(`[Analytics Console] 학습자 발견: ${nickname} (${userId.substring(0, 8)}), 세션: ${Array.isArray(analyticsHistory) ? analyticsHistory.length : Object.keys(analyticsHistory).length}개`);
+                    console.log(`[Analytics Console] 학습자 발견: ${nickname} (${userId.substring(0, 8)}), 그룹: ${groupName || '없음'}, 세션: ${Array.isArray(analyticsHistory) ? analyticsHistory.length : Object.keys(analyticsHistory).length}개`);
 
                     allLearners[userId] = {
                         name: nickname,
+                        group: groupName,
                         uid: userId,
                         data: Array.isArray(analyticsHistory) ? analyticsHistory : Object.values(analyticsHistory)
                     };
@@ -300,8 +326,9 @@
             for (const [userId, learner] of sortedLearners) {
                 const option = document.createElement('option');
                 option.value = userId;
-                // 별명만 표시 (UID는 괄호 안에)
-                option.textContent = `${learner.name}`;
+                // 그룹이 있으면 "별명_그룹명", 없으면 "별명_그룹"
+                const displayName = learner.group ? `${learner.name}_${learner.group}` : `${learner.name}_그룹`;
+                option.textContent = displayName;
                 select.appendChild(option);
             }
 
@@ -325,9 +352,11 @@
                 document.getElementById('learner-info').textContent = `현재 기기의 학습 데이터를 표시하고 있습니다 (총 ${analyticsData.length}개 세션)`;
             } else {
                 analyticsData = allLearners[currentLearnerId]?.data || [];
-                const learnerName = allLearners[currentLearnerId]?.name || 'Unknown';
+                const learner = allLearners[currentLearnerId];
+                const learnerName = learner?.name || 'Unknown';
+                const groupName = learner?.group || '그룹';
                 console.log('[Analytics Console] Firebase 데이터:', analyticsData);
-                document.getElementById('learner-info').textContent = `${learnerName} 학습자의 데이터를 표시하고 있습니다 (총 ${analyticsData.length}개 세션)`;
+                document.getElementById('learner-info').textContent = `${learnerName}_${groupName}의 데이터를 표시하고 있습니다 (총 ${analyticsData.length}개 세션)`;
             }
 
             loadAnalytics();

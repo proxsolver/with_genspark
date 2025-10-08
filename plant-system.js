@@ -155,9 +155,10 @@ class PlantSystem {
             ownerId: userId,
             status: 'PLANTED',
             waterCount: 0,
+            stage: 0, // 0=씨앗, 1=줄기, 2=나무, 3=열매/꽃
             plantedAt: this.getCurrentTimestamp(),
             grownAt: null,
-            plantType: this.getRandomPlantType()
+            plantType: this.getPlantTypeForStage(0)
         };
 
         this.savePlant(plant);
@@ -165,9 +166,22 @@ class PlantSystem {
         return plant;
     }
 
+    getPlantTypeForStage(stage) {
+        const plantStages = {
+            0: ['🌰', '🥜', '🫘'], // 씨앗 3종
+            1: ['🌱', '🪴', '☘️', '🍀', '🌿', '🌾'], // 줄기/새싹 6종
+            2: ['🌳', '🌲', '🌴', '🎋', '🎍', '🌵', '🪴', '🌿'], // 나무/식물 8종
+            3: ['🌸', '🌺', '🌻', '🌼', '🌷', '🌹', '💐', '🏵️', '🥀', '🪷',
+                '🍎', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🫐', '🍈', '🍒',
+                '🍑', '🥭', '🍍', '🥝', '🍅'] // 꽃과 열매 25종
+        };
+
+        const options = plantStages[stage] || plantStages[0];
+        return options[Math.floor(Math.random() * options.length)];
+    }
+
     getRandomPlantType() {
-        const types = ['🌱', '🌿', '🌷', '🌸', '🌹', '🌺', '🌻', '🌼'];
-        return types[Math.floor(Math.random() * types.length)];
+        return this.getPlantTypeForStage(0);
     }
 
     // ===== 물주기 =====
@@ -178,14 +192,22 @@ class PlantSystem {
         }
 
         if (plant.status === 'GROWN') {
-            return { canWater: false, reason: '이미 성장한 식물입니다' };
+            return { canWater: false, reason: '이미 완전히 성장한 식물입니다' };
         }
 
-        if (plant.waterCount >= this.config.WATER_REQUIRED) {
-            return { canWater: false, reason: '물이 충분합니다' };
+        // 스테이지별 최대 물 요구량 (5, 10, 15)
+        const maxWater = this.getMaxWaterForStage(plant.stage || 0);
+
+        if (plant.waterCount >= maxWater) {
+            return { canWater: false, reason: '이 단계에서는 물이 충분합니다' };
         }
 
         return { canWater: true };
+    }
+
+    getMaxWaterForStage(stage) {
+        // 모든 단계에서 5번씩 물주기 (총 20번)
+        return 5;
     }
 
     waterPlant(plantId) {
@@ -197,14 +219,42 @@ class PlantSystem {
         }
 
         plant.waterCount += 1;
-        this.checkReadyStatus(plant);
+
+        // 스테이지 자동 성장 체크
+        const stageChanged = this.checkStageGrowth(plant);
+
         this.savePlant(plant);
 
         return {
             success: true,
             waterCount: plant.waterCount,
-            status: plant.status
+            status: plant.status,
+            stage: plant.stage,
+            stageChanged: stageChanged
         };
+    }
+
+    checkStageGrowth(plant) {
+        const currentStage = plant.stage || 0;
+        const maxWater = this.getMaxWaterForStage(currentStage);
+
+        // 현재 스테이지의 물 요구량을 달성했는지 체크
+        if (plant.waterCount >= maxWater && currentStage < 3) {
+            plant.stage = currentStage + 1;
+            plant.plantType = this.getPlantTypeForStage(plant.stage);
+            plant.waterCount = 0; // 다음 스테이지를 위해 물 카운트 리셋
+
+            // 마지막 스테이지(3)에 도달하면 GROWN 상태로
+            if (plant.stage === 3) {
+                plant.status = 'GROWN';
+                plant.grownAt = this.getCurrentTimestamp();
+            }
+
+            console.log(`🌱 식물이 스테이지 ${currentStage} → ${plant.stage}로 성장!`, plant.plantType);
+            return true;
+        }
+
+        return false;
     }
 
     checkReadyStatus(plant) {

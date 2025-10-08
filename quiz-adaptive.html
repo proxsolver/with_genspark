@@ -213,16 +213,16 @@
             <!-- 난이도별 현황 -->
             <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="p-3 bg-green-50 rounded-lg border border-green-200" id="easy-status">
-                    <div class="text-lg font-bold text-green-600">0/20</div>
-                    <div class="text-xs text-green-700">쉬움</div>
+                    <div class="text-lg font-bold text-green-600">0/10</div>
+                    <div class="text-xs text-green-700">쉬움 정답</div>
                 </div>
                 <div class="p-3 bg-yellow-50 rounded-lg border border-yellow-200" id="medium-status">
-                    <div class="text-lg font-bold text-yellow-600">0/7</div>
-                    <div class="text-xs text-yellow-700">보통</div>
+                    <div class="text-lg font-bold text-yellow-600">0/5</div>
+                    <div class="text-xs text-yellow-700">보통 정답</div>
                 </div>
                 <div class="p-3 bg-red-50 rounded-lg border border-red-200" id="hard-status">
-                    <div class="text-lg font-bold text-red-600">0/3</div>
-                    <div class="text-xs text-red-700">어려움</div>
+                    <div class="text-lg font-bold text-red-600">0/1</div>
+                    <div class="text-xs text-red-700">어려움 정답</div>
                 </div>
             </div>
         </div>
@@ -306,7 +306,7 @@
         let questions = {};
         let currentDifficulty = 1; // 1: 쉬움, 2: 보통, 3: 어려움
         let questionCounts = { easy: 0, medium: 0, hard: 0 };
-        let targetCounts = { easy: 20, medium: 7, hard: 3 }; // 새로운 완료 기준
+        let targetCounts = { easy: 10, medium: 5, hard: 1 }; // 정답 기준 완료 목표
         let currentQuestionPool = [];
         let currentQuestionIndex = 0;
         let isAnswered = false;
@@ -443,11 +443,11 @@
             ai: { name: 'AI', icon: '🤖' }
         };
 
-        // 난이도별 설정
+        // 난이도별 설정 (정답 기준)
         const difficultyConfig = {
-            1: { name: '쉬움', class: 'easy', targetCount: 20, timePerQuestion: 20 },
-            2: { name: '보통', class: 'medium', targetCount: 7, timePerQuestion: 22.5 },
-            3: { name: '어려움', class: 'hard', targetCount: 3, timePerQuestion: 45 }
+            1: { name: '쉬움', class: 'easy', targetCount: 10, timePerQuestion: 20 },
+            2: { name: '보통', class: 'medium', targetCount: 5, timePerQuestion: 22.5 },
+            3: { name: '어려움', class: 'hard', targetCount: 1, timePerQuestion: 45 }
         };
 
         // 초기화
@@ -466,15 +466,21 @@
             const extraMode = localStorage.getItem('extraLearningMode');
             extraLearningMode = extraMode === 'true';
 
+            // 수수께끼 데이터 로드
+            await loadRiddles();
+
+            // 과목 시작 시 수수께끼 플래그 리셋
+            riddleShownThisSubject = false;
+
             // 문제 데이터 로드
             await loadQuestions();
-            
+
             // 진동 설정 로드
             const savedVibration = localStorage.getItem('quizVibrationEnabled');
             if (savedVibration !== null) {
                 vibrationEnabled = JSON.parse(savedVibration);
             }
-            
+
             // UI 초기화
             updateUI();
             updateVibrationButton(); // 진동 버튼 상태 초기화
@@ -642,16 +648,16 @@
 
             // 난이도별 현황 업데이트
             document.getElementById('easy-status').innerHTML = `
-                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/20</div>
-                <div class="text-xs text-green-700">쉬움</div>
+                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/10</div>
+                <div class="text-xs text-green-700">쉬움 정답</div>
             `;
             document.getElementById('medium-status').innerHTML = `
-                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/7</div>
-                <div class="text-xs text-yellow-700">보통</div>
+                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/5</div>
+                <div class="text-xs text-yellow-700">보통 정답</div>
             `;
             document.getElementById('hard-status').innerHTML = `
-                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/3</div>
-                <div class="text-xs text-red-700">어려움</div>
+                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/1</div>
+                <div class="text-xs text-red-700">어려움 정답</div>
             `;
         }
 
@@ -710,21 +716,23 @@
             
             isAnswered = true;
 
+            // 난이도 설정 가져오기
+            const config = difficultyConfig[currentDifficulty];
+            const difficultyKey = config.class;
+
             // 통계 업데이트
             if (isCorrect) {
                 sessionStats.correct++;
                 consecutiveCorrectAnswers++;
                 consecutiveIncorrectAnswers = 0;
+
+                // 난이도별 정답 카운트 증가 (정답일 때만 카운트)
+                questionCounts[difficultyKey]++;
             } else {
                 sessionStats.incorrect++;
                 consecutiveIncorrectAnswers++;
                 consecutiveCorrectAnswers = 0;
             }
-
-            // 난이도별 카운트 증가
-            const config = difficultyConfig[currentDifficulty];
-            const difficultyKey = config.class;
-            questionCounts[difficultyKey]++;
 
             // 난이도 히스토리 기록
             sessionStats.difficultyHistory.push({
@@ -851,36 +859,36 @@
                 return false;
             }
 
-            const totalAnswered = questionCounts.easy + questionCounts.medium + questionCounts.hard;
+            const totalCorrect = questionCounts.easy + questionCounts.medium + questionCounts.hard;
             const hasMixedDifficulty = (questionCounts.medium > 0 || questionCounts.hard > 0);
 
-            // 완료 조건:
-            // 1. 쉬움만 20문제
-            // 2. 보통 6문제 완료
-            // 3. 어려움 3문제 완료
-            // 4. 보통/어려움 포함 총 15문제 이상
+            // 완료 조건 (정답 기준):
+            // 1. 쉬움만 10정답
+            // 2. 보통 5정답 완료
+            // 3. 어려움 1정답 완료
+            // 4. 보통/어려움 포함 총 16정답
 
-            if (questionCounts.easy >= 20 && questionCounts.medium === 0 && questionCounts.hard === 0) {
-                // 쉬움만 20문제 완료
+            if (questionCounts.easy >= 10 && questionCounts.medium === 0 && questionCounts.hard === 0) {
+                // 쉬움만 10정답 완료
                 sessionStats.completionType = 'easy_only';
                 return true;
             }
 
-            if (questionCounts.medium >= 7) {
-                // 보통 7문제 완료
+            if (questionCounts.medium >= 5) {
+                // 보통 5정답 완료
                 sessionStats.completionType = 'medium_complete';
                 return true;
             }
 
-            if (questionCounts.hard >= 3) {
-                // 어려움 3문제 완료 (최상위 달성)
+            if (questionCounts.hard >= 1) {
+                // 어려움 1정답 완료 (최상위 달성)
                 sessionStats.completionType = 'hard_complete';
                 return true;
             }
 
-            if (hasMixedDifficulty && totalAnswered >= 15) {
-                // 보통/어려움 포함 15문제 이상
-                sessionStats.completionType = 'mixed_15';
+            if (hasMixedDifficulty && totalCorrect >= 16) {
+                // 보통/어려움 포함 16정답
+                sessionStats.completionType = 'mixed_complete';
                 return true;
             }
 
@@ -889,6 +897,12 @@
 
         // 다음 문제
         function nextQuestion() {
+            // 수수께끼 체크 (연속 오답 기반)
+            if (checkRiddleTrigger()) {
+                showRiddle();
+                return; // 수수께끼 표시 후 리턴 (수수께끼 완료 후 nextQuestion 재호출)
+            }
+
             currentQuestionIndex++;
             loadCurrentQuestion();
         }
@@ -1129,6 +1143,12 @@
                 return;
             }
 
+            // 순발력 게임 표시 (과목 전환 시)
+            startReflexGame();
+        }
+
+        // 순발력 게임 후 다음 과목 로드
+        function loadNextSubject() {
             // 다음 과목 데이터 저장
             localStorage.setItem('currentSubjectIndex', currentSubjectIndex.toString());
 
@@ -1386,6 +1406,361 @@
             }
         }
 
+        // ========== 수수께끼 시스템 ==========
+        let riddlesData = [];
+        let usedRiddleIds = [];
+        let currentRiddle = null;
+        let riddleShownThisSubject = false; // 과목당 1회 제한
+
+        // 수수께끼 데이터 로드
+        async function loadRiddles() {
+            try {
+                const response = await fetch('src/data/riddles.json');
+                const data = await response.json();
+                riddlesData = data.riddles;
+                console.log('✅ 수수께끼 데이터 로드 완료:', riddlesData.length + '개');
+            } catch (error) {
+                console.error('❌ 수수께끼 데이터 로드 실패:', error);
+                riddlesData = [];
+            }
+        }
+
+        // 수수께끼 발현 체크 (연속 오답 기반)
+        function checkRiddleTrigger() {
+            // 이미 이번 과목에서 수수께끼를 보여줬으면 발현 안함
+            if (riddleShownThisSubject) return false;
+
+            // 추가 학습 모드에서는 수수께끼 안나옴
+            if (extraLearningMode) return false;
+
+            // 5문제 이상 풀었을 때만 체크
+            const totalAnswered = sessionStats.correct + sessionStats.incorrect;
+            if (totalAnswered < 5) return false;
+
+            // 연속 오답 3회 이상 → 100% 발현
+            if (consecutiveIncorrectAnswers >= 3) {
+                console.log('🎪 수수께끼 100% 발현 (연속 오답 3회 이상)');
+                return true;
+            }
+
+            // 연속 오답 2회 → 50% 발현
+            if (consecutiveIncorrectAnswers === 2) {
+                const shouldShow = Math.random() < 0.5;
+                console.log(`🎪 수수께끼 50% 발현 체크: ${shouldShow ? '발현!' : '통과'}`);
+                return shouldShow;
+            }
+
+            return false;
+        }
+
+        // 수수께끼 표시
+        function showRiddle() {
+            if (riddlesData.length === 0) {
+                console.warn('수수께끼 데이터 없음');
+                return;
+            }
+
+            // 사용하지 않은 수수께끼 필터링
+            const availableRiddles = riddlesData.filter(r => !usedRiddleIds.includes(r.id));
+
+            // 모두 사용했으면 리셋
+            if (availableRiddles.length === 0) {
+                usedRiddleIds = [];
+                availableRiddles.push(...riddlesData);
+            }
+
+            // 랜덤 선택
+            currentRiddle = availableRiddles[Math.floor(Math.random() * availableRiddles.length)];
+            usedRiddleIds.push(currentRiddle.id);
+
+            // UI 업데이트
+            document.getElementById('riddle-question').textContent = currentRiddle.q;
+            document.getElementById('riddle-hint-text').textContent = currentRiddle.hint;
+            document.getElementById('riddle-answer-input').value = '';
+            document.getElementById('riddle-hint').classList.add('hidden');
+            document.getElementById('riddle-result').classList.add('hidden');
+            document.getElementById('riddle-hint-btn').classList.remove('hidden');
+            document.getElementById('riddle-submit-btn').classList.remove('hidden');
+            document.getElementById('riddle-skip-btn').classList.remove('hidden');
+
+            // 모달 표시
+            document.getElementById('riddle-modal').classList.remove('hidden');
+
+            // 입력창에 포커스
+            setTimeout(() => {
+                document.getElementById('riddle-answer-input').focus();
+            }, 300);
+
+            riddleShownThisSubject = true;
+
+            console.log('🎪 수수께끼 표시:', currentRiddle.q);
+        }
+
+        // 힌트 보기
+        function showRiddleHint() {
+            document.getElementById('riddle-hint').classList.remove('hidden');
+            document.getElementById('riddle-hint-btn').classList.add('hidden');
+        }
+
+        // 정답 확인
+        function checkRiddleAnswer() {
+            const userAnswer = document.getElementById('riddle-answer-input').value.trim().toLowerCase();
+
+            if (!userAnswer) {
+                alert('답을 입력해주세요!');
+                return;
+            }
+
+            // 정답 체크 (여러 정답 가능)
+            const isCorrect = currentRiddle.a.some(answer =>
+                answer.toLowerCase() === userAnswer
+            );
+
+            const resultDiv = document.getElementById('riddle-result');
+            resultDiv.classList.remove('hidden');
+
+            if (isCorrect) {
+                // 정답!
+                resultDiv.innerHTML = `
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 animate-bounce">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-4xl">🎉</span>
+                            <div>
+                                <div class="font-bold text-green-900 text-lg">정답입니다!</div>
+                                <div class="text-sm text-green-800 mt-1">일반 뽑기권 1개를 받았어요! 🎁</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // 보상 지급
+                giveRiddleReward();
+
+                // 버튼 숨기기
+                document.getElementById('riddle-hint-btn').classList.add('hidden');
+                document.getElementById('riddle-submit-btn').classList.add('hidden');
+                document.getElementById('riddle-answer-input').disabled = true;
+
+                // 2초 후 자동 닫기
+                setTimeout(() => {
+                    closeRiddle();
+                }, 2000);
+
+            } else {
+                // 오답
+                resultDiv.innerHTML = `
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">😅</span>
+                            <div>
+                                <div class="font-bold text-red-900">아쉬워요!</div>
+                                <div class="text-sm text-red-800 mt-1">다시 생각해보세요</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // 1초 후 결과 숨기기
+                setTimeout(() => {
+                    resultDiv.classList.add('hidden');
+                }, 1500);
+            }
+
+            // 진동 피드백
+            if (vibrationEnabled && navigator.vibrate) {
+                navigator.vibrate(isCorrect ? [100, 50, 100] : [200]);
+            }
+        }
+
+        // 수수께끼 보상 지급
+        function giveRiddleReward() {
+            try {
+                const user = plantSystem.getUserData();
+
+                if (!user.rewards) {
+                    user.rewards = {
+                        growthTickets: [],
+                        normalGachaTickets: 0,
+                        premiumGachaTickets: 0
+                    };
+                }
+
+                // 일반 뽑기권 1개 지급
+                user.rewards.normalGachaTickets = (user.rewards.normalGachaTickets || 0) + 1;
+                plantSystem.saveUserData(user);
+
+                console.log('🎁 수수께끼 보상 지급: 일반 뽑기권 +1');
+
+            } catch (error) {
+                console.error('보상 지급 오류:', error);
+            }
+        }
+
+        // 수수께끼 건너뛰기
+        function skipRiddle() {
+            closeRiddle();
+        }
+
+        // 수수께끼 모달 닫기
+        function closeRiddle() {
+            document.getElementById('riddle-modal').classList.add('hidden');
+            document.getElementById('riddle-answer-input').disabled = false;
+
+            // 다음 문제 진행
+            nextQuestion();
+        }
+
+        // ========== 순발력 게임 시스템 ==========
+        let reflexGameScore = 0;
+        let reflexGameTimeLeft = 0;
+        let reflexGameInterval = null;
+        let reflexTargetColor = '';
+
+        // 순발력 게임 시작 (과목 전환 시)
+        function startReflexGame() {
+            // 추가 학습 모드에서는 순발력 게임 안함
+            if (extraLearningMode) {
+                loadNextSubject();
+                return;
+            }
+
+            reflexGameScore = 0;
+            reflexGameTimeLeft = 10; // 10초 게임
+
+            document.getElementById('reflex-score').textContent = '점수: 0';
+            document.getElementById('reflex-timer').textContent = reflexGameTimeLeft;
+            document.getElementById('reflex-continue-btn').classList.add('hidden');
+            document.getElementById('reflex-instruction').textContent = '준비하세요...';
+
+            // 모달 표시
+            document.getElementById('reflex-modal').classList.remove('hidden');
+
+            // 3초 카운트다운
+            let countdown = 3;
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                document.getElementById('reflex-timer').textContent = countdown;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    startReflexRound();
+                }
+            }, 1000);
+
+            console.log('⚡ 순발력 게임 시작');
+        }
+
+        // 순발력 게임 라운드 시작
+        function startReflexRound() {
+            document.getElementById('reflex-instruction').textContent = '같은 색깔을 빠르게 찾으세요!';
+
+            // 색깔 목록
+            const colors = [
+                { name: '빨강', bg: 'bg-red-500', code: '#ef4444' },
+                { name: '파랑', bg: 'bg-blue-500', code: '#3b82f6' },
+                { name: '초록', bg: 'bg-green-500', code: '#22c55e' },
+                { name: '노랑', bg: 'bg-yellow-400', code: '#facc15' },
+                { name: '보라', bg: 'bg-purple-500', code: '#a855f7' },
+                { name: '분홍', bg: 'bg-pink-500', code: '#ec4899' }
+            ];
+
+            // 랜덤 타겟 색깔 선택
+            reflexTargetColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // 버튼 4개 생성 (1개는 정답, 나머지는 오답)
+            const buttons = [reflexTargetColor];
+            const otherColors = colors.filter(c => c.name !== reflexTargetColor.name);
+
+            // 3개 오답 추가
+            for (let i = 0; i < 3 && otherColors.length > 0; i++) {
+                const randomIndex = Math.floor(Math.random() * otherColors.length);
+                buttons.push(otherColors[randomIndex]);
+                otherColors.splice(randomIndex, 1);
+            }
+
+            // 버튼 셔플
+            buttons.sort(() => Math.random() - 0.5);
+
+            // 게임 영역에 버튼 생성
+            const gameArea = document.getElementById('reflex-game-area');
+            gameArea.innerHTML = buttons.map(color => `
+                <button onclick="checkReflexAnswer('${color.name}')"
+                        class="${color.bg} text-white rounded-lg p-6 text-center font-bold hover:opacity-80 transition-all transform hover:scale-105">
+                    ${color.name}
+                </button>
+            `).join('');
+
+            // 타이머 시작
+            reflexGameTimeLeft = 10;
+            document.getElementById('reflex-timer').textContent = reflexGameTimeLeft;
+
+            if (reflexGameInterval) clearInterval(reflexGameInterval);
+
+            reflexGameInterval = setInterval(() => {
+                reflexGameTimeLeft--;
+                document.getElementById('reflex-timer').textContent = reflexGameTimeLeft;
+
+                if (reflexGameTimeLeft <= 0) {
+                    clearInterval(reflexGameInterval);
+                    endReflexGame();
+                }
+            }, 1000);
+        }
+
+        // 순발력 게임 정답 체크
+        function checkReflexAnswer(selectedColor) {
+            if (reflexGameTimeLeft <= 0) return;
+
+            if (selectedColor === reflexTargetColor.name) {
+                // 정답!
+                reflexGameScore += 10;
+                document.getElementById('reflex-score').textContent = '점수: ' + reflexGameScore;
+
+                // 진동 피드백
+                if (vibrationEnabled && navigator.vibrate) {
+                    navigator.vibrate([50]);
+                }
+
+                // 새 라운드 시작
+                startReflexRound();
+            } else {
+                // 오답 - 아무 일도 일어나지 않음 (페널티 없음)
+                if (vibrationEnabled && navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+            }
+        }
+
+        // 순발력 게임 종료
+        function endReflexGame() {
+            if (reflexGameInterval) {
+                clearInterval(reflexGameInterval);
+                reflexGameInterval = null;
+            }
+
+            document.getElementById('reflex-instruction').textContent =
+                `게임 종료! 최종 점수: ${reflexGameScore}점`;
+            document.getElementById('reflex-game-area').innerHTML = '';
+            document.getElementById('reflex-continue-btn').classList.remove('hidden');
+
+            console.log('⚡ 순발력 게임 종료 - 점수:', reflexGameScore);
+        }
+
+        // 순발력 게임 모달 닫기 및 다음 과목 로드
+        function closeReflexGame() {
+            document.getElementById('reflex-modal').classList.add('hidden');
+
+            if (reflexGameInterval) {
+                clearInterval(reflexGameInterval);
+                reflexGameInterval = null;
+            }
+
+            // 다음 과목 로드
+            loadNextSubject();
+        }
+
+        // ========== 기존 함수 수정 ==========
+
         // 나가기 확인
         function confirmExit() {
             if (confirm('학습을 중단하시겠습니까? 진행 상황이 저장되지 않을 수 있습니다.')) {
@@ -1425,5 +1800,89 @@
             }
         });
     </script>
+
+    <!-- 수수께끼 모달 -->
+    <div id="riddle-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 max-w-md w-full shadow-2xl transform transition-all">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4 animate-bounce">🎪</div>
+                <h2 class="text-2xl font-bold text-purple-900 mb-2">잠깐! 수수께끼 타임!</h2>
+                <p class="text-sm text-purple-700">맞히면 특별 보상이 있어요 🎁</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
+                <p class="text-lg text-gray-800 font-medium leading-relaxed mb-4" id="riddle-question">
+                    수수께끼가 여기에 표시됩니다
+                </p>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">답을 입력하세요:</label>
+                    <input type="text" id="riddle-answer-input"
+                           class="w-full px-4 py-3 border-2 border-purple-300 rounded-lg focus:border-purple-500 focus:outline-none text-lg"
+                           placeholder="정답을 입력하세요"
+                           onkeypress="if(event.key==='Enter') checkRiddleAnswer()">
+                </div>
+
+                <div id="riddle-hint" class="hidden bg-yellow-50 border-2 border-yellow-300 rounded-lg p-3 mb-4">
+                    <div class="flex items-start space-x-2">
+                        <span class="text-lg">💡</span>
+                        <div>
+                            <div class="font-bold text-yellow-900 text-sm">힌트</div>
+                            <div class="text-sm text-yellow-800" id="riddle-hint-text"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="riddle-result" class="hidden mb-4"></div>
+            </div>
+
+            <div class="flex space-x-3">
+                <button onclick="showRiddleHint()" id="riddle-hint-btn"
+                        class="flex-1 px-4 py-3 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 transition-all">
+                    💡 힌트 보기
+                </button>
+                <button onclick="checkRiddleAnswer()" id="riddle-submit-btn"
+                        class="flex-1 px-4 py-3 bg-purple-500 text-white rounded-lg font-bold hover:bg-purple-600 transition-all">
+                    ✅ 확인
+                </button>
+            </div>
+
+            <button onclick="skipRiddle()" id="riddle-skip-btn"
+                    class="w-full mt-3 px-4 py-2 text-gray-500 hover:text-gray-700 text-sm transition-all">
+                건너뛰기 →
+            </button>
+        </div>
+    </div>
+
+    <!-- 순발력 게임 모달 -->
+    <div id="reflex-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 max-w-md w-full shadow-2xl transform transition-all">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4">⚡</div>
+                <h2 class="text-2xl font-bold text-blue-900 mb-2">순발력 테스트!</h2>
+                <p class="text-sm text-blue-700">다음 과목 시작 전 잠깐 쉬어가요</p>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
+                <div class="text-center mb-4">
+                    <p class="text-lg font-medium text-gray-800 mb-4" id="reflex-instruction">
+                        준비하세요...
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 mb-4" id="reflex-game-area">
+                        <!-- 게임 버튼들이 여기에 동적으로 생성됩니다 -->
+                    </div>
+
+                    <div id="reflex-timer" class="text-3xl font-bold text-blue-600 mb-2">3</div>
+                    <div id="reflex-score" class="text-sm text-gray-600">점수: 0</div>
+                </div>
+            </div>
+
+            <button onclick="closeReflexGame()" id="reflex-continue-btn"
+                    class="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-all shadow-lg hidden">
+                다음 과목으로 계속하기 →
+            </button>
+        </div>
+    </div>
 </body>
 </html>

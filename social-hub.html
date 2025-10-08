@@ -41,6 +41,7 @@
             padding: 30px;
             text-align: center;
             color: white;
+            position: relative;
         }
 
         .header h1 {
@@ -51,6 +52,32 @@
         .header p {
             font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .home-btn:hover {
+            background: white;
+            color: #ff9a9e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .nav-tabs {
@@ -402,6 +429,13 @@
                 font-size: 2rem;
             }
 
+            .home-btn {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+
             .leaderboard-item {
                 padding: 10px;
             }
@@ -424,6 +458,7 @@
     </style>
     <div class="container">
         <div class="header">
+            <a href="index.html" class="home-btn">🏠 홈으로</a>
             <h1>🌐 EduPet 소셜 허브</h1>
             <p>친구들과 함께 공부하고 경쟁해보세요!</p>
         </div>
@@ -433,14 +468,11 @@
             <div id="auth-status" class="auth-status">
                 로딩 중...
             </div>
-            <div id="auth-controls">
-                <!-- 인증 버튼들이 동적으로 추가됨 -->
-            </div>
         </div>
 
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="showTab('leaderboards')">🏆 순위표</button>
-            <button class="nav-tab" onclick="showTab('friends')">👥 친구</button>
+            <button class="nav-tab" onclick="showTab('profile')">👤 프로필</button>
             <button class="nav-tab" onclick="showTab('showoff')">🐾 자랑하기</button>
             <button class="nav-tab" onclick="showTab('groups')">🎯 그룹</button>
         </div>
@@ -470,22 +502,27 @@
             </div>
         </div>
 
-        <!-- 친구 탭 -->
-        <div id="friends" class="tab-content">
-            <h2>👥 친구 관리</h2>
-            
+        <!-- 프로필 탭 -->
+        <div id="profile" class="tab-content">
+            <h2>👤 내 프로필</h2>
+
             <div class="friends-section">
-                <h3>새 친구 추가</h3>
-                <div class="input-group">
-                    <input type="text" id="friend-nickname" class="form-control" placeholder="친구 닉네임 입력">
-                    <button class="btn btn-primary" onclick="addFriend()">추가</button>
+                <h3>아바타 동물 선택</h3>
+                <p style="color: #6c757d; margin-bottom: 15px;">순위표와 게시물에 표시될 아바타를 선택하세요</p>
+                <div id="avatar-selection" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-bottom: 20px;">
+                    <!-- 동물 아바타 목록이 동적으로 추가됨 -->
                 </div>
-                <div id="add-friend-result"></div>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" style="padding: 12px 40px; font-size: 1.1rem;" onclick="applyAvatarChange()">
+                        ✅ 적용하기
+                    </button>
+                </div>
+                <div id="avatar-apply-result" style="margin-top: 15px;"></div>
             </div>
 
             <div class="friends-section">
-                <h3>내 친구 목록</h3>
-                <div id="friends-list" class="loading">친구 목록을 불러오는 중...</div>
+                <h3>내 통계</h3>
+                <div id="profile-stats" class="loading">통계를 불러오는 중...</div>
             </div>
         </div>
 
@@ -548,6 +585,7 @@
         let currentUser = null;
         let selectedAnimal = null;
         let leaderboardListeners = [];
+        let tempSelectedAvatar = null; // 임시 선택된 아바타
 
         // 페이지 초기화
         window.addEventListener('DOMContentLoaded', async () => {
@@ -628,11 +666,9 @@
                 }
 
                 showAuthStatus(`환영합니다, ${displayName}님! 🎉`);
-                showAuthControls(true);
                 loadSocialData();
             } else {
                 showAuthStatus('로그인이 필요합니다.');
-                showAuthControls(false);
                 clearSocialData();
             }
             document.getElementById('loading-overlay').style.display = 'none';
@@ -650,93 +686,14 @@
             }
         }
 
-        // 인증 컨트롤 표시
-        function showAuthControls(isAuthenticated) {
-            const controlsDiv = document.getElementById('auth-controls');
+        // 인증 컨트롤 표시 (제거됨 - 별명 설정 UI 제거)
 
-            if (isAuthenticated) {
-                // localStorage에서 현재 닉네임 가져오기
-                let currentNickname = '';
-                try {
-                    const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
-                    currentNickname = settings.userName || currentUser?.profile?.nickname || '';
-                } catch (error) {
-                    currentNickname = currentUser?.profile?.nickname || '';
-                }
-
-                controlsDiv.innerHTML = `
-                    <div style="margin-bottom: 15px;">
-                        <div class="input-group">
-                            <input type="text" id="nickname-input" class="form-control" placeholder="닉네임 설정 (선택사항)" value="${currentNickname}">
-                            <button class="btn btn-primary" onclick="setNickname()">설정</button>
-                        </div>
-                    </div>
-                    <button class="btn btn-secondary" onclick="signOut()">로그아웃</button>
-                `;
-            } else {
-                controlsDiv.innerHTML = `
-                    <button class="btn btn-primary" onclick="signInAnonymously()">시작하기</button>
-                    <p style="margin-top: 10px; color: #6c757d;">익명으로 시작하여 친구들과 소통하세요!</p>
-                `;
-            }
-        }
-
-        // 익명 로그인
-        async function signInAnonymously() {
-            showAuthStatus('로그인 중...');
-            const success = await eduPetAuth.signInAnonymously();
-            if (!success) {
-                showError('로그인에 실패했습니다. 다시 시도해주세요.');
-            }
-        }
-
-        // 닉네임 설정
-        async function setNickname() {
-            const nickname = document.getElementById('nickname-input').value.trim();
-            if (!nickname) {
-                showError('닉네임을 입력해주세요.');
-                return;
-            }
-
-            if (nickname.length < 2 || nickname.length > 10) {
-                showError('닉네임은 2-10자 사이여야 합니다.');
-                return;
-            }
-
-            // 특수문자 검사
-            const allowedPattern = /^[가-힣a-zA-Z0-9_\s]+$/;
-            if (!allowedPattern.test(nickname)) {
-                showError('한글, 영문, 숫자, _만 사용할 수 있어요!');
-                return;
-            }
-
-            try {
-                // Firebase에 닉네임 저장
-                await eduPetAuth.setNickname(nickname);
-
-                // localStorage에도 저장 (튜토리얼과 동일한 방식)
-                const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
-                settings.userName = nickname;
-                settings.updatedAt = Date.now();
-                localStorage.setItem('eduPetSettings', JSON.stringify(settings));
-
-                showSuccess('닉네임이 설정되었습니다!');
-                showAuthStatus(`환영합니다, ${nickname}님! 🎉`);
-            } catch (error) {
-                showError(error.message);
-            }
-        }
-
-        // 로그아웃
-        async function signOut() {
-            await eduPetAuth.signOut();
-        }
 
         // 소셜 데이터 로드
         function loadSocialData() {
             loadLeaderboards();
-            loadFriendsList();
             loadShowOffs();
+            loadProfileData();
         }
 
         // 순위표 로드
@@ -764,20 +721,25 @@
         // 순위표 표시
         function displayLeaderboard(leaderboard, containerId) {
             const container = document.getElementById(containerId);
-            
+
             if (!leaderboard || leaderboard.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 데이터가 없습니다.</p>';
                 return;
             }
 
+            console.log('Displaying leaderboard for', containerId, ':', leaderboard);
+
             const html = leaderboard.map((user, index) => {
                 const rankClass = index === 0 ? 'first' : index === 1 ? 'second' : index === 2 ? 'third' : '';
                 const onlineStatus = user.isOnline ? 'online' : 'offline';
-                
+                const avatarEmoji = getAnimalEmoji(user.avatarAnimal);
+
+                console.log(`User ${user.nickname}: avatarAnimal=${user.avatarAnimal}, emoji=${avatarEmoji}`);
+
                 return `
                     <div class="leaderboard-item">
                         <div class="rank ${rankClass}">${user.rank}</div>
-                        <div class="avatar">${getAnimalEmoji(user.avatarAnimal)}</div>
+                        <div class="avatar">${avatarEmoji}</div>
                         <div class="user-info">
                             <div class="nickname">
                                 ${user.nickname}
@@ -792,99 +754,185 @@
             container.innerHTML = html;
         }
 
-        // 친구 목록 로드
-        async function loadFriendsList() {
-            if (typeof eduPetSocial === 'undefined') {
-                console.error('eduPetSocial가 정의되지 않았습니다.');
-                document.getElementById('friends-list').innerHTML = '<div class="error">소셜 기능을 사용할 수 없습니다.</div>';
-                return;
-            }
-
+        // 프로필 데이터 로드
+        async function loadProfileData() {
             try {
-                console.log('Loading friends list...');
-                const friends = await eduPetSocial.getFriendsList();
-                displayFriendsList(friends);
+                // 아바타 동물 목록 로드
+                loadAvatarSelection();
+
+                // 통계 로드
+                loadProfileStats();
             } catch (error) {
-                console.error('친구 목록 로드 실패:', error);
-                document.getElementById('friends-list').innerHTML = '<div class="error">친구 목록을 불러올 수 없습니다.</div>';
+                console.error('프로필 데이터 로드 실패:', error);
             }
         }
 
-        // 친구 목록 표시
-        function displayFriendsList(friends) {
-            const container = document.getElementById('friends-list');
-            
-            if (!friends || friends.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 친구가 없습니다. 친구를 추가해보세요!</p>';
-                return;
+        // 아바타 선택 UI 로드
+        function loadAvatarSelection() {
+            const avatarContainer = document.getElementById('avatar-selection');
+            if (!avatarContainer) return;
+
+            // 사용 가능한 동물 아바타 목록
+            const availableAvatars = [
+                { id: 'bunny', emoji: '🐰', name: '토끼' },
+                { id: 'cat', emoji: '🐱', name: '고양이' },
+                { id: 'dog', emoji: '🐶', name: '강아지' },
+                { id: 'fox', emoji: '🦊', name: '여우' },
+                { id: 'lion', emoji: '🦁', name: '사자' },
+                { id: 'tiger', emoji: '🐅', name: '호랑이' },
+                { id: 'bear', emoji: '🐻', name: '곰' },
+                { id: 'panda', emoji: '🐼', name: '판다' },
+                { id: 'koala', emoji: '🐨', name: '코알라' },
+                { id: 'monkey', emoji: '🐵', name: '원숭이' },
+                { id: 'elephant', emoji: '🐘', name: '코끼리' },
+                { id: 'giraffe', emoji: '🦒', name: '기린' },
+                { id: 'zebra', emoji: '🦓', name: '얼룩말' },
+                { id: 'horse', emoji: '🐎', name: '말' },
+                { id: 'cow', emoji: '🐄', name: '소' },
+                { id: 'pig', emoji: '🐷', name: '돼지' },
+                { id: 'sheep', emoji: '🐑', name: '양' },
+                { id: 'chicken', emoji: '🐔', name: '닭' },
+                { id: 'penguin', emoji: '🐧', name: '펭귄' },
+                { id: 'owl', emoji: '🦉', name: '올빼미' }
+            ];
+
+            const currentAvatar = currentUser?.profile?.avatarAnimal || 'bunny';
+
+            // 임시 선택이 없으면 현재 아바타를 임시 선택으로 설정
+            if (!tempSelectedAvatar) {
+                tempSelectedAvatar = currentAvatar;
             }
 
-            const html = friends.map(friend => {
-                const onlineStatus = friend.isOnline ? 'online' : 'offline';
-                const statusText = friend.isOnline ? '온라인' : '오프라인';
-                
+            const html = availableAvatars.map(avatar => {
+                const isSelected = avatar.id === tempSelectedAvatar;
                 return `
-                    <div class="friend-item">
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <div style="display: flex; align-items: center; gap: 15px;">
-                                <div class="avatar">${getAnimalEmoji(friend.avatarAnimal)}</div>
-                                <div>
-                                    <div class="nickname">
-                                        ${friend.nickname}
-                                        <span class="online-status ${onlineStatus}"></span>
-                                        <small style="color: #6c757d;">(${statusText})</small>
-                                    </div>
-                                    <div style="font-size: 0.9rem; color: #6c757d;">
-                                        정답: ${friend.stats.correctAnswers || 0}개 | 
-                                        동물: ${friend.stats.animalsCollected || 0}마리
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn btn-danger" onclick="removeFriend('${friend.uid}')">삭제</button>
-                        </div>
+                    <div id="avatar-${avatar.id}" onclick="selectAvatarTemp('${avatar.id}')" style="
+                        padding: 15px;
+                        background: ${isSelected ? '#007bff' : 'white'};
+                        border: 2px solid ${isSelected ? '#007bff' : '#dee2e6'};
+                        border-radius: 10px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        ${isSelected ? 'transform: scale(1.1);' : ''}
+                    " onmouseover="this.style.borderColor='#007bff'" onmouseout="if('${avatar.id}' !== '${tempSelectedAvatar}') this.style.borderColor='#dee2e6'">
+                        <div style="font-size: 2rem; margin-bottom: 5px;">${avatar.emoji}</div>
+                        <div style="font-size: 0.75rem; color: ${isSelected ? 'white' : '#495057'}; font-weight: ${isSelected ? 'bold' : 'normal'};">${avatar.name}</div>
                     </div>
                 `;
             }).join('');
 
-            container.innerHTML = html;
+            avatarContainer.innerHTML = html;
         }
 
-        // 친구 추가
-        async function addFriend() {
-            const nickname = document.getElementById('friend-nickname').value.trim();
-            const resultDiv = document.getElementById('add-friend-result');
-            
-            if (!nickname) {
-                resultDiv.innerHTML = '<div class="error">닉네임을 입력해주세요.</div>';
+        // 아바타 임시 선택 (아직 저장 안 함)
+        function selectAvatarTemp(avatarId) {
+            if (!currentUser) {
+                showError('로그인이 필요합니다.');
+                return;
+            }
+
+            tempSelectedAvatar = avatarId;
+
+            // UI 업데이트
+            document.querySelectorAll('[id^="avatar-"]').forEach(el => {
+                const id = el.id.replace('avatar-', '');
+                const isSelected = id === avatarId;
+
+                el.style.background = isSelected ? '#007bff' : 'white';
+                el.style.borderColor = isSelected ? '#007bff' : '#dee2e6';
+                el.style.transform = isSelected ? 'scale(1.1)' : 'scale(1)';
+
+                const nameElement = el.querySelector('div:last-child');
+                if (nameElement) {
+                    nameElement.style.color = isSelected ? 'white' : '#495057';
+                    nameElement.style.fontWeight = isSelected ? 'bold' : 'normal';
+                }
+            });
+        }
+
+        // 아바타 변경 적용
+        async function applyAvatarChange() {
+            const resultDiv = document.getElementById('avatar-apply-result');
+
+            if (!tempSelectedAvatar) {
+                resultDiv.innerHTML = '<div class="error">아바타를 선택해주세요.</div>';
+                return;
+            }
+
+            if (!currentUser) {
+                resultDiv.innerHTML = '<div class="error">로그인이 필요합니다.</div>';
                 return;
             }
 
             try {
-                await eduPetSocial.addFriend(nickname);
-                resultDiv.innerHTML = '<div class="success">친구가 추가되었습니다!</div>';
-                document.getElementById('friend-nickname').value = '';
-                
-                // 친구 목록 새로고침
+                resultDiv.innerHTML = '<div style="text-align: center; color: #007bff;">적용 중...</div>';
+
+                // Firebase에 아바타 업데이트
+                await firebase_db.ref(`users/${currentUser.uid}/profile/avatarAnimal`).set(tempSelectedAvatar);
+
+                // 현재 사용자 데이터 업데이트
+                if (currentUser.profile) {
+                    currentUser.profile.avatarAnimal = tempSelectedAvatar;
+                }
+
+                resultDiv.innerHTML = '<div class="success">✅ 아바타가 적용되었습니다! 페이지를 새로고침하여 확인하세요.</div>';
+
+                // 3초 후 메시지 제거
                 setTimeout(() => {
-                    loadFriendsList();
                     resultDiv.innerHTML = '';
-                }, 2000);
-                
+                }, 5000);
+
             } catch (error) {
-                resultDiv.innerHTML = `<div class="error">${error.message}</div>`;
+                console.error('아바타 적용 실패:', error);
+                resultDiv.innerHTML = '<div class="error">아바타 적용에 실패했습니다.</div>';
             }
         }
 
-        // 친구 삭제
-        async function removeFriend(friendUid) {
-            if (!confirm('정말 이 친구를 삭제하시겠습니까?')) return;
+
+        // 프로필 통계 로드
+        async function loadProfileStats() {
+            const container = document.getElementById('profile-stats');
+            if (!container) return;
 
             try {
-                await eduPetSocial.removeFriend(friendUid);
-                loadFriendsList(); // 목록 새로고침
-                showSuccess('친구가 삭제되었습니다.');
+                if (!currentUser) {
+                    container.innerHTML = '<p style="text-align: center; color: #6c757d;">로그인이 필요합니다.</p>';
+                    return;
+                }
+
+                const statsSnapshot = await firebase_db.ref(`users/${currentUser.uid}/stats`).once('value');
+                const stats = statsSnapshot.val() || {};
+
+                const html = `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 5px;">🧠</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #007bff;">${stats.correctAnswers || 0}</div>
+                            <div style="font-size: 0.9rem; color: #6c757d;">정답 수</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 5px;">🎯</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #28a745;">${stats.quizAccuracy || 0}%</div>
+                            <div style="font-size: 0.9rem; color: #6c757d;">정확도</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 5px;">💰</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #ffc107;">${(stats.moneyCollected || 0).toLocaleString()}원</div>
+                            <div style="font-size: 0.9rem; color: #6c757d;">보유 금액</div>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 5px;">🐾</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #6f42c1;">${stats.animalsCollected || 0}</div>
+                            <div style="font-size: 0.9rem; color: #6c757d;">수집한 동물</div>
+                        </div>
+                    </div>
+                `;
+
+                container.innerHTML = html;
             } catch (error) {
-                showError('친구 삭제에 실패했습니다.');
+                console.error('프로필 통계 로드 실패:', error);
+                container.innerHTML = '<div class="error">통계를 불러올 수 없습니다.</div>';
             }
         }
 
@@ -909,7 +957,7 @@
         // 자랑하기 목록 표시
         function displayShowOffs(showOffs) {
             const container = document.getElementById('showoff-list');
-            
+
             if (!showOffs || showOffs.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #6c757d;">아직 자랑하기가 없습니다. 첫 번째로 자랑해보세요!</p>';
                 return;
@@ -918,19 +966,27 @@
             const html = showOffs.map(showOff => {
                 const timeAgo = getTimeAgo(showOff.createdAt);
                 const isLiked = showOff.likedBy && showOff.likedBy[currentUser?.profile?.uid];
-                
+                const isOwner = currentUser && showOff.userId === currentUser.uid;
+                const commentCount = showOff.comments ? Object.keys(showOff.comments).length : 0;
+
                 return `
-                    <div class="showoff-item">
+                    <div class="showoff-item" id="showoff-${showOff.id}">
                         <div class="showoff-header">
                             <div class="showoff-user">
                                 <div class="avatar">${getAnimalEmoji(showOff.userAvatar)}</div>
                                 <div>
                                     <div class="nickname">${showOff.userNickname}</div>
-                                    <div class="showoff-time">${timeAgo}</div>
+                                    <div class="showoff-time">${timeAgo}${showOff.updatedAt ? ' (수정됨)' : ''}</div>
                                 </div>
                             </div>
+                            ${isOwner ? `
+                                <div style="display: flex; gap: 5px;">
+                                    <button class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.8rem;" onclick="editShowOff('${showOff.id}', '${(showOff.message || '').replace(/'/g, "\\'")}')">수정</button>
+                                    <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.8rem;" onclick="deleteShowOffPost('${showOff.id}')">삭제</button>
+                                </div>
+                            ` : ''}
                         </div>
-                        
+
                         <div class="animal-showcase">
                             <div class="animal-name">${showOff.animal.name}</div>
                             <div class="animal-tier tier-${showOff.animal.tier}">${getTierName(showOff.animal.tier)}</div>
@@ -938,14 +994,33 @@
                             ${showOff.animal.level > 1 ? `<div style="color: #f59e0b; font-weight: bold; margin: 5px 0;">레벨 ${showOff.animal.level} ${'⭐'.repeat(showOff.animal.level)}</div>` : ''}
                             ${showOff.animal.totalPower ? `<div style="color: #8b5cf6; font-weight: bold;">⚡ 파워: ${showOff.animal.totalPower}</div>` : ''}
                         </div>
-                        
-                        ${showOff.message ? `<div style="padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 10px 0;">${showOff.message}</div>` : ''}
-                        
+
+                        <div id="message-${showOff.id}">
+                            ${showOff.message ? `<div style="padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 10px 0;">${showOff.message}</div>` : ''}
+                        </div>
+
                         <div class="showoff-actions">
                             <button class="like-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${showOff.id}')">
                                 ❤️ ${showOff.likes || 0}
                             </button>
-                            <span style="color: #6c757d; font-size: 0.9rem;">💬 댓글 기능 준비 중</span>
+                            <button class="like-btn" onclick="toggleComments('${showOff.id}')">
+                                💬 ${commentCount}
+                            </button>
+                        </div>
+
+                        <!-- 댓글 영역 (항상 표시) -->
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+                            <!-- 댓글 입력 (항상 보임) -->
+                            <div style="margin-bottom: 15px; display: flex; gap: 10px;">
+                                <input type="text" id="comment-input-${showOff.id}" placeholder="댓글을 입력하세요 (100자 이내)" maxlength="100" style="flex: 1; padding: 8px; border: 2px solid #dee2e6; border-radius: 20px;">
+                                <button class="btn btn-primary" style="padding: 8px 16px;" onclick="addCommentToShowOff('${showOff.id}')">작성</button>
+                            </div>
+                            <!-- 댓글 목록 (토글 가능) -->
+                            <div id="comments-${showOff.id}" style="display: none;">
+                                <div id="comments-list-${showOff.id}">
+                                    <div class="loading">댓글을 불러오는 중...</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -986,7 +1061,7 @@
 
                 // collection 객체는 { animalId: animalData } 형태
                 // count > 0인 동물만 표시 (실제로 소유한 동물만)
-                const ownedAnimals = Object.entries(collection).filter(([animalId, animalData]) => {
+                let ownedAnimals = Object.entries(collection).filter(([animalId, animalData]) => {
                     return (animalData.count || 0) > 0;
                 });
 
@@ -998,13 +1073,25 @@
                     return;
                 }
 
-                const html = ownedAnimals.map(([animalId, animalData]) => {
+                // 등급 필터 버튼 추가
+                const filterButtons = `
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center;">
+                        <button class="tier-filter-btn" data-tier="all" style="padding: 8px 16px; border: 2px solid #007bff; background: #007bff; color: white; border-radius: 20px; cursor: pointer; font-weight: 600;">전체</button>
+                        <button class="tier-filter-btn" data-tier="common" style="padding: 8px 16px; border: 2px solid #28a745; background: white; color: #28a745; border-radius: 20px; cursor: pointer; font-weight: 600;">일반</button>
+                        <button class="tier-filter-btn" data-tier="rare" style="padding: 8px 16px; border: 2px solid #007bff; background: white; color: #007bff; border-radius: 20px; cursor: pointer; font-weight: 600;">레어</button>
+                        <button class="tier-filter-btn" data-tier="epic" style="padding: 8px 16px; border: 2px solid #6f42c1; background: white; color: #6f42c1; border-radius: 20px; cursor: pointer; font-weight: 600;">에픽</button>
+                        <button class="tier-filter-btn" data-tier="legendary" style="padding: 8px 16px; border: 2px solid #fd7e14; background: white; color: #fd7e14; border-radius: 20px; cursor: pointer; font-weight: 600;">전설</button>
+                    </div>
+                `;
+
+                // 동물 목록 컨테이너 (스크롤 가능)
+                const animalListHtml = ownedAnimals.map(([animalId, animalData]) => {
                     // animal-collection.html과 동일한 데이터 구조 사용
                     const level = animalData.level || 1;
                     const stars = '⭐'.repeat(level);
 
                     return `
-                        <div class="friend-item" style="cursor: pointer;" onclick='selectAnimal(${JSON.stringify(animalData).replace(/'/g, "\\'")})'>
+                        <div class="friend-item animal-item-selectable" data-tier="${animalData.tier}" style="cursor: pointer;" onclick='selectAnimal(${JSON.stringify(animalData).replace(/'/g, "\\'")})'>
                             <div style="display: flex; align-items: center; gap: 15px;">
                                 <div style="font-size: 2rem;">${animalData.emoji || '🐾'}</div>
                                 <div style="flex: 1;">
@@ -1024,7 +1111,69 @@
                     `;
                 }).join('');
 
-                document.getElementById('user-animals').innerHTML = html;
+                // 스크롤 가능한 컨테이너에 동물 목록 추가
+                document.getElementById('user-animals').innerHTML = `
+                    ${filterButtons}
+                    <div style="max-height: 400px; overflow-y: auto; overflow-x: hidden; border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                        ${animalListHtml}
+                    </div>
+                `;
+
+                // 필터 버튼 이벤트 리스너 추가
+                document.querySelectorAll('.tier-filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const selectedTier = this.getAttribute('data-tier');
+
+                        // 모든 버튼 스타일 초기화
+                        document.querySelectorAll('.tier-filter-btn').forEach(b => {
+                            const tier = b.getAttribute('data-tier');
+                            if (tier === 'all') {
+                                b.style.background = 'white';
+                                b.style.color = '#007bff';
+                            } else if (tier === 'common') {
+                                b.style.background = 'white';
+                                b.style.color = '#28a745';
+                            } else if (tier === 'rare') {
+                                b.style.background = 'white';
+                                b.style.color = '#007bff';
+                            } else if (tier === 'epic') {
+                                b.style.background = 'white';
+                                b.style.color = '#6f42c1';
+                            } else if (tier === 'legendary') {
+                                b.style.background = 'white';
+                                b.style.color = '#fd7e14';
+                            }
+                        });
+
+                        // 선택된 버튼 강조
+                        if (selectedTier === 'all') {
+                            this.style.background = '#007bff';
+                            this.style.color = 'white';
+                        } else if (selectedTier === 'common') {
+                            this.style.background = '#28a745';
+                            this.style.color = 'white';
+                        } else if (selectedTier === 'rare') {
+                            this.style.background = '#007bff';
+                            this.style.color = 'white';
+                        } else if (selectedTier === 'epic') {
+                            this.style.background = '#6f42c1';
+                            this.style.color = 'white';
+                        } else if (selectedTier === 'legendary') {
+                            this.style.background = '#fd7e14';
+                            this.style.color = 'white';
+                        }
+
+                        // 동물 필터링
+                        document.querySelectorAll('.animal-item-selectable').forEach(item => {
+                            if (selectedTier === 'all' || item.getAttribute('data-tier') === selectedTier) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+
             } catch (error) {
                 console.error('동물 목록 로드 실패:', error);
                 document.getElementById('user-animals').innerHTML = '<div class="error">동물 목록을 불러올 수 없습니다.</div>';
@@ -1067,6 +1216,139 @@
                 }
             } catch (error) {
                 showError('좋아요 처리에 실패했습니다.');
+            }
+        }
+
+        // 게시물 삭제
+        async function deleteShowOffPost(showOffId) {
+            if (!confirm('정말 이 게시물을 삭제하시겠습니까?')) return;
+
+            try {
+                await eduPetSocial.deleteShowOff(showOffId);
+                showSuccess('게시물이 삭제되었습니다.');
+                loadShowOffs(); // 목록 새로고침
+            } catch (error) {
+                showError(error.message || '게시물 삭제에 실패했습니다.');
+            }
+        }
+
+        // 게시물 수정
+        async function editShowOff(showOffId, currentMessage) {
+            const newMessage = prompt('새 메시지를 입력하세요 (200자 이내):', currentMessage);
+            if (newMessage === null) return; // 취소
+            if (newMessage.trim() === '') {
+                showError('메시지를 입력해주세요.');
+                return;
+            }
+
+            try {
+                await eduPetSocial.updateShowOff(showOffId, newMessage);
+                showSuccess('게시물이 수정되었습니다.');
+
+                // 메시지 부분만 업데이트
+                const messageDiv = document.getElementById(`message-${showOffId}`);
+                if (messageDiv) {
+                    messageDiv.innerHTML = `<div style="padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 10px 0;">${newMessage}</div>`;
+                }
+            } catch (error) {
+                showError(error.message || '게시물 수정에 실패했습니다.');
+            }
+        }
+
+        // 댓글 토글
+        async function toggleComments(showOffId) {
+            const commentsDiv = document.getElementById(`comments-${showOffId}`);
+
+            if (commentsDiv.style.display === 'none') {
+                commentsDiv.style.display = 'block';
+                await loadComments(showOffId);
+            } else {
+                commentsDiv.style.display = 'none';
+            }
+        }
+
+        // 댓글 로드
+        async function loadComments(showOffId) {
+            try {
+                const comments = await eduPetSocial.getComments(showOffId);
+                displayComments(showOffId, comments);
+            } catch (error) {
+                console.error('댓글 로드 실패:', error);
+                document.getElementById(`comments-list-${showOffId}`).innerHTML = '<div class="error">댓글을 불러올 수 없습니다.</div>';
+            }
+        }
+
+        // 댓글 표시
+        function displayComments(showOffId, comments) {
+            const container = document.getElementById(`comments-list-${showOffId}`);
+
+            if (!comments || comments.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #6c757d; font-size: 0.9rem;">아직 댓글이 없습니다.</p>';
+                return;
+            }
+
+            const html = comments.map(comment => {
+                const timeAgo = getTimeAgo(comment.createdAt);
+                const isOwner = currentUser && comment.userId === currentUser.uid;
+
+                return `
+                    <div style="padding: 10px; background: #f8f9fa; border-radius: 8px; margin-bottom: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="display: flex; gap: 8px;">
+                                <div style="font-size: 1.2rem;">${getAnimalEmoji(comment.avatarAnimal)}</div>
+                                <div>
+                                    <div style="font-weight: 600; font-size: 0.9rem;">${comment.nickname}</div>
+                                    <div style="font-size: 0.9rem; margin-top: 3px;">${comment.message}</div>
+                                    <div style="font-size: 0.75rem; color: #6c757d; margin-top: 3px;">${timeAgo}</div>
+                                </div>
+                            </div>
+                            ${isOwner ? `
+                                <button class="btn btn-danger" style="padding: 3px 8px; font-size: 0.7rem;" onclick="deleteCommentFromShowOff('${showOffId}', '${comment.id}')">삭제</button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+        }
+
+        // 댓글 추가
+        async function addCommentToShowOff(showOffId) {
+            const input = document.getElementById(`comment-input-${showOffId}`);
+            const comment = input.value.trim();
+
+            if (!comment) {
+                showError('댓글을 입력해주세요.');
+                return;
+            }
+
+            try {
+                await eduPetSocial.addComment(showOffId, comment);
+                input.value = '';
+                await loadComments(showOffId);
+                showSuccess('댓글이 작성되었습니다.');
+
+                // 댓글 수 업데이트를 위해 자랑하기 목록 새로고침
+                loadShowOffs();
+            } catch (error) {
+                showError(error.message || '댓글 작성에 실패했습니다.');
+            }
+        }
+
+        // 댓글 삭제
+        async function deleteCommentFromShowOff(showOffId, commentId) {
+            if (!confirm('정말 이 댓글을 삭제하시겠습니까?')) return;
+
+            try {
+                await eduPetSocial.deleteComment(showOffId, commentId);
+                await loadComments(showOffId);
+                showSuccess('댓글이 삭제되었습니다.');
+
+                // 댓글 수 업데이트를 위해 자랑하기 목록 새로고침
+                loadShowOffs();
+            } catch (error) {
+                showError(error.message || '댓글 삭제에 실패했습니다.');
             }
         }
 
@@ -1121,12 +1403,18 @@
 
             // 콘텐츠 초기화
             ['quiz-leaderboard', 'accuracy-leaderboard', 'money-leaderboard', 'animal-leaderboard'].forEach(id => {
-                document.getElementById(id).innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+                const element = document.getElementById(id);
+                if (element) element.innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
             });
-            
-            document.getElementById('friends-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
-            document.getElementById('showoff-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
-            document.getElementById('groups-list').innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+
+            const showoffList = document.getElementById('showoff-list');
+            if (showoffList) showoffList.innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+
+            const groupsList = document.getElementById('groups-list');
+            if (groupsList) groupsList.innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
+
+            const profileStats = document.getElementById('profile-stats');
+            if (profileStats) profileStats.innerHTML = '<div class="loading">로그인이 필요합니다.</div>';
         }
 
         // 유틸리티 함수들

@@ -92,6 +92,45 @@
         .coin-bounce {
             animation: coinBounce 0.6s ease-in-out infinite;
         }
+
+        /* 축하 모달 애니메이션 */
+        .celebration-modal {
+            animation: modalZoomIn 0.5s ease-out;
+        }
+
+        @keyframes modalZoomIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .glow-pulse {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+                transform: scale(1.05);
+            }
+        }
+
+        /* 컨페티 애니메이션 */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+        }
     </style>
 
     <!-- Tailwind Config -->
@@ -136,7 +175,7 @@
                     <h1 class="text-3xl font-bold text-gray-900 font-game mb-2">
                         🌱 EduPet Collection
                     </h1>
-                    <p class="text-sm text-gray-600"><span id="userNameDisplay">학습자</span>님, 환영합니다!</p>
+                    <p class="text-sm text-gray-600"><span id="userAvatarDisplay" style="font-size: 1.2rem;">🐰</span> <span id="userNameDisplay">학습자</span>님, 환영합니다!</p>
                 </div>
 
                 <div class="text-right">
@@ -572,7 +611,7 @@
 
                 <button id="home-water-confirm-btn" onclick="homeConfirmWater()" disabled
                         class="w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all">
-                    <span id="home-water-btn-text">💧 문제를 읽어주세요 (<span id="home-countdown">5</span>초)</span>
+                    <span id="home-water-btn-text">💧 문제를 읽어주세요 (<span id="home-countdown">3</span>초)</span>
                 </button>
             </div>
 
@@ -593,6 +632,16 @@
             </div>
 
             <div class="space-y-3">
+                <button onclick="homeResetAllData()" class="w-full px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 text-left">
+                    🗑️ 전체 데이터 초기화
+                    <div class="text-xs text-red-100 mt-1">모든 데이터 삭제 (사용자, 식물, 학습 기록 전체)</div>
+                </button>
+
+                <button onclick="homeResetSelectedData()" class="w-full px-4 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 text-left">
+                    🎯 선택한 데이터만 초기화
+                    <div class="text-xs text-orange-100 mt-1">원하는 항목만 선택하여 초기화</div>
+                </button>
+
                 <button onclick="homeSkipPlantTime()" class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-left">
                     ⏰ 식물 시간 건너뛰기 (24시간)
                     <div class="text-xs text-blue-100 mt-1">모든 식물을 24시간 경과 상태로 변경</div>
@@ -603,9 +652,9 @@
                     <div class="text-xs text-green-100 mt-1">성장권 5개 즉시 지급</div>
                 </button>
 
-                <button onclick="homeResetPlants()" class="w-full px-4 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 text-left">
+                <button onclick="homeResetPlants()" class="w-full px-4 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 text-left">
                     🌱 식물만 초기화
-                    <div class="text-xs text-orange-100 mt-1">모든 식물 제거 (보상은 유지)</div>
+                    <div class="text-xs text-teal-100 mt-1">모든 식물 제거 (보상은 유지)</div>
                 </button>
 
                 <button onclick="homeResetDaily()" class="w-full px-4 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 text-left">
@@ -641,6 +690,63 @@
 
             <div class="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
                 ⚠️ 이 메뉴는 개발/테스트용입니다. 실제 데이터가 변경될 수 있습니다.
+            </div>
+        </div>
+    </div>
+
+    <!-- 식물 진화 축하 모달 -->
+    <div id="home-celebration-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+        <div class="bg-gradient-to-br from-yellow-50 to-green-50 rounded-2xl p-8 max-w-md w-full celebration-modal relative overflow-hidden">
+            <!-- 배경 장식 -->
+            <div id="home-confetti-container" class="absolute inset-0 pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <!-- 축하 아이콘 -->
+                <div class="text-center mb-4">
+                    <div class="text-8xl mb-4 glow-pulse" id="home-celebration-emoji">🎉</div>
+                    <div class="text-2xl font-bold text-gray-800 mb-2" id="home-celebration-title">축하합니다!</div>
+                    <div class="text-lg text-gray-600 mb-4" id="home-celebration-message">식물이 성장했습니다!</div>
+                </div>
+
+                <!-- 변화 표시 -->
+                <div class="bg-white rounded-xl p-4 mb-6 shadow-lg">
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2" id="home-celebration-before">🌰</div>
+                            <div class="text-xs text-gray-500">이전</div>
+                        </div>
+                        <div class="text-3xl text-green-500">→</div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-2 glow-pulse" id="home-celebration-after">🌱</div>
+                            <div class="text-xs text-gray-500">현재</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 진행률 표시 -->
+                <div class="bg-gradient-to-r from-green-100 to-blue-100 rounded-lg p-3 mb-4">
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-gray-700 mb-2" id="home-celebration-progress">진행률</div>
+                        <div class="flex justify-center items-center space-x-2">
+                            <div class="flex space-x-1" id="home-celebration-stages">
+                                <!-- 동적 생성 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 다음 목표 -->
+                <div class="bg-blue-50 rounded-lg p-3 mb-4 border-2 border-blue-200">
+                    <div class="text-center text-sm">
+                        <div class="font-semibold text-blue-800 mb-1">다음 목표</div>
+                        <div class="text-blue-700" id="home-celebration-next-goal">계속 물주기!</div>
+                    </div>
+                </div>
+
+                <!-- 닫기 버튼 -->
+                <button onclick="homeCloseCelebrationModal()" class="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-bold hover:from-green-600 hover:to-blue-600 transition-all shadow-lg">
+                    확인
+                </button>
             </div>
         </div>
     </div>
@@ -694,6 +800,12 @@
 
             // 이벤트 기반 업데이트 등록
             setupEventListeners();
+
+            // Firebase 및 아바타 로드 (약간의 지연 후)
+            setTimeout(() => {
+                loadUserAvatarForDisplay();
+                updateUserAvatar();
+            }, 1000);
         });
 
         // 이벤트 리스너 설정
@@ -777,7 +889,7 @@
             updateWeeklyActivity();
         }
 
-        // 사용자 이름 업데이트
+        // 사용자 이름 및 아바타 업데이트
         function updateUserName() {
             let userName = '학습자';
 
@@ -800,6 +912,59 @@
             }
 
             document.getElementById('userNameDisplay').textContent = userName;
+
+            // 아바타도 함께 업데이트
+            updateUserAvatar();
+        }
+
+        // 사용자 아바타 업데이트 (헤더)
+        async function updateUserAvatar() {
+            try {
+                console.log('updateUserAvatar called');
+
+                // Firebase 체크
+                if (typeof firebase === 'undefined' || typeof firebase.database === 'undefined') {
+                    console.log('Firebase not loaded yet for header avatar');
+                    return;
+                }
+
+                const db = firebase.database();
+                let uid = null;
+
+                // eduPetAuth에서 uid 가져오기
+                if (typeof eduPetAuth !== 'undefined' && eduPetAuth.currentUser) {
+                    uid = eduPetAuth.currentUser.uid;
+                } else {
+                    // localStorage에서 사용자 정보 가져오기
+                    const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
+                    if (firebaseUser) {
+                        try {
+                            const userData = JSON.parse(firebaseUser);
+                            uid = userData.userId || userData.uid;
+                        } catch (e) {
+                            console.error('localStorage parsing error:', e);
+                        }
+                    }
+                }
+
+                if (uid) {
+                    const avatarSnapshot = await db.ref(`users/${uid}/profile/avatarAnimal`).once('value');
+                    const avatarId = avatarSnapshot.val();
+
+                    if (avatarId) {
+                        const avatarEmoji = getAvatarEmoji(avatarId);
+                        const avatarDisplay = document.getElementById('userAvatarDisplay');
+                        if (avatarDisplay) {
+                            avatarDisplay.textContent = avatarEmoji;
+                            console.log('Avatar updated (헤더):', avatarEmoji);
+                        }
+                    }
+                } else {
+                    console.log('No user ID available for avatar update');
+                }
+            } catch (error) {
+                console.error('아바타 업데이트 실패:', error);
+            }
         }
 
         // 돈 업데이트
@@ -830,9 +995,17 @@
 
         // 동물 수 업데이트
         function updateAnimalCount() {
-            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": []}');
-            const count = animalState.animals?.length || 0;
-            document.getElementById('animalCountDisplay').textContent = count + '마리';
+            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}}');
+
+            // collection 객체에서 각 동물의 count를 합산
+            let totalCount = 0;
+            if (animalState.collection) {
+                Object.values(animalState.collection).forEach(animal => {
+                    totalCount += animal.count || 0;
+                });
+            }
+
+            document.getElementById('animalCountDisplay').textContent = totalCount + '마리';
         }
 
         // 일일 진행률 업데이트
@@ -872,11 +1045,91 @@
                 }
             });
 
+            // 프로필에서 설정한 아바타 확인
+            loadUserAvatarForDisplay();
+
+            // 최고 등급 동물도 표시 (하위 호환)
             if (highestAnimal) {
-                document.getElementById('highestAnimalDisplay').textContent = highestAnimal.emoji || '🐰';
                 document.getElementById('topAnimalDisplay').textContent = highestAnimal.emoji || '🦎';
                 document.getElementById('topAnimalName').textContent = highestAnimal.name || '동물';
             }
+        }
+
+        // 사용자가 선택한 아바타를 로드하여 표시
+        async function loadUserAvatarForDisplay() {
+            try {
+                console.log('loadUserAvatarForDisplay called');
+
+                // Firebase 체크
+                if (typeof firebase === 'undefined' || typeof firebase.database === 'undefined') {
+                    console.log('Firebase not loaded yet');
+                    return;
+                }
+
+                const db = firebase.database();
+
+                // eduPetAuth 체크
+                if (typeof eduPetAuth === 'undefined') {
+                    console.log('eduPetAuth not available, trying to get user from localStorage');
+
+                    // localStorage에서 사용자 정보 가져오기
+                    const firebaseUser = localStorage.getItem('eduPetFirebaseUser');
+                    if (firebaseUser) {
+                        try {
+                            const userData = JSON.parse(firebaseUser);
+                            const uid = userData.userId || userData.uid;
+
+                            if (uid) {
+                                const avatarSnapshot = await db.ref(`users/${uid}/profile/avatarAnimal`).once('value');
+                                const avatarId = avatarSnapshot.val();
+
+                                if (avatarId) {
+                                    const avatarEmoji = getAvatarEmoji(avatarId);
+                                    const displayElement = document.getElementById('highestAnimalDisplay');
+                                    if (displayElement) {
+                                        displayElement.textContent = avatarEmoji;
+                                        console.log('Avatar updated (오늘의 학습):', avatarEmoji);
+                                    }
+                                }
+                            }
+                        } catch (e) {
+                            console.error('localStorage parsing error:', e);
+                        }
+                    }
+                    return;
+                }
+
+                // eduPetAuth 사용
+                if (eduPetAuth.currentUser) {
+                    const avatarSnapshot = await db.ref(`users/${eduPetAuth.currentUser.uid}/profile/avatarAnimal`).once('value');
+                    const avatarId = avatarSnapshot.val();
+
+                    if (avatarId) {
+                        const avatarEmoji = getAvatarEmoji(avatarId);
+                        const displayElement = document.getElementById('highestAnimalDisplay');
+                        if (displayElement) {
+                            displayElement.textContent = avatarEmoji;
+                            console.log('Avatar updated (오늘의 학습):', avatarEmoji);
+                        }
+                    }
+                } else {
+                    console.log('No current user');
+                }
+            } catch (error) {
+                console.error('아바타 로드 실패:', error);
+            }
+        }
+
+        // 아바타 ID를 이모지로 변환하는 함수
+        function getAvatarEmoji(avatarId) {
+            const avatarMap = {
+                'bunny': '🐰', 'cat': '🐱', 'dog': '🐶', 'fox': '🦊',
+                'lion': '🦁', 'tiger': '🐅', 'bear': '🐻', 'panda': '🐼',
+                'koala': '🐨', 'monkey': '🐵', 'elephant': '🐘', 'giraffe': '🦒',
+                'zebra': '🦓', 'horse': '🐎', 'cow': '🐄', 'pig': '🐷',
+                'sheep': '🐑', 'chicken': '🐔', 'penguin': '🐧', 'owl': '🦉'
+            };
+            return avatarMap[avatarId] || '🐰';
         }
 
         // 식물 상태 업데이트 (농장 화분)
@@ -951,9 +1204,10 @@
                 }[plant.status];
                 document.getElementById(`home-plant${potNum}-status`).textContent = statusText;
 
-                // 물 정보
-                const waterPercent = (plant.waterCount / 20) * 100;
-                document.getElementById(`home-plant${potNum}-water`).textContent = `${plant.waterCount}/20`;
+                // 물 정보 - 모든 단계에서 5번씩 물주기
+                const maxWater = 5;
+                const waterPercent = (plant.waterCount / maxWater) * 100;
+                document.getElementById(`home-plant${potNum}-water`).textContent = `${plant.waterCount}/${maxWater}`;
                 document.getElementById(`home-plant${potNum}-water-bar`).style.width = waterPercent + '%';
 
                 // 시간 정보
@@ -969,7 +1223,7 @@
                 } else if (plant.status === 'PLANTED') {
                     actions.innerHTML = `
                         <button onclick="homeWaterPlant(${potNum}, '${plant.id}')" class="w-full px-3 py-2 bg-blue-500 text-white rounded-lg text-xs font-bold hover:bg-blue-600 transition-all">
-                            💧 물주기 (${plant.waterCount}/20)
+                            💧 물주기 (${plant.waterCount}/${maxWater})
                         </button>
                     `;
                 } else {
@@ -1274,7 +1528,7 @@
                     waterBtn.className = 'w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all';
                 }
                 if (waterBtnText) {
-                    waterBtnText.innerHTML = '💧 문제를 읽어주세요 (<span id="home-countdown">5</span>초)';
+                    waterBtnText.innerHTML = '💧 문제를 읽어주세요 (<span id="home-countdown">3</span>초)';
                 }
 
                 document.getElementById('home-watering-modal').classList.remove('hidden');
@@ -1297,7 +1551,7 @@
 
             if (!btn || !countdownSpan || !btnText) return;
 
-            let timeLeft = 5;
+            let timeLeft = 3;
 
             btn.disabled = true;
             btn.className = 'w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all';
@@ -1335,10 +1589,29 @@
 
         // 물주기 확인
         function homeConfirmWater() {
+            // 물주기 전 식물 상태 저장
+            const plantBefore = plantSystem.getPlant(homeCurrentPlantId);
+            const stageBefore = plantBefore ? plantBefore.stage : 0;
+
             const result = plantSystem.waterPlant(homeCurrentPlantId);
+
             if (result.success) {
-                homeShowToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/20)`);
-                homeCloseWateringModal();
+                // 물주기 후 식물 상태 가져오기
+                const plantAfter = plantSystem.getPlant(homeCurrentPlantId);
+                const stageAfter = plantAfter ? plantAfter.stage : 0;
+
+                // 스테이지 변경 체크
+                if (result.stageChanged || stageAfter > stageBefore) {
+                    // 축하 모달 표시
+                    homeCloseWateringModal();
+                    homeShowCelebrationModal(plantAfter);
+                } else {
+                    // 모든 단계에서 5번씩 물주기
+                    const maxWater = 5;
+                    homeShowToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/${maxWater})`);
+                    homeCloseWateringModal();
+                }
+
                 updatePlantStatus();
 
                 if (window.homeCurrentQuestionSubject) {
@@ -1372,10 +1645,23 @@
                     return;
                 }
 
+                // 성장 전 식물 상태 저장
+                const plantBefore = plantSystem.getPlant(plantId);
+                const stageBefore = plantBefore ? plantBefore.stage : 0;
+
                 const result = plantSystem.growPlant(currentUser, plantId);
 
                 if (result.success) {
-                    homeShowToast('🎉 ' + result.message);
+                    // 성장 후 식물 상태 가져오기
+                    const plantAfter = plantSystem.getPlant(plantId);
+                    const stageAfter = plantAfter ? plantAfter.stage : 0;
+
+                    // 스테이지가 변경되었으면 축하 모달 표시
+                    if (stageAfter > stageBefore) {
+                        homeShowCelebrationModal(plantAfter);
+                    } else {
+                        homeShowToast('🎉 ' + result.message);
+                    }
 
                     // Firebase 동기화 (선택적)
                     if (typeof plantSystemFirebase !== 'undefined' && plantSystemFirebase.syncPlantGrowth) {
@@ -1457,6 +1743,121 @@
             }
         }
 
+        // 축하 모달 표시
+        function homeShowCelebrationModal(plant) {
+            const stageEmojis = ['🌰', '🌱', '🌿', '🌸', '🍎'];
+            const stageNames = ['씨앗', '새싹', '성장', '개화', '열매'];
+
+            const currentStage = plant.stage || 0;
+            const previousStage = Math.max(0, currentStage - 1);
+
+            // 이모지 및 타이틀 설정
+            document.getElementById('home-celebration-emoji').textContent = stageEmojis[currentStage];
+            document.getElementById('home-celebration-title').textContent = '축하합니다! 🎉';
+            document.getElementById('home-celebration-message').textContent =
+                `식물이 ${stageNames[currentStage]} 단계로 성장했습니다!`;
+
+            // 이전/현재 단계 표시
+            document.getElementById('home-celebration-before').textContent = stageEmojis[previousStage];
+            document.getElementById('home-celebration-after').textContent = stageEmojis[currentStage];
+
+            // 진행률 표시 (모든 단계)
+            const stagesContainer = document.getElementById('home-celebration-stages');
+            stagesContainer.innerHTML = stageEmojis.map((emoji, idx) => {
+                const opacity = idx <= currentStage ? 'opacity-100' : 'opacity-30';
+                const scale = idx === currentStage ? 'text-2xl' : 'text-xl';
+                return `<span class="${opacity} ${scale} transition-all">${emoji}</span>`;
+            }).join('');
+
+            document.getElementById('home-celebration-progress').textContent =
+                `${currentStage + 1} / ${stageEmojis.length} 단계`;
+
+            // 다음 목표 설정 - 모든 단계에서 5번씩
+            if (currentStage < 4) {
+                const nextWater = 5 - (plant.waterCount || 0);
+                document.getElementById('home-celebration-next-goal').textContent =
+                    `${stageNames[currentStage + 1]} 단계까지 물 ${nextWater}개 더 주기`;
+            } else {
+                document.getElementById('home-celebration-next-goal').textContent = '수확 가능! 🎉';
+            }
+
+            // 모달 표시
+            document.getElementById('home-celebration-modal').classList.remove('hidden');
+
+            // 컨페티 생성
+            homeCreateConfetti();
+
+            // 사운드 효과
+            homePlaySuccessSound();
+        }
+
+        // 축하 모달 닫기
+        function homeCloseCelebrationModal() {
+            document.getElementById('home-celebration-modal').classList.add('hidden');
+            document.getElementById('home-confetti-container').innerHTML = '';
+        }
+
+        // 컨페티 애니메이션 생성
+        function homeCreateConfetti() {
+            const container = document.getElementById('home-confetti-container');
+            container.innerHTML = '';
+
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'];
+            const emojis = ['⭐', '✨', '💫', '🌟', '💖', '🎊', '🎉'];
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                if (Math.random() > 0.5) {
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                } else {
+                    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.fontSize = '20px';
+                }
+
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-20px';
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+
+                container.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // 성공 사운드
+        function homePlaySuccessSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
+                let startTime = audioContext.currentTime;
+
+                notes.forEach((freq, idx) => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.value = freq;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, startTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.2);
+
+                    oscillator.start(startTime);
+                    oscillator.stop(startTime + 0.2);
+
+                    startTime += 0.15;
+                });
+            } catch (e) {
+                console.log('사운드 재생 실패');
+            }
+        }
+
         // 토스트 알림
         function homeShowToast(message) {
             const toast = document.getElementById('home-toast');
@@ -1471,6 +1872,12 @@
         // ===== 개발자 메뉴 함수들 =====
 
         function showHomeFarmDevMenu() {
+            // 비밀번호 입력 요구
+            const password = prompt('개발자 모드 비밀번호를 입력하세요:');
+            if (password !== '8253') {
+                homeShowToast('❌ 비밀번호가 올바르지 않습니다');
+                return;
+            }
             document.getElementById('home-dev-menu-modal').classList.remove('hidden');
         }
 
@@ -1586,10 +1993,11 @@
                     return;
                 }
 
-                plantData.waterCount = Math.min(plantData.waterCount + 10, 20);
+                const maxWater = 5;
+                plantData.waterCount = Math.min(plantData.waterCount + 10, maxWater);
                 plantSystem.savePlant(plantData);
 
-                homeShowToast(`✅ 식물에 물 10개를 추가했습니다 (현재: ${plantData.waterCount}/20)`);
+                homeShowToast(`✅ 식물에 물 10개를 추가했습니다 (현재: ${plantData.waterCount}/${maxWater})`);
                 closeHomeFarmDevMenu();
                 updatePlantStatus();
             } catch (error) {
@@ -1645,6 +2053,41 @@
             } catch (error) {
                 console.error('학습 미션 완료 오류:', error);
                 homeShowToast('❌ 학습 미션 완료 실패: ' + error.message);
+            }
+        }
+
+        // 전체 데이터 초기화
+        function homeResetAllData() {
+            if (!confirm('⚠️ 정말로 모든 데이터를 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없으며 다음 항목이 모두 삭제됩니다:\n- 사용자 정보\n- 식물 및 정원\n- 학습 기록\n- 동물 컬렉션\n- 보상 및 재화')) {
+                return;
+            }
+
+            try {
+                // 모든 localStorage 키 삭제
+                const keysToRemove = [
+                    'plantSystemUser',
+                    'plantSystemPlants',
+                    'learningProgress',
+                    'animalCollection',
+                    'selectedSubjects',
+                    'extraLearningMode',
+                    'eduPetSettings',
+                    'eduPetOnboardingCompleted'
+                ];
+
+                keysToRemove.forEach(key => {
+                    localStorage.removeItem(key);
+                });
+
+                homeShowToast('✅ 모든 데이터가 삭제되었습니다. 페이지를 새로고침합니다.');
+                closeHomeFarmDevMenu();
+
+                setTimeout(() => {
+                    window.location.href = 'tutorial.html';
+                }, 1500);
+            } catch (error) {
+                console.error('전체 초기화 오류:', error);
+                homeShowToast('❌ 데이터 삭제 실패: ' + error.message);
             }
         }
 

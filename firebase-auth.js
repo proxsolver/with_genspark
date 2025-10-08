@@ -95,12 +95,18 @@ class EduPetAuth {
             const localGameState = localStorage.getItem('eduPetGameState');
             if (localGameState) {
                 const gameData = JSON.parse(localGameState);
-                
+
                 // 로컬 데이터를 Firebase 형식으로 변환
                 statsData.totalMoney = gameData.money || 0;
                 statsData.totalWater = gameData.waterDrops || 0;
-                statsData.animalsCollected = Object.keys(gameData.animals || {}).length;
-                // 추가 데이터 마이그레이션...
+            }
+
+            // animalCollection에서 실제 소유한 동물 갯수 계산 (animal-collection.html 기준)
+            const animalCollection = localStorage.getItem('animalCollection');
+            if (animalCollection) {
+                const animalData = JSON.parse(animalCollection);
+                // collection 객체의 값들 중 실제로 소유한 동물 갯수 (Object.values().length)
+                statsData.animalsCollected = Object.values(animalData.collection || {}).length;
             }
 
             // Firebase에 저장
@@ -234,6 +240,62 @@ class EduPetAuth {
                 statsUpdate: statsUpdate,
                 userData: this.userData
             });
+            return false;
+        }
+    }
+
+    // 사용자 통계 절대값 설정 (증분이 아닌 직접 설정)
+    async setUserStats(statsData) {
+        try {
+            console.log('[Firebase Auth] setUserStats 호출됨:', statsData);
+
+            if (!this.currentUser) {
+                console.warn('[Firebase Auth] 현재 사용자가 없습니다');
+                return false;
+            }
+
+            if (!this.userData) {
+                console.warn('[Firebase Auth] 사용자 데이터가 없습니다');
+                return false;
+            }
+
+            if (!statsData || typeof statsData !== 'object') {
+                console.error('[Firebase Auth] Invalid statsData:', statsData);
+                return false;
+            }
+
+            if (!this.userData.stats) {
+                console.warn('[Firebase Auth] userData.stats가 없습니다. 초기화합니다.');
+                this.userData.stats = {
+                    totalQuestions: 0,
+                    correctAnswers: 0,
+                    totalMoney: 0,
+                    totalWater: 0,
+                    plantsGrown: 0,
+                    animalsCollected: 0,
+                    totalLearningTime: 0
+                };
+            }
+
+            const updates = {};
+
+            Object.keys(statsData).forEach(key => {
+                if (key in this.userData.stats) {
+                    updates[`users/${this.currentUser.uid}/stats/${key}`] = statsData[key];
+                    this.userData.stats[key] = statsData[key];
+                }
+            });
+
+            if (Object.keys(updates).length > 0) {
+                console.log('[Firebase Auth] 설정할 통계:', updates);
+                await firebase_db.ref().update(updates);
+                this.saveToLocalStorage();
+                console.log('[Firebase Auth] ✅ 통계 설정 성공');
+            }
+
+            return true;
+        } catch (error) {
+            console.error('[Firebase Auth] ❌ 사용자 통계 설정 실패:', error);
             return false;
         }
     }

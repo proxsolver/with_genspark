@@ -252,7 +252,7 @@ class EduPetSocial {
             }
 
             const commentId = firebase_db.ref(`show_offs/${showOffId}/comments`).push().key;
-            
+
             const commentData = {
                 id: commentId,
                 userId: eduPetAuth.currentUser.uid,
@@ -268,6 +268,114 @@ class EduPetSocial {
         } catch (error) {
             console.error('댓글 추가 실패:', error);
             throw error;
+        }
+    }
+
+    // 자랑하기 게시물 삭제
+    async deleteShowOff(showOffId) {
+        try {
+            if (!eduPetAuth.currentUser) {
+                throw new Error('로그인이 필요합니다');
+            }
+
+            // 게시물 소유자 확인
+            const showOffSnapshot = await firebase_db.ref(`show_offs/${showOffId}`).once('value');
+            const showOffData = showOffSnapshot.val();
+
+            if (!showOffData) {
+                throw new Error('존재하지 않는 게시물입니다');
+            }
+
+            if (showOffData.userId !== eduPetAuth.currentUser.uid) {
+                throw new Error('게시물을 삭제할 권한이 없습니다');
+            }
+
+            // 게시물 삭제
+            await firebase_db.ref(`show_offs/${showOffId}`).remove();
+
+            return true;
+        } catch (error) {
+            console.error('게시물 삭제 실패:', error);
+            throw error;
+        }
+    }
+
+    // 자랑하기 게시물 수정
+    async updateShowOff(showOffId, newMessage) {
+        try {
+            if (!eduPetAuth.currentUser) {
+                throw new Error('로그인이 필요합니다');
+            }
+
+            // 게시물 소유자 확인
+            const showOffSnapshot = await firebase_db.ref(`show_offs/${showOffId}`).once('value');
+            const showOffData = showOffSnapshot.val();
+
+            if (!showOffData) {
+                throw new Error('존재하지 않는 게시물입니다');
+            }
+
+            if (showOffData.userId !== eduPetAuth.currentUser.uid) {
+                throw new Error('게시물을 수정할 권한이 없습니다');
+            }
+
+            // 메시지 업데이트
+            await firebase_db.ref(`show_offs/${showOffId}`).update({
+                message: newMessage.slice(0, 200),
+                updatedAt: Date.now()
+            });
+
+            return true;
+        } catch (error) {
+            console.error('게시물 수정 실패:', error);
+            throw error;
+        }
+    }
+
+    // 댓글 삭제
+    async deleteComment(showOffId, commentId) {
+        try {
+            if (!eduPetAuth.currentUser) {
+                throw new Error('로그인이 필요합니다');
+            }
+
+            // 댓글 소유자 확인
+            const commentSnapshot = await firebase_db.ref(`show_offs/${showOffId}/comments/${commentId}`).once('value');
+            const commentData = commentSnapshot.val();
+
+            if (!commentData) {
+                throw new Error('존재하지 않는 댓글입니다');
+            }
+
+            if (commentData.userId !== eduPetAuth.currentUser.uid) {
+                throw new Error('댓글을 삭제할 권한이 없습니다');
+            }
+
+            // 댓글 삭제
+            await firebase_db.ref(`show_offs/${showOffId}/comments/${commentId}`).remove();
+
+            return true;
+        } catch (error) {
+            console.error('댓글 삭제 실패:', error);
+            throw error;
+        }
+    }
+
+    // 댓글 목록 가져오기
+    async getComments(showOffId) {
+        try {
+            const commentsSnapshot = await firebase_db.ref(`show_offs/${showOffId}/comments`).once('value');
+            const commentsData = commentsSnapshot.val();
+
+            if (!commentsData) return [];
+
+            // 시간순 정렬
+            const comments = Object.values(commentsData).sort((a, b) => a.createdAt - b.createdAt);
+
+            return comments;
+        } catch (error) {
+            console.error('댓글 목록 가져오기 실패:', error);
+            return [];
         }
     }
 

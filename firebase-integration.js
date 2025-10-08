@@ -86,15 +86,20 @@ class EduPetFirebaseIntegration {
 
     // 동물 수집 시 통계 업데이트
     async updateAnimalStats(animalData) {
+        // animalCollection에서 실제 소유한 동물 갯수를 직접 계산 (animal-collection.html 기준)
+        const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+        const totalAnimalsCollected = Object.values(animalCollection.collection || {}).length;
+
         const stats = {
-            animalsCollected: 1,
+            animalsCollected: 1, // 증분
             totalMoney: -animalData.cost || 0 // 소모된 돈
         };
 
         if (this.isFirebaseReady && eduPetAuth.currentUser) {
             try {
-                await eduPetAuth.updateUserStats(stats);
-                console.log('Firebase 동물 수집 통계 업데이트 완료');
+                // 증분 방식 대신 절대값 설정
+                await eduPetAuth.setUserStats({ animalsCollected: totalAnimalsCollected });
+                console.log(`Firebase 동물 컬렉션 통계 업데이트 완료: ${totalAnimalsCollected}마리`);
             } catch (error) {
                 console.error('Firebase 동물 수집 통계 업데이트 실패:', error);
                 this.queueForLater('updateAnimalStats', stats);
@@ -444,14 +449,18 @@ class EduPetFirebaseIntegration {
         try {
             // 로컬 게임 데이터 가져오기
             const localGameState = JSON.parse(localStorage.getItem('eduPetGameState') || '{}');
-            
+
+            // animalCollection에서 실제 소유한 동물 갯수 계산 (animal-collection.html 기준)
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            const animalsCollectedCount = Object.values(animalCollection.collection || {}).length;
+
             // Firebase 통계와 비교하여 동기화
             if (eduPetAuth.userData?.stats) {
                 const firebaseStats = eduPetAuth.userData.stats;
                 const localStats = {
                     totalMoney: localGameState.money || 0,
                     totalWater: localGameState.waterDrops || 0,
-                    animalsCollected: Object.keys(localGameState.animals || {}).length
+                    animalsCollected: animalsCollectedCount
                 };
 
                 // 로컬 데이터가 더 많은 경우 Firebase 업데이트

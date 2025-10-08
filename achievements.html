@@ -227,18 +227,17 @@
             // Load quiz progress
             const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
             const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
-            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
             const plantSystemUser = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
             const plantSystemPlants = JSON.parse(localStorage.getItem('plantSystemPlants') || '{}');
             const learningProgress = JSON.parse(localStorage.getItem('learningProgress') || '{}');
 
-            // Count rare animals by rarity
+            // Count rare animals by tier (animal-collection.html 기준)
             const collection = animalCollection.collection || {};
             let rareCount = 0, epicCount = 0, legendaryCount = 0;
             Object.values(collection).forEach(animal => {
-                if (animal.rarity === 'Rare') rareCount++;
-                else if (animal.rarity === 'Epic') epicCount++;
-                else if (animal.rarity === 'Legendary') legendaryCount++;
+                if (animal.tier === 'rare') rareCount++;
+                else if (animal.tier === 'epic') epicCount++;
+                else if (animal.tier === 'legendary') legendaryCount++;
             });
 
             // Count plants grown and legendary plants
@@ -292,10 +291,10 @@
                 weekend: quizProgress.weekendCount || 0,
 
                 // Gacha stats
-                gachaCount: animalCollection.gachaCount || 0,
+                gachaCount: (animalCollection.stats?.totalDraws || 0),
 
-                // Money saved
-                moneySaved: farmState.money || 0,
+                // Money saved (plantSystemUser 사용)
+                moneySaved: plantSystemUser.wallet?.money || 0,
 
                 // Tickets earned (placeholder - needs tracking implementation)
                 ticketsEarned: quizProgress.ticketsEarned || 0
@@ -308,6 +307,7 @@
 
         function checkAchievements() {
             let newAchievements = [];
+            unclaimedRewards = []; // 초기화 - 매번 새로 계산
 
             achievements.forEach(achievement => {
                 const isCompleted = userProgress.achievements[achievement.id]?.completed || false;
@@ -619,14 +619,16 @@
                 userProgress.achievements[achievement.id].claimed = true;
             });
 
-            // Apply rewards to game state
-            const farmState = JSON.parse(localStorage.getItem('simpleFarmState') || '{}');
-            farmState.money = (farmState.money || 0) + totalRewards.money;
-            localStorage.setItem('simpleFarmState', JSON.stringify(farmState));
-
-            // Apply tickets to plant-system
+            // Apply rewards to plantSystem (단일 진실 공급원)
             try {
                 const plantSystemUser = JSON.parse(localStorage.getItem('plantSystemUser') || '{}');
+
+                // wallet 초기화
+                if (!plantSystemUser.wallet) {
+                    plantSystemUser.wallet = { money: 0, water: 0 };
+                }
+
+                // rewards 초기화
                 if (!plantSystemUser.rewards) {
                     plantSystemUser.rewards = {
                         growthTickets: [],
@@ -634,12 +636,16 @@
                         premiumGachaTickets: 0
                     };
                 }
+
+                // 보상 적용
+                plantSystemUser.wallet.money = (plantSystemUser.wallet.money || 0) + totalRewards.money;
                 plantSystemUser.rewards.normalGachaTickets = (plantSystemUser.rewards.normalGachaTickets || 0) + totalRewards.normalTickets;
                 plantSystemUser.rewards.premiumGachaTickets = (plantSystemUser.rewards.premiumGachaTickets || 0) + totalRewards.premiumTickets;
+
                 localStorage.setItem('plantSystemUser', JSON.stringify(plantSystemUser));
-                console.log('✅ Tickets added to plant-system:', totalRewards);
+                console.log('✅ 업적 보상 적용 완료:', totalRewards);
             } catch (e) {
-                console.error('Error adding tickets to plant-system:', e);
+                console.error('❌ 업적 보상 적용 실패:', e);
             }
 
             // Save achievement states
@@ -654,7 +660,7 @@
             alert(`🎉 보상을 받았습니다!\n\n${rewardMessages.join('\n')}\n\n계속해서 목표를 달성해보세요!`);
 
             // Refresh display
-            unclaimedRewards = [];
+            checkAchievements(); // unclaimedRewards를 다시 계산
             updateStats();
             displayAchievements();
         }

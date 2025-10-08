@@ -73,6 +73,50 @@
             0%, 100% { box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
             50% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.6); }
         }
+
+        /* 축하 모달 애니메이션 */
+        .celebration-modal {
+            animation: modalZoomIn 0.5s ease-out;
+        }
+
+        @keyframes modalZoomIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* 반짝이 입자 애니메이션 */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(720deg); opacity: 0; }
+        }
+
+        /* 빛나는 효과 */
+        .glow-pulse {
+            animation: glowPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); }
+        }
+
+        /* 스타 폭발 */
+        .star-burst {
+            animation: starBurst 1s ease-out forwards;
+        }
+
+        @keyframes starBurst {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(3) rotate(180deg); opacity: 0; }
+        }
     </style>
 
     <!-- Firebase SDK -->
@@ -250,13 +294,28 @@
         <!-- 물주기 안내 -->
         <div class="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
             <div class="text-center">
-                <h3 class="font-bold text-blue-900 mb-2">💧 물주기 방법 (학습 모드)</h3>
+                <h3 class="font-bold text-blue-900 mb-2">🌱 식물 성장 단계</h3>
                 <p class="text-sm text-blue-700 mb-3">
                     식물을 클릭하면 약점 과목 문제와 정답, 해설이 함께 표시됩니다!<br>
                     문제를 읽고 이해한 후 확인 버튼을 누르면 물을 줄 수 있어요.
                 </p>
+                <div class="flex justify-center items-center space-x-2 text-sm mb-2">
+                    <span>🌰 씨앗</span>
+                    <span class="text-gray-400">→</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded">5회</span>
+                    <span class="text-gray-400">→</span>
+                    <span>🌱 줄기</span>
+                    <span class="text-gray-400">→</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded">10회</span>
+                    <span class="text-gray-400">→</span>
+                    <span>🌳 나무</span>
+                    <span class="text-gray-400">→</span>
+                    <span class="text-xs bg-white px-2 py-1 rounded">15회</span>
+                    <span class="text-gray-400">→</span>
+                    <span>🌺 열매/꽃</span>
+                </div>
                 <div class="text-xs text-blue-600">
-                    💡 팁: 틀려도 괜찮아요! 정답과 해설을 보며 학습하고 물을 줄 수 있습니다. 20개 모으면 성장 준비 완료!
+                    💡 팁: 틀려도 괜찮아요! 정답과 해설을 보며 학습하고 물을 줄 수 있습니다.
                 </div>
             </div>
         </div>
@@ -266,9 +325,9 @@
             <h3 class="font-bold mb-2">📘 사용 안내</h3>
             <ul class="text-sm text-gray-700 space-y-1">
                 <li>• <strong>물주기:</strong> 약점 과목 문제의 정답과 해설을 보며 학습합니다 (무제한)</li>
-                <li>• <strong>성장 조건:</strong> 물 20개 + 24시간 경과 + 성장권 1개</li>
+                <li>• <strong>성장 단계:</strong> 🌰씨앗(5회) → 🌱줄기(10회) → 🌳나무(15회) → 🌺열매/꽃</li>
+                <li>• <strong>식물 종류:</strong> 각 단계마다 랜덤하게 다른 모양으로 성장합니다</li>
                 <li>• <strong>보상:</strong> 3과목(성장권1), 5과목(일반뽑기), 6과목(성장권1), 9과목(프리미엄뽑기)</li>
-                <li>• <strong>성장권 만료:</strong> 획득 후 24시간</li>
             </ul>
         </div>
     </div>
@@ -392,6 +451,63 @@
     <!-- 알림 토스트 -->
     <div id="toast" class="hidden fixed top-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg z-50">
         <div id="toast-message"></div>
+    </div>
+
+    <!-- 축하 모달 -->
+    <div id="celebration-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+        <div class="bg-gradient-to-br from-yellow-50 to-green-50 rounded-2xl p-8 max-w-md w-full celebration-modal relative overflow-hidden">
+            <!-- 배경 장식 -->
+            <div id="confetti-container" class="absolute inset-0 pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <!-- 축하 아이콘 -->
+                <div class="text-center mb-4">
+                    <div class="text-8xl mb-4 glow-pulse" id="celebration-emoji">🎉</div>
+                    <div class="text-2xl font-bold text-gray-800 mb-2" id="celebration-title">축하합니다!</div>
+                    <div class="text-lg text-gray-600 mb-4" id="celebration-message">식물이 성장했습니다!</div>
+                </div>
+
+                <!-- 변화 표시 -->
+                <div class="bg-white rounded-xl p-4 mb-6 shadow-lg">
+                    <div class="flex items-center justify-center space-x-4">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2" id="celebration-before">🌰</div>
+                            <div class="text-xs text-gray-500">이전</div>
+                        </div>
+                        <div class="text-3xl text-green-500">→</div>
+                        <div class="text-center">
+                            <div class="text-5xl mb-2 glow-pulse" id="celebration-after">🌱</div>
+                            <div class="text-xs text-gray-500">현재</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 진행률 표시 -->
+                <div class="bg-gradient-to-r from-green-100 to-blue-100 rounded-lg p-3 mb-4">
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-gray-700 mb-2" id="celebration-progress">진행률</div>
+                        <div class="flex justify-center items-center space-x-2">
+                            <div class="flex space-x-1" id="celebration-stages">
+                                <!-- 동적 생성 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 다음 목표 -->
+                <div class="bg-blue-50 rounded-lg p-3 mb-4 border-2 border-blue-200">
+                    <div class="text-center text-sm">
+                        <span class="font-semibold text-blue-900">다음 목표:</span>
+                        <span class="text-blue-700" id="celebration-next-goal">물 10개 더 주기</span>
+                    </div>
+                </div>
+
+                <!-- 확인 버튼 -->
+                <button onclick="closeCelebrationModal()" class="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-bold hover:from-green-600 hover:to-blue-600 transition-all shadow-lg">
+                    계속하기 🚀
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -523,11 +639,13 @@
                 emptyElement.classList.add('hidden');
                 plantInfo.classList.remove('hidden');
 
-                // 식물 표시
+                // 식물 표시 (스테이지별 크기 조절)
                 const plantEmoji = plant.type || '🌱';
+                const stage = plant.stage || 0;
+                const sizeClass = ['text-4xl', 'text-5xl', 'text-6xl', 'text-7xl'][stage];
 
                 plantDisplay.innerHTML = `
-                    <div class="text-6xl plant-growing ${plant.waterCount > 10 ? 'plant-happy' : ''}">${plantEmoji}</div>
+                    <div class="${sizeClass} plant-growing ${plant.waterCount > 5 ? 'plant-happy' : ''}">${plantEmoji}</div>
                 `;
 
                 // 화분 클릭 가능
@@ -541,41 +659,43 @@
 
                 potName.textContent = '성장 중인 식물';
 
-                // 상태 정보
-                const statusText = {
-                    'PLANTED': '🌱 성장 중',
-                    'READY': '✨ 성장 준비 완료',
-                    'GROWN': '🌺 성장 완료'
-                }[plant.status];
+                // 상태 정보 (스테이지 포함)
+                const stageNames = ['🌰 씨앗', '🌱 줄기', '🌳 나무', '🌺 완성'];
+                const stageName = stageNames[plant.stage || 0] || '🌱 성장 중';
+
+                const statusText = plant.status === 'GROWN'
+                    ? '🌺 성장 완료 - 수확 가능!'
+                    : `${stageName} 단계`;
 
                 document.getElementById(`plant${potNum}-status`).textContent = statusText;
 
-                // 물 정보
-                const waterPercent = (plant.waterCount / 20) * 100;
-                document.getElementById(`plant${potNum}-water`).textContent = `${plant.waterCount}/20`;
+                // 물 정보 - 모든 단계에서 5번씩
+                const maxWater = 5;
+                const waterPercent = (plant.waterCount / maxWater) * 100;
+                document.getElementById(`plant${potNum}-water`).textContent = `${plant.waterCount}/${maxWater}`;
                 document.getElementById(`plant${potNum}-water-bar`).style.width = waterPercent + '%';
 
                 // 시간 정보
                 document.getElementById(`plant${potNum}-time`).textContent = `⏰ ${plant.timeRemaining}`;
 
-                // 버튼
-                if (plant.status === 'READY') {
-                    actions.innerHTML = `
-                        <button onclick="growPlantInPot('${plant.id}')" class="w-full px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-bold hover:from-green-600 hover:to-green-700 transition-all shadow-lg plant-mature">
-                            🌱 성장시키기
-                        </button>
-                    `;
-                } else if (plant.status === 'PLANTED') {
-                    actions.innerHTML = `
-                        <button onclick="waterPlantInPot(${potNum}, '${plant.id}')" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-all">
-                            💧 물주기 (${plant.waterCount}/20)
-                        </button>
-                    `;
-                } else {
+                // 버튼 (스테이지 기반)
+                const maxWaterForStage = 5;
+
+                if (plant.status === 'GROWN') {
+                    // 완전히 성장 완료 - 수확 가능
                     actions.innerHTML = `
                         <button onclick="harvestPlant('${plant.id}')" class="w-full px-4 py-2 bg-yellow-500 text-white rounded-lg font-bold hover:bg-yellow-600 transition-all">
                             🌺 수확하기
                         </button>
+                    `;
+                } else {
+                    // 성장 중 - 물주기 가능
+                    const nextStage = ['🌱 줄기', '🌳 나무', '🌺 열매/꽃', '완성'][plant.stage || 0];
+                    actions.innerHTML = `
+                        <button onclick="waterPlantInPot(${potNum}, '${plant.id}')" class="w-full px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-all">
+                            💧 물주기 (${plant.waterCount}/${maxWaterForStage})
+                        </button>
+                        <div class="text-xs text-gray-500 mt-2">다음: ${nextStage}</div>
                     `;
                 }
             }
@@ -809,9 +929,21 @@
             if (result.success) {
                 showWaterAnimation();
                 showLoveAnimation();
-                showPlantSpeech(`고마워! 이제 ${result.waterCount}/20 물을 받았어!`);
-                showToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/20)`);
-                closeWateringModal();
+
+                // 스테이지 변경 체크
+                const plant = plantSystem.getPlant(currentPlantId);
+                const maxWater = 5;
+
+                if (result.stageChanged) {
+                    // 축하 모달 표시
+                    closeWateringModal();
+                    showCelebrationModal(plant);
+                } else {
+                    showPlantSpeech(`고마워! 이제 ${result.waterCount}/${maxWater} 물을 받았어!`);
+                    showToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/${maxWater})`);
+                    closeWateringModal();
+                }
+
                 updateDashboard();
 
                 // 학습 진행도 업데이트 (학습 모드는 항상 true로 처리)
@@ -825,6 +957,132 @@
                 }
             } else {
                 showToast('❌ ' + result.message);
+            }
+        }
+
+        // 축하 모달 표시
+        function showCelebrationModal(plant) {
+            const stageNames = ['🌰 씨앗', '🌱 줄기', '🌳 나무', '🌺 열매/꽃'];
+            const stageEmojis = ['🌰', '🌱', '🌳', '🌺'];
+            const currentStage = plant.stage || 0;
+            const prevStage = Math.max(0, currentStage - 1);
+
+            // 모달 내용 설정
+            document.getElementById('celebration-emoji').textContent = plant.plantType;
+            document.getElementById('celebration-title').textContent = currentStage === 3 ? '🎉 성장 완료!' : '🌱 한 단계 성장!';
+            document.getElementById('celebration-message').textContent =
+                currentStage === 3
+                    ? `${stageNames[currentStage]} 단계에 도달했습니다!`
+                    : `${stageNames[prevStage]}에서 ${stageNames[currentStage]}(으)로 자랐어요!`;
+
+            // 이전/현재 모습
+            document.getElementById('celebration-before').textContent = stageEmojis[prevStage];
+            document.getElementById('celebration-after').textContent = plant.plantType;
+
+            // 진행률 표시
+            const stagesHtml = stageEmojis.map((emoji, idx) => {
+                const isCompleted = idx < currentStage;
+                const isCurrent = idx === currentStage;
+                return `
+                    <div class="flex flex-col items-center">
+                        <div class="text-2xl ${isCurrent ? 'glow-pulse' : ''} ${isCompleted ? 'opacity-50' : ''}">${emoji}</div>
+                        ${isCurrent ? '<div class="text-xs text-green-600 font-bold">현재</div>' : ''}
+                        ${isCompleted ? '<div class="text-xs text-gray-400">완료</div>' : ''}
+                    </div>
+                `;
+            }).join('');
+            document.getElementById('celebration-stages').innerHTML = stagesHtml;
+
+            // 다음 목표
+            if (currentStage < 3) {
+                const nextWater = [5, 10, 15][currentStage];
+                document.getElementById('celebration-next-goal').textContent =
+                    `${stageNames[currentStage + 1]} 단계까지 물 ${nextWater}개 더 주기`;
+            } else {
+                document.getElementById('celebration-next-goal').textContent = '수확 가능! 🎉';
+            }
+
+            // 모달 표시
+            document.getElementById('celebration-modal').classList.remove('hidden');
+
+            // 컨페티 생성
+            createConfetti();
+
+            // 플레이풀한 사운드 효과 (선택적)
+            playSuccessSound();
+        }
+
+        function closeCelebrationModal() {
+            document.getElementById('celebration-modal').classList.add('hidden');
+            document.getElementById('confetti-container').innerHTML = '';
+        }
+
+        // 컨페티 애니메이션 생성
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            container.innerHTML = ''; // 초기화
+
+            const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F'];
+            const emojis = ['⭐', '✨', '💫', '🌟', '💖', '🎊', '🎉'];
+
+            // 50개의 컨페티 생성
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                // 랜덤하게 색상 또는 이모지
+                if (Math.random() > 0.5) {
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                } else {
+                    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.fontSize = '20px';
+                }
+
+                // 랜덤 위치
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-20px';
+
+                // 랜덤 애니메이션 지연
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+
+                container.appendChild(confetti);
+
+                // 애니메이션 완료 후 제거
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // 성공 사운드 (Web Audio API 사용 - 간단한 비프음)
+        function playSuccessSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // 경쾌한 3음계
+                const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
+                let startTime = audioContext.currentTime;
+
+                notes.forEach((freq, idx) => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.value = freq;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, startTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.2);
+
+                    oscillator.start(startTime);
+                    oscillator.stop(startTime + 0.2);
+
+                    startTime += 0.15;
+                });
+            } catch (e) {
+                console.log('사운드 재생 실패 (선택 기능)');
             }
         }
 
@@ -847,11 +1105,25 @@
                     return;
                 }
 
+                // 성장 전 식물 상태 저장
+                const plantBefore = plantSystem.getPlant(plantId);
+                const stageBefore = plantBefore ? plantBefore.stage : 0;
+
                 const result = plantSystem.growPlant(currentUser, plantId);
 
                 if (result.success) {
-                    showPlantSpeech('와! 완전히 자랐어요! 수고하셨어요 🎉');
-                    showToast('🎉 ' + result.message);
+                    // 성장 후 식물 상태 가져오기
+                    const plantAfter = plantSystem.getPlant(plantId);
+                    const stageAfter = plantAfter ? plantAfter.stage : 0;
+
+                    // 스테이지가 변경되었으면 축하 모달 표시
+                    if (stageAfter > stageBefore) {
+                        showPlantSpeech('와! 한 단계 성장했어요! 🎉');
+                        showCelebrationModal(plantAfter);
+                    } else {
+                        showPlantSpeech('와! 완전히 자랐어요! 수고하셨어요 🎉');
+                        showToast('🎉 ' + result.message);
+                    }
 
                     // Firebase 동기화
                     if (window.plantSystemFirebase) {
