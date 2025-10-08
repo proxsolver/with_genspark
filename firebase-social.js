@@ -145,17 +145,24 @@ class EduPetSocial {
             const showOffId = firebase_db.ref('show_offs').push().key;
             const now = Date.now();
 
+            // undefined 필드를 제거하여 Firebase 에러 방지
+            const cleanAnimal = {
+                id: animalData.id,
+                name: animalData.name,
+                emoji: animalData.emoji || '🐾',
+                tier: animalData.tier,
+                level: animalData.level || 1,
+                power: animalData.power || 1,
+                totalPower: animalData.totalPower || animalData.power || 1,
+                count: animalData.count || 1
+            };
+
             const showOffData = {
                 id: showOffId,
                 userId: eduPetAuth.currentUser.uid,
                 userNickname: eduPetAuth.userData.profile.nickname || '익명',
                 userAvatar: eduPetAuth.userData.profile.avatarAnimal || 'bunny',
-                animal: {
-                    name: animalData.name,
-                    tier: animalData.tier,
-                    image: animalData.image,
-                    stats: animalData.stats
-                },
+                animal: cleanAnimal,
                 message: message.slice(0, 200), // 최대 200자
                 createdAt: now,
                 likes: 0,

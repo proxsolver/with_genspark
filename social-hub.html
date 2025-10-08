@@ -7,10 +7,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script defer src="firebase-config.js"></script>
-    <script defer src="firebase-auth.js"></script>
-    <script defer src="firebase-leaderboard.js"></script>
-    <script defer src="firebase-social.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="firebase-integration.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-leaderboard.js"></script>
+    <script src="firebase-social.js"></script>
     
     <style>
         * {
@@ -409,12 +410,18 @@
 </head>
 <body>
     <!-- Loading Indicator -->
-    <div id="loading-overlay" class="hidden fixed inset-0 bg-white bg-opacity-90 flex items-center justify-center z-50">
-        <div class="text-center">
-            <div class="text-2xl animate-spin">🌐</div>
-            <div class="mt-2 font-bold text-gray-700">소셜 허브를 불러오는 중...</div>
+    <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="text-align: center;">
+            <div style="font-size: 2rem; animation: spin 1s linear infinite;">🌐</div>
+            <div style="margin-top: 10px; font-weight: bold; color: #495057;">소셜 허브를 불러오는 중...</div>
         </div>
     </div>
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
     <div class="container">
         <div class="header">
             <h1>🌐 EduPet 소셜 허브</h1>
@@ -545,21 +552,30 @@
         // 페이지 초기화
         window.addEventListener('DOMContentLoaded', async () => {
             const loadingOverlay = document.getElementById('loading-overlay');
-            loadingOverlay.classList.remove('hidden');
+            loadingOverlay.style.display = 'flex';
 
             try {
                 // eduPetAuth and eduPetFirebaseIntegration가 정의될 때까지 기다림
-                await new Promise(resolve => {
+                console.log('Waiting for Firebase modules to load...');
+                await new Promise((resolve, reject) => {
+                    let attempts = 0;
+                    const maxAttempts = 100; // 5초 타임아웃
                     const interval = setInterval(() => {
+                        attempts++;
                         if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                            console.log('Firebase modules loaded successfully');
                             clearInterval(interval);
                             resolve();
+                        } else if (attempts >= maxAttempts) {
+                            clearInterval(interval);
+                            reject(new Error('Firebase 모듈 로드 타임아웃'));
                         }
                     }, 50);
                 });
 
                 // 인증 상태 리스너를 먼저 설정합니다.
                 eduPetAuth.addAuthStateListener(onAuthStateChanged);
+                console.log('Auth state listener added');
 
                 // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
                 await eduPetFirebaseIntegration.initialize();
@@ -567,17 +583,51 @@
 
             } catch (error) {
                 console.error('초기화 중 오류 발생:', error);
-                showError('앱 초기화에 실패했습니다.');
-                loadingOverlay.classList.add('hidden');
+                showError('앱 초기화에 실패했습니다: ' + error.message);
+                loadingOverlay.style.display = 'none';
             }
         });
 
         // 인증 상태 변경 핸들러
-        function onAuthStateChanged(state, userData) {
+        async function onAuthStateChanged(state, userData) {
             currentUser = userData;
-            
+
             if (state === 'signed_in') {
-                showAuthStatus(`환영합니다, ${userData?.profile?.nickname || '익명'}님! 🎉`);
+                // localStorage에서 튜토리얼에서 설정한 닉네임 가져오기
+                let displayName = '익명';
+                let needsSync = false;
+
+                try {
+                    // 1. localStorage에서 먼저 확인 (튜토리얼에서 설정)
+                    const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+                    if (settings.userName) {
+                        displayName = settings.userName;
+
+                        // Firebase에 닉네임이 없거나 다르면 동기화 필요
+                        if (!userData?.profile?.nickname || userData.profile.nickname !== displayName) {
+                            needsSync = true;
+                        }
+                    }
+                    // 2. localStorage에 없으면 Firebase에서 가져오기
+                    else if (userData?.profile?.nickname) {
+                        displayName = userData.profile.nickname;
+                    }
+
+                    // Firebase에 닉네임 동기화 (비동기)
+                    if (needsSync && typeof eduPetAuth !== 'undefined') {
+                        console.log('🔄 Syncing nickname to Firebase:', displayName);
+                        eduPetAuth.setNickname(displayName).then(() => {
+                            console.log('✅ Firebase 닉네임 동기화 완료');
+                        }).catch(err => {
+                            console.warn('⚠️ Firebase 닉네임 동기화 실패:', err);
+                        });
+                    }
+                } catch (error) {
+                    console.error('닉네임 로드 실패:', error);
+                    displayName = userData?.profile?.nickname || '익명';
+                }
+
+                showAuthStatus(`환영합니다, ${displayName}님! 🎉`);
                 showAuthControls(true);
                 loadSocialData();
             } else {
@@ -585,7 +635,7 @@
                 showAuthControls(false);
                 clearSocialData();
             }
-            document.getElementById('loading-overlay').classList.add('hidden');
+            document.getElementById('loading-overlay').style.display = 'none';
         }
 
         // 인증 상태 표시
@@ -603,12 +653,21 @@
         // 인증 컨트롤 표시
         function showAuthControls(isAuthenticated) {
             const controlsDiv = document.getElementById('auth-controls');
-            
+
             if (isAuthenticated) {
+                // localStorage에서 현재 닉네임 가져오기
+                let currentNickname = '';
+                try {
+                    const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+                    currentNickname = settings.userName || currentUser?.profile?.nickname || '';
+                } catch (error) {
+                    currentNickname = currentUser?.profile?.nickname || '';
+                }
+
                 controlsDiv.innerHTML = `
                     <div style="margin-bottom: 15px;">
                         <div class="input-group">
-                            <input type="text" id="nickname-input" class="form-control" placeholder="닉네임 설정 (선택사항)" value="${currentUser?.profile?.nickname || ''}">
+                            <input type="text" id="nickname-input" class="form-control" placeholder="닉네임 설정 (선택사항)" value="${currentNickname}">
                             <button class="btn btn-primary" onclick="setNickname()">설정</button>
                         </div>
                     </div>
@@ -644,8 +703,23 @@
                 return;
             }
 
+            // 특수문자 검사
+            const allowedPattern = /^[가-힣a-zA-Z0-9_\s]+$/;
+            if (!allowedPattern.test(nickname)) {
+                showError('한글, 영문, 숫자, _만 사용할 수 있어요!');
+                return;
+            }
+
             try {
+                // Firebase에 닉네임 저장
                 await eduPetAuth.setNickname(nickname);
+
+                // localStorage에도 저장 (튜토리얼과 동일한 방식)
+                const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+                settings.userName = nickname;
+                settings.updatedAt = Date.now();
+                localStorage.setItem('eduPetSettings', JSON.stringify(settings));
+
                 showSuccess('닉네임이 설정되었습니다!');
                 showAuthStatus(`환영합니다, ${nickname}님! 🎉`);
             } catch (error) {
@@ -667,11 +741,17 @@
 
         // 순위표 로드
         async function loadLeaderboards() {
+            if (typeof eduPetLeaderboard === 'undefined') {
+                console.error('eduPetLeaderboard가 정의되지 않았습니다.');
+                return;
+            }
+
             const types = ['quiz_score', 'quiz_accuracy', 'money_collector', 'animal_collector'];
             const containers = ['quiz-leaderboard', 'accuracy-leaderboard', 'money-leaderboard', 'animal-leaderboard'];
 
             for (let i = 0; i < types.length; i++) {
                 try {
+                    console.log(`Loading leaderboard: ${types[i]}`);
                     const leaderboard = await eduPetLeaderboard.getLeaderboard(types[i], 10);
                     displayLeaderboard(leaderboard, containers[i]);
                 } catch (error) {
@@ -714,7 +794,14 @@
 
         // 친구 목록 로드
         async function loadFriendsList() {
+            if (typeof eduPetSocial === 'undefined') {
+                console.error('eduPetSocial가 정의되지 않았습니다.');
+                document.getElementById('friends-list').innerHTML = '<div class="error">소셜 기능을 사용할 수 없습니다.</div>';
+                return;
+            }
+
             try {
+                console.log('Loading friends list...');
                 const friends = await eduPetSocial.getFriendsList();
                 displayFriendsList(friends);
             } catch (error) {
@@ -803,7 +890,14 @@
 
         // 자랑하기 목록 로드
         async function loadShowOffs() {
+            if (typeof eduPetSocial === 'undefined') {
+                console.error('eduPetSocial가 정의되지 않았습니다.');
+                document.getElementById('showoff-list').innerHTML = '<div class="error">소셜 기능을 사용할 수 없습니다.</div>';
+                return;
+            }
+
             try {
+                console.log('Loading show-offs...');
                 const showOffs = await eduPetSocial.getShowOffs(20);
                 displayShowOffs(showOffs);
             } catch (error) {
@@ -840,7 +934,9 @@
                         <div class="animal-showcase">
                             <div class="animal-name">${showOff.animal.name}</div>
                             <div class="animal-tier tier-${showOff.animal.tier}">${getTierName(showOff.animal.tier)}</div>
-                            <div style="font-size: 3rem; margin: 10px 0;">${getAnimalEmoji(showOff.animal.name)}</div>
+                            <div style="font-size: 3rem; margin: 10px 0;">${showOff.animal.emoji || getAnimalEmoji(showOff.animal.name)}</div>
+                            ${showOff.animal.level > 1 ? `<div style="color: #f59e0b; font-weight: bold; margin: 5px 0;">레벨 ${showOff.animal.level} ${'⭐'.repeat(showOff.animal.level)}</div>` : ''}
+                            ${showOff.animal.totalPower ? `<div style="color: #8b5cf6; font-weight: bold;">⚡ 파워: ${showOff.animal.totalPower}</div>` : ''}
                         </div>
                         
                         ${showOff.message ? `<div style="padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 10px 0;">${showOff.message}</div>` : ''}
@@ -875,26 +971,58 @@
         // 사용자 동물 목록 로드
         function loadUserAnimals() {
             try {
-                const gameState = JSON.parse(localStorage.getItem('eduPetGameState') || '{}');
-                const animals = gameState.animals || {};
-                
-                if (Object.keys(animals).length === 0) {
-                    document.getElementById('user-animals').innerHTML = 
+                // animalCollection localStorage 사용 (animal-collection.html과 동일)
+                const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+                const collection = animalCollection.collection || {};
+
+                console.log('Loading user animals from animalCollection:', collection);
+                console.log('Collection keys:', Object.keys(collection));
+
+                if (Object.keys(collection).length === 0) {
+                    document.getElementById('user-animals').innerHTML =
                         '<p style="text-align: center; color: #6c757d;">아직 수집한 동물이 없습니다. 동물 컬렉션에서 동물을 모아보세요!</p>';
                     return;
                 }
 
-                const html = Object.entries(animals).map(([animalName, animalData]) => `
-                    <div class="friend-item" style="cursor: pointer;" onclick="selectAnimal('${animalName}', ${JSON.stringify(animalData).replace(/"/g, '&quot;')})">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="font-size: 2rem;">${getAnimalEmoji(animalName)}</div>
-                            <div>
-                                <div class="nickname">${animalData.name}</div>
-                                <div class="animal-tier tier-${animalData.tier}" style="font-size: 0.8rem; margin-top: 5px;">${getTierName(animalData.tier)}</div>
+                // collection 객체는 { animalId: animalData } 형태
+                // count > 0인 동물만 표시 (실제로 소유한 동물만)
+                const ownedAnimals = Object.entries(collection).filter(([animalId, animalData]) => {
+                    return (animalData.count || 0) > 0;
+                });
+
+                console.log('Owned animals (count > 0):', ownedAnimals);
+
+                if (ownedAnimals.length === 0) {
+                    document.getElementById('user-animals').innerHTML =
+                        '<p style="text-align: center; color: #6c757d;">아직 수집한 동물이 없습니다. 동물 컬렉션에서 동물을 모아보세요!</p>';
+                    return;
+                }
+
+                const html = ownedAnimals.map(([animalId, animalData]) => {
+                    // animal-collection.html과 동일한 데이터 구조 사용
+                    const level = animalData.level || 1;
+                    const stars = '⭐'.repeat(level);
+
+                    return `
+                        <div class="friend-item" style="cursor: pointer;" onclick='selectAnimal(${JSON.stringify(animalData).replace(/'/g, "\\'")})'>
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div style="font-size: 2rem;">${animalData.emoji || '🐾'}</div>
+                                <div style="flex: 1;">
+                                    <div class="nickname">
+                                        ${animalData.name}
+                                        ${level > 1 ? `<span style="color: #f59e0b; font-size: 0.9rem; margin-left: 5px;">Lv.${level}</span>` : ''}
+                                    </div>
+                                    <div class="animal-tier tier-${animalData.tier}" style="font-size: 0.8rem; margin-top: 5px;">
+                                        ${getTierName(animalData.tier)}
+                                    </div>
+                                    <div style="font-size: 0.8rem; color: #6c757d; margin-top: 3px;">
+                                        ${stars} | ⚡${animalData.totalPower || animalData.power || 1} | ${animalData.count || 1}마리
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
 
                 document.getElementById('user-animals').innerHTML = html;
             } catch (error) {
@@ -904,8 +1032,9 @@
         }
 
         // 동물 선택
-        function selectAnimal(animalName, animalData) {
+        function selectAnimal(animalData) {
             selectedAnimal = animalData;
+            console.log('Selected animal:', selectedAnimal);
             document.getElementById('animal-selection').style.display = 'none';
             document.getElementById('showoff-form').style.display = 'block';
         }
@@ -1002,14 +1131,19 @@
 
         // 유틸리티 함수들
         function getAnimalEmoji(animal) {
+            // animal이 이미 이모지인 경우 (animalCollection의 emoji 필드)
+            if (typeof animal === 'string' && animal.match(/[\u{1F000}-\u{1F9FF}]/u)) {
+                return animal;
+            }
+
+            // 레거시: 동물 이름으로 이모지 찾기 (하위 호환성)
             const emojiMap = {
                 'bunny': '🐰', 'cat': '🐱', 'dog': '🐶', 'fox': '🦊', 'lion': '🦁',
                 'tiger': '🐅', 'bear': '🐻', 'panda': '🐼', 'koala': '🐨', 'monkey': '🐵',
                 'elephant': '🐘', 'giraffe': '🦒', 'zebra': '🦓', 'horse': '🐎', 'cow': '🐄',
                 'pig': '🐷', 'sheep': '🐑', 'chicken': '🐔', 'penguin': '🐧', 'owl': '🦉',
-                // 더 많은 동물 매핑...
             };
-            
+
             return emojiMap[animal] || '🐾';
         }
 

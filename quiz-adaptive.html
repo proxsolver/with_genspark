@@ -1364,11 +1364,24 @@
         // TTS 재생
         function playTTS() {
             const question = currentQuestionPool[currentQuestionIndex];
-            
+
             if (question.audioText && 'speechSynthesis' in window) {
+                // 영어 음성 사용 강제
                 const utterance = new SpeechSynthesisUtterance(question.audioText);
                 utterance.lang = 'en-US';
                 utterance.rate = 0.8;
+
+                // 영어 음성만 필터링
+                const voices = speechSynthesis.getVoices();
+                const englishVoice = voices.find(voice =>
+                    voice.lang.startsWith('en-') &&
+                    (voice.name.includes('English') || voice.name.includes('US') || voice.name.includes('GB'))
+                );
+
+                if (englishVoice) {
+                    utterance.voice = englishVoice;
+                }
+
                 speechSynthesis.speak(utterance);
             }
         }

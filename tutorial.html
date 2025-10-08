@@ -423,13 +423,22 @@
                 return;
             }
             
-            // 별명 저장
+            // 별명 저장 (localStorage)
             const userSettings = {
                 userName: nickname,
                 setAt: Date.now()
             };
             localStorage.setItem('eduPetSettings', JSON.stringify(userSettings));
-            
+
+            // Firebase에 닉네임 동기화 (비동기)
+            if (typeof eduPetAuth !== 'undefined' && eduPetAuth.currentUser) {
+                eduPetAuth.setNickname(nickname).then(() => {
+                    console.log('✅ Firebase에 닉네임 동기화 완료:', nickname);
+                }).catch(err => {
+                    console.warn('⚠️ Firebase 닉네임 동기화 실패 (나중에 재시도됩니다):', err);
+                });
+            }
+
             // 성공 메시지
             showSuccess(`✨ "${nickname}" 별명이 설정되었어요!`);
             
@@ -484,7 +493,7 @@
             }
         });
 
-        function completeOnboarding() {
+        async function completeOnboarding() {
             // Mark onboarding as completed
             localStorage.setItem('eduPetOnboardingCompleted', 'true');
 
@@ -505,6 +514,16 @@
                 plantSystemUser.rewards.premiumGachaTickets += 1;
                 plantSystem.saveUserData(plantSystemUser);
                 console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
+
+                // Firebase에 보상 동기화 (비동기)
+                if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                    try {
+                        await eduPetFirebaseIntegration.syncPlantState();
+                        console.log('✅ Firebase에 보상 동기화 완료');
+                    } catch (error) {
+                        console.warn('⚠️ Firebase 동기화 실패 (나중에 재시도됩니다):', error);
+                    }
+                }
             }
 
             // Initialize quiz progress
@@ -524,11 +543,21 @@
                 console.log('사용자 설정 로드 실패:', error);
             }
 
-            // Show completion message
-            alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100원\n💧 물방울 12개\n🎫 프리미엄 뽑기권 1장 (에픽 이상 확정!)\n\n이제 첫 번째 퀴즈를 풀어보세요!`);
+            // 보상 확인 로그
+            const finalUser = plantSystem.getUserData();
+            console.log('✅ 최종 사용자 데이터:', {
+                money: finalUser.wallet?.money,
+                premiumTickets: finalUser.rewards?.premiumGachaTickets,
+                normalTickets: finalUser.rewards?.normalGachaTickets
+            });
 
-            // Redirect to main page
-            window.location.href = 'index.html';
+            // Show completion message with delay to ensure data is saved
+            setTimeout(() => {
+                alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장 (에픽 이상 확정!)\n\n메인 화면에서 확인해보세요!`);
+
+                // Redirect to main page after alert
+                window.location.href = 'index.html';
+            }, 500);
         }
 
         // Check if user has already completed onboarding
