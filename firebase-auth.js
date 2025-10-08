@@ -22,7 +22,7 @@ class EduPetAuth {
 
             const result = await firebase_auth.signInAnonymously();
             this.currentUser = result.user;
-            
+
             // 새 사용자인 경우 데이터 초기화
             if (result.additionalUserInfo?.isNewUser) {
                 await this.createUserProfile();
@@ -38,19 +38,91 @@ class EduPetAuth {
         }
     }
 
+    // 구글 로그인
+    async signInWithGoogle() {
+        try {
+            if (!checkFirebaseConnection()) {
+                throw new Error('Firebase가 초기화되지 않았습니다');
+            }
+
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
+
+            const result = await firebase_auth.signInWithPopup(provider);
+            this.currentUser = result.user;
+
+            // 구글 계정 정보로 프로필 업데이트
+            const isNewUser = result.additionalUserInfo?.isNewUser;
+
+            if (isNewUser) {
+                // 새 사용자: 구글 계정 정보로 프로필 생성
+                await this.createUserProfile({
+                    nickname: result.user.displayName || '익명',
+                    email: result.user.email,
+                    photoURL: result.user.photoURL,
+                    provider: 'google'
+                });
+            } else {
+                // 기존 사용자: 데이터 로드
+                await this.loadUserData();
+
+                // 구글 프로필 정보 업데이트 (선택사항)
+                if (result.user.displayName && !this.userData.profile.nickname) {
+                    await this.setNickname(result.user.displayName);
+                }
+            }
+
+            this.notifyAuthStateChange('signed_in');
+            console.log('구글 로그인 성공:', result.user.displayName);
+            return true;
+        } catch (error) {
+            console.error('구글 로그인 실패:', error);
+
+            // 사용자가 취소한 경우
+            if (error.code === 'auth/popup-closed-by-user' || error.code === 'auth/cancelled-popup-request') {
+                throw new Error('로그인이 취소되었습니다');
+            }
+
+            throw error;
+        }
+    }
+
+    // 로그아웃
+    async signOut() {
+        try {
+            await firebase_auth.signOut();
+            this.currentUser = null;
+            this.userData = null;
+            this.notifyAuthStateChange('signed_out');
+            console.log('로그아웃 성공');
+            return true;
+        } catch (error) {
+            console.error('로그아웃 실패:', error);
+            return false;
+        }
+    }
+
     // 닉네임으로 사용자 식별 (선택사항)
     async setNickname(nickname) {
         try {
             if (!this.currentUser) return false;
 
             // 닉네임 중복 검사
-            const isAvailable = await this.checkNicknameAvailability(nickname);
-            if (!isAvailable) {
-                throw new Error('이미 사용 중인 닉네임입니다');
+            const snapshot = await firebase_db.ref(`nicknames/${nickname}`).once('value');
+            if (snapshot.exists()) {
+                const existingUid = snapshot.val();
+                if (existingUid !== this.currentUser.uid) {
+                    // Nickname is taken by another user
+                    throw new Error('이미 사용 중인 닉네임입니다');
+                }
+                // Nickname is already set to current user, no need to update Firebase again for nickname path
+                // But we still need to update the profile nickname if it's different
             }
 
             // 사용자 프로필 업데이트
             await firebase_db.ref(`users/${this.currentUser.uid}/profile/nickname`).set(nickname);
+            // Ensure the nicknames path points to the current user
             await firebase_db.ref(`nicknames/${nickname}`).set(this.currentUser.uid);
 
             this.userData.profile.nickname = nickname;
@@ -59,6 +131,24 @@ class EduPetAuth {
             return true;
         } catch (error) {
             console.error('닉네임 설정 실패:', error);
+            throw error;
+        }
+    }
+
+    // 아바타 동물 설정
+    async setAvatar(avatarId) {
+        try {
+            if (!this.currentUser) return false;
+
+            // 사용자 프로필 업데이트
+            await firebase_db.ref(`users/${this.currentUser.uid}/profile/avatarAnimal`).set(avatarId);
+
+            this.userData.profile.avatarAnimal = avatarId;
+            this.saveToLocalStorage();
+            
+            return true;
+        } catch (error) {
+            console.error('아바타 설정 실패:', error);
             throw error;
         }
     }
@@ -75,7 +165,7 @@ class EduPetAuth {
     }
 
     // 사용자 프로필 생성
-    async createUserProfile() {
+    async createUserProfile(googleProfile = null) {
         try {
             if (!this.currentUser) return false;
 
@@ -87,6 +177,22 @@ class EduPetAuth {
                 lastActive: now,
                 isOnline: true
             };
+
+            // 구글 계정 정보가 있으면 추가
+            if (googleProfile) {
+                if (googleProfile.nickname) {
+                    profileData.nickname = googleProfile.nickname;
+                }
+                if (googleProfile.email) {
+                    profileData.email = googleProfile.email;
+                }
+                if (googleProfile.photoURL) {
+                    profileData.photoURL = googleProfile.photoURL;
+                }
+                if (googleProfile.provider) {
+                    profileData.provider = googleProfile.provider;
+                }
+            }
 
             const statsData = { ...UserDataStructure.stats };
             const socialData = { ...UserDataStructure.social };
@@ -135,6 +241,13 @@ class EduPetAuth {
             const snapshot = await firebase_db.ref(`users/${this.currentUser.uid}`).once('value');
             if (snapshot.exists()) {
                 this.userData = snapshot.val();
+
+                // 하위 호환성을 위한 패치: profile.uid가 없는 경우 주입
+                if (this.userData.profile && !this.userData.profile.uid) {
+                    console.log('Patching missing profile.uid for backward compatibility.');
+                    this.userData.profile.uid = this.currentUser.uid;
+                }
+
                 this.saveToLocalStorage();
                 
                 // 온라인 상태 업데이트
@@ -280,9 +393,12 @@ class EduPetAuth {
             const updates = {};
 
             Object.keys(statsData).forEach(key => {
-                if (key in this.userData.stats) {
+                // 키가 존재하거나 유효한 통계 필드인 경우 업데이트
+                const validStatsFields = ['totalQuestions', 'correctAnswers', 'totalMoney', 'totalWater', 'plantsGrown', 'animalsCollected', 'totalLearningTime', 'quizAccuracy'];
+                if (validStatsFields.includes(key)) {
                     updates[`users/${this.currentUser.uid}/stats/${key}`] = statsData[key];
                     this.userData.stats[key] = statsData[key];
+                    console.log(`[Firebase Auth] ${key} = ${statsData[key]} 설정`);
                 }
             });
 
@@ -291,6 +407,8 @@ class EduPetAuth {
                 await firebase_db.ref().update(updates);
                 this.saveToLocalStorage();
                 console.log('[Firebase Auth] ✅ 통계 설정 성공');
+            } else {
+                console.warn('[Firebase Auth] ⚠️ 업데이트할 통계가 없습니다. statsData:', statsData, 'userData.stats:', this.userData.stats);
             }
 
             return true;

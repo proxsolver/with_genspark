@@ -5,7 +5,7 @@
       "question": "그림(🍎)을 보고 '사과'를 뜻하는 올바른 영어 단어를 고르세요.",
       "options": ["Aple", "Appel", "Apple", "Aplle"],
       "correctIndex": 2,
-      "explanation": "정답! '사과'는 'Apple'이라고 써요. 'p'가 두 번 들어가는 것이 헷갈릴 수 있지만, 이번 기회에 정확히 외워봐요! A-p-p-l-e!",
+      "explanation": " '사과'는 'Apple'이라고 써요. 'p'가 두 번 들어가는 것이 헷갈릴 수 있지만, 이번 기회에 정확히 외워봐요! A-p-p-l-e!",
       "difficulty": 1,
       "audioText": "Apple"
     },
@@ -15,7 +15,7 @@
       "question": "'학교'를 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
       "options": ["Scool", "Skool", "Schol", "School"],
       "correctIndex": 3,
-      "explanation": "맞았어요! '학교'는 'School'이에요. 'sch'와 'oo'가 들어가는 특별한 단어니까 눈에 잘 익혀두세요!",
+      "explanation": " '학교'는 'School'이에요. 'sch'와 'oo'가 들어가는 특별한 단어니까 눈에 잘 익혀두세요!",
       "difficulty": 1,
       "audioText": "School"
     },
@@ -25,7 +25,7 @@
       "question": "우리가 사는 '집'은 영어로 어떻게 쓸까요?",
       "options": ["Hose", "House", "Hous", "Howse"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! '집'은 'House'가 맞아요. H-o-u-s-e, 단어 속에 'us(우리)'가 숨어있다고 생각하면 외우기 더 쉬울 거예요!",
+      "explanation": "'집'은 'House'가 맞아요. H-o-u-s-e, 단어 속에 'us(우리)'가 숨어있다고 생각하면 외우기 더 쉬울 거예요!",
       "difficulty": 1,
       "audioText": "House"
     },
@@ -35,7 +35,7 @@
       "question": "그림(💧)을 보고 '물'을 뜻하는 올바른 영어 단어를 고르세요.",
       "options": ["Wator", "Woter", "Water", "Weter"],
       "correctIndex": 2,
-      "explanation": "딩동댕! '물'은 영어로 'Water'에요. 매일 마시는 물을 영어로 말하는 법을 배웠네요!",
+      "explanation": "'물'은 영어로 'Water'에요. 매일 마시는 물을 영어로 말하는 법을 배웠네요!",
       "difficulty": 1,
       "audioText": "Water"
     },
@@ -45,7 +45,7 @@
       "question": "'책'을 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
       "options": ["Book", "Bok", "Buke", "Buok"],
       "correctIndex": 0,
-      "explanation": "정답! '책'은 'Book'이에요. 'o'가 두 번 들어가는 단어들을 잘 기억해두세요. 예를 들면 'look(보다)' 처럼요!",
+      "explanation": " '책'은 'Book'이에요. 'o'가 두 번 들어가는 단어들을 잘 기억해두세요. 예를 들면 'look(보다)' 처럼요!",
       "difficulty": 1,
       "audioText": "Book"
     },
@@ -55,7 +55,7 @@
       "question": "멍멍! '개'는 영어로 어떻게 쓸까요?",
       "options": ["God", "Dig", "Dag", "Dog"],
       "correctIndex": 3,
-      "explanation": "맞아요! '개'는 'Dog' 에요. 거꾸로 하면 'God(신)'이 되는 재미있는 단어랍니다!",
+      "explanation": "'개'는 'Dog' 에요. 거꾸로 하면 'God(신)'이 되는 재미있는 단어랍니다!",
       "difficulty": 1,
       "audioText": "Dog"
     },
@@ -65,7 +65,7 @@
       "question": "그림(🚗)을 보고 '자동차'를 뜻하는 올바른 영어 단어를 고르세요.",
       "options": ["Car", "Carre", "CAr", "Crr"],
       "correctIndex": 0,
-      "explanation": "정답! '자동차'는 'Car'에요. C-A-R, 정말 간단하죠?",
+      "explanation": " '자동차'는 'Car'에요. C-A-R, 정말 간단하죠?",
       "difficulty": 1,
       "audioText": "Car"
     },
@@ -75,7 +75,7 @@
       "question": "'친구'를 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
       "options": ["Freind", "Frind", "Friend", "Frend"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '친구'는 'Friend'라고 써요. 'i' 다음에 'e'가 온다는 걸 기억해주세요!",
+      "explanation": "'친구'는 'Friend'라고 써요. 'i' 다음에 'e'가 온다는 걸 기억해주세요!",
       "difficulty": 1,
       "audioText": "Friend"
     },
@@ -85,7 +85,7 @@
       "question": "야옹! '고양이'는 영어로 어떻게 쓸까요?",
       "options": ["Kat", "Cet", "Cot", "Cat"],
       "correctIndex": 3,
-      "explanation": "정답! '고양이'는 'Cat' 이에요. C-A-T!",
+      "explanation": " '고양이'는 'Cat' 이에요. C-A-T!",
       "difficulty": 1,
       "audioText": "Cat"
     },
@@ -105,7 +105,7 @@
       "question": "다음 중 '가족'을 뜻하는 영어 단어는 무엇일까요?",
       "options": ["Friend", "Family", "Teacher", "Student"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! '가족'은 'Family'라고 말해요. 나와 가장 가까운 사람들을 뜻하는 중요한 단어랍니다.",
+      "explanation": "'가족'은 'Family'라고 말해요. 나와 가장 가까운 사람들을 뜻하는 중요한 단어랍니다.",
       "difficulty": 1,
       "audioText": "Family"
     },
@@ -115,7 +115,7 @@
       "question": "단어 'Happy'는 무슨 뜻일까요?",
       "options": ["슬픈", "화난", "행복한", "피곤한"],
       "correctIndex": 2,
-      "explanation": "정답! 'Happy'는 '행복한'이라는 뜻이에요. 우리가 항상 행복했으면 좋겠네요! I am happy!",
+      "explanation": " 'Happy'는 '행복한'이라는 뜻이에요. 우리가 항상 행복했으면 좋겠네요! I am happy!",
       "difficulty": 1,
       "audioText": "Happy"
     },
@@ -125,7 +125,7 @@
       "question": "다음 중 '먹다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
       "options": ["Run", "Read", "Eat", "Play"],
       "correctIndex": 2,
-      "explanation": "맞아요! '먹다'는 'Eat'이에요. 'I eat breakfast.'는 '나는 아침을 먹어요.'라는 뜻이랍니다.",
+      "explanation": "'먹다'는 'Eat'이에요. 'I eat breakfast.'는 '나는 아침을 먹어요.'라는 뜻이랍니다.",
       "difficulty": 1,
       "audioText": "Eat"
     },
@@ -135,7 +135,7 @@
       "question": "단어 'Red'는 무슨 색깔을 뜻할까요?",
       "options": ["빨간색", "파란색", "노란색", "초록색"],
       "correctIndex": 0,
-      "explanation": "정답! 'Red'는 '빨간색'이에요. 소방차와 사과는 Red!",
+      "explanation": " 'Red'는 '빨간색'이에요. 소방차와 사과는 Red!",
       "difficulty": 1,
       "audioText": "Red"
     },
@@ -145,7 +145,7 @@
       "question": "다음 중 '읽다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
       "options": ["Sing", "Dance", "Write", "Read"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 책을 '읽다'는 영어로 'Read'에요. 'I read a book.'은 '나는 책을 읽어요.'라는 뜻이에요.",
+      "explanation": "책을 '읽다'는 영어로 'Read'에요. 'I read a book.'은 '나는 책을 읽어요.'라는 뜻이에요.",
       "difficulty": 1,
       "audioText": "Read"
     },
@@ -155,7 +155,7 @@
       "question": "단어 'Student'는 무슨 뜻일까요?",
       "options": ["의사", "요리사", "선생님", "학생"],
       "correctIndex": 3,
-      "explanation": "맞아요! 'Student'는 바로 여러분처럼 '학생'이라는 뜻이에요.",
+      "explanation": "'Student'는 바로 여러분처럼 '학생'이라는 뜻이에요.",
       "difficulty": 1,
       "audioText": "Student"
     },
@@ -165,7 +165,7 @@
       "question": "다음 중 '자다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
       "options": ["Sleep", "Walk", "Jump", "Fly"],
       "correctIndex": 0,
-      "explanation": "정답! 밤에 쿨쿨 '자다'는 영어로 'Sleep'이에요. 'I sleep at night.'은 '나는 밤에 자요.'라는 뜻이랍니다.",
+      "explanation": " 밤에 쿨쿨 '자다'는 영어로 'Sleep'이에요. 'I sleep at night.'은 '나는 밤에 자요.'라는 뜻이랍니다.",
       "difficulty": 1,
       "audioText": "Sleep"
     },
@@ -175,7 +175,7 @@
       "question": "단어 'Blue'는 무슨 색깔을 뜻할까요?",
       "options": ["검은색", "흰색", "파란색", "주황색"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'Blue'는 맑은 하늘처럼 '파란색'이에요.",
+      "explanation": "'Blue'는 맑은 하늘처럼 '파란색'이에요.",
       "difficulty": 1,
       "audioText": "Blue"
     },
@@ -185,7 +185,7 @@
       "question": "다음 중 '선생님'을 뜻하는 영어 단어는 무엇일까요?",
       "options": ["Doctor", "Police", "Teacher", "Farmer"],
       "correctIndex": 2,
-      "explanation": "맞았어요! 우리를 가르쳐주시는 '선생님'은 영어로 'Teacher'라고 해요.",
+      "explanation": " 우리를 가르쳐주시는 '선생님'은 영어로 'Teacher'라고 해요.",
       "difficulty": 1,
       "audioText": "Teacher"
     },
@@ -195,7 +195,7 @@
       "question": "단어 'Run'은 무슨 뜻일까요?",
       "options": ["걷다", "앉다", "달리다", "날다"],
       "correctIndex": 2,
-      "explanation": "정답! 'Run'은 '달리다'라는 뜻이에요. 운동장에서 신나게 달리는 모습을 상상해보세요!",
+      "explanation": " 'Run'은 '달리다'라는 뜻이에요. 운동장에서 신나게 달리는 모습을 상상해보세요!",
       "difficulty": 1,
       "audioText": "Run"
     },
@@ -205,7 +205,7 @@
       "question": "단어 'Big(큰)'의 반대말은 무엇일까요?",
       "options": ["Small", "Tall", "Long", "Short"],
       "correctIndex": 0,
-      "explanation": "맞았어요! 'Big(큰)'의 반대말은 'Small(작은)'이에요. 코끼리는 Big, 햄스터는 Small! 이렇게 반대되는 단어를 함께 외우면 더 쉬워요.",
+      "explanation": " 'Big(큰)'의 반대말은 'Small(작은)'이에요. 코끼리는 Big, 햄스터는 Small! 이렇게 반대되는 단어를 함께 외우면 더 쉬워요.",
       "difficulty": 1,
       "audioText": "Big, Small"
     },
@@ -215,7 +215,7 @@
       "question": "단어 'Hot(뜨거운)'의 반대말은 무엇일까요?",
       "options": ["Warm", "Cool", "Cold", "Spicy"],
       "correctIndex": 2,
-      "explanation": "정답! 'Hot(뜨거운)'의 반대말은 'Cold(차가운)'에요. 여름은 Hot, 겨울은 Cold! 반대 개념을 잘 기억해주세요.",
+      "explanation": " 'Hot(뜨거운)'의 반대말은 'Cold(차가운)'에요. 여름은 Hot, 겨울은 Cold! 반대 개념을 잘 기억해주세요.",
       "difficulty": 1,
       "audioText": "Hot, Cold"
     },
@@ -225,7 +225,7 @@
       "question": "단어 'Happy(행복한)'의 반대말은 무엇일까요?",
       "options": ["Angry", "Sad", "Tired", "Hungry"],
       "correctIndex": 1,
-      "explanation": "딩동댕! 'Happy(행복한)'의 반대말은 'Sad(슬픈)'에요. 항상 Happy한 일만 가득하길 바라요!",
+      "explanation": "'Happy(행복한)'의 반대말은 'Sad(슬픈)'에요. 항상 Happy한 일만 가득하길 바라요!",
       "difficulty": 1,
       "audioText": "Happy, Sad"
     },
@@ -235,7 +235,7 @@
       "question": "단어 'Fast(빠른)'의 반대말은 무엇일까요?",
       "options": ["Quick", "Slow", "Hard", "Easy"],
       "correctIndex": 1,
-      "explanation": "맞아요! 'Fast(빠른)'의 반대말은 'Slow(느린)'에요. 치타는 Fast, 거북이는 Slow!",
+      "explanation": "'Fast(빠른)'의 반대말은 'Slow(느린)'에요. 치타는 Fast, 거북이는 Slow!",
       "difficulty": 1,
       "audioText": "Fast, Slow"
     },
@@ -245,7 +245,7 @@
       "question": "단어 'Up(위로)'의 반대말은 무엇일까요?",
       "options": ["In", "Out", "Down", "On"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'Up(위로)'의 반대말은 'Down(아래로)'에요. 풍선은 Up, 공은 Down!",
+      "explanation": "'Up(위로)'의 반대말은 'Down(아래로)'에요. 풍선은 Up, 공은 Down!",
       "difficulty": 1,
       "audioText": "Up, Down"
     },
@@ -255,7 +255,7 @@
       "question": "단어 'Day(낮)'의 반대말은 무엇일까요?",
       "options": ["Night", "Morning", "Noon", "Week"],
       "correctIndex": 0,
-      "explanation": "정답! 해가 떠있는 'Day(낮)'의 반대말은 달이 뜨는 'Night(밤)'이에요.",
+      "explanation": " 해가 떠있는 'Day(낮)'의 반대말은 달이 뜨는 'Night(밤)'이에요.",
       "difficulty": 1,
       "audioText": "Day, Night"
     },
@@ -265,7 +265,7 @@
       "question": "단어 'Good(좋은)'의 반대말은 무엇일까요?",
       "options": ["Nice", "Great", "Bad", "Fine"],
       "correctIndex": 2,
-      "explanation": "맞아요! 'Good(좋은)'의 반대말은 'Bad(나쁜)'에요.",
+      "explanation": "'Good(좋은)'의 반대말은 'Bad(나쁜)'에요.",
       "difficulty": 1,
       "audioText": "Good, Bad"
     },
@@ -285,7 +285,7 @@
       "question": "단어 'Tall(키가 큰)'의 반대말은 무엇일까요?",
       "options": ["Big", "Long", "Small", "Short"],
       "correctIndex": 3,
-      "explanation": "정답! 'Tall(키가 큰)'의 반대말은 'Short(키가 작은)'에요. 기린은 Tall, 펭귄은 Short!",
+      "explanation": " 'Tall(키가 큰)'의 반대말은 'Short(키가 작은)'에요. 기린은 Tall, 펭귄은 Short!",
       "difficulty": 1,
       "audioText": "Tall, Short"
     },
@@ -295,7 +295,7 @@
       "question": "단어 'Light(밝은)'의 반대말은 무엇일까요?",
       "options": ["Dark", "White", "Sun", "Right"],
       "correctIndex": 0,
-      "explanation": "맞았어요! 'Light(밝은)'의 반대말은 'Dark(어두운)'에요. 낮은 Light, 밤은 Dark!",
+      "explanation": " 'Light(밝은)'의 반대말은 'Dark(어두운)'에요. 낮은 Light, 밤은 Dark!",
       "difficulty": 1,
       "audioText": "Light, Dark"
     },
@@ -315,7 +315,7 @@
       "question": "다음 단어들 중에서 'Ball'과 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
       "options": ["Doll", "Bell", "Book", "Bed"],
       "correctIndex": 0,
-      "explanation": "정답! 'Ball'과 'Doll'은 둘 다 '-all' 소리로 끝나는 라임 친구예요. 영어 노래나 동시에서 이런 라임을 많이 찾을 수 있답니다!",
+      "explanation": " 'Ball'과 'Doll'은 둘 다 '-all' 소리로 끝나는 라임 친구예요. 영어 노래나 동시에서 이런 라임을 많이 찾을 수 있답니다!",
       "difficulty": 1,
       "audioText": "Ball, Doll"
     },
@@ -325,7 +325,7 @@
       "question": "다음 단어들 중에서 'Sun'과 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
       "options": ["Moon", "Star", "Run", "Sing"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'Sun'과 'Run'은 둘 다 '-un' 소리로 끝나요. Sun, Run! 소리가 비슷해서 재미있죠?",
+      "explanation": "'Sun'과 'Run'은 둘 다 '-un' 소리로 끝나요. Sun, Run! 소리가 비슷해서 재미있죠?",
       "difficulty": 1,
       "audioText": "Sun, Run"
     },
@@ -335,7 +335,7 @@
       "question": "다음 단어들 중에서 'Dog'과 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
       "options": ["Pig", "Frog", "Duck", "Fox"],
       "correctIndex": 1,
-      "explanation": "정답! 'Dog'과 'Frog'는 '-og' 소리로 끝나는 라임 친구들이에요. 개구리는 Frog!",
+      "explanation": " 'Dog'과 'Frog'는 '-og' 소리로 끝나는 라임 친구들이에요. 개구리는 Frog!",
       "difficulty": 1,
       "audioText": "Dog, Frog"
     },
@@ -345,7 +345,7 @@
       "question": "다음 단어들 중에서 'Tree'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
       "options": ["See", "Try", "Ten", "Two"],
       "correctIndex": 0,
-      "explanation": "맞았어요! 'Tree'와 'See'는 둘 다 '이' 소리로 길게 끝나요. 소리를 내어 따라 읽어보세요. Tree, See!",
+      "explanation": " 'Tree'와 'See'는 둘 다 '이' 소리로 길게 끝나요. 소리를 내어 따라 읽어보세요. Tree, See!",
       "difficulty": 1,
       "audioText": "Tree, See"
     },
@@ -355,7 +355,7 @@
       "question": "다음 단어들 중에서 'Car'와 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
       "options": ["Bus", "Bike", "Star", "Cat"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'Car'와 'Star'는 '-ar' 소리로 끝나는 라임 친구들이에요!",
+      "explanation": "'Car'와 'Star'는 '-ar' 소리로 끝나는 라임 친구들이에요!",
       "difficulty": 1,
       "audioText": "Car, Star"
     },
@@ -365,7 +365,7 @@
       "question": "다음 단어들 중에서 'House'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
       "options": ["Mouse", "Home", "Room", "Horse"],
       "correctIndex": 0,
-      "explanation": "훌륭해요! 'House'와 'Mouse'는 '-ouse' 소리로 끝나요. 집에 사는 생쥐를 떠올려보세요!",
+      "explanation": "'House'와 'Mouse'는 '-ouse' 소리로 끝나요. 집에 사는 생쥐를 떠올려보세요!",
       "difficulty": 1,
       "audioText": "House, Mouse"
     },
@@ -375,7 +375,7 @@
       "question": "다음 단어들 중에서 'Book'과 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
       "options": ["Box", "Back", "Look", "Like"],
       "correctIndex": 2,
-      "explanation": "정답! 'Book'과 'Look'은 둘 다 '-ook' 소리로 끝나는 라임이에요. Look at the book! (책을 봐!)",
+      "explanation": " 'Book'과 'Look'은 둘 다 '-ook' 소리로 끝나는 라임이에요. Look at the book! (책을 봐!)",
       "difficulty": 1,
       "audioText": "Book, Look"
     },
@@ -385,7 +385,7 @@
       "question": "다음 단어들 중에서 'Red'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
       "options": ["Read", "Road", "Bed", "Ride"],
       "correctIndex": 2,
-      "explanation": "맞았어요! 'Red'와 'Bed'는 '-ed' 소리로 끝나는 라임 친구들이에요. 빨간 침대를 상상해보세요!",
+      "explanation": " 'Red'와 'Bed'는 '-ed' 소리로 끝나는 라임 친구들이에요. 빨간 침대를 상상해보세요!",
       "difficulty": 1,
       "audioText": "Red, Bed"
     },
@@ -405,7 +405,7 @@
       "question": "다음 중 '과일(Fruit)' 종류에 속하는 단어는 무엇일까요?",
       "options": ["Carrot (당근)", "Banana (바나나)", "Potato (감자)", "Onion (양파)"],
       "correctIndex": 1,
-      "explanation": "정답! 'Banana'는 달콤한 과일이에요. 당근, 감자, 양파는 모두 땅에서 자라는 채소랍니다. 이렇게 종류별로 단어를 묶어서 외우면 기억하기 쉬워요.",
+      "explanation": " 'Banana'는 달콤한 과일이에요. 당근, 감자, 양파는 모두 땅에서 자라는 채소랍니다. 이렇게 종류별로 단어를 묶어서 외우면 기억하기 쉬워요.",
       "difficulty": 1,
       "audioText": "Banana"
     },
@@ -425,7 +425,7 @@
       "question": "다음 중 '색깔(Color)' 종류에 속하는 단어는 무엇일까요?",
       "options": ["Green (초록색)", "Apple (사과)", "Water (물)", "One (하나)"],
       "correctIndex": 0,
-      "explanation": "정답! 'Green'은 풀잎처럼 싱그러운 '초록색'을 뜻해요. 다른 보기들은 과일, 음료, 숫자랍니다.",
+      "explanation": " 'Green'은 풀잎처럼 싱그러운 '초록색'을 뜻해요. 다른 보기들은 과일, 음료, 숫자랍니다.",
       "difficulty": 1,
       "audioText": "Green"
     },
@@ -435,7 +435,7 @@
       "question": "다음 중 '숫자(Number)' 종류에 속하는 단어는 무엇일까요?",
       "options": ["Red (빨강)", "Big (큰)", "Three (셋)", "Eat (먹다)"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'Three'는 숫자 3을 뜻해요. 원, 투, 쓰리! One, Two, Three!",
+      "explanation": "'Three'는 숫자 3을 뜻해요. 원, 투, 쓰리! One, Two, Three!",
       "difficulty": 1,
       "audioText": "Three"
     },
@@ -445,7 +445,7 @@
       "question": "다음 중 '가족(Family)' 구성원에 속하는 단어는 무엇일까요?",
       "options": ["Friend (친구)", "Student (학생)", "Sister (자매, 누나, 여동생)", "Doctor (의사)"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'Sister'는 나의 여자 형제를 부르는 말이에요. 다른 단어들도 알아볼까요? Friend는 친구, Student는 학생, Doctor는 의사 선생님!",
+      "explanation": "'Sister'는 나의 여자 형제를 부르는 말이에요. 다른 단어들도 알아볼까요? Friend는 친구, Student는 학생, Doctor는 의사 선생님!",
       "difficulty": 1,
       "audioText": "Sister"
     },
@@ -455,7 +455,7 @@
       "question": "다음 중 '탈것(Vehicle)' 종류에 속하는 단어는 무엇일까요?",
       "options": ["House (집)", "Tree (나무)", "Bus (버스)", "Flower (꽃)"],
       "correctIndex": 2,
-      "explanation": "정답! 'Bus'는 우리가 타고 다니는 버스를 뜻해요. 자동차(Car), 기차(Train)도 탈것에 속한답니다.",
+      "explanation": " 'Bus'는 우리가 타고 다니는 버스를 뜻해요. 자동차(Car), 기차(Train)도 탈것에 속한답니다.",
       "difficulty": 1,
       "audioText": "Bus"
     },
@@ -465,7 +465,7 @@
       "question": "다음 중 '음식(Food)' 종류에 속하지 **않는** 단어는 무엇일까요?",
       "options": ["Bread (빵)", "Milk (우유)", "Juice (주스)", "Table (식탁)"],
       "correctIndex": 3,
-      "explanation": "맞아요! 'Table'은 음식을 올려놓는 '식탁'이지, 음식이 아니에요. 빵, 우유, 주스는 모두 맛있는 음식이랍니다.",
+      "explanation": "'Table'은 음식을 올려놓는 '식탁'이지, 음식이 아니에요. 빵, 우유, 주스는 모두 맛있는 음식이랍니다.",
       "difficulty": 1,
       "audioText": "Table"
     },
@@ -475,7 +475,7 @@
       "question": "다음 중 '몸(Body)'의 일부를 나타내는 단어는 무엇일까요?",
       "options": ["Hand (손)", "Bag (가방)", "Cap (모자)", "Pen (펜)"],
       "correctIndex": 0,
-      "explanation": "정답! 'Hand'는 우리의 '손'을 뜻해요. 다른 보기들은 모두 우리가 사용하는 물건들이죠.",
+      "explanation": " 'Hand'는 우리의 '손'을 뜻해요. 다른 보기들은 모두 우리가 사용하는 물건들이죠.",
       "difficulty": 1,
       "audioText": "Hand"
     },
@@ -485,7 +485,7 @@
       "question": "다음 중 '장소(Place)'를 나타내는 단어는 무엇일까요?",
       "options": ["Happy (행복한)", "Fast (빠른)", "Park (공원)", "Play (놀다)"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'Park'는 우리가 뛰어노는 '공원'이라는 장소를 뜻해요. 학교(School), 집(House)도 장소에 속한답니다.",
+      "explanation": "'Park'는 우리가 뛰어노는 '공원'이라는 장소를 뜻해요. 학교(School), 집(House)도 장소에 속한답니다.",
       "difficulty": 1,
       "audioText": "Park"
     },
@@ -495,7 +495,7 @@
       "question": "다음 중 '옷(Clothes)' 종류에 속하는 단어는 무엇일까요?",
       "options": ["Shoes (신발)", "Hat (모자)", "Socks (양말)", "모두 정답"],
       "correctIndex": 3,
-      "explanation": "딩동댕! 신발, 모자, 양말 모두 우리가 입거나 신는 '옷'의 한 종류에요. 그래서 '모두 정답'이 맞아요!",
+      "explanation": "신발, 모자, 양말 모두 우리가 입거나 신는 '옷'의 한 종류에요. 그래서 '모두 정답'이 맞아요!",
       "difficulty": 1,
       "audioText": "Shoes, Hat, Socks"
     },
@@ -515,7 +515,7 @@
       "question": "숫자 '10'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["N (Nine)", "E (Eight)", "S (Seven)", "T (Ten)"],
       "correctIndex": 3,
-      "explanation": "정답! 숫자 '10'은 영어로 'Ten'이라서 'T'로 시작해요. T-E-N!",
+      "explanation": " 숫자 '10'은 영어로 'Ten'이라서 'T'로 시작해요. T-E-N!",
       "difficulty": 1,
       "audioText": "Ten"
     },
@@ -525,7 +525,7 @@
       "question": "그림(☀️) '태양'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["S (Sun)", "M (Moon)", "R (Rain)", "C (Cloud)"],
       "correctIndex": 0,
-      "explanation": "맞아요! '태양'은 'Sun'이라서 알파벳 'S'로 시작해요. S-U-N!",
+      "explanation": "'태양'은 'Sun'이라서 알파벳 'S'로 시작해요. S-U-N!",
       "difficulty": 1,
       "audioText": "Sun"
     },
@@ -535,7 +535,7 @@
       "question": "우리가 잠을 자는 '침대'를 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["C (Chair)", "T (Table)", "B (Bed)", "D (Door)"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '침대'는 'Bed'라서 알파벳 'B'로 시작해요. B-E-D!",
+      "explanation": "'침대'는 'Bed'라서 알파벳 'B'로 시작해요. B-E-D!",
       "difficulty": 1,
       "audioText": "Bed"
     },
@@ -545,7 +545,7 @@
       "question": "그림(⭐) '별'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["M (Moon)", "S (Star)", "C (Cloud)", "R (Rainbow)"],
       "correctIndex": 1,
-      "explanation": "정답! 반짝이는 '별'은 'Star'라서 'S'로 시작해요. 'Sun'과 똑같이 'S'로 시작하네요!",
+      "explanation": " 반짝이는 '별'은 'Star'라서 'S'로 시작해요. 'Sun'과 똑같이 'S'로 시작하네요!",
       "difficulty": 1,
       "audioText": "Star"
     },
@@ -555,7 +555,7 @@
       "question": "'오렌지'를 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["A (Apple)", "B (Banana)", "O (Orange)", "G (Grape)"],
       "correctIndex": 2,
-      "explanation": "딩동댕! '오렌지'는 'Orange'라서 알파벳 'O'로 시작해요.",
+      "explanation": "'오렌지'는 'Orange'라서 알파벳 'O'로 시작해요.",
       "difficulty": 1,
       "audioText": "Orange"
     },
@@ -565,7 +565,7 @@
       "question": "그림(✏️) '연필'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["P (Pencil)", "E (Eraser)", "N (Note)", "B (Bag)"],
       "correctIndex": 0,
-      "explanation": "맞았어요! '연필'은 'Pencil'이라서 알파벳 'P'로 시작한답니다.",
+      "explanation": " '연필'은 'Pencil'이라서 알파벳 'P'로 시작한답니다.",
       "difficulty": 1,
       "audioText": "Pencil"
     },
@@ -575,7 +575,7 @@
       "question": "숫자 '1'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["T (Two)", "O (One)", "F (Four)", "Z (Zero)"],
       "correctIndex": 1,
-      "explanation": "정답! 숫자 '1'은 'One'이라서 알파벳 'O'로 시작해요. O-N-E!",
+      "explanation": " 숫자 '1'은 'One'이라서 알파벳 'O'로 시작해요. O-N-E!",
       "difficulty": 1,
       "audioText": "One"
     },
@@ -585,7 +585,7 @@
       "question": "그림(❓) '질문'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
       "options": ["A (Answer)", "Q (Question)", "T (Test)", "E (Exam)"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! '질문'은 'Question'이라서 알파벳 'Q'로 시작해요. 'q' 다음에는 보통 'u'가 따라온답니다!",
+      "explanation": "'질문'은 'Question'이라서 알파벳 'Q'로 시작해요. 'q' 다음에는 보통 'u'가 따라온답니다!",
       "difficulty": 1,
       "audioText": "Question"
     },
@@ -605,7 +605,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Dog - 🐱", "Fish - 🚗", "Book - 📚", "Sun - 🌙"],
       "correctIndex": 2,
-      "explanation": "정답! 'Book'은 '책'을 뜻하고, 📚 그림과 딱 맞아요. 다른 보기들도 살펴볼까요? 🐱는 Cat, 🚗는 Car, 🌙는 Moon 이랍니다.",
+      "explanation": " 'Book'은 '책'을 뜻하고, 📚 그림과 딱 맞아요. 다른 보기들도 살펴볼까요? 🐱는 Cat, 🚗는 Car, 🌙는 Moon 이랍니다.",
       "difficulty": 1,
       "audioText": "Book"
     },
@@ -615,7 +615,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Tree - 💧", "Flower - 🌸", "Water - 🌳", "Apple - 🥕"],
       "correctIndex": 1,
-      "explanation": "딩동댕! 'Flower'는 '꽃'을 뜻하고, 🌸 그림과 딱 맞아요. 다른 보기들도 바르게 짝지어 볼까요? 💧- Water, 🌳- Tree, 🥕- Carrot!",
+      "explanation": "'Flower'는 '꽃'을 뜻하고, 🌸 그림과 딱 맞아요. 다른 보기들도 바르게 짝지어 볼까요? 💧- Water, 🌳- Tree, 🥕- Carrot!",
       "difficulty": 1,
       "audioText": "Flower"
     },
@@ -625,7 +625,7 @@
       "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
       "options": ["Car - 🚗", "Bus - 🚌", "Train - ✈️", "Bike - 🚲"],
       "correctIndex": 2,
-      "explanation": "맞아요! 'Train'은 '기차'인데 ✈️ 그림은 '비행기(Plane)'에요. 잘못 짝지어졌네요. 다른 보기들은 모두 올바르게 짝지어졌어요!",
+      "explanation": "'Train'은 '기차'인데 ✈️ 그림은 '비행기(Plane)'에요. 잘못 짝지어졌네요. 다른 보기들은 모두 올바르게 짝지어졌어요!",
       "difficulty": 1,
       "audioText": "Train"
     },
@@ -635,7 +635,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Red - 💙", "Yellow - 💛", "Green - 🔴", "Blue - 💚"],
       "correctIndex": 1,
-      "explanation": "정답! 'Yellow'는 '노란색'이고, 💛 그림과 딱 맞아요. 다른 색깔들도 알아볼까요? 💙-Blue, 🔴-Red, 💚-Green!",
+      "explanation": " 'Yellow'는 '노란색'이고, 💛 그림과 딱 맞아요. 다른 색깔들도 알아볼까요? 💙-Blue, 🔴-Red, 💚-Green!",
       "difficulty": 1,
       "audioText": "Yellow"
     },
@@ -645,7 +645,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["One - 2️⃣", "Two - 3️⃣", "Three - 1️⃣", "Four - 4️⃣"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 'Four'는 숫자 '4'를 뜻하고, 4️⃣ 그림과 맞아요. One-1, Two-2, Three-3 도 함께 기억해 주세요.",
+      "explanation": "'Four'는 숫자 '4'를 뜻하고, 4️⃣ 그림과 맞아요. One-1, Two-2, Three-3 도 함께 기억해 주세요.",
       "difficulty": 1,
       "audioText": "Four"
     },
@@ -655,7 +655,7 @@
       "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
       "options": ["Eye - 👀", "Nose - 👃", "Mouth - 👂", "Hand - 🖐️"],
       "correctIndex": 2,
-      "explanation": "맞아요! 'Mouth'는 '입'인데 👂 그림은 '귀(Ear)'에요. 잘못 짝지어졌네요. 우리 몸의 다른 부분들도 영어로 배워봐요!",
+      "explanation": "'Mouth'는 '입'인데 👂 그림은 '귀(Ear)'에요. 잘못 짝지어졌네요. 우리 몸의 다른 부분들도 영어로 배워봐요!",
       "difficulty": 1,
       "audioText": "Mouth"
     },
@@ -665,7 +665,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Happy - 😠", "Sad - 😂", "Angry - 😊", "Tired - 😴"],
       "correctIndex": 3,
-      "explanation": "정답! 'Tired'는 '피곤한' 상태를 뜻하고, 😴 그림과 잘 어울려요. 다른 감정들도 알아볼까요? 😠-Angry, 😂-Laughing, 😊-Happy/Smiling!",
+      "explanation": " 'Tired'는 '피곤한' 상태를 뜻하고, 😴 그림과 잘 어울려요. 다른 감정들도 알아볼까요? 😠-Angry, 😂-Laughing, 😊-Happy/Smiling!",
       "difficulty": 1,
       "audioText": "Tired"
     },
@@ -675,7 +675,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Morning - 🌙", "Afternoon - ☀️", "Evening - 🌇", "Night - 🌅"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'Evening'은 '저녁'을 뜻하고, 해가 지는 🌇 그림과 딱 맞아요. 아침은 Morning, 낮은 Afternoon, 밤은 Night!",
+      "explanation": "'Evening'은 '저녁'을 뜻하고, 해가 지는 🌇 그림과 딱 맞아요. 아침은 Morning, 낮은 Afternoon, 밤은 Night!",
       "difficulty": 1,
       "audioText": "Evening"
     },
@@ -685,7 +685,7 @@
       "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
       "options": ["Spring - 🌸", "Summer - ☀️", "Fall - 🍁", "Winter - 🍃"],
       "correctIndex": 3,
-      "explanation": "맞아요! 'Winter'는 '겨울'인데 🍃 그림은 '나뭇잎(Leaf)'이에요. 겨울은 보통 눈사람(⛄) 그림과 어울리죠! 잘못 짝지어졌네요.",
+      "explanation": "'Winter'는 '겨울'인데 🍃 그림은 '나뭇잎(Leaf)'이에요. 겨울은 보통 눈사람(⛄) 그림과 어울리죠! 잘못 짝지어졌네요.",
       "difficulty": 1,
       "audioText": "Winter"
     },
@@ -695,7 +695,7 @@
       "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
       "options": ["Soccer - 🏀", "Baseball - 🏈", "Basketball - ⚽", "Tennis - 🎾"],
       "correctIndex": 3,
-      "explanation": "정답! 'Tennis'는 🎾 그림과 딱 맞아요. 다른 운동들도 영어로 알아볼까요? ⚽-Soccer, 🏀-Basketball, 🏈-Football!",
+      "explanation": " 'Tennis'는 🎾 그림과 딱 맞아요. 다른 운동들도 영어로 알아볼까요? ⚽-Soccer, 🏀-Basketball, 🏈-Football!",
       "difficulty": 1,
       "audioText": "Tennis"
     },
@@ -705,7 +705,7 @@
       "question": "나는 파란색 _____을 가지고 있어요. 빈칸에 들어갈 알맞은 말은? 'I have a blue ____.'",
       "options": ["apple", "car", "book", "sky"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! 'I have a blue car.'는 '나는 파란색 자동차를 가지고 있어.'라는 뜻이에요. 그림을 상상하면서 문장을 완성하니 더 재미있죠?",
+      "explanation": "'I have a blue car.'는 '나는 파란색 자동차를 가지고 있어.'라는 뜻이에요. 그림을 상상하면서 문장을 완성하니 더 재미있죠?",
       "difficulty": 1,
       "audioText": "I have a blue car."
     },
@@ -715,7 +715,7 @@
       "question": "이것은 빨간색 ____이에요. 빈칸에 들어갈 알맞은 말은? 'This is a red ____.'",
       "options": ["ball", "banana", "desk", "water"],
       "correctIndex": 0,
-      "explanation": "정답! 'This is a red ball.'은 '이것은 빨간 공이야.'라는 뜻이에요. 다른 단어들을 넣어서 문장을 만들어볼까요?",
+      "explanation": " 'This is a red ball.'은 '이것은 빨간 공이야.'라는 뜻이에요. 다른 단어들을 넣어서 문장을 만들어볼까요?",
       "difficulty": 1,
       "audioText": "This is a red ball."
     },
@@ -725,7 +725,7 @@
       "question": "나는 ____에서 놀아요. 빈칸에 들어갈 알맞은 말은? 'I play in the ____.'",
       "options": ["school", "book", "park", "pencil"],
       "correctIndex": 2,
-      "explanation": "맞았어요! 'I play in the park.'는 '나는 공원에서 놀아.'라는 뜻이에요. '~에서'라는 뜻을 가진 'in'의 쓰임새를 기억해주세요.",
+      "explanation": " 'I play in the park.'는 '나는 공원에서 놀아.'라는 뜻이에요. '~에서'라는 뜻을 가진 'in'의 쓰임새를 기억해주세요.",
       "difficulty": 1,
       "audioText": "I play in the park."
     },
@@ -735,7 +735,7 @@
       "question": "나는 _____을 좋아해요. 빈칸에 들어갈 알맞은 말은? 'I like ____.'",
       "options": ["dogs", "happy", "fast", "big"],
       "correctIndex": 0,
-      "explanation": "딩동댕! 'I like dogs.'는 '나는 강아지들을 좋아해.'라는 뜻이에요. 'like' 다음에는 좋아하는 것의 이름을 넣어주면 된답니다.",
+      "explanation": "'I like dogs.'는 '나는 강아지들을 좋아해.'라는 뜻이에요. 'like' 다음에는 좋아하는 것의 이름을 넣어주면 된답니다.",
       "difficulty": 1,
       "audioText": "I like dogs."
     },
@@ -745,7 +745,7 @@
       "question": "저것은 노란색 ____이에요. 빈칸에 들어갈 알맞은 말은? 'That is a yellow ____.'",
       "options": ["cat", "moon", "bus", "tree"],
       "correctIndex": 2,
-      "explanation": "정답! 'That is a yellow bus.'는 '저것은 노란 버스야.'라는 뜻이에요. 가까이 있는 것은 'This', 멀리 있는 것은 'That'을 사용해요.",
+      "explanation": " 'That is a yellow bus.'는 '저것은 노란 버스야.'라는 뜻이에요. 가까이 있는 것은 'This', 멀리 있는 것은 'That'을 사용해요.",
       "difficulty": 1,
       "audioText": "That is a yellow bus."
     },
@@ -755,7 +755,7 @@
       "question": "나는 나의 ____을 사랑해요. 빈칸에 들어갈 알맞은 말은? 'I love my ____.'",
       "options": ["red", "family", "eat", "happy"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! 'I love my family.'는 '나는 나의 가족을 사랑해.'라는 가슴 따뜻해지는 문장이에요.",
+      "explanation": "'I love my family.'는 '나는 나의 가족을 사랑해.'라는 가슴 따뜻해지는 문장이에요.",
       "difficulty": 1,
       "audioText": "I love my family."
     },
@@ -765,7 +765,7 @@
       "question": "나는 ____ 한 권을 읽어요. 빈칸에 들어갈 알맞은 말은? 'I read a ____.'",
       "options": ["song", "game", "picture", "book"],
       "correctIndex": 3,
-      "explanation": "맞았어요! 'I read a book.'는 '나는 책 한 권을 읽는다.'는 뜻이에요. 책을 많이 읽는 어린이는 정말 멋져요!",
+      "explanation": " 'I read a book.'는 '나는 책 한 권을 읽는다.'는 뜻이에요. 책을 많이 읽는 어린이는 정말 멋져요!",
       "difficulty": 1,
       "audioText": "I read a book."
     },
@@ -775,7 +775,7 @@
       "question": "나의 ____을 봐! 빈칸에 들어갈 알맞은 말은? 'Look at my ____!'",
       "options": ["hand", "sit", "is", "blue"],
       "correctIndex": 0,
-      "explanation": "정답! 'Look at my hand!'는 '내 손을 봐!'라는 뜻이에요. 'Look at'은 '~을 보다'라는 뜻으로 아주 자주 쓰인답니다.",
+      "explanation": " 'Look at my hand!'는 '내 손을 봐!'라는 뜻이에요. 'Look at'은 '~을 보다'라는 뜻으로 아주 자주 쓰인답니다.",
       "difficulty": 1,
       "audioText": "Look at my hand!"
     },
@@ -785,7 +785,7 @@
       "question": "나는 ____에 가고 싶어. 빈칸에 들어갈 알맞은 말은? 'I want to go to the ____.'",
       "options": ["apple", "bread", "zoo", "happy"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'I want to go to the zoo.'는 '나는 동물원에 가고 싶어.'라는 뜻이에요. 'want to'는 '~하고 싶다'는 뜻이랍니다.",
+      "explanation": "'I want to go to the zoo.'는 '나는 동물원에 가고 싶어.'라는 뜻이에요. 'want to'는 '~하고 싶다'는 뜻이랍니다.",
       "difficulty": 1,
       "audioText": "I want to go to the zoo."
     },
@@ -795,7 +795,7 @@
       "question": "지금은 3시 ____분이야. 빈칸에 들어갈 알맞은 말은? 'It is three ____.'",
       "options": ["o'clock", "o'clack", "a'clock", "o'clocke"],
       "correctIndex": 0,
-      "explanation": "정답! 정각을 나타낼 때는 숫자 뒤에 'o'clock'을 붙여줘요. 'It is three o'clock.'은 '지금은 3시 정각이야.'라는 뜻이랍니다.",
+      "explanation": " 정각을 나타낼 때는 숫자 뒤에 'o'clock'을 붙여줘요. 'It is three o'clock.'은 '지금은 3시 정각이야.'라는 뜻이랍니다.",
       "difficulty": 1,
       "audioText": "It is three o'clock."
     },
@@ -815,7 +815,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Apple", "Banana", "Orange", "Grape"],
       "correctIndex": 0,
-      "explanation": "딩동댕! '빨갛고 동그란 과일'은 바로 'Apple(사과)'이에요.",
+      "explanation": "'빨갛고 동그란 과일'은 바로 'Apple(사과)'이에요.",
       "difficulty": 1,
       "audioText": "I am a fruit. I am red and round."
     },
@@ -825,7 +825,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Car", "Bus", "Train", "Bike"],
       "correctIndex": 1,
-      "explanation": "맞았어요! '크고 노란색이고, 많은 사람들이 타는 것'은 바로 'Bus(버스)'랍니다.",
+      "explanation": " '크고 노란색이고, 많은 사람들이 타는 것'은 바로 'Bus(버스)'랍니다.",
       "difficulty": 1,
       "audioText": "I am big and yellow. Many people ride me."
     },
@@ -835,7 +835,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["One", "Two", "Three", "Four"],
       "correctIndex": 3,
-      "explanation": "정답! '3 다음 숫자'는 바로 'Four(4)'에요. One, Two, Three, Four!",
+      "explanation": " '3 다음 숫자'는 바로 'Four(4)'에요. One, Two, Three, Four!",
       "difficulty": 1,
       "audioText": "I am a number. I am after three."
     },
@@ -845,7 +845,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Red", "Yellow", "Blue", "Green"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '하늘과 바다의 색깔'은 바로 'Blue(파란색)'에요.",
+      "explanation": "'하늘과 바다의 색깔'은 바로 'Blue(파란색)'에요.",
       "difficulty": 1,
       "audioText": "I am a color. I am the color of the sky and the sea."
     },
@@ -855,7 +855,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["School", "Home", "Park", "Zoo"],
       "correctIndex": 0,
-      "explanation": "맞아요! '책과 책상이 있고, 선생님이 있는 곳'은 바로 'School(학교)'이죠.",
+      "explanation": "'책과 책상이 있고, 선생님이 있는 곳'은 바로 'School(학교)'이죠.",
       "difficulty": 1,
       "audioText": "I am a place. I have books, desks, and a teacher."
     },
@@ -865,7 +865,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Morning", "Afternoon", "Evening", "Night"],
       "correctIndex": 3,
-      "explanation": "정답! '달과 별을 볼 수 있는 시간'은 'Night(밤)'이에요.",
+      "explanation": " '달과 별을 볼 수 있는 시간'은 'Night(밤)'이에요.",
       "difficulty": 1,
       "audioText": "I am a time of day. You can see the moon and stars."
     },
@@ -875,7 +875,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Head", "Hand", "Foot", "Nose"],
       "correctIndex": 1,
-      "explanation": "딩동댕! '다섯 개의 손가락을 가지고 있는 것'은 바로 'Hand(손)'에요.",
+      "explanation": "'다섯 개의 손가락을 가지고 있는 것'은 바로 'Hand(손)'에요.",
       "difficulty": 1,
       "audioText": "I am part of your body. I have five fingers."
     },
@@ -885,7 +885,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Winter", "Spring", "Summer", "Fall"],
       "correctIndex": 2,
-      "explanation": "맞아요! '덥고, 수영을 할 수 있는 계절'은 바로 'Summer(여름)'이죠.",
+      "explanation": "'덥고, 수영을 할 수 있는 계절'은 바로 'Summer(여름)'이죠.",
       "difficulty": 1,
       "audioText": "I am a season. I am hot and you can swim."
     },
@@ -895,7 +895,7 @@
       "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
       "options": ["Father", "Mother", "Brother", "Sister"],
       "correctIndex": 0,
-      "explanation": "정답! '가족의 아빠'는 바로 'Father'에요.",
+      "explanation": " '가족의 아빠'는 바로 'Father'에요.",
       "difficulty": 1,
       "audioText": "I am a member of the family. I am a dad."
     },
@@ -905,7 +905,7 @@
       "question": "고양이 한 마리는 'one cat'이에요. 그럼 고양이 두 마리는 영어로 어떻게 말할까요?",
       "options": ["two cat", "two cats", "two cat's", "two cates"],
       "correctIndex": 1,
-      "explanation": "정답! 여러 개를 나타낼 때는 보통 단어 뒤에 '-s'를 붙여줘요. 그래서 'two cats'가 맞답니다. 'one apple'이면, 여러 개일 땐 'apples'가 되겠죠?",
+      "explanation": " 여러 개를 나타낼 때는 보통 단어 뒤에 '-s'를 붙여줘요. 그래서 'two cats'가 맞답니다. 'one apple'이면, 여러 개일 땐 'apples'가 되겠죠?",
       "difficulty": 1,
       "audioText": "one cat, two cats"
     },
@@ -915,7 +915,7 @@
       "question": "책 한 권은 'one book'이에요. 그럼 책 세 권은 영어로 어떻게 말할까요?",
       "options": ["three bookes", "three book", "three books's", "three books"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 여러 권일 때는 단어 뒤에 '-s'를 붙여 'three books'라고 말해요.",
+      "explanation": "여러 권일 때는 단어 뒤에 '-s'를 붙여 'three books'라고 말해요.",
       "difficulty": 1,
       "audioText": "one book, three books"
     },
@@ -925,7 +925,7 @@
       "question": "강아지 한 마리는 'a dog'이에요. 그럼 여러 마리의 강아지들은 영어로 어떻게 말할까요?",
       "options": ["dogs", "doges", "dog's", "dogies"],
       "correctIndex": 0,
-      "explanation": "맞았어요! 그냥 단어 뒤에 '-s'만 붙여서 'dogs'라고 하면 된답니다.",
+      "explanation": " 그냥 단어 뒤에 '-s'만 붙여서 'dogs'라고 하면 된답니다.",
       "difficulty": 1,
       "audioText": "a dog, dogs"
     },
@@ -935,7 +935,7 @@
       "question": "버스 한 대는 'a bus'에요. 그럼 버스 두 대는 영어로 어떻게 말할까요?",
       "options": ["two buss", "two bus", "two buses", "two bus's"],
       "correctIndex": 2,
-      "explanation": "정답! 's'로 끝나는 단어는 뒤에 '-es'를 붙여서 'buses'라고 말해요. 발음하기 더 편하죠? 버스-이즈!",
+      "explanation": " 's'로 끝나는 단어는 뒤에 '-es'를 붙여서 'buses'라고 말해요. 발음하기 더 편하죠? 버스-이즈!",
       "difficulty": 1,
       "audioText": "a bus, two buses"
     },
@@ -945,7 +945,7 @@
       "question": "상자 한 개는 'one box'에요. 그럼 상자 여러 개는 영어로 어떻게 말할까요?",
       "options": ["boxes", "boxs", "box's", "boxies"],
       "correctIndex": 0,
-      "explanation": "딩동댕! 'x'로 끝나는 단어도 뒤에 '-es'를 붙여서 'boxes'라고 말해요. 박스-이즈!",
+      "explanation": "'x'로 끝나는 단어도 뒤에 '-es'를 붙여서 'boxes'라고 말해요. 박스-이즈!",
       "difficulty": 1,
       "audioText": "one box, boxes"
     },
@@ -965,7 +965,7 @@
       "question": "사과 한 개는 'an apple'이에요. 그럼 사과 다섯 개는 영어로 어떻게 말할까요?",
       "options": ["five apple", "five apples's", "five applees", "five apples"],
       "correctIndex": 3,
-      "explanation": "정답! 간단하게 단어 뒤에 '-s'를 붙여서 'five apples'라고 하면 된답니다.",
+      "explanation": " 간단하게 단어 뒤에 '-s'를 붙여서 'five apples'라고 하면 된답니다.",
       "difficulty": 1,
       "audioText": "an apple, five apples"
     },
@@ -975,7 +975,7 @@
       "question": "감자 한 개는 'a potato'에요. 그럼 감자 세 개는 영어로 어떻게 말할까요?",
       "options": ["three potatos", "three potato", "three potatoes", "three potato's"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'o'로 끝나는 단어는 뒤에 '-es'를 붙여서 'potatoes'라고 말하는 경우가 많아요.",
+      "explanation": "'o'로 끝나는 단어는 뒤에 '-es'를 붙여서 'potatoes'라고 말하는 경우가 많아요.",
       "difficulty": 1,
       "audioText": "a potato, three potatoes"
     },
@@ -985,7 +985,7 @@
       "question": "아기 한 명은 'a baby'에요. 그럼 아기 두 명은 영어로 어떻게 말할까요?",
       "options": ["two babys", "two babyes", "two babies", "two baby"],
       "correctIndex": 2,
-      "explanation": "맞았어요! 'y'로 끝나는 단어는 'y'를 'i'로 바꾸고 '-es'를 붙여줘요. 그래서 'babies'가 된답니다.",
+      "explanation": " 'y'로 끝나는 단어는 'y'를 'i'로 바꾸고 '-es'를 붙여줘요. 그래서 'babies'가 된답니다.",
       "difficulty": 1,
       "audioText": "a baby, two babies"
     },
@@ -995,7 +995,7 @@
       "question": "꽃 한 송이는 'a flower'에요. 그럼 꽃이 많이 있을 땐 영어로 어떻게 말할까요?",
       "options": ["flower's", "floweres", "flowers", "flower"],
       "correctIndex": 2,
-      "explanation": "정답! 간단하게 단어 뒤에 '-s'만 붙여서 'flowers'라고 하면 '꽃들'이라는 뜻이 돼요.",
+      "explanation": " 간단하게 단어 뒤에 '-s'만 붙여서 'flowers'라고 하면 '꽃들'이라는 뜻이 돼요.",
       "difficulty": 1,
       "audioText": "a flower, flowers"
     }

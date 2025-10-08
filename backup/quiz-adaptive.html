@@ -939,14 +939,20 @@
             const totalAnswered = sessionStats.correct + sessionStats.incorrect;
             const accuracy = Math.round((sessionStats.correct / totalAnswered) * 100);
             const timeSpent = Math.round((Date.now() - sessionStats.startTime) / 1000 / 60 * 10) / 10;
-            const currentSubject = selectedSubjects[currentSubjectIndex];
 
-            // ✅ CRITICAL: 학습 진행률 업데이트 (progress-dashboard.html용)
-            updateLearningProgress(currentSubject, sessionStats.correct, totalAnswered);
+            // 학습 진행률 시스템 업데이트
+            updateLearningProgress(selectedSubjects[currentSubjectIndex], sessionStats.correct, totalAnswered);
 
-            // ✅ CRITICAL: PlantSystem 보상 처리
+            // 완벽한 퀴즈 세션 체크 (업적용)
+            if (accuracy >= 100 && totalAnswered >= 5) {
+                const existingProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+                existingProgress.perfectSessions = (existingProgress.perfectSessions || 0) + 1;
+                localStorage.setItem('quizProgress', JSON.stringify(existingProgress));
+            }
+
+            // === 새로운 식물 시스템 연동 ===
             let plantSystemMessage = '';
-            const rewardSummary = {
+            let rewardSummary = {
                 completedCount: 0,
                 growthTickets: 0,
                 normalGacha: 0,
@@ -1008,10 +1014,10 @@
 
             alert(`🎉 과목 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분${plantSystemMessage}`);
 
-            // ✅ CRITICAL: 분석 데이터 저장 (analytics-console.html용)
+            // 학습 결과 저장 (분석용 데이터 포함)
             const quizAnalytics = {
-                subject: currentSubject,
-                subjectName: subjects[currentSubject]?.name || currentSubject,
+                subject: selectedSubjects[currentSubjectIndex],
+                subjectName: subjects[selectedSubjects[currentSubjectIndex]].name,
                 completionType: sessionStats.completionType,
                 stats: {
                     correct: sessionStats.correct,
@@ -1042,6 +1048,24 @@
                 firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
                     .then(() => console.log('✅ Firebase 분석 데이터 업로드 완료'))
                     .catch(err => console.error('❌ Firebase 분석 데이터 업로드 실패:', err));
+            }
+
+            // 기존 결과도 저장 (하위 호환성)
+            localStorage.setItem('adaptiveQuizResults', JSON.stringify({
+                subject: selectedSubjects[currentSubjectIndex],
+                stats: sessionStats,
+                questionCounts,
+                completedAt: new Date().toISOString()
+            }));
+
+            // Firebase 통계 업데이트
+            if (typeof updateFirebaseStats !== 'undefined') {
+                updateFirebaseStats.quiz({
+                    totalQuestions: totalAnswered,
+                    correctAnswers: sessionStats.correct,
+                    accuracy: accuracy,
+                    subject: selectedSubjects[currentSubjectIndex]
+                });
             }
 
             // 다음 행동 선택
@@ -1401,7 +1425,7 @@
             }
         }
 
-        // 수수께끼 발현 체크 (오답 기반)
+        // 수수께끼 발현 체크 (연속 오답 기반)
         function checkRiddleTrigger() {
             // 이미 이번 과목에서 수수께끼를 보여줬으면 발현 안함
             if (riddleShownThisSubject) return false;
@@ -1409,16 +1433,20 @@
             // 추가 학습 모드에서는 수수께끼 안나옴
             if (extraLearningMode) return false;
 
-            // 총 틀린 문제 3개 이상 -> 100% 발현
-            if (sessionStats.incorrect >= 3) {
-                console.log('🎪 수수께끼 100% 발현 (총 오답 3회 이상)');
+            // 5문제 이상 풀었을 때만 체크
+            const totalAnswered = sessionStats.correct + sessionStats.incorrect;
+            if (totalAnswered < 5) return false;
+
+            // 연속 오답 3회 이상 → 100% 발현
+            if (consecutiveIncorrectAnswers >= 3) {
+                console.log('🎪 수수께끼 100% 발현 (연속 오답 3회 이상)');
                 return true;
             }
 
-            // 연속 오답 2회 -> 50% 발현
+            // 연속 오답 2회 → 50% 발현
             if (consecutiveIncorrectAnswers === 2) {
                 const shouldShow = Math.random() < 0.5;
-                console.log(`🎪 수수께끼 50% 발현 체크 (연속 오답 2회): ${shouldShow ? '발현!' : '통과'}`);
+                console.log(`🎪 수수께끼 50% 발현 체크: ${shouldShow ? '발현!' : '통과'}`);
                 return shouldShow;
             }
 

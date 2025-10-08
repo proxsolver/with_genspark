@@ -175,14 +175,7 @@
                     <h1 class="text-3xl font-bold text-gray-900 font-game mb-2">
                         🌱 EduPet Collection
                     </h1>
-                    <p class="text-sm text-gray-600 flex items-center flex-wrap gap-2">
-                        <span>
-                            <span id="userAvatarDisplay" style="font-size: 1.2rem;">🐰</span>
-                            <span id="userNameDisplay">학습자</span>님, 환영합니다!
-                        </span>
-                        <span id="offlineModeIndicator" class="hidden px-2 py-0.5 bg-gray-200 text-gray-600 text-xs rounded-full">📴 오프라인</span>
-                        <a href="login.html" id="loginButton" class="hidden px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-full transition-colors">🔐 로그인</a>
-                    </p>
+                    <p class="text-sm text-gray-600"><span id="userAvatarDisplay" style="font-size: 1.2rem;">🐰</span> <span id="userNameDisplay">학습자</span>님, 환영합니다!</p>
                 </div>
 
                 <div class="text-right">
@@ -316,9 +309,9 @@
                         <div class="text-sm text-gray-600">🎫 성장권</div>
                         <div class="font-bold text-green-600" id="farm-growth-tickets">0개</div>
                     </div>
-                    <a href="admin.html" class="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm border border-red-200">
+                    <button onclick="showHomeFarmDevMenu()" class="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg text-sm border border-red-200">
                         ⚙️
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -630,6 +623,77 @@
         </div>
     </div>
 
+    <!-- 개발자 메뉴 모달 -->
+    <div id="home-dev-menu-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-bold text-red-600">⚙️ 농장 개발자 메뉴</h3>
+                <button onclick="closeHomeFarmDevMenu()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="homeResetAllData()" class="w-full px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 text-left">
+                    🗑️ 전체 데이터 초기화
+                    <div class="text-xs text-red-100 mt-1">모든 데이터 삭제 (사용자, 식물, 학습 기록 전체)</div>
+                </button>
+
+                <button onclick="homeResetSelectedData()" class="w-full px-4 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 text-left">
+                    🎯 선택한 데이터만 초기화
+                    <div class="text-xs text-orange-100 mt-1">원하는 항목만 선택하여 초기화</div>
+                </button>
+
+                <button onclick="homeSkipPlantTime()" class="w-full px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-left">
+                    ⏰ 식물 시간 건너뛰기 (24시간)
+                    <div class="text-xs text-blue-100 mt-1">모든 식물을 24시간 경과 상태로 변경</div>
+                </button>
+
+                <button onclick="homeAddTestTickets()" class="w-full px-4 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 text-left">
+                    🎫 테스트 성장권 추가
+                    <div class="text-xs text-green-100 mt-1">성장권 5개 즉시 지급</div>
+                </button>
+
+                <button onclick="homeResetPlants()" class="w-full px-4 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 text-left">
+                    🌱 식물만 초기화
+                    <div class="text-xs text-teal-100 mt-1">모든 식물 제거 (보상은 유지)</div>
+                </button>
+
+                <button onclick="homeResetDaily()" class="w-full px-4 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 text-left">
+                    📅 일일 진행률 초기화
+                    <div class="text-xs text-yellow-100 mt-1">오늘 완료한 과목 리셋</div>
+                </button>
+
+                <button onclick="homeAddWaterToPlant()" class="w-full px-4 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 text-left">
+                    💧 식물에 물 10개 추가
+                    <div class="text-xs text-cyan-100 mt-1">첫 번째 식물에 물 10개 즉시 지급</div>
+                </button>
+
+                <button onclick="homeTestHarvestPopup()" class="w-full px-4 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600 text-left">
+                    🎉 수확 팝업 테스트
+                    <div class="text-xs text-purple-100 mt-1">수확 보상 팝업 미리보기 (100원)</div>
+                </button>
+
+                <button onclick="homeAddTestMoney()" class="w-full px-4 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 text-left">
+                    💰 테스트 돈 추가
+                    <div class="text-xs text-pink-100 mt-1">1000원 즉시 지급</div>
+                </button>
+
+                <button onclick="homeCompleteLearningMissions()" class="w-full px-4 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 text-left">
+                    ✅ 학습 미션 모두 완료
+                    <div class="text-xs text-indigo-100 mt-1">9과목 모두 완료 처리 (보상 포함)</div>
+                </button>
+
+                <button onclick="homeResetLearningMissions()" class="w-full px-4 py-3 bg-slate-500 text-white rounded-lg hover:bg-slate-600 text-left">
+                    🔄 학습 미션 초기화
+                    <div class="text-xs text-slate-100 mt-1">모든 과목 미완료 상태로 리셋</div>
+                </button>
+            </div>
+
+            <div class="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
+                ⚠️ 이 메뉴는 개발/테스트용입니다. 실제 데이터가 변경될 수 있습니다.
+            </div>
+        </div>
+    </div>
+
     <!-- 식물 진화 축하 모달 -->
     <div id="home-celebration-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
         <div class="bg-gradient-to-br from-yellow-50 to-green-50 rounded-2xl p-8 max-w-md w-full celebration-modal relative overflow-hidden">
@@ -724,79 +788,8 @@
     <script>
         let currentUser = null;
 
-        // 로그인 체크 (최우선)
-        async function checkLogin() {
-            // 오프라인 모드 체크 (사용자가 선택한 경우)
-            const offlineMode = localStorage.getItem('offlineMode');
-            if (offlineMode === 'true') {
-                console.log('[Index] 오프라인 모드로 실행');
-                return true;
-            }
-
-            // Firebase Integration 대기
-            if (typeof eduPetFirebaseIntegration !== 'undefined') {
-                try {
-                    await eduPetFirebaseIntegration.initialize();
-                } catch (error) {
-                    console.warn('[Index] Firebase 초기화 실패, 오프라인 모드로 계속:', error);
-                    return true;
-                }
-            }
-
-            // eduPetAuth가 있고, currentUser가 없으면 로그인 페이지로
-            // 단, 튜토리얼을 완료했고 한 번이라도 접속한 적이 있으면 오프라인 허용
-            const onboardingCompleted = localStorage.getItem('eduPetOnboardingCompleted');
-            const hasUsedBefore = localStorage.getItem('plantSystemUser'); // 게임 데이터 존재 여부
-
-            if (typeof eduPetAuth !== 'undefined' && !eduPetAuth.currentUser) {
-                // 처음 사용자는 무조건 로그인 페이지로
-                if (!onboardingCompleted || !hasUsedBefore) {
-                    console.log('[Index] 신규 사용자 - login.html로 이동');
-                    window.location.href = 'login.html';
-                    return false;
-                }
-
-                // 기존 사용자는 오프라인 모드로 계속 (로그인 선택사항)
-                console.log('[Index] 기존 사용자 - 오프라인 모드로 계속');
-            }
-
-            return true;
-        }
-
         // 초기화
-        document.addEventListener('DOMContentLoaded', async function() {
-            // 로그인 체크 (가장 먼저)
-            const isLoggedIn = await checkLogin();
-            if (!isLoggedIn) return;
-
-            // 오프라인 모드 표시
-            const offlineMode = localStorage.getItem('offlineMode');
-            if (offlineMode === 'true') {
-                const indicator = document.getElementById('offlineModeIndicator');
-                if (indicator) {
-                    indicator.classList.remove('hidden');
-                }
-
-                // 오프라인 모드일 때 로그인 버튼 표시
-                const loginButton = document.getElementById('loginButton');
-                if (loginButton) {
-                    loginButton.classList.remove('hidden');
-                }
-
-                console.log('[Index] 오프라인 모드로 실행 중');
-            }
-
-            // 로그인하지 않은 상태(익명/오프라인)일 때 로그인 버튼 표시
-            if (typeof eduPetAuth !== 'undefined' && !eduPetAuth.currentUser) {
-                const loginButton = document.getElementById('loginButton');
-                if (loginButton && offlineMode !== 'true') {
-                    loginButton.classList.remove('hidden');
-                }
-            }
-
-            // Firebase 초기화
-            await initFirebase();
-
+        document.addEventListener('DOMContentLoaded', function() {
             // 첫 방문 체크
             if (!checkFirstVisit()) return;
 
@@ -807,6 +800,12 @@
 
             // 이벤트 기반 업데이트 등록
             setupEventListeners();
+
+            // Firebase 및 아바타 로드 (약간의 지연 후)
+            setTimeout(() => {
+                loadUserAvatarForDisplay();
+                updateUserAvatar();
+            }, 1000);
         });
 
         // 이벤트 리스너 설정
@@ -1870,6 +1869,254 @@
             }, 3000);
         }
 
+        // ===== 개발자 메뉴 함수들 =====
+
+        function showHomeFarmDevMenu() {
+            // 비밀번호 입력 요구
+            const password = prompt('개발자 모드 비밀번호를 입력하세요:');
+            if (password !== '8253') {
+                homeShowToast('❌ 비밀번호가 올바르지 않습니다');
+                return;
+            }
+            document.getElementById('home-dev-menu-modal').classList.remove('hidden');
+        }
+
+        function closeHomeFarmDevMenu() {
+            document.getElementById('home-dev-menu-modal').classList.add('hidden');
+        }
+
+        // 식물 시간 건너뛰기
+        function homeSkipPlantTime() {
+            try {
+                const plants = plantSystem.getAllPlants();
+                let updated = 0;
+
+                Object.values(plants).forEach(plant => {
+                    if (plant.status === 'PLANTED') {
+                        plant.plantedAt = plantSystem.getCurrentTimestamp() - (25 * 60 * 60 * 1000);
+                        plantSystem.savePlant(plant);
+                        plantSystem.checkReadyStatus(plant);
+                        plantSystem.savePlant(plant);
+                        updated++;
+                    }
+                });
+
+                homeShowToast(`✅ ${updated}개 식물의 시간을 건너뛰었습니다`);
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('시간 건너뛰기 오류:', error);
+                homeShowToast('❌ 시간 건너뛰기 실패: ' + error.message);
+            }
+        }
+
+        // 테스트 성장권 추가
+        function homeAddTestTickets() {
+            try {
+                const user = plantSystem.getUserData();
+                const currentTime = plantSystem.getCurrentTimestamp();
+                const expiresAt = currentTime + (24 * 60 * 60 * 1000);
+
+                for (let i = 0; i < 5; i++) {
+                    user.rewards.growthTickets.push({
+                        ticketId: plantSystem.generateUUID(),
+                        issuedAt: currentTime,
+                        expiresAt: expiresAt
+                    });
+                }
+
+                plantSystem.saveUserData(user);
+                homeShowToast('✅ 성장권 5개가 추가되었습니다');
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('성장권 추가 오류:', error);
+                homeShowToast('❌ 성장권 추가 실패: ' + error.message);
+            }
+        }
+
+        // 식물만 초기화
+        function homeResetPlants() {
+            if (!confirm('모든 식물을 제거하시겠습니까?')) {
+                return;
+            }
+
+            try {
+                localStorage.removeItem('plantSystemPlants');
+                homeShowToast('✅ 식물이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('식물 초기화 오류:', error);
+                homeShowToast('❌ 식물 초기화 실패: ' + error.message);
+            }
+        }
+
+        // 일일 진행률 초기화
+        function homeResetDaily() {
+            if (!confirm('일일 진행률을 초기화하시겠습니까?')) {
+                return;
+            }
+
+            try {
+                const user = plantSystem.getUserData();
+                user.daily.completedSubjects = 0;
+                user.daily.completedSubjectIds = [];
+                user.daily.lastResetDate = plantSystem.getCurrentDate();
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 일일 진행률이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('일일 진행률 초기화 오류:', error);
+                homeShowToast('❌ 일일 진행률 초기화 실패: ' + error.message);
+            }
+        }
+
+        // 식물에 물 추가
+        function homeAddWaterToPlant() {
+            try {
+                const user = plantSystem.getUserData();
+                const plants = plantSystem.getUserPlants(user.userId);
+
+                if (plants.length === 0) {
+                    homeShowToast('❌ 심어진 식물이 없습니다');
+                    return;
+                }
+
+                const firstPlant = plants[0];
+                const plantData = plantSystem.getPlantById(firstPlant.plantId);
+
+                if (!plantData) {
+                    homeShowToast('❌ 식물 데이터를 찾을 수 없습니다');
+                    return;
+                }
+
+                const maxWater = 5;
+                plantData.waterCount = Math.min(plantData.waterCount + 10, maxWater);
+                plantSystem.savePlant(plantData);
+
+                homeShowToast(`✅ 식물에 물 10개를 추가했습니다 (현재: ${plantData.waterCount}/${maxWater})`);
+                closeHomeFarmDevMenu();
+                updatePlantStatus();
+            } catch (error) {
+                console.error('물 추가 오류:', error);
+                homeShowToast('❌ 물 추가 실패: ' + error.message);
+            }
+        }
+
+        // 수확 팝업 테스트
+        function homeTestHarvestPopup() {
+            closeHomeFarmDevMenu();
+            showHarvestModal(100);
+        }
+
+        // 테스트 돈 추가
+        function homeAddTestMoney() {
+            try {
+                const user = plantSystem.getUserData();
+
+                if (!user.wallet) {
+                    user.wallet = { money: 0, water: 0 };
+                }
+
+                user.wallet.money += 1000;
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 1000원이 추가되었습니다');
+                closeHomeFarmDevMenu();
+                updateMoney();
+            } catch (error) {
+                console.error('돈 추가 오류:', error);
+                homeShowToast('❌ 돈 추가 실패: ' + error.message);
+            }
+        }
+
+        // 학습 미션 모두 완료
+        function homeCompleteLearningMissions() {
+            try {
+                const user = plantSystem.getUserData();
+
+                // 9과목 모두 완료 처리
+                const allSubjects = ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'person', 'economy'];
+
+                allSubjects.forEach((subject, index) => {
+                    if (!user.daily.completedSubjectIds.includes(subject)) {
+                        plantSystem.completeSubject(user, subject, subject);
+                    }
+                });
+
+                homeShowToast('✅ 9과목 모두 완료 처리되었습니다 (보상 포함)');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('학습 미션 완료 오류:', error);
+                homeShowToast('❌ 학습 미션 완료 실패: ' + error.message);
+            }
+        }
+
+        // 전체 데이터 초기화
+        function homeResetAllData() {
+            if (!confirm('⚠️ 정말로 모든 데이터를 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없으며 다음 항목이 모두 삭제됩니다:\n- 사용자 정보\n- 식물 및 정원\n- 학습 기록\n- 동물 컬렉션\n- 보상 및 재화')) {
+                return;
+            }
+
+            try {
+                // 모든 localStorage 키 삭제
+                const keysToRemove = [
+                    'plantSystemUser',
+                    'plantSystemPlants',
+                    'learningProgress',
+                    'animalCollection',
+                    'selectedSubjects',
+                    'extraLearningMode',
+                    'eduPetSettings',
+                    'eduPetOnboardingCompleted'
+                ];
+
+                keysToRemove.forEach(key => {
+                    localStorage.removeItem(key);
+                });
+
+                homeShowToast('✅ 모든 데이터가 삭제되었습니다. 페이지를 새로고침합니다.');
+                closeHomeFarmDevMenu();
+
+                setTimeout(() => {
+                    window.location.href = 'tutorial.html';
+                }, 1500);
+            } catch (error) {
+                console.error('전체 초기화 오류:', error);
+                homeShowToast('❌ 데이터 삭제 실패: ' + error.message);
+            }
+        }
+
+        // 학습 미션 초기화
+        function homeResetLearningMissions() {
+            if (!confirm('모든 학습 미션을 초기화하시겠습니까?\n(보상은 유지됩니다)')) {
+                return;
+            }
+
+            try {
+                const user = plantSystem.getUserData();
+
+                // 일일 진행률만 초기화 (보상은 유지)
+                user.daily.completedSubjects = 0;
+                user.daily.completedSubjectIds = [];
+                user.daily.lastResetDate = plantSystem.getCurrentDate();
+
+                plantSystem.saveUserData(user);
+
+                homeShowToast('✅ 학습 미션이 초기화되었습니다');
+                closeHomeFarmDevMenu();
+                updateAllDisplays();
+            } catch (error) {
+                console.error('학습 미션 초기화 오류:', error);
+                homeShowToast('❌ 학습 미션 초기화 실패: ' + error.message);
+            }
+        }
+
+        // ===== 기존 함수들 =====
 
         // 최근 학습 활동 업데이트
         function updateWeeklyActivity() {

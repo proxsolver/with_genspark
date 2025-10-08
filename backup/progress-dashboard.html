@@ -13,11 +13,6 @@
     <script defer src="plant-system.js"></script>
     <script defer src="daily-reset.js"></script>
 
-    <!-- Firebase 스크립트 -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="firebase-config.js"></script>
-
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; }
         
@@ -67,32 +62,13 @@
 <body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
     <div class="container mx-auto px-4 py-6 max-w-4xl">
         <!-- Header -->
-        <div class="text-center mb-6 relative">
-            <button onclick="goHome()" class="absolute left-0 top-0 text-2xl hover:scale-110 transition-transform">
+        <div class="text-center mb-6">
+            <button onclick="goHome()" class="absolute left-4 top-6 text-2xl hover:scale-110 transition-transform">
                 🏠
             </button>
             <h1 class="text-2xl font-bold text-gray-800 mb-2">📊 학습 현황</h1>
-            <div class="text-sm text-gray-600 mb-3" id="user-journey-title">
-                학습 여정
-            </div>
-
-            <!-- 그룹 선택 UI -->
-            <div id="group-selector" class="mt-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-4 border-2 border-purple-200">
-                <div class="flex items-center justify-center gap-3 flex-wrap">
-                    <span class="text-sm font-semibold text-gray-700">📊 데이터 보기:</span>
-                    <button id="view-personal-btn" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors" onclick="switchToPersonalView()">
-                        👤 내 데이터
-                    </button>
-                    <button id="view-group-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors" onclick="switchToGroupView()">
-                        🎯 그룹 데이터
-                    </button>
-                    <select id="group-select" class="px-3 py-2 bg-white border-2 border-purple-300 rounded-lg text-sm font-semibold text-gray-700 hidden" onchange="loadGroupData()">
-                        <option value="">그룹 선택...</option>
-                    </select>
-                </div>
-                <div id="group-info" class="mt-3 text-sm text-center text-gray-600 hidden">
-                    <!-- 선택된 그룹 정보 표시 -->
-                </div>
+            <div class="text-sm text-gray-600">
+                초롱이님의 학습 여정
             </div>
         </div>
 
@@ -294,64 +270,56 @@
             studyStartDate: Date.now()
         };
 
-        async function loadProgressData() {
-            // 1. Try to load from Firebase
-            let firebaseProgress = null;
-            if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
-                firebaseProgress = await eduPetFirebaseIntegration.loadLearningProgress();
-            }
-
-            // 2. Load from localStorage (as fallback or base)
-            const saved = localStorage.getItem('learningProgress');
-            let localProgress = progressData; // Default empty progressData
-            if (saved) {
-                localProgress = { ...progressData, ...JSON.parse(saved) };
-            }
-
-            // 3. Decide which data to use and merge
-            if (firebaseProgress) {
-                // If Firebase data is newer, use it and update localStorage
-                if (!localProgress.lastUpdated || firebaseProgress.lastUpdated >= localProgress.lastUpdated) {
-                    progressData = { ...localProgress, ...firebaseProgress };
-                    localStorage.setItem('learningProgress', JSON.stringify(progressData));
-                } else {
-                    // Local data is newer, so use it and push it to Firebase
-                    progressData = localProgress;
-                    if(window.eduPetFirebaseIntegration) {
-                        eduPetFirebaseIntegration.saveLearningProgress(progressData);
+                async function loadProgressData() {
+                    // 1. Try to load from Firebase
+                    let firebaseProgress = null;
+                    if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
+                        firebaseProgress = await eduPetFirebaseIntegration.loadLearningProgress();
                     }
+
+                    // 2. Load from localStorage (as fallback or base)
+                    const saved = localStorage.getItem('learningProgress');
+                    let localProgress = progressData; // Default empty progressData
+                    if (saved) {
+                        localProgress = { ...progressData, ...JSON.parse(saved) };
+                    }
+
+                    // 3. Decide which data to use and merge
+                    if (firebaseProgress) {
+                        // If Firebase data is newer, use it and update localStorage
+                        if (!localProgress.lastUpdated || firebaseProgress.lastUpdated >= localProgress.lastUpdated) {
+                            progressData = { ...localProgress, ...firebaseProgress };
+                            localStorage.setItem('learningProgress', JSON.stringify(progressData));
+                        } else {
+                            // Local data is newer, so use it and push it to Firebase
+                            progressData = localProgress;
+                            if(window.eduPetFirebaseIntegration) {
+                                eduPetFirebaseIntegration.saveLearningProgress(progressData);
+                            }
+                        }
+                    } else {
+                        // No Firebase data, just use local
+                        progressData = localProgress;
+                    }
+
+                    // Ensure all subject stats objects exist
+                    Object.keys(subjects).forEach(subjectId => {
+                        if (!progressData.subjectStats[subjectId]) {
+                            progressData.subjectStats[subjectId] = {
+                                questions: 0,
+                                correct: 0,
+                                lastStudied: null,
+                                level: 1,
+                                experience: 0
+                            };
+                        }
+                    });
+
+                    // 식물 시스템 연동
+                    updatePlantSystemDisplay();
+
+                    updateProgressDisplay();
                 }
-            } else {
-                // No Firebase data, just use local
-                progressData = localProgress;
-            }
-
-            // Ensure all subject stats objects exist
-            Object.keys(subjects).forEach(subjectId => {
-                if (!progressData.subjectStats[subjectId]) {
-                    progressData.subjectStats[subjectId] = {
-                        questions: 0,
-                        correct: 0,
-                        lastStudied: null,
-                        level: 1,
-                        experience: 0
-                    };
-                }
-            });
-
-            // 식물 시스템 연동
-            updatePlantSystemDisplay();
-
-            updateProgressDisplay();
-        }
-
-        function saveProgressData() {
-            localStorage.setItem('learningProgress', JSON.stringify(progressData));
-            // Also save to firebase
-            if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
-                eduPetFirebaseIntegration.saveLearningProgress(progressData);
-            }
-        }
 
                 // 식물 시스템 진행률 표시
                 function updatePlantSystemDisplay() {
@@ -391,7 +359,13 @@
                     }
                 }
         
-
+                function saveProgressData() {
+                    localStorage.setItem('learningProgress', JSON.stringify(progressData));
+                    // Also save to firebase
+                    if (window.eduPetFirebaseIntegration && eduPetFirebaseIntegration.isConnected()) {
+                        eduPetFirebaseIntegration.saveLearningProgress(progressData);
+                    }
+                }
         function updateProgressDisplay() {
             updateOverallStats();
             updateSubjectProgress();
@@ -681,421 +655,15 @@
             updateProgressDisplay();
         }
 
-        // 사용자 별명 표시
-        function displayUserNickname() {
-            try {
-                // localStorage에서 사용자 별명 가져오기
-                const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
-                const userName = settings.userName || '익명';
-
-                const titleElement = document.getElementById('user-journey-title');
-                if (titleElement) {
-                    titleElement.textContent = `${userName}님의 학습 여정`;
-                }
-            } catch (error) {
-                console.error('사용자 별명 로드 실패:', error);
-            }
-        }
-
-        // === 그룹 분석 기능 ===
-        let currentViewMode = 'personal'; // 'personal' or 'group'
-        let selectedGroupId = null;
-
-        // Firebase 초기화
-        async function initFirebase() {
-            try {
-                // Firebase 스크립트가 로드될 때까지 대기
-                if (typeof firebase === 'undefined') {
-                    console.log('[Progress Dashboard] Firebase not loaded yet, waiting...');
-                    await new Promise((resolve) => {
-                        let attempts = 0;
-                        const checkFirebase = setInterval(() => {
-                            attempts++;
-                            if (typeof firebase !== 'undefined') {
-                                clearInterval(checkFirebase);
-                                resolve();
-                            } else if (attempts > 50) { // 5초 타임아웃
-                                clearInterval(checkFirebase);
-                                console.warn('[Progress Dashboard] Firebase load timeout');
-                                resolve();
-                            }
-                        }, 100);
-                    });
-                }
-
-                if (typeof firebase === 'undefined') {
-                    console.warn('[Progress Dashboard] Firebase not available - 그룹 기능 비활성화');
-                    return;
-                }
-
-                // Firebase가 이미 초기화되었는지 확인
-                if (firebase.apps.length === 0) {
-                    if (typeof firebaseConfig !== 'undefined') {
-                        firebase.initializeApp(firebaseConfig);
-                    } else {
-                        console.warn('[Progress Dashboard] firebaseConfig not found');
-                        return;
-                    }
-                }
-
-                // window.firebase_db 사용 (firebase-integration.js와 공유)
-                if (!window.firebase_db) {
-                    window.firebase_db = firebase.database();
-                }
-                console.log('[Progress Dashboard] Firebase initialized');
-
-                // social-hub에서 전달된 그룹 ID 확인
-                const savedGroupId = localStorage.getItem('selectedGroupId');
-                const savedGroupName = localStorage.getItem('selectedGroupName');
-
-                if (savedGroupId && savedGroupName) {
-                    // 자동으로 그룹 뷰로 전환
-                    selectedGroupId = savedGroupId;
-                    switchToGroupView();
-                    loadGroupData();
-
-                    // 한 번 사용한 후 삭제
-                    localStorage.removeItem('selectedGroupId');
-                    localStorage.removeItem('selectedGroupName');
-                }
-
-                // 그룹 목록 로드
-                loadUserGroups();
-            } catch (error) {
-                console.error('[Progress Dashboard] Firebase 초기화 실패:', error);
-            }
-        }
-
-        // 개인 데이터 뷰로 전환
-        function switchToPersonalView() {
-            currentViewMode = 'personal';
-            selectedGroupId = null;
-
-            // 버튼 스타일 업데이트
-            document.getElementById('view-personal-btn').className = 'px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors';
-            document.getElementById('view-group-btn').className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors';
-
-            // 그룹 선택 숨기기
-            document.getElementById('group-select').classList.add('hidden');
-            document.getElementById('group-info').classList.add('hidden');
-
-            // 개인 데이터 표시
-            updateProgressDisplay();
-        }
-
-        // 그룹 데이터 뷰로 전환
-        function switchToGroupView() {
-            currentViewMode = 'group';
-
-            // 버튼 스타일 업데이트
-            document.getElementById('view-personal-btn').className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-300 transition-colors';
-            document.getElementById('view-group-btn').className = 'px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors';
-
-            // 그룹 선택 표시
-            document.getElementById('group-select').classList.remove('hidden');
-
-            // 그룹 목록 로드
-            loadUserGroups();
-        }
-
-        // 사용자 그룹 목록 로드
-        async function loadUserGroups() {
-            if (!window.firebase_db) return;
-
-            try {
-                const firebaseIntegration = window.eduPetFirebaseIntegration;
-
-                // Firebase Integration이 초기화될 때까지 대기
-                if (!firebaseIntegration) {
-                    console.log('[Progress Dashboard] Firebase Integration 대기 중...');
-                    await new Promise((resolve) => {
-                        let attempts = 0;
-                        const checkIntegration = setInterval(() => {
-                            attempts++;
-                            if (window.eduPetFirebaseIntegration?.currentUser) {
-                                clearInterval(checkIntegration);
-                                resolve();
-                            } else if (attempts > 30) { // 3초 타임아웃
-                                clearInterval(checkIntegration);
-                                console.log('[Progress Dashboard] Firebase 인증 타임아웃');
-                                resolve();
-                            }
-                        }, 100);
-                    });
-                }
-
-                // 인증 사용자 확인
-                const currentIntegration = window.eduPetFirebaseIntegration;
-                if (!currentIntegration || !currentIntegration.currentUser) {
-                    console.log('[Progress Dashboard] Firebase 사용자 인증 없음 - 그룹 기능 비활성화');
-                    return;
-                }
-
-                const userId = currentIntegration.currentUser.uid;
-                const groupsSnapshot = await window.firebase_db.ref(`users/${userId}/social/groups`).once('value');
-                const myGroups = groupsSnapshot.val();
-
-                const groupSelect = document.getElementById('group-select');
-                groupSelect.innerHTML = '<option value="">그룹 선택...</option>';
-
-                if (!myGroups || Object.keys(myGroups).length === 0) {
-                    groupSelect.innerHTML = '<option value="">참여한 그룹이 없습니다</option>';
-                    return;
-                }
-
-                // 그룹 옵션 추가
-                for (const [groupId, groupInfo] of Object.entries(myGroups)) {
-                    const option = document.createElement('option');
-                    option.value = groupId;
-                    option.textContent = groupInfo.name;
-                    groupSelect.appendChild(option);
-                }
-
-                // 저장된 그룹 ID가 있으면 선택
-                if (selectedGroupId) {
-                    groupSelect.value = selectedGroupId;
-                }
-            } catch (error) {
-                console.error('[Progress Dashboard] 그룹 목록 로드 실패:', error);
-            }
-        }
-
-        // 그룹 데이터 로드
-        async function loadGroupData() {
-            const groupSelect = document.getElementById('group-select');
-            selectedGroupId = groupSelect.value;
-
-            if (!selectedGroupId) {
-                document.getElementById('group-info').classList.add('hidden');
-                return;
-            }
-
-            try {
-                // 그룹 정보 로드
-                const groupSnapshot = await window.firebase_db.ref(`groups/${selectedGroupId}`).once('value');
-                const groupData = groupSnapshot.val();
-
-                if (!groupData) {
-                    alert('그룹 데이터를 찾을 수 없습니다.');
-                    return;
-                }
-
-                // 그룹 정보 표시
-                const groupInfo = document.getElementById('group-info');
-                groupInfo.innerHTML = `
-                    <div class="bg-white rounded-lg p-3 border border-purple-200">
-                        <div class="font-bold text-gray-800">${groupData.name}</div>
-                        <div class="text-xs text-gray-500 mt-1">멤버 ${groupData.memberCount || 0}명 | 총 ${groupData.stats?.totalQuestions || 0}문제 풀이</div>
-                    </div>
-                `;
-                groupInfo.classList.remove('hidden');
-
-                // 그룹 멤버들의 통계 집계
-                await aggregateGroupStats(groupData);
-
-            } catch (error) {
-                console.error('[Progress Dashboard] 그룹 데이터 로드 실패:', error);
-                alert('그룹 데이터를 불러오는데 실패했습니다.');
-            }
-        }
-
-        // 그룹 멤버들의 통계 집계
-        async function aggregateGroupStats(groupData) {
-            try {
-                const members = groupData.members || {};
-                const memberIds = Object.keys(members);
-
-                let totalQuestions = 0;
-                let totalCorrectAnswers = 0;
-                let subjectStats = {};
-
-                // 각 멤버의 학습 데이터 수집
-                for (const memberId of memberIds) {
-                    try {
-                        const statsSnapshot = await window.firebase_db.ref(`users/${memberId}/stats`).once('value');
-                        const memberStats = statsSnapshot.val();
-
-                        if (memberStats) {
-                            totalQuestions += memberStats.correctAnswers || 0; // Firebase에는 correctAnswers만 저장됨
-                            totalCorrectAnswers += memberStats.correctAnswers || 0;
-
-                            // 과목별 통계 집계
-                            if (memberStats.subjectScores) {
-                                for (const [subject, score] of Object.entries(memberStats.subjectScores)) {
-                                    if (!subjectStats[subject]) {
-                                        subjectStats[subject] = {
-                                            questions: 0,
-                                            correct: 0,
-                                            members: []
-                                        };
-                                    }
-                                    subjectStats[subject].correct += score || 0;
-                                    subjectStats[subject].members.push(members[memberId].nickname);
-                                }
-                            }
-                        }
-                    } catch (error) {
-                        console.error(`멤버 ${memberId} 통계 로드 실패:`, error);
-                    }
-                }
-
-                // 통계 표시 (progressData 형식으로 변환)
-                const groupProgressData = {
-                    totalQuestions: totalQuestions,
-                    correctAnswers: totalCorrectAnswers,
-                    subjectStats: {},
-                    dailyActivity: {},
-                    streakDays: 0,
-                    lastStudyDate: null
-                };
-
-                // 과목별 통계 변환
-                for (const [subjectId, stats] of Object.entries(subjectStats)) {
-                    groupProgressData.subjectStats[subjectId] = {
-                        questions: stats.correct, // 문제 수는 정답 수와 동일하게 처리
-                        correct: stats.correct,
-                        experience: stats.correct * 10,
-                        lastStudied: Date.now()
-                    };
-                }
-
-                // 전체 과목 초기화 (subjects 정의 필요)
-                const subjects = {
-                    english: { name: '영어', emoji: '🇺🇸', color: 'blue' },
-                    math: { name: '수학', emoji: '🔢', color: 'green' },
-                    science: { name: '과학', emoji: '🔬', color: 'purple' },
-                    korean: { name: '국어', emoji: '🇰🇷', color: 'red' },
-                    social: { name: '사회', emoji: '🌍', color: 'yellow' },
-                    common: { name: '상식', emoji: '🧩', color: 'indigo' },
-                    idiom: { name: '사자성어', emoji: '📜', color: 'pink' },
-                    person: { name: '인물', emoji: '👥', color: 'teal' },
-                    economy: { name: '경제', emoji: '💰', color: 'orange' },
-                    production: { name: '생산', emoji: '🏭', color: 'cyan' },
-                    toeic: { name: 'TOEIC', emoji: '📖', color: 'violet' },
-                    ai: { name: 'AI', emoji: '🤖', color: 'slate' }
-                };
-
-                for (const subjectId of Object.keys(subjects)) {
-                    if (!groupProgressData.subjectStats[subjectId]) {
-                        groupProgressData.subjectStats[subjectId] = {
-                            questions: 0,
-                            correct: 0,
-                            experience: 0,
-                            lastStudied: null
-                        };
-                    }
-                }
-
-                // 그룹 데이터로 화면 업데이트
-                displayGroupProgress(groupProgressData, groupData.name);
-
-            } catch (error) {
-                console.error('[Progress Dashboard] 그룹 통계 집계 실패:', error);
-            }
-        }
-
-        // 그룹 진행 상황 표시
-        function displayGroupProgress(groupProgressData, groupName) {
-            // 제목 업데이트
-            const titleElement = document.getElementById('user-journey-title');
-            if (titleElement) {
-                titleElement.textContent = `${groupName} 그룹의 학습 여정`;
-            }
-
-            // 전체 통계
-            document.getElementById('totalQuestions').textContent = groupProgressData.totalQuestions.toLocaleString();
-            document.getElementById('correctAnswers').textContent = groupProgressData.correctAnswers.toLocaleString();
-
-            const accuracy = groupProgressData.totalQuestions > 0
-                ? Math.round((groupProgressData.correctAnswers / groupProgressData.totalQuestions) * 100)
-                : 0;
-            document.getElementById('accuracyRate').textContent = accuracy + '%';
-
-            // 연속 학습일은 그룹에서는 의미 없으므로 '-'로 표시
-            document.getElementById('streakDays').textContent = '-';
-
-            // 과목별 진행률
-            const subjectProgressContainer = document.getElementById('subjectProgress');
-            subjectProgressContainer.innerHTML = '';
-
-            const subjects = {
-                english: { name: '영어', emoji: '🇺🇸', color: 'blue' },
-                math: { name: '수학', emoji: '🔢', color: 'green' },
-                science: { name: '과학', emoji: '🔬', color: 'purple' },
-                korean: { name: '국어', emoji: '🇰🇷', color: 'red' },
-                social: { name: '사회', emoji: '🌍', color: 'yellow' },
-                common: { name: '상식', emoji: '🧩', color: 'indigo' },
-                idiom: { name: '사자성어', emoji: '📜', color: 'pink' },
-                person: { name: '인물', emoji: '👥', color: 'teal' },
-                economy: { name: '경제', emoji: '💰', color: 'orange' },
-                production: { name: '생산', emoji: '🏭', color: 'cyan' },
-                toeic: { name: 'TOEIC', emoji: '📖', color: 'violet' },
-                ai: { name: 'AI', emoji: '🤖', color: 'slate' }
-            };
-
-            for (const [subjectId, subject] of Object.entries(subjects)) {
-                const stats = groupProgressData.subjectStats[subjectId];
-                if (stats.questions > 0) {
-                    const level = Math.floor(stats.experience / 100) + 1;
-                    const expProgress = stats.experience % 100;
-                    const accuracy = Math.round((stats.correct / stats.questions) * 100);
-
-                    const subjectDiv = document.createElement('div');
-                    subjectDiv.className = 'progress-card bg-white rounded-lg p-4 border-l-4 border-' + subject.color + '-500';
-                    subjectDiv.innerHTML = `
-                        <div class="flex items-center justify-between mb-2">
-                            <div class="flex items-center space-x-3">
-                                <span class="text-2xl">${subject.emoji}</span>
-                                <div>
-                                    <div class="font-semibold text-gray-800">${subject.name}</div>
-                                    <div class="text-xs text-gray-500">Lv.${level} | ${stats.correct}/${stats.questions} 정답</div>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-2xl font-bold text-${subject.color}-600">${accuracy}%</div>
-                                <div class="text-xs text-gray-500">정답률</div>
-                            </div>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2">
-                            <div class="skill-bar h-2 rounded-full" style="width: ${expProgress}%"></div>
-                        </div>
-                        <div class="text-xs text-gray-500 text-right mt-1">${expProgress}/100 EXP</div>
-                    `;
-                    subjectProgressContainer.appendChild(subjectDiv);
-                }
-            }
-
-            // 일일 학습 미션은 그룹에서 숨기기
-            document.querySelector('.bg-gradient-to-br.from-green-50').style.display = 'none';
-
-            // 주간 활동은 그룹에서 숨기기
-            const weeklyActivitySection = document.getElementById('weeklyActivity');
-            if (weeklyActivitySection) {
-                weeklyActivitySection.style.display = 'none';
-            }
-        }
-
         // Initialize
         document.addEventListener('DOMContentLoaded', async function() {
-            // 사용자 별명 표시
-            displayUserNickname();
-
             // Initialize Firebase first
             if (window.eduPetFirebaseIntegration) {
                 await eduPetFirebaseIntegration.initialize();
             }
-
+            
             await loadProgressData(); // now it's async
-
-            // Firebase 초기화 (그룹 기능용) - 비동기로 실행
-            setTimeout(async () => {
-                try {
-                    await initFirebase();
-                } catch (error) {
-                    console.error('[Progress Dashboard] Firebase 초기화 중 오류:', error);
-                }
-            }, 2000); // 2초 후 Firebase 초기화 시도 (Integration이 먼저 초기화되도록)
-
+            
             // Auto-refresh every 30 seconds
             setInterval(loadProgressData, 30000);
         });

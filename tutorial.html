@@ -73,7 +73,7 @@
                 <div id="progressBar" class="progress-bar bg-blue-500 h-2 rounded-full" style="width: 16.67%"></div>
             </div>
             <div class="text-center text-sm text-gray-600">
-                <span id="currentStep">1</span> / 7
+                <span id="currentStep">1</span> / <span id="totalSteps"></span>
             </div>
         </div>
 
@@ -296,19 +296,52 @@
                         </div>
                     </div>
                     
-                    <div class="space-y-2">
+                    <div class="space-y-3">
                         <button id="setNicknameBtn" onclick="setUserNickname()" class="w-full px-6 py-3 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 transition-colors">
                             ✨ 별명 설정하기
                         </button>
+
+                        <div class="text-center text-gray-500 text-sm">또는</div>
+
+                        <button onclick="signInWithGoogleTutorial()" class="w-full px-6 py-3 bg-white text-gray-700 rounded-lg font-semibold border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all flex items-center justify-center gap-3">
+                            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"/>
+                                <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"/>
+                                <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"/>
+                                <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"/>
+                            </svg>
+                            구글 계정으로 로그인
+                        </button>
+
                         <button onclick="skipNickname()" class="w-full px-6 py-2 text-gray-500 hover:text-gray-700 transition-colors text-sm">
                             건너뛰기 (나중에 설정)
                         </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 7: Start -->
+            <!-- Slide 7: Avatar Selection -->
             <div id="slide7" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🐾</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">나만의 대표 동물을 선택하세요!</h2>
+                    <div class="text-gray-600 mb-6 space-y-3">
+                        <div class="text-sm text-gray-600 mb-4">
+                            선택한 동물은 프로필과 순위표에 표시됩니다.<br>
+                            나중에 소셜 허브에서 언제든 변경할 수 있어요!
+                        </div>
+                        
+                        <div id="avatar-selection" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-bottom: 20px;">
+                            <!-- 동물 아바타 목록이 동적으로 추가됨 -->
+                        </div>
+                        <div id="avatarError" class="text-red-500 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Start -->
+            <div id="slide8" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🎉</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">
@@ -335,7 +368,7 @@
         </div>
 
         <!-- Navigation -->
-        <div class="flex justify-between mt-6">
+        <div class="flex justify-center space-x-4 mt-6">
             <button id="prevBtn" onclick="prevSlide()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                 ← 이전
             </button>
@@ -350,7 +383,32 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 7;
+        const totalSlides = 8;
+        let tempSelectedAvatar = null; // 임시 선택된 아바타
+
+        // 사용 가능한 동물 아바타 목록 (social-hub.html에서 가져옴)
+        const availableAvatars = [
+            { id: 'bunny', emoji: '🐰', name: '토끼' },
+            { id: 'cat', emoji: '🐱', name: '고양이' },
+            { id: 'dog', emoji: '🐶', name: '강아지' },
+            { id: 'fox', emoji: '🦊', name: '여우' },
+            { id: 'lion', emoji: '🦁', name: '사자' },
+            { id: 'tiger', emoji: '🐅', name: '호랑이' },
+            { id: 'bear', emoji: '🐻', name: '곰' },
+            { id: 'panda', emoji: '🐼', name: '판다' },
+            { id: 'koala', emoji: '🐨', name: '코알라' },
+            { id: 'monkey', emoji: '🐵', name: '원숭이' },
+            { id: 'elephant', emoji: '🐘', name: '코끼리' },
+            { id: 'giraffe', emoji: '🦒', name: '기린' },
+            { id: 'zebra', emoji: '🦓', name: '얼룩말' },
+            { id: 'horse', emoji: '🐎', name: '말' },
+            { id: 'cow', emoji: '🐄', name: '소' },
+            { id: 'pig', emoji: '🐷', name: '돼지' },
+            { id: 'sheep', emoji: '🐑', name: '양' },
+            { id: 'chicken', emoji: '🐔', name: '닭' },
+            { id: 'penguin', emoji: '🐧', name: '펭귄' },
+            { id: 'owl', emoji: '🦉', name: '올빼미' }
+        ];
 
         function updateUI() {
             // Hide all slides
@@ -370,6 +428,7 @@
             // Update progress
             document.getElementById('progressBar').style.width = `${(currentSlide / totalSlides) * 100}%`;
             document.getElementById('currentStep').textContent = currentSlide;
+            document.getElementById('totalSteps').textContent = totalSlides;
             
             // Update buttons
             document.getElementById('prevBtn').disabled = currentSlide === 1;
@@ -378,6 +437,11 @@
                 nextBtn.style.display = 'none';
             } else {
                 nextBtn.style.display = 'block';
+            }
+
+            // Load avatar selection when on slide 7
+            if (currentSlide === 7) {
+                loadAvatarSelection();
             }
         }
 
@@ -393,6 +457,59 @@
                 currentSlide--;
                 updateUI();
             }
+        }
+
+        // 아바타 선택 UI 로드 (social-hub.html에서 가져옴)
+        function loadAvatarSelection() {
+            const avatarContainer = document.getElementById('avatar-selection');
+            if (!avatarContainer) return;
+
+            // 기본 아바타 설정 (토끼)
+            if (!tempSelectedAvatar) {
+                tempSelectedAvatar = 'bunny';
+            }
+
+            const html = availableAvatars.map(avatar => {
+                const isSelected = avatar.id === tempSelectedAvatar;
+                return `
+                    <div id="avatar-${avatar.id}" onclick="selectAvatarTemp('${avatar.id}')" style="
+                        padding: 15px;
+                        background: ${isSelected ? '#007bff' : 'white'};
+                        border: 2px solid ${isSelected ? '#007bff' : '#dee2e6'};
+                        border-radius: 10px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s;
+                        ${isSelected ? 'transform: scale(1.1);' : ''}
+                    " onmouseover="this.style.borderColor='#007bff'" onmouseout="if('${avatar.id}' !== '${tempSelectedAvatar}') this.style.borderColor='#dee2e6'">
+                        <div style="font-size: 2rem; margin-bottom: 5px;">${avatar.emoji}</div>
+                        <div style="font-size: 0.75rem; color: ${isSelected ? 'white' : '#495057'}; font-weight: ${isSelected ? 'bold' : 'normal'};">${avatar.name}</div>
+                    </div>
+                `;
+            }).join('');
+
+            avatarContainer.innerHTML = html;
+        }
+
+        // 아바타 임시 선택
+        function selectAvatarTemp(avatarId) {
+            tempSelectedAvatar = avatarId;
+
+            // UI 업데이트
+            document.querySelectorAll('[id^="avatar-"]').forEach(el => {
+                const id = el.id.replace('avatar-', '');
+                const isSelected = id === avatarId;
+
+                el.style.background = isSelected ? '#007bff' : 'white';
+                el.style.borderColor = isSelected ? '#007bff' : '#dee2e6';
+                el.style.transform = isSelected ? 'scale(1.1)' : 'scale(1)';
+
+                const nameElement = el.querySelector('div:last-child');
+                if (nameElement) {
+                    nameElement.style.color = isSelected ? 'white' : '#495057';
+                    nameElement.style.fontWeight = isSelected ? 'bold' : 'normal';
+                }
+            });
         }
 
         // 별명 설정 함수
@@ -461,11 +578,8 @@
             setBtn.classList.add('bg-green-500', 'hover:bg-green-500');
             setBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
             
-            // 2초 후 자동으로 다음 단계로
-            setTimeout(() => {
-                nextSlide();
-            }, 2000);
-            
+            // 다음 단계로 이동
+            nextSlide();
             function showError(message) {
                 errorDiv.textContent = message;
                 errorDiv.classList.remove('hidden');
@@ -501,45 +615,13 @@
         });
 
         async function completeOnboarding() {
-            // Mark onboarding as completed
-            localStorage.setItem('eduPetOnboardingCompleted', 'true');
-
-            // Grant starter bonuses - 100원 + 프리미엄 뽑기권 (plantSystem 사용)
-            if (typeof plantSystem !== 'undefined') {
-                plantSystem.setMoney(100);
-                console.log('✅ 튜토리얼 완료: 100원 지급');
-
-                // Grant premium gacha ticket
-                const plantSystemUser = plantSystem.getUserData();
-                if (!plantSystemUser.rewards) {
-                    plantSystemUser.rewards = {
-                        growthTickets: [],
-                        normalGachaTickets: 0,
-                        premiumGachaTickets: 0
-                    };
-                }
-                plantSystemUser.rewards.premiumGachaTickets += 1;
-                plantSystem.saveUserData(plantSystemUser);
-                console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
-
-                // Firebase에 보상 동기화 (비동기)
-                if (typeof eduPetFirebaseIntegration !== 'undefined') {
-                    try {
-                        await eduPetFirebaseIntegration.syncPlantState();
-                        console.log('✅ Firebase에 보상 동기화 완료');
-                    } catch (error) {
-                        console.warn('⚠️ Firebase 동기화 실패 (나중에 재시도됩니다):', error);
-                    }
-                }
+            // Validate avatar selection
+            if (!tempSelectedAvatar) {
+                alert('대표 동물을 선택해주세요!');
+                return;
             }
 
-            // Initialize quiz progress
-            const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
-            if (!quizProgress.totalCorrect) quizProgress.totalCorrect = 0;
-            if (!quizProgress.streakDays) quizProgress.streakDays = 0;
-            localStorage.setItem('quizProgress', JSON.stringify(quizProgress));
-
-            // Get user nickname for personalized message
+            // Get user nickname for personalized message and Firebase update
             let nickname = '학습자';
             try {
                 const userSettings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
@@ -550,21 +632,65 @@
                 console.log('사용자 설정 로드 실패:', error);
             }
 
-            // 보상 확인 로그
-            const finalUser = plantSystem.getUserData();
-            console.log('✅ 최종 사용자 데이터:', {
-                money: finalUser.wallet?.money,
-                premiumTickets: finalUser.rewards?.premiumGachaTickets,
-                normalTickets: finalUser.rewards?.normalGachaTickets
-            });
+            // Ensure Firebase user is authenticated and update profile
+            if (typeof eduPetAuth === 'undefined' || !eduPetAuth.currentUser) {
+                alert('사용자 인증에 실패했습니다. 다시 시도해주세요.');
+                console.error('eduPetAuth not available or no current user.');
+                return;
+            }
 
-            // Show completion message with delay to ensure data is saved
-            setTimeout(() => {
-                alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장\n\n메인 화면에서 확인해보세요!`);
+            try {
+                // Update nickname and avatar in Firebase
+                await eduPetAuth.setNickname(nickname);
+                await eduPetAuth.setAvatar(tempSelectedAvatar);
+                console.log('✅ Firebase에 닉네임 및 아바타 동기화 완료');
 
-                // Redirect to main page after alert
-                window.location.href = 'index.html';
-            }, 500);
+                // Grant starter bonuses - 100원 + 프리미엄 뽑기권 (plantSystem 사용)
+                if (typeof plantSystem !== 'undefined') {
+                    plantSystem.setMoney(100);
+                    console.log('✅ 튜토리얼 완료: 100원 지급');
+
+                    // Grant premium gacha ticket
+                    const plantSystemUser = plantSystem.getUserData();
+                    if (!plantSystemUser.rewards) {
+                        plantSystemUser.rewards = {
+                            growthTickets: [],
+                            normalGachaTickets: 0,
+                            premiumGachaTickets: 0
+                        };
+                    }
+                    plantSystemUser.rewards.premiumGachaTickets += 1;
+                    plantSystem.saveUserData(plantSystemUser);
+                    console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
+
+                    // Firebase에 보상 동기화
+                    if (typeof plantSystemFirebase !== 'undefined') {
+                        await plantSystemFirebase.save();
+                        console.log('✅ Firebase에 보상 동기화 완료');
+                    }
+                }
+
+                // Initialize quiz progress
+                const quizProgress = JSON.parse(localStorage.getItem('quizProgress') || '{}');
+                if (!quizProgress.totalCorrect) quizProgress.totalCorrect = 0;
+                if (!quizProgress.streakDays) quizProgress.streakDays = 0;
+                localStorage.setItem('quizProgress', JSON.stringify(quizProgress));
+
+                // Mark onboarding as completed
+                localStorage.setItem('eduPetOnboardingCompleted', 'true');
+
+                // Show completion message with delay to ensure data is saved
+                setTimeout(() => {
+                    alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장\n\n로그인 페이지로 이동합니다!`);
+
+                    // Redirect to login page instead of main page
+                    window.location.href = 'login.html';
+                }, 500);
+
+            } catch (error) {
+                console.error('튜토리얼 완료 중 오류 발생:', error);
+                alert('튜토리얼 완료 중 오류가 발생했습니다. 다시 시도해주세요.');
+            }
         }
 
         // Check if user has already completed onboarding
@@ -582,7 +708,29 @@
         });
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            // eduPetAuth and eduPetFirebaseIntegration가 정의될 때까지 기다림
+            console.log('Waiting for Firebase modules to load in tutorial...');
+            await new Promise((resolve, reject) => {
+                let attempts = 0;
+                const maxAttempts = 100; // 5초 타임아웃
+                const interval = setInterval(() => {
+                    attempts++;
+                    if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                        console.log('Firebase modules loaded successfully in tutorial');
+                        clearInterval(interval);
+                        resolve();
+                    } else if (attempts >= maxAttempts) {
+                        clearInterval(interval);
+                        reject(new Error('Firebase 모듈 로드 타임아웃 in tutorial'));
+                    }
+                }, 50);
+            });
+
+            // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
+            await eduPetFirebaseIntegration.initialize();
+            console.log('Firebase Integration is ready in tutorial.');
+
             checkOnboarding();
             updateUI();
         });

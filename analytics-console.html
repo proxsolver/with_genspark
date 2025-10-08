@@ -8,6 +8,12 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="firebase-integration.js"></script>
+
     <!-- 한글 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -66,22 +72,44 @@
             </div>
         </div>
 
-        <!-- 학습자 선택 -->
+        <!-- 학습자/그룹 선택 -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center space-x-3">
                     <span class="text-xl">👥</span>
-                    <h2 class="text-xl font-bold">학습자 선택</h2>
+                    <h2 class="text-xl font-bold">데이터 소스 선택</h2>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <select id="learner-select" onchange="loadLearnerData()" class="px-4 py-2 border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:outline-none">
-                        <option value="local">현재 기기 (로컬)</option>
-                    </select>
                     <button onclick="refreshLearners()" class="px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg text-sm transition-all">
                         🔄 새로고침
                     </button>
                 </div>
             </div>
+
+            <!-- 데이터 소스 선택 탭 -->
+            <div class="flex gap-2 mb-4">
+                <button id="view-personal-btn" class="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold" onclick="switchToPersonalView()">
+                    👤 개인 데이터
+                </button>
+                <button id="view-group-btn" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold" onclick="switchToGroupView()">
+                    🎯 그룹 데이터
+                </button>
+            </div>
+
+            <!-- 개인 선택 -->
+            <div id="personal-selector" class="flex items-center space-x-3">
+                <select id="learner-select" onchange="loadLearnerData()" class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:outline-none">
+                    <option value="local">현재 기기 (로컬)</option>
+                </select>
+            </div>
+
+            <!-- 그룹 선택 -->
+            <div id="group-selector" class="hidden flex items-center space-x-3">
+                <select id="group-select" onchange="loadGroupData()" class="flex-1 px-4 py-2 border-2 border-purple-300 rounded-lg text-sm focus:border-purple-500 focus:outline-none">
+                    <option value="">그룹 선택...</option>
+                </select>
+            </div>
+
             <div id="learner-info" class="mt-4 text-sm text-gray-600">
                 현재 기기의 학습 데이터를 표시하고 있습니다
             </div>
@@ -599,6 +627,287 @@
             });
         }
 
+        // === 그룹 분석 기능 ===
+        let currentViewMode = 'personal'; // 'personal' or 'group'
+        let selectedGroupId = null;
+
+        // Firebase 초기화
+        async function initFirebase() {
+            try {
+                // Firebase 스크립트가 로드될 때까지 대기
+                if (typeof firebase === 'undefined') {
+                    console.log('[Analytics Console] Firebase not loaded yet, waiting...');
+                    await new Promise((resolve) => {
+                        let attempts = 0;
+                        const checkFirebase = setInterval(() => {
+                            attempts++;
+                            if (typeof firebase !== 'undefined') {
+                                clearInterval(checkFirebase);
+                                resolve();
+                            } else if (attempts > 50) { // 5초 타임아웃
+                                clearInterval(checkFirebase);
+                                console.warn('[Analytics Console] Firebase load timeout');
+                                resolve();
+                            }
+                        }, 100);
+                    });
+                }
+
+                if (typeof firebase === 'undefined') {
+                    console.warn('[Analytics Console] Firebase not available - 그룹 기능 비활성화');
+                    return;
+                }
+
+                // Firebase가 이미 초기화되었는지 확인
+                if (firebase.apps.length === 0) {
+                    // firebase-config.js가 로드되었다고 가정
+                    if (typeof firebaseConfig !== 'undefined') {
+                        firebase.initializeApp(firebaseConfig);
+                    } else {
+                        console.warn('[Analytics Console] firebaseConfig not found');
+                        return;
+                    }
+                }
+
+                // window.firebase_db 사용 (firebase-integration.js와 공유)
+                if (!window.firebase_db) {
+                    window.firebase_db = firebase.database();
+                }
+
+                console.log('[Analytics Console] Firebase initialized');
+
+                // social-hub에서 전달된 그룹 ID 확인
+                const savedGroupId = localStorage.getItem('selectedGroupId');
+                const savedGroupName = localStorage.getItem('selectedGroupName');
+
+                if (savedGroupId && savedGroupName) {
+                    selectedGroupId = savedGroupId;
+                    switchToGroupView();
+                    await loadUserGroups();
+                    document.getElementById('group-select').value = selectedGroupId;
+                    await loadGroupData();
+
+                    localStorage.removeItem('selectedGroupId');
+                    localStorage.removeItem('selectedGroupName');
+                }
+            } catch (error) {
+                console.error('[Analytics Console] Firebase 초기화 실패:', error);
+            }
+        }
+
+        // 개인 뷰로 전환
+        function switchToPersonalView() {
+            currentViewMode = 'personal';
+            selectedGroupId = null;
+
+            document.getElementById('view-personal-btn').className = 'px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold';
+            document.getElementById('view-group-btn').className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold';
+
+            document.getElementById('personal-selector').classList.remove('hidden');
+            document.getElementById('group-selector').classList.add('hidden');
+
+            loadLearnerData();
+        }
+
+        // 그룹 뷰로 전환
+        function switchToGroupView() {
+            currentViewMode = 'group';
+
+            document.getElementById('view-personal-btn').className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-semibold';
+            document.getElementById('view-group-btn').className = 'px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold';
+
+            document.getElementById('personal-selector').classList.add('hidden');
+            document.getElementById('group-selector').classList.remove('hidden');
+
+            loadUserGroups();
+        }
+
+        // 사용자 그룹 목록 로드
+        async function loadUserGroups() {
+            if (!window.firebase_db) {
+                await initFirebase();
+            }
+
+            if (!window.firebase_db) {
+                console.warn('[Analytics Console] Firebase 초기화 실패');
+                return;
+            }
+
+            try {
+                const firebaseIntegration = window.eduPetFirebaseIntegration;
+
+                // Firebase Integration이 초기화될 때까지 대기
+                if (!firebaseIntegration || !firebaseIntegration.currentUser) {
+                    console.log('[Analytics Console] Firebase Integration 대기 중...');
+                    await new Promise((resolve) => {
+                        let attempts = 0;
+                        const checkIntegration = setInterval(() => {
+                            attempts++;
+                            if (window.eduPetFirebaseIntegration?.currentUser) {
+                                clearInterval(checkIntegration);
+                                resolve();
+                            } else if (attempts > 30) { // 3초 타임아웃
+                                clearInterval(checkIntegration);
+                                console.log('[Analytics Console] Firebase 인증 타임아웃');
+                                resolve();
+                            }
+                        }, 100);
+                    });
+                }
+
+                // 인증 사용자 확인
+                const currentIntegration = window.eduPetFirebaseIntegration;
+                if (!currentIntegration || !currentIntegration.currentUser) {
+                    document.getElementById('learner-info').textContent = 'Firebase 로그인이 필요합니다 (그룹 기능만 영향받음).';
+                    console.log('[Analytics Console] Firebase 사용자 인증 없음 - 그룹 기능 비활성화');
+                    return;
+                }
+
+                const userId = currentIntegration.currentUser.uid;
+                const groupsSnapshot = await window.firebase_db.ref(`users/${userId}/social/groups`).once('value');
+                const myGroups = groupsSnapshot.val();
+
+                const groupSelect = document.getElementById('group-select');
+                groupSelect.innerHTML = '<option value="">그룹 선택...</option>';
+
+                if (!myGroups || Object.keys(myGroups).length === 0) {
+                    groupSelect.innerHTML = '<option value="">참여한 그룹이 없습니다</option>';
+                    return;
+                }
+
+                for (const [groupId, groupInfo] of Object.entries(myGroups)) {
+                    const option = document.createElement('option');
+                    option.value = groupId;
+                    option.textContent = groupInfo.name;
+                    groupSelect.appendChild(option);
+                }
+
+                if (selectedGroupId) {
+                    groupSelect.value = selectedGroupId;
+                }
+            } catch (error) {
+                console.error('[Analytics Console] 그룹 목록 로드 실패:', error);
+            }
+        }
+
+        // 그룹 데이터 로드
+        async function loadGroupData() {
+            const groupSelect = document.getElementById('group-select');
+            selectedGroupId = groupSelect.value;
+
+            if (!selectedGroupId) {
+                document.getElementById('learner-info').textContent = '그룹을 선택해주세요.';
+                return;
+            }
+
+            try {
+                const groupSnapshot = await window.firebase_db.ref(`groups/${selectedGroupId}`).once('value');
+                const groupData = groupSnapshot.val();
+
+                if (!groupData) {
+                    alert('그룹 데이터를 찾을 수 없습니다.');
+                    return;
+                }
+
+                document.getElementById('learner-info').innerHTML = `
+                    <div class="font-semibold text-purple-700">
+                        🎯 ${groupData.name} 그룹 (멤버 ${groupData.memberCount}명)
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1">
+                        그룹 전체 멤버의 학습 데이터를 종합하여 분석합니다.
+                    </div>
+                `;
+
+                // 그룹 멤버들의 분석 데이터 집계
+                await aggregateGroupAnalytics(groupData);
+
+            } catch (error) {
+                console.error('[Analytics Console] 그룹 데이터 로드 실패:', error);
+                alert('그룹 데이터를 불러오는데 실패했습니다.');
+            }
+        }
+
+        // 그룹 멤버들의 분석 데이터 집계
+        async function aggregateGroupAnalytics(groupData) {
+            try {
+                const members = groupData.members || {};
+                const memberIds = Object.keys(members);
+
+                let groupAnalyticsData = [];
+                let totalSessions = 0;
+                let totalCorrectAnswers = 0;
+                let totalQuestions = 0;
+                let subjectData = {};
+
+                // 각 멤버의 분석 데이터 수집
+                for (const memberId of memberIds) {
+                    try {
+                        const statsSnapshot = await window.firebase_db.ref(`users/${memberId}/stats`).once('value');
+                        const memberStats = statsSnapshot.val();
+
+                        if (memberStats) {
+                            totalCorrectAnswers += memberStats.correctAnswers || 0;
+
+                            // 과목별 데이터 집계
+                            if (memberStats.subjectScores) {
+                                for (const [subject, score] of Object.entries(memberStats.subjectScores)) {
+                                    if (!subjectData[subject]) {
+                                        subjectData[subject] = {
+                                            correctCount: 0,
+                                            totalCount: 0,
+                                            sessions: 0
+                                        };
+                                    }
+                                    subjectData[subject].correctCount += score || 0;
+                                    subjectData[subject].sessions++;
+                                }
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`멤버 ${memberId} 분석 데이터 로드 실패:`, error);
+                    }
+                }
+
+                // 과목별 세션 생성 (분석용)
+                for (const [subjectId, data] of Object.entries(subjectData)) {
+                    if (data.sessions > 0) {
+                        const avgAccuracy = data.totalCount > 0 ? Math.round((data.correctCount / data.totalCount) * 100) : 0;
+
+                        groupAnalyticsData.push({
+                            subject: subjectId,
+                            subjectName: subjects[subjectId]?.name || subjectId,
+                            completionType: 'group_aggregate',
+                            timestamp: Date.now(),
+                            stats: {
+                                accuracy: avgAccuracy,
+                                totalAnswered: data.correctCount,
+                                correctAnswers: data.correctCount,
+                                wrongAnswers: data.totalCount - data.correctCount,
+                                timeSpent: 0 // 그룹 데이터에서는 시간 정보 없음
+                            },
+                            questionCounts: {
+                                easy: 0,
+                                medium: 0,
+                                hard: 0
+                            },
+                            difficultyHistory: []
+                        });
+
+                        totalSessions += data.sessions;
+                    }
+                }
+
+                // 분석 데이터 전역 변수에 할당
+                analyticsData = groupAnalyticsData;
+
+                // 통계 업데이트
+                updateAnalytics();
+
+            } catch (error) {
+                console.error('[Analytics Console] 그룹 분석 데이터 집계 실패:', error);
+            }
+        }
+
         function exportData() {
             const dataStr = JSON.stringify(analyticsData, null, 2);
             const dataBlob = new Blob([dataStr], { type: 'application/json' });
@@ -621,9 +930,20 @@
         }
 
         // 페이지 로드 시 데이터 로드
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             console.log('[Analytics Console] 페이지 로드 - 로컬 데이터 로드 시작');
-            loadLearnerData(); // 로컬 데이터 자동 로드
+
+            // 로컬 데이터 먼저 로드 (Firebase 없이도 작동)
+            loadLearnerData();
+
+            // Firebase 초기화 (비동기, 실패해도 로컬 데이터는 표시됨)
+            setTimeout(async () => {
+                try {
+                    await initFirebase();
+                } catch (error) {
+                    console.error('[Analytics Console] Firebase 초기화 중 오류:', error);
+                }
+            }, 2000); // 2초 후 Firebase 초기화 시도 (Integration이 먼저 초기화되도록)
         });
     </script>
 </body>

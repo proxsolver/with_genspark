@@ -10,7 +10,7 @@
         "She short is."
       ],
       "correctIndex": 2,
-      "explanation": "정답! 누군가의 모습을 설명할 때는 [누가] → [어떤 상태인지] 순서로 말해요. 'She is short.'가 자연스러운 순서랍니다.",
+      "explanation": "누군가의 모습을 설명할 때는 [누가] → [어떤 상태인지] 순서로 말해요. 'She is short.'가 자연스러운 순서랍니다.",
       "difficulty": 2,
       "audioText": "She is short."
     },
@@ -25,7 +25,7 @@
         "They are students."
       ],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 여러 명을 소개할 때는 'They are ~' 순서로 말해요. 'They are students.'!",
+      "explanation": "여러 명을 소개할 때는 'They are ~' 순서로 말해요. 'They are students.'!",
       "difficulty": 2,
       "audioText": "They are students."
     },
@@ -40,7 +40,7 @@
         "Do pizza you like?"
       ],
       "correctIndex": 1,
-      "explanation": "맞았어요! 상대방이 무언가를 좋아하는지 물어볼 때는 'Do you like~?' 라고 시작해요.",
+      "explanation": "상대방이 무언가를 좋아하는지 물어볼 때는 'Do you like~?' 라고 시작해요.",
       "difficulty": 2,
       "audioText": "Do you like pizza?"
     },
@@ -55,7 +55,7 @@
         "I watch TV."
       ],
       "correctIndex": 3,
-      "explanation": "정답! '나는(I)' → '본다(watch)' → 'TV를(TV)' 순서가 맞아요. 'I watch TV.'!",
+      "explanation": "'나는(I)' → '본다(watch)' → 'TV를(TV)' 순서가 맞아요. 'I watch TV.'!",
       "difficulty": 2,
       "audioText": "I watch TV."
     },
@@ -70,7 +70,7 @@
         "He English studies."
       ],
       "correctIndex": 1,
-      "explanation": "최고예요! '그는(He)' → '공부한다(studies)' → '영어를(English)' 순서로 말하면 돼요. 'He studies English.'!",
+      "explanation": "'그는(He)' → '공부한다(studies)' → '영어를(English)' 순서로 말하면 돼요. 'He studies English.'!",
       "difficulty": 2,
       "audioText": "He studies English."
     },
@@ -85,7 +85,7 @@
         "Is this a pencil."
       ],
       "correctIndex": 2,
-      "explanation": "딩동댕! 가까이 있는 물건 하나를 소개할 때는 'This is a ~' 순서로 말해요. 'This is a pencil.'",
+      "explanation": "가까이 있는 물건 하나를 소개할 때는 'This is a ~' 순서로 말해요. 'This is a pencil.'",
       "difficulty": 2,
       "audioText": "This is a pencil."
     },
@@ -100,7 +100,7 @@
         "What is your name?"
       ],
       "correctIndex": 3,
-      "explanation": "맞았어요! 이름을 물어볼 때는 'What is your name?'이라고 한답니다. 정말 자주 쓰는 표현이니 꼭 외워두세요!",
+      "explanation": "이름을 물어볼 때는 'What is your name?'이라고 한답니다. 정말 자주 쓰는 표현이니 꼭 외워두세요!",
       "difficulty": 2,
       "audioText": "What is your name?"
     },
@@ -115,7 +115,7 @@
         "I my room clean."
       ],
       "correctIndex": 0,
-      "explanation": "훌륭해요! '나는(I)' → '청소한다(clean)' → '나의 방을(my room)' 순서가 맞아요.",
+      "explanation": "'나는(I)' → '청소한다(clean)' → '나의 방을(my room)' 순서가 맞아요.",
       "difficulty": 2,
       "audioText": "I clean my room."
     },
@@ -130,7 +130,7 @@
         "Music doesn't she like."
       ],
       "correctIndex": 2,
-      "explanation": "정답! 'He'나 'She'가 무언가를 좋아하지 않는다고 말할 때는 'doesn't like'라고 해요. 'She doesn't like music.'",
+      "explanation": "'He'나 'She'가 무언가를 좋아하지 않는다고 말할 때는 'doesn't like'라고 해요. 'She doesn't like music.'",
       "difficulty": 2,
       "audioText": "She doesn't like music."
     },
@@ -145,7 +145,7 @@
         "We are happy."
       ],
       "correctIndex": 3,
-      "explanation": "최고예요! '우리'의 상태를 말할 때는 [We] → [are] → [어떤 상태인지] 순서로 말해요. 'We are happy.'!",
+      "explanation": "'우리'의 상태를 말할 때는 [We] → [are] → [어떤 상태인지] 순서로 말해요. 'We are happy.'!",
       "difficulty": 2,
       "audioText": "We are happy."
     },
@@ -155,7 +155,7 @@
       "question": "'tomorrow(내일)' 할 일이에요. 빈칸에 알맞은 말은? 'I ____ a movie tomorrow.'",
       "options": ["see", "saw", "will see", "am seeing"],
       "correctIndex": 2,
-      "explanation": "정답! 'tomorrow(내일)'처럼 미래에 할 일은 '~할 것이다'라는 뜻의 'will'을 사용해서 말해요. 'I will see a movie.'",
+      "explanation": "'tomorrow(내일)'처럼 미래에 할 일은 '~할 것이다'라는 뜻의 'will'을 사용해서 말해요. 'I will see a movie.'",
       "difficulty": 2,
       "audioText": "I will see a movie tomorrow."
     },
@@ -165,7 +165,7 @@
       "question": "'Look!(봐!)' 지금 일어나고 있는 일이에요. 빈칸에 알맞은 말은? 'The birds ____.'",
       "options": ["sings", "sang", "are singing", "sing"],
       "correctIndex": 2,
-      "explanation": "맞아요! 지금 일어나고 있는 일을 표현할 때는 'are'와 '-ing'를 함께 써요. '새들이 노래하고 있어.'라는 뜻이랍니다.",
+      "explanation": "지금 일어나고 있는 일을 표현할 때는 'are'와 '-ing'를 함께 써요. '새들이 노래하고 있어.'라는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "The birds are singing."
     },
@@ -175,7 +175,7 @@
       "question": "'last weekend(지난 주말)'에 있었던 일이에요. 빈칸에 알맞은 말은? 'We ____ a cake.'",
       "options": ["make", "makes", "made", "are making"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '만들다(make)'의 과거 모습은 'made'에요. '지난 주말'은 과거이므로 'made'를 써야 한답니다.",
+      "explanation": "'만들다(make)'의 과거 모습은 'made'에요. '지난 주말'은 과거이므로 'made'를 써야 한답니다.",
       "difficulty": 2,
       "audioText": "We made a cake."
     },
@@ -185,7 +185,7 @@
       "question": "매일(every day) 반복하는 습관이에요. 빈칸에 알맞은 말은? 'My father ____ a car.'",
       "options": ["drive", "drives", "drove", "is driving"],
       "correctIndex": 1,
-      "explanation": "딩동댕! 주인공이 'My father(나의 아빠)' 한 명이고, 매일 하는 행동이므로 동사에 '-s'를 붙여 'drives'라고 해야 해요.",
+      "explanation": "주인공이 'My father(나의 아빠)' 한 명이고, 매일 하는 행동이므로 동사에 '-s'를 붙여 'drives'라고 해야 해요.",
       "difficulty": 2,
       "audioText": "My father drives a car."
     },
@@ -195,7 +195,7 @@
       "question": "어제(yesterday) 있었던 일이에요. 빈칸에 알맞은 말은? 'They ____ soccer yesterday.'",
       "options": ["play", "plays", "are playing", "played"],
       "correctIndex": 3,
-      "explanation": "정답! 'yesterday(어제)'는 과거를 나타내요. 'play'의 과거 모습은 '-ed'를 붙여서 'played'라고 쓴답니다.",
+      "explanation": "'yesterday(어제)'는 과거를 나타내요. 'play'의 과거 모습은 '-ed'를 붙여서 'played'라고 쓴답니다.",
       "difficulty": 2,
       "audioText": "They played soccer yesterday."
     },
@@ -205,7 +205,7 @@
       "question": "지금 이 순간(at the moment)에 하고 있는 일이에요. 빈칸에 알맞은 말은? 'She ____ her homework.'",
       "options": ["do", "does", "did", "is doing"],
       "correctIndex": 3,
-      "explanation": "맞아요! '지금 ~하는 중'을 나타낼 때는 'is'와 '-ing'를 함께 써요. 'She is doing her homework.'",
+      "explanation": "'지금 ~하는 중'을 나타낼 때는 'is'와 '-ing'를 함께 써요. 'She is doing her homework.'",
       "difficulty": 2,
       "audioText": "She is doing her homework."
     },
@@ -215,7 +215,7 @@
       "question": "다음 주(next week)에 할 계획이에요. 빈칸에 알맞은 말은? 'He ____ his grandparents next week.'",
       "options": ["visits", "visited", "is visiting", "will visit"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 'next week(다음 주)'는 미래를 나타내므로 '~할 것이다'라는 뜻의 'will'을 사용해요. 'He will visit~'",
+      "explanation": "'next week(다음 주)'는 미래를 나타내므로 '~할 것이다'라는 뜻의 'will'을 사용해요. 'He will visit~'",
       "difficulty": 2,
       "audioText": "He will visit his grandparents next week."
     },
@@ -225,7 +225,7 @@
       "question": "보통(usually) 하는 일이에요. 빈칸에 알맞은 말은? 'I usually ____ up at 7.'",
       "options": ["get", "gets", "got", "am getting"],
       "correctIndex": 0,
-      "explanation": "딩동댕! 'usually(보통)'처럼 평소에 반복하는 일은 동사의 원래 모습을 써요. 주어가 'I'이므로 'get'이 맞아요.",
+      "explanation": "'usually(보통)'처럼 평소에 반복하는 일은 동사의 원래 모습을 써요. 주어가 'I'이므로 'get'이 맞아요.",
       "difficulty": 2,
       "audioText": "I usually get up at 7."
     },
@@ -235,7 +235,7 @@
       "question": "2년 전(two years ago)에 있었던 일이에요. 빈칸에 알맞은 말은? 'We ____ to Jeju Island.'",
       "options": ["travel", "travels", "traveled", "will travel"],
       "correctIndex": 2,
-      "explanation": "정답! '~전에'라는 뜻의 'ago'는 과거를 나타내요. 'travel'에 '-ed'를 붙여 과거형 'traveled'를 만들어주세요.",
+      "explanation": "'~전에'라는 뜻의 'ago'는 과거를 나타내요. 'travel'에 '-ed'를 붙여 과거형 'traveled'를 만들어주세요.",
       "difficulty": 2,
       "audioText": "We traveled to Jeju Island."
     },
@@ -245,7 +245,7 @@
       "question": "지금(Listen!) 일어나고 있는 일이에요. 빈칸에 알맞은 말은? 'Listen! Someone ____ the piano.'",
       "options": ["plays", "played", "is playing", "play"],
       "correctIndex": 2,
-      "explanation": "맞아요! '들어봐!'라고 말하는 것은 지금 무언가가 일어나고 있다는 뜻이죠? 'is playing'을 써서 '누군가 피아노를 치고 있어'라고 표현해요.",
+      "explanation": "'들어봐!'라고 말하는 것은 지금 무언가가 일어나고 있다는 뜻이죠? 'is playing'을 써서 '누군가 피아노를 치고 있어'라고 표현해요.",
       "difficulty": 2,
       "audioText": "Listen! Someone is playing the piano."
     },
@@ -255,7 +255,7 @@
       "question": "친구가 'What's your favorite food?'(가장 좋아하는 음식이 뭐야?)라고 물었어요. 어떻게 대답할까요?",
       "options": ["I am full.", "I like to cook.", "My favorite food is pizza.", "This is delicious."],
       "correctIndex": 2,
-      "explanation": "정답! 가장 좋아하는 음식을 물었으니 'My favorite food is ~'라고 대답하는 것이 가장 좋아요.",
+      "explanation": "가장 좋아하는 음식을 물었으니 'My favorite food is ~'라고 대답하는 것이 가장 좋아요.",
       "difficulty": 2,
       "audioText": "My favorite food is pizza."
     },
@@ -265,7 +265,7 @@
       "question": "넘어져서 아파하는 친구에게 '괜찮니?'라고 물어보는 말은 무엇일까요?",
       "options": ["Are you okay?", "What's wrong?", "Be careful!", "Let's go."],
       "correctIndex": 0,
-      "explanation": "훌륭해요! 상대방의 안부를 물을 때 'Are you okay?'라고 말해요. 걱정하는 마음을 담아 물어봐 주세요.",
+      "explanation": "상대방의 안부를 물을 때 'Are you okay?'라고 말해요. 걱정하는 마음을 담아 물어봐 주세요.",
       "difficulty": 2,
       "audioText": "Are you okay?"
     },
@@ -275,7 +275,7 @@
       "question": "친구가 'Do you want some cookies?'(쿠키 좀 먹을래?)라고 물었어요. 먹고 싶을 때 어떻게 대답할까요?",
       "options": ["No, thanks.", "I'm not hungry.", "Yes, please.", "I don't like cookies."],
       "correctIndex": 2,
-      "explanation": "맞아요! 먹고 싶을 때는 '네, 주세요'라는 뜻의 'Yes, please.'라고 공손하게 대답할 수 있어요.",
+      "explanation": "먹고 싶을 때는 '네, 주세요'라는 뜻의 'Yes, please.'라고 공손하게 대답할 수 있어요.",
       "difficulty": 2,
       "audioText": "Do you want some cookies? Yes, please."
     },
@@ -295,7 +295,7 @@
       "question": "친구가 새로 산 장난감을 보여주며 자랑해요. '와, 멋지다!'라고 감탄하는 말은 무엇일까요?",
       "options": ["It's new.", "I have one, too.", "Wow, that's cool!", "How much is it?"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'Wow, that's cool!'은 '와, 정말 멋지다!'라는 뜻으로, 친구의 기분을 좋게 해주는 칭찬의 말이랍니다.",
+      "explanation": "'Wow, that's cool!'은 '와, 정말 멋지다!'라는 뜻으로, 친구의 기분을 좋게 해주는 칭찬의 말이랍니다.",
       "difficulty": 2,
       "audioText": "Wow, that's cool!"
     },
@@ -305,7 +305,7 @@
       "question": "친구가 'Where are you going?'(어디 가니?)이라고 물었어요. 도서관에 가는 중일 때, 어떻게 대답할까요?",
       "options": ["I'm going to the library.", "I was at the library.", "I like the library.", "This is a library."],
       "correctIndex": 0,
-      "explanation": "맞았어요! '~에 가는 중이다'는 'I'm going to ~'라고 말해요. 도서관은 'library'랍니다.",
+      "explanation": "'~에 가는 중이다'는 'I'm going to ~'라고 말해요. 도서관은 'library'랍니다.",
       "difficulty": 2,
       "audioText": "I'm going to the library."
     },
@@ -315,7 +315,7 @@
       "question": "새 학년에 올라가 처음 만난 친구에게 '만나서 반가워'라고 인사하고 싶어요. 어떻게 말해야 할까요?",
       "options": ["See you later.", "Good morning.", "My name is...", "Nice to meet you."],
       "correctIndex": 3,
-      "explanation": "훌륭해요! 처음 만났을 때 하는 인사는 'Nice to meet you.'에요. 친구를 사귀는 첫 걸음이죠!",
+      "explanation": "처음 만났을 때 하는 인사는 'Nice to meet you.'에요. 친구를 사귀는 첫 걸음이죠!",
       "difficulty": 2,
       "audioText": "Nice to meet you."
     },
@@ -325,7 +325,7 @@
       "question": "친구가 재채기를 해요. '괜찮니?'라는 의미로 할 수 있는 말은 무엇일까요?",
       "options": ["Be quiet.", "That's funny.", "Bless you.", "Thank you."],
       "correctIndex": 2,
-      "explanation": "정답! 영어권에서는 재채기하는 사람에게 'Bless you.'라고 말해주는 문화가 있어요. '신의 축복이 있기를'이라는 뜻에서 유래한 재미있는 표현이랍니다.",
+      "explanation": "영어권에서는 재채기하는 사람에게 'Bless you.'라고 말해주는 문화가 있어요. '신의 축복이 있기를'이라는 뜻에서 유래한 재미있는 표현이랍니다.",
       "difficulty": 2,
       "audioText": "Bless you."
     },
@@ -335,7 +335,7 @@
       "question": "헤어질 때 '나중에 봐!'라고 인사하고 싶어요. 어떻게 말해야 할까요?",
       "options": ["Hello.", "How are you?", "See you later.", "I'm sorry."],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'See you later.'는 헤어질 때 사용하는 인사말로, '나중에 봐!' 또는 '또 보자!'라는 뜻이에요.",
+      "explanation": "'See you later.'는 헤어질 때 사용하는 인사말로, '나중에 봐!' 또는 '또 보자!'라는 뜻이에요.",
       "difficulty": 2,
       "audioText": "See you later."
     },
@@ -345,7 +345,7 @@
       "question": "친구가 'Thank you.'라고 말했어요. '천만에!'라고 대답하고 싶을 때 뭐라고 할까요?",
       "options": ["I'm fine.", "You're welcome.", "Me, too.", "Good luck."],
       "correctIndex": 1,
-      "explanation": "맞아요! 'You're welcome.'은 '고맙다'는 말에 대한 가장 일반적인 대답이에요. '천만에!'라는 뜻이랍니다.",
+      "explanation": "'You're welcome.'은 '고맙다'는 말에 대한 가장 일반적인 대답이에요. '천만에!'라는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "You're welcome."
     },
@@ -355,7 +355,7 @@
       "question": "그림이 벽에 걸려 있어요. 빈칸에 알맞은 말은? 'The picture is ____ the wall.'",
       "options": ["in", "on", "at", "to"],
       "correctIndex": 1,
-      "explanation": "정답! 벽이나 천장처럼 표면에 붙어있는 것을 말할 때는 'on'을 사용해요.",
+      "explanation": "벽이나 천장처럼 표면에 붙어있는 것을 말할 때는 'on'을 사용해요.",
       "difficulty": 2,
       "audioText": "The picture is on the wall."
     },
@@ -365,7 +365,7 @@
       "question": "나는 아침에 조깅을 해. 빈칸에 알맞은 말은? 'I go jogging ____ the morning.'",
       "options": ["on", "at", "in", "by"],
       "correctIndex": 2,
-      "explanation": "맞아요! '아침(morning)', '오후(afternoon)', '저녁(evening)'처럼 비교적 긴 시간대 앞에는 'in'을 사용한답니다.",
+      "explanation": "'아침(morning)', '오후(afternoon)', '저녁(evening)'처럼 비교적 긴 시간대 앞에는 'in'을 사용한답니다.",
       "difficulty": 2,
       "audioText": "I go jogging in the morning."
     },
@@ -375,7 +375,7 @@
       "question": "학교는 9시에 시작해. 빈칸에 알맞은 말은? 'School starts ____ 9 AM.'",
       "options": ["in", "on", "at", "from"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '9시'처럼 정확한 시간을 콕 집어 말할 때는 'at'을 사용해요.",
+      "explanation": "'9시'처럼 정확한 시간을 콕 집어 말할 때는 'at'을 사용해요.",
       "difficulty": 2,
       "audioText": "School starts at 9 AM."
     },
@@ -385,7 +385,7 @@
       "question": "그는 버스를 기다리고 있어. 빈칸에 알맞은 말은? 'He is waiting ____ the bus.'",
       "options": ["to", "for", "at", "of"],
       "correctIndex": 1,
-      "explanation": "딩동댕! '~을 기다리다'는 영어로 'wait for'라고 해요. 'for'와 항상 짝꿍처럼 함께 다닌답니다.",
+      "explanation": "'~을 기다리다'는 영어로 'wait for'라고 해요. 'for'와 항상 짝꿍처럼 함께 다닌답니다.",
       "difficulty": 2,
       "audioText": "He is waiting for the bus."
     },
@@ -395,7 +395,7 @@
       "question": "그녀는 서울 출신이야. 빈칸에 알맞은 말은? 'She is ____ Seoul.'",
       "options": ["in", "at", "from", "on"],
       "correctIndex": 2,
-      "explanation": "정답! '어디 출신이다'라고 말할 때는 '~로부터'라는 뜻의 'from'을 사용해요.",
+      "explanation": "'어디 출신이다'라고 말할 때는 '~로부터'라는 뜻의 'from'을 사용해요.",
       "difficulty": 2,
       "audioText": "She is from Seoul."
     },
@@ -405,7 +405,7 @@
       "question": "고양이가 테이블 아래에서 자고 있어. 빈칸에 알맞은 말은? 'The cat is sleeping ____ the table.'",
       "options": ["on", "under", "in", "at"],
       "correctIndex": 1,
-      "explanation": "맞았어요! '~아래에'라는 위치를 나타낼 때는 'under'를 사용해요.",
+      "explanation": "'~아래에'라는 위치를 나타낼 때는 'under'를 사용해요.",
       "difficulty": 2,
       "audioText": "The cat is sleeping under the table."
     },
@@ -415,7 +415,7 @@
       "question": "나는 크리스마스에 선물을 받아. 빈칸에 알맞은 말은? 'I get presents ____ Christmas Day.'",
       "options": ["in", "at", "on", "for"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '크리스마스'처럼 특별한 날을 콕 집어 말할 때는 'on'을 사용한답니다. 'on your birthday'(너의 생일에) 처럼요!",
+      "explanation": "'크리스마스'처럼 특별한 날을 콕 집어 말할 때는 'on'을 사용한답니다. 'on your birthday'(너의 생일에) 처럼요!",
       "difficulty": 2,
       "audioText": "I get presents on Christmas Day."
     },
@@ -425,7 +425,7 @@
       "question": "그 책은 가방 안에 있어. 빈칸에 알맞은 말은? 'The book is ____ the bag.'",
       "options": ["on", "at", "by", "in"],
       "correctIndex": 3,
-      "explanation": "딩동댕! '~안에'라는 뜻을 가진 단어는 'in'이에요.",
+      "explanation": "'~안에'라는 뜻을 가진 단어는 'in'이에요.",
       "difficulty": 2,
       "audioText": "The book is in the bag."
     },
@@ -435,7 +435,7 @@
       "question": "그는 음악 듣는 것을 잘해. 빈칸에 알맞은 말은? 'He is good ____ listening to music.'",
       "options": ["for", "with", "at", "to"],
       "correctIndex": 2,
-      "explanation": "정답! '~을 잘하다'는 영어로 'be good at'이라고 해요. 덩어리로 외워두면 아주 유용하답니다!",
+      "explanation": "'~을 잘하다'는 영어로 'be good at'이라고 해요. 덩어리로 외워두면 아주 유용하답니다!",
       "difficulty": 2,
       "audioText": "He is good at listening to music."
     },
@@ -445,7 +445,7 @@
       "question": "나는 내 개와 함께 산책해. 빈칸에 알맞은 말은? 'I take a walk ____ my dog.'",
       "options": ["with", "for", "by", "at"],
       "correctIndex": 0,
-      "explanation": "맞아요! '누구와 함께'라는 뜻을 나타낼 때는 'with'를 사용해요.",
+      "explanation": "'누구와 함께'라는 뜻을 나타낼 때는 'with'를 사용해요.",
       "difficulty": 2,
       "audioText": "I take a walk with my dog."
     },
@@ -455,7 +455,7 @@
       "question": "나는 자전거를 탈 수 있어. 영어로 어떻게 말할까요?",
       "options": ["I am ride a bike.", "I can ride a bike.", "I do ride a bike.", "I can't ride a bike."],
       "correctIndex": 1,
-      "explanation": "정답! '~을 탈 수 있다'처럼 능력을 말할 때 'can'을 사용해요. 'I can ride a bike.'",
+      "explanation": "'~을 탈 수 있다'처럼 능력을 말할 때 'can'을 사용해요. 'I can ride a bike.'",
       "difficulty": 2,
       "audioText": "I can ride a bike."
     },
@@ -465,7 +465,7 @@
       "question": "너는 그림을 그릴 수 있니? 라고 물어볼 때 알맞은 문장은 무엇일까요?",
       "options": ["Do you draw a picture?", "Are you draw a picture?", "You can draw a picture?", "Can you draw a picture?"],
       "correctIndex": 3,
-      "explanation": "맞아요! 상대방에게 무언가를 할 수 있는지 물어볼 때는 'Can you ~?'라고 시작해요.",
+      "explanation": "상대방에게 무언가를 할 수 있는지 물어볼 때는 'Can you ~?'라고 시작해요.",
       "difficulty": 2,
       "audioText": "Can you draw a picture?"
     },
@@ -475,7 +475,7 @@
       "question": "그는 요리를 할 수 없어. 영어로 어떻게 말할까요?",
       "options": ["He can't cook.", "He can't cooks.", "He doesn't cook.", "He isn't cook."],
       "correctIndex": 0,
-      "explanation": "훌륭해요! '~할 수 없다'는 'can't'를 쓰고, 뒤에는 행동 단어의 원래 모습(cook)이 와요. 그래서 'He can't cook.'이 정답!",
+      "explanation": "'~할 수 없다'는 'can't'를 쓰고, 뒤에는 행동 단어의 원래 모습(cook)이 와요. 그래서 'He can't cook.'이 정답!",
       "difficulty": 2,
       "audioText": "He can't cook."
     },
@@ -485,7 +485,7 @@
       "question": "우리는 그를 도울 수 있어. 빈칸에 알맞은 말은? 'We ____ help him.'",
       "options": ["are", "do", "can", "is"],
       "correctIndex": 2,
-      "explanation": "딩동댕! '우리'가 무언가를 할 수 있다고 말할 때도 똑같이 'can'을 사용하면 돼요.",
+      "explanation": "'우리'가 무언가를 할 수 있다고 말할 때도 똑같이 'can'을 사용하면 돼요.",
       "difficulty": 2,
       "audioText": "We can help him."
     },
@@ -495,7 +495,7 @@
       "question": "창문 좀 열어줄 수 있나요? 라고 공손하게 부탁하는 말은 무엇일까요?",
       "options": ["Open the window.", "Can you open the window?", "Do you open the window?", "You will open the window."],
       "correctIndex": 1,
-      "explanation": "정답! 'Can you ~?'는 '~해줄 수 있니?'라고 부탁할 때 아주 유용하게 쓸 수 있는 표현이에요.",
+      "explanation": "'Can you ~?'는 '~해줄 수 있니?'라고 부탁할 때 아주 유용하게 쓸 수 있는 표현이에요.",
       "difficulty": 2,
       "audioText": "Can you open the window?"
     },
@@ -505,7 +505,7 @@
       "question": "펭귄은 날 수 없어. 빈칸에 알맞은 말은? 'Penguins ____ fly.'",
       "options": ["can", "don't", "can't", "aren't"],
       "correctIndex": 2,
-      "explanation": "맞아요! 펭귄은 날 수 없으니까, '~할 수 없다'는 뜻의 'can't'를 써야겠죠?",
+      "explanation": "펭귄은 날 수 없으니까, '~할 수 없다'는 뜻의 'can't'를 써야겠죠?",
       "difficulty": 2,
       "audioText": "Penguins can't fly."
     },
@@ -515,7 +515,7 @@
       "question": "나는 컴퓨터 게임을 할 수 있어. 영어로 어떻게 말할까요?",
       "options": ["I am play computer games.", "I do play computer games.", "I can play computer games.", "I play can computer games."],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '~을 할 수 있다'는 'can'을 사용해서 'I can play computer games.'라고 말하면 돼요.",
+      "explanation": "'~을 할 수 있다'는 'can'을 사용해서 'I can play computer games.'라고 말하면 돼요.",
       "difficulty": 2,
       "audioText": "I can play computer games."
     },
@@ -525,7 +525,7 @@
       "question": "그녀는 춤을 출 수 있니? 영어로 어떻게 물어볼까요?",
       "options": ["Does she dance?", "Can she dance?", "Is she dance?", "She can dance?"],
       "correctIndex": 1,
-      "explanation": "정답! 그녀가 무언가를 할 수 있는지 물어볼 때도 문장을 'Can'으로 시작해요. 'Can she dance?'",
+      "explanation": "그녀가 무언가를 할 수 있는지 물어볼 때도 문장을 'Can'으로 시작해요. 'Can she dance?'",
       "difficulty": 2,
       "audioText": "Can she dance?"
     },
@@ -535,7 +535,7 @@
       "question": "나는 그것을 믿을 수 없어! 영어로 어떻게 말할까요?",
       "options": ["I don't believe it.", "I can't believe it.", "I am not believe it.", "I can't believes it."],
       "correctIndex": 1,
-      "explanation": "딩동댕! 놀라운 일을 봤을 때 '믿을 수 없어!'라는 뜻으로 'I can't believe it!'이라고 말할 수 있어요.",
+      "explanation": "놀라운 일을 봤을 때 '믿을 수 없어!'라는 뜻으로 'I can't believe it!'이라고 말할 수 있어요.",
       "difficulty": 2,
       "audioText": "I can't believe it."
     },
@@ -545,7 +545,7 @@
       "question": "너는 나를 볼 수 있니? 빈칸에 알맞은 말은? '____ you see me?'",
       "options": ["Do", "Are", "Can", "Is"],
       "correctIndex": 2,
-      "explanation": "최고예요! '~할 수 있니?'라고 묻는 질문은 'Can'으로 시작한다는 것, 이제 확실히 알겠죠?",
+      "explanation": "'~할 수 있니?'라고 묻는 질문은 'Can'으로 시작한다는 것, 이제 확실히 알겠죠?",
       "difficulty": 2,
       "audioText": "Can you see me?"
     },
@@ -555,7 +555,7 @@
       "question": "이것은 내 공이야. 빈칸에 알맞은 말은? 'This ____ my ball.'",
       "options": ["am", "are", "is", "be"],
       "correctIndex": 2,
-      "explanation": "정답! 'This'나 'That'처럼 하나를 가리킬 때는 짝꿍 'is'를 사용해요.",
+      "explanation": "'This'나 'That'처럼 하나를 가리킬 때는 짝꿍 'is'를 사용해요.",
       "difficulty": 2,
       "audioText": "This is my ball."
     },
@@ -565,7 +565,7 @@
       "question": "그것들은 새들이야. 빈칸에 알맞은 말은? 'They ____ birds.'",
       "options": ["am", "are", "is", "be"],
       "correctIndex": 1,
-      "explanation": "맞아요! 'They'는 '그것들'이라는 뜻도 있어요. 여러 마리니까 짝꿍 'are'를 사용해요.",
+      "explanation": "'They'는 '그것들'이라는 뜻도 있어요. 여러 마리니까 짝꿍 'are'를 사용해요.",
       "difficulty": 2,
       "audioText": "They are birds."
     },
@@ -575,7 +575,7 @@
       "question": "나는 배가 고파. 빈칸에 알맞은 말은? 'I ____ hungry.'",
       "options": ["am", "are", "is", "be"],
       "correctIndex": 0,
-      "explanation": "훌륭해요! 나의 상태를 말할 때도 'I'의 짝꿍 'am'을 사용해요. 'I am hungry.'",
+      "explanation": "나의 상태를 말할 때도 'I'의 짝꿍 'am'을 사용해요. 'I am hungry.'",
       "difficulty": 2,
       "audioText": "I am hungry."
     },
@@ -585,7 +585,7 @@
       "question": "그는 나의 오빠(형)야. 빈칸에 알맞은 말은? 'He ____ my brother.'",
       "options": ["is", "am", "are", "be"],
       "correctIndex": 0,
-      "explanation": "정답! 주인공이 'He' 한 명이니까 짝꿍 'is'를 써야겠죠?",
+      "explanation": "주인공이 'He' 한 명이니까 짝꿍 'is'를 써야겠죠?",
       "difficulty": 2,
       "audioText": "He is my brother."
     },
@@ -595,7 +595,7 @@
       "question": "너희들은 좋은 친구들이야. 빈칸에 알맞은 말은? 'You ____ good friends.'",
       "options": ["am", "is", "be", "are"],
       "correctIndex": 3,
-      "explanation": "딩동댕! 'You'는 '너' 한 명을 뜻할 수도, '너희들' 여러 명을 뜻할 수도 있어요. 하지만 어떤 경우든 짝꿍은 항상 'are'랍니다!",
+      "explanation": "'You'는 '너' 한 명을 뜻할 수도, '너희들' 여러 명을 뜻할 수도 있어요. 하지만 어떤 경우든 짝꿍은 항상 'are'랍니다!",
       "difficulty": 2,
       "audioText": "You are good friends."
     },
@@ -605,7 +605,7 @@
       "question": "오늘은 날씨가 좋아. 빈칸에 알맞은 말은? 'The weather ____ nice today.'",
       "options": ["are", "is", "am", "be"],
       "correctIndex": 1,
-      "explanation": "맞아요! 날씨(The weather)는 셀 수 없는 하나로 생각해서 짝꿍 'is'를 사용해요.",
+      "explanation": "날씨(The weather)는 셀 수 없는 하나로 생각해서 짝꿍 'is'를 사용해요.",
       "difficulty": 2,
       "audioText": "The weather is nice today."
     },
@@ -615,7 +615,7 @@
       "question": "어제는 내 생일이었어. 빈칸에 알맞은 말은? 'Yesterday ____ my birthday.'",
       "options": ["is", "am", "was", "were"],
       "correctIndex": 2,
-      "explanation": "훌륭해요! '어제(Yesterday)'는 과거니까 'is'의 과거 모습인 'was'를 써야 해요.",
+      "explanation": "'어제(Yesterday)'는 과거니까 'is'의 과거 모습인 'was'를 써야 해요.",
       "difficulty": 2,
       "audioText": "Yesterday was my birthday."
     },
@@ -625,7 +625,7 @@
       "question": "우리는 작년에 학생이었어. 빈칸에 알맞은 말은? 'We ____ students last year.'",
       "options": ["are", "is", "was", "were"],
       "correctIndex": 3,
-      "explanation": "정답! '작년(last year)'은 과거이고, 주인공이 '우리(We)' 여러 명이니까 'are'의 과거 모습인 'were'를 써야 해요.",
+      "explanation": "'작년(last year)'은 과거이고, 주인공이 '우리(We)' 여러 명이니까 'are'의 과거 모습인 'were'를 써야 해요.",
       "difficulty": 2,
       "audioText": "We were students last year."
     },
@@ -635,7 +635,7 @@
       "question": "나는 피곤하지 않아. 빈칸에 알맞은 말은? 'I ____ not tired.'",
       "options": ["is", "are", "am", "be"],
       "correctIndex": 2,
-      "explanation": "딩동댕! '~가 아니다'라고 말할 때는 'am/are/is' 바로 뒤에 'not'을 붙여주면 돼요. 'I'의 짝꿍은 'am'이니까 'I am not tired.'",
+      "explanation": "'~가 아니다'라고 말할 때는 'am/are/is' 바로 뒤에 'not'을 붙여주면 돼요. 'I'의 짝꿍은 'am'이니까 'I am not tired.'",
       "difficulty": 2,
       "audioText": "I am not tired."
     },
@@ -645,7 +645,7 @@
       "question": "그녀는 의사가 아니야. 빈칸에 알맞은 말은? 'She ____ a doctor.'",
       "options": ["am not", "is not", "are not", "be not"],
       "correctIndex": 1,
-      "explanation": "맞았어요! 'She'의 짝꿍은 'is'이고, '~가 아니다'라는 뜻의 'not'을 뒤에 붙여 'is not'이 된답니다. 줄여서 'isn't'라고도 말해요.",
+      "explanation": "'She'의 짝꿍은 'is'이고, '~가 아니다'라는 뜻의 'not'을 뒤에 붙여 'is not'이 된답니다. 줄여서 'isn't'라고도 말해요.",
       "difficulty": 2,
       "audioText": "She is not a doctor."
     },
@@ -655,7 +655,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'You is my friend.'",
       "options": ["You", "is", "my", "friend"],
       "correctIndex": 1,
-      "explanation": "정답! 주인공이 'You'일 때는 짝꿍 'are'가 와야 해요. 'is'는 틀렸어요. 'You are my friend.'가 맞아요!",
+      "explanation": "주인공이 'You'일 때는 짝꿍 'are'가 와야 해요. 'is'는 틀렸어요. 'You are my friend.'가 맞아요!",
       "difficulty": 2,
       "audioText": "You are my friend."
     },
@@ -665,7 +665,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'He play soccer every day.'",
       "options": ["He", "play", "soccer", "every day"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! 주인공이 'He'일 때는 행동을 나타내는 단어에 '-s'를 붙여줘야 해요. 'play'가 아니라 'plays'가 맞아요. 'He plays soccer every day.'!",
+      "explanation": "주인공이 'He'일 때는 행동을 나타내는 단어에 '-s'를 붙여줘야 해요. 'play'가 아니라 'plays'가 맞아요. 'He plays soccer every day.'!",
       "difficulty": 2,
       "audioText": "He plays soccer every day."
     },
@@ -675,7 +675,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'She will went to the zoo.'",
       "options": ["She", "will", "went", "the zoo"],
       "correctIndex": 2,
-      "explanation": "맞았어요! '~할 것이다'라는 'will' 다음에는 행동 단어의 원래 모습이 와야 해요. 'went'가 아니라 'go'를 써야 해요. 'She will go to the zoo.'!",
+      "explanation": "'~할 것이다'라는 'will' 다음에는 행동 단어의 원래 모습이 와야 해요. 'went'가 아니라 'go'를 써야 해요. 'She will go to the zoo.'!",
       "difficulty": 2,
       "audioText": "She will go to the zoo."
     },
@@ -685,7 +685,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'We was happy yesterday.'",
       "options": ["We", "was", "happy", "yesterday"],
       "correctIndex": 1,
-      "explanation": "정답! '어제(yesterday)'는 과거이고 주인공 'We(우리)'는 여러 명이니까, 'are'의 과거 모습인 'were'를 써야 해요. 'was'는 한 명일 때 쓴답니다.",
+      "explanation": "'어제(yesterday)'는 과거이고 주인공 'We(우리)'는 여러 명이니까, 'are'의 과거 모습인 'were'를 써야 해요. 'was'는 한 명일 때 쓴답니다.",
       "difficulty": 2,
       "audioText": "We were happy yesterday."
     },
@@ -695,7 +695,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'I have a two dogs.'",
       "options": ["I", "have", "a", "two dogs"],
       "correctIndex": 2,
-      "explanation": "딩동댕! 'two dogs'는 강아지가 두 마리, 즉 여러 마리라는 뜻이죠? '하나'를 뜻하는 'a'를 같이 쓸 수 없어요. 'I have two dogs.'라고 해야 맞아요.",
+      "explanation": "'two dogs'는 강아지가 두 마리, 즉 여러 마리라는 뜻이죠? '하나'를 뜻하는 'a'를 같이 쓸 수 없어요. 'I have two dogs.'라고 해야 맞아요.",
       "difficulty": 2,
       "audioText": "I have two dogs."
     },
@@ -705,7 +705,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'He can't plays soccer.'",
       "options": ["He", "can't", "plays", "soccer"],
       "correctIndex": 2,
-      "explanation": "맞아요! 'can't' 다음에는 행동 단어의 원래 모습이 와야 해요. '-s'를 붙인 'plays'는 틀렸어요. 'He can't play soccer.'가 맞답니다.",
+      "explanation": "'can't' 다음에는 행동 단어의 원래 모습이 와야 해요. '-s'를 붙인 'plays'는 틀렸어요. 'He can't play soccer.'가 맞답니다.",
       "difficulty": 2,
       "audioText": "He can't play soccer."
     },
@@ -715,7 +715,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'They is reading books.'",
       "options": ["They", "is", "reading", "books"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! 주인공 'They(그들)'는 여러 명이니까 'is'가 아니라 짝꿍 'are'를 써야 해요. 'They are reading books.'!",
+      "explanation": "주인공 'They(그들)'는 여러 명이니까 'is'가 아니라 짝꿍 'are'를 써야 해요. 'They are reading books.'!",
       "difficulty": 2,
       "audioText": "They are reading books."
     },
@@ -725,7 +725,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'She don't have a pencil.'",
       "options": ["She", "don't", "have", "a pencil"],
       "correctIndex": 1,
-      "explanation": "정답! 주인공이 'He'나 'She'일 때는 '~하지 않는다'를 'don't'가 아니라 'doesn't'라고 말해요. 'She doesn't have a pencil.'이 맞아요.",
+      "explanation": "주인공이 'He'나 'She'일 때는 '~하지 않는다'를 'don't'가 아니라 'doesn't'라고 말해요. 'She doesn't have a pencil.'이 맞아요.",
       "difficulty": 2,
       "audioText": "She doesn't have a pencil."
     },
@@ -735,7 +735,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'I like a cat's.'",
       "options": ["I", "like", "a", "cat's"],
       "correctIndex": 3,
-      "explanation": "딩동댕! 고양이 여러 마리를 뜻할 때는 'cats'라고 써야 해요. 'cat's'는 '고양이의'라는 뜻이랍니다. 'I like cats.'가 더 자연스러워요.",
+      "explanation": "고양이 여러 마리를 뜻할 때는 'cats'라고 써야 해요. 'cat's'는 '고양이의'라는 뜻이랍니다. 'I like cats.'가 더 자연스러워요.",
       "difficulty": 2,
       "audioText": "I like cats."
     },
@@ -745,7 +745,7 @@
       "question": "다음 문장에서 어색하거나 틀린 단어는 무엇일까요? 'We are play outside.'",
       "options": ["We", "are", "play", "outside"],
       "correctIndex": 2,
-      "explanation": "맞았어요! 'are'가 있을 때는 뒤에 오는 행동 단어에 '-ing'를 붙여서 '~하는 중이다'라고 말해야 해요. 'We are playing outside.'가 맞아요.",
+      "explanation": "'are'가 있을 때는 뒤에 오는 행동 단어에 '-ing'를 붙여서 '~하는 중이다'라고 말해야 해요. 'We are playing outside.'가 맞아요.",
       "difficulty": 2,
       "audioText": "We are playing outside."
     },
@@ -755,7 +755,7 @@
       "question": "두 문장을 'and'로 자연스럽게 연결한 것을 고르세요. (1) 나는 달린다. (2) 나는 점프한다.",
       "options": ["I run and jump.", "I run but jump.", "I run or jump.", "I run so jump."],
       "correctIndex": 0,
-      "explanation": "정답! 내가 하는 행동 두 가지를 연결할 때 'and'를 사용해서 '나는 달리고 점프한다.'라고 말할 수 있어요.",
+      "explanation": "내가 하는 행동 두 가지를 연결할 때 'and'를 사용해서 '나는 달리고 점프한다.'라고 말할 수 있어요.",
       "difficulty": 2,
       "audioText": "I run and jump."
     },
@@ -765,7 +765,7 @@
       "question": "문장을 완성하세요. 'It is sunny ____ warm.'",
       "options": ["or", "but", "so", "and"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! '화창하다'와 '따뜻하다'는 둘 다 좋은 날씨죠? 이렇게 비슷한 내용을 더할 때 'and'를 사용해요. '날씨가 화창하고 따뜻하다.'",
+      "explanation": "'화창하다'와 '따뜻하다'는 둘 다 좋은 날씨죠? 이렇게 비슷한 내용을 더할 때 'and'를 사용해요. '날씨가 화창하고 따뜻하다.'",
       "difficulty": 2,
       "audioText": "It is sunny and warm."
     },
@@ -775,7 +775,7 @@
       "question": "두 문장을 'and'로 자연스럽게 연결한 것을 고르세요. (1) 그는 책을 샀다. (2) 그는 펜을 샀다.",
       "options": ["He bought a book but a pen.", "He bought a book and a pen.", "He bought a book or a pen.", "He bought a book so a pen."],
       "correctIndex": 1,
-      "explanation": "맞았어요! 두 가지 물건을 샀을 때, 'and'를 사용해서 '그는 책과 펜을 샀다.'라고 말할 수 있어요.",
+      "explanation": "두 가지 물건을 샀을 때, 'and'를 사용해서 '그는 책과 펜을 샀다.'라고 말할 수 있어요.",
       "difficulty": 2,
       "audioText": "He bought a book and a pen."
     },
@@ -785,7 +785,7 @@
       "question": "문장을 완성하세요. 'She is smart ____ kind.'",
       "options": ["and", "but", "or", "so"],
       "correctIndex": 0,
-      "explanation": "딩동댕! '똑똑하다'와 '친절하다' 둘 다 좋은 점이죠? 'and'를 사용해서 '그녀는 똑똑하고 친절하다'라고 칭찬할 수 있어요.",
+      "explanation": "'똑똑하다'와 '친절하다' 둘 다 좋은 점이죠? 'and'를 사용해서 '그녀는 똑똑하고 친절하다'라고 칭찬할 수 있어요.",
       "difficulty": 2,
       "audioText": "She is smart and kind."
     },
@@ -795,7 +795,7 @@
       "question": "두 문장을 'and'로 자연스럽게 연결한 것을 고르세요. (1) 손을 씻어라. (2) 얼굴을 씻어라.",
       "options": ["Wash your hands and your face.", "Wash your hands but your face.", "Wash your hands or your face.", "Wash your hands so your face."],
       "correctIndex": 0,
-      "explanation": "정답! 두 가지 행동을 연달아 말할 때 'and'를 사용할 수 있어요. '손과 얼굴을 씻어라.'",
+      "explanation": "두 가지 행동을 연달아 말할 때 'and'를 사용할 수 있어요. '손과 얼굴을 씻어라.'",
       "difficulty": 2,
       "audioText": "Wash your hands and your face."
     },
@@ -805,7 +805,7 @@
       "question": "'엄마와 아빠'를 영어로 바르게 표현한 것은?",
       "options": ["mother but father", "mother or father", "mother and father", "mother so father"],
       "correctIndex": 2,
-      "explanation": "맞아요! 두 사람을 함께 말할 때도 'and'를 사용해서 'mother and father'라고 해요.",
+      "explanation": "두 사람을 함께 말할 때도 'and'를 사용해서 'mother and father'라고 해요.",
       "difficulty": 2,
       "audioText": "mother and father"
     },
@@ -815,7 +815,7 @@
       "question": "문장을 완성하세요. 'Come here ____ sit down.'",
       "options": ["but", "so", "or", "and"],
       "correctIndex": 3,
-      "explanation": "훌륭해요! '이리 와서 앉아라'처럼 두 가지 행동을 순서대로 말할 때도 'and'를 사용할 수 있어요.",
+      "explanation": "'이리 와서 앉아라'처럼 두 가지 행동을 순서대로 말할 때도 'and'를 사용할 수 있어요.",
       "difficulty": 2,
       "audioText": "Come here and sit down."
     },
@@ -830,7 +830,7 @@
         "I get up so eat breakfast."
       ],
       "correctIndex": 0,
-      "explanation": "정답! 아침에 일어나는 일들을 순서대로 말할 때 '그리고'라는 뜻의 'and'를 사용해서 연결할 수 있어요. 주어가 같아서 'I'를 한 번만 써도 된답니다.",
+      "explanation": "아침에 일어나는 일들을 순서대로 말할 때 '그리고'라는 뜻의 'and'를 사용해서 연결할 수 있어요. 주어가 같아서 'I'를 한 번만 써도 된답니다.",
       "difficulty": 2,
       "audioText": "I get up and eat breakfast."
     },
@@ -840,7 +840,7 @@
       "question": "문장을 완성하세요. 'I can read ____ write.'",
       "options": ["but", "and", "or", "so"],
       "correctIndex": 1,
-      "explanation": "딩동댕! '나는 읽고 쓸 수 있다'처럼 내가 할 수 있는 두 가지 행동을 연결할 때 'and'를 사용해요.",
+      "explanation": "'나는 읽고 쓸 수 있다'처럼 내가 할 수 있는 두 가지 행동을 연결할 때 'and'를 사용해요.",
       "difficulty": 2,
       "audioText": "I can read and write."
     },
@@ -855,7 +855,7 @@
         "He is big so strong."
       ],
       "correctIndex": 2,
-      "explanation": "맞아요! '크다'와 '강하다' 둘 다 그의 특징이죠? 'and'를 사용해서 '그는 크고 강하다'라고 말할 수 있어요.",
+      "explanation": "'크다'와 '강하다' 둘 다 그의 특징이죠? 'and'를 사용해서 '그는 크고 강하다'라고 말할 수 있어요.",
       "difficulty": 2,
       "audioText": "He is big and strong."
     },
@@ -870,7 +870,7 @@
         "He is running."
       ],
       "correctIndex": 1,
-      "explanation": "정답! '자전거를 타다'는 'ride a bike'라고 해요. 'He is riding a bike.'",
+      "explanation": "'자전거를 타다'는 'ride a bike'라고 해요. 'He is riding a bike.'",
       "difficulty": 2,
       "audioText": "He is riding a bike."
     },
@@ -885,7 +885,7 @@
         "The ball is under the desk."
       ],
       "correctIndex": 3,
-      "explanation": "훌륭해요! '~아래에'는 'under'라고 해요. 'The ball is under the desk.'는 '공이 책상 아래에 있다'는 뜻이에요.",
+      "explanation": "'~아래에'는 'under'라고 해요. 'The ball is under the desk.'는 '공이 책상 아래에 있다'는 뜻이에요.",
       "difficulty": 2,
       "audioText": "The ball is under the desk."
     },
@@ -900,7 +900,7 @@
         "It is cloudy."
       ],
       "correctIndex": 2,
-      "explanation": "맞아요! 눈이 오는 날씨를 'snowy'라고 해요. 'It is snowy.'는 '눈이 온다.'는 뜻이랍니다.",
+      "explanation": "눈이 오는 날씨를 'snowy'라고 해요. 'It is snowy.'는 '눈이 온다.'는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "It is snowy."
     },
@@ -915,7 +915,7 @@
         "She is writing."
       ],
       "correctIndex": 2,
-      "explanation": "딩동댕! 그림을 그리는 행동은 'drawing'이라고 해요. 'She is drawing.'은 '그녀는 그림을 그리고 있는 중이다.'는 뜻이에요.",
+      "explanation": "그림을 그리는 행동은 'drawing'이라고 해요. 'She is drawing.'은 '그녀는 그림을 그리고 있는 중이다.'는 뜻이에요.",
       "difficulty": 2,
       "audioText": "She is drawing."
     },
@@ -930,7 +930,7 @@
         "He is standing on the sofa."
       ],
       "correctIndex": 1,
-      "explanation": "정답! '앉아있다'는 'sit'이라고 해요. 'He is sitting on the sofa.'는 '그는 소파에 앉아 있다.'는 뜻이랍니다.",
+      "explanation": "'앉아있다'는 'sit'이라고 해요. 'He is sitting on the sofa.'는 '그는 소파에 앉아 있다.'는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "He is sitting on the sofa."
     },
@@ -945,7 +945,7 @@
         "She is smelling flowers."
       ],
       "correctIndex": 0,
-      "explanation": "맞아요! 'water'는 '물'이라는 뜻도 있지만, '물을 주다'라는 행동을 나타내기도 해요. 'She is watering the flowers.'",
+      "explanation": "'water'는 '물'이라는 뜻도 있지만, '물을 주다'라는 행동을 나타내기도 해요. 'She is watering the flowers.'",
       "difficulty": 2,
       "audioText": "She is watering the flowers."
     },
@@ -960,7 +960,7 @@
         "They are reading a newspaper."
       ],
       "correctIndex": 2,
-      "explanation": "훌륭해요! 'TV를 보다'는 'watch TV'라고 해요. 'They are watching TV.'는 '그들은 TV를 보고 있다.'는 뜻이랍니다.",
+      "explanation": "'TV를 보다'는 'watch TV'라고 해요. 'They are watching TV.'는 '그들은 TV를 보고 있다.'는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "They are watching TV."
     },
@@ -975,7 +975,7 @@
         "He is talking on the phone."
       ],
       "correctIndex": 3,
-      "explanation": "정답! '전화 통화를 하다'는 'talk on the phone'이라고 해요. 'He is talking on the phone.'",
+      "explanation": "'전화 통화를 하다'는 'talk on the phone'이라고 해요. 'He is talking on the phone.'",
       "difficulty": 2,
       "audioText": "He is talking on the phone."
     },
@@ -990,7 +990,7 @@
         "It is cloudy."
       ],
       "correctIndex": 3,
-      "explanation": "맞아요! 구름이 많이 낀 날씨를 'cloudy'라고 해요. 'It is cloudy.'는 '날씨가 흐리다.'는 뜻이랍니다.",
+      "explanation": "구름이 많이 낀 날씨를 'cloudy'라고 해요. 'It is cloudy.'는 '날씨가 흐리다.'는 뜻이랍니다.",
       "difficulty": 2,
       "audioText": "It is cloudy."
     },
@@ -1005,7 +1005,7 @@
         "He is tired."
       ],
       "correctIndex": 0,
-      "explanation": "딩동댕! '잠을 자다'는 'sleep'이라고 해요. 'He is sleeping.'은 '그는 잠을 자고 있다.'는 뜻이에요.",
+      "explanation": "'잠을 자다'는 'sleep'이라고 해요. 'He is sleeping.'은 '그는 잠을 자고 있다.'는 뜻이에요.",
       "difficulty": 2,
       "audioText": "He is sleeping."
     },
@@ -1015,7 +1015,7 @@
       "question": "대답: 'He is my father.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What is he?", "Where is he?", "Who is he?", "How is he?"],
       "correctIndex": 2,
-      "explanation": "정답! '저 분은 누구시니?'처럼 사람에 대해 물어볼 때는 'Who'를 사용해요. 'Who is he?'",
+      "explanation": "'저 분은 누구시니?'처럼 사람에 대해 물어볼 때는 'Who'를 사용해요. 'Who is he?'",
       "difficulty": 2,
       "audioText": "Who is he?"
     },
@@ -1025,7 +1025,7 @@
       "question": "대답: 'I'm from Canada.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What is your name?", "How are you?", "Where are you from?", "How old are you?"],
       "correctIndex": 2,
-      "explanation": "맞아요! '어느 나라에서 왔니?'라고 출신을 물어볼 때는 'Where are you from?'이라고 해요.",
+      "explanation": "'어느 나라에서 왔니?'라고 출신을 물어볼 때는 'Where are you from?'이라고 해요.",
       "difficulty": 2,
       "audioText": "Where are you from?"
     },
@@ -1035,7 +1035,7 @@
       "question": "대답: 'It's a pencil.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["How is it?", "What is it?", "Where is it?", "Who is it?"],
       "correctIndex": 1,
-      "explanation": "훌륭해요! '이게 뭐니?'라고 사물에 대해 물어볼 때는 'What is it?' 또는 'What is this?'라고 물어봐요.",
+      "explanation": "'이게 뭐니?'라고 사물에 대해 물어볼 때는 'What is it?' 또는 'What is this?'라고 물어봐요.",
       "difficulty": 2,
       "audioText": "What is it?"
     },
@@ -1045,7 +1045,7 @@
       "question": "대답: 'I'm looking for my bag.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What are you doing?", "Where is your bag?", "What is in your bag?", "Do you have a bag?"],
       "correctIndex": 0,
-      "explanation": "딩동댕! '~을 찾고 있다(looking for)'는 행동을 하고 있으므로, '무엇을 하고 있니?(What are you doing?)'라고 물어보는 것이 가장 자연스러워요.",
+      "explanation": "'~을 찾고 있다(looking for)'는 행동을 하고 있으므로, '무엇을 하고 있니?(What are you doing?)'라고 물어보는 것이 가장 자연스러워요.",
       "difficulty": 2,
       "audioText": "What are you doing?"
     },
@@ -1055,7 +1055,7 @@
       "question": "대답: 'My favorite season is spring.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["Do you like spring?", "When is spring?", "What's your favorite season?", "Why do you like spring?"],
       "correctIndex": 2,
-      "explanation": "정답! '가장 좋아하는 계절이 뭐니?'라고 물어볼 때는 'What's your favorite season?'이라고 해요.",
+      "explanation": "'가장 좋아하는 계절이 뭐니?'라고 물어볼 때는 'What's your favorite season?'이라고 해요.",
       "difficulty": 2,
       "audioText": "What's your favorite season?"
     },
@@ -1065,7 +1065,7 @@
       "question": "대답: 'It's under the table.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What is under the table?", "Is it under the table?", "Where is it?", "Who is under the table?"],
       "correctIndex": 2,
-      "explanation": "맞았어요! '테이블 아래에'라고 위치를 대답했으니, '그거 어디에 있니?'라고 묻는 'Where is it?'이 올바른 질문이에요.",
+      "explanation": "'테이블 아래에'라고 위치를 대답했으니, '그거 어디에 있니?'라고 묻는 'Where is it?'이 올바른 질문이에요.",
       "difficulty": 2,
       "audioText": "Where is it?"
     },
@@ -1075,7 +1075,7 @@
       "question": "대답: 'It's 10 o'clock.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What time is it?", "Is it 10?", "When is it?", "How is the time?"],
       "correctIndex": 0,
-      "explanation": "훌륭해요! 시간을 물어볼 때는 'What time is it?'이라고 한답니다.",
+      "explanation": "시간을 물어볼 때는 'What time is it?'이라고 한답니다.",
       "difficulty": 2,
       "audioText": "What time is it?"
     },
@@ -1085,7 +1085,7 @@
       "question": "대답: 'Because I'm happy.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["Are you happy?", "Why are you smiling?", "What is happy?", "When are you happy?"],
       "correctIndex": 1,
-      "explanation": "정답! 'Because(왜냐하면)'로 대답했다는 건, 'Why(왜)?'라고 이유를 물어봤다는 뜻이에요. 'Why are you smiling?' - '왜 웃고 있니?'",
+      "explanation": "'Because(왜냐하면)'로 대답했다는 건, 'Why(왜)?'라고 이유를 물어봤다는 뜻이에요. 'Why are you smiling?' - '왜 웃고 있니?'",
       "difficulty": 2,
       "audioText": "Why are you smiling?"
     },
@@ -1095,7 +1095,7 @@
       "question": "대답: 'I go to school by bus.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["Do you go to school?", "When do you go to school?", "Where do you go?", "How do you go to school?"],
       "correctIndex": 3,
-      "explanation": "딩동댕! '버스를 타고'라고 방법을 대답했으니, '어떻게' 가는지 묻는 'How do you go to school?'이 올바른 질문이에요.",
+      "explanation": "'버스를 타고'라고 방법을 대답했으니, '어떻게' 가는지 묻는 'How do you go to school?'이 올바른 질문이에요.",
       "difficulty": 2,
       "audioText": "How do you go to school?"
     },
@@ -1105,7 +1105,7 @@
       "question": "대답: 'I want some water.' 이 대답을 듣기 위한 질문은 무엇일까요?",
       "options": ["What do you want?", "Do you want water?", "Is it water?", "Why do you want water?"],
       "correctIndex": 0,
-      "explanation": "맞아요! '물을 원한다'고 대답했으니, '무엇을 원하니?'라고 묻는 'What do you want?'이 가장 자연스러운 질문이랍니다.",
+      "explanation": "'물을 원한다'고 대답했으니, '무엇을 원하니?'라고 묻는 'What do you want?'이 가장 자연스러운 질문이랍니다.",
       "difficulty": 2,
       "audioText": "What do you want?"
     }
