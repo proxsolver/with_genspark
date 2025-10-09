@@ -25,14 +25,17 @@ async function initFirebase() {
         }
 
         // Firebase 앱 초기화
-        if (!firebase_app) {
-            firebase_app = firebase.initializeApp(firebaseConfig);
-            firebase_db = firebase.database();
-            firebase_auth = firebase.auth();
-            
-            console.log('Firebase 초기화 완료');
-        }
-        
+                    if (!firebase_app) {
+                        firebase_app = firebase.initializeApp(firebaseConfig);
+                        firebase_db = firebase.database();
+                        firebase_auth = firebase.auth();
+                        
+                        console.log('Firebase 초기화 완료');
+                        // eduPetAuth가 Firebase 초기화 완료를 기다리도록 신호 보냄
+                        if (typeof eduPetAuth !== 'undefined' && eduPetAuth.resolveAuthReady) {
+                            eduPetAuth.resolveAuthReady();
+                        }
+                    }        
         return true;
     } catch (error) {
         console.error('Firebase 초기화 실패:', error);

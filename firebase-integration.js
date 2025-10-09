@@ -19,15 +19,8 @@ class EduPetFirebaseIntegration {
             if (firebaseReady) {
                 this.isFirebaseReady = true;
                 
-                // eduPetAuth가 정의될 때까지 기다립니다.
-                await new Promise(resolve => {
-                    const interval = setInterval(() => {
-                        if (typeof eduPetAuth !== 'undefined') {
-                            clearInterval(interval);
-                            resolve();
-                        }
-                    }, 50);
-                });
+                // eduPetAuth가 Firebase 초기화 완료를 기다리도록 합니다.
+                await eduPetAuth.waitForAuthInit();
 
                 // 익명 로그인 시도
                 if (!eduPetAuth.currentUser) {

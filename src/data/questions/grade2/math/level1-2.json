@@ -137,28 +137,28 @@
   {
     "id": "math_easy_6_1",
     "subject": "수학",
-    "question": "📐 딱풀의 길이는 9 $\\text{cm}$이고, 지우개의 길이는 3 $\\text{cm}$예요. 딱풀과 지우개의 길이를 더하면 몇 $\\text{cm}$일까요?",
-    "options": ["12 $\\text{cm}$", "6 $\\text{cm}$", "11 $\\text{cm}$", "12 $\\text{m}$"],
+    "question": "📐 딱풀의 길이는 9 ${cm}$이고, 지우개의 길이는 3 ${cm}$예요. 딱풀과 지우개의 길이를 더하면 몇 ${cm}$일까요?",
+    "options": ["12 ${cm}$", "6 ${cm}$", "11 ${cm}$", "12 ${m}$"],
     "correctIndex": 0,
-    "explanation": "9 $\\text{cm}$와 3 $\\text{cm}$를 더하면 $9 + 3 = 12$ $\\text{cm}$입니다. 단위를 통일해서 더해야 해요! 📏",
+    "explanation": "9 ${cm}$와 3 ${cm}$를 더하면 $9 + 3 = 12$ ${cm}$입니다. 단위를 통일해서 더해야 해요! 📏",
     "difficulty": 1
   },
   {
     "id": "math_easy_6_2",
     "subject": "수학",
-    "question": "🧵 실타래 두 개를 이어 붙였어요. 첫 번째 실은 25 $\\text{cm}$, 두 번째 실은 34 $\\text{cm}$예요. 이어진 실의 총 길이는 몇 $\\text{cm}$일까요?",
-    "options": ["59 $\\text{cm}$", "49 $\\text{cm}$", "50 $\\text{cm}$", "9 $\\text{cm}$"],
+    "question": "🧵 실타래 두 개를 이어 붙였어요. 첫 번째 실은 25 ${cm}$, 두 번째 실은 34 ${cm}$예요. 이어진 실의 총 길이는 몇 ${cm}$일까요?",
+    "options": ["59 ${cm}$", "49 ${cm}$", "50 ${cm}$", "9 ${cm}$"],
     "correctIndex": 0,
-    "explanation": "$25 + 34 = 59$ $\\text{cm}$입니다. 길이를 재는 단위 $\\text{cm}$를 잊지 마세요! ✂️",
+    "explanation": "$25 + 34 = 59$ ${cm}$입니다. 길이를 재는 단위 ${cm}$를 잊지 마세요! ✂️",
     "difficulty": 1
   },
   {
     "id": "math_easy_6_3",
     "subject": "수학",
-    "question": "🧍 내가 가진 자는 30 $\\text{cm}$예요. 연필꽂이의 높이는 17 $\\text{cm}$입니다. 자가 연필꽂이보다 몇 $\\text{cm}$ 더 길까요?",
-    "options": ["13 $\\text{cm}$", "47 $\\text{cm}$", "23 $\\text{cm}$", "30 $\\text{cm}$"],
+    "question": "🧍 내가 가진 자는 30 ${cm}$예요. 연필꽂이의 높이는 17 ${cm}$입니다. 자가 연필꽂이보다 몇 ${cm}$ 더 길까요?",
+    "options": ["13 ${cm}$", "47 ${cm}$", "23 ${cm}$", "30 ${cm}$"],
     "correctIndex": 0,
-    "explanation": "길이의 차이는 뺄셈으로 구해요. $30 - 17 = 13$ $\\text{cm}$입니다. 📐",
+    "explanation": "길이의 차이는 뺄셈으로 구해요. $30 - 17 = 13$ ${cm}$입니다. 📐",
     "difficulty": 1
   },
   {
