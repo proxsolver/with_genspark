@@ -76,12 +76,15 @@ npm run lint         # Run ESLint
 - 3 subjects → 1 growth ticket
 - 5 subjects → 1 normal gacha ticket
 - 6 subjects → 1 additional growth ticket
-- 9 subjects → 1 premium gacha ticket + 1 growth ticket
+- 9 subjects → 1 premium gacha ticket (no additional growth ticket)
 
 **Growth mechanics:**
-- Plants require 20 water + 24 hours to become READY
-- Growth tickets expire after 24 hours
-- Use `plantSystem.completeSubject(user, subjectId, subjectName)` to grant rewards
+- **4-stage growth system:** 🌰 씨앗(Stage 0) → 🌱 줄기(Stage 1) → 🌳 나무(Stage 2) → 🌺 열매/꽃(Stage 3)
+- **Watering:** Each stage requires **5 water** to advance (total 20 water across all stages)
+- **No time requirement:** Plants grow immediately when water requirements are met
+- **Learning mode watering:** Click plant → View weakness subject question with answer/explanation → Confirm understanding → Water plant (+1 water)
+- **Stage-based growth:** Plant auto-advances to next stage when 5 water is reached
+- **Harvest:** When Stage 3 (완성) is reached, plant can be harvested for **100 coins**
 
 **Money system:**
 ```javascript
@@ -90,6 +93,11 @@ plantSystem.addMoney(100)        // Add money (e.g., harvest)
 plantSystem.spendMoney(100)      // Spend money (returns {success, currentMoney})
 plantSystem.setMoney(100)        // Set money (admin only)
 ```
+
+**Coin earning:**
+- **Quiz completion:** Earn coins based on difficulty (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
+- **Plant harvest:** 100 coins per harvested plant
+- **Coins stored in:** `user.wallet.money` via PlantSystem
 
 #### 2. Learning System
 
@@ -125,6 +133,11 @@ plantSystem.setMoney(100)        // Set money (admin only)
 - Normal tickets (5 subjects): Common 60%, Rare 30%, Epic 9%, Legendary 1%
 - Premium tickets (9 subjects): Common 5%, Rare 62%, Epic 30%, Legendary 3%
 
+**Ticket purchasing with coins:**
+- **Normal gacha ticket:** 100 coins
+- **Premium gacha ticket:** 500 coins
+- Purchase buttons available in `animal-collection.html`
+
 **Reading tickets:**
 ```javascript
 // animal-collection.html uses this pattern
@@ -143,6 +156,17 @@ function getTicketsFromPlantSystem() {
 const userData = plantSystem.getUserData();
 userData.rewards.premiumGachaTickets--;
 plantSystem.saveUserData(userData);
+```
+
+**Buying tickets with coins:**
+```javascript
+// Use plantSystem.spendMoney() to deduct coins
+const result = plantSystem.spendMoney(100); // for normal ticket
+if (result.success) {
+    const user = plantSystem.getUserData();
+    user.rewards.normalGachaTickets++;
+    plantSystem.saveUserData(user);
+}
 ```
 
 #### 5. Firebase Integration (`firebase-integration.js`)
@@ -197,14 +221,23 @@ plantSystem.saveUserData(userData);
 
 ### Learning Rewards Flow
 ```
-Daily Study → Complete Subjects → Earn Rewards
+Daily Study → Complete Subjects → Earn Rewards & Coins
+├── Quiz completion → Earn coins (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
 ├── 3 subjects → 1 growth ticket
 ├── 5 subjects → 1 normal gacha ticket
 ├── 6 subjects → 1 growth ticket (additional)
-└── 9 subjects → 1 premium gacha ticket + 1 growth ticket
+└── 9 subjects → 1 premium gacha ticket
 
-Growth Ticket → Use within 24h → Plant advances 1 stage
-Plant Growth → 5 stages → Harvest → Virtual currency
+Plant Growth System:
+1. Plant seed (무료)
+2. Click plant → View weakness question with answer/explanation (5초 읽기)
+3. Confirm understanding → Water +1
+4. Repeat 5 times per stage → Auto-advance to next stage
+5. After 4 stages (20 water total) → Harvest for 100 coins
+
+Coin Usage:
+├── Buy normal gacha ticket (100 coins)
+└── Buy premium gacha ticket (500 coins)
 ```
 
 ### Tutorial Flow (CRITICAL)
@@ -300,7 +333,7 @@ Setup documented in `FIREBASE_SETUP.md`:
 - **Main branch:** Use `main` for PRs, current development on `gemini` branch
 - **HTML-first:** Prioritize HTML files over Next.js components
 - **Date handling:** Always use Asia/Seoul timezone
-- **Plant stages:** 🌰 → 🌱 → 🌿 → 🌸 → 🍎
+- **Plant stages:** 🌰 씨앗(Stage 0) → 🌱 줄기(Stage 1) → 🌳 나무(Stage 2) → 🌺 열매/꽃(Stage 3)
 - **Question loading:** Odd/even day logic for file selection
 
 ## Style & Design System

@@ -110,12 +110,30 @@
         .achievement-popup {
             animation: achievementSlide 2s ease-out;
         }
-        
+
         @keyframes achievementSlide {
             0% { transform: translateY(-100px); opacity: 0; }
             20% { transform: translateY(0); opacity: 1; }
             80% { transform: translateY(0); opacity: 1; }
             100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* 해설 모달 애니메이션 */
+        #explanation-modal-card {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
     
@@ -235,7 +253,7 @@
                     <h2 class="text-xl font-bold text-gray-900 mb-4 flex-1" id="question-text">
                         문제를 불러오는 중...
                     </h2>
-                    
+
                     <!-- TTS 버튼 -->
                     <button id="tts-btn" onclick="playTTS()" class="ml-4 px-3 py-1 border-2 border-primary-500 text-primary-500 rounded-lg text-sm hover:bg-primary-500 hover:text-white transition-all hidden">
                         🔊 발음
@@ -246,28 +264,6 @@
             <!-- 보기 -->
             <div class="space-y-3 mb-6" id="options-container">
                 <!-- 동적으로 생성됩니다 -->
-            </div>
-
-            <!-- 해설 (처음엔 숨김) -->
-            <div id="explanation" class="hidden mb-6">
-                <div class="p-4 rounded-xl border-2 bg-green-50 border-green-200">
-                    <div class="flex items-start space-x-3">
-                        <span class="text-2xl" id="result-icon">🎉</span>
-                        <div>
-                            <h4 class="font-bold text-gray-900 mb-2" id="result-text">정답입니다!</h4>
-                            <p class="text-gray-700 leading-relaxed" id="explanation-text">
-                                해설이 여기에 표시됩니다.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 다음/완료 버튼 (처음엔 숨김) -->
-            <div id="next-section" class="hidden text-center">
-                <button onclick="nextQuestion()" class="px-8 py-3 bg-primary-500 text-white rounded-xl text-lg font-bold hover:bg-primary-600 transition-all" id="next-btn">
-                    다음 문제 ➡️
-                </button>
             </div>
         </div>
 
@@ -611,7 +607,7 @@
         // 문제 표시 업데이트
         function updateQuestionDisplay(question) {
             document.getElementById('question-text').textContent = question.question;
-            
+
             // 보기 생성
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = shuffledOptions.map((option, index) => `
@@ -630,10 +626,6 @@
             } else {
                 ttsBtn.classList.add('hidden');
             }
-
-            // 해설과 다음 버튼 숨김
-            document.getElementById('explanation').classList.add('hidden');
-            document.getElementById('next-section').classList.add('hidden');
         }
 
         // 진행률 표시 업데이트
@@ -786,29 +778,53 @@
             }
         }
 
-        // 해설 표시
+        // 해설 표시 (모달 팝업)
         function showExplanation(isCorrect, explanation) {
-            const explanationDiv = document.getElementById('explanation');
-            const resultIcon = document.getElementById('result-icon');
-            const resultText = document.getElementById('result-text');
-            const explanationText = document.getElementById('explanation-text');
+            const modal = document.getElementById('explanation-modal');
+            const modalCard = document.getElementById('explanation-modal-card');
+            const modalIcon = document.getElementById('modal-result-icon');
+            const modalTitle = document.getElementById('modal-result-text');
+            const modalExplanation = document.getElementById('modal-explanation-text');
 
             if (isCorrect) {
-                resultIcon.textContent = '🎉';
-                resultText.textContent = '정답입니다!';
-                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-green-50 border-green-200';
+                modalIcon.textContent = '🎉';
+                modalTitle.textContent = '정답입니다!';
+                modalTitle.className = 'text-3xl font-bold mb-2 text-green-600';
             } else {
-                resultIcon.textContent = '💡';
-                resultText.textContent = '아쉽네요! 정답을 확인해보세요.';
-                explanationDiv.className = 'mb-6 p-4 rounded-xl border-2 bg-blue-50 border-blue-200';
+                modalIcon.textContent = '😅';
+                modalTitle.textContent = '아쉽네요!';
+                modalTitle.className = 'text-3xl font-bold mb-2 text-blue-600';
             }
 
-            explanationText.textContent = explanation;
-            explanationDiv.classList.remove('hidden');
-            
+            modalExplanation.textContent = explanation;
+
+            // 모달 표시
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // 카드 애니메이션
             setTimeout(() => {
-                document.getElementById('next-section').classList.remove('hidden');
-            }, 500);
+                modalCard.style.transform = 'scale(1)';
+                modalCard.style.opacity = '1';
+            }, 10);
+        }
+
+        // 해설 모달 닫기 및 다음 문제로
+        function closeExplanationModal() {
+            const modal = document.getElementById('explanation-modal');
+            const modalCard = document.getElementById('explanation-modal-card');
+
+            // 애니메이션
+            modalCard.style.transform = 'scale(0.9)';
+            modalCard.style.opacity = '0';
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+
+                // 다음 문제로 이동
+                nextQuestion();
+            }, 200);
         }
 
         // 난이도 조정 확인
@@ -903,6 +919,12 @@
                 return; // 수수께끼 표시 후 리턴 (수수께끼 완료 후 nextQuestion 재호출)
             }
 
+            currentQuestionIndex++;
+            loadCurrentQuestion();
+        }
+
+        // 다음 문제 (모달 없이 직접 호출용)
+        function nextQuestionDirect() {
             currentQuestionIndex++;
             loadCurrentQuestion();
         }
@@ -1837,6 +1859,34 @@
             <button onclick="skipRiddle()" id="riddle-skip-btn"
                     class="w-full mt-3 px-4 py-2 text-gray-500 hover:text-gray-700 text-sm transition-all">
                 건너뛰기 →
+            </button>
+        </div>
+    </div>
+
+    <!-- 해설 모달 -->
+    <div id="explanation-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+        <div id="explanation-modal-card" class="bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full transform transition-all">
+            <!-- 결과 아이콘 & 텍스트 -->
+            <div class="text-center mb-6">
+                <div class="text-7xl mb-4 animate-bounce" id="modal-result-icon">🎉</div>
+                <h2 class="text-3xl font-bold mb-2" id="modal-result-text">정답입니다!</h2>
+            </div>
+
+            <!-- 해설 내용 -->
+            <div class="bg-gray-50 rounded-2xl p-6 mb-6">
+                <h3 class="font-bold text-gray-800 mb-3 flex items-center">
+                    <span class="text-2xl mr-2">💡</span>
+                    <span>해설</span>
+                </h3>
+                <p class="text-gray-700 leading-relaxed text-lg" id="modal-explanation-text">
+                    해설이 여기에 표시됩니다.
+                </p>
+            </div>
+
+            <!-- 다음 문제 버튼 -->
+            <button onclick="closeExplanationModal()"
+                    class="w-full px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl text-lg font-bold hover:from-primary-600 hover:to-primary-700 transition-all shadow-lg transform hover:scale-105">
+                다음 문제로 ➡️
             </button>
         </div>
     </div>
