@@ -77,6 +77,44 @@ class EduPetAuth {
             console.log('구글 로그인 성공:', result.user.displayName);
             return true;
         } catch (error) {
+            // 계정이 이미 다른 인증 수단으로 존재할 경우
+            if (error.code === 'auth/account-exists-with-different-credential') {
+                const pendingCred = error.credential;
+                const email = error.email;
+
+                try {
+                    // 사용자에게 어떤 인증 수단으로 가입했는지 알려줌
+                    const methods = await firebase_auth.fetchSignInMethodsForEmail(email);
+                    
+                    // TODO: 사용자에게 UI를 통해 기존 로그인 방식(예: 이메일/비밀번호)으로 로그인하라는 안내를 표시해야 합니다.
+                    // 이 예제에서는 사용자가 비밀번호로 가입했다고 가정하고, 비밀번호를 입력받았다고 가정합니다.
+                    // 실제 구현에서는 사용자로부터 비밀번호를 안전하게 입력받는 UI가 필요합니다.
+                    const password = prompt(`이미 ${email} 계정이 ${methods.join(', ')} (으)로 가입되어 있습니다. 계정을 연결하려면 비밀번호를 입력해주세요.`);
+
+                    if (password) {
+                        // 기존 이메일/비밀번호로 로그인
+                        const userCredential = await firebase_auth.signInWithEmailAndPassword(email, password);
+                        
+                        // 새 인증 수단(구글)을 기존 계정에 연결
+                        await userCredential.user.linkWithCredential(pendingCred);
+                        
+                        console.log('계정 연결 성공! 이제 구글로 로그인할 수 있습니다.');
+                        
+                        // 연결 후 데이터 다시 로드
+                        this.currentUser = userCredential.user;
+                        await this.loadUserData();
+                        this.notifyAuthStateChange('signed_in');
+                        return true;
+                    } else {
+                        throw new Error('계정 연결이 취소되었습니다. 비밀번호가 입력되지 않았습니다.');
+                    }
+
+                } catch (linkError) {
+                    console.error('계정 연결 실패:', linkError);
+                    throw linkError;
+                }
+            }
+
             console.error('구글 로그인 실패:', error);
 
             // 사용자가 취소한 경우
