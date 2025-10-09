@@ -301,21 +301,13 @@
                             ✨ 별명 설정하기
                         </button>
 
-                        <div class="text-center text-gray-500 text-sm">또는</div>
-
-                        <button onclick="signInWithGoogleTutorial()" class="w-full px-6 py-3 bg-white text-gray-700 rounded-lg font-semibold border-2 border-gray-300 hover:border-blue-500 hover:bg-blue-50 transition-all flex items-center justify-center gap-3">
-                            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"/>
-                                <path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"/>
-                                <path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"/>
-                                <path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"/>
-                            </svg>
-                            구글 계정으로 로그인
-                        </button>
-
                         <button onclick="skipNickname()" class="w-full px-6 py-2 text-gray-500 hover:text-gray-700 transition-colors text-sm">
                             건너뛰기 (나중에 설정)
                         </button>
+
+                        <div class="text-xs text-gray-500 text-center mt-4">
+                            💡 구글 계정 연동은 소셜 허브에서 가능합니다
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -603,28 +595,6 @@
             }
             nextSlide();
         }
-        
-        // 구글 로그인 (튜토리얼용)
-        async function signInWithGoogleTutorial() {
-            try {
-                console.log('Starting Google Sign-In in tutorial...');
-
-                if (typeof eduPetAuth === 'undefined') {
-                    alert('Firebase 인증이 준비되지 않았습니다. 잠시 후 다시 시도해주세요.');
-                    return;
-                }
-
-                await eduPetAuth.signInWithGoogle();
-                console.log('Google Sign-In successful in tutorial');
-
-                // 로그인 성공 후 다음 슬라이드로 이동
-                alert('구글 로그인 성공! 환영합니다.');
-                nextSlide();
-            } catch (error) {
-                console.error('Google Sign-In failed in tutorial:', error);
-                alert('구글 로그인에 실패했습니다: ' + (error.message || '알 수 없는 오류'));
-            }
-        }
 
         // 엔터 키로 별명 설정
         document.addEventListener('keydown', function(e) {
@@ -715,10 +685,10 @@
 
                 // Show completion message with delay to ensure data is saved
                 setTimeout(() => {
-                    alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장\n\n로그인 페이지로 이동합니다!`);
+                    alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장\n\n이제 게임을 시작합니다!\n소셜 기능은 소셜 허브에서 사용하세요!`);
 
-                    // Redirect to login page instead of main page
-                    window.location.href = 'login.html';
+                    // Redirect to main page (익명 계정으로 게임 시작)
+                    window.location.href = 'index.html';
                 }, 500);
 
             } catch (error) {

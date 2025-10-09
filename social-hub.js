@@ -43,20 +43,146 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// 구글 로그인
+// 구글 로그인 (익명 → 구글 계정 병합)
 async function signInWithGoogle() {
     try {
         const loadingOverlay = document.getElementById('loading-overlay');
         loadingOverlay.style.display = 'flex';
 
-        await eduPetAuth.signInWithGoogle();
+        // 현재 익명 사용자인지 확인
+        const currentUser = firebase_auth.currentUser;
+        const isAnonymous = currentUser && currentUser.isAnonymous;
 
-        showSuccess('구글 로그인 성공!');
+        console.log('[Social Hub] 구글 로그인 시작 - 익명 사용자:', isAnonymous);
+
+        if (isAnonymous) {
+            // 익명 → 구글 계정 병합
+            console.log('[Social Hub] 익명 계정을 구글 계정으로 병합합니다...');
+
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
+
+            try {
+                // 익명 계정과 구글 계정 병합 (linkWithPopup)
+                const result = await currentUser.linkWithPopup(provider);
+
+                console.log('[Social Hub] ✅ 계정 병합 성공:', result.user.displayName);
+
+                // eduPetAuth 상태 업데이트
+                eduPetAuth.currentUser = result.user;
+                await eduPetAuth.loadUserData();
+
+                // 구글 계정 정보로 프로필 업데이트
+                if (result.user.displayName) {
+                    await eduPetAuth.setNickname(result.user.displayName);
+                }
+
+                // Firebase에 provider 정보 업데이트
+                await firebase_db.ref(`users/${result.user.uid}/profile/provider`).set('google');
+                await firebase_db.ref(`users/${result.user.uid}/profile/email`).set(result.user.email);
+                if (result.user.photoURL) {
+                    await firebase_db.ref(`users/${result.user.uid}/profile/photoURL`).set(result.user.photoURL);
+                }
+
+                // 중복 익명 계정 정리 (이전에 생성된 다른 익명 계정들)
+                await cleanupDuplicateAnonymousAccounts(result.user.uid);
+
+                showSuccess(`🎉 구글 계정 연동 성공!\n기존 데이터가 모두 유지되었습니다.`);
+
+                // 페이지 리로드하여 변경사항 반영
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+
+            } catch (linkError) {
+                console.error('[Social Hub] 계정 병합 실패:', linkError);
+
+                // 이미 다른 계정과 연결된 경우
+                if (linkError.code === 'auth/credential-already-in-use') {
+                    if (confirm('이 구글 계정은 이미 다른 계정과 연결되어 있습니다.\n기존 구글 계정으로 로그인하시겠습니까? (익명 데이터는 삭제됩니다)')) {
+                        // 익명 계정 로그아웃
+                        await firebase_auth.signOut();
+
+                        // 구글 계정으로 로그인
+                        await eduPetAuth.signInWithGoogle();
+
+                        showSuccess('구글 로그인 성공!');
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showError('구글 로그인이 취소되었습니다.');
+                    }
+                } else if (linkError.code === 'auth/popup-closed-by-user') {
+                    showError('로그인이 취소되었습니다.');
+                } else {
+                    showError('계정 연동에 실패했습니다: ' + linkError.message);
+                }
+
+                loadingOverlay.style.display = 'none';
+                return;
+            }
+        } else {
+            // 이미 구글 계정이거나 로그인 안 된 경우
+            await eduPetAuth.signInWithGoogle();
+            showSuccess('구글 로그인 성공!');
+        }
+
         loadingOverlay.style.display = 'none';
     } catch (error) {
-        console.error('구글 로그인 실패:', error);
+        console.error('[Social Hub] 구글 로그인 실패:', error);
         showError(error.message || '구글 로그인에 실패했습니다.');
         document.getElementById('loading-overlay').style.display = 'none';
+    }
+}
+
+// 중복 익명 계정 정리 (이전에 생성된 익명 계정들 삭제)
+async function cleanupDuplicateAnonymousAccounts(currentUid) {
+    try {
+        console.log('[Social Hub] 중복 익명 계정 정리 시작...');
+
+        // Firebase에서 익명 계정 찾기 (provider가 없거나 'anonymous'인 계정들)
+        const usersSnapshot = await firebase_db.ref('users').once('value');
+        const allUsers = usersSnapshot.val();
+
+        if (!allUsers) {
+            console.log('[Social Hub] 사용자 데이터가 없습니다.');
+            return;
+        }
+
+        let deletedCount = 0;
+        const updates = {};
+
+        // 모든 사용자 순회
+        for (const [uid, userData] of Object.entries(allUsers)) {
+            // 현재 계정이 아니고, 익명 계정인 경우
+            if (uid !== currentUid && (!userData.profile?.provider || userData.profile?.provider === 'anonymous')) {
+                console.log(`[Social Hub] 익명 계정 발견 - 삭제 예정: ${uid}`);
+
+                // Firebase Realtime Database에서 사용자 데이터 삭제
+                updates[`users/${uid}`] = null;
+
+                // 닉네임 매핑도 삭제
+                if (userData.profile?.nickname) {
+                    updates[`nicknames/${userData.profile.nickname}`] = null;
+                }
+
+                deletedCount++;
+            }
+        }
+
+        // 일괄 삭제
+        if (Object.keys(updates).length > 0) {
+            await firebase_db.ref().update(updates);
+            console.log(`[Social Hub] ✅ 중복 익명 계정 ${deletedCount}개 삭제 완료`);
+        } else {
+            console.log('[Social Hub] 삭제할 중복 익명 계정이 없습니다.');
+        }
+
+    } catch (error) {
+        console.error('[Social Hub] 중복 계정 정리 실패:', error);
+        // 실패해도 계속 진행 (중요하지 않은 작업)
     }
 }
 
