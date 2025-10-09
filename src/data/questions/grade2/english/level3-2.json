@@ -1,1077 +1,602 @@
 [
   {
-    "id": "eng_hard_but_001",
+    "id": "english_hard_listen_voca_1",
     "subject": "english",
-    "question": "두 문장을 '하지만'이라는 뜻의 'but'으로 자연스럽게 연결한 것을 고르세요. (1) 나는 사과를 좋아한다. (2) 그는 바나나를 좋아한다.",
-    "options": [
-      "I like apples and he likes bananas.",
-      "I like apples, but he likes bananas.",
-      "I like apples, so he likes bananas.",
-      "I like apples because he likes bananas."
-    ],
-    "correctIndex": 1,
-    "explanation": "'but'은 서로 다른 내용을 이야기할 때 '하지만, 그렇지만' 이라는 뜻으로 문장을 연결해줘요. 'and'는 비슷한 내용을 더할 때, 'so'는 그래서, 'because'는 왜냐하면 이라는 뜻이니 함께 알아두면 좋아요!",
-    "difficulty": 3,
-    "audioText": "I like apples, but he likes bananas."
-  },
-  {
-    "id": "eng_hard_but_002",
-    "subject": "english",
-    "question": "나는 키가 크다. ____ 너는 키가 작다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["and", "so", "but", "or"],
-    "correctIndex": 2,
-    "explanation": "'키가 큰 것'과 '키가 작은 것'은 서로 반대되는 내용이죠? 이럴 때 '하지만'이라는 뜻의 'but'을 사용해서 문장을 연결해요.",
-    "difficulty": 3,
-    "audioText": "I am tall, but you are short."
-  },
-  {
-    "id": "eng_hard_but_003",
-    "subject": "english",
-    "question": "두 문장을 'but'으로 자연스럽게 연결한 것을 고르세요. (1) 그는 달리는 것을 좋아한다. (2) 그녀는 걷는 것을 좋아한다.",
-    "options": [
-      "He likes running and she likes walking.",
-      "He likes running, so she likes walking.",
-      "He likes running, but she likes walking.",
-      "He likes running or she likes walking."
-    ],
-    "correctIndex": 2,
-    "explanation": "'달리는 것'과 '걷는 것'이라는 서로 다른 행동을 좋아하므로 'but'을 사용해서 연결하는 것이 가장 자연스러워요.",
-    "difficulty": 3,
-    "audioText": "He likes running, but she likes walking."
-  },
-  {
-    "id": "eng_hard_but_004",
-    "subject": "english",
-    "question": "나는 피곤하다. ____ 나는 숙제를 해야 한다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["but", "and", "so", "because"],
+    "question": "🔊 귀를 쫑긋! 친구가 'kitchen'이라고 말했어요. 이곳은 어디일까요?",
+    "options": ["부엌", "침실", "거실", "화장실"],
     "correctIndex": 0,
-    "explanation": "'피곤한' 상황과 '숙제를 해야 하는' 상황은 서로 반대되는 느낌을 주죠? 그래서 '하지만'이라는 뜻의 'but'이 가장 잘 어울려요.",
+    "explanation": "요리하는 냄새가 솔솔~ 🍳 'kitchen'은 맛있는 음식을 만드는 '부엌'이라는 뜻이에요!",
     "difficulty": 3,
-    "audioText": "I am tired, but I have to do my homework."
+    "audioText": "kitchen"
   },
   {
-    "id": "eng_hard_but_005",
+    "id": "english_hard_listen_voca_2",
     "subject": "english",
-    "question": "두 문장을 'but'으로 자연스럽게 연결한 것을 고르세요. (1) 날씨가 화창하다. (2) 나는 집에 머물고 싶다.",
-    "options": [
-      "It is sunny, so I want to stay home.",
-      "It is sunny, because I want to stay home.",
-      "It is sunny, and I want to stay home.",
-      "It is sunny, but I want to stay home."
-    ],
-    "correctIndex": 3,
-    "explanation": "보통 날씨가 좋으면 밖에 나가고 싶어 하죠? 하지만 집에 머물고 싶다고 했으니, 반대되는 내용을 연결하는 'but'을 쓰는 것이 자연스러워요.",
-    "difficulty": 3,
-    "audioText": "It is sunny, but I want to stay home."
-  },
-  {
-    "id": "eng_hard_but_006",
-    "subject": "english",
-    "question": "그녀는 똑똑하다. ____ 그녀는 친절하지 않다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["and", "or", "but", "so"],
-    "correctIndex": 2,
-    "explanation": "'똑똑한 것'은 좋은 점이지만 '친절하지 않은 것'은 아쉬운 점이죠. 이렇게 좋은 내용과 아쉬운 내용이 함께 나올 때 'but'을 사용해요.",
-    "difficulty": 3,
-    "audioText": "She is smart, but she is not kind."
-  },
-  {
-    "id": "eng_hard_but_007",
-    "subject": "english",
-    "question": "두 문장을 'but'으로 자연스럽게 연결한 것을 고르세요. (1) 나는 일찍 일어났다. (2) 나는 학교에 늦었다.",
-    "options": [
-      "I got up early, so I was late for school.",
-      "I got up early, but I was late for school.",
-      "I got up early, and I was late for school.",
-      "I got up early, or I was late for school."
-    ],
-    "correctIndex": 1,
-    "explanation": "일찍 일어났으면 보통 학교에 늦지 않아야 하죠. 하지만 예상과 다른 결과가 나왔으니, 반대의 의미를 가진 'but'으로 연결해야 해요.",
-    "difficulty": 3,
-    "audioText": "I got up early, but I was late for school."
-  },
-  {
-    "id": "eng_hard_but_008",
-    "subject": "english",
-    "question": "나는 수영은 할 수 있다. ____ 나는 날 수는 없다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["because", "and", "so", "but"],
-    "correctIndex": 3,
-    "explanation": "'할 수 있는 것'과 '할 수 없는 것'을 함께 말하고 있으니, 반대의 의미를 가진 'but'을 사용해야겠죠?",
-    "difficulty": 3,
-    "audioText": "I can swim, but I can't fly."
-  },
-  {
-    "id": "eng_hard_but_009",
-    "subject": "english",
-    "question": "두 문장을 'but'으로 자연스럽게 연결한 것을 고르세요. (1) 이 책은 재미있다. (2) 이 책은 너무 길다.",
-    "options": [
-      "This book is fun, and it is too long.",
-      "This book is fun, but it is too long.",
-      "This book is fun, so it is too long.",
-      "This book is fun, or it is too long."
-    ],
-    "correctIndex": 1,
-    "explanation": "책이 재미있는 것은 좋은 점이지만, 너무 긴 것은 단점이 될 수 있죠. 이렇게 장점과 단점을 함께 말할 때 'but'을 사용해요.",
-    "difficulty": 3,
-    "audioText": "This book is fun, but it is too long."
-  },
-  {
-    "id": "eng_hard_but_010",
-    "subject": "english",
-    "question": "그는 열심히 공부했다. ____ 그는 시험에 통과하지 못했다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["and", "but", "so", "because"],
-    "correctIndex": 1,
-    "explanation": "열심히 공부했다면 시험에 통과해야 하는데, 예상과 다른 결과가 나왔어요. 이럴 때 반대의 의미를 가진 'but'을 사용한답니다.",
-    "difficulty": 3,
-    "audioText": "He studied hard, but he didn't pass the test."
-  },
-  {
-    "id": "eng_hard_will_001",
-    "subject": "english",
-    "question": "'tomorrow(내일)' 공원에 갈 계획을 이야기하고 싶어요. 어떤 문장으로 말해야 할까요?",
-    "options": [
-      "I go to the park.",
-      "I went to the park.",
-      "I will go to the park.",
-      "I am in the park."
-    ],
-    "correctIndex": 2,
-    "explanation": "'tomorrow(내일)'처럼 앞으로 일어날 일은 '~할 것이다'라는 뜻의 'will'을 사용해서 말해요. 'I will go to the park.'는 '나는 내일 공원에 갈 거야.'라는 미래의 계획을 나타내는 문장이에요.",
-    "difficulty": 3,
-    "audioText": "I will go to the park."
-  },
-  {
-    "id": "eng_hard_will_002",
-    "subject": "english",
-    "question": "나중에 커서 의사가 될 거야. 빈칸에 알맞은 말은? 'I ____ be a doctor.'",
-    "options": ["am", "was", "will", "do"],
-    "correctIndex": 2,
-    "explanation": "미래의 꿈을 이야기할 때도 'will'을 사용해요. 'I will be a doctor.'는 '나는 의사가 될 거야.'라는 멋진 다짐을 나타내요.",
-    "difficulty": 3,
-    "audioText": "I will be a doctor."
-  },
-  {
-    "id": "eng_hard_will_003",
-    "subject": "english",
-    "question": "그는 내일 너를 도울 거야. 영어로 어떻게 말할까요?",
-    "options": [
-      "He helps you tomorrow.",
-      "He helped you tomorrow.",
-      "He will help you tomorrow.",
-      "He is helping you tomorrow."
-    ],
-    "correctIndex": 2,
-    "explanation": "'내일(tomorrow)'은 미래니까 'will'을 사용해야 해요. 'will' 다음에는 행동 단어의 원래 모습(help)이 온다는 것도 기억해주세요!",
-    "difficulty": 3,
-    "audioText": "He will help you tomorrow."
-  },
-  {
-    "id": "eng_hard_will_004",
-    "subject": "english",
-    "question": "비가 올 것 같아. 빈칸에 알맞은 말은? 'It ____ rain soon.'",
-    "options": ["is", "does", "will", "was"],
-    "correctIndex": 2,
-    "explanation": "곧(soon) 일어날 미래의 날씨를 예측할 때도 'will'을 사용해요. 'It will rain soon.'",
-    "difficulty": 3,
-    "audioText": "It will rain soon."
-  },
-  {
-    "id": "eng_hard_will_005",
-    "subject": "english",
-    "question": "우리는 다음 주에 파티를 열 거야. 영어로 어떻게 말할까요?",
-    "options": [
-      "We have a party next week.",
-      "We had a party next week.",
-      "We are having a party next week.",
-      "We will have a party next week."
-    ],
-    "correctIndex": 3,
-    "explanation": "'다음 주(next week)'는 미래를 나타내죠? 그래서 'will'을 사용해서 'We will have a party next week.'라고 말할 수 있어요.",
-    "difficulty": 3,
-    "audioText": "We will have a party next week."
-  },
-  {
-    "id": "eng_hard_will_006",
-    "subject": "english",
-    "question": "나는 나중에 숙제를 할 거야. 빈칸에 알맞은 말은? 'I ____ do my homework later.'",
-    "options": ["am", "do", "did", "will"],
-    "correctIndex": 3,
-    "explanation": "맞아요! '나중에(later)' 할 일이니까 미래를 나타내는 'will'을 써야겠죠?",
-    "difficulty": 3,
-    "audioText": "I will do my homework later."
-  },
-  {
-    "id": "eng_hard_will_007",
-    "subject": "english",
-    "question": "그녀는 곧 돌아올 거야. 영어로 어떻게 말할까요?",
-    "options": [
-      "She comes back soon.",
-      "She came back soon.",
-      "She will come back soon.",
-      "She is coming back soon."
-    ],
-    "correctIndex": 2,
-    "explanation": "'곧(soon)' 일어날 일을 말하는 것이니 미래를 나타내는 'will'을 사용해요.",
-    "difficulty": 3,
-    "audioText": "She will come back soon."
-  },
-  {
-    "id": "eng_hard_will_008",
-    "subject": "english",
-    "question": "그들은 저녁으로 피자를 먹을 거야. 빈칸에 알맞은 말은? 'They ____ have pizza for dinner.'",
-    "options": ["are", "do", "did", "will"],
-    "correctIndex": 3,
-    "explanation": "앞으로 있을 저녁 식사 계획을 말하는 것이니, 미래를 나타내는 'will'이 정답이에요.",
-    "difficulty": 3,
-    "audioText": "They will have pizza for dinner."
-  },
-  {
-    "id": "eng_hard_will_009",
-    "subject": "english",
-    "question": "나는 너를 잊지 않을 거야. 영어로 어떻게 말할까요?",
-    "options": [
-      "I don't forget you.",
-      "I didn't forget you.",
-      "I will not forget you.",
-      "I'm not forgetting you."
-    ],
-    "correctIndex": 2,
-    "explanation": "'~하지 않을 것이다'라고 말할 때는 'will' 뒤에 'not'을 붙여줘요. 'I will not forget you.'는 줄여서 'I won't forget you.'라고도 말한답니다.",
-    "difficulty": 3,
-    "audioText": "I will not forget you."
-  },
-  {
-    "id": "eng_hard_will_010",
-    "subject": "english",
-    "question": "내일 나랑 같이 놀래? 라고 물어볼 때 알맞은 문장은 무엇일까요?",
-    "options": ["Do you play with me?", "Did you play with me?", "Will you play with me?", "Are you play with me?"],
-    "correctIndex": 2,
-    "explanation": "최고예요! 미래에 무언가를 함께 하자고 제안하거나 물어볼 때 'Will you ~?'라고 시작할 수 있어요.",
-    "difficulty": 3,
-    "audioText": "Will you play with me?"
-  },
-  {
-    "id": "eng_hard_wh_001",
-    "subject": "english",
-    "question": "대답: 'I live in Seoul.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What do you do?", "Where do you live?", "Who are you?", "How are you?"],
-    "correctIndex": 1,
-    "explanation": "'어디 사니?'라고 장소를 물어볼 때는 'Where'를 사용해요. 'Where do you live?'라고 물으면 'I live in Seoul.'처럼 대답할 수 있어요.",
-    "difficulty": 3,
-    "audioText": "Where do you live?"
-  },
-  {
-    "id": "eng_hard_wh_002",
-    "subject": "english",
-    "question": "대답: 'My name is Tom.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What is your name?", "How old are you?", "What is your hobby?", "Where are you from?"],
+    "question": "🔊 집중해서 들어보세요! 'library'는 무엇을 하는 장소일까요?",
+    "options": ["책을 읽거나 빌리는 곳", "빵을 사는 곳", "수영을 하는 곳", "영화를 보는 곳"],
     "correctIndex": 0,
-    "explanation": "맞아요! '이름이 뭐니?'라고 물어볼 때는 '무엇'을 뜻하는 'What'을 사용해서 'What is your name?'이라고 해요.",
+    "explanation": "쉿, 조용! 🤫 'library'는 수많은 책들이 우리를 기다리는 '도서관'이랍니다.",
     "difficulty": 3,
-    "audioText": "What is your name?"
+    "audioText": "library"
   },
   {
-    "id": "eng_hard_wh_003",
+    "id": "english_hard_listen_voca_3",
     "subject": "english",
-    "question": "대답: 'I am 10 years old.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["How are you?", "What is your grade?", "How old are you?", "Are you 10?"],
-    "correctIndex": 2,
-    "explanation": "'몇 살'인지 나이를 물어볼 때는 '어떻게' 늙었는지 묻는 'How old'를 사용해요. 재미있죠?",
-    "difficulty": 3,
-    "audioText": "How old are you?"
-  },
-  {
-    "id": "eng_hard_wh_004",
-    "subject": "english",
-    "question": "대답: 'It is a book.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["Who is it?", "Where is it?", "How is it?", "What is it?"],
-    "correctIndex": 3,
-    "explanation": "'이게 뭐니?'라고 사물에 대해 물어볼 때는 '무엇'을 뜻하는 'What'을 사용해요.",
-    "difficulty": 3,
-    "audioText": "What is it?"
-  },
-  {
-    "id": "eng_hard_wh_005",
-    "subject": "english",
-    "question": "대답: 'She is my mother.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What is she?", "Where is she?", "Who is she?", "How is she?"],
-    "correctIndex": 2,
-    "explanation": "'저 분은 누구시니?'처럼 사람에 대해 물어볼 때는 '누구'를 뜻하는 'Who'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "Who is she?"
-  },
-  {
-    "id": "eng_hard_wh_006",
-    "subject": "english",
-    "question": "대답: 'I like blue.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What color do you like?", "Do you like blue?", "What is blue?", "Why do you like blue?"],
+    "question": "🔊 딩동댕! 'music'이라는 단어가 들렸어요. 무슨 뜻일까요?",
+    "options": ["음악", "미술", "체육", "수학"],
     "correctIndex": 0,
-    "explanation": "'무슨 색을 좋아하니?'라고 구체적으로 물어볼 때는 'What color'라고 시작할 수 있어요.",
+    "explanation": "랄랄라~ 🎶 'music'은 우리를 신나게 또는 편안하게 해주는 '음악'을 뜻해요.",
     "difficulty": 3,
-    "audioText": "What color do you like?"
+    "audioText": "music"
   },
   {
-    "id": "eng_hard_wh_007",
+    "id": "english_hard_listen_sentence_1",
     "subject": "english",
-    "question": "대답: 'It's sunny today.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What time is it?", "How's the weather?", "What day is it?", "Are you happy?"],
-    "correctIndex": 1,
-    "explanation": "날씨가 '어떤지' 물어볼 때는 'How'를 사용해서 'How's the weather?'라고 한답니다.",
-    "difficulty": 3,
-    "audioText": "How's the weather?"
-  },
-  {
-    "id": "eng_hard_wh_008",
-    "subject": "english",
-    "question": "대답: 'Because I am hungry.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What are you eating?", "When do you eat?", "Why are you eating?", "Where are you eating?"],
-    "correctIndex": 2,
-    "explanation": "'Because(왜냐하면)'로 대답했다는 건, 'Why(왜)?'라고 이유를 물어봤다는 뜻이에요. 'Why are you eating?' - '왜 먹고 있니?'",
-    "difficulty": 3,
-    "audioText": "Why are you eating?"
-  },
-  {
-    "id": "eng_hard_wh_009",
-    "subject": "english",
-    "question": "대답: 'I go to school at 8 o'clock.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What time do you go to school?", "Where do you go?", "How do you go to school?", "Do you go to school?"],
+    "question": "🔊 친구가 나에게 다가와 'Let's play outside.'라고 말했어요. 무슨 뜻일까요?",
+    "options": ["밖에서 같이 놀자!", "숙제 다 했니?", "점심 먹으러 가자.", "조용히 해 줘."],
     "correctIndex": 0,
-    "explanation": "'at 8 o'clock'처럼 시간을 대답했다는 건, '몇 시'를 묻는 'What time'으로 물어봤다는 뜻이겠죠?",
+    "explanation": "좋아! 같이 놀자! ⚽ 'Let's play outside'는 친구에게 밖에서 함께 놀자고 제안하는 멋진 말이에요.",
     "difficulty": 3,
-    "audioText": "What time do you go to school?"
+    "audioText": "Let's play outside."
   },
   {
-    "id": "eng_hard_wh_010",
+    "id": "english_hard_listen_sentence_2",
     "subject": "english",
-    "question": "대답: 'He is my brother.' 이 대답을 듣기 위한 질문은 무엇일까요?",
-    "options": ["What is he?", "Who is he?", "Where is he?", "Is he your brother?"],
-    "correctIndex": 1,
-    "explanation": "맞아요! 사람에 대해 '누구'인지 물어볼 때는 'Who'를 사용해요. 'Who is he?' - '그는 누구니?'",
-    "difficulty": 3,
-    "audioText": "Who is he?"
-  },
-  {
-    "id": "eng_hard_irr_001",
-    "subject": "english",
-    "question": "'가다(go)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["goed", "went", "gone", "goes"],
-    "correctIndex": 1,
-    "explanation": "'go'의 과거형은 '-ed'를 붙이지 않고 'went'라는 특별한 모습으로 변신해요. 이런 동사들을 '불규칙 동사'라고 부른답니다.",
-    "difficulty": 3,
-    "audioText": "go, went"
-  },
-  {
-    "id": "eng_hard_irr_002",
-    "subject": "english",
-    "question": "'먹다(eat)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["eated", "ate", "eaten", "eats"],
-    "correctIndex": 1,
-    "explanation": "'eat'의 과거형은 'ate'에요. 발음은 숫자 8(eight)과 똑같답니다!",
-    "difficulty": 3,
-    "audioText": "eat, ate"
-  },
-  {
-    "id": "eng_hard_irr_003",
-    "subject": "english",
-    "question": "'가지다(have)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["haved", "has", "had", "haves"],
-    "correctIndex": 2,
-    "explanation": "'have'나 'has'의 과거형은 모두 'had'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "have, had"
-  },
-  {
-    "id": "eng_hard_irr_004",
-    "subject": "english",
-    "question": "'만들다(make)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["maked", "making", "mades", "made"],
-    "correctIndex": 3,
-    "explanation": "'make'의 과거형은 'made'에요. 'Made in Korea'라는 글자를 본 적 있죠?",
-    "difficulty": 3,
-    "audioText": "make, made"
-  },
-  {
-    "id": "eng_hard_irr_005",
-    "subject": "english",
-    "question": "'오다(come)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["comed", "came", "coming", "comes"],
-    "correctIndex": 1,
-    "explanation": "'come'의 과거형은 'came'이에요. 철자 'o'가 'a'로 바뀐답니다.",
-    "difficulty": 3,
-    "audioText": "come, came"
-  },
-  {
-    "id": "eng_hard_irr_006",
-    "subject": "english",
-    "question": "'보다(see)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["seed", "saw", "seen", "sees"],
-    "correctIndex": 1,
-    "explanation": "'see'의 과거형은 'saw'에요. 놀이 기구 '시소(see-saw)'를 생각하면 외우기 쉬워요!",
-    "difficulty": 3,
-    "audioText": "see, saw"
-  },
-  {
-    "id": "eng_hard_irr_007",
-    "subject": "english",
-    "question": "'주다(give)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["gived", "gave", "given", "gives"],
-    "correctIndex": 1,
-    "explanation": "'give'의 과거형은 'gave'에요. 철자 'i'가 'a'로 바뀌었네요.",
-    "difficulty": 3,
-    "audioText": "give, gave"
-  },
-  {
-    "id": "eng_hard_irr_008",
-    "subject": "english",
-    "question": "'알다(know)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["knowed", "knew", "known", "knows"],
-    "correctIndex": 1,
-    "explanation": "'know'의 과거형은 'knew'에요. 'new(새로운)'와 발음이 똑같답니다.",
-    "difficulty": 3,
-    "audioText": "know, knew"
-  },
-  {
-    "id": "eng_hard_irr_009",
-    "subject": "english",
-    "question": "'생각하다(think)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["thinked", "thank", "thought", "thinks"],
-    "correctIndex": 2,
-    "explanation": "조금 어려운 단어인데 맞혔네요! 'think'의 과거형은 'thought'에요. 철자가 많이 바뀌니 눈에 잘 익혀두세요!",
-    "difficulty": 3,
-    "audioText": "think, thought"
-  },
-  {
-    "id": "eng_hard_irr_010",
-    "subject": "english",
-    "question": "'말하다(say)'의 과거형으로 올바른 것은 무엇일까요?",
-    "options": ["sayed", "said", "sood", "says"],
-    "correctIndex": 1,
-    "explanation": "최고예요! 'say'의 과거형은 'said'에요. 발음은 '세드'라고 한답니다.",
-    "difficulty": 3,
-    "audioText": "say, said"
-  },
-  {
-    "id": "eng_hard_comp_001",
-    "subject": "english",
-    "question": "코끼리는 쥐보다 '더 커요'. 빈칸에 알맞은 말은? 'An elephant is ____ than a mouse.'",
-    "options": ["big", "bigger", "biggest", "more big"],
-    "correctIndex": 1,
-    "explanation": "두 가지를 비교하며 '더 ~한'이라고 말할 때는 단어 뒤에 '-er'을 붙여요. 'bigger'!",
-    "difficulty": 3,
-    "audioText": "bigger"
-  },
-  {
-    "id": "eng_hard_comp_002",
-    "subject": "english",
-    "question": "치타는 사자보다 '더 빨라요'. 빈칸에 알맞은 말은? 'A cheetah is ____ than a lion.'",
-    "options": ["fast", "faster", "fastest", "more fast"],
-    "correctIndex": 1,
-    "explanation": "'더 빠른'은 'fast' 뒤에 '-er'을 붙여서 'faster'라고 말해요.",
-    "difficulty": 3,
-    "audioText": "faster"
-  },
-  {
-    "id": "eng_hard_comp_003",
-    "subject": "english",
-    "question": "여름은 겨울보다 '더 더워요'. 빈칸에 알맞은 말은? 'Summer is ____ than winter.'",
-    "options": ["hot", "hotter", "hottest", "more hot"],
-    "correctIndex": 1,
-    "explanation": "'hot'처럼 짧은 단어는 마지막 글자를 한 번 더 쓰고 '-er'을 붙여요. 그래서 'hotter'!",
-    "difficulty": 3,
-    "audioText": "hotter"
-  },
-  {
-    "id": "eng_hard_comp_004",
-    "subject": "english",
-    "question": "이 책은 저 책보다 '더 재미있어요'. 빈칸에 알맞은 말은? 'This book is ____ than that book.'",
-    "options": ["interesting", "more interesting", "most interesting", "interestinger"],
-    "correctIndex": 1,
-    "explanation": "'interesting'처럼 긴 단어는 '-er'을 붙이지 않고, 앞에 'more'를 붙여서 '더 ~한'이라는 뜻을 만들어요.",
-    "difficulty": 3,
-    "audioText": "more interesting"
-  },
-  {
-    "id": "eng_hard_comp_005",
-    "subject": "english",
-    "question": "우리 아빠는 가족 중에서 '가장 키가 커요'. 빈칸에 알맞은 말은? 'My father is the ____ in my family.'",
-    "options": ["tall", "taller", "tallest", "more tall"],
-    "correctIndex": 2,
-    "explanation": "세 명 이상 중에서 '가장 ~한'이라고 말할 때는 단어 뒤에 '-est'를 붙여요. 'tallest'!",
-    "difficulty": 3,
-    "audioText": "tallest"
-  },
-  {
-    "id": "eng_hard_comp_006",
-    "subject": "english",
-    "question": "이것은 세상에서 '가장 비싼' 자동차야. 빈칸에 알맞은 말은? 'This is the ____ car in the world.'",
-    "options": ["expensive", "expensivest", "more expensive", "most expensive"],
-    "correctIndex": 3,
-    "explanation": "최고예요! 'expensive'처럼 긴 단어는 앞에 'most'를 붙여서 '가장 ~한'이라는 뜻을 만들어요.",
-    "difficulty": 3,
-    "audioText": "most expensive"
-  },
-  {
-    "id": "eng_hard_comp_007",
-    "subject": "english",
-    "question": "나는 너보다 '더 어려'. 빈칸에 알맞은 말은? 'I am ____ than you.'",
-    "options": ["young", "younger", "youngest", "more young"],
-    "correctIndex": 1,
-    "explanation": "두 사람의 나이를 비교할 때도 '-er'을 붙여서 'younger'라고 말해요.",
-    "difficulty": 3,
-    "audioText": "younger"
-  },
-  {
-    "id": "eng_hard_comp_008",
-    "subject": "english",
-    "question": "수학은 영어보다 '더 어려워'. 빈칸에 알맞은 말은? 'Math is ____ than English.'",
-    "options": ["difficult", "difficulter", "more difficult", "most difficult"],
-    "correctIndex": 2,
-    "explanation": "'difficult'처럼 긴 단어는 앞에 'more'를 붙여서 '더 어려운'이라는 뜻을 만들어요.",
-    "difficulty": 3,
-    "audioText": "more difficult"
-  },
-  {
-    "id": "eng_hard_comp_009",
-    "subject": "english",
-    "question": "그녀는 우리 반에서 '가장 똑똑한' 학생이야. 빈칸에 알맞은 말은? 'She is the ____ student in our class.'",
-    "options": ["smart", "smarter", "smartest", "most smart"],
-    "correctIndex": 2,
-    "explanation": "반 전체 학생들 중에서 '가장' 똑똑한 것이므로, '-est'를 붙여서 'smartest'라고 해야 해요.",
-    "difficulty": 3,
-    "audioText": "smartest"
-  },
-  {
-    "id": "eng_hard_comp_010",
-    "subject": "english",
-    "question": "오늘은 어제보다 날씨가 '더 좋아'. 빈칸에 알맞은 말은? 'The weather is ____ today than yesterday.'",
-    "options": ["good", "gooder", "better", "best"],
-    "correctIndex": 2,
-    "explanation": "'good'의 비교급은 'gooder'가 아니라 'better'라는 특별한 모습으로 변신해요. 꼭 기억해주세요!",
-    "difficulty": 3,
-    "audioText": "better"
-  },
-  {
-    "id": "eng_hard_so_because_001",
-    "subject": "english",
-    "question": "나는 배가 고팠다. ____ 나는 피자를 먹었다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["so", "but", "because", "or"],
+    "question": "🔊 꼬르륵... 배에서 소리가 날 때 'I am hungry.'라고 말했어요. 어떤 상황일까요?",
+    "options": ["배가 고플 때", "잠이 올 때", "기분이 좋을 때", "몸이 아플 때"],
     "correctIndex": 0,
-    "explanation": "배가 고픈 것이 '원인'이 되어 피자를 먹는 '결과'가 나왔죠? 이럴 땐 '그래서'라는 뜻의 'so'를 사용해요.",
+    "explanation": "밥 먹을 시간! 🍚 'I am hungry'는 '나는 배가 고파요'라는 뜻으로, 맛있는 음식이 생각날 때 쓰는 말이에요.",
     "difficulty": 3,
-    "audioText": "I was hungry, so I ate pizza."
+    "audioText": "I am hungry."
   },
   {
-    "id": "eng_hard_so_because_002",
+    "id": "english_hard_listen_sentence_3",
     "subject": "english",
-    "question": "나는 행복하다. ____ 오늘은 내 생일이기 때문이다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["and", "so", "or", "because"],
-    "correctIndex": 3,
-    "explanation": "행복한 '이유'를 설명하고 있으니, '왜냐하면'이라는 뜻의 'because'를 써야 해요.",
-    "difficulty": 3,
-    "audioText": "I am happy because it is my birthday."
-  },
-  {
-    "id": "eng_hard_so_because_003",
-    "subject": "english",
-    "question": "비가 내리고 있었다. ____ 우리는 집에 머물렀다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["so", "but", "because", "and"],
+    "question": "🔊 외출하고 집에 돌아왔을 때 엄마가 'Wash your hands.'라고 하셨어요. 어떻게 해야 할까요?",
+    "options": ["손을 씻는다", "가방을 정리한다", "TV를 켠다", "신발을 숨긴다"],
     "correctIndex": 0,
-    "explanation": "비가 온 것이 '원인'이 되어 집에 머무는 '결과'가 나왔어요. '그래서'라는 뜻의 'so'가 정답!",
+    "explanation": "뽀득뽀득! ✨ 'Wash your hands'는 '손을 씻으렴'이라는 뜻이에요. 건강을 위해 꼭 필요한 습관이죠!",
     "difficulty": 3,
-    "audioText": "It was raining, so we stayed home."
+    "audioText": "Wash your hands."
   },
   {
-    "id": "eng_hard_so_because_004",
+    "id": "english_hard_listen_spell_1",
     "subject": "english",
-    "question": "나는 그를 좋아한다. ____ 그는 친절하기 때문이다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["but", "or", "so", "because"],
-    "correctIndex": 3,
-    "explanation": "그를 좋아하는 '이유'가 '친절하기 때문'이라고 설명하고 있죠? 이럴 땐 'because'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "I like him because he is kind."
-  },
-  {
-    "id": "eng_hard_so_because_005",
-    "subject": "english",
-    "question": "그는 피곤했다. ____ 그는 일찍 잠자리에 들었다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["because", "so", "but", "and"],
-    "correctIndex": 1,
-    "explanation": "피곤했기 '때문에(원인)' 일찍 잠자리에 드는 '결과'가 생겼어요. 문장의 순서를 보면 '그래서'라는 뜻의 'so'가 어울리네요.",
-    "difficulty": 3,
-    "audioText": "He was tired, so he went to bed early."
-  },
-  {
-    "id": "eng_hard_so_because_006",
-    "subject": "english",
-    "question": "그녀는 시험에 통과했다. ____ 그녀는 열심히 공부했기 때문이다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["so", "but", "because", "or"],
-    "correctIndex": 2,
-    "explanation": "시험에 통과한 '이유'를 설명하고 있으니 '왜냐하면'이라는 뜻의 'because'가 정답!",
-    "difficulty": 3,
-    "audioText": "She passed the test because she studied hard."
-  },
-  {
-    "id": "eng_hard_so_because_007",
-    "subject": "english",
-    "question": "날씨가 추웠다. ____ 나는 코트를 입었다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["so", "and", "because", "but"],
+    "question": "🔊 [들려준 단어] 달콤한 '사탕' 소리가 들려요! 올바른 영어 철자는 무엇일까요?",
+    "options": ["candy", "cendy", "kandy", "candee"],
     "correctIndex": 0,
-    "explanation": "추운 날씨가 '원인'이 되어 코트를 입는 '결과'가 나왔어요. '그래서'라는 뜻의 'so'를 사용해요.",
+    "explanation": "알록달록 달콤해! 🍬 '사탕'은 영어로 'candy'라고 써요. 'can'과 'dy'가 합쳐진 모양을 기억하세요!",
     "difficulty": 3,
-    "audioText": "It was cold, so I wore a coat."
+    "audioText": "candy"
   },
   {
-    "id": "eng_hard_so_because_008",
+    "id": "english_hard_listen_spell_2",
     "subject": "english",
-    "question": "나는 학교에 늦었다. ____ 늦게 일어났기 때문이다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["or", "so", "but", "because"],
-    "correctIndex": 3,
-    "explanation": "학교에 늦은 '이유'가 '늦게 일어났기 때문'이라고 설명하고 있으니 'because'가 정답!",
-    "difficulty": 3,
-    "audioText": "I was late for school because I got up late."
-  },
-  {
-    "id": "eng_hard_so_because_009",
-    "subject": "english",
-    "question": "나는 배가 불렀다. ____ 나는 더 이상 먹을 수 없었다. 빈칸에 들어갈 알맞은 말은 무엇일까요?",
-    "options": ["because", "and", "so", "but"],
-    "correctIndex": 2,
-    "explanation": "배가 부른 것이 '원인'이 되어 더 이상 먹을 수 없는 '결과'가 나왔어요. '그래서'라는 뜻의 'so'가 자연스럽네요.",
-    "difficulty": 3,
-    "audioText": "I was full, so I couldn't eat anymore."
-  },
-  {
-    "id": "eng_hard_so_because_010",
-    "subject": "english",
-    "question": "그녀는 미소를 짓고 있다. ____ 그녀는 행복하기 때문이다. 빈칸에 알맞은 말은 무엇일까요?",
-    "options": ["but", "so", "or", "because"],
-    "correctIndex": 3,
-    "explanation": "그녀가 미소 짓는 '이유'를 설명하고 있으므로 '왜냐하면'이라는 뜻의 'because'를 사용해야 해요.",
-    "difficulty": 3,
-    "audioText": "She is smiling because she is happy."
-  },
-  {
-    "id": "eng_hard_pastprog_001",
-    "subject": "english",
-    "question": "네가 전화했을 때, 나는 TV를 '보고 있는 중이었어'. 빈칸에 알맞은 말은? 'I ____ TV when you called.'",
-    "options": ["watched", "was watching", "watch", "am watching"],
-    "correctIndex": 1,
-    "explanation": "과거의 특정 순간('네가 전화했을 때')에 무언가를 '하고 있는 중'이었다고 말할 때는 'was'와 '-ing'를 함께 써요.",
-    "difficulty": 3,
-    "audioText": "I was watching TV when you called."
-  },
-  {
-    "id": "eng_hard_pastprog_002",
-    "subject": "english",
-    "question": "어제 오후 3시에, 그들은 축구를 '하고 있는 중이었어'. 빈칸에 알맞은 말은? 'They ____ soccer at 3 PM yesterday.'",
-    "options": ["played", "play", "was playing", "were playing"],
-    "correctIndex": 3,
-    "explanation": "주인공이 'They(그들)'처럼 여러 명일 때는 'was'가 아니라 'were'를 사용해요. 'They were playing'!",
-    "difficulty": 3,
-    "audioText": "They were playing soccer at 3 PM yesterday."
-  },
-  {
-    "id": "eng_hard_pastprog_003",
-    "subject": "english",
-    "question": "내가 집에 도착했을 때, 그녀는 저녁을 '요리하고 있는 중이었어'. 영어로 어떻게 말할까요?",
-    "options": [
-      "She cooked dinner.",
-      "She cooks dinner.",
-      "She was cooking dinner.",
-      "She is cooking dinner."
-    ],
-    "correctIndex": 2,
-    "explanation": "'내가 집에 도착했다'는 과거의 특정 순간에, 그녀는 요리를 '하고 있는 중'이었으므로 'was cooking'이 정답이에요.",
-    "difficulty": 3,
-    "audioText": "She was cooking dinner."
-  },
-  {
-    "id": "eng_hard_pastprog_004",
-    "subject": "english",
-    "question": "그가 방에 들어왔을 때, 아기는 '자고 있는 중이었어'. 빈칸에 알맞은 말은? 'The baby ____ when he came in.'",
-    "options": ["sleeps", "slept", "was sleeping", "is sleeping"],
-    "correctIndex": 2,
-    "explanation": "'그가 들어왔다'는 과거의 순간에 아기는 잠을 '자고 있는 중'이었어요. 그래서 'was sleeping'이 맞아요.",
-    "difficulty": 3,
-    "audioText": "The baby was sleeping."
-  },
-  {
-    "id": "eng_hard_pastprog_005",
-    "subject": "english",
-    "question": "우리가 공원에 있을 때, 비가 '내리고 있는 중이었어'. 영어로 어떻게 말할까요?",
-    "options": [
-      "It was raining.",
-      "It rained.",
-      "It is raining.",
-      "It rains."
-    ],
+    "question": "🔊 [들려준 단어] 아침에 일어나면 마시는 '우유' 소리! 영어로 어떻게 쓸까요?",
+    "options": ["milk", "melk", "milc", "miik"],
     "correctIndex": 0,
-    "explanation": "'우리가 공원에 있었다'는 과거의 기간 동안 비가 계속 '내리고 있는 중'이었으므로 'was raining'이 자연스러워요.",
+    "explanation": "키가 쑥쑥!🥛 '우유'는 'milk'라고 쓴답니다. 마지막 글자가 'k'라는 것을 잊지 마세요!",
     "difficulty": 3,
-    "audioText": "It was raining."
+    "audioText": "milk"
   },
   {
-    "id": "eng_hard_pastprog_006",
+    "id": "english_hard_listen_spell_3",
     "subject": "english",
-    "question": "어젯밤 10시에, 너는 무엇을 '하고 있는 중이었니'? 빈칸에 알맞은 말은? 'What ____ you doing at 10 PM last night?'",
-    "options": ["was", "are", "were", "did"],
-    "correctIndex": 2,
-    "explanation": "맞아요! 주인공이 'You'일 때는 'were'를 사용해서 물어봐요. 'What were you doing?'",
-    "difficulty": 3,
-    "audioText": "What were you doing?"
-  },
-  {
-    "id": "eng_hard_pastprog_007",
-    "subject": "english",
-    "question": "그가 나를 봤을 때, 나는 책을 '읽고 있는 중이 아니었어'. 영어로 어떻게 말할까요?",
-    "options": [
-      "I didn't read a book.",
-      "I wasn't reading a book.",
-      "I don't read a book.",
-      "I'm not reading a book."
-    ],
-    "correctIndex": 1,
-    "explanation": "'~하는 중이 아니었다'라고 말할 때는 'was'나 'were' 뒤에 'not'을 붙여줘요. 'I wasn't reading a book.'",
-    "difficulty": 3,
-    "audioText": "I wasn't reading a book."
-  },
-  {
-    "id": "eng_hard_pastprog_008",
-    "subject": "english",
-    "question": "그들이 도착했을 때, 우리는 TV를 '보고 있는 중이었어'. 빈칸에 알맞은 말은? 'We ____ TV when they arrived.'",
-    "options": ["watched", "watch", "were watching", "was watching"],
-    "correctIndex": 2,
-    "explanation": "주인공이 'We(우리)' 여러 명이니까 'were'를 써서 'were watching'이라고 해야 해요.",
-    "difficulty": 3,
-    "audioText": "We were watching TV."
-  },
-  {
-    "id": "eng_hard_pastprog_009",
-    "subject": "english",
-    "question": "내가 그녀를 만났을 때, 그녀는 파란 드레스를 '입고 있는 중이었어'. 영어로 어떻게 말할까요?",
-    "options": [
-      "She wore a blue dress.",
-      "She wears a blue dress.",
-      "She is wearing a blue dress.",
-      "She was wearing a blue dress."
-    ],
-    "correctIndex": 3,
-    "explanation": "'내가 그녀를 만났다'는 과거의 순간에, 그녀는 파란 드레스를 '입고 있는' 상태였어요. 그래서 'was wearing'이 가장 자연스러운 표현이랍니다.",
-    "difficulty": 3,
-    "audioText": "She was wearing a blue dress."
-  },
-  {
-    "id": "eng_hard_pastprog_010",
-    "subject": "english",
-    "question": "어제 이 시간에, 나는 숙제를 '하고 있는 중이었어'. 빈칸에 알맞은 말은? 'At this time yesterday, I ____ my homework.'",
-    "options": ["was doing", "did", "do", "am doing"],
+    "question": "🔊 [들려준 단어] 행복한 '가족'이라는 단어가 들렸어요. 철자가 올바른 것을 골라보세요.",
+    "options": ["family", "femily", "pamily", "familee"],
     "correctIndex": 0,
-    "explanation": "최고예요! '어제 이 시간'이라는 과거의 특정 시점을 콕 집어 말했으므로, 그 순간에 '하고 있는 중'이었던 행동을 나타내는 'was doing'이 정답이에요.",
+    "explanation": "사랑해요! ❤️ '가족'은 'family'라고 써요. 아빠, 엄마, 나 우리 모두는 'family'!",
     "difficulty": 3,
-    "audioText": "I was doing my homework."
+    "audioText": "family"
   },
   {
-    "id": "eng_hard_wh_011",
+    "id": "english_hard_categorize_1",
     "subject": "english",
-    "question": "저기 있는 저 소년은 '누구'니? 빈칸에 알맞은 말은? '____ is that boy over there?'",
-    "options": ["What", "Where", "Who", "How"],
-    "correctIndex": 2,
-    "explanation": "사람에 대해 물어볼 때는 '누구'라는 뜻의 'Who'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "Who is that boy?"
-  },
-  {
-    "id": "eng_hard_wh_012",
-    "subject": "english",
-    "question": "'왜' 너는 슬퍼보이니? 빈칸에 알맞은 말은? '____ are you sad?'",
-    "options": ["What", "When", "Why", "Where"],
-    "correctIndex": 2,
-    "explanation": "이유를 물어볼 때는 '왜'라는 뜻의 'Why'를 사용한답니다.",
-    "difficulty": 3,
-    "audioText": "Why are you sad?"
-  },
-  {
-    "id": "eng_hard_wh_013",
-    "subject": "english",
-    "question": "너의 생일은 '언제'니? 빈칸에 알맞은 말은? '____ is your birthday?'",
-    "options": ["When", "Where", "What", "How"],
+    "question": "🕵️ 엉뚱한 친구 찾기! 다음 단어들 중 종류가 다른 하나는 무엇일까요? (Dog, Cat, Fish, Chair)",
+    "options": ["Chair", "Dog", "Cat", "Fish"],
     "correctIndex": 0,
-    "explanation": "날짜나 시간을 물어볼 때는 '언제'라는 뜻의 'When'을 사용해요.",
+    "explanation": "찾았다! 🧐 Dog, Cat, Fish는 모두 동물이지만, Chair는 우리가 앉는 '의자'예요. 종류가 완전히 다르죠?",
     "difficulty": 3,
-    "audioText": "When is your birthday?"
+    "audioText": "Chair, Dog, Cat, Fish"
   },
   {
-    "id": "eng_hard_wh_014",
+    "id": "english_hard_categorize_2",
     "subject": "english",
-    "question": "너는 '어떻게' 학교에 가니? (버스타고? 걸어서?) 빈칸에 알맞은 말은? '____ do you go to school?'",
-    "options": ["What", "How", "Why", "Who"],
-    "correctIndex": 1,
-    "explanation": "방법을 물어볼 때는 '어떻게'라는 뜻의 'How'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "How do you go to school?"
-  },
-  {
-    "id": "eng_hard_wh_015",
-    "subject": "english",
-    "question": "이것은 '누구의' 공이니? 빈칸에 알맞은 말은? '____ ball is this?'",
-    "options": ["Who", "What", "Whose", "Who's"],
-    "correctIndex": 2,
-    "explanation": "물건의 주인을 물어볼 때는 '누구의'라는 뜻을 가진 'Whose'를 사용해요. 'Who's'는 'Who is'의 줄임말이니 헷갈리면 안돼요!",
-    "difficulty": 3,
-    "audioText": "Whose ball is this?"
-  },
-  {
-    "id": "eng_hard_wh_016",
-    "subject": "english",
-    "question": "'무슨' 과목을 가장 좋아하니? 빈칸에 알맞은 말은? '____ subject do you like the most?'",
-    "options": ["What", "Which", "Who", "How"],
+    "question": "🕵️ 이상한 녀석 발견! 다음 중 느낌이나 기분이 아닌 것은 무엇일까요? (Red, Blue, Happy, Yellow)",
+    "options": ["Happy", "Red", "Blue", "Yellow"],
     "correctIndex": 0,
-    "explanation": "종류를 물어볼 때 '무슨'이라는 뜻으로 'What'을 사용할 수 있어요.",
+    "explanation": "성공! 🤩 Red, Blue, Yellow는 모두 색깔이지만, Happy는 '행복한' 기분을 나타내는 말이에요.",
     "difficulty": 3,
-    "audioText": "What subject do you like the most?"
+    "audioText": "Happy, Red, Blue, Yellow"
   },
   {
-    "id": "eng_hard_wh_017",
+    "id": "english_hard_categorize_3",
     "subject": "english",
-    "question": "너는 '어디에서' 왔니? 빈칸에 알맞은 말은? '____ are you from?'",
-    "options": ["Who", "What", "How", "Where"],
-    "correctIndex": 3,
-    "explanation": "장소를 물어보는 질문은 '어디'라는 뜻의 'Where'로 시작해요.",
-    "difficulty": 3,
-    "audioText": "Where are you from?"
-  },
-  {
-    "id": "eng_hard_wh_018",
-    "subject": "english",
-    "question": "'몇' 명의 친구들이 있니? 빈칸에 알맞은 말은? '____ ____ friends do you have?'",
-    "options": ["How many", "How much", "What many", "Which much"],
+    "question": "🕵️ 앗, 스파이가 숨어있다! 다음 중 과일이 아닌 단어를 찾아내세요. (Apple, Bus, Banana, Grape)",
+    "options": ["Bus", "Apple", "Banana", "Grape"],
     "correctIndex": 0,
-    "explanation": "셀 수 있는 것의 개수를 물어볼 때는 'How many'를 사용해요. 셀 수 없는 양을 물어볼 땐 'How much'를 쓴답니다.",
+    "explanation": "잡았다! 🚌 Apple, Banana, Grape는 모두 맛있는 과일이지만, Bus는 우리가 타고 다니는 '버스'예요!",
     "difficulty": 3,
-    "audioText": "How many friends do you have?"
+    "audioText": "Bus, Apple, Banana, Grape"
   },
   {
-    "id": "eng_hard_wh_019",
+    "id": "english_hard_sentence_fill_1",
     "subject": "english",
-    "question": "'누가' 창문을 깼니? 빈칸에 알맞은 말은? '____ broke the window?'",
-    "options": ["What", "Why", "Who", "How"],
-    "correctIndex": 2,
-    "explanation": "행동을 한 사람, 즉 주체가 '누구'인지 물어볼 때 'Who'를 사용해요.",
-    "difficulty": 3,
-    "audioText": "Who broke the window?"
-  },
-  {
-    "id": "eng_hard_wh_020",
-    "subject": "english",
-    "question": "파티가 '언제' 시작하니? 빈칸에 알맞은 말은? '____ does the party start?'",
-    "options": ["What", "Where", "When", "Why"],
-    "correctIndex": 2,
-    "explanation": "시간을 물어볼 때는 '언제'라는 뜻의 'When'을 사용해서 물어봐요.",
-    "difficulty": 3,
-    "audioText": "When does the party start?"
-  },
-  {
-    "id": "eng_hard_reading_001",
-    "subject": "english",
-    "question": "[글] My name is Tom. I have a cat. My cat is white and likes fish. I play with my cat every day. \n\n[질문] 위 글의 내용과 다른 것은 무엇인가요?",
-    "options": [
-      "이름은 Tom이다.",
-      "고양이를 키운다.",
-      "고양이는 검은색이다.",
-      "고양이는 생선을 좋아한다."
-    ],
-    "correctIndex": 2,
-    "explanation": "정확해요! 글에서 'My cat is white.'라고 했으므로 '고양이는 흰색'이 맞는 내용이에요. 따라서 '고양이는 검은색이다.'가 글의 내용과 다른 설명입니다. 이렇게 문장을 꼼꼼히 읽는 연습이 중요해요!",
-    "difficulty": 3,
-    "audioText": "My cat is white."
-  },
-  {
-    "id": "eng_hard_reading_002",
-    "subject": "english",
-    "question": "[글] I go to school at 8 AM. I study math and English. I like English more than math. I eat lunch at 12 PM. \n\n[질문] 이 글을 쓴 사람은 어떤 과목을 더 좋아하나요?",
-    "options": ["수학(math)", "영어(English)", "둘 다 좋아한다", "알 수 없다"],
-    "correctIndex": 1,
-    "explanation": "글에서 'I like English more than math.'라고 나와 있어요. 'more than'은 '~보다 더'라는 뜻으로, 영어를 수학보다 더 좋아한다는 의미랍니다.",
-    "difficulty": 3,
-    "audioText": "I like English more than math."
-  },
-  {
-    "id": "eng_hard_reading_003",
-    "subject": "english",
-    "question": "[글] Yesterday was a happy day. It was my birthday. I got many presents from my friends. My favorite present is a robot. \n\n[질문] 어제는 왜 행복한 날이었나요?",
-    "options": ["로봇을 사서", "친구들을 만나서", "생일이어서", "날씨가 좋아서"],
-    "correctIndex": 2,
-    "explanation": "글의 두 번째 문장에서 'It was my birthday.'라고 말했어요. 생일이어서 행복한 날이었네요!",
-    "difficulty": 3,
-    "audioText": "It was my birthday."
-  },
-  {
-    "id": "eng_hard_reading_004",
-    "subject": "english",
-    "question": "[글] My family went to the zoo on Sunday. I saw lions, monkeys, and elephants. The elephants were very big. We had a great time. \n\n[질문] 이 글에서 언급되지 **않은** 동물은 무엇인가요?",
-    "options": ["사자(lions)", "원숭이(monkeys)", "코끼리(elephants)", "호랑이(tigers)"],
-    "correctIndex": 3,
-    "explanation": "글 속에서 사자, 원숭이, 코끼리는 봤다고 했지만, 호랑이(tigers)에 대한 이야기는 없었어요.",
-    "difficulty": 3,
-    "audioText": "lions, monkeys, and elephants"
-  },
-  {
-    "id": "eng_hard_reading_005",
-    "subject": "english",
-    "question": "[글] I have a dog. Its name is Max. Max has short legs and a long tail. It likes to play with a ball. \n\n[질문] Max에 대한 설명으로 올바른 것은 무엇인가요?",
-    "options": ["다리가 길다.", "꼬리가 짧다.", "공놀이를 좋아한다.", "고양이다."],
-    "correctIndex": 2,
-    "explanation": "마지막 문장에서 'It likes to play with a ball.'이라고 했어요. '공을 가지고 노는 것을 좋아한다'는 뜻이죠.",
-    "difficulty": 3,
-    "audioText": "It likes to play with a ball."
-  },
-  {
-    "id": "eng_hard_reading_006",
-    "subject": "english",
-    "question": "[글] It is a sunny day. The sky is blue. The birds are singing in the trees. I want to go on a picnic. \n\n[질문] 이 글의 날씨는 어떤가요?",
-    "options": ["비가 온다", "바람이 분다", "눈이 온다", "화창하다"],
-    "correctIndex": 3,
-    "explanation": "첫 문장에서 'It is a sunny day.'라고 말했어요. 'sunny'는 '화창한'이라는 뜻이랍니다.",
-    "difficulty": 3,
-    "audioText": "It is a sunny day."
-  },
-  {
-    "id": "eng_hard_reading_007",
-    "subject": "english",
-    "question": "[글] My sister can play the piano very well. She practices every day. She wants to be a pianist. \n\n[질문] 여동생의 꿈은 무엇인가요?",
-    "options": ["선생님", "피아니스트", "의사", "가수"],
-    "correctIndex": 1,
-    "explanation": "마지막 문장에서 'She wants to be a pianist.'라고 했어요. 'pianist'는 '피아니스트'를 뜻한답니다.",
-    "difficulty": 3,
-    "audioText": "She wants to be a pianist."
-  },
-  {
-    "id": "eng_hard_reading_008",
-    "subject": "english",
-    "question": "[글] I am hungry. I want to eat a hamburger. But my mom says I should eat vegetables. \n\n[질문] 나는 무엇을 먹고 싶어하나요?",
-    "options": ["햄버거", "채소", "피자", "치킨"],
+    "question": "퍼즐 조각을 맞춰라! 🧩 새들은 하늘에서 OOO 할 수 있어요. (Birds can ____ in the sky.)",
+    "options": ["fly", "run", "swim", "sleep"],
     "correctIndex": 0,
-    "explanation": "맞아요! 'I want to eat a hamburger.'라는 문장에서 '햄버거'를 먹고 싶어 한다는 것을 알 수 있어요.",
+    "explanation": "훨훨~ 🕊️ 새들은 날개가 있어서 하늘을 '날 수 있어요'. '날다'는 영어로 fly라고 해요.",
     "difficulty": 3,
-    "audioText": "I want to eat a hamburger."
+    "audioText": "fly"
   },
   {
-    "id": "eng_hard_reading_009",
+    "id": "english_hard_sentence_fill_2",
     "subject": "english",
-    "question": "[글] I have a red cap and a blue bag. The cap is new, but the bag is old. I like my new cap. \n\n[질문] 이 글의 내용과 맞는 것은 무엇인가요?",
-    "options": ["가방은 빨간색이다.", "모자는 파란색이다.", "가방은 새 것이다.", "모자는 새 것이다."],
-    "correctIndex": 3,
-    "explanation": "글에서 'The cap is new'라고 했어요. '모자는 새 것이다'라는 뜻이죠.",
+    "question": "빈칸을 채워 문장을 완성! ✍️ 나는 내 눈으로 세상을 OOO. (I ____ with my eyes.)",
+    "options": ["see", "hear", "smell", "touch"],
+    "correctIndex": 0,
+    "explanation": "반짝! 👀 우리는 눈으로 세상을 '봐요'. '보다'는 영어로 see랍니다. 귀로는 듣고(hear), 코로는 냄새 맡죠(smell)!",
     "difficulty": 3,
-    "audioText": "The cap is new."
+    "audioText": "see"
   },
   {
-    "id": "eng_hard_reading_010",
+    "id": "english_hard_sentence_fill_3",
     "subject": "english",
-    "question": "[글] My favorite season is winter. I like winter because I can make a snowman. I also like to ski with my family. \n\n[질문] 이 사람이 겨울을 좋아하는 이유는 무엇인가요?",
-    "options": ["덥기 때문에", "눈사람을 만들 수 있어서", "수영을 할 수 있어서", "꽃을 볼 수 있어서"],
-    "correctIndex": 1,
-    "explanation": "글에서 'because I can make a snowman'이라고 이유를 말해주고 있어요. '눈사람을 만들 수 있기 때문'이죠.",
+    "question": "마지막 조각은? 🧩 배가 고플 때, 나는 음식을 OOO. (When I am hungry, I ____ food.)",
+    "options": ["eat", "play", "read", "sing"],
+    "correctIndex": 0,
+    "explanation": "냠냠! 🍕 배가 고플 땐 음식을 '먹어야' 힘이 나죠! '먹다'는 영어로 eat이에요.",
     "difficulty": 3,
-    "audioText": "I like winter because I can make a snowman."
+    "audioText": "eat"
   },
   {
-    "id": "eng_hard_direction_001",
+    "id": "english_hard_plural_form_1",
     "subject": "english",
-    "question": "다음 지시를 순서대로 따랐을 때, 마지막 행동은 무엇일까요? 'Sit down and open your book.'",
-    "options": ["앉는다", "책을 편다", "일어선다", "책을 닫는다"],
-    "correctIndex": 1,
-    "explanation": "'Sit down(앉아라)'을 먼저 하고, 'and(그리고)' 나서 'open your book(책을 펴라)'을 하는 것이므로, 마지막 행동은 책을 펴는 것이에요.",
+    "question": "하나, 그리고 많이! 🍎 사과 한 개는 'one apple', 그럼 사과 두 개는 뭐라고 말할까요?",
+    "options": ["two apples", "two apple", "two appls", "two applees"],
+    "correctIndex": 0,
+    "explanation": "두 개 이상일 때! 🍎🍎 물건이 여러 개 있을 때는 보통 단어 뒤에 -s를 붙여요. 그래서 'apples'가 맞아요.",
     "difficulty": 3,
-    "audioText": "Sit down and open your book."
+    "audioText": "two apples"
   },
   {
-    "id": "eng_hard_direction_002",
+    "id": "english_hard_plural_form_2",
     "subject": "english",
-    "question": "다음 지시를 듣고 해야 할 행동이 아닌 것은 무엇일까요? 'Please, wash your hands and face.'",
-    "options": ["손 씻기", "세수하기", "발 씻기", "정답 없음"],
-    "correctIndex": 2,
-    "explanation": "'wash your hands(손을 씻어라)'와 'face(얼굴)'는 말했지만, '발(feet)'에 대한 이야기는 없었어요.",
+    "question": "변신 마법! ✨ 상자 한 개는 'one box'예요. 그럼 상자 세 개는 어떻게 변신할까요?",
+    "options": ["three boxes", "three boxs", "three box", "three boxies"],
+    "correctIndex": 0,
+    "explanation": "얍! ✨ x로 끝나는 단어는 여러 개가 될 때 -es를 붙여서 'boxes'라고 말해요. 발음하기 더 편하답니다!",
     "difficulty": 3,
-    "audioText": "Please, wash your hands and face."
+    "audioText": "three boxes"
   },
   {
-    "id": "eng_hard_direction_003",
+    "id": "english_hard_plural_form_3",
     "subject": "english",
-    "question": "다음 지시를 순서대로 따랐을 때, 첫 번째 행동은 무엇일까요? 'Stand up and go to the door.'",
-    "options": ["문으로 간다", "일어선다", "앉는다", "문을 연다"],
-    "correctIndex": 1,
-    "explanation": "'Stand up(일어서라)'을 먼저 하고, 'and(그리고)' 나서 'go to the door(문으로 가라)'를 하는 것이므로, 첫 번째 행동은 일어서는 것이에요.",
+    "question": "슈퍼 울트라 변신! 👣 발 한 개는 'one foot'이라고 해요. 그럼 양쪽 발 두 개는 뭐라고 할까요?",
+    "options": ["two feet", "two foots", "two feets", "two foot"],
+    "correctIndex": 0,
+    "explanation": "특별한 변신! 👟 foot처럼 모양이 완전히 바뀌는 특별한 친구들도 있어요. 'foots'가 아니라 'feet'라고 기억해주세요!",
     "difficulty": 3,
-    "audioText": "Stand up and go to the door."
+    "audioText": "two feet"
   },
   {
-    "id": "eng_hard_direction_004",
+    "id": "english_hard_reading_short_1",
     "subject": "english",
-    "question": "다음 지시를 듣고 해야 할 행동으로 올바른 것은 무엇일까요? 'Don't run. Please walk.'",
-    "options": ["달리기", "걷기", "점프하기", "멈추기"],
-    "correctIndex": 1,
-    "explanation": "'Don't run'은 '달리지 마세요'라는 뜻이고, 'Please walk'는 '걸어주세요'라는 뜻이에요. 따라서 걸어야 해요.",
+    "question": "짧은 글 탐험! 📜 \"I am Sue. I have a yellow cat.\" 이 글에서 Sue가 키우는 고양이의 색깔은 무엇일까요?",
+    "options": ["노란색", "하얀색", "검은색", "빨간색"],
+    "correctIndex": 0,
+    "explanation": "탐험 성공! 🌟 글 속에 'a yellow cat'이라는 힌트가 숨어있었어요. yellow는 '노란색'이죠!",
     "difficulty": 3,
-    "audioText": "Don't run. Please walk."
+    "audioText": "yellow"
   },
   {
-    "id": "eng_hard_direction_005",
+    "id": "english_hard_reading_short_2",
     "subject": "english",
-    "question": "다음 지시를 순서대로 따랐을 때, 마지막 행동은 무엇일까요? 'Take a pencil and write your name.'",
-    "options": ["연필을 잡는다", "이름을 쓴다", "지우개를 잡는다", "이름을 지운다"],
-    "correctIndex": 1,
-    "explanation": "'Take a pencil(연필을 잡아라)'을 먼저 하고, 'and(그리고)' 나서 'write your name(이름을 써라)'을 하는 것이므로, 마지막 행동은 이름 쓰기예요.",
+    "question": "비밀 코드 해독! 📜 \"This is a pig. The pig is big and pink.\" 이 글에서 돼지는 어떤 모습인가요?",
+    "options": ["크고 분홍색이다", "작고 하얀색이다", "크고 까만색이다", "작고 갈색이다"],
+    "correctIndex": 0,
+    "explanation": "해독 완료! 🕵️ 'big and pink'라는 비밀 코드를 찾아냈군요! 돼지는 '크고 분홍색'이었어요.",
     "difficulty": 3,
-    "audioText": "Take a pencil and write your name."
+    "audioText": "big and pink"
   },
   {
-    "id": "eng_hard_direction_006",
+    "id": "english_hard_reading_short_3",
     "subject": "english",
-    "question": "다음 지시를 듣고 해야 할 행동이 아닌 것은 무엇일까요? 'Close your eyes and listen carefully.'",
-    "options": ["눈 감기", "귀 기울여 듣기", "말하기", "정답 없음"],
-    "correctIndex": 2,
-    "explanation": "맞아요! 'Close your eyes(눈을 감아라)'와 'listen carefully(주의 깊게 들어라)'는 말했지만, '말하기(speak/talk)'에 대한 이야기는 없었어요.",
+    "question": "이야기 속으로! 📜 \"A rabbit likes carrots. It can jump high.\" 이 글에서 토끼가 좋아하는 음식은 무엇인가요?",
+    "options": ["당근", "사과", "바나나", "물고기"],
+    "correctIndex": 0,
+    "explanation": "정답 발견! 🥕 이야기 첫 부분에 'A rabbit likes carrots'라고 나와 있었어요. 'carrots'는 '당근'이에요.",
     "difficulty": 3,
-    "audioText": "Close your eyes and listen carefully."
+    "audioText": "carrots"
   },
   {
-    "id": "eng_hard_direction_007",
+    "id": "english_hard_preposition_1",
     "subject": "english",
-    "question": "다음 지시를 순서대로 따랐을 때, 첫 번째 행동은 무엇일까요? 'Point to the window and say 'window'.'",
-    "options": ["'window'라고 말한다", "창문을 가리킨다", "창문을 연다", "창문을 닫는다"],
-    "correctIndex": 1,
-    "explanation": "'Point to the window(창문을 가리켜라)'를 먼저 하고, 그 다음에 말하는 것이므로 첫 번째 행동은 창문을 가리키는 것이에요.",
+    "question": "숨은 그림 찾기! 🖼️ 그림을 보니, 고양이가 상자 안에 쏙 들어가 있어요. '상자 안에'는 영어로 어떻게 말할까요?",
+    "options": ["in the box", "on the box", "under the box", "by the box"],
+    "correctIndex": 0,
+    "explanation": "찾았다! 쏙 들어간 고양이! 🐾 '~안에'라는 뜻을 가진 단어는 'in'이에요. 그래서 'in the box'라고 말해요.",
     "difficulty": 3,
-    "audioText": "Point to the window and say 'window'."
+    "audioText": "in the box"
   },
   {
-    "id": "eng_hard_direction_008",
+    "id": "english_hard_preposition_2",
     "subject": "english",
-    "question": "다음 지시를 듣고 해야 할 행동으로 올바른 것은 무엇일까요? 'Don't shout. Speak softly.'",
-    "options": ["소리 지르기", "노래 부르기", "조용히 말하기", "뛰기"],
-    "correctIndex": 2,
-    "explanation": "'Don't shout'은 '소리 지르지 마세요'라는 뜻이고, 'Speak softly'는 '부드럽게(조용히) 말하세요'라는 뜻이에요.",
+    "question": "어디에 있을까? 🍎 사과가 식탁 위에 놓여 있어요. '식탁 위에'는 영어로 어떻게 표현할까요?",
+    "options": ["on the table", "in the table", "under the table", "at the table"],
+    "correctIndex": 0,
+    "explanation": "바로 저기! 🍎 어떤 물건 '위에'라고 말할 때는 'on'을 사용해요. 그래서 'on the table'이 맞아요!",
     "difficulty": 3,
-    "audioText": "Don't shout. Speak softly."
+    "audioText": "on the table"
   },
   {
-    "id": "eng_hard_direction_009",
+    "id": "english_hard_preposition_3",
     "subject": "english",
-    "question": "다음 지시를 순서대로 따랐을 때, 마지막 행동은 무엇일까요? 'Go to your room and clean it.'",
-    "options": ["방으로 간다", "방을 청소한다", "방에서 나온다", "방을 어지른다"],
-    "correctIndex": 1,
-    "explanation": "'Go to your room(네 방으로 가라)'을 먼저 하고, 'and(그리고)' 나서 'clean it(그것을 청소해라)'을 하는 것이므로, 마지막 행동은 청소하기에요.",
+    "question": "왕이 넘어져서 다치면 어떤 병원에 가야 할까요? 🏥",
+    "options": ["킹콩 정형외과", "왕자 내과", "공주 소아과", "황제 피부과"],
+    "correctIndex": 0,
+    "explanation": "아야! 🤕 왕(King)이 쿵! 하고 넘어졌으니까 '킹콩' 정형외과에 가야 해요! (재미있는 농담이에요!)",
     "difficulty": 3,
-    "audioText": "Go to your room and clean it."
+    "audioText": "킹콩 정형외과"
   },
   {
-    "id": "eng_hard_direction_010",
+    "id": "english_hard_can_cant_1",
     "subject": "english",
-    "question": "다음 지시를 듣고 해야 할 행동이 아닌 것은 무엇일까요? 'Please read the book and draw a picture.'",
-    "options": ["책 읽기", "그림 그리기", "음악 듣기", "정답 없음"],
-    "correctIndex": 2,
-    "explanation": "'read the book(책을 읽어라)'과 'draw a picture(그림을 그려라)'는 말했지만, '음악 듣기(listen to music)'에 대한 이야기는 없었어요.",
+    "question": "능력자 찾기! 🐠 물고기는 물속에서 OOO 할 수 있지만, 땅에서는 걸을 수 없어요.",
+    "options": ["swim", "fly", "run", "talk"],
+    "correctIndex": 0,
+    "explanation": "첨벙첨벙! 🐠 물고기의 가장 큰 능력은 바로 '수영하기'죠! '수영하다'는 영어로 swim이에요.",
     "difficulty": 3,
-    "audioText": "Please read the book and draw a picture."
-  }
+    "audioText": "swim"
+  },
+  {
+    "id": "english_hard_can_cant_2",
+    "subject": "english",
+    "question": "할 수 없는 것은? 🕊️ 새는 노래할 수 있지만, 나무는 노래할 수 없어요. '나무는 할 수 없다'는 어떻게 말할까요?",
+    "options": ["a tree can't sing", "a tree can sing", "a tree is sing", "a tree sings"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 🌳 '~할 수 없다'고 말할 때는 'can't'를 사용해요. 그래서 'a tree can't sing'이라고 말한답니다.",
+    "difficulty": 3,
+    "audioText": "can't sing"
+  },
+  {
+    "id": "english_hard_can_cant_3",
+    "subject": "english",
+    "question": "도전! 불가능한 미션! 🦸‍♂️ 사람은 걸을 수 있지만, 날개 없이 하늘을 OOO 수는 없어요.",
+    "options": ["fly", "jump", "see", "hear"],
+    "correctIndex": 0,
+    "explanation": "슈퍼맨이 아니니까! 💨 사람은 새처럼 날개가 없어서 '날 수' 없어요. '날다'는 영어로 fly!",
+    "difficulty": 3,
+    "audioText": "fly"
+  },
+  {
+    "id": "english_hard_job_voca_1",
+    "subject": "english",
+    "question": "누구일까요? 🧑‍⚕️ 우리가 아플 때 진찰하고 치료해주는 고마운 분은 누구일까요?",
+    "options": ["doctor", "teacher", "cook", "police officer"],
+    "correctIndex": 0,
+    "explanation": "감사합니다! 🩺 아픈 사람들을 돌봐주는 분은 바로 '의사 선생님'이에요. 영어로는 doctor라고 부릅니다.",
+    "difficulty": 3,
+    "audioText": "doctor"
+  },
+  {
+    "id": "english_hard_job_voca_2",
+    "subject": "english",
+    "question": "도와주세요! 🧑‍🚒 불이 났을 때 용감하게 불을 꺼주는 분은 누구일까요?",
+    "options": ["firefighter", "farmer", "singer", "pilot"],
+    "correctIndex": 0,
+    "explanation": "출동! 🚒 뜨거운 불과 싸우는(fight) 용감한 분! 바로 '소방관'이에요. 영어로 firefighter라고 해요.",
+    "difficulty": 3,
+    "audioText": "firefighter"
+  },
+  {
+    "id": "english_hard_job_voca_3",
+    "subject": "english",
+    "question": "세상에서 가장 착한 사자는 누구일까요? 😇",
+    "options": ["자원봉사자", "백수의 왕 사자", "아기 사자", "배고픈 사자"],
+    "correctIndex": 0,
+    "explanation": "마음이 따뜻해! 🥰 다른 사람을 위해 스스로 나서서 봉사하는 '자원봉사자'가 세상에서 가장 착한 사자랍니다! (말장난 퀴즈!)",
+    "difficulty": 3,
+    "audioText": "자원봉사자"
+  },
+    {
+      "id": "english_hard_1_1",
+      "subject": "english",
+      "question": "친구가 말했어요: 'I studied hard, but I got a bad grade.' 이 말을 들은 네가 할 수 있는 친절한 말은? 📝😢",
+      "options": ["Don’t worry! Let’s study together next time.", "Haha! You’re not smart!", "I got a good grade!", "You should quit school."],
+      "correctIndex": 0,
+      "explanation": "친구가 실망했을 때 위로해 주는 게 진짜 친구예요! 함께 공부하자고 제안해 보세요. 💪",
+      "difficulty": 3,
+      "audioText": "I got a bad grade."
+    },
+    {
+      "id": "english_hard_1_2",
+      "subject": "english",
+      "question": "민서가 말했어요: 'My dog ran away this morning.' 이 말을 들은 네가 도울 수 있는 일은? 🐕‍🦺😢",
+      "options": ["Help look for the dog with her.", "Say 'Dogs are annoying.'", "Ignore her and play games.", "Tell her to buy a new dog."],
+      "correctIndex": 0,
+      "explanation": "소중한 강아지를 잃어버렸다면 슬프겠죠? 함께 찾아주는 게 친구답는 행동이에요! ❤️",
+      "difficulty": 3,
+      "audioText": "My dog ran away."
+    },
+    {
+      "id": "english_hard_1_3",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'The classroom is messy. Who can help clean?' 이 말의 진짜 뜻은? 🧹📚",
+      "options": ["선생님이 도와줄 사람을 찾고 있어요.", "청소는 하지 않아도 돼요.", "누가 방을 어지른지 혼내려 해요.", "청소는 내일 하기로 했어요."],
+      "correctIndex": 0,
+      "explanation": "선생님이 '도와줄 사람?'이라고 물었을 때는 '청소를 같이 해달라'는 뜻이에요! 🙋‍♀️",
+      "difficulty": 3,
+      "audioText": "Who can help clean?"
+    },
+    {
+      "id": "english_hard_2_1",
+      "subject": "english",
+      "question": "지우가 비 오는 날 창밖을 보며 한숨을 쉬었어요. 그의 기분은? 🌧️😔",
+      "options": ["실망", "기쁨", "흥미", "놀람"],
+      "correctIndex": 0,
+      "explanation": "비 오는 날 밖에 나가고 싶었는데 못 가서 실망한 거예요! 날씨가 마음을 결정할 때도 있어요. ☁️",
+      "difficulty": 3,
+      "audioText": "It is raining."
+    },
+    {
+      "id": "english_hard_2_2",
+      "subject": "english",
+      "question": "할아버지가 손자의 그림을 보고 'Wow!'라고 외쳤어요. 할아버지의 감정은? 🖼️👴",
+      "options": ["놀라움과 기쁨", "화남", "지루함", "졸림"],
+      "correctIndex": 0,
+      "explanation": "'Wow!'는 감탄할 때 써요! 손자의 그림이 너무 멋져서 놀라고 기뻤던 거예요! 🌟",
+      "difficulty": 3,
+      "audioText": "Wow! It’s great!"
+    },
+    {
+      "id": "english_hard_2_3",
+      "subject": "english",
+      "question": "선생님이 시험지를 돌려주며 미소를 지으셨어요. 학생들의 기분은? 📄😊",
+      "options": ["기쁨", "두려움", "화남", "슬픔"],
+      "correctIndex": 0,
+      "explanation": "선생님이 미소 지으면 보통 좋은 결과가 나왔다는 뜻이에요! 학생들은 안도하며 기뻐할 거예요. 😌",
+      "difficulty": 3,
+      "audioText": "Good job!"
+    },
+    {
+      "id": "english_hard_3_1",
+      "subject": "english",
+      "question": "1. I woke up. 2. I brushed my teeth. 3. I ate breakfast. 다음에 할 일은? 🦷🍳",
+      "options": ["Go to school.", "Go to bed.", "Eat dinner.", "Watch TV at night."],
+      "correctIndex": 0,
+      "explanation": "아침에 일어나서 이를 닦고 아침을 먹었으니, 다음은 학교에 가는 거예요! 🎒",
+      "difficulty": 3,
+      "audioText": "I ate breakfast."
+    },
+    {
+      "id": "english_hard_3_2",
+      "subject": "english",
+      "question": "1. We bought tickets. 2. We sat down. 3. The lights went off. 지금 우리는 어디에 있을까요? 🎥🍿",
+      "options": ["Movie theater.", "Library.", "Park.", "Supermarket."],
+      "correctIndex": 0,
+      "explanation": "표를 사고, 앉고, 불이 꺼지면? 영화관에서 영화를 보는 중이에요! 🎬",
+      "difficulty": 3,
+      "audioText": "The lights went off."
+    },
+    {
+      "id": "english_hard_3_3",
+      "subject": "english",
+      "question": "1. She put on her swimsuit. 2. She put on sunscreen. 3. She went outside. 그녀는 지금 뭐 하려는 걸까요? 🩱☀️",
+      "options": ["Go swimming.", "Go to sleep.", "Read a book.", "Do homework."],
+      "correctIndex": 0,
+      "explanation": "수영복을 입고 선크림을 바르면? 수영하러 가는 준비를 한 거예요! 🏊‍♀️",
+      "difficulty": 3,
+      "audioText": "She put on sunscreen."
+    },
+    {
+      "id": "english_hard_4_1",
+      "subject": "english",
+      "question": "다음 문장 중 틀린 것은? ✏️❌",
+      "options": ["He go to school.", "He goes to school.", "She eats an apple.", "They play soccer."],
+      "correctIndex": 0,
+      "explanation": "주어가 'He'일 땐 동사에 's'가 붙어야 해요! 'He goes'가 맞고, 'He go'는 틀렸어요. ✅",
+      "difficulty": 3,
+      "audioText": "He go to school."
+    },
+    {
+      "id": "english_hard_4_2",
+      "subject": "english",
+      "question": "다음 문장 중 틀린 것은? 📚❌",
+      "options": ["She have a book.", "She has a book.", "I have a pencil.", "They have erasers."],
+      "correctIndex": 0,
+      "explanation": "'She'는 3인칭 단수라 'has'를 써야 해요! 'She have'는 틀린 문장이에요. 📖",
+      "difficulty": 3,
+      "audioText": "She have a book."
+    },
+    {
+      "id": "english_hard_4_3",
+      "subject": "english",
+      "question": "다음 문장 중 틀린 것은? 🐶❌",
+      "options": ["The dog barks loud.", "The dog barks loudly.", "The cat sleeps quietly.", "Birds sing beautifully."],
+      "correctIndex": 0,
+      "explanation": "동사를 꾸밀 땐 부사가 필요해요! 'Loud' 대신 'loudly'가 맞아요. 🗣️",
+      "difficulty": 3,
+      "audioText": "The dog barks loud."
+    },
+    {
+      "id": "english_hard_5_1",
+      "subject": "english",
+      "question": "친구가 말했어요: 'I saw a bat last night.' 이 'bat'은 무엇일까요? 🦇🌙",
+      "options": ["박쥐", "야구 방망이", "모자", "공"],
+      "correctIndex": 0,
+      "explanation": "'Last night'(어젯밤)에 봤다면? 야구 방망이보다는 하늘을 나는 '박쥐'일 가능성이 높아요! 🌌",
+      "difficulty": 3,
+      "audioText": "I saw a bat."
+    },
+    {
+      "id": "english_hard_5_2",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'Please watch the board.' 이 'watch'의 뜻은? 📋👀",
+      "options": ["보다", "시계", "기다리다", "잡다"],
+      "correctIndex": 0,
+      "explanation": "'Watch the board'는 '칠판을 보라'는 뜻이에요. 여기서 'watch'는 '보다'예요! 👁️",
+      "difficulty": 3,
+      "audioText": "Watch the board."
+    },
+    {
+      "id": "english_hard_5_3",
+      "subject": "english",
+      "question": "친구가 말했어요: 'I wear glasses to see better.' 이 'glasses'는? 👓🔍",
+      "options": ["안경", "유리컵", "거울", "렌즈"],
+      "correctIndex": 0,
+      "explanation": "'See better'(더 잘 보기 위해) 쓴다면? 'glasses'는 '안경'이에요! 🧐",
+      "difficulty": 3,
+      "audioText": "I wear glasses."
+    },
+    {
+      "id": "english_hard_6_1",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'Her smile is sunshine.' 이 말의 진짜 뜻은? ☀️😊",
+      "options": ["그녀의 미소는 따뜻하고 밝아요.", "그녀는 해를 먹었어요.", "그녀는 날씨 예보를 해요.", "그녀는 태양을 싫어해요."],
+      "correctIndex": 0,
+      "explanation": "'Smile is sunshine'은 비유예요! 미소가 해처럼 밝고 따뜻하다는 뜻이에요. 💛",
+      "difficulty": 3,
+      "audioText": "Her smile is sunshine."
+    },
+    {
+      "id": "english_hard_6_2",
+      "subject": "english",
+      "question": "친구가 말했어요: 'Time flies when we play!' 이 말의 의미는? ⏳🎮",
+      "options": ["놀면 시간이 금방 가요.", "시간이 새처럼 날아가요.", "우리는 새가 되었어요.", "시간을 잡아야 해요."],
+      "correctIndex": 0,
+      "explanation": "'Time flies'는 '시간이 빨리 간다'는 비유예요. 놀면 시간 가는 줄 모르죠! 🕰️",
+      "difficulty": 3,
+      "audioText": "Time flies!"
+    },
+    {
+      "id": "english_hard_6_3",
+      "subject": "english",
+      "question": "할머니가 말했어요: 'You are my apple pie.' 이 말의 진짜 뜻은? 🥧❤️",
+      "options": ["너는 할머니에게 아주 소중해.", "너는 과일을 좋아해.", "할머니는 파이를 만들었어.", "너는 사과를 먹고 싶어."],
+      "correctIndex": 0,
+      "explanation": "'Apple pie'는 미국에서 '가장 소중한 사람'을 뜻하는 비유예요! 할머니가 너를 정말 사랑하신다는 뜻이에요. 🥰",
+      "difficulty": 3,
+      "audioText": "You are my apple pie."
+    },
+    {
+      "id": "english_hard_7_1",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'If you finish your work, you can play.' 이 말의 의미는? ✅🎮",
+      "options": ["일을 끝내면 놀 수 있어요.", "놀고 나서 일을 해야 해요.", "일은 하지 않아도 돼요.", "놀 수 없어요."],
+      "correctIndex": 0,
+      "explanation": "'If A, then B'는 'A가 되면 B가 가능하다'는 뜻이에요. 일을 끝내야 놀 수 있어요! 🎯",
+      "difficulty": 3,
+      "audioText": "If you finish, you can play."
+    },
+    {
+      "id": "english_hard_7_2",
+      "subject": "english",
+      "question": "엄마가 말했어요: 'If it rains, we will stay home.' 오늘 비가 오면? 🌧️🏠",
+      "options": ["우리는 집에 있을 거예요.", "우리는 공원에 갈 거예요.", "우리는 우산을 사러 갈 거예요.", "우리는 학교에 갈 거예요."],
+      "correctIndex": 0,
+      "explanation": "'If it rains' → '비가 오면' → '집에 있을 거예요.' 조건과 결과를 잘 따라가 보세요! ☔",
+      "difficulty": 3,
+      "audioText": "If it rains, we stay home."
+    },
+    {
+      "id": "english_hard_7_3",
+      "subject": "english",
+      "question": "친구가 말했어요: 'If you share your snack, I’ll share my toy.' 이 말의 의미는? 🍪🧸",
+      "options": ["간식을 나누면 장난감도 나눠 줄게.", "장난감부터 줘야 간식을 줘.", "나는 아무것도 안 줄래.", "간식은 내가 다 먹을래."],
+      "correctIndex": 0,
+      "explanation": "서로 나누자는 제안이에요! 친구는 '네가 먼저 나누면 나도 나눌게'라고 말한 거예요. 🤝",
+      "difficulty": 3,
+      "audioText": "If you share, I’ll share."
+    },
+    {
+      "id": "english_hard_8_1",
+      "subject": "english",
+      "question": "다음 글을 읽고 결론을 고르세요: 'Plants need sunlight. They also need water. Without them, plants die.' 🌱💧☀️",
+      "options": ["햇빛과 물은 식물에게 꼭 필요해요.", "식물은 어두운 곳에서 잘 자라요.", "물만 있으면 식물은 살아요.", "식물은 죽어도 괜찮아요."],
+      "correctIndex": 0,
+      "explanation": "글에서 식물은 햇빛과 물이 **둘 다** 필요하다고 했어요. 둘 중 하나만으로는 안 돼요! 🌿",
+      "difficulty": 3,
+      "audioText": "Plants need sun and water."
+    },
+    {
+      "id": "english_hard_8_2",
+      "subject": "english",
+      "question": "다음 글의 결론은? 'Exercise makes your body strong. It also makes you happy.' 🏃‍♀️💪😊",
+      "options": ["운동은 몸과 마음에 좋아요.", "운동은 힘들기만 해요.", "행복하려면 잠만 자야 해요.", "몸은 운동 없이 강해져요."],
+      "correctIndex": 0,
+      "explanation": "운동은 몸을 튼튼하게 할 뿐 아니라 기분도 좋게 해줘요! 그래서 결론은 '몸과 마음에 좋다'예요. 🌈",
+      "difficulty": 3,
+      "audioText": "Exercise makes you strong and happy."
+    },
+    {
+      "id": "english_hard_8_3",
+      "subject": "english",
+      "question": "다음 글을 읽고 결론을 고르세요: 'Reading books helps you learn new words. It also helps you imagine new worlds.' 📖✨",
+      "options": ["책 읽기는 배우고 상상하는 데 좋아요.", "책은 무거워서 싫어요.", "상상은 현실과 달라요.", "새로운 단어는 어렵기만 해요."],
+      "correctIndex": 0,
+      "explanation": "책은 단어도 가르쳐 주고, 상상력도 키워줘요. 그래서 결론은 '배우고 상상하는 데 좋다'예요! 🌟",
+      "difficulty": 3,
+      "audioText": "Reading helps you learn and imagine."
+    },
+    {
+      "id": "english_hard_9_1",
+      "subject": "english",
+      "question": "친구가 넘어져서 무릎을 다쳤어요. 이때 가장 좋은 말은? 🩹😢",
+      "options": ["Are you okay? Let me help you.", "Haha! Be careful next time!", "I told you to run faster!", "Don’t cry!"],
+      "correctIndex": 0,
+      "explanation": "친구가 다쳤을 땐 걱정해주고 도와주는 말이 가장 좋아요! '괜찮아?'라고 물어보는 게 친절이에요. 💛",
+      "difficulty": 3,
+      "audioText": "Are you okay?"
+    },
+    {
+      "id": "english_hard_9_2",
+      "subject": "english",
+      "question": "친구가 발표를 앞두고 떨고 있어요. 이때 해줄 수 있는 말은? 🎤😰",
+      "options": ["You can do it! I believe in you.", "You’ll fail for sure.", "Don’t do it!", "I’m better than you."],
+      "correctIndex": 0,
+      "explanation": "친구가 긴장할 땐 용기를 주는 말이 필요해요! '할 수 있어!'라고 응원해 주세요. 🌈",
+      "difficulty": 3,
+      "audioText": "You can do it!"
+    },
+    {
+      "id": "english_hard_9_3",
+      "subject": "english",
+      "question": "친구가 그림 대회에서 떨어졌어요. 이때 해줄 수 있는 말은? 🖌️😔",
+      "options": ["Your drawing was beautiful. Try again next time!", "You’re not good at art.", "I won, so I’m better!", "Don’t draw anymore."],
+      "correctIndex": 0,
+      "explanation": "실패했을 땐 격려가 힘이 돼요! '다음엔 더 잘할 수 있어!'라고 말해 주세요. 🌟",
+      "difficulty": 3,
+      "audioText": "Try again next time!"
+    },
+    {
+      "id": "english_hard_10_1",
+      "subject": "english",
+      "question": "선생님이 이렇게 말했어요: 'She is crying.' 이 문장을 듣고 알 수 있는 사실은? 😢👂",
+      "options": ["그녀는 슬퍼 보여요.", "그녀는 웃고 있어요.", "그녀는 화가 났어요.", "그녀는 자고 있어요."],
+      "correctIndex": 0,
+      "explanation": "'Crying'은 울고 있다는 뜻이에요. 보통 슬플 때 울기 때문에 '슬퍼 보인다'고 추론할 수 있어요. 💧",
+      "difficulty": 3,
+      "audioText": "She is crying."
+    },
+    {
+      "id": "english_hard_10_2",
+      "subject": "english",
+      "question": "친구가 말했어요: 'They are laughing.' 이 말을 듣고 알 수 있는 점은? 😆👂",
+      "options": ["그들은 즐거워 보여요.", "그들은 화가 났어요.", "그들은 잠들었어요.", "그들은 배가 고파요."],
+      "correctIndex": 0,
+      "explanation": "'Laughing'은 웃고 있다는 뜻이에요. 보통 즐거울 때 웃기 때문에 '즐거워 보인다'고 알 수 있어요! 😊",
+      "difficulty": 3,
+      "audioText": "They are laughing."
+    },
+    {
+      "id": "english_hard_10_3",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'He is sleeping.' 이 문장을 듣고 할 수 없는 행동은? 😴👂",
+      "options": ["Talk to him loudly.", "Be quiet.", "Let him rest.", "Walk softly."],
+      "correctIndex": 0,
+      "explanation": "자고 있는 사람에게 큰 소리로 말하는 건 예의가 아니에요. 조용히 해야 해요! 🤫",
+      "difficulty": 3,
+      "audioText": "He is sleeping."
+    }
 ]
