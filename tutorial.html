@@ -106,8 +106,68 @@
                 </div>
             </div>
 
-            <!-- Slide 2: Learning -->
+            <!-- Slide 2: Grade Selection -->
             <div id="slide2" class="tutorial-slide hidden">
+                <div class="text-center">
+                    <div class="text-6xl mb-4 floating-icon">🎓</div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">학년을 선택해주세요</h2>
+                    <div class="text-gray-600 mb-6">
+                        <p class="mb-4">학년에 맞는 난이도로 문제가 제공됩니다.</p>
+                        <p class="text-sm text-blue-600">💡 나중에 설정에서 변경할 수 있어요!</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-3 mb-6">
+                        <button onclick="selectGrade(1)" id="grade-1-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🌰</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">1학년</div>
+                            <div class="text-xs text-gray-600">기초</div>
+                        </button>
+
+                        <button onclick="selectGrade(2)" id="grade-2-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🌱</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">2학년</div>
+                            <div class="text-xs text-gray-600">쉬움</div>
+                        </button>
+
+                        <button onclick="selectGrade(3)" id="grade-3-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🪴</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">3학년</div>
+                            <div class="text-xs text-gray-600">보통</div>
+                        </button>
+
+                        <button onclick="selectGrade(4)" id="grade-4-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🌳</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">4학년</div>
+                            <div class="text-xs text-gray-600">표준</div>
+                        </button>
+
+                        <button onclick="selectGrade(5)" id="grade-5-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🌲</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">5학년</div>
+                            <div class="text-xs text-gray-600">어려움</div>
+                        </button>
+
+                        <button onclick="selectGrade(6)" id="grade-6-btn"
+                                class="grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                            <div class="text-4xl mb-2">🌺</div>
+                            <div class="text-lg font-bold text-gray-800 mb-1">6학년</div>
+                            <div class="text-xs text-gray-600">고급</div>
+                        </button>
+                    </div>
+
+                    <div id="grade-selection-message" class="text-sm text-green-600 font-medium hidden">
+                        ✅ 선택 완료! 다음 버튼을 눌러주세요
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Learning -->
+            <div id="slide3" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">📚</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">1단계: 학습하기</h2>
@@ -138,8 +198,8 @@
                 </div>
             </div>
 
-            <!-- Slide 3: Farming -->
-            <div id="slide3" class="tutorial-slide hidden">
+            <!-- Slide 4: Farming -->
+            <div id="slide4" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🌱</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">2단계: 식물 키우기</h2>
@@ -178,8 +238,8 @@
                 </div>
             </div>
 
-            <!-- Slide 4: Collection -->
-            <div id="slide4" class="tutorial-slide hidden">
+            <!-- Slide 5: Collection -->
+            <div id="slide5" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🦎</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">3단계: 동물 수집</h2>
@@ -216,8 +276,8 @@
                 </div>
             </div>
 
-            <!-- Slide 5: Daily System -->
-            <div id="slide5" class="tutorial-slide hidden">
+            <!-- Slide 6: Daily System -->
+            <div id="slide6" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">📅</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">4단계: 매일 새로운 시작</h2>
@@ -256,8 +316,8 @@
                 </div>
             </div>
 
-            <!-- Slide 6: Nickname Input -->
-            <div id="slide6" class="tutorial-slide hidden">
+            <!-- Slide 7: Nickname Input -->
+            <div id="slide7" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">👤</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">나만의 별명을 만들어보세요!</h2>
@@ -313,8 +373,8 @@
                 </div>
             </div>
 
-            <!-- Slide 7: Avatar Selection -->
-            <div id="slide7" class="tutorial-slide hidden">
+            <!-- Slide 8: Avatar Selection -->
+            <div id="slide8" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🐾</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">나만의 대표 동물을 선택하세요!</h2>
@@ -332,8 +392,8 @@
                 </div>
             </div>
 
-            <!-- Slide 8: Start -->
-            <div id="slide8" class="tutorial-slide hidden">
+            <!-- Slide 9: Start -->
+            <div id="slide9" class="tutorial-slide hidden">
                 <div class="text-center">
                     <div class="text-6xl mb-4 floating-icon">🎉</div>
                     <h2 class="text-xl font-bold text-gray-800 mb-4">
@@ -375,8 +435,9 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 8;
+        const totalSlides = 9;
         let tempSelectedAvatar = null; // 임시 선택된 아바타
+        let selectedGrade = null; // 선택된 학년
 
         // 사용 가능한 동물 아바타 목록 (social-hub.html에서 가져옴)
         const availableAvatars = [
@@ -431,10 +492,35 @@
                 nextBtn.style.display = 'block';
             }
 
-            // Load avatar selection when on slide 7
-            if (currentSlide === 7) {
+            // Load avatar selection when on slide 8
+            if (currentSlide === 8) {
                 loadAvatarSelection();
             }
+        }
+
+        // 학년 선택 함수
+        function selectGrade(grade) {
+            selectedGrade = grade;
+            localStorage.setItem('userGrade', grade.toString());
+
+            // 모든 학년 버튼 스타일 초기화
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`grade-${i}-btn`);
+                if (btn) {
+                    btn.className = 'grade-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105';
+                }
+            }
+
+            // 선택된 버튼 하이라이트
+            const selectedBtn = document.getElementById(`grade-${grade}-btn`);
+            if (selectedBtn) {
+                selectedBtn.className = 'grade-btn p-4 border-4 border-blue-500 bg-blue-50 rounded-xl transition-all transform scale-105';
+            }
+
+            // 선택 완료 메시지 표시
+            document.getElementById('grade-selection-message').classList.remove('hidden');
+
+            console.log(`✅ 학년 선택 완료: ${grade}학년`);
         }
 
         function nextSlide() {
@@ -598,7 +684,7 @@
 
         // 엔터 키로 별명 설정
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && currentSlide === 6) {
+            if (e.key === 'Enter' && currentSlide === 7) {
                 const nicknameInput = document.getElementById('nicknameInput');
                 if (document.activeElement === nicknameInput) {
                     setUserNickname();
@@ -607,6 +693,14 @@
         });
 
         async function completeOnboarding() {
+            // Validate grade selection
+            if (!selectedGrade) {
+                // 학년이 선택되지 않았으면 기본값 4학년 설정
+                selectedGrade = 4;
+                localStorage.setItem('userGrade', '4');
+                console.log('⚠️ 학년 미선택 - 기본값 4학년 설정');
+            }
+
             // Validate avatar selection
             if (!tempSelectedAvatar) {
                 alert('대표 동물을 선택해주세요!');

@@ -32,6 +32,8 @@ npm run lint         # Run ESLint
 - `animal-collection.html` - Gacha system and animal encyclopedia
 - `subject-select.html` - Choose learning subjects (supports extra learning mode)
 - `achievements.html` - Track user progress and unlock rewards
+- `social-hub.html` - Group management, rankings, and social features
+- `admin.html` - Administrator panel (password: 8253, dev/testing only)
 
 ## Critical System Architecture
 
@@ -103,6 +105,11 @@ plantSystem.setMoney(100)        // Set money (admin only)
 
 **12 subjects:** english, math, science, korean, social, common, idiom, person, economy, production, toeic, ai
 
+**Grade-level question structure:**
+- `src/data/questions/grade1/` through `grade6/` - Grade-specific question sets
+- Each grade folder contains all 12 subjects
+- Allows differentiated learning by grade level
+
 **Adaptive difficulty:**
 - 80%+ accuracy → increase difficulty
 - 40%- accuracy → decrease difficulty
@@ -110,6 +117,7 @@ plantSystem.setMoney(100)        // Set money (admin only)
 **Question structure:** `src/data/questions/[subject]/level[X]-[Y].json`
 - **File naming:** `level{1-3}-{1|2}.json` where 1/2 alternates by odd/even days
 - **Target:** 60 questions per subject (30 easy + 20 medium + 10 hard)
+- **LaTeX support**: Math questions can include LaTeX formulas (rendered via MathJax)
 
 **Progress tracking:**
 - Stored in `localStorage.learningProgress`
@@ -169,13 +177,21 @@ if (result.success) {
 }
 ```
 
-#### 5. Firebase Integration (`firebase-integration.js`)
+#### 5. Firebase Integration (`firebase-integration.js`, `firebase-auth.js`)
 
 **Class:** `EduPetFirebaseIntegration`
 - Anonymous auth on first load
+- Google Sign-In support for account management
+- **CRITICAL: Duplicate login prevention** - Users can only login from one device at a time
 - Real-time sync: stats, plant state, farm state, learning progress
 - Offline queue via `queueForLater()`
 - Legacy `eduPetGameState` used only for Firebase migration (do not use for new features)
+
+**Authentication flow:**
+1. Anonymous auth creates temporary account
+2. Google Sign-In links permanent account
+3. Device tracking prevents duplicate logins
+4. Session management via Firebase Database `/sessions/{userId}`
 
 ### LocalStorage Schema
 
@@ -256,6 +272,11 @@ const gameState = JSON.parse(localStorage.getItem('eduPetGameState'));
 gameState.premiumTickets += 1;  // WRONG!
 ```
 
+**Recent fix (Oct 2025):**
+- Nickname now properly saved and loaded from `plantSystemUser.profile.userName`
+- Initial rewards properly set (100 coins, 1 premium gacha ticket)
+- Firebase sync triggered after onboarding completion
+
 ## Common Development Patterns
 
 ### Adding a New Subject
@@ -335,6 +356,41 @@ Setup documented in `FIREBASE_SETUP.md`:
 - **Date handling:** Always use Asia/Seoul timezone
 - **Plant stages:** 🌰 씨앗(Stage 0) → 🌱 줄기(Stage 1) → 🌳 나무(Stage 2) → 🌺 열매/꽃(Stage 3)
 - **Question loading:** Odd/even day logic for file selection
+
+### Recent Updates (October 2025)
+
+#### Admin Panel Enhancements
+- Complete data reset functionality added to `admin.html`
+- Password protection: 8253 (client-side only, not for production)
+- **Security note:** Admin panel should never be deployed to production without proper server-side authentication
+
+#### Authentication Improvements
+- Fixed duplicate anonymous account creation issue
+- Google Sign-In properly links to existing accounts
+- Device session management prevents multiple simultaneous logins
+- Session cleanup on logout
+
+#### Quiz System Fixes
+- Quiz completion now properly awards coins (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
+- Fixed timing issue where coins weren't being credited after quiz completion
+- Reward distribution properly syncs with Firebase
+
+#### Social Hub Features
+- Group creation and management
+- Group-based analytics and leaderboards
+- Animal filtering and display improvements
+- Enhanced ranking display with customizable profile icons
+
+#### Grade-Level Question Organization
+- New folder structure: `src/data/questions/grade1/` through `grade6/`
+- Each grade contains all 12 subjects
+- Allows for age-appropriate question difficulty
+
+#### MathJax LaTeX Support
+- Math questions can include LaTeX formulas for proper mathematical notation
+- MathJax CDN automatically renders `\(...\)` inline math and `\[...\]` display math
+- Example: `\frac{1}{2} + \frac{1}{3} = \frac{5}{6}` renders properly
+- Configured in `quiz-adaptive.html` and all question display pages
 
 ## Style & Design System
 

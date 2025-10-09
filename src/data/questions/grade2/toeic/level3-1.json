@@ -1,0 +1,57 @@
+[
+  {
+    "id": "toeic_hard_3_1",
+    "subject": "toeic",
+    "question": "_____ the board's approval, the merger will not proceed.",
+    "options": ["Without", "Unless", "Except", "Besides"],
+    "correctIndex": 0,
+    "explanation": "'Without'은 전치사로 '~없이는'의 의미입니다. 'Unless'는 접속사이므로 절이 와야 합니다.",
+    "difficulty": 3,
+    "tags": ["grammar", "preposition"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_2",
+    "subject": "toeic",
+    "question": "The committee has yet to _____ a decision on the proposal.",
+    "options": ["reach", "make", "take", "do"],
+    "correctIndex": 0,
+    "explanation": "'reach a decision'은 '결정을 내리다'라는 뜻의 표현입니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "collocation"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_3",
+    "subject": "toeic",
+    "question": "_____ to popular belief, the company is financially stable.",
+    "options": ["Contrary", "Contrast", "Oppose", "Against"],
+    "correctIndex": 0,
+    "explanation": "'Contrary to'는 '~와는 반대로'라는 뜻의 고정 표현입니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "expression"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_4",
+    "subject": "toeic",
+    "question": "The regulations _____ compliance with safety standards.",
+    "options": ["require", "request", "inquire", "acquire"],
+    "correctIndex": 0,
+    "explanation": "'require'는 '요구하다'라는 뜻으로, 규정이나 법규와 자주 사용됩니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "business"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_5",
+    "subject": "toeic",
+    "question": "The contract is _____ renewal at the end of this month.",
+    "options": ["subject to", "subjected to", "subjective to", "subjecting to"],
+    "correctIndex": 0,
+    "explanation": "'be subject to'는 '~의 대상이다, ~을 받다'라는 뜻의 표현입니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "expression"],
+    "gradeRange": [3, 5]
+  }
+]

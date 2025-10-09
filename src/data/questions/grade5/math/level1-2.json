@@ -1,0 +1,902 @@
+[
+  {
+    "id": "math_easy_1_1",
+    "subject": "math",
+    "question": "🎮 게임 미션! 용감한 기사가 던전에서 금화 47개를 찾았어요. 보스를 물리치고 보물상자에서 금화 35개를 더 얻었어요. 기사가 모은 금화는 모두 몇 개일까요?",
+    "options": ["82개", "75개", "92개", "72개"],
+    "correctIndex": 0,
+    "explanation": "던전에서 찾은 47개 + 보물상자에서 얻은 35개 = 82개! 🏆 대단해요, 미션 성공! 기사는 총 82개의 금화를 모았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_2",
+    "subject": "math",
+    "question": "🦸 슈퍼히어로 출동! 악당이 도시에 로봇 64대를 풀어놨어요. 슈퍼히어로가 29대를 물리쳤어요. 아직 물리쳐야 할 로봇은 몇 대일까요?",
+    "options": ["35대", "33대", "45대", "40대"],
+    "correctIndex": 0,
+    "explanation": "전체 64대 - 물리친 29대 = 35대! 💪 슈퍼히어로여, 힘내세요! 아직 35대의 로봇이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_3",
+    "subject": "math",
+    "question": "🍰 베이커리 오픈! 아침에 케이크를 53개 만들었어요. 점심에 38개를 더 만들었어요. 오늘 만든 케이크는 모두 몇 개일까요?",
+    "options": ["91개", "81개", "101개", "85개"],
+    "correctIndex": 0,
+    "explanation": "아침 53개 + 점심 38개 = 91개! 🎂 와~ 맛있는 케이크가 가득해요! 총 91개의 케이크를 만들었어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_4",
+    "subject": "math",
+    "question": "🌟 별똥별 사냥! 밤하늘에서 별똥별을 72개 봤어요. 그런데 26개는 구름에 가려서 못 봤대요. 실제로 본 별똥별은 몇 개일까요?",
+    "options": ["46개", "48개", "42개", "50개"],
+    "correctIndex": 0,
+    "explanation": "전체 72개 - 못 본 26개 = 46개! ⭐ 소원을 빌어보세요! 실제로 본 별똥별은 46개예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_5",
+    "subject": "math",
+    "question": "🐠 물고기 낚시 대회! 첫 번째 낚시에서 25마리, 두 번째 낚시에서 48마리를 잡았어요. 낚시 대회에서 잡은 물고기는 모두 몇 마리일까요?",
+    "options": ["73마리", "63마리", "83마리", "68마리"],
+    "correctIndex": 0,
+    "explanation": "첫 번째 25마리 + 두 번째 48마리 = 73마리! 🎣 낚시 챔피언! 총 73마리의 물고기를 잡았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_6",
+    "subject": "math",
+    "question": "🎪 서커스 관객! 서커스에 어른 56명, 어린이 37명이 왔어요. 관객은 모두 몇 명일까요?",
+    "options": ["93명", "83명", "103명", "88명"],
+    "correctIndex": 0,
+    "explanation": "어른 56명 + 어린이 37명 = 93명! 🎭 공연 시작! 총 93명의 관객이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_7",
+    "subject": "math",
+    "question": "🏴‍☠️ 해적 대모험! 보물섬에 금화가 85개 묻혀있었어요. 다른 해적이 31개를 먼저 가져갔어요. 남은 금화는 몇 개일까요?",
+    "options": ["54개", "56개", "52개", "60개"],
+    "correctIndex": 0,
+    "explanation": "전체 85개 - 가져간 31개 = 54개! ⚓ 요호호~ 아직도 보물이 많아요! 54개의 금화가 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_8",
+    "subject": "math",
+    "question": "🦖 공룡 박물관! 티라노사우루스 화석 42개와 트리케라톱스 화석 39개가 있어요. 화석은 모두 몇 개일까요?",
+    "options": ["81개", "71개", "91개", "85개"],
+    "correctIndex": 0,
+    "explanation": "티라노 42개 + 트리케라톱스 39개 = 81개! 🦕 멋진 공룡 박물관이에요! 총 81개의 화석이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_9",
+    "subject": "math",
+    "question": "🎨 미술 작품 전시! 그림을 67점 그렸어요. 그 중 24점을 친구에게 선물했어요. 남은 그림은 몇 점일까요?",
+    "options": ["43점", "41점", "45점", "47점"],
+    "correctIndex": 0,
+    "explanation": "전체 67점 - 선물한 24점 = 43점! 🖼️ 멋진 작품이에요! 43점의 그림이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_1_10",
+    "subject": "math",
+    "question": "🚁 헬리콥터 구조대! 산에서 조난자 28명, 바다에서 35명을 구조했어요. 구조한 사람은 모두 몇 명일까요?",
+    "options": ["63명", "53명", "73명", "58명"],
+    "correctIndex": 0,
+    "explanation": "산 28명 + 바다 35명 = 63명! 🚨 영웅들이에요! 총 63명을 구조했어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_1",
+    "subject": "math",
+    "question": "🦕 공룡 탐험대! 티라노사우루스는 발가락이 한 발에 3개씩 있어요. 티라노 4마리의 발가락은 모두 몇 개일까요? (티라노는 다리가 2개예요!)",
+    "options": ["24개", "12개", "20개", "32개"],
+    "correctIndex": 0,
+    "explanation": "한 마리당 발가락: 3개 × 2발 = 6개, 4마리니까 6 × 4 = 24개! 🦖 공룡 박사님, 정답이에요! 티라노 4마리는 발가락이 총 24개예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_2",
+    "subject": "math",
+    "question": "🎮 레이싱 게임! 레이싱카 한 대는 바퀴가 4개예요. 8대가 경주를 시작했어요. 바퀴는 모두 몇 개일까요?",
+    "options": ["32개", "28개", "36개", "24개"],
+    "correctIndex": 0,
+    "explanation": "4개 × 8대 = 32개! 🏎️ 부릉부릉~ 출발! 총 32개의 바퀴가 달려요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_3",
+    "subject": "math",
+    "question": "🦄 유니콘 마을! 유니콘 한 마리는 다리가 4개예요. 마을에 유니콘 6마리가 살아요. 다리는 모두 몇 개일까요?",
+    "options": ["24개", "20개", "28개", "18개"],
+    "correctIndex": 0,
+    "explanation": "4개 × 6마리 = 24개! 🌈 반짝반짝 아름다운 유니콘들! 총 24개의 다리가 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_4",
+    "subject": "math",
+    "question": "🕷️ 거미 연구소! 거미는 다리가 8개예요. 연구소에 거미가 5마리 있어요. 거미 다리는 모두 몇 개일까요?",
+    "options": ["40개", "35개", "45개", "48개"],
+    "correctIndex": 0,
+    "explanation": "8개 × 5마리 = 40개! 🕸️ 신기한 거미의 세계! 총 40개의 다리가 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_5",
+    "subject": "math",
+    "question": "🎪 저글링 쇼! 광대가 한 손에 공을 3개씩 돌리고 있어요. 광대가 7명이에요. 공은 모두 몇 개일까요?",
+    "options": ["21개", "18개", "24개", "15개"],
+    "correctIndex": 0,
+    "explanation": "3개 × 7명 = 21개! 🤹 와~ 멋진 저글링이에요! 총 21개의 공이 날아다녀요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_6",
+    "subject": "math",
+    "question": "🐙 문어 수족관! 문어는 다리가 8개예요. 수족관에 문어가 3마리 헤엄치고 있어요. 문어 다리는 모두 몇 개일까요?",
+    "options": ["24개", "21개", "27개", "18개"],
+    "correctIndex": 0,
+    "explanation": "8개 × 3마리 = 24개! 🌊 헤엄헤엄~ 문어들이 신나요! 총 24개의 다리가 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_7",
+    "subject": "math",
+    "question": "🚀 로켓 발사! 로켓 한 대는 엔진이 5개예요. 우주정거장에서 6대의 로켓을 발사해요. 엔진은 모두 몇 개일까요?",
+    "options": ["30개", "25개", "35개", "24개"],
+    "correctIndex": 0,
+    "explanation": "5개 × 6대 = 30개! 🛸 발사 준비 완료! 총 30개의 엔진이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_8",
+    "subject": "math",
+    "question": "🌻 꽃밭 가꾸기! 화분 한 개에 꽃을 7송이씩 심었어요. 화분이 4개예요. 꽃은 모두 몇 송이일까요?",
+    "options": ["28송이", "24송이", "32송이", "21송이"],
+    "correctIndex": 0,
+    "explanation": "7송이 × 4개 = 28송이! 🌺 아름다운 꽃밭이에요! 총 28송이의 꽃이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_9",
+    "subject": "math",
+    "question": "🎁 선물 포장! 상자 한 개에 사탕을 6개씩 담았어요. 상자가 9개예요. 사탕은 모두 몇 개일까요?",
+    "options": ["54개", "48개", "60개", "45개"],
+    "correctIndex": 0,
+    "explanation": "6개 × 9상자 = 54개! 🍬 달콤한 선물이에요! 총 54개의 사탕이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_2_10",
+    "subject": "math",
+    "question": "🦀 게 관찰! 게는 다리가 10개예요. 바닷가에 게가 5마리 있어요. 게 다리는 모두 몇 개일까요?",
+    "options": ["50개", "45개", "55개", "40개"],
+    "correctIndex": 0,
+    "explanation": "10개 × 5마리 = 50개! 🏖️ 옆으로 걸어가는 게들! 총 50개의 다리가 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_1",
+    "subject": "math",
+    "question": "🏴‍☠️ 해적선 보물! 해적들이 보물상자에 금화를 56개 가지고 있어요. 해적이 8명이에요. 똑같이 나눠 가지면 한 명이 몇 개씩 가질까요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "56개 ÷ 8명 = 7개씩! ⚓ 요호호~ 공평하게 나눴어요! 해적 한 명당 금화 7개씩이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_2",
+    "subject": "math",
+    "question": "🍕 피자 파티! 피자 24조각을 친구 6명이 똑같이 나눠 먹으려고 해요. 한 명이 몇 조각씩 먹을 수 있을까요?",
+    "options": ["4조각", "5조각", "3조각", "6조각"],
+    "correctIndex": 0,
+    "explanation": "24조각 ÷ 6명 = 4조각씩! 🍕 맛있게 드세요! 한 명당 4조각씩 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_3",
+    "subject": "math",
+    "question": "🎈 풍선 나눠주기! 풍선 32개를 어린이 8명에게 똑같이 나눠주려고 해요. 한 명이 몇 개씩 받을까요?",
+    "options": ["4개", "5개", "3개", "6개"],
+    "correctIndex": 0,
+    "explanation": "32개 ÷ 8명 = 4개씩! 🎊 모두 행복해요! 한 명당 4개씩 받아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_4",
+    "subject": "math",
+    "question": "🍫 초콜릿 나누기! 초콜릿 48개를 친구 6명이 똑같이 나눠 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["8개", "7개", "9개", "6개"],
+    "correctIndex": 0,
+    "explanation": "48개 ÷ 6명 = 8개씩! 🍫 달콤해요! 한 명당 8개씩 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_5",
+    "subject": "math",
+    "question": "🎮 게임 아이템! 게임에서 보석 35개를 얻었어요. 친구 5명과 똑같이 나눠 가지려고 해요. 한 명이 몇 개씩 가질까요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "35개 ÷ 5명 = 7개씩! 💎 레벨업! 한 명당 보석 7개씩 가져요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_6",
+    "subject": "math",
+    "question": "🦕 공룡 알 배분! 공룡 알 28개를 바구니 4개에 똑같이 담으려고 해요. 한 바구니에 몇 개씩 담아야 할까요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "28개 ÷ 4바구니 = 7개씩! 🥚 조심조심 소중한 공룡 알! 한 바구니에 7개씩이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_7",
+    "subject": "math",
+    "question": "⚽ 축구공 나누기! 체육관에 축구공 36개를 상자 9개에 똑같이 담으려고 해요. 한 상자에 몇 개씩 담아야 할까요?",
+    "options": ["4개", "5개", "3개", "6개"],
+    "correctIndex": 0,
+    "explanation": "36개 ÷ 9상자 = 4개씩! ⚽ 축구 시작! 한 상자에 4개씩 담아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_8",
+    "subject": "math",
+    "question": "🌟 별 스티커! 선생님이 별 스티커 42개를 학생 7명에게 똑같이 나눠주려고 해요. 한 명이 몇 개씩 받을까요?",
+    "options": ["6개", "7개", "5개", "8개"],
+    "correctIndex": 0,
+    "explanation": "42개 ÷ 7명 = 6개씩! ⭐ 모두 칭찬받았어요! 한 명당 6개씩 받아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_9",
+    "subject": "math",
+    "question": "🎨 크레파스 세트! 크레파스 63개를 학급 9개에 똑같이 나눠주려고 해요. 한 학급이 몇 개씩 받을까요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "63개 ÷ 9학급 = 7개씩! 🖍️ 즐거운 미술시간! 한 학급당 7개씩 받아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_3_10",
+    "subject": "math",
+    "question": "🍎 사과 바구니! 사과 54개를 바구니 6개에 똑같이 담으려고 해요. 한 바구니에 몇 개씩 담아야 할까요?",
+    "options": ["9개", "8개", "10개", "7개"],
+    "correctIndex": 0,
+    "explanation": "54개 ÷ 6바구니 = 9개씩! 🍏 맛있는 사과! 한 바구니에 9개씩 담아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_1",
+    "subject": "math",
+    "question": "🚀 우주 탐험! 우주선이 지구에서 화성까지 가는데 3시간이 걸려요. 지금 시각이 오후 2시예요. 화성에 도착하는 시각은 몇 시일까요?",
+    "options": ["오후 5시", "오후 6시", "오후 4시", "오후 3시"],
+    "correctIndex": 0,
+    "explanation": "오후 2시 + 3시간 = 오후 5시! 🛸 우주선 착륙 준비! 오후 5시에 화성에 도착해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_2",
+    "subject": "math",
+    "question": "🎮 게임 타이머! 게임을 오전 10시에 시작했어요. 2시간 30분 동안 게임을 했어요. 게임을 끝낸 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 12시 30분", "오후 1시", "오전 11시 30분", "오후 1시 30분"],
+    "correctIndex": 0,
+    "explanation": "오전 10시 + 2시간 30분 = 오후 12시 30분! 🎯 게임 클리어! 오후 12시 30분에 끝났어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_3",
+    "subject": "math",
+    "question": "🎬 영화 시작! 영화가 오후 3시 15분에 시작해요. 영화 시간은 2시간이에요. 영화가 끝나는 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 5시 15분", "오후 5시", "오후 6시", "오후 4시 15분"],
+    "correctIndex": 0,
+    "explanation": "오후 3시 15분 + 2시간 = 오후 5시 15분! 🍿 재미있었어요! 오후 5시 15분에 끝나요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_4",
+    "subject": "math",
+    "question": "🏊 수영 수업! 수영을 오전 9시에 시작해서 1시간 45분 동안 했어요. 수영을 끝낸 시각은 몇 시 몇 분일까요?",
+    "options": ["오전 10시 45분", "오전 11시", "오전 10시 30분", "오전 10시 15분"],
+    "correctIndex": 0,
+    "explanation": "오전 9시 + 1시간 45분 = 오전 10시 45분! 🏊 수고했어요! 오전 10시 45분에 끝났어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_5",
+    "subject": "math",
+    "question": "🎨 미술 시간! 그림 그리기를 오후 1시 20분에 시작했어요. 1시간 50분 동안 그렸어요. 그림을 끝낸 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 3시 10분", "오후 2시 70분", "오후 3시", "오후 2시 10분"],
+    "correctIndex": 0,
+    "explanation": "오후 1시 20분 + 1시간 50분 = 오후 3시 10분! 🖼️ 멋진 작품이에요! 1시 20분에 50분을 더하면 2시 10분, 거기에 1시간 더하면 3시 10분이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_6",
+    "subject": "math",
+    "question": "🦖 공룡 영화! 공룡 다큐멘터리가 오후 4시에 시작해요. 영화 시간은 1시간 30분이에요. 영화가 끝나는 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 5시 30분", "오후 6시", "오후 5시", "오후 4시 30분"],
+    "correctIndex": 0,
+    "explanation": "오후 4시 + 1시간 30분 = 오후 5시 30분! 🦕 멋진 공룡들! 오후 5시 30분에 끝나요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_7",
+    "subject": "math",
+    "question": "⚽ 축구 경기! 축구를 오전 11시에 시작해서 2시간 15분 동안 했어요. 경기가 끝난 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 1시 15분", "오후 1시", "오후 2시", "오전 11시 15분"],
+    "correctIndex": 0,
+    "explanation": "오전 11시 + 2시간 15분 = 오후 1시 15분! ⚽ 골인! 오후 1시 15분에 경기가 끝났어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_8",
+    "subject": "math",
+    "question": "🎪 서커스 공연! 서커스가 오후 2시 45분에 시작해요. 공연 시간은 2시간이에요. 공연이 끝나는 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 4시 45분", "오후 5시", "오후 4시", "오후 3시 45분"],
+    "correctIndex": 0,
+    "explanation": "오후 2시 45분 + 2시간 = 오후 4시 45분! 🎭 멋진 공연이었어요! 오후 4시 45분에 끝나요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_9",
+    "subject": "math",
+    "question": "🎵 음악 연습! 피아노 연습을 오후 3시 30분에 시작해서 1시간 20분 동안 했어요. 연습을 끝낸 시각은 몇 시 몇 분일까요?",
+    "options": ["오후 4시 50분", "오후 5시", "오후 4시 30분", "오후 5시 50분"],
+    "correctIndex": 0,
+    "explanation": "오후 3시 30분 + 1시간 20분 = 오후 4시 50분! 🎹 연습 완료! 오후 4시 50분에 끝났어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_4_10",
+    "subject": "math",
+    "question": "🚂 기차 여행! 기차가 오전 8시 50분에 출발해요. 3시간 10분 동안 달려요. 기차가 도착하는 시각은 몇 시일까요?",
+    "options": ["오후 12시", "오전 11시", "오후 1시", "오전 11시 10분"],
+    "correctIndex": 0,
+    "explanation": "오전 8시 50분 + 3시간 10분 = 오후 12시! 🚄 기차가 도착했어요! 8시 50분에 10분을 더하면 9시, 거기에 3시간 더하면 12시예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_1",
+    "subject": "math",
+    "question": "🦸 슈퍼히어로 망토! 슈퍼히어로의 망토 길이가 150cm예요. 이것을 m로 나타내면 얼마일까요?",
+    "options": ["1.5m", "15m", "0.15m", "150m"],
+    "correctIndex": 0,
+    "explanation": "100cm = 1m이므로, 150cm = 1.5m예요! 💪 멋진 망토! 1m 50cm 또는 1.5m로 쓸 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_2",
+    "subject": "math",
+    "question": "🎮 게임 컨트롤러! 게임 컨트롤러의 길이가 18cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["180mm", "18mm", "1800mm", "1.8mm"],
+    "correctIndex": 0,
+    "explanation": "1cm = 10mm이므로, 18cm = 180mm예요! 🕹️ 게임 준비 완료! 18 × 10 = 180mm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_3",
+    "subject": "math",
+    "question": "🦕 공룡 발자국! 티라노사우루스 발자국의 길이가 80cm예요. 이것은 몇 m 몇 cm일까요?",
+    "options": ["0m 80cm", "8m 0cm", "0m 8cm", "80m 0cm"],
+    "correctIndex": 0,
+    "explanation": "100cm = 1m이므로, 80cm는 1m가 안 돼요! 🦖 거대한 발자국! 0m 80cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_4",
+    "subject": "math",
+    "question": "🚀 로켓 모형! 로켓 모형의 높이가 2m 30cm예요. 이것을 cm로만 나타내면 얼마일까요?",
+    "options": ["230cm", "23cm", "2030cm", "203cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 2m 30cm = 200 + 30 = 230cm예요! 🛸 발사 준비! 230cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_5",
+    "subject": "math",
+    "question": "🏴‍☠️ 해적 칼! 해적 칼의 길이가 45cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["450mm", "45mm", "4500mm", "4.5mm"],
+    "correctIndex": 0,
+    "explanation": "1cm = 10mm이므로, 45cm = 450mm예요! ⚔️ 멋진 해적 칼! 45 × 10 = 450mm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_6",
+    "subject": "math",
+    "question": "🦄 유니콘 뿔! 유니콘 뿔의 길이가 35cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["350mm", "35mm", "3500mm", "3.5mm"],
+    "correctIndex": 0,
+    "explanation": "1cm = 10mm이므로, 35cm = 350mm예요! 🌈 반짝이는 뿔! 35 × 10 = 350mm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_7",
+    "subject": "math",
+    "question": "🎪 줄타기 줄! 서커스 줄타기 줄의 길이가 5m예요. 이것을 cm로 나타내면 얼마일까요?",
+    "options": ["500cm", "50cm", "5000cm", "5cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 5m = 500cm예요! 🤹 아슬아슬 줄타기! 5 × 100 = 500cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_8",
+    "subject": "math",
+    "question": "🎨 붓! 그림 붓의 길이가 25cm예요. 이것을 mm로 나타내면 얼마일까요?",
+    "options": ["250mm", "25mm", "2500mm", "2.5mm"],
+    "correctIndex": 0,
+    "explanation": "1cm = 10mm이므로, 25cm = 250mm예요! 🖌️ 멋진 그림 도구! 25 × 10 = 250mm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_9",
+    "subject": "math",
+    "question": "⚽ 축구 골대! 축구 골대의 높이가 2m 44cm예요. 이것을 cm로만 나타내면 얼마일까요?",
+    "options": ["244cm", "24cm", "2044cm", "204cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 2m 44cm = 200 + 44 = 244cm예요! ⚽ 골인! 244cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_5_10",
+    "subject": "math",
+    "question": "🎯 활! 활의 길이가 1m 20cm예요. 이것을 cm로만 나타내면 얼마일까요?",
+    "options": ["120cm", "12cm", "1020cm", "102cm"],
+    "correctIndex": 0,
+    "explanation": "1m = 100cm이므로, 1m 20cm = 100 + 20 = 120cm예요! 🏹 과녁 맞추기! 120cm예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_1",
+    "subject": "math",
+    "question": "🎮 게임 아이템 상점! 마법 검 한 개에 800원이에요. 3개를 사면 얼마를 내야 할까요?",
+    "options": ["2,400원", "2,100원", "2,700원", "3,000원"],
+    "correctIndex": 0,
+    "explanation": "800원 × 3개 = 2,400원! ⚔️ 강력한 무기 획득! 총 2,400원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_2",
+    "subject": "math",
+    "question": "🦸 슈퍼히어로 카드! 5,000원을 가지고 있어요. 3,200원짜리 특별 카드를 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["1,800원", "1,500원", "2,000원", "2,200원"],
+    "correctIndex": 0,
+    "explanation": "5,000원 - 3,200원 = 1,800원! 💪 멋진 카드! 1,800원이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_3",
+    "subject": "math",
+    "question": "🍭 사탕 가게! 막대사탕 한 개에 400원이에요. 5개를 사면 얼마를 내야 할까요?",
+    "options": ["2,000원", "1,800원", "2,400원", "2,500원"],
+    "correctIndex": 0,
+    "explanation": "400원 × 5개 = 2,000원! 🍬 달콤해요! 총 2,000원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_4",
+    "subject": "math",
+    "question": "🦕 공룡 피규어! 8,000원을 가지고 있어요. 5,500원짜리 티라노 피규어를 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["2,500원", "2,000원", "3,000원", "3,500원"],
+    "correctIndex": 0,
+    "explanation": "8,000원 - 5,500원 = 2,500원! 🦖 멋진 공룡! 2,500원이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_5",
+    "subject": "math",
+    "question": "🎨 색연필 세트! 색연필 한 세트에 1,200원이에요. 3세트를 사면 얼마를 내야 할까요?",
+    "options": ["3,600원", "3,300원", "4,000원", "3,000원"],
+    "correctIndex": 0,
+    "explanation": "1,200원 × 3세트 = 3,600원! 🖍️ 예쁜 색깔! 총 3,600원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_6",
+    "subject": "math",
+    "question": "🏴‍☠️ 보물 가게! 10,000원을 가지고 있어요. 7,300원짜리 보물 상자를 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["2,700원", "2,500원", "3,000원", "3,300원"],
+    "correctIndex": 0,
+    "explanation": "10,000원 - 7,300원 = 2,700원! 💎 보물 발견! 2,700원이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_7",
+    "subject": "math",
+    "question": "🎁 장난감 가게! 로봇 한 개에 1,500원이에요. 4개를 사면 얼마를 내야 할까요?",
+    "options": ["6,000원", "5,500원", "6,500원", "7,000원"],
+    "correctIndex": 0,
+    "explanation": "1,500원 × 4개 = 6,000원! 🤖 신나는 로봇! 총 6,000원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_8",
+    "subject": "math",
+    "question": "🦄 유니콘 스티커! 6,000원을 가지고 있어요. 4,100원짜리 스티커북을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["1,900원", "1,500원", "2,000원", "2,400원"],
+    "correctIndex": 0,
+    "explanation": "6,000원 - 4,100원 = 1,900원! 🌈 예쁜 스티커! 1,900원이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_9",
+    "subject": "math",
+    "question": "🍫 초콜릿 가게! 초콜릿 한 개에 900원이에요. 6개를 사면 얼마를 내야 할까요?",
+    "options": ["5,400원", "5,000원", "6,000원", "4,800원"],
+    "correctIndex": 0,
+    "explanation": "900원 × 6개 = 5,400원! 🍫 달콤한 초콜릿! 총 5,400원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_6_10",
+    "subject": "math",
+    "question": "🚀 우주선 모형! 15,000원을 가지고 있어요. 11,200원짜리 우주선 모형을 샀어요. 남은 돈은 얼마일까요?",
+    "options": ["3,800원", "3,500원", "4,000원", "4,200원"],
+    "correctIndex": 0,
+    "explanation": "15,000원 - 11,200원 = 3,800원! 🛸 멋진 우주선! 3,800원이 남았어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_1",
+    "subject": "math",
+    "question": "🌟 별 모으기! 그림에 노란 별 8개, 빨간 별 7개가 있어요. 별은 모두 몇 개일까요?",
+    "options": ["15개", "14개", "16개", "13개"],
+    "correctIndex": 0,
+    "explanation": "노란 별 8개 + 빨간 별 7개 = 15개! ⭐ 반짝반짝 빛나요! 총 15개의 별이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_2",
+    "subject": "math",
+    "question": "🎈 풍선 세기! 파란 풍선 12개, 초록 풍선 9개가 있어요. 풍선은 모두 몇 개일까요?",
+    "options": ["21개", "20개", "22개", "19개"],
+    "correctIndex": 0,
+    "explanation": "파란 풍선 12개 + 초록 풍선 9개 = 21개! 🎊 파티 준비 완료! 총 21개의 풍선이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_3",
+    "subject": "math",
+    "question": "🔺 삼각형 박사! 삼각형은 꼭짓점이 몇 개일까요?",
+    "options": ["3개", "4개", "5개", "2개"],
+    "correctIndex": 0,
+    "explanation": "삼각형은 꼭짓점이 3개예요! △ 삼각형 전문가! 세 개의 꼭짓점으로 이루어져 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_4",
+    "subject": "math",
+    "question": "🟦 사각형 탐험! 사각형은 변이 몇 개일까요?",
+    "options": ["4개", "3개", "5개", "6개"],
+    "correctIndex": 0,
+    "explanation": "사각형은 변이 4개예요! ▢ 사각형 마스터! 네 개의 변으로 이루어져 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_5",
+    "subject": "math",
+    "question": "🦕 공룡 세기! 티라노 5마리, 트리케라톱스 8마리가 있어요. 공룡은 모두 몇 마리일까요?",
+    "options": ["13마리", "12마리", "14마리", "15마리"],
+    "correctIndex": 0,
+    "explanation": "티라노 5마리 + 트리케라톱스 8마리 = 13마리! 🦖 공룡 왕국! 총 13마리의 공룡이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_6",
+    "subject": "math",
+    "question": "🟥 정사각형 둘레! 정사각형의 한 변이 7cm예요. 네 변의 길이의 합은 몇 cm일까요?",
+    "options": ["28cm", "21cm", "35cm", "14cm"],
+    "correctIndex": 0,
+    "explanation": "정사각형은 네 변이 모두 같아요! 7 + 7 + 7 + 7 = 28cm 또는 7 × 4 = 28cm! ▢ 완벽한 정사각형!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_7",
+    "subject": "math",
+    "question": "⭐ 오각형 찾기! 오각형은 꼭짓점이 몇 개일까요?",
+    "options": ["5개", "4개", "6개", "3개"],
+    "correctIndex": 0,
+    "explanation": "오각형은 꼭짓점이 5개예요! ⭐ 별 모양 같아요! 다섯 개의 꼭짓점으로 이루어져 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_8",
+    "subject": "math",
+    "question": "🎮 게임 아이템! 빨간 포션 11개, 파란 포션 6개가 있어요. 포션은 모두 몇 개일까요?",
+    "options": ["17개", "16개", "18개", "15개"],
+    "correctIndex": 0,
+    "explanation": "빨간 포션 11개 + 파란 포션 6개 = 17개! 💊 체력 회복! 총 17개의 포션이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_9",
+    "subject": "math",
+    "question": "🔷 육각형 탐험! 육각형은 변이 몇 개일까요?",
+    "options": ["6개", "5개", "7개", "4개"],
+    "correctIndex": 0,
+    "explanation": "육각형은 변이 6개예요! ⬡ 벌집 모양! 여섯 개의 변으로 이루어져 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_7_10",
+    "subject": "math",
+    "question": "🟫 직사각형 둘레! 직사각형의 가로가 9cm, 세로가 5cm예요. 네 변의 길이의 합은 몇 cm일까요?",
+    "options": ["28cm", "14cm", "32cm", "24cm"],
+    "correctIndex": 0,
+    "explanation": "가로 2개, 세로 2개가 있어요! 9 + 9 + 5 + 5 = 28cm 또는 (9 + 5) × 2 = 28cm! 🟩 완벽해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_1",
+    "subject": "math",
+    "question": "🎮 게임 점수 대결! 민수는 53점, 영희는 67점을 받았어요. 누가 더 높은 점수를 받았을까요?",
+    "options": ["영희", "민수", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "67점이 53점보다 커요! 🏆 영희가 승리! 십의 자리가 6과 5인데, 6이 더 크니까 67이 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_2",
+    "subject": "math",
+    "question": "🦸 슈퍼히어로 파워! A히어로는 파워 레벨 48, B히어로는 파워 레벨 39예요. 누가 더 강할까요?",
+    "options": ["A히어로", "B히어로", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "48이 39보다 커요! 💪 A히어로가 더 강해요! 십의 자리가 4와 3인데, 4가 더 크니까 48이 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_3",
+    "subject": "math",
+    "question": "🏆 레이싱 순위! 73번 선수, 58번 선수, 81번 선수 중에서 가장 큰 번호는?",
+    "options": ["81번", "73번", "58번", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "81이 가장 커요! 🏁 81번 선수가 가장 큰 번호! 십의 자리를 비교하면 8이 가장 크니까 81이 가장 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_4",
+    "subject": "math",
+    "question": "🦕 공룡 크기! 티라노 키 54m, 브라키오 키 45m예요. 어느 공룡이 더 클까요?",
+    "options": ["티라노", "브라키오", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "54가 45보다 커요! 🦖 티라노가 더 커요! 십의 자리가 5로 같은데, 일의 자리가 4와 5니까 54가 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_5",
+    "subject": "math",
+    "question": "🍎 사과 개수! 빨간 사과 36개, 초록 사과 29개, 노란 사과 42개 중에서 가장 적은 것은?",
+    "options": ["초록 사과", "빨간 사과", "노란 사과", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "29가 가장 작아요! 🍏 초록 사과가 가장 적어요! 십의 자리를 비교하면 2가 가장 작으니까 29가 가장 작은 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_6",
+    "subject": "math",
+    "question": "🎪 관객 수! 월요일 64명, 화요일 72명이 왔어요. 어느 날 관객이 더 많았을까요?",
+    "options": ["화요일", "월요일", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "72가 64보다 커요! 🎭 화요일에 더 많아요! 십의 자리가 7과 6인데, 7이 더 크니까 72가 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_7",
+    "subject": "math",
+    "question": "🚀 로켓 속도! 1호 로켓 85km/h, 2호 로켓 91km/h, 3호 로켓 78km/h 중에서 가장 빠른 로켓은?",
+    "options": ["2호 로켓", "1호 로켓", "3호 로켓", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "91이 가장 커요! 🛸 2호 로켓이 가장 빨라요! 십의 자리를 비교하면 9가 가장 크니까 91이 가장 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_8",
+    "subject": "math",
+    "question": "🏴‍☠️ 보물 개수! A상자 53개, B상자 35개예요. 어느 상자에 보물이 더 많을까요?",
+    "options": ["A상자", "B상자", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "53이 35보다 커요! 💎 A상자가 더 많아요! 십의 자리가 5와 3인데, 5가 더 크니까 53이 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_9",
+    "subject": "math",
+    "question": "🎮 게임 코인! 47코인, 62코인, 38코인 중에서 가장 적은 것은?",
+    "options": ["38코인", "47코인", "62코인", "모두 같다"],
+    "correctIndex": 0,
+    "explanation": "38이 가장 작아요! 💰 38코인이 가장 적어요! 십의 자리를 비교하면 3이 가장 작으니까 38이 가장 작은 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_8_10",
+    "subject": "math",
+    "question": "🦄 유니콘 마법! 유니콘 A는 마법 파워 89, 유니콘 B는 마법 파워 98이에요. 누가 더 강할까요?",
+    "options": ["유니콘 B", "유니콘 A", "같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "98이 89보다 커요! 🌈 유니콘 B가 더 강해요! 십의 자리가 9로 같은데, 일의 자리가 8과 9니까 98이 더 큰 수예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_1",
+    "subject": "math",
+    "question": "🚀 우주 카운트다운! 3, 6, 9, 12, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["15", "18", "13", "14"],
+    "correctIndex": 0,
+    "explanation": "3씩 커지는 규칙이에요! 🛸 12 + 3 = 15! 다음은 15예요! 3의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_2",
+    "subject": "math",
+    "question": "🦸 히어로 레벨업! 5, 10, 15, 20, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["25", "30", "22", "24"],
+    "correctIndex": 0,
+    "explanation": "5씩 커지는 규칙이에요! 💪 20 + 5 = 25! 다음은 25예요! 5의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_3",
+    "subject": "math",
+    "question": "🎮 게임 스테이지! 4, 8, 12, 16, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["20", "24", "18", "22"],
+    "correctIndex": 0,
+    "explanation": "4씩 커지는 규칙이에요! 🎯 16 + 4 = 20! 다음은 20예요! 4의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_4",
+    "subject": "math",
+    "question": "🦕 공룡 발자국! 10, 20, 30, 40, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["50", "60", "45", "55"],
+    "correctIndex": 0,
+    "explanation": "10씩 커지는 규칙이에요! 🦖 40 + 10 = 50! 다음은 50예요! 10의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_5",
+    "subject": "math",
+    "question": "🌟 별똥별 순서! 2, 4, 6, 8, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["10", "12", "9", "11"],
+    "correctIndex": 0,
+    "explanation": "2씩 커지는 규칙이에요! ⭐ 8 + 2 = 10! 다음은 10예요! 2의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_6",
+    "subject": "math",
+    "question": "🏴‍☠️ 보물 지도! 7, 14, 21, 28, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["35", "42", "32", "38"],
+    "correctIndex": 0,
+    "explanation": "7씩 커지는 규칙이에요! ⚓ 28 + 7 = 35! 다음은 35예요! 7의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_7",
+    "subject": "math",
+    "question": "🦄 마법 숫자! 6, 12, 18, 24, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["30", "36", "28", "32"],
+    "correctIndex": 0,
+    "explanation": "6씩 커지는 규칙이에요! 🌈 24 + 6 = 30! 다음은 30예요! 6의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_8",
+    "subject": "math",
+    "question": "🎪 서커스 순서! 8, 16, 24, 32, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["40", "48", "36", "38"],
+    "correctIndex": 0,
+    "explanation": "8씩 커지는 규칙이에요! 🎭 32 + 8 = 40! 다음은 40예요! 8의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_9",
+    "subject": "math",
+    "question": "🎨 색깔 패턴! 9, 18, 27, 36, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["45", "54", "42", "48"],
+    "correctIndex": 0,
+    "explanation": "9씩 커지는 규칙이에요! 🖌️ 36 + 9 = 45! 다음은 45예요! 9의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_9_10",
+    "subject": "math",
+    "question": "🚂 기차 칸! 11, 22, 33, 44, __ 다음에 올 숫자는 무엇일까요?",
+    "options": ["55", "66", "50", "60"],
+    "correctIndex": 0,
+    "explanation": "11씩 커지는 규칙이에요! 🚄 44 + 11 = 55! 다음은 55예요! 11의 배수 패턴이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_1",
+    "subject": "math",
+    "question": "🎮 게임 레벨업! 1레벨에서 2레벨 되려면 경험치 100이 필요해요. 2레벨에서 3레벨 되려면 150이 더 필요해요. 1레벨에서 3레벨까지 가려면 경험치가 모두 몇이 필요할까요?",
+    "options": ["250", "200", "300", "150"],
+    "correctIndex": 0,
+    "explanation": "100 + 150 = 250! 🎯 레벨업 성공! 1레벨에서 3레벨까지 가려면 총 250의 경험치가 필요해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_2",
+    "subject": "math",
+    "question": "🍕 피자파티! 친구들이 피자를 주문했어요. 피자 한 판에 8조각씩 있어요. 5판을 시켰더니 친구 6명이 똑같이 나눠 먹었어요. 한 명이 몇 조각씩 먹었고, 몇 조각이 남았을까요?",
+    "options": ["6조각씩, 4조각 남음", "7조각씩, 0조각 남음", "5조각씩, 10조각 남음", "8조각씩, 2조각 남음"],
+    "correctIndex": 0,
+    "explanation": "전체 피자: 8 × 5 = 40조각! 6명이 나눠 먹으면 40 ÷ 6 = 6...4, 한 명당 6조각씩, 4조각 남아요! 🍕 남은 피자는 냉장고에!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_3",
+    "subject": "math",
+    "question": "🦕 공룡 박물관 관람! 어제 23명, 오늘 35명, 내일 예약 27명이에요. 3일 동안 관람객은 모두 몇 명일까요?",
+    "options": ["85명", "75명", "95명", "80명"],
+    "correctIndex": 0,
+    "explanation": "23 + 35 + 27 = 85명! 🦖 공룡들이 인기가 많아요! 3일 동안 총 85명이 관람해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_4",
+    "subject": "math",
+    "question": "🏴‍☠️ 해적 보물 분배! 해적들이 금화 72개를 찾았어요. 그 중 18개는 선장이 가지고, 나머지를 선원 6명이 똑같이 나눴어요. 선원 한 명이 받은 금화는 몇 개일까요?",
+    "options": ["9개", "10개", "8개", "12개"],
+    "correctIndex": 0,
+    "explanation": "선원들이 나눌 금화: 72 - 18 = 54개. 54 ÷ 6 = 9개! ⚓ 요호호~ 선원 한 명당 금화 9개씩!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_5",
+    "subject": "math",
+    "question": "🚀 우주정거장! 화성에서 우주선이 아침에 12대, 오후에 15대 도착했어요. 저녁에 8대가 다시 출발했어요. 정거장에 남은 우주선은 몇 대일까요?",
+    "options": ["19대", "17대", "21대", "15대"],
+    "correctIndex": 0,
+    "explanation": "도착한 우주선: 12 + 15 = 27대. 출발한 후: 27 - 8 = 19대! 🛸 19대의 우주선이 정거장에 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_6",
+    "subject": "math",
+    "question": "🎨 미술 대회! 그림 대회에서 1등 상품은 5,000원, 2등 상품은 3,000원이에요. 민수는 1등, 영희는 2등을 했어요. 두 사람이 받은 상금은 모두 얼마일까요?",
+    "options": ["8,000원", "7,000원", "9,000원", "6,000원"],
+    "correctIndex": 0,
+    "explanation": "5,000원 + 3,000원 = 8,000원! 🖼️ 축하해요! 두 사람이 받은 상금은 총 8,000원이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_7",
+    "subject": "math",
+    "question": "🦸 슈퍼히어로 훈련! 월요일에 45분, 화요일에 38분, 수요일에 52분 훈련했어요. 3일 동안 훈련한 시간은 모두 몇 분일까요?",
+    "options": ["135분", "125분", "145분", "130분"],
+    "correctIndex": 0,
+    "explanation": "45 + 38 + 52 = 135분! 💪 열심히 훈련했어요! 3일 동안 총 135분 훈련했어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_8",
+    "subject": "math",
+    "question": "🍭 사탕 가게! 사탕 한 봉지에 12개씩 들어있어요. 4봉지를 샀어요. 친구 8명과 똑같이 나눠 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["6개", "7개", "5개", "8개"],
+    "correctIndex": 0,
+    "explanation": "전체 사탕: 12 × 4 = 48개. 48 ÷ 8 = 6개! 🍬 달콤해요! 한 명당 6개씩 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_9",
+    "subject": "math",
+    "question": "🦄 유니콘 레이스! 1등 유니콘은 25초, 2등 유니콘은 1등보다 8초 늦게, 3등 유니콘은 2등보다 5초 늦게 결승선을 통과했어요. 3등 유니콘의 기록은 몇 초일까요?",
+    "options": ["38초", "40초", "35초", "42초"],
+    "correctIndex": 0,
+    "explanation": "2등: 25 + 8 = 33초, 3등: 33 + 5 = 38초! 🌈 모두 멋져요! 3등 유니콘은 38초예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "math_easy_10_10",
+    "subject": "math",
+    "question": "🎪 서커스 표 판매! 어른표 24장을 1,500원씩, 어린이표 16장을 1,000원씩 팔았어요. 어른표로 받은 돈은 어린이표보다 얼마나 더 많을까요?",
+    "options": ["20,000원", "18,000원", "22,000원", "24,000원"],
+    "correctIndex": 0,
+    "explanation": "어른표: 24 × 1,500 = 36,000원, 어린이표: 16 × 1,000 = 16,000원. 차이: 36,000 - 16,000 = 20,000원! 🎭 어른표가 20,000원 더 많아요!",
+    "difficulty": 1
+  }
+]

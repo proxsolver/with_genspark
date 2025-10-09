@@ -1,0 +1,57 @@
+[
+  {
+    "id": "toeic_medium_2_1",
+    "subject": "toeic",
+    "question": "The project _____ completed by the time the manager returns.",
+    "options": ["will have been", "will be", "has been", "was"],
+    "correctIndex": 0,
+    "explanation": "'by the time'은 미래완료 시제를 요구합니다. 'will have been completed'는 '완료되어 있을 것이다'라는 의미입니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "future perfect"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_2",
+    "subject": "toeic",
+    "question": "_____ the heavy rain, the event will proceed as scheduled.",
+    "options": ["Despite", "Although", "Because", "Since"],
+    "correctIndex": 0,
+    "explanation": "'Despite'는 전치사로 명사구와 함께 사용되어 '~에도 불구하고'라는 의미를 나타냅니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "conjunction"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_3",
+    "subject": "toeic",
+    "question": "The company's profits have increased _____ over the past year.",
+    "options": ["significantly", "significant", "signify", "significance"],
+    "correctIndex": 0,
+    "explanation": "동사 'increased'를 수식하는 부사가 필요하므로 'significantly'가 정답입니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "word form"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_4",
+    "subject": "toeic",
+    "question": "Employees _____ work overtime will receive additional compensation.",
+    "options": ["who", "which", "what", "whose"],
+    "correctIndex": 0,
+    "explanation": "사람을 선행사로 하는 관계대명사는 'who'입니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "relative pronoun"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_5",
+    "subject": "toeic",
+    "question": "The deadline for the proposal has been _____ to next Friday.",
+    "options": ["extended", "expanded", "exceeded", "expected"],
+    "correctIndex": 0,
+    "explanation": "'extend a deadline'은 '마감일을 연장하다'라는 뜻입니다.",
+    "difficulty": 2,
+    "tags": ["vocabulary", "business"],
+    "gradeRange": [3, 5]
+  }
+]

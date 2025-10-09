@@ -1,0 +1,302 @@
+[
+  {
+    "id": "english_easy_spell_001",
+    "subject": "english",
+    "question": "우리가 공부할 때 쓰는 '책'은 영어로 뭐라고 쓸까요? 📚✨",
+    "options": ["Book", "Back", "Bake", "Beak"],
+    "correctIndex": 0,
+    "explanation": "'Book'은 책이에요! 'Back'은 등, 'Bake'는 굽다, 'Beak'는 새 부리랍니다. 📖",
+    "difficulty": 1,
+    "audioText": "Book"
+  },
+  {
+    "id": "english_easy_spell_002",
+    "subject": "english",
+    "question": "친구에게 인사할 때 말하는 '안녕!'은 영어로 뭐라고 해요? 👋😊",
+    "options": ["Hello", "Halo", "Yellow", "Jello"],
+    "correctIndex": 0,
+    "explanation": "'Hello'는 인사할 때 쓰는 말이에요! 'Yellow'는 노란색이니 헷갈리지 마세요! 🌟",
+    "difficulty": 1,
+    "audioText": "Hello"
+  },
+  {
+    "id": "english_easy_spell_003",
+    "subject": "english",
+    "question": "우리 집에서 키우는 '강아지'는 영어로 뭐라고 부를까요? 🐶❤️",
+    "options": ["Dog", "Dug", "Dig", "Dag"],
+    "correctIndex": 0,
+    "explanation": "'Dog'은 강아지예요! 'Dig'는 '파다', 'Dug'는 '팠다'는 뜻이에요. 🐾",
+    "difficulty": 1,
+    "audioText": "Dog"
+  },
+  {
+    "id": "english_easy_color_001",
+    "subject": "english",
+    "question": "사과처럼 빨간색은 영어로 뭐라고 할까요? 🍎🔴",
+    "options": ["Red", "Rad", "Rod", "Rid"],
+    "correctIndex": 0,
+    "explanation": "'Red'는 빨간색이에요! 사과, 딸기, 소방차가 이 색이죠! 🚒",
+    "difficulty": 1,
+    "audioText": "Red"
+  },
+  {
+    "id": "english_easy_color_002",
+    "subject": "english",
+    "question": "하늘과 바다처럼 파란색은 영어로 뭐라고 해요? 🌊☁️",
+    "options": ["Blue", "Blow", "Blew", "Bloe"],
+    "correctIndex": 0,
+    "explanation": "'Blue'는 파란색이에요! 날씨가 맑을 때 하늘이 이 색이에요! ☀️",
+    "difficulty": 1,
+    "audioText": "Blue"
+  },
+  {
+    "id": "english_easy_color_003",
+    "subject": "english",
+    "question": "햇살처럼 노란색은 영어로 뭐라고 부를까요? 🌞💛",
+    "options": ["Yellow", "Yello", "Mellow", "Fellow"],
+    "correctIndex": 0,
+    "explanation": "'Yellow'는 노란색이에요! 바나나, 해바라기, 별이 이 색이죠! 🌼",
+    "difficulty": 1,
+    "audioText": "Yellow"
+  },
+  {
+    "id": "english_easy_number_001",
+    "subject": "english",
+    "question": "손가락 한 손에 모두 펴면 몇 개인가요? 그 숫자를 영어로 뭐라고 해요? ✋",
+    "options": ["Five", "Fife", "Fire", "Fine"],
+    "correctIndex": 0,
+    "explanation": "한 손엔 손가락이 5개! 영어로는 'Five'예요. 🖐️",
+    "difficulty": 1,
+    "audioText": "Five"
+  },
+  {
+    "id": "english_easy_number_002",
+    "subject": "english",
+    "question": "우리 반에 친구가 3명만 왔어요! 이 숫자를 영어로 뭐라고 해요? 👧👦👧",
+    "options": ["Three", "Tree", "Free", "Thrie"],
+    "correctIndex": 0,
+    "explanation": "'Three'는 3이에요! 'Tree'는 나무예요. 나무와 숫자는 달라요! 🌳",
+    "difficulty": 1,
+    "audioText": "Three"
+  },
+  {
+    "id": "english_easy_number_003",
+    "subject": "english",
+    "question": "엄마, 아빠, 나 — 우리 가족은 모두 몇 명일까요? 그 숫자를 영어로 뭐라고 해요? 👨‍👩‍👧",
+    "options": ["Three", "Thrie", "Thray", "Trie"],
+    "correctIndex": 0,
+    "explanation": "가족이 3명이면 영어로 'Three'예요! 숫자는 정확하게 발음해야 해요! 💬",
+    "difficulty": 1,
+    "audioText": "Three"
+  },
+  {
+    "id": "english_easy_family_001",
+    "subject": "english",
+    "question": "나를 낳아주신 분은 영어로 뭐라고 불러요? 👩‍🍼💖",
+    "options": ["Mother", "Brother", "Father", "Sister"],
+    "correctIndex": 0,
+    "explanation": "'Mother'는 엄마예요! 'Brother'는 오빠/형, 'Sister'는 언니/누나랍니다. 👩",
+    "difficulty": 1,
+    "audioText": "Mother"
+  },
+  {
+    "id": "english_easy_family_002",
+    "subject": "english",
+    "question": "같은 부모님에게서 태어난 남자 아이는 영어로 뭐라고 해요? 👦👦",
+    "options": ["Brother", "Father", "Mother", "Teacher"],
+    "correctIndex": 0,
+    "explanation": "'Brother'는 형이나 오빠, 남동생을 뜻해요! 가족은 소중하죠! ❤️",
+    "difficulty": 1,
+    "audioText": "Brother"
+  },
+  {
+    "id": "english_easy_family_003",
+    "subject": "english",
+    "question": "아빠는 영어로 뭐라고 부를까요? 👨💼",
+    "options": ["Father", "Farther", "Feather", "Farter"],
+    "correctIndex": 0,
+    "explanation": "'Father'는 아빠예요! 'Feather'는 깃털이에요. 아빠와 깃털은 전혀 다르죠! 🪶",
+    "difficulty": 1,
+    "audioText": "Father"
+  },
+  {
+    "id": "english_easy_animal_001",
+    "subject": "english",
+    "question": "'Meow~' 하고 우는 동물은 영어로 뭐라고 해요? 🐱",
+    "options": ["Cat", "Cut", "Cot", "Cet"],
+    "correctIndex": 0,
+    "explanation": "'Cat'은 고양이예요! 귀엽게 'Meow' 하며 인사해요! 😺",
+    "difficulty": 1,
+    "audioText": "Cat"
+  },
+  {
+    "id": "english_easy_animal_002",
+    "subject": "english",
+    "question": "길게 'Moo~' 하고 우는 동물은 영어로 뭐라고 부를까요? 🐄",
+    "options": ["Cow", "Caw", "Coe", "Kow"],
+    "correctIndex": 0,
+    "explanation": "'Cow'는 소예요! 우유를 주는 고마운 동물이에요. 🥛",
+    "difficulty": 1,
+    "audioText": "Cow"
+  },
+  {
+    "id": "english_easy_animal_003",
+    "subject": "english",
+    "question": "'Quack! Quack!' 하고 우는 새는 영어로 뭐라고 해요? 🦆",
+    "options": ["Duck", "Dack", "Duk", "Dark"],
+    "correctIndex": 0,
+    "explanation": "'Duck'은 오리예요! 연못에서 헤엄치는 모습이 귀여워요! 💧",
+    "difficulty": 1,
+    "audioText": "Duck"
+  },
+  {
+    "id": "english_easy_greeting_001",
+    "subject": "english",
+    "question": "학교에서 처음 만난 친구에게 인사할 때 뭐라고 말할까요? 👧👦",
+    "options": ["Hi", "Bye", "Buy", "Pie"],
+    "correctIndex": 0,
+    "explanation": "'Hi'는 간단한 인사말이에요! 친구와 친해지는 첫걸음이에요! ✨",
+    "difficulty": 1,
+    "audioText": "Hi"
+  },
+  {
+    "id": "english_easy_greeting_002",
+    "subject": "english",
+    "question": "친구와 헤어질 때 뭐라고 말해야 할까요? 👋😢",
+    "options": ["Goodbye", "Goodbuy", "Goodby", "Goodpie"],
+    "correctIndex": 0,
+    "explanation": "'Goodbye'는 '안녕히 가세요'라는 뜻이에요. 다음에 또 만나요! 🌈",
+    "difficulty": 1,
+    "audioText": "Goodbye"
+  },
+  {
+    "id": "english_easy_greeting_003",
+    "subject": "english",
+    "question": "선생님께 인사할 때 '안녕하세요!'는 영어로 뭐라고 해요? 👩‍🏫",
+    "options": ["Hello", "Hollo", "Hallo", "Jello"],
+    "correctIndex": 0,
+    "explanation": "'Hello'는 예의 바르게 인사할 때 쓰는 말이에요! 😊",
+    "difficulty": 1,
+    "audioText": "Hello"
+  },
+  {
+    "id": "english_easy_school_001",
+    "subject": "english",
+    "question": "글씨를 쓸 때 사용하는 도구는 영어로 뭐라고 해요? ✏️",
+    "options": ["Pencil", "Pensil", "Pansil", "Pensel"],
+    "correctIndex": 0,
+    "explanation": "'Pencil'은 연필이에요! 숙제할 때 꼭 필요하죠! 📝",
+    "difficulty": 1,
+    "audioText": "Pencil"
+  },
+  {
+    "id": "english_easy_school_002",
+    "subject": "english",
+    "question": "지우개는 영어로 뭐라고 부를까요? 🧽",
+    "options": ["Eraser", "Eraser", "Ireaser", "Ureaser"],
+    "correctIndex": 0,
+    "explanation": "'Eraser'는 틀린 글씨를 지워주는 도구예요! 실수해도 괜찮아요! ✅",
+    "difficulty": 1,
+    "audioText": "Eraser"
+  },
+  {
+    "id": "english_easy_school_003",
+    "subject": "english",
+    "question": "종이를 자를 때 쓰는 도구는 영어로 뭐라고 해요? ✂️",
+    "options": ["Scissors", "Sissors", "Scisors", "Scizzors"],
+    "correctIndex": 0,
+    "explanation": "'Scissors'는 가위예요! 미술 시간에 자주 쓰이죠! 🎨",
+    "difficulty": 1,
+    "audioText": "Scissors"
+  },
+  {
+    "id": "english_easy_food_001",
+    "subject": "english",
+    "question": "노란 과일로, 아침에 즐겨 먹는 '바나나'는 영어로 뭐라고 해요? 🍌",
+    "options": ["Banana", "Bannana", "Bananna", "Panana"],
+    "correctIndex": 0,
+    "explanation": "'Banana'는 바나나예요! 에너지가 가득한 과일이에요! ⚡",
+    "difficulty": 1,
+    "audioText": "Banana"
+  },
+  {
+    "id": "english_easy_food_002",
+    "subject": "english",
+    "question": "빨간 과일로, 'An apple a day keeps the doctor away!'라고 하죠! 이 과일은 영어로? 🍎",
+    "options": ["Apple", "Aple", "Appel", "Apel"],
+    "correctIndex": 0,
+    "explanation": "'Apple'은 사과예요! 건강에 좋아요! 🩺➡️💪",
+    "difficulty": 1,
+    "audioText": "Apple"
+  },
+  {
+    "id": "english_easy_food_003",
+    "subject": "english",
+    "question": "우유, 치즈, 요구르트는 모두 어떤 음식에서 나올까요? 🥛🧀",
+    "options": ["Milk", "Silk", "Mink", "Mirk"],
+    "correctIndex": 0,
+    "explanation": "'Milk'는 우유예요! 소에서 나오고, 치즈와 요구르트의 재료가 돼요! 🐄",
+    "difficulty": 1,
+    "audioText": "Milk"
+  },
+  {
+    "id": "english_easy_body_001",
+    "subject": "english",
+    "question": "우리가 보는 데 쓰는 '눈'은 영어로 뭐라고 해요? 👀",
+    "options": ["Eyes", "Ice", "Ayes", "Eys"],
+    "correctIndex": 0,
+    "explanation": "'Eyes'는 눈이에요! 세상을 보는 창이죠! 🌍",
+    "difficulty": 1,
+    "audioText": "Eyes"
+  },
+  {
+    "id": "english_easy_body_002",
+    "subject": "english",
+    "question": "우리가 듣는 데 쓰는 '귀'는 영어로 뭐라고 부를까요? 👂",
+    "options": ["Ears", "Eers", "Ires", "Airs"],
+    "correctIndex": 0,
+    "explanation": "'Ears'는 귀예요! 노래도, 친구의 목소리도 들을 수 있어요! 🎶",
+    "difficulty": 1,
+    "audioText": "Ears"
+  },
+  {
+    "id": "english_easy_body_003",
+    "subject": "english",
+    "question": "우리가 걷거나 뛸 때 쓰는 '발'은 영어로 뭐라고 해요? 👣",
+    "options": ["Feet", "Fiet", "Feat", "Fiet"],
+    "correctIndex": 0,
+    "explanation": "'Feet'는 발이에요! 운동장에서 뛰어놀 때 꼭 필요하죠! 🏃‍♀️",
+    "difficulty": 1,
+    "audioText": "Feet"
+  },
+  {
+    "id": "english_easy_weather_001",
+    "subject": "english",
+    "question": "비가 오는 날은 영어로 뭐라고 해요? 🌧️☔",
+    "options": ["Rainy", "Rainey", "Rany", "Raine"],
+    "correctIndex": 0,
+    "explanation": "'Rainy'는 비 오는 날이에요! 우산을 꼭 챙기세요! ☔",
+    "difficulty": 1,
+    "audioText": "Rainy"
+  },
+  {
+    "id": "english_easy_weather_002",
+    "subject": "english",
+    "question": "햇살이 쨍쨍한 날은 영어로 뭐라고 부를까요? ☀️😎",
+    "options": ["Sunny", "Suny", "Sonny", "Soney"],
+    "correctIndex": 0,
+    "explanation": "'Sunny'는 해가 많이 나는 날이에요! 모자를 쓰고 나가요! 🧢",
+    "difficulty": 1,
+    "audioText": "Sunny"
+  },
+  {
+    "id": "english_easy_weather_003",
+    "subject": "english",
+    "question": "하얗고 fluffy한 눈이 오는 날은 영어로 뭐라고 해요? ❄️☃️",
+    "options": ["Snowy", "Snowey", "Snoey", "Snawy"],
+    "correctIndex": 0,
+    "explanation": "'Snowy'는 눈 오는 날이에요! 눈사람을 만들 수 있죠! 🧣",
+    "difficulty": 1,
+    "audioText": "Snowy"
+  }
+]

@@ -1,0 +1,902 @@
+[
+  {
+    "id": "korean_hard_1_1",
+    "subject": "korean",
+    "question": "✏️ ‘걷다’의 과거형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["걸었어요", "걷었어요", "걸었답니다", "걷었답니다"],
+    "correctIndex": 0,
+    "explanation": "‘걷다’는 ‘ㄷ’ 불규칙 활용이에요! ‘걷 + 었 → 걸었어요’가 돼요. 🚶‍♂️ ‘걷다 → 걸었어요’!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_2",
+    "subject": "korean",
+    "question": "✏️ ‘낫다’의 현재형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["나아요", "낫아요", "나았어요", "낫았어요"],
+    "correctIndex": 0,
+    "explanation": "‘낫다’는 ‘ㅅ’ 불규칙 활용이에요! ‘낫 + 아 → 나아요’가 돼요. 💊 ‘병이 나아요!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_3",
+    "subject": "korean",
+    "question": "✏️ ‘붙이다’의 명령형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["붙여라", "붙이다", "붙이어라", "부처라"],
+    "correctIndex": 0,
+    "explanation": "‘붙이다’는 ‘ㅎ’ 불규칙 활용이에요! ‘붙이 + 어라 → 붙여라’가 돼요. 📌 ‘종이를 붙여라!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_4",
+    "subject": "korean",
+    "question": "✏️ ‘푸르다’의 관형사형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["푸른", "푸르른", "푸르른", "푸른"],
+    "correctIndex": 0,
+    "explanation": "‘푸르다’는 ‘ㅡ’ 탈락하고 ‘ㄴ’이 붙어요! 🌿 ‘푸른 하늘’이 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_5",
+    "subject": "korean",
+    "question": "✏️ ‘이르다’(도착하다)의 과거형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["이르렀어요", "이르었어요", "이르렸어요", "이르렀답니다"],
+    "correctIndex": 0,
+    "explanation": "‘이르다’는 ‘ㄹ’ 불규칙 활용이에요! ‘이르 + 었 → 이르렀어요’가 돼요. 🏁 ‘결승점에 이르렀어요!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_6",
+    "subject": "korean",
+    "question": "✏️ ‘깨닫다’의 현재형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["깨달아요", "깨닫아요", "깨달았어요", "깨닫았어요"],
+    "correctIndex": 0,
+    "explanation": "‘깨닫다’는 ‘ㅅ’ 불규칙 활용이에요! ‘깨닫 + 아 → 깨달아요’가 돼요. 💡 ‘진실을 깨달아요!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_7",
+    "subject": "korean",
+    "question": "✏️ ‘잡다’의 과거형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["잡았어요", "잡었어요", "잡았답니다", "잡었답니다"],
+    "correctIndex": 0,
+    "explanation": "‘잡다’는 규칙 활용이에요! ‘잡 + 았 → 잡았어요’가 돼요. ✋ ‘공을 잡았어요!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_8",
+    "subject": "korean",
+    "question": "✏️ ‘돕다’의 현재형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["도와요", "돕아요", "도왔어요", "돕았어요"],
+    "correctIndex": 0,
+    "explanation": "‘돕다’는 ‘ㅂ’ 불규칙 활용이에요! ‘돕 + 아 → 도와요’가 돼요. 🤝 ‘친구를 도와요!’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_9",
+    "subject": "korean",
+    "question": "✏️ ‘곱다’(아름답다)의 관형사형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["고운", "곱은", "곱운", "고은"],
+    "correctIndex": 0,
+    "explanation": "‘곱다’는 ‘ㅂ’ 불규칙 활용이에요! ‘곱 + 은 → 고운’이 돼요. 🌸 ‘고운 꽃’이 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_1_10",
+    "subject": "korean",
+    "question": "✏️ ‘슬프다’의 부사형으로 바르게 활용한 것은 무엇일까요?",
+    "options": ["슬퍼서", "슬프어서", "슬펐어서", "슬프였어서"],
+    "correctIndex": 0,
+    "explanation": "‘슬프다’는 ‘ㅓ’가 있으니 ‘어서’ → ‘슬퍼서’가 돼요. 😢 ‘슬퍼서 울었어요.’",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_1",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["선생님께서는 친절하세요", "선생님께서는 친절 하세요", "선생님께서는 친절하 세요", "선생님께서는 친절 하 세요"],
+    "correctIndex": 0,
+    "explanation": "‘-께서는’은 조사가 붙은 형태고, ‘친절하세요’는 한 단어처럼 써요! 👩‍🏫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_2",
+    "subject": "korean",
+    "question": "📖 “아이들이 놀이터에서 놀고 있어요”에서 띄어쓰기가 올바른 부분은 무엇일까요?",
+    "options": ["놀이터에서", "놀이터 에서", "놀이터에서 놀고", "놀이터에서 놀 고"],
+    "correctIndex": 0,
+    "explanation": "‘놀이터’는 합성어라 붙이고, ‘에서’는 조사라 붙여 써요! 🎠 ‘놀이터에서’가 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_3",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["우리는 함께 공부하고 있어요", "우리는 함께 공부 하고 있어요", "우리는 함께 공부하고있어요", "우리는 함께 공부 하고있어요"],
+    "correctIndex": 0,
+    "explanation": "‘공부하고 있어요’는 ‘공부하다 + 고 있다’로, ‘고’는 연결어미라 붙여 써요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_4",
+    "subject": "korean",
+    "question": "📖 “할아버지께서는 정원을 가꾸고 계세요”에서 띄어쓰기가 올바른 부분은 무엇일까요?",
+    "options": ["가꾸고 계세요", "가꾸 고 계세요", "가꾸고계세요", "가꾸 고계세요"],
+    "correctIndex": 0,
+    "explanation": "‘가꾸고 계세요’는 ‘가꾸다 + 고 + 계시다’로, 연결어미는 붙여 써요! 🌺",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_5",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["그는 매우 빠르게 달렸어요", "그는 매우 빠르 게 달렸어요", "그는 매우 빠르게달렸어요", "그는 매우 빠르 게달렸어요"],
+    "correctIndex": 0,
+    "explanation": "부사 ‘매우’와 ‘빠르게’는 각각 단어라 띄어 써요! 🐇 ‘매우 빠르게’가 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_6",
+    "subject": "korean",
+    "question": "📖 “우리는 천천히 걸어갔어요”에서 띄어쓰기가 올바른 부분은 무엇일까요?",
+    "options": ["천천히 걸어갔어요", "천천 히 걸어갔어요", "천천히걸어갔어요", "천천 히걸어갔어요"],
+    "correctIndex": 0,
+    "explanation": "‘천천히’는 부사어라 한 단어로 써요! 🚶‍♀️ ‘천천히 걸어갔어요’가 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_7",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["책을 읽는 것이 좋아요", "책을 읽 는 것이 좋아요", "책을 읽는것이 좋아요", "책을 읽 는것이 좋아요"],
+    "correctIndex": 0,
+    "explanation": "‘읽는 것’은 ‘읽다 + 는 + 것’으로, ‘는’은 관형사형 어미라 붙이고, ‘것’은 띄어 써요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_8",
+    "subject": "korean",
+    "question": "📖 “내가 한 일은 후회하지 않아요”에서 띄어쓰기가 올바른 부분은 무엇일까요?",
+    "options": ["한 일은", "한 일 은", "한일은", "한일 은"],
+    "correctIndex": 0,
+    "explanation": "‘한 일’은 ‘하다 + ㄴ + 일’로, ‘ㄴ’은 관형사형 어미라 붙이고, ‘일’은 띄어 써요! ✅",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_9",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["그는 공부하기를 싫어해요", "그는 공부 하기를 싫어해요", "그는 공부하기를싫어해요", "그는 공부 하기를싫어해요"],
+    "correctIndex": 0,
+    "explanation": "‘공부하기’는 ‘공부하다 + 기’로, 명사화 어미 ‘기’는 붙여 써요! 📉",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_2_10",
+    "subject": "korean",
+    "question": "📖 “우리는 놀기 전에 숙제를 했어요”에서 띄어쓰기가 올바른 부분은 무엇일까요?",
+    "options": ["놀기 전에", "놀 기 전에", "놀기전에", "놀 기전에"],
+    "correctIndex": 0,
+    "explanation": "‘놀기’는 ‘놀다 + 기’로 붙이고, ‘전에’는 띄어 써요! ⏳ ‘놀기 전에’가 맞아요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_1",
+    "subject": "korean",
+    "question": "🔍 “바다”의 뜻이 **‘넓고 깊은 물’**일 때와 **‘많은 양’**을 비유할 때의 차이를 무엇이라고 할까요?",
+    "options": ["다의어", "동음이의어", "유의어", "반의어"],
+    "correctIndex": 0,
+    "explanation": "같은 말이 여러 뜻을 가질 때 ‘다의어’예요! 🌊 ‘바다처럼 넓다’는 비유적 뜻이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_2",
+    "subject": "korean",
+    "question": "🔍 “눈”이 **‘눈동자’**와 **‘하늘에서 내리는 눈’**일 때, 이 둘은 무엇일까요?",
+    "options": ["동음이의어", "다의어", "유의어", "반의어"],
+    "correctIndex": 0,
+    "explanation": "발음은 같지만 뜻이 완전히 다른 말은 ‘동음이의어’예요! 👀 ❄️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_3",
+    "subject": "korean",
+    "question": "🔍 “시원하다”가 **‘기온이 낮다’**와 **‘속이 후련하다’**는 뜻일 때, 이는 무엇일까요?",
+    "options": ["다의어", "동음이의어", "유의어", "반의어"],
+    "correctIndex": 0,
+    "explanation": "같은 말이 여러 뜻을 가질 때 ‘다의어’예요! 🥤 ‘시원한 음료’ vs ‘시원한 마음’!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_4",
+    "subject": "korean",
+    "question": "🔍 “가다”와 “이동하다”는 어떤 관계일까요?",
+    "options": ["유의어", "반의어", "다의어", "동음이의어"],
+    "correctIndex": 0,
+    "explanation": "뜻이 비슷한 말은 ‘유의어’예요! 🚶‍♂️ ‘가다 = 이동하다’!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_5",
+    "subject": "korean",
+    "question": "🔍 “밝다”와 “어둡다”는 어떤 관계일까요?",
+    "options": ["반의어", "유의어", "다의어", "동음이의어"],
+    "correctIndex": 0,
+    "explanation": "뜻이 반대되는 말은 ‘반의어’예요! ☀️ ↔ 🌙",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_6",
+    "subject": "korean",
+    "question": "🔍 “비행기”와 “항공기”는 어떤 관계일까요?",
+    "options": ["유의어", "반의어", "다의어", "동음이의어"],
+    "correctIndex": 0,
+    "explanation": "뜻이 비슷한 말은 ‘유의어’예요! ✈️ ‘항공기’는 더 넓은 개념이지만, 비슷하게 쓰여요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_7",
+    "subject": "korean",
+    "question": "🔍 “책상”과 “데스크”는 어떤 관계일까요?",
+    "options": ["외래어와 순우리말", "한자어와 순우리말", "유의어", "반의어"],
+    "correctIndex": 0,
+    "explanation": "‘책상’은 순우리말, ‘데스크’는 영어에서 온 외래어예요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_8",
+    "subject": "korean",
+    "question": "🔍 “의사”와 “의료인”은 어떤 관계일까요?",
+    "options": ["포함 관계", "반의어", "동음이의어", "다의어"],
+    "correctIndex": 0,
+    "explanation": "‘의료인’은 의사, 간호사, 약사 등을 모두 포함하는 말이에요! 🩺",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_9",
+    "subject": "korean",
+    "question": "🔍 “가볍다”와 “무겁다”는 어떤 관계일까요?",
+    "options": ["반의어", "유의어", "다의어", "동음이의어"],
+    "correctIndex": 0,
+    "explanation": "뜻이 반대되는 말은 ‘반의어’예요! 🪶 ↔ 🏋️‍♂️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_3_10",
+    "subject": "korean",
+    "question": "🔍 “웃다”와 “미소 짓다”는 어떤 관계일까요?",
+    "options": ["유의어", "반의어", "다의어", "동음이의어"],
+    "correctIndex": 0,
+    "explanation": "뜻이 비슷한 말은 ‘유의어’예요! 😊 ‘미소 짓다’는 더 부드러운 표현이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_1",
+    "subject": "korean",
+    "question": "🧩 “선생님께서 우리에게 책을 읽어 주셨다”에서 **목적어**는 무엇일까요?",
+    "options": ["책을", "선생님께서", "우리에게", "읽어 주셨다"],
+    "correctIndex": 0,
+    "explanation": "‘책을’은 동작의 대상이 되는 **목적어**예요! 📖 ‘읽다’의 대상이에요!",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_2",
+    "subject": "korean",
+    "question": "🧩 “할머니께서 맛있는 떡을 주셨다”에서 **주어**는 무엇일까요?",
+    "options": ["할머니께서", "맛있는 떡을", "주셨다", "떡을"],
+    "correctIndex": 0,
+    "explanation": "‘할머니께서’는 동작을 하는 사람으로 **주어**예요! 👵",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_3",
+    "subject": "korean",
+    "question": "🧩 “나는 친구에게 편지를 썼다”에서 **간접 목적어**는 무엇일까요?",
+    "options": ["친구에게", "나는", "편지를", "썼다"],
+    "correctIndex": 0,
+    "explanation": "‘친구에게’는 동작의 **받는 사람**으로 **간접 목적어**예요! 💌",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_4",
+    "subject": "korean",
+    "question": "🧩 “엄마가 동생에게 과자를 주셨다”에서 **직접 목적어**는 무엇일까요?",
+    "options": ["과자를", "엄마가", "동생에게", "주셨다"],
+    "correctIndex": 0,
+    "explanation": "‘과자를’은 동작의 **직접 대상**으로 **직접 목적어**예요! 🍬",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_5",
+    "subject": "korean",
+    "question": "🧩 “우리는 공원에서 놀았다”에서 **부사어**는 무엇일까요?",
+    "options": ["공원에서", "우리는", "놀았다", "공원"],
+    "correctIndex": 0,
+    "explanation": "‘공원에서’는 동작이 일어난 **장소**를 나타내는 **부사어**예요! 🌳",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_6",
+    "subject": "korean",
+    "question": "🧩 “그는 빠르게 달렸다”에서 **부사어**는 무엇일까요?",
+    "options": ["빠르게", "그는", "달렸다", "달리"],
+    "correctIndex": 0,
+    "explanation": "‘빠르게’는 동작의 **방법**을 나타내는 **부사어**예요! 🐇",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_7",
+    "subject": "korean",
+    "question": "🧩 “아이들이 즐겁게 노래했다”에서 **서술어**는 무엇일까요?",
+    "options": ["노래했다", "아이들이", "즐겁게", "노래"],
+    "correctIndex": 0,
+    "explanation": "‘노래했다’는 문장의 **핵심 동작**으로 **서술어**예요! 🎵",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_8",
+    "subject": "korean",
+    "question": "🧩 “할아버지께서 정원을 가꾸신다”에서 **주어**는 무엇일까요?",
+    "options": ["할아버지께서", "정원을", "가꾸신다", "정원"],
+    "correctIndex": 0,
+    "explanation": "‘할아버지께서’는 동작을 하는 사람으로 **주어**예요! 🌺",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_9",
+    "subject": "korean",
+    "question": "🧩 “우리는 학교에 갔다”에서 **부사어**는 무엇일까요?",
+    "options": ["학교에", "우리는", "갔다", "학교"],
+    "correctIndex": 0,
+    "explanation": "‘학교에’는 동작의 **방향**을 나타내는 **부사어**예요! 🏫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_4_10",
+    "subject": "korean",
+    "question": "🧩 “나는 책을 읽고 있다”에서 **서술어**는 무엇일까요?",
+    "options": ["읽고 있다", "나는", "책을", "읽다"],
+    "correctIndex": 0,
+    "explanation": "‘읽고 있다’는 현재 진행 중인 동작으로 **서술어**예요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_1",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **서론**에 해당하는 문장은 무엇일까요?\n(가) 우리는 환경을 보호해야 해요.\n(나) 쓰레기를 버리면 동물이 아파요.\n(다) 그래서 나는 쓰레기를 줍는 활동을 해요.",
+    "options": ["가", "나", "다", "가와 나"],
+    "correctIndex": 0,
+    "explanation": "‘우리는 환경을 보호해야 해요’는 **주제를 밝히는 서론**이에요! 🌍",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_2",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **본론**에 해당하는 문장은 무엇일까요?\n(가) 독서는 상상력을 키워줘요.\n(나) 책을 읽으면 새로운 세계를 경험할 수 있어요.\n(다) 그래서 나는 매일 책을 읽어요.",
+    "options": ["나", "가", "다", "가와 다"],
+    "correctIndex": 0,
+    "explanation": "‘책을 읽으면 새로운 세계를 경험할 수 있어요’는 **이유를 설명하는 본론**이에요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_3",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **결론**에 해당하는 문장은 무엇일까요?\n(가) 운동은 건강에 좋아요.\n(나) 땀을 흘리면 스트레스가 줄어요.\n(다) 그래서 나는 매일 운동해요.",
+    "options": ["다", "가", "나", "가와 나"],
+    "correctIndex": 0,
+    "explanation": "‘그래서 나는 매일 운동해요’는 **결과나 다짐을 말하는 결론**이에요! 🏃‍♀️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_4",
+    "subject": "korean",
+    "question": "📑 다음 글의 구조는 무엇일까요?\n“친구는 소중해요. 친구와 함께 놀면 즐거워요. 그래서 나는 친구를 아껴요.”",
+    "options": ["서론-본론-결론", "본론-서론-결론", "결론-서론-본론", "서론-결론-본론"],
+    "correctIndex": 0,
+    "explanation": "주제 → 이유 → 결론 순서로 **서론-본론-결론** 구조예요! 👫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_5",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **서론**에 해당하는 문장은 무엇일까요?\n(가) 물을 아껴야 해요.\n(나) 물이 없으면 식물도 죽어요.\n(다) 나는 물을 틀어놓고 양치하지 않아요.",
+    "options": ["가", "나", "다", "나와 다"],
+    "correctIndex": 0,
+    "explanation": "‘물을 아껴야 해요’는 **주제를 밝히는 서론**이에요! 💧",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_6",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **본론**에 해당하는 문장은 무엇일까요?\n(가) 절약은 습관이에요.\n(나) 작은 돈도 모이면 큰돈이 돼요.\n(다) 나는 용돈의 일부를 저금해요.",
+    "options": ["나", "가", "다", "가와 다"],
+    "correctIndex": 0,
+    "explanation": "‘작은 돈도 모이면 큰돈이 돼요’는 **이유를 설명하는 본론**이에요! 💰",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_7",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **결론**에 해당하는 문장은 무엇일까요?\n(가) 꿈은 이루어져요.\n(나) 꾸준히 노력하면 꿈에 가까워져요.\n(다) 나는 매일 공부해요.",
+    "options": ["다", "가", "나", "가와 나"],
+    "correctIndex": 0,
+    "explanation": "‘나는 매일 공부해요’는 **실천을 다짐하는 결론**이에요! 🌟",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_8",
+    "subject": "korean",
+    "question": "📑 다음 글의 구조는 무엇일까요?\n“책은 친구예요. 책을 읽으면 지식이 쌓여요. 그래서 나는 책을 좋아해요.”",
+    "options": ["서론-본론-결론", "본론-서론-결론", "결론-서론-본론", "서론-결론-본론"],
+    "correctIndex": 0,
+    "explanation": "주제 → 이유 → 결론 순서로 **서론-본론-결론** 구조예요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_9",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **서론**에 해당하는 문장은 무엇일까요?\n(가) 나무는 우리를 도와줘요.\n(나) 나무는 공기를 깨끗하게 해줘요.\n(다) 나는 나무를 심는 활동을 해요.",
+    "options": ["가", "나", "다", "나와 다"],
+    "correctIndex": 0,
+    "explanation": "‘나무는 우리를 도와줘요’는 **주제를 밝히는 서론**이에요! 🌳",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_5_10",
+    "subject": "korean",
+    "question": "📑 다음 글에서 **본론**에 해당하는 문장은 무엇일까요?\n(가) 공부는 중요해요.\n(나) 공부하면 미래의 꿈을 이룰 수 있어요.\n(다) 나는 매일 공부해요.",
+    "options": ["나", "가", "다", "가와 다"],
+    "correctIndex": 0,
+    "explanation": "‘공부하면 미래의 꿈을 이룰 수 있어요’는 **이유를 설명하는 본론**이에요! 🎓",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_1",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **한자어**는 무엇일까요?",
+    "options": ["학생", "아이", "친구", "엄마"],
+    "correctIndex": 0,
+    "explanation": "‘학생’은 한자 ‘學(배울 학) + 生(날 생)’에서 온 말이에요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_2",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **순우리말**은 무엇일까요?",
+    "options": ["아이", "학생", "선생님", "책상"],
+    "correctIndex": 0,
+    "explanation": "‘아이’는 옛날부터 우리말로 쓰인 **순우리말**이에요! 👶",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_3",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **한자어**는 무엇일까요?",
+    "options": ["선생님", "엄마", "아빠", "동생"],
+    "correctIndex": 0,
+    "explanation": "‘선생님’은 한자 ‘先(먼저 선) + 生(날 생)’에서 온 말이에요! 👩‍🏫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_4",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **순우리말**은 무엇일까요?",
+    "options": ["엄마", "학생", "책상", "의사"],
+    "correctIndex": 0,
+    "explanation": "‘엄마’는 옛날부터 우리말로 쓰인 **순우리말**이에요! 👩",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_5",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **한자어**는 무엇일까요?",
+    "options": ["의사", "아빠", "동생", "할머니"],
+    "correctIndex": 0,
+    "explanation": "‘의사’는 한자 ‘醫(의술 의) + 師(스승 사)’에서 온 말이에요! 🩺",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_6",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **순우리말**은 무엇일까요?",
+    "options": ["동생", "학생", "선생님", "책상"],
+    "correctIndex": 0,
+    "explanation": "‘동생’은 옛날부터 우리말로 쓰인 **순우리말**이에요! 👧",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_7",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **한자어**는 무엇일까요?",
+    "options": ["책상", "아이", "엄마", "아빠"],
+    "correctIndex": 0,
+    "explanation": "‘책상’은 한자 ‘冊(책 책) + 床(침상 상)’에서 온 말이에요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_8",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **순우리말**은 무엇일까요?",
+    "options": ["아빠", "학생", "선생님", "의사"],
+    "correctIndex": 0,
+    "explanation": "‘아빠’는 옛날부터 우리말로 쓰인 **순우리말**이에요! 👨",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_9",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **한자어**는 무엇일까요?",
+    "options": ["학교", "동생", "엄마", "아빠"],
+    "correctIndex": 0,
+    "explanation": "‘학교’는 한자 ‘學(배울 학) + 校(학교 교)’에서 온 말이에요! 🏫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_6_10",
+    "subject": "korean",
+    "question": "KANJI 다음 중 **순우리말**은 무엇일까요?",
+    "options": ["할머니", "학생", "선생님", "책상"],
+    "correctIndex": 0,
+    "explanation": "‘할머니’는 옛날부터 우리말로 쓰인 **순우리말**이에요! 👵",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_1",
+    "subject": "korean",
+    "question": "🦉 “가는 말이 고와야 오는 말도 곱다”는 말의 뜻은 무엇일까요?",
+    "options": ["예의 바른 말을 하면 상대도 예의 있게 대한다", "말은 예쁘게만 해야 한다", "모든 말은 곱다", "말은 중요하지 않다"],
+    "correctIndex": 0,
+    "explanation": "예의 있는 말을 하면 상대도 좋은 말로 대한다는 뜻이에요! 💬",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_2",
+    "subject": "korean",
+    "question": "🐋 “고래 싸움에 새우 등 터진다”는 말의 뜻은 무엇일까요?",
+    "options": ["큰 싸움에 작은 사람이 피해를 본다", "고래가 이긴다", "새우가 강하다", "모두 친구가 된다"],
+    "correctIndex": 0,
+    "explanation": "권력자들의 다툼에 약한 사람이 피해를 본다는 뜻이에요! 🦐",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_3",
+    "subject": "korean",
+    "question": "🦊 “남의 떡이 더 커 보인다”는 말의 뜻은 무엇일까요?",
+    "options": ["남의 것이 더 좋아 보인다", "떡이 커야 한다", "모두 나눠 먹는다", "떡은 작아야 한다"],
+    "correctIndex": 0,
+    "explanation": "남의 것이 실제로는 같아도 더 좋아 보인다는 뜻이에요! 🍡",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_4",
+    "subject": "korean",
+    "question": "🐮 “소 잃고 외양간 고친다”는 말의 뜻은 무엇일까요?",
+    "options": ["일이 터지고 나서야 대비한다", "소를 찾았다", "외양간이 튼튼하다", "모두 괜찮다"],
+    "correctIndex": 0,
+    "explanation": "문제가 생기고 나서야 준비하는 어리석음을 말해요! 🐄",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_5",
+    "subject": "korean",
+    "question": "🌧️ “가랑비에 옷 젖는 줄 모른다”는 말의 뜻은 무엇일까요?",
+    "options": ["작은 실수도 쌓이면 큰 문제가 된다", "비가 안 온다", "옷이 안 젖는다", "모두 괜찮다"],
+    "correctIndex": 0,
+    "explanation": "작은 잘못이 모이면 큰 피해가 된다는 뜻이에요! 🌧️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_6",
+    "subject": "korean",
+    "question": "🐔 “꿩 대신 닭”은 무슨 뜻일까요?",
+    "options": ["원하는 게 없을 때 차선책을 선택한다", "꿩이 더 좋다", "닭은 안 된다", "둘 다 안 된다"],
+    "correctIndex": 0,
+    "explanation": "최선이 없을 때 차선을 선택한다는 뜻이에요! 🐓",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_7",
+    "subject": "korean",
+    "question": "🐵 “원숭이도 나무에서 떨어진다”는 말의 뜻은 무엇일까요?",
+    "options": ["전문가도 실수할 수 있다", "원숭이가 약하다", "나무가 미끄럽다", "모두 완벽하다"],
+    "correctIndex": 0,
+    "explanation": "아무리 잘하는 사람도 실수할 수 있다는 뜻이에요! 🐒",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_8",
+    "subject": "korean",
+    "question": "🦀 “가재는 게 편이다”는 말의 뜻은 무엇일까요?",
+    "options": ["비슷한 처지끼리 서로 이해한다", "게가 더 좋다", "가재는 혼자다", "모두 싸운다"],
+    "correctIndex": 0,
+    "explanation": "비슷한 성격이나 처지인 사람들이 서로 끌린다는 뜻이에요! 🦀",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_9",
+    "subject": "korean",
+    "question": "💧 “물에 빠진 사람에게 지푸라기”는 무슨 뜻일까요?",
+    "options": ["절박할 때는 작은 희망도 붙든다", "지푸라기가 중요하다", "물에 빠지면 안 된다", "모두 도와준다"],
+    "correctIndex": 0,
+    "explanation": "절박한 상황에선 작은 것이라도 희망으로 삼는다는 뜻이에요! 🌾",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_7_10",
+    "subject": "korean",
+    "question": "🌱 “전인재수(前人栽樹)”는 무슨 뜻일까요?",
+    "options": ["앞사람이 나무를 심으면 뒷사람이 그늘에서 쉰다", "나무는 혼자 자란다", "모두 나무를 심는다", "그늘은 없다"],
+    "correctIndex": 0,
+    "explanation": "선조의 희생 덕분에 우리가 편안하다는 뜻이에요! 🌳",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_1",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **목적**은 무엇일까요?\n“우리는 쓰레기를 줍고, 분리수거를 해요. 지구를 지키는 작은 실천이에요.”",
+    "options": ["환경 보호를 권유하기 위해", "쓰레기를 버리라고 하기 위해", "놀자고 하기 위해", "청소를 시키기 위해"],
+    "correctIndex": 0,
+    "explanation": "쓰레기 줍기와 분리수거로 **환경 보호를 권유**하는 글이에요! 🌍",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_2",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **태도**는 무엇일까요?\n“책을 읽으면 상상력이 풍부해져요. 나는 매일 책을 읽어요.”",
+    "options": ["긍정적이고 실천적", "부정적이고 게으름", "화가 나 있다", "무관심하다"],
+    "correctIndex": 0,
+    "explanation": "책 읽기를 긍정적으로 바라보고 **실천**하고 있어요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_3",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **목적**은 무엇일까요?\n“운동은 건강에 좋아요. 땀을 흘리면 기분도 좋아져요.”",
+    "options": ["운동을 권유하기 위해", "운동을 그만두라고 하기 위해", "쉬자고 하기 위해", "게임을 하자고 하기 위해"],
+    "correctIndex": 0,
+    "explanation": "운동의 좋은 점을 말하며 **운동을 권유**하는 글이에요! 🏃‍♀️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_4",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **태도**는 무엇일까요?\n“물은 소중해요. 나는 물을 아껴 써요.”",
+    "options": ["책임감 있고 실천적", "무관심하고 게으름", "화가 나 있다", "부정적이다"],
+    "correctIndex": 0,
+    "explanation": "물의 소중함을 알고 **실천**하는 책임감 있는 태도예요! 💧",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_5",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **목적**은 무엇일까요?\n“친구는 소중해요. 친구와 함께 있으면 즐거워요.”",
+    "options": ["우정의 소중함을 알리기 위해", "친구를 버리라고 하기 위해", "혼자 놀자고 하기 위해", "싸우자고 하기 위해"],
+    "correctIndex": 0,
+    "explanation": "친구의 소중함을 강조하며 **우정을 소중히 여기자**는 글이에요! 👫",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_6",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **태도**는 무엇일까요?\n“꿈을 이루려면 노력해야 해요. 나는 포기하지 않아요.”",
+    "options": ["끈기 있고 긍정적", "게으르고 부정적", "화가 나 있다", "무관심하다"],
+    "correctIndex": 0,
+    "explanation": "꿈을 향한 **끈기**와 **긍정적인 태도**를 보여줘요! 🌟",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_7",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **목적**은 무엇일까요?\n“절약은 습관이에요. 작은 돈도 모이면 큰돈이 돼요.”",
+    "options": ["절약을 권유하기 위해", "돈을 쓰라고 하기 위해", "쇼핑을 하자고 하기 위해", "게임을 사자고 하기 위해"],
+    "correctIndex": 0,
+    "explanation": "절약의 중요성을 말하며 **절약을 권유**하는 글이에요! 💰",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_8",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **태도**는 무엇일까요?\n“나무는 공기를 깨끗하게 해줘요. 나는 나무를 심어요.”",
+    "options": ["환경을 생각하는 실천적 태도", "무관심하고 게으름", "화가 나 있다", "부정적이다"],
+    "correctIndex": 0,
+    "explanation": "나무의 중요성을 알고 **실천**하는 환경 보호 태도예요! 🌳",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_9",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **목적**은 무엇일까요?\n“독서는 지식을 넓혀줘요. 책은 우리의 친구예요.”",
+    "options": ["독서를 권유하기 위해", "책을 버리라고 하기 위해", "TV를 보자고 하기 위해", "게임을 하자고 하기 위해"],
+    "correctIndex": 0,
+    "explanation": "독서의 좋은 점을 말하며 **독서를 권유**하는 글이에요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_8_10",
+    "subject": "korean",
+    "question": "🎯 다음 글의 **태도**는 무엇일까요?\n“공부는 미래를 여는 열쇠예요. 나는 매일 공부해요.”",
+    "options": ["적극적이고 실천적", "게으르고 부정적", "화가 나 있다", "무관심하다"],
+    "correctIndex": 0,
+    "explanation": "공부의 중요성을 알고 **실천**하는 적극적인 태도예요! 🎓",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_1",
+    "subject": "korean",
+    "question": "🎨 “그녀의 마음은 바다처럼 깊었다”에서 **‘바다’**는 무엇을 비유할까요?",
+    "options": ["깊은 감정", "물의 양", "넓은 공간", "차가운 성격"],
+    "correctIndex": 0,
+    "explanation": "‘바다’는 **깊고 넓은 감정**을 비유해요! 🌊",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_2",
+    "subject": "korean",
+    "question": "🎨 “그의 웃음은 햇살처럼 밝았다”에서 **‘햇살’**은 무엇을 비유할까요?",
+    "options": ["밝고 따뜻한 성격", "뜨거운 날씨", "눈부신 빛", "여름"],
+    "correctIndex": 0,
+    "explanation": "‘햇살’은 **밝고 따뜻한 성격**을 비유해요! ☀️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_3",
+    "subject": "korean",
+    "question": "🎨 “시간은 강물처럼 흘러간다”에서 **‘강물’**은 무엇을 비유할까요?",
+    "options": ["멈추지 않고 흐르는 시간", "물의 양", "넓은 강", "여름"],
+    "correctIndex": 0,
+    "explanation": "‘강물’은 **멈추지 않고 흐르는 시간**을 비유해요! ⏳",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_4",
+    "subject": "korean",
+    "question": "🎨 “그녀의 눈빛은 별처럼 반짝였다”에서 **‘별’**은 무엇을 비유할까요?",
+    "options": ["빛나는 감정", "하늘의 별", "작은 빛", "밤"],
+    "correctIndex": 0,
+    "explanation": "‘별’은 **빛나고 아름다운 감정**을 비유해요! ✨",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_5",
+    "subject": "korean",
+    "question": "🎨 “그의 마음은 돌처럼 단단했다”에서 **‘돌’**은 무엇을 비유할까요?",
+    "options": ["굳센 의지", "무거운 마음", "차가운 성격", "크기"],
+    "correctIndex": 0,
+    "explanation": "‘돌’은 **굳세고 흔들리지 않는 의지**를 비유해요! 💪",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_6",
+    "subject": "korean",
+    "question": "🎨 “그녀의 목소리는 꿀처럼 달았다”에서 **‘꿀’**은 무엇을 비유할까요?",
+    "options": ["부드럽고 달콤한 목소리", "끈적이는 성격", "단 음식", "벌"],
+    "correctIndex": 0,
+    "explanation": "‘꿀’은 **부드럽고 달콤한 목소리**를 비유해요! 🍯",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_7",
+    "subject": "korean",
+    "question": "🎨 “그의 꿈은 하늘처럼 높았다”에서 **‘하늘’**은 무엇을 비유할까요?",
+    "options": ["높은 꿈과 희망", "넓은 공간", "맑은 날씨", "구름"],
+    "correctIndex": 0,
+    "explanation": "‘하늘’은 **높고 큰 꿈**을 비유해요! 🌤️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_8",
+    "subject": "korean",
+    "question": "🎨 “그녀의 눈물은 이슬처럼 맑았다”에서 **‘이슬’**은 무엇을 비유할까요?",
+    "options": ["맑고 순수한 감정", "작은 물방울", "아침", "잎"],
+    "correctIndex": 0,
+    "explanation": "‘이슬’은 **맑고 순수한 감정**을 비유해요! 💧",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_9",
+    "subject": "korean",
+    "question": "🎨 “그의 마음은 불꽃처럼 뜨거웠다”에서 **‘불꽃’**은 무엇을 비유할까요?",
+    "options": ["뜨거운 열정", "위험한 성격", "밝은 빛", "여름"],
+    "correctIndex": 0,
+    "explanation": "‘불꽃’은 **뜨거운 열정과 에너지**를 비유해요! 🔥",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_9_10",
+    "subject": "korean",
+    "question": "🎨 “그녀의 웃음은 꽃처럼 아름다웠다”에서 **‘꽃’**은 무엇을 비유할까요?",
+    "options": ["아름다운 모습과 감정", "향기", "봄", "잎"],
+    "correctIndex": 0,
+    "explanation": "‘꽃’은 **아름다운 모습과 감정**을 비유해요! 🌸",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_1",
+    "subject": "korean",
+    "question": "✍️ “우리는 환경을 보호해야 해요. 쓰레기를 버리면 동물이 아파요. 그래서 나는 쓰레기를 줍는 활동을 해요.”에서 **주장**은 무엇일까요?",
+    "options": ["우리는 환경을 보호해야 해요", "쓰레기를 버리면 동물이 아파요", "나는 쓰레기를 줍는 활동을 해요", "동물은 소중해요"],
+    "correctIndex": 0,
+    "explanation": "글의 중심 주장은 **‘우리는 환경을 보호해야 해요’**예요! 🌍",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_2",
+    "subject": "korean",
+    "question": "✍️ 위 글에서 **근거**는 무엇일까요?",
+    "options": ["쓰레기를 버리면 동물이 아파요", "우리는 환경을 보호해야 해요", "나는 쓰레기를 줍는 활동을 해요", "동물은 소중해요"],
+    "correctIndex": 0,
+    "explanation": "주장을 뒷받침하는 **이유**인 ‘쓰레기를 버리면 동물이 아파요’가 근거예요! 🐾",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_3",
+    "subject": "korean",
+    "question": "✍️ “책은 우리의 친구예요. 책을 읽으면 지식이 쌓여요. 그래서 나는 매일 책을 읽어요.”에서 **주장**은 무엇일까요?",
+    "options": ["책은 우리의 친구예요", "책을 읽으면 지식이 쌓여요", "나는 매일 책을 읽어요", "지식은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "글의 중심 주장은 **‘책은 우리의 친구예요’**예요! 📚",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_4",
+    "subject": "korean",
+    "question": "✍️ 위 글에서 **근거**는 무엇일까요?",
+    "options": ["책을 읽으면 지식이 쌓여요", "책은 우리의 친구예요", "나는 매일 책을 읽어요", "지식은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "주장을 뒷받침하는 **이유**인 ‘책을 읽으면 지식이 쌓여요’가 근거예요! 🧠",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_5",
+    "subject": "korean",
+    "question": "✍️ “운동은 건강에 좋아요. 땀을 흘리면 스트레스가 줄어요. 그래서 나는 매일 운동해요.”에서 **주장**은 무엇일까요?",
+    "options": ["운동은 건강에 좋아요", "땀을 흘리면 스트레스가 줄어요", "나는 매일 운동해요", "스트레스는 나빠요"],
+    "correctIndex": 0,
+    "explanation": "글의 중심 주장은 **‘운동은 건강에 좋아요’**예요! 🏃‍♀️",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_6",
+    "subject": "korean",
+    "question": "✍️ 위 글에서 **근거**는 무엇일까요?",
+    "options": ["땀을 흘리면 스트레스가 줄어요", "운동은 건강에 좋아요", "나는 매일 운동해요", "스트레스는 나빠요"],
+    "correctIndex": 0,
+    "explanation": "주장을 뒷받침하는 **이유**인 ‘땀을 흘리면 스트레스가 줄어요’가 근거예요! 😌",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_7",
+    "subject": "korean",
+    "question": "✍️ “절약은 습관이에요. 작은 돈도 모이면 큰돈이 돼요. 그래서 나는 용돈의 일부를 저금해요.”에서 **주장**은 무엇일까요?",
+    "options": ["절약은 습관이에요", "작은 돈도 모이면 큰돈이 돼요", "나는 용돈의 일부를 저금해요", "돈은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "글의 중심 주장은 **‘절약은 습관이에요’**예요! 💰",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_8",
+    "subject": "korean",
+    "question": "✍️ 위 글에서 **근거**는 무엇일까요?",
+    "options": ["작은 돈도 모이면 큰돈이 돼요", "절약은 습관이에요", "나는 용돈의 일부를 저금해요", "돈은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "주장을 뒷받침하는 **이유**인 ‘작은 돈도 모이면 큰돈이 돼요’가 근거예요! 🐷",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_9",
+    "subject": "korean",
+    "question": "✍️ “독서는 상상력을 키워줘요. 책을 읽으면 새로운 세계를 경험할 수 있어요. 그래서 나는 매일 책을 읽어요.”에서 **주장**은 무엇일까요?",
+    "options": ["독서는 상상력을 키워줘요", "책을 읽으면 새로운 세계를 경험할 수 있어요", "나는 매일 책을 읽어요", "상상력은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "글의 중심 주장은 **‘독서는 상상력을 키워줘요’**예요! 📖",
+    "difficulty": 3
+  },
+  {
+    "id": "korean_hard_10_10",
+    "subject": "korean",
+    "question": "✍️ 위 글에서 **근거**는 무엇일까요?",
+    "options": ["책을 읽으면 새로운 세계를 경험할 수 있어요", "독서는 상상력을 키워줘요", "나는 매일 책을 읽어요", "상상력은 중요해요"],
+    "correctIndex": 0,
+    "explanation": "주장을 뒷받침하는 **이유**인 ‘책을 읽으면 새로운 세계를 경험할 수 있어요’가 근거예요! 🌍",
+    "difficulty": 3
+  }
+]

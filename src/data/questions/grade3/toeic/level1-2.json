@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "eng_easy_new_format_001",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nTo use the new coffee machine, first press the power button. [_____] Then, place your cup under the nozzle. Finally, select the type of coffee you want.",
+    "options": [
+      "The machine was delivered yesterday.",
+      "Wait for the green light to appear.",
+      "Coffee is a very popular drink.",
+      "Remember to clean the machine."
+    ],
+    "correctIndex": 1,
+    "explanation": "커피 머신 사용법을 순서대로 설명하는 글이죠. 전원 버튼을 누른 후, 컵을 놓기 전까지의 과정이 필요해요. '녹색 불이 켜질 때까지 기다리세요(Wait for the green light to appear)'가 순서상 가장 자연스럽습니다. 잘했어요!",
+    "difficulty": 1,
+    "audioText": "Press the power button. Wait for the green light to appear. Place your cup."
+  },
+  {
+    "id": "eng_easy_new_format_002",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur company picnic is scheduled for this Saturday. However, the weather forecast predicts heavy rain all day. [_____] We will let you know the new date soon.",
+    "options": [
+      "Therefore, the event will be postponed.",
+      "Everyone should bring their own lunch.",
+      "The park is a beautiful place for a picnic.",
+      "We had a great time last year."
+    ],
+    "correctIndex": 0,
+    "explanation": "토요일에 비가 많이 온다고 했으니, 그 결과로 야유회가 어떻게 될지를 추론해야 해요. '따라서, 행사는 연기될 것입니다(Therefore, the event will be postponed)'가 가장 논리적인 흐름입니다. 'postpone'은 '연기하다'라는 뜻의 중요 단어예요!",
+    "difficulty": 1,
+    "audioText": "predicts heavy rain, the event will be postponed"
+  },
+  {
+    "id": "eng_easy_new_format_003",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nTo get a library card, you need to bring a valid ID card, such as a driver's license or passport. [_____] It is completely free to join.",
+    "options": [
+      "The library has many interesting books.",
+      "The library is closed on Mondays.",
+      "You also need to fill out a short form.",
+      "Please return books on time."
+    ],
+    "correctIndex": 2,
+    "explanation": "도서관 카드 발급에 필요한 것들을 나열하고 있어요. 신분증을 가져오라고 한 뒤, 추가로 필요한 절차를 설명하는 것이 자연스럽죠. '또한 짧은 양식을 작성해야 합니다(You also need to fill out a short form)'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "bring a valid ID card, fill out a short form"
+  },
+  {
+    "id": "eng_easy_new_format_004",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Mina 2:10 PM] Hi Jin, are we still meeting at 3 PM?\n[Jin 2:11 PM] Actually, I'm running a little late. Can we meet at 3:30 PM instead?\n[Mina 2:12 PM] No problem. See you at 3:30 at the main gate.\n\nQ: What time will Mina and Jin meet?",
+    "options": [
+      "2:10 PM",
+      "2:11 PM",
+      "3:00 PM",
+      "3:30 PM"
+    ],
+    "correctIndex": 3,
+    "explanation": "진(Jin)이 늦을 것 같아서 3시 30분에 만나자고 제안했고, 미나(Mina)가 이를 수락했죠. 대화의 흐름을 잘 파악해서 최종 약속 시간을 정확히 찾아냈어요. 훌륭해요!",
+    "difficulty": 1,
+    "audioText": "Can we meet at 3:30 PM instead? No problem. See you at 3:30."
+  },
+  {
+    "id": "eng_easy_new_format_005",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Tom 10:05 AM] Hi Sarah. I'm on my way to the office. Do you need anything?\n[Sarah 10:06 AM] Hi Tom. Could you buy me a cup of coffee? I'll pay you back.\n[Tom 10:06 AM] Sure. Anything else?\n[Sarah 10:07 AM] No, that's all. Thanks!\n\nQ: What did Sarah ask Tom to do?",
+    "options": [
+      "To pay her back",
+      "To come to the office early",
+      "To buy her a drink",
+      "To send her a file"
+    ],
+    "correctIndex": 2,
+    "explanation": "사라(Sarah)가 톰(Tom)에게 'Could you buy me a cup of coffee?'라고 부탁했죠. 따라서 정답은 '그녀에게 음료를 사다 주기(To buy her a drink)'입니다. 문자 대화의 핵심 요청 사항을 잘 이해했어요.",
+    "difficulty": 1,
+    "audioText": "Do you need anything? Could you buy me a cup of coffee?"
+  },
+  {
+    "id": "eng_easy_new_format_006",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Customer 4:30 PM] Hello. My Internet is not working.\n[Support 4:31 PM] I'm sorry to hear that. Have you tried restarting your router?\n[Customer 4:31 PM] Yes, I did. It's still not working.\n[Support 4:32 PM] OK. I will send a technician to your home tomorrow morning.\n\nQ: What is the customer's problem?",
+    "options": [
+      "His router is missing.",
+      "A technician is late.",
+      "His Internet service is down.",
+      "He cannot find the support center."
+    ],
+    "correctIndex": 2,
+    "explanation": "고객이 처음에 'My Internet is not working'이라고 말했죠. 'not working' 또는 'down'은 서비스가 작동하지 않는다는 의미입니다. 문제점을 정확히 파악했네요.",
+    "difficulty": 1,
+    "audioText": "My Internet is not working. I will send a technician."
+  },
+  {
+    "id": "eng_easy_new_format_007",
+    "subject": "english",
+    "question": "아래 온라인 채팅에서 \"I'm on it.\" 이라고 11:04 AM에 에밀리가 말한 의도는 무엇인가요?\n\n[David 11:03 AM] Hi Emily. The client needs the weekly sales report. Can you send it to them?\n[Emily 11:04 AM] Sure. I'm on it.\n[David 11:04 AM] Great, thanks!\n\nQ: What does Emily mean when she writes, \"I'm on it.\"",
+    "options": [
+      "She is sitting on the report.",
+      "She does not have the report.",
+      "She will start working on the task.",
+      "She thinks the task is difficult."
+    ],
+    "correctIndex": 2,
+    "explanation": "'I'm on it'은 '제가 처리하고 있어요' 또는 '바로 시작할게요'라는 의미의 아주 흔한 비즈니스 표현입니다. 데이비드의 요청을 받아서 그 일을 처리하겠다는 뜻이죠. 아주 유용한 표현이니 꼭 기억해두세요!",
+    "difficulty": 1,
+    "audioText": "The client needs the report. I'm on it."
+  },
+  {
+    "id": "eng_easy_new_format_008",
+    "subject": "english",
+    "question": "아래 이메일과 회의실 예약 현황을 함께 읽고 질문에 답하세요.\n\n[Email]\nSubject: New Meeting\nHi Team, I need to schedule a one-hour meeting for this Friday. Please let me know which time is best.\n\n[Schedule: Friday]\nRoom A: 9-10 AM (Booked)\nRoom A: 10-11 AM (Booked)\nRoom A: 11-12 PM (Available)\nRoom A: 1-2 PM (Booked)\n\nQ: When can the team have the meeting?",
+    "options": [
+      "9 AM",
+      "10 AM",
+      "11 AM",
+      "1 PM"
+    ],
+    "correctIndex": 2,
+    "explanation": "이메일에서 금요일에 1시간짜리 회의를 잡고 싶다고 했죠. 예약 현황(Schedule)을 보면 'Available'(이용 가능)이라고 표시된 시간은 오전 11시뿐입니다. 두 정보를 잘 조합해서 정답을 찾았네요!",
+    "difficulty": 1,
+    "audioText": "schedule a one-hour meeting, Booked, Available"
+  },
+  {
+    "id": "eng_easy_new_format_009",
+    "subject": "english",
+    "question": "아래 문자 메시지와 할인 쿠폰 정보를 함께 읽고 질문에 답하세요.\n\n[Text Message]\nHi! I'm at Pizza Palace now. I'm going to order a large cheese pizza and a soda.\n\n[Coupon]\nPIZZA PALACE - 25% OFF\n*Valid on any pizza order.\n*Not valid for drinks or desserts.\n*Expires this Sunday.\n\nQ: Which item is the coupon valid for?",
+    "options": [
+      "Only the soda",
+      "Only the cheese pizza",
+      "Both the pizza and the soda",
+      "Desserts"
+    ],
+    "correctIndex": 1,
+    "explanation": "쿠폰 정보에 'Valid on any pizza order(모든 피자 주문에 유효)'라고 되어 있고, 'Not valid for drinks(음료에는 유효하지 않음)'라고 명시되어 있어요. 따라서 쿠폰은 치즈 피자에만 적용됩니다.",
+    "difficulty": 1,
+    "audioText": "a large cheese pizza and a soda, Valid on any pizza order, Not valid for drinks"
+  },
+  {
+    "id": "eng_easy_new_format_010",
+    "subject": "english",
+    "question": "아래 안내문과 상점 위치 정보를 함께 읽고 질문에 답하세요.\n\n[Notice]\nWelcome to the City Mall! For lost items, please go to the Information Desk.\n\n[Mall Directory]\n1st Floor: Clothing, Shoes\n2nd Floor: Restaurants, Bookstore\n3rd Floor: Movie Theater, Information Desk\n\nQ: Which floor should a person go to for a lost item?",
+    "options": [
+      "The 1st floor",
+      "The 2nd floor",
+      "The 3rd floor",
+      "The basement"
+    ],
+    "correctIndex": 2,
+    "explanation": "안내문(Notice)에서 분실물은 'Information Desk'로 가라고 알려주고 있어요. 상점 위치 정보(Mall Directory)를 보면 'Information Desk'는 3층(3rd Floor)에 있다고 나와 있죠. 두 정보를 연결해서 답을 잘 찾았어요!",
+    "difficulty": 1,
+    "audioText": "For lost items, go to the Information Desk. 3rd Floor, Information Desk."
+  },
+  {
+    "id": "eng_easy_new_format_011",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur office will be closed next Monday for a national holiday. [_____] We will reopen on Tuesday at 9 AM as usual.",
+    "options": [
+        "The holiday is very important.",
+        "Please check your emails.",
+        "No staff will be available to answer calls.",
+        "The weather will be sunny."
+    ],
+    "correctIndex": 2,
+    "explanation": "사무실이 문을 닫는다고 했으므로, 그 결과로 '전화를 받을 수 있는 직원이 없을 것'이라고 이어지는 것이 가장 자연스럽습니다. 문장의 논리적인 결과를 잘 찾았어요.",
+    "difficulty": 1,
+    "audioText": "Our office will be closed. No staff will be available."
+  },
+  {
+    "id": "eng_easy_new_format_012",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nMany people in our office enjoy drinking coffee. [_____] For example, the coffee machine in the break room is used more than fifty times a day.",
+    "options": [
+        "However, tea is also popular.",
+        "This is a surprising fact.",
+        "The office is often very busy.",
+        "Coffee helps them stay awake."
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 앞 문장은 일반적인 사실을 말하고, 뒷 문장은 구체적인 예시를 들고 있죠. 이 두 문장을 자연스럽게 연결해 주는 것은 '이것은 놀라운 사실입니다(This is a surprising fact)'와 같은 문장입니다. 문맥의 흐름을 잘 파악했네요.",
+    "difficulty": 1,
+    "audioText": "enjoy drinking coffee, For example, a surprising fact"
+  },
+  {
+    "id": "eng_easy_new_format_013",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Anna 9:15 AM] Hi Mark, I'm at the station. Where are you?\n[Mark 9:16 AM] I just got off the train. I'm near the ticket office. I'm wearing a blue jacket.\n[Anna 9:17 AM] OK, I see you! I'm waving.\n\nQ: How will Anna find Mark?",
+    "options": [
+        "By calling his phone",
+        "By looking for a blue jacket",
+        "By waiting at the train",
+        "By asking at the ticket office"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 마크(Mark)가 자신을 설명하며 'I'm wearing a blue jacket'이라고 말했어요. 이 정보를 바탕으로 안나(Anna)가 마크를 찾을 수 있겠죠. 대화 속의 핵심 단서를 잘 찾아냈어요!",
+    "difficulty": 1,
+    "audioText": "Where are you? I'm wearing a blue jacket. I see you."
+  },
+  {
+    "id": "eng_easy_new_format_014",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Manager 1:30 PM] Team, client feedback just came in. They are very happy with our work!\n[David 1:31 PM] That's great news!\n[Susan 1:31 PM] Wonderful! All our hard work paid off.\n[Manager 1:32 PM] Yes, congratulations everyone!\n\nQ: What is the purpose of the manager's first message?",
+    "options": [
+        "To ask for a report",
+        "To schedule a meeting",
+        "To share positive feedback",
+        "To complain about the client"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 매니저가 'They are very happy with our work!'라고 말했죠. 이것은 '긍정적인 피드백을 공유하기(To share positive feedback)' 위한 메시지입니다. 대화의 목적을 잘 파악했네요.",
+    "difficulty": 1,
+    "audioText": "client feedback just came in, very happy with our work, That's great news"
+  },
+  {
+    "id": "eng_easy_new_format_015",
+    "subject": "english",
+    "question": "아래 이메일과 송장(Invoice) 정보를 함께 읽고 질문에 답하세요.\n\n[Email]\nHi Accounting, Can you please confirm the total amount for Invoice #456? I think it should be $50.\n\n[Invoice #456]\nItem: 100 Pens - $30\nShipping: $20\nTotal: $50\n\nQ: What is the total amount on the invoice?",
+    "options": [
+        "$20",
+        "$30",
+        "$50",
+        "$100"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 이메일에서 송장 번호 456의 총액을 확인해달라고 요청했고, 아래 송장 정보를 보면 Total 금액이 $50으로 명확하게 나와 있습니다. 두 정보를 잘 연결했어요!",
+    "difficulty": 1,
+    "audioText": "confirm the total amount, Invoice, Item, Shipping, Total"
+  },
+  {
+    "id": "eng_easy_new_format_016",
+    "subject": "english",
+    "question": "아래 메모와 명함 정보를 함께 읽고 질문에 답하세요.\n\n[Memo]\nI need to call the IT support person, Mr. Evans, about my computer. Can you find his phone number for me?\n\n[Business Card]\nTech Solutions Inc.\nDavid Evans\nIT Support Specialist\nTel: 555-1234\n\nQ: What is Mr. Evans's phone number?",
+    "options": [
+        "1234-555",
+        "555-1234",
+        "The memo doesn't say",
+        "He does not have a phone"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 메모에서 IT 담당자인 에반스 씨의 전화번호를 찾아달라고 했죠. 명함(Business Card)을 보면 그의 이름과 직책, 그리고 전화번호(Tel) 555-1234가 나와 있습니다. 필요한 정보를 정확히 찾아냈네요.",
+    "difficulty": 1,
+    "audioText": "call the IT support person, find his phone number, Business Card, Tel"
+  },
+  {
+    "id": "eng_easy_new_format_017",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe new printer is much faster than the old one. It can print up to 30 pages per minute. [_____] This will save our team a lot of time.",
+    "options": [
+      "The old printer was often broken.",
+      "It is also much quieter.",
+      "The printer is located in the main office.",
+      "We need to buy more paper."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답이에요! 새 프린터의 장점을 나열하고 있는 글입니다. '더 빠르다'는 장점 뒤에 '또한 훨씬 조용하다'는 장점을 추가하는 것이 가장 자연스러운 흐름입니다. 잘했어요!",
+    "difficulty": 1,
+    "audioText": "much faster than the old one, It is also much quieter, save a lot of time"
+  },
+  {
+    "id": "eng_easy_new_format_018",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Sam 3:40 PM] Hi Jane, the movie starts at 4:00. I'm already here. I'll get the tickets.\n[Jane 3:42 PM] Thanks, Sam! I'm about 5 minutes away. Can you get me some popcorn?\n[Sam 3:43 PM] Got it. See you soon.\n\nQ: What will Sam do before Jane arrives?",
+    "options": [
+        "Start watching the movie",
+        "Go home",
+        "Buy tickets and popcorn",
+        "Wait outside the theater"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 샘(Sam)은 자신이 먼저 표를 사겠다고('I'll get the tickets') 말했고, 제인(Jane)의 부탁을 받고 팝콘도 사주기로 했죠('Got it'). 따라서 제인이 도착하기 전에 표와 팝콘을 살 것입니다.",
+    "difficulty": 1,
+    "audioText": "I'll get the tickets. Can you get me some popcorn? Got it."
+  },
+  {
+    "id": "eng_easy_new_format_019",
+    "subject": "english",
+    "question": "아래 안내문과 행사 일정을 함께 읽고 질문에 답하세요.\n\n[Notice]\nWelcome to the Annual Tech Conference! The first session, 'The Future of AI', is in the main hall.\n\n[Schedule]\n9:00 AM: Registration\n10:00 AM: The Future of AI\n11:00 AM: Coffee Break\n12:00 PM: Lunch\n\nQ: What time does the first session start?",
+    "options": [
+        "9:00 AM",
+        "10:00 AM",
+        "11:00 AM",
+        "12:00 PM"
+    ],
+    "correctIndex": 1,
+    "explanation": "정확해요! 안내문(Notice)에서 첫 번째 세션이 'The Future of AI'라고 알려주고 있어요. 일정표(Schedule)를 보면 'The Future of AI'는 오전 10시에 시작한다고 나와있죠. 두 정보를 잘 연결했어요.",
+    "difficulty": 1,
+    "audioText": "The first session, The Future of AI, Schedule, 10:00 AM"
+  },
+  {
+    "id": "eng_easy_new_format_020",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 9:02 AM에 Alex가 \"No worries.\"라고 말한 의도는 무엇인가요?\n\n[Ben 9:01 AM] Hi Alex, I'm so sorry, but I forgot to bring the document you needed.\n[Alex 9:02 AM] No worries. You can email it to me later today.\n[Ben 9:03 AM] Phew, thanks! I'll send it this afternoon.\n\nQ: What does Alex mean by \"No worries.\"",
+    "options": [
+        "He is worried about the document.",
+        "He is telling Ben that it is not a problem.",
+        "He doesn't need the document anymore.",
+        "He wants Ben to worry about it."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'No worries'는 '걱정 마세요', '괜찮아요'라는 의미로, 상대방의 사과나 실수에 대해 괜찮다고 말해줄 때 쓰는 표현입니다. 벤에게 문제가 되지 않는다고 안심시켜주는 말이죠. 일상 대화에서 아주 유용해요!",
+    "difficulty": 1,
+    "audioText": "I forgot to bring the document. No worries. You can email it."
+  },
+  {
+    "id": "eng_easy_new_format_021",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nAll visitors must sign in at the front desk upon arrival. They will be given a visitor's pass. [_____] This is for security reasons.",
+    "options": [
+        "The front desk is near the entrance.",
+        "They must wear this pass at all times.",
+        "Visitors can use the cafeteria.",
+        "The building is very large."
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 방문객 절차를 설명하고 있어요. 방문증을 받은 후에 해야 할 행동으로, '이 방문증을 항상 착용해야 합니다'라고 이어지는 것이 가장 논리적입니다. 'This is for security reasons'와도 잘 연결되죠.",
+    "difficulty": 1,
+    "audioText": "sign in at the front desk, be given a visitor's pass, wear this pass at all times"
+  },
+  {
+    "id": "eng_easy_new_format_022",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Clara 5:50 PM] Hi Dan. I'm thinking of ordering pizza for dinner. Are you in?\n[Dan 5:51 PM] Sounds good! But I don't eat meat. Can we get a vegetable pizza?\n[Clara 5:52 PM] Of course. I'll order one now. It should arrive in 30 minutes.\n\nQ: What kind of pizza will Clara order?",
+    "options": [
+        "A meat pizza",
+        "A cheese pizza",
+        "A vegetable pizza",
+        "A seafood pizza"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 댄(Dan)이 자신은 고기를 먹지 않으니 야채 피자를 먹자고 제안했고('Can we get a vegetable pizza?'), 클라라(Clara)가 좋다고 했죠('Of course'). 따라서 야채 피자를 주문할 거예요.",
+    "difficulty": 1,
+    "audioText": "I don't eat meat. Can we get a vegetable pizza? Of course."
+  },
+  {
+    "id": "eng_easy_new_format_023",
+    "subject": "english",
+    "question": "아래 공지와 도서관 지도를 함께 읽고 질문에 답하세요.\n\n[Notice]\nThe library's computers have been moved to a quieter location to help people study better. Please visit the new Computer Zone.\n\n[Library Map]\n1st Floor: Main Entrance, Children's Books\n2nd Floor: Fiction & Non-Fiction\n3rd Floor: Study Area, Computer Zone\n\nQ: Where are the computers now located?",
+    "options": [
+        "On the 1st floor",
+        "On the 2nd floor",
+        "On the 3rd floor",
+        "Near the main entrance"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 공지에서 컴퓨터가 새로운 'Computer Zone'으로 옮겨졌다고 알려주고 있어요. 도서관 지도를 보면 'Computer Zone'은 3층(3rd Floor)에 있다고 나와있네요. 두 정보를 잘 조합했어요.",
+    "difficulty": 1,
+    "audioText": "computers have been moved, new Computer Zone, 3rd Floor, Study Area"
+  },
+  {
+    "id": "eng_easy_new_format_024",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe hotel offers many amenities to its guests. For instance, there is a large swimming pool and a modern gym. [_____] All guests can use these facilities for free.",
+    "options": [
+        "The hotel is located downtown.",
+        "Breakfast is served from 7 AM to 10 AM.",
+        "There is also a business center with computers.",
+        "Please check out by 11 AM."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 호텔의 편의시설(amenities)을 예시로 들고 있어요. 수영장과 헬스장에 이어서, '컴퓨터가 있는 비즈니스 센터도 있습니다'라고 또 다른 시설을 추가로 언급하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "many amenities, a swimming pool and a gym, There is also a business center"
+  },
+  {
+    "id": "eng_easy_new_format_025",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Leo 11:20 AM] Hi Maria, can you review this report before I send it to the manager?\n[Maria 11:21 AM] I'd be happy to, but I'm in a meeting until noon.\n[Leo 11:22 AM] No problem. I can wait. Just let me know when you're free.\n[Maria 11:23 AM] Will do. Talk to you then.\n\nQ: Why can't Maria review the report right now?",
+    "options": [
+        "She doesn't want to.",
+        "She is busy with a meeting.",
+        "She doesn't have the report.",
+        "She is not at the office."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 마리아(Maria)가 'I'm in a meeting until noon'이라고 말했죠. '정오까지 회의 중'이기 때문에 지금 바로 검토해 줄 수 없는 것입니다. 이유를 정확히 찾아냈어요.",
+    "difficulty": 1,
+    "audioText": "Can you review this report? I'm in a meeting until noon."
+  },
+  {
+    "id": "eng_easy_new_format_026",
+    "subject": "english",
+    "question": "아래 항공편 정보와 문자 메시지를 함께 읽고 질문에 답하세요.\n\n[Flight Information]\nFlight KE123 to London - Gate 25B - Departs 10:30 PM\n\n[Text Message]\nHi Dad, I'm at the airport. I just checked my gate number for my flight to London. I'm heading to 25B now. My flight leaves at 10:30 PM.\n\nQ: What is the flight number?",
+    "options": [
+        "25B",
+        "10:30 PM",
+        "KE123",
+        "London"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 문자 메시지에서는 목적지(London), 게이트(25B), 출발 시간(10:30 PM)만 언급되었어요. 하지만 이 정보와 일치하는 항공편 정보(Flight Information)를 보면 항공편 번호가 'KE123'이라는 것을 알 수 있습니다. 두 정보를 잘 종합했네요.",
+    "difficulty": 1,
+    "audioText": "Flight KE123 to London, Gate 25B, Departs 10:30 PM"
+  },
+  {
+    "id": "eng_easy_new_format_027",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur new online store will open next month. We will sell a variety of products, including clothing, accessories, and shoes. [_____] It will be available 24 hours a day.",
+    "options": [
+        "The marketing team worked hard.",
+        "Customers can shop anytime they want.",
+        "The store's design is very simple.",
+        "Our physical store is in Seoul."
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 앞선 문장들에서 온라인 스토어에 대해 설명하고 있어요. '하루 24시간 이용 가능하다'는 마지막 문장과 가장 잘 연결되는 것은 '고객들은 원할 때 언제든지 쇼핑할 수 있습니다'입니다.",
+    "difficulty": 1,
+    "audioText": "Our new online store will open, Customers can shop anytime"
+  },
+  {
+    "id": "eng_easy_new_format_028",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[HR Dept 9:00 AM] Reminder: All employees must complete the online security training by this Friday.\n[Kevin 9:05 AM] I've already done it.\n[HR Dept 9:06 AM] Thank you for your cooperation.\n\nQ: What does Kevin need to do?",
+    "options": [
+        "Start the training now",
+        "Ask for more time",
+        "Nothing, he is finished",
+        "Remind other employees"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 인사과(HR Dept)에서 금요일까지 교육을 완료하라고 공지했지만, 케빈(Kevin)은 'I've already done it'이라고 답했죠. '이미 했다'는 뜻이므로 그는 더 이상 할 일이 없습니다.",
+    "difficulty": 1,
+    "audioText": "complete the online security training, I've already done it"
+  },
+  {
+    "id": "eng_easy_new_format_029",
+    "subject": "english",
+    "question": "아래 광고와 주문 양식을 함께 읽고 질문에 답하세요.\n\n[Advertisement]\nSuper Sandwich Shop! This week only: Get a FREE bag of chips with any sandwich purchase over $10.\n\n[Order Form]\n1 Turkey Sandwich: $12\n1 Soda: $2\nTotal: $14\n\nQ: What free item can the customer get?",
+    "options": [
+        "A soda",
+        "A sandwich",
+        "A bag of chips",
+        "A dessert"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 광고에서 10달러 이상 샌드위치를 구매하면 'FREE bag of chips'를 준다고 했어요. 주문서를 보니 샌드위치 가격이 12달러로 10달러가 넘었죠. 따라서 고객은 감자칩 한 봉지를 무료로 받을 수 있습니다.",
+    "difficulty": 1,
+    "audioText": "FREE bag of chips, with any sandwich purchase over $10"
+  },
+  {
+    "id": "eng_easy_new_format_030",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 2:16 PM에 Chris가 \"I'll look into it.\" 라고 말한 의도는 무엇인가요?\n\n[Tina 2:15 PM] Hi Chris. A customer just called. She said her delivery has not arrived.\n[Chris 2:16 PM] OK, I'll look into it. Do you have the order number?\n[Tina 2:17 PM] Yes, it's 887-B.\n\nQ: What does Chris mean by \"I'll look into it.\"",
+    "options": [
+        "He will look at the customer.",
+        "He will investigate the problem.",
+        "He does not believe the customer.",
+        "He wants Tina to solve the problem."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'look into ~'는 '~을 조사하다, 알아보다'라는 뜻의 중요한 구동사입니다. 크리스는 고객의 배송 문제를 확인하고 조사해보겠다는 의미로 말한 것이죠. 비즈니스 상황에서 문제 해결을 약속할 때 자주 쓰는 표현이에요.",
+    "difficulty": 1,
+    "audioText": "her delivery has not arrived, I'll look into it, order number"
+  },
+  {
+    "id": "eng_easy_new_format_031",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nTo apply for the marketing position, please send your resume to our HR department. [_____] The deadline for applications is October 31.",
+    "options": [
+        "The marketing team is very friendly.",
+        "You should also include a cover letter.",
+        "Our office is located in Busan.",
+        "The position offers a competitive salary."
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 지원 방법에 대해 설명하고 있어요. 이력서를 보내라고 한 뒤에, '자기소개서도 포함해야 합니다'라고 추가로 제출해야 할 서류를 안내하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "send your resume, include a cover letter, deadline for applications"
+  },
+  {
+    "id": "eng_easy_new_format_032",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Manager 9:30 AM] Hi all. The air conditioning in the main meeting room is broken. Please use Room C for any meetings today.\n[Amy 9:31 AM] Got it. Thanks for the heads-up.\n\nQ: Why can't people use the main meeting room?",
+    "options": [
+        "It is being cleaned.",
+        "It is already booked.",
+        "Its cooling system is not working.",
+        "It is too small."
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 매니저가 'The air conditioning...is broken'이라고 말했죠. 에어컨, 즉 냉방 시스템이 고장났기 때문에 회의실을 사용할 수 없는 것입니다. 문제의 원인을 잘 파악했어요.",
+    "difficulty": 1,
+    "audioText": "The air conditioning is broken. Please use Room C. Thanks for the heads-up."
+  },
+  {
+    "id": "eng_easy_new_format_033",
+    "subject": "english",
+    "question": "아래 렌터카 예약 확인서와 고객 문의를 함께 읽고 질문에 답하세요.\n\n[Booking Confirmation]\nCustomer: John Smith\nCar Type: Compact\nPick-up Date: Nov 10\nReturn Date: Nov 12\n\n[Customer Inquiry]\nHello, this is John Smith. I'd like to change my car rental reservation. I need to return the car one day later than planned.\n\nQ: What will be the new return date?",
+    "options": [
+        "Nov 10",
+        "Nov 11",
+        "Nov 12",
+        "Nov 13"
+    ],
+    "correctIndex": 3,
+    "explanation": "맞아요! 원래 반납일(Return Date)은 11월 12일이었어요. 그런데 고객이 하루 늦게('one day later') 반납하고 싶다고 했으니, 새로운 반납일은 11월 13일이 됩니다. 날짜 계산을 정확히 했네요!",
+    "difficulty": 1,
+    "audioText": "Booking Confirmation, Return Date, one day later than planned"
+  },
+  {
+    "id": "eng_easy_new_format_034",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nMost of our employees work from 9 AM to 6 PM. [_____] For example, our customer service team works in shifts to provide 24-hour support.",
+    "options": [
+        "However, some departments have different schedules.",
+        "All employees get a one-hour lunch break.",
+        "Our office is closed on weekends.",
+        "This schedule is very common in Korea."
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 앞 문장에서는 대부분의 직원이 9시부터 6시까지 일한다고 했고, 뒷 문장에서는 고객 서비스팀은 교대 근무를 한다고 했어요. 이는 서로 상반되는 내용이므로 '하지만, 일부 부서는 다른 일정을 가지고 있습니다'라는 문장으로 연결하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "from 9 AM to 6 PM, However, different schedules, works in shifts"
+  },
+  {
+    "id": "eng_easy_new_format_035",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Kate 10:00 AM] Hi Paul. Quick question. Where do we keep the extra printer paper?\n[Paul 10:01 AM] It's in the supply closet, on the bottom shelf.\n[Kate 10:01 AM] The one next to the kitchen?\n[Paul 10:02 AM] That's the one.\n\nQ: What is Kate looking for?",
+    "options": [
+        "The kitchen",
+        "A new printer",
+        "Extra paper",
+        "The supply closet"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 케이트(Kate)가 처음에 'Where do we keep the extra printer paper?'라고 물었죠. 그녀가 찾고 있는 것은 '여분의 프린터 용지'입니다. 대화의 주제를 정확히 파악했어요.",
+    "difficulty": 1,
+    "audioText": "Quick question. Where do we keep the extra printer paper?"
+  },
+  {
+    "id": "eng_easy_new_format_036",
+    "subject": "english",
+    "question": "아래 병원 진료 예약과 환자 메시지를 함께 읽고 질문에 답하세요.\n\n[Appointment]\nPatient: Lisa Chen\nDoctor: Dr. Kim\nDate: Wednesday, 2 PM\nReason: Annual Check-up\n\n[Patient Message]\nHello, this is Lisa Chen. I have an appointment with Dr. Kim on Wednesday at 2 PM, but I need to cancel it.\n\nQ: What does Lisa Chen want to do?",
+    "options": [
+        "Confirm her appointment",
+        "Change the time",
+        "Cancel her appointment",
+        "Ask for directions"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 리사 첸(Lisa Chen)이 메시지에서 명확하게 'I need to cancel it'이라고 말했어요. 따라서 그녀는 예약을 '취소하기'를 원합니다. 'cancel'이라는 핵심 단어를 잘 포착했네요.",
+    "difficulty": 1,
+    "audioText": "I have an appointment, I need to cancel it"
+  },
+  {
+    "id": "eng_easy_new_format_037",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nWe are happy to announce the winner of the 'Employee of the Month' award. This month, the award goes to Sarah Jenkins from the sales team. [_____] Congratulations, Sarah!",
+    "options": [
+        "She has worked here for five years.",
+        "The sales team is on the second floor.",
+        "She achieved the highest sales figures.",
+        "The award comes with a small bonus."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 세라가 '이달의 직원'으로 뽑혔다고 발표한 후, 그 이유를 설명하는 것이 가장 자연스럽습니다. '그녀가 가장 높은 판매 실적을 달성했습니다'가 가장 적절한 이유가 되겠죠.",
+    "difficulty": 1,
+    "audioText": "Employee of the Month, the award goes to Sarah Jenkins, achieved the highest sales figures"
+  },
+  {
+    "id": "eng_easy_new_format_038",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Frank 6:00 PM] Are you coming to the company dinner tonight?\n[Grace 6:01 PM] I'd love to, but I have to finish this report. I'll have to skip this time.\n[Frank 6:02 PM] Oh, that's too bad. Well, see you tomorrow then.\n\nQ: Why is Grace not going to the dinner?",
+    "options": [
+        "She was not invited.",
+        "She has to work late.",
+        "She doesn't like company dinners.",
+        "She is not feeling well."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 그레이스(Grace)가 'I have to finish this report'라고 말했죠. '보고서를 끝내야 하기 때문에' 저녁 식사에 참석할 수 없는 것입니다. 즉, 늦게까지 일해야 한다는 의미죠.",
+    "difficulty": 1,
+    "audioText": "company dinner, I have to finish this report, I'll have to skip this time"
+  },
+  {
+    "id": "eng_easy_new_format_039",
+    "subject": "english",
+    "question": "아래 공지와 분실물 목록을 함께 읽고 질문에 답하세요.\n\n[Notice]\nA black umbrella was found in Meeting Room 3 this morning. If this is yours, please claim it at the reception desk.\n\n[Lost & Found Log]\n- A wallet (found in cafeteria)\n- A key (found in lobby)\n- A black umbrella (found in Meeting Room 3)\n\nQ: Where was the umbrella found?",
+    "options": [
+        "In the cafeteria",
+        "In the lobby",
+        "At the reception desk",
+        "In Meeting Room 3"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 공지와 분실물 목록 두 곳 모두에서 검은 우산이 'Meeting Room 3'에서 발견되었다고 명시하고 있습니다. 정보를 정확하게 확인했네요.",
+    "difficulty": 1,
+    "audioText": "A black umbrella was found, in Meeting Room 3, claim it at the reception desk"
+  },
+  {
+    "id": "eng_easy_new_format_040",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 3:32 PM에 James가 \"That works for me.\"라고 말한 의도는 무엇인가요?\n\n[Laura 3:31 PM] James, we need to discuss the project budget. Is 4 PM today okay?\n[James 3:32 PM] I have another meeting then. How about 10 AM tomorrow?\n[Laura 3:32 PM] Sure, 10 AM tomorrow is fine.\n[James 3:33 PM] Great. That works for me.\n\nQ: What does James mean by \"That works for me.\"",
+    "options": [
+        "He is working at that time.",
+        "He agrees with the suggested time.",
+        "He needs to check his work.",
+        "He thinks the time is not good."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'That works for me'는 '저는 그 시간 괜찮아요' 또는 '그 제안에 동의해요'라는 의미입니다. 로라가 제안한 '내일 오전 10시'라는 시간에 동의한다는 뜻이죠. 약속을 정할 때 아주 유용한 표현이에요.",
+    "difficulty": 1,
+    "audioText": "How about 10 AM tomorrow? That works for me."
+  },
+  {
+    "id": "eng_easy_new_format_041",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe city is planning to build a new subway line. The construction will begin next year. [_____] It is expected to open in three years.",
+    "options": [
+        "The subway is a popular form of transport.",
+        "The project will create many jobs.",
+        "Many people are excited about the news.",
+        "The current subway lines are too crowded."
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 새로운 지하철 노선 건설이라는 프로젝트에 대해 설명하고 있어요. 건설 시작과 완공 예상 시점 사이에 '그 프로젝트는 많은 일자리를 창출할 것입니다'라는 긍정적인 효과를 언급하는 것이 자연스러운 흐름입니다.",
+    "difficulty": 1,
+    "audioText": "build a new subway line, The construction will begin, create many jobs"
+  },
+  {
+    "id": "eng_easy_new_format_042",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Mike 12:30 PM] I'm going to the cafe to get lunch. Want anything?\n[Jenny 12:31 PM] Yes, please! Can you get me a chicken salad? Hold the onions.\n[Mike 12:32 PM] Sure. Chicken salad, no onions. Anything to drink?\n[Jenny 12:33 PM] Just water is fine. Thanks a million!\n\nQ: What special request does Jenny have for her salad?",
+    "options": [
+        "With extra chicken",
+        "Without any dressing",
+        "With no onions",
+        "In a large bowl"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 제니(Jenny)가 'Hold the onions'라고 말했죠. 이것은 '양파는 빼주세요'라는 의미입니다. 즉, 'with no onions'가 그녀의 특별 요청 사항입니다. 'Hold the ~'는 음식 주문 시 '~를 빼달라'는 유용한 표현이에요.",
+    "difficulty": 1,
+    "audioText": "a chicken salad, Hold the onions, no onions"
+  },
+  {
+    "id": "eng_easy_new_format_043",
+    "subject": "english",
+    "question": "아래 수리 요청서와 기술자 메모를 함께 읽고 질문에 답하세요.\n\n[Work Order]\nCustomer: Central Cafe\nProblem: Coffee machine is leaking water.\nDate: October 8\n\n[Technician's Note]\nOctober 8: Visited Central Cafe. Replaced a broken part in the coffee machine. The machine is now working properly.\n\nQ: What was the result of the technician's visit?",
+    "options": [
+        "The machine needs to be replaced.",
+        "The problem was fixed.",
+        "The technician will come back later.",
+        "The cafe was closed."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 기술자의 메모 마지막에 'The machine is now working properly'라고 쓰여 있죠. '제대로 작동한다'는 뜻이므로, 문제가 해결되었다(The problem was fixed)는 것을 알 수 있습니다.",
+    "difficulty": 1,
+    "audioText": "leaking water, Replaced a broken part, working properly"
+  },
+  {
+    "id": "eng_easy_new_format_044",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nI really enjoy my job as a graphic designer. I get to be creative every day. [_____] I also work with a great team of people.",
+    "options": [
+        "However, the salary is not very high.",
+        "Sometimes the deadlines are very tight.",
+        "My office is far from my house.",
+        "Another good thing is my colleagues."
+    ],
+    "correctIndex": 3,
+    "explanation": "정답입니다! 그래픽 디자이너라는 직업의 장점을 이야기하고 있어요. '창의적일 수 있다'는 장점 뒤에, '또 다른 좋은 점은 동료들입니다'라며 다른 장점을 추가로 언급하는 것이 가장 자연스럽죠. 'also'와도 잘 어울려요.",
+    "difficulty": 1,
+    "audioText": "enjoy my job, be creative every day, work with a great team"
+  },
+  {
+    "id": "eng_easy_new_format_045",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[System 8:00 AM] Your package from 'Quick Books' has been delivered.\n[You 8:05 AM] That's strange. I'm at home, but I don't see anything.\n[System 8:06 AM] The package was left with the doorman in the lobby.\n[You 8:07 AM] Oh, I see. Thank you.\n\nQ: Where is the package?",
+    "options": [
+        "Still in transit",
+        "At the post office",
+        "At the front door",
+        "With the doorman"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 시스템 메시지에서 'The package was left with the doorman in the lobby'라고 명확히 알려주고 있죠. 따라서 소포는 '도어맨(경비원)에게' 맡겨져 있습니다.",
+    "difficulty": 1,
+    "audioText": "Your package has been delivered, left with the doorman in the lobby"
+  },
+  {
+    "id": "eng_easy_new_format_046",
+    "subject": "english",
+    "question": "아래 상품 설명과 고객 리뷰를 함께 읽고 질문에 답하세요.\n\n[Product Description]\nThe new 'Silent Mouse' is completely quiet. Perfect for use in libraries or quiet offices. Available in black and white.\n\n[Customer Review]\nI bought the white Silent Mouse last week. It really makes no noise at all! It's fantastic. My only wish is that it came in more colors.\n\nQ: What does the customer like about the mouse?",
+    "options": [
+        "Its price",
+        "Its color options",
+        "Its silent clicks",
+        "Its size"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 상품 설명에 'completely quiet'라고 되어 있고, 고객 리뷰에서도 'It really makes no noise at all!'이라고 말하고 있죠. 따라서 고객이 가장 마음에 들어하는 점은 '소리 없는 클릭'입니다.",
+    "difficulty": 1,
+    "audioText": "completely quiet, silent mouse, makes no noise at all"
+  },
+  {
+    "id": "eng_easy_new_format_047",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur company values a healthy work-life balance. We offer flexible working hours. [_____] This allows them to better manage their personal and professional lives.",
+    "options": [
+        "Employees can also work from home twice a week.",
+        "The company cafeteria has healthy food options.",
+        "We have a very strict dress code.",
+        "Our main competitor is a large company."
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '건강한 워라밸'과 '유연 근무 시간'에 대해 이야기하고 있어요. 여기에 추가적인 복지 혜택으로 '직원들은 일주일에 두 번 재택근무를 할 수도 있습니다'라고 덧붙이는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "work-life balance, flexible working hours, work from home"
+  },
+  {
+    "id": "eng_easy_new_format_048",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Sales Team 10:10 AM] Good news! We have reached our sales goal for this month.\n[Manager 10:11 AM] Fantastic work, everyone! To celebrate, lunch is on me today. Let's go to the Italian place at noon.\n[Team 10:12 AM] Hooray! Thank you!\n\nQ: Why is the manager buying lunch?",
+    "options": [
+        "It is his birthday.",
+        "The team is working late.",
+        "To celebrate a team achievement.",
+        "A new employee has joined."
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 팀이 '이달의 판매 목표를 달성했다(reached our sales goal)'는 좋은 소식에, 매니저가 '축하하기 위해(To celebrate)' 점심을 산다고 했죠. 팀의 성과를 축하하기 위함입니다.",
+    "difficulty": 1,
+    "audioText": "reached our sales goal, Fantastic work, To celebrate, lunch is on me"
+  },
+  {
+    "id": "eng_easy_new_format_049",
+    "subject": "english",
+    "question": "아래 이벤트 포스터와 이메일을 함께 읽고 질문에 답하세요.\n\n[Poster]\nCity Park Movie Night! Showing 'Sunny Day'.\nDate: Saturday, October 11\nTime: 7:00 PM\nCost: Free\n\n[Email]\nHi friends, Are you free this Saturday evening? They are showing 'Sunny Day' at the park. It's free! Let's go together.\n\nQ: How much does it cost to watch the movie?",
+    "options": [
+        "It is not mentioned.",
+        "$5",
+        "$10",
+        "Nothing"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 포스터에 'Cost: Free'라고 쓰여 있고, 이메일에서도 'It's free!'라고 강조하고 있죠. 따라서 영화를 보는 데 드는 비용은 없습니다(Nothing). 'Free'는 '무료'라는 뜻이죠!",
+    "difficulty": 1,
+    "audioText": "Movie Night, Cost: Free, It's free!"
+  },
+  {
+    "id": "eng_easy_new_format_050",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 10:05 AM에 Sara가 \"I'll take care of it.\"이라고 말한 의도는 무엇인가요?\n\n[Manager 10:04 AM] Hi Sara. The printer in our department is out of paper. Can someone refill it?\n[Sara 10:05 AM] I'll take care of it.\n[Manager 10:06 AM] Thanks, Sara.\n\nQ: What does Sara mean by \"I'll take care of it.\"",
+    "options": [
+        "She will buy a new printer.",
+        "She will handle the task.",
+        "She will ask someone else to do it.",
+        "She is taking the printer home."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'take care of ~'는 '~를 돌보다'는 뜻 외에 '일을 처리하다, 책임지다'라는 의미도 있습니다. 사라가 프린터 용지를 채워 넣는 일을 자신이 직접 처리하겠다는 뜻으로 말한 것입니다.",
+    "difficulty": 1,
+    "audioText": "The printer is out of paper. I'll take care of it."
+  },
+  {
+    "id": "eng_easy_new_format_051",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nWhen you check out of the hotel, please remember to return your room key to the front desk. [_____] Our staff will then prepare your final bill.",
+    "options": [
+        "The hotel has a swimming pool.",
+        "You can leave your luggage with us.",
+        "The checkout time is 11 AM.",
+        "Breakfast is not included."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 호텔 체크아웃 절차를 설명하고 있어요. 룸키를 반납하라는 안내 뒤에, '체크아웃 시간은 오전 11시입니다'라고 시간을 명시해주는 것이 가장 자연스러운 정보 제공입니다.",
+    "difficulty": 1,
+    "audioText": "check out of the hotel, return your room key, The checkout time is 11 AM"
+  },
+  {
+    "id": "eng_easy_new_format_052",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Taxi Driver 8:15 PM] I have arrived at the pickup location. I am in a white sedan.\n[Passenger 8:16 PM] OK. I am walking out now. I am wearing a red hat.\n\nQ: How can the driver identify the passenger?",
+    "options": [
+        "By their name",
+        "By their red hat",
+        "By their phone number",
+        "By their luggage"
+    ],
+    "correctIndex": 1,
+    "explanation": "정확해요! 승객(Passenger)이 자신이 'a red hat(빨간 모자)'을 쓰고 있다고 말했죠. 이 정보가 운전기사가 승객을 알아보는 데 도움이 될 것입니다. 대화 속의 핵심 단서를 잘 찾았네요.",
+    "difficulty": 1,
+    "audioText": "I have arrived, I am in a white sedan, I am wearing a red hat"
+  },
+  {
+    "id": "eng_easy_new_format_053",
+    "subject": "english",
+    "question": "아래 채용 공고와 지원자 이메일을 함께 읽고 질문에 답하세요.\n\n[Job Posting]\nWanted: Office Assistant. Must be proficient in Microsoft Office (Word, Excel). Send resume to jobs@email.com.\n\n[Applicant Email]\nTo: jobs@email.com\nSubject: Office Assistant Position\nDear Hiring Manager, I am writing to apply for the Office Assistant role. I have over 5 years of experience using Microsoft Word and Excel.\n\nQ: Does the applicant meet the requirement mentioned in the posting?",
+    "options": [
+        "No, he has no experience.",
+        "Yes, he is an expert in design software.",
+        "No, he only knows Microsoft Word.",
+        "Yes, he is skilled in the required software."
+    ],
+    "correctIndex": 3,
+    "explanation": "잘했어요! 채용 공고에서 요구하는 조건은 'Microsoft Office (Word, Excel)에 능숙할 것'이었어요. 지원자는 이메일에서 'Word와 Excel 사용 경력이 5년 이상'이라고 밝혔으므로, 요구 조건을 충족합니다.",
+    "difficulty": 1,
+    "audioText": "proficient in Microsoft Office, 5 years of experience using Microsoft Word and Excel"
+  },
+  {
+    "id": "eng_easy_new_format_054",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe new city museum is very popular. Over 10,000 people have visited since it opened last month. [_____] It is recommended to buy tickets online in advance.",
+    "options": [
+        "Therefore, it can be very crowded.",
+        "The museum has many old paintings.",
+        "It is closed on Tuesdays.",
+        "There is a gift shop near the exit."
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 박물관이 매우 인기가 많다는 내용 뒤에, 그 결과로 '따라서, 매우 붐빌 수 있습니다'라고 이어지는 것이 가장 논리적입니다. 이 때문에 온라인으로 미리 표를 사는 것을 추천하는 것이죠.",
+    "difficulty": 1,
+    "audioText": "very popular, Over 10,000 people have visited, it can be very crowded"
+  },
+  {
+    "id": "eng_easy_new_format_055",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Jake 1:45 PM] Hi Sue, I am stuck in traffic.\n[Sue 1:46 PM] The client meeting starts in 15 minutes. Do you think you'll make it?\n[Jake 1:47 PM] I don't think so. Please start without me. I'll join as soon as I can.\n\nQ: What problem is Jake having?",
+    "options": [
+        "He is lost.",
+        "His car broke down.",
+        "He is delayed by traffic.",
+        "He forgot about the meeting."
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 제이크(Jake)가 처음에 'I am stuck in traffic'이라고 말했죠. '교통 체증에 갇혔다'는 뜻으로, 이 때문에 회의에 늦고 있는 것입니다.",
+    "difficulty": 1,
+    "audioText": "I am stuck in traffic. The meeting starts in 15 minutes. Please start without me."
+  },
+  {
+    "id": "eng_easy_new_format_056",
+    "subject": "english",
+    "question": "아래 상품 태그와 고객 문의를 함께 읽고 질문에 답하세요.\n\n[Price Tag]\nBlue T-Shirt\nPrice: $20\nMaterial: 100% Cotton\nCare: Machine wash cold. Do not iron.\n\n[Customer Question]\nHi, I bought this blue t-shirt. Is it okay to wash it in hot water?\n\nQ: What should the customer do?",
+    "options": [
+        "Wash it in hot water",
+        "Iron the t-shirt",
+        "Wash it in cold water",
+        "Take it to a dry cleaner"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 가격표의 관리(Care) 부분에 'Machine wash cold'라고 쓰여있죠. '찬물로 세탁하라'는 뜻입니다. 뜨거운 물로 세탁해도 되는지 묻는 고객에게는 찬물로 세탁해야 한다고 알려줘야겠죠.",
+    "difficulty": 1,
+    "audioText": "Price Tag, Care, Machine wash cold, Do not iron"
+  },
+  {
+    "id": "eng_easy_new_format_057",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nSafety is our number one priority in this factory. All employees must wear a helmet and safety glasses at all times. [_____] This rule applies to everyone, including visitors.",
+    "options": [
+        "The factory produces car parts.",
+        "There are no exceptions.",
+        "Lunch break is at noon.",
+        "The helmets are yellow."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 안전 규칙을 강조하는 글이에요. 헬멧과 안전 안경을 항상 착용해야 한다는 규칙 뒤에, '예외는 없습니다'라고 덧붙여 규칙의 중요성을 다시 한번 강조하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "Safety is our priority, must wear a helmet, There are no exceptions"
+  },
+  {
+    "id": "eng_easy_new_format_058",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Liam 11:00 AM] Did you hear? The company is giving everyone a bonus next month!\n[Nina 11:01 AM] Really? That's awesome! I was hoping to buy a new laptop.\n[Liam 11:02 AM] Me too! This is perfect timing.\n\nQ: How does Nina feel about the news?",
+    "options": [
+        "Sad",
+        "Angry",
+        "Happy",
+        "Confused"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 니나(Nina)가 'That's awesome!'이라고 말했죠. 'awesome'은 '굉장한, 멋진'이라는 뜻으로, 보너스 소식에 매우 기쁘다는 것을 알 수 있습니다.",
+    "difficulty": 1,
+    "audioText": "giving everyone a bonus, Really? That's awesome!"
+  },
+  {
+    "id": "eng_easy_new_format_059",
+    "subject": "english",
+    "question": "아래 레시피와 요리사의 메모를 함께 읽고 질문에 답하세요.\n\n[Recipe: Simple Pasta]\n1. Boil water.\n2. Add pasta and cook for 10 minutes.\n3. Drain pasta.\n4. Add sauce and serve.\n\n[Chef's Note]\nFor a richer flavor, I always add some cheese on top before serving.\n\nQ: What does the chef add that is not in the original recipe?",
+    "options": [
+        "Salt",
+        "Extra water",
+        "Cheese",
+        "Onions"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 기본 레시피에는 물, 파스타, 소스만 언급되었어요. 하지만 요리사의 메모(Chef's Note)를 보면, 더 풍부한 맛을 위해 마지막에 '치즈(cheese)'를 추가한다고 나와 있죠.",
+    "difficulty": 1,
+    "audioText": "Recipe, Simple Pasta, Chef's Note, add some cheese on top"
+  },
+  {
+    "id": "eng_easy_new_format_060",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 4:21 PM에 Ben이 \"Sounds like a plan.\"이라고 말한 의도는 무엇인가요?\n\n[Amy 4:20 PM] The presentation is tomorrow. How about we meet one hour early to practice?\n[Ben 4:21 PM] Sounds like a plan. I'll see you at 8 AM in the conference room.\n\nQ: What does Ben mean by \"Sounds like a plan.\"",
+    "options": [
+        "He needs to make a plan.",
+        "He thinks the plan is too loud.",
+        "He is agreeing to Amy's suggestion.",
+        "He wants to change the plan."
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'Sounds like a plan'은 상대방의 제안이나 계획이 좋다고 생각하며 동의할 때 쓰는 표현입니다. '좋은 계획이네', '그렇게 하자'라는 의미죠. 에이미의 제안에 동의한다는 뜻이에요.",
+    "difficulty": 1,
+    "audioText": "meet one hour early to practice, Sounds like a plan"
+  },
+  {
+    "id": "eng_easy_new_format_061",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nIf you have a problem with your purchase, you can return it within 30 days. [_____] We cannot accept items that are damaged.",
+    "options": [
+        "The store is open until 9 PM.",
+        "Please bring your receipt with you.",
+        "We sell many different products.",
+        "Online shopping is very convenient."
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 반품 절차에 대해 안내하고 있어요. 30일 이내에 반품할 수 있다는 안내 뒤에, 반품 시 필요한 조건으로 '영수증을 함께 가져오세요'라고 덧붙이는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "return it within 30 days, bring your receipt with you"
+  },
+  {
+    "id": "eng_easy_new_format_062",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Mom 7:00 PM] I'm at the supermarket. Are we out of milk?\n[Son 7:01 PM] Let me check. Yes, the carton is almost empty.\n[Mom 7:02 PM] OK, I'll grab one. Need anything else?\n[Son 7:03 PM] No, we're good. Thanks!\n\nQ: Why did the mom send the message?",
+    "options": [
+        "To ask what time her son will be home",
+        "To see if they need to buy milk",
+        "To tell her son she is running late",
+        "To ask for a shopping list"
+    ],
+    "correctIndex": 1,
+    "explanation": "정확해요! 엄마가 처음에 'Are we out of milk?'라고 물었죠. '우유 다 떨어졌니?'라는 뜻으로, 우유를 사야 하는지 확인하기 위해 메시지를 보낸 것입니다.",
+    "difficulty": 1,
+    "audioText": "Are we out of milk? The carton is almost empty. I'll grab one."
+  },
+  {
+    "id": "eng_easy_new_format_063",
+    "subject": "english",
+    "question": "아래 박물관 입장권과 안내문을 함께 읽고 질문에 답하세요.\n\n[Ticket]\nCity History Museum\nAdult Admission: $15\nValid for one entry on October 8.\n\n[Notice]\nSpecial exhibition 'Ancient Treasures' is now open! Entry to this exhibition requires an additional $5 ticket.\n\nQ: How much does it cost for an adult to see everything, including the special exhibition?",
+    "options": [
+        "$5",
+        "$10",
+        "$15",
+        "$20"
+    ],
+    "correctIndex": 3,
+    "explanation": "맞아요! 기본 입장료(Adult Admission)가 15달러이고, 특별 전시회(special exhibition)에 들어가려면 추가로(additional) 5달러짜리 표가 필요해요. 따라서 모두 보려면 15 + 5 = 20달러가 필요합니다.",
+    "difficulty": 1,
+    "audioText": "Adult Admission, additional $5 ticket, special exhibition"
+  },
+  {
+    "id": "eng_easy_new_format_064",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nI started a new hobby recently. I have been learning how to play the guitar. It's difficult, but I'm enjoying it. [_____] I practice for an hour every evening.",
+    "options": [
+        "My teacher is very kind.",
+        "Guitars can be expensive.",
+        "Music helps me relax after work.",
+        "My favorite band is The Beatles."
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 기타 연주라는 새로운 취미에 대해 이야기하고 있어요. 어렵지만 즐겁다고 말한 뒤, '음악은 퇴근 후 저의 긴장을 풀어주는 데 도움이 됩니다'라며 취미의 좋은 점을 덧붙이는 것이 가장 자연스럽죠.",
+    "difficulty": 1,
+    "audioText": "a new hobby, learning how to play the guitar, Music helps me relax"
+  },
+  {
+    "id": "eng_easy_new_format_065",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Delivery App 3:20 PM] Your food order is on its way. Your driver, David, should arrive in approximately 10 minutes.\n[You 3:21 PM] Great, thank you.\n\nQ: Who is David?",
+    "options": [
+        "The restaurant owner",
+        "The person who ordered the food",
+        "The food delivery driver",
+        "The chef"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 앱 알림에서 'Your driver, David'라고 명시하고 있죠. 따라서 데이비드는 '음식 배달 기사'입니다. 메시지에서 정보를 정확하게 찾아냈네요.",
+    "difficulty": 1,
+    "audioText": "Your food order is on its way. Your driver, David, should arrive"
+  },
+  {
+    "id": "eng_easy_new_format_066",
+    "subject": "english",
+    "question": "아래 도서 대출 정보와 도서관 규칙을 함께 읽고 질문에 답하세요.\n\n[Checked Out Book]\nTitle: 'A Walk in the Park'\nDate Checked Out: October 1\nDue Date: October 15\n\n[Library Rules]\n- All books can be borrowed for two weeks.\n- A late fee of $1 per day will be charged for overdue books.\n\nQ: What happens if the book is returned on October 17?",
+    "options": [
+        "Nothing, it is on time.",
+        "The person cannot borrow more books.",
+        "A $2 late fee will be charged.",
+        "A $15 late fee will be charged."
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 반납 예정일(Due Date)은 10월 15일이에요. 10월 17일에 반납하면 2일이 늦는 거죠. 도서관 규칙에 하루당 1달러의 연체료(late fee)가 부과된다고 했으니, 총 2달러의 연체료를 내야 합니다.",
+    "difficulty": 1,
+    "audioText": "Due Date, Library Rules, late fee of $1 per day, overdue books"
+  },
+  {
+    "id": "eng_easy_new_format_067",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur restaurant is famous for its fresh seafood. We get daily deliveries from the local fish market. [_____] The most popular dish is our grilled salmon.",
+    "options": [
+        "Our chefs are all from Italy.",
+        "This ensures the best quality and taste.",
+        "The restaurant is located near the sea.",
+        "We are open for lunch and dinner."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 매일 현지 수산 시장에서 배달을 받는다는 내용 뒤에, 그 이유나 결과를 설명하는 것이 자연스럽습니다. '이것이 최고의 품질과 맛을 보장합니다'가 가장 논리적인 연결 문장입니다.",
+    "difficulty": 1,
+    "audioText": "fresh seafood, daily deliveries, ensures the best quality and taste"
+  },
+  {
+    "id": "eng_easy_new_format_068",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Lucy 1:00 PM] The weather is so nice today! Let's eat lunch outside in the park.\n[Ken 1:01 PM] That's a great idea, but I have a meeting at 1:30. I don't have enough time.\n[Lucy 1:02 PM] Oh, right. Maybe another day then.\n\nQ: Why can't Ken eat lunch in the park?",
+    "options": [
+        "He doesn't like the park.",
+        "He has already eaten lunch.",
+        "He is not hungry.",
+        "He has a scheduled meeting."
+    ],
+    "correctIndex": 3,
+    "explanation": "정답입니다! 켄(Ken)이 'I have a meeting at 1:30'라고 말했죠. 곧 회의가 있어서 공원에서 점심을 먹을 충분한 시간이 없는 것입니다.",
+    "difficulty": 1,
+    "audioText": "Let's eat lunch outside. I have a meeting at 1:30. I don't have enough time."
+  },
+  {
+    "id": "eng_easy_new_format_069",
+    "subject": "english",
+    "question": "아래 콘서트 티켓과 공연장 규칙을 함께 읽고 질문에 답하세요.\n\n[Ticket]\nArtist: The Rockers\nVenue: Grand Arena\nDate: Friday, Nov 7, 8:00 PM\nSection: C, Row: 12, Seat: 5\n\n[Venue Rules]\n- No outside food or drinks allowed.\n- No cameras or recording devices.\n- Doors open at 7:00 PM.\n\nQ: What time can ticket holders enter the venue?",
+    "options": [
+        "At 5:00 PM",
+        "At 7:00 PM",
+        "At 8:00 PM",
+        "At 12:00 PM"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 콘서트는 저녁 8시에 시작하지만, 공연장 규칙(Venue Rules)을 보면 'Doors open at 7:00 PM'이라고 쓰여있죠. '문이 열린다'는 것은 입장이 시작되는 시간을 의미합니다. 따라서 저녁 7시부터 입장할 수 있습니다.",
+    "difficulty": 1,
+    "audioText": "Venue, Doors open at 7:00 PM, No cameras"
+  },
+  {
+    "id": "eng_easy_new_format_070",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 9:18 AM에 Olivia가 \"I'll get right on that.\"라고 말한 의도는 무엇인가요?\n\n[Mr. Lee 9:17 AM] Olivia, I need the sales data from last month for my report. Can you find it for me?\n[Olivia 9:18 AM] Of course, Mr. Lee. I'll get right on that.\n\nQ: What does Olivia mean by \"I'll get right on that.\"",
+    "options": [
+        "She will do the task immediately.",
+        "She cannot find the data.",
+        "She has already finished the task.",
+        "She thinks the task is on her desk."
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 'I'll get right on that'은 '바로 그 일을 시작하겠습니다'라는 뜻으로, 요청받은 업무를 즉시 처리하겠다는 매우 긍정적이고 신속한 답변입니다. 'I'm on it'과 비슷한 의미로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "I need the sales data. I'll get right on that."
+  },
+  {
+    "id": "eng_easy_new_format_071",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThank you for shopping at Global Mart. We hope you are happy with your purchase. [_____] You can do this on our website.",
+    "options": [
+        "Our store is open every day.",
+        "Please visit us again soon.",
+        "If you have a moment, please leave a review.",
+        "We have a sale next week."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 쇼핑해줘서 고맙다는 인사 뒤에, 고객에게 요청하는 내용이 오는 것이 자연스럽습니다. '시간이 있으시면, 저희 웹사이트에 후기를 남겨주세요'가 가장 적절한 문장입니다. 'You can do this on our website'와도 잘 연결되죠.",
+    "difficulty": 1,
+    "audioText": "happy with your purchase, please leave a review, on our website"
+  },
+  {
+    "id": "eng_easy_new_format_072",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Agent 10:30 AM] Your apartment viewing is confirmed for 2 PM today at 123 Main Street.\n[Client 10:31 AM] Great. How long do you think it will take?\n[Agent 10:32 AM] The tour should take about 30 minutes.\n\nQ: What will happen at 2 PM?",
+    "options": [
+        "The client will sign a contract.",
+        "The agent will take a tour.",
+        "The client will look at an apartment.",
+        "The agent will leave the office."
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 부동산 중개인(Agent)이 'Your apartment viewing is confirmed'라고 말했죠. 'viewing'은 집을 둘러보는 것을 의미합니다. 따라서 고객은 아파트를 보러 갈 것입니다.",
+    "difficulty": 1,
+    "audioText": "apartment viewing is confirmed, The tour should take about 30 minutes"
+  },
+  {
+    "id": "eng_easy_new_format_073",
+    "subject": "english",
+    "question": "아래 피트니스 클래스 시간표와 회원 메시지를 함께 읽고 질문에 답하세요.\n\n[Class Schedule]\nMon 6 PM: Yoga\nTue 7 PM: Boxing\nWed 6 PM: Yoga\nThu 7 PM: Dance\n\n[Member's Message]\nHi, I can only come on Tuesdays. What class is available for me?\n\nQ: What class can the member take?",
+    "options": [
+        "Yoga",
+        "Boxing",
+        "Dance",
+        "There are no classes on Tuesday."
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 회원이 'Tuesdays(화요일)'에만 올 수 있다고 했어요. 시간표를 보면 화요일(Tue) 저녁 7시에는 'Boxing(복싱)' 수업이 있습니다. 정보를 정확히 찾아냈네요.",
+    "difficulty": 1,
+    "audioText": "Class Schedule, I can only come on Tuesdays, Tue 7 PM: Boxing"
+  },
+  {
+    "id": "eng_easy_new_format_074",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nI am writing to complain about a product I ordered from your website. The item arrived broken. [_____] I have attached a photo of the damaged item.",
+    "options": [
+        "The delivery was very fast.",
+        "I would like a full refund.",
+        "Your website is easy to use.",
+        "The item was a gift for a friend."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 제품이 부서져서 도착했다는 불만을 제기한 후, 그에 대한 해결책을 요구하는 것이 논리적인 흐름입니다. '전액 환불을 받고 싶습니다'가 가장 적절한 요구사항이죠.",
+    "difficulty": 1,
+    "audioText": "complain about a product, The item arrived broken, I would like a full refund"
+  },
+  {
+    "id": "eng_easy_new_format_075",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Tech Support 11:40 AM] How can I help you?\n[User 11:41 AM] I can't log in to my email. I think I forgot my password.\n[Tech Support 11:42 AM] I can help with that. Please click the 'Forgot Password' link on the login page.\n\nQ: What is the user's problem?",
+    "options": [
+        "His computer is not working.",
+        "He cannot access his email account.",
+        "He did not receive an important email.",
+        "He does not know the website address."
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 사용자가 'I can't log in to my email'이라고 명확하게 말했죠. 이메일 계정에 로그인할 수 없는 것이 문제입니다. 그 이유는 비밀번호를 잊어버렸기 때문이죠.",
+    "difficulty": 1,
+    "audioText": "I can't log in to my email, I forgot my password, click the 'Forgot Password' link"
+  },
+  {
+    "id": "eng_easy_new_format_076",
+    "subject": "english",
+    "question": "아래 급여 명세서와 직원의 질문을 함께 읽고 질문에 답하세요.\n\n[Pay Stub]\nEmployee: Tom Chen\nHours Worked: 40\nPay Rate: $20/hour\nTotal Pay: $800\n\n[Employee's Question]\nHi, I have a question about my pay. I worked 40 hours. Shouldn't my total pay be $800?\n\nQ: Is the total pay on the pay stub correct?",
+    "options": [
+        "No, it should be $20.",
+        "No, it should be $40.",
+        "Yes, it is correct.",
+        "No, it should be $1000."
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 직원은 40시간을 일했고, 시간당 임금(Pay Rate)은 20달러입니다. 40시간 x 20달러/시간 = 800달러. 급여 명세서의 총 급여(Total Pay)는 정확하게 계산되었습니다.",
+    "difficulty": 1,
+    "audioText": "Pay Stub, Hours Worked, Pay Rate, Total Pay"
+  },
+  {
+    "id": "eng_easy_new_format_077",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nLearning a new language can be challenging. It requires a lot of practice and patience. [_____] For instance, speaking with native speakers is a great way to improve.",
+    "options": [
+        "However, it is also very rewarding.",
+        "Many people want to learn English.",
+        "There are many useful apps and websites.",
+        "You should start with grammar."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 언어를 배우는 것이 어렵다는 내용 뒤에, '도움이 되는 많은 앱과 웹사이트가 있습니다'라고 해결책이나 도움을 주는 도구를 제시하는 것이 자연스럽습니다. 뒤따르는 예시와도 잘 연결되죠.",
+    "difficulty": 1,
+    "audioText": "can be challenging, requires a lot of practice, There are many useful apps"
+  },
+  {
+    "id": "eng_easy_new_format_078",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Carlos 8:30 AM] Hi, this is Carlos from IT. Your new monitor is ready. Can I come by your desk to install it now?\n[Dana 8:31 AM] I'm not at my desk right now. I'll be back in 10 minutes.\n[Carlos 8:32 AM] OK, I'll come by then.\n\nQ: When will Carlos install the monitor?",
+    "options": [
+        "Right now",
+        "In about 10 minutes",
+        "Tomorrow",
+        "Next week"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 데이나(Dana)가 10분 뒤에 돌아올 것이라고('I'll be back in 10 minutes') 말했고, 카를로스(Carlos)는 그때 오겠다고('I'll come by then') 답했죠. 따라서 약 10분 뒤에 설치할 것입니다.",
+    "difficulty": 1,
+    "audioText": "Your new monitor is ready, I'll be back in 10 minutes, I'll come by then"
+  },
+  {
+    "id": "eng_easy_new_format_079",
+    "subject": "english",
+    "question": "아래 회의 안건과 이메일 공지를 함께 읽고 질문에 답하세요.\n\n[Meeting Agenda]\nProject Update - 10:00 AM\nBudget Review - 10:30 AM\nMarketing Plan - 11:00 AM\n\n[Email Notice]\nHi team, A reminder that tomorrow's meeting will start as scheduled. However, we have an urgent issue to discuss first, so the Marketing Plan discussion will be postponed.\n\nQ: Which topic will NOT be discussed in the meeting?",
+    "options": [
+        "Project Update",
+        "Budget Review",
+        "An urgent issue",
+        "Marketing Plan"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 이메일 공지에서 'the Marketing Plan discussion will be postponed'라고 명확히 밝혔어요. 'postpone'은 '연기하다'라는 뜻이므로, 마케팅 계획은 회의에서 논의되지 않을 것입니다.",
+    "difficulty": 1,
+    "audioText": "Meeting Agenda, Email Notice, will be postponed"
+  },
+  {
+    "id": "eng_easy_new_format_080",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 12:51 PM에 Maria가 \"Let me double-check.\"이라고 말한 의도는 무엇인가요?\n\n[David 12:50 PM] Hi Maria. Did we receive the payment from ABC Company?\n[Maria 12:51 PM] I think so, but let me double-check.\n[David 12:52 PM] Thanks.\n\nQ: What does Maria mean by \"Let me double-check.\"",
+    "options": [
+        "She is sure they received it.",
+        "She needs to send a second check.",
+        "She will verify the information to be sure.",
+        "She did not understand the question."
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'double-check'은 '재확인하다'라는 뜻입니다. 마리아는 돈을 받은 것 같지만 확실하지 않아서, 정확한 정보를 위해 다시 한번 확인해보겠다는 의미로 말한 것입니다.",
+    "difficulty": 1,
+    "audioText": "receive the payment, let me double-check"
+  },
+  {
+    "id": "eng_easy_new_format_081",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nOur city's annual music festival is next weekend. It will take place in Central Park. [_____] It features a variety of music genres, from rock to classical.",
+    "options": [
+        "The weather is expected to be warm.",
+        "Many famous bands will perform.",
+        "Tickets are selling out fast.",
+        "The festival is fun for the whole family."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 음악 축제에 대해 소개하는 글이에요. 장소와 다양한 장르를 언급하는 사이에, '많은 유명 밴드들이 공연할 것입니다'라고 구체적인 볼거리를 추가하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "annual music festival, a variety of music genres, Many famous bands will perform"
+  },
+  {
+    "id": "eng_easy_new_format_082",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Office Manager 9:00 AM] The coffee machine is out of order. A technician will come this afternoon to fix it.\n[Employee 9:01 AM] Oh no! Where can I get coffee then?\n[Office Manager 9:02 AM] There is another machine on the 5th floor you can use.\n\nQ: What should the employee do to get coffee?",
+    "options": [
+        "Wait for the technician",
+        "Go to the 5th floor",
+        "Buy coffee outside",
+        "Fix the machine himself"
+    ],
+    "correctIndex": 1,
+    "explanation": "정확해요! 사무실 관리자가 커피를 마시고 싶으면 '5층에 있는 다른 기계'를 사용하라고 알려줬죠. 따라서 직원은 5층으로 가야 합니다.",
+    "difficulty": 1,
+    "audioText": "The coffee machine is out of order. another machine on the 5th floor"
+  },
+  {
+    "id": "eng_easy_new_format_083",
+    "subject": "english",
+    "question": "아래 기차표와 안내 방송 내용을 함께 읽고 질문에 답하세요.\n\n[Train Ticket]\nFrom: Seoul\nTo: Busan\nTrain: KTX 101\nPlatform: 5\n\n[Announcement]\nAttention passengers for KTX 101 to Busan. There has been a platform change. The train will now depart from Platform 8.\n\nQ: Which platform should passengers go to?",
+    "options": [
+        "Platform 1",
+        "Platform 5",
+        "Platform 8",
+        "Platform 10"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 원래 기차표에는 승강장이 5번으로 나와 있었지만, 안내 방송에서 'platform change(승강장 변경)'가 있었다고 알려줬어요. 이제 기차는 'Platform 8'에서 출발합니다. 변경된 정보를 잘 파악했네요.",
+    "difficulty": 1,
+    "audioText": "Train Ticket, Platform 5, Announcement, a platform change, depart from Platform 8"
+  },
+  {
+    "id": "eng_easy_new_format_084",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nPlease turn off all lights when you are the last person to leave the office. [_____] This simple action helps us save energy and reduce costs.",
+    "options": [
+        "Also, please lock the door.",
+        "The lights are very bright.",
+        "The office closes at 7 PM.",
+        "We are trying to be more environmentally friendly."
+    ],
+    "correctIndex": 3,
+    "explanation": "정답입니다! 사무실 불을 끄라는 요청 뒤에, 그 이유를 설명하는 것이 자연스럽습니다. '우리는 더 친환경적이 되려고 노력하고 있습니다'는 에너지 절약과 비용 절감이라는 구체적인 행동의 더 큰 목표를 설명해줍니다.",
+    "difficulty": 1,
+    "audioText": "turn off all lights, save energy and reduce costs, be more environmentally friendly"
+  },
+  {
+    "id": "eng_easy_new_format_085",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[Travel Agent 4:50 PM] I have found a flight for you to Paris. It departs on May 10th and returns on May 17th. The price is $800.\n[Customer 4:51 PM] That sounds good. Please go ahead and book it.\n\nQ: What does the customer want the agent to do?",
+    "options": [
+        "Find a cheaper flight",
+        "Change the dates",
+        "Reserve the flight",
+        "Cancel the trip"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 고객이 'Please go ahead and book it'이라고 말했죠. 'book'은 '예약하다'라는 뜻으로, 제안받은 항공편을 예약해달라고 요청하는 것입니다. 'reserve'와 같은 의미죠.",
+    "difficulty": 1,
+    "audioText": "I have found a flight, The price is $800, Please go ahead and book it."
+  },
+  {
+    "id": "eng_easy_new_format_086",
+    "subject": "english",
+    "question": "아래 메뉴와 고객 주문 내용을 함께 읽고 질문에 답하세요.\n\n[Cafe Menu]\nCoffee: $4\nTea: $3\nSandwich: $8\nSoup of the Day: $6\n\n[Customer's Order]\nI'll have a coffee and the soup of the day, please.\n\nQ: What is the total cost of the order?",
+    "options": [
+        "$7",
+        "$9",
+        "$10",
+        "$12"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 고객은 커피(Coffee, $4)와 오늘의 수프(Soup of the Day, $6)를 주문했어요. 두 가격을 더하면 4 + 6 = 10달러가 됩니다. 계산을 잘 했네요!",
+    "difficulty": 1,
+    "audioText": "Cafe Menu, Customer's Order, a coffee and the soup of the day"
+  },
+  {
+    "id": "eng_easy_new_format_087",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe new software update is now available. It includes several new features and bug fixes. [_____] We recommend that all users install it as soon as possible.",
+    "options": [
+        "The old version had many problems.",
+        "The update is free of charge.",
+        "This will improve performance and security.",
+        "The download may take a few minutes."
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 소프트웨어 업데이트에 새로운 기능과 버그 수정이 포함되어 있다고 했어요. 그 결과로 '이것은 성능과 보안을 향상시킬 것입니다'라고 덧붙이는 것이 가장 논리적입니다. 그래서 모든 사용자가 설치해야 한다고 권장하는 것이죠.",
+    "difficulty": 1,
+    "audioText": "software update, new features and bug fixes, improve performance and security"
+  },
+  {
+    "id": "eng_easy_new_format_088",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Ethan 3:00 PM] Our presentation is at 4 PM. Have you printed the handouts yet?\n[Chloe 3:01 PM] I'm on my way to the printer now. There should be enough copies for everyone.\n[Ethan 3:02 PM] Perfect. Thanks!\n\nQ: What is Chloe about to do?",
+    "options": [
+        "Start the presentation",
+        "Make copies of a document",
+        "Go to the meeting room",
+        "Email the handouts"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 이든(Ethan)이 유인물(handouts)을 인쇄했는지 물었고, 클로이(Chloe)는 '지금 인쇄하러 가는 중'이라고 답했죠. 즉, 문서를 복사하러 가는 것입니다.",
+    "difficulty": 1,
+    "audioText": "printed the handouts, on my way to the printer, enough copies"
+  },
+  {
+    "id": "eng_easy_new_format_089",
+    "subject": "english",
+    "question": "아래 가구 조립 설명서와 고객의 문제를 함께 읽고 질문에 답하세요.\n\n[Instructions for Bookshelf]\nStep 1: Attach the side panels (A) to the base (B).\nStep 2: Insert the shelves (C).\nStep 3: Secure with screws (D).\n\n[Customer's Problem]\nThe bookshelf is wobbly. I attached the sides and inserted the shelves, but it's not stable.\n\nQ: What step did the customer likely forget?",
+    "options": [
+        "Step 1",
+        "Step 2",
+        "Step 3",
+        "He did not forget any steps."
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 고객은 옆판을 붙이고(Step 1) 선반을 끼웠지만(Step 2) 책장이 흔들린다고 했어요. 안정적이지 않다는 것은 마지막 단계인 '나사로 고정하기(Secure with screws)'를 잊었을 가능성이 높다는 것을 의미합니다.",
+    "difficulty": 1,
+    "audioText": "Instructions, wobbly, not stable, Secure with screws"
+  },
+  {
+    "id": "eng_easy_new_format_090",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 10:11 AM에 Kevin이 \"I'll drop by later.\"라고 말한 의도는 무엇인가요?\n\n[Susan 10:10 AM] Kevin, I have the documents you wanted to see.\n[Kevin 10:11 AM] Great. I'm a bit busy right now, but I'll drop by later.\n\nQ: What does Kevin mean by \"I'll drop by later.\"",
+    "options": [
+        "He will drop the documents.",
+        "He will visit her office later.",
+        "He will call her later.",
+        "He will email her later."
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'drop by'는 '잠깐 들르다'라는 뜻의 구동사입니다. 케빈은 지금은 바쁘지만 나중에 수잔의 사무실에 잠깐 들러서 서류를 보겠다는 의미로 말한 것입니다.",
+    "difficulty": 1,
+    "audioText": "I have the documents, I'll drop by later"
+  },
+  {
+    "id": "eng_easy_new_format_091",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nTo ensure a smooth workflow, please clean up your desk at the end of each day. Put away all documents and supplies. [_____] A tidy workspace helps everyone stay organized and focused.",
+    "options": [
+        "The cleaning staff comes at night.",
+        "Also, remember to turn off your computer.",
+        "Our office is very modern.",
+        "You can decorate your desk with personal items."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 퇴근 전 책상 정리라는 주제에 대해 이야기하고 있어요. 서류와 비품을 치우라는 내용 뒤에, '또한, 컴퓨터 끄는 것을 기억하세요'라고 퇴근 전 해야 할 일을 추가하는 것이 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "clean up your desk, A tidy workspace, turn off your computer"
+  },
+  {
+    "id": "eng_easy_new_format_092",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[Doctor's Office 9:00 AM] This is a reminder of your dental appointment with Dr. Evans tomorrow at 10 AM.\n[Patient 9:05 AM] Thank you for the reminder. I will be there.\n\nQ: Why did the doctor's office send the message?",
+    "options": [
+        "To cancel the appointment",
+        "To change the time of the appointment",
+        "To remind the patient about the appointment",
+        "To ask the patient to come earlier"
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 메시지 첫 부분에 'This is a reminder'라고 명시되어 있죠. 'reminder'는 '상기시켜주는 것'이라는 뜻으로, 환자에게 약속을 잊지 않도록 알려주기 위해 보낸 것입니다.",
+    "difficulty": 1,
+    "audioText": "This is a reminder of your dental appointment"
+  },
+  {
+    "id": "eng_easy_new_format_093",
+    "subject": "english",
+    "question": "아래 영화 시간표와 친구의 메시지를 함께 읽고 질문에 답하세요.\n\n[Movie Times for 'Space Adventure']\n- 2:00 PM\n- 4:30 PM\n- 7:00 PM\n- 9:30 PM\n\n[Friend's Message]\nI finish work at 6 PM. Let's watch 'Space Adventure' after that. Which showing should we go to?\n\nQ: Which is the earliest showtime they can attend?",
+    "options": [
+        "2:00 PM",
+        "4:30 PM",
+        "7:00 PM",
+        "9:30 PM"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 친구가 오후 6시에 일이 끝난다고 했어요. 따라서 6시 이후에 시작하는 영화를 봐야겠죠. 시간표를 보면 6시 이후에 볼 수 있는 가장 빠른 영화는 저녁 7시 영화입니다.",
+    "difficulty": 1,
+    "audioText": "Movie Times, I finish work at 6 PM, Which showing should we go to?"
+  },
+  {
+    "id": "eng_easy_new_format_094",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nThe city library is starting a new book club. It will meet on the first Wednesday of every month. [_____] All are welcome to join.",
+    "options": [
+        "The first meeting will be about classic novels.",
+        "The library is a quiet place.",
+        "You need a library card to borrow books.",
+        "The library was built in 1980."
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 새로운 북클럽을 소개하는 글이에요. 언제 모이는지 알려준 뒤, '첫 모임은 고전 소설에 관한 것일 겁니다'라고 첫 활동 내용을 구체적으로 알려주는 것이 가장 자연스러운 흐름입니다.",
+    "difficulty": 1,
+    "audioText": "new book club, first Wednesday of every month, The first meeting"
+  },
+  {
+    "id": "eng_easy_new_format_095",
+    "subject": "english",
+    "question": "아래 온라인 채팅을 읽고 질문에 답하세요.\n\n[HR Manager 2:00 PM] Could you please send me your updated contact information?\n[Employee 2:01 PM] Sure. I moved last month. My new address is 456 Park Avenue.\n[HR Manager 2:02 PM] Thank you. I've updated your file.\n\nQ: What information did the employee provide?",
+    "options": [
+        "Her phone number",
+        "Her email address",
+        "Her home address",
+        "Her job title"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 직원이 'My new address is 456 Park Avenue'라고 말했죠. 'address'는 '주소'를 의미합니다. 따라서 직원은 자신의 집 주소 정보를 제공했습니다.",
+    "difficulty": 1,
+    "audioText": "updated contact information, My new address is"
+  },
+  {
+    "id": "eng_easy_new_format_096",
+    "subject": "english",
+    "question": "아래 식당 영업시간과 예약 요청을 함께 읽고 질문에 답하세요.\n\n[Restaurant Hours]\nOpen Daily: 11:00 AM - 10:00 PM\n(Kitchen closes at 9:00 PM)\n\n[Reservation Request]\nHello, I'd like to make a reservation for two people for this Saturday at 9:30 PM.\n\nQ: Can the restaurant accept this reservation?",
+    "options": [
+        "Yes, they are open until 10:00 PM.",
+        "Yes, but only for drinks.",
+        "No, the kitchen will be closed.",
+        "No, they are closed on Saturdays."
+    ],
+    "correctIndex": 2,
+    "explanation": "정확해요! 식당은 밤 10시까지 영업하지만, 주방(Kitchen)은 밤 9시에 닫는다고 나와 있어요. 9시 30분에는 음식을 주문할 수 없으므로, 이 예약은 받을 수 없습니다.",
+    "difficulty": 1,
+    "audioText": "Restaurant Hours, Kitchen closes at 9:00 PM, a reservation for 9:30 PM"
+  },
+  {
+    "id": "eng_easy_new_format_097",
+    "subject": "english",
+    "question": "다음 글을 읽고, 문맥상 빈칸에 들어갈 가장 알맞은 문장을 고르세요.\n\nWe are sorry for the inconvenience. The elevator is currently out of service for maintenance. [_____] We expect it to be working again by 5 PM.",
+    "options": [
+        "The elevator is very fast.",
+        "Please use the stairs instead.",
+        "The building has 20 floors.",
+        "Maintenance is very important."
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 엘리베이터가 고장났다는 공지 뒤에는, 대안을 제시해주는 것이 가장 자연스럽습니다. '대신 계단을 이용해 주세요'가 가장 적절한 안내 문구입니다.",
+    "difficulty": 1,
+    "audioText": "out of service for maintenance, Please use the stairs instead"
+  },
+  {
+    "id": "eng_easy_new_format_098",
+    "subject": "english",
+    "question": "아래 문자 메시지 대화를 읽고 질문에 답하세요.\n\n[George 5:00 PM] I'm leaving the office now. Do we need anything from the grocery store?\n[Maria 5:01 PM] I think we're out of bread and eggs.\n[George 5:02 PM] OK. I'll pick some up on my way home.\n\nQ: What will George buy?",
+    "options": [
+        "Milk and cheese",
+        "Fruit and vegetables",
+        "Coffee and tea",
+        "Bread and eggs"
+    ],
+    "correctIndex": 3,
+    "explanation": "정답입니다! 마리아(Maria)가 식료품점에서 필요한 것으로 'bread and eggs(빵과 계란)'를 언급했고, 조지(George)가 그것들을 사가겠다고 했죠.",
+    "difficulty": 1,
+    "audioText": "Do we need anything from the grocery store? out of bread and eggs, I'll pick some up"
+  },
+  {
+    "id": "eng_easy_new_format_099",
+    "subject": "english",
+    "question": "아래 날씨 예보와 이메일을 함께 읽고 질문에 답하세요.\n\n[Weather Forecast for Saturday]\nMorning: Sunny, 20°C\nAfternoon: Cloudy, 22°C\nEvening: Rain, 18°C\n\n[Email]\nHi team, Let's have our team barbecue this Saturday! We should do it in the morning when the weather is nice.\n\nQ: What will the weather be like during the barbecue?",
+    "options": [
+        "Rainy",
+        "Cloudy",
+        "Sunny",
+        "Cold"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 이메일에서 바비큐를 '토요일 아침(Saturday morning)'에 하자고 했어요. 날씨 예보를 보면 토요일 아침은 'Sunny(맑음)'라고 나와 있습니다.",
+    "difficulty": 1,
+    "audioText": "Weather Forecast for Saturday, Morning: Sunny, barbecue this Saturday morning"
+  },
+  {
+    "id": "eng_easy_new_format_100",
+    "subject": "english",
+    "question": "다음 온라인 채팅에서 1:16 PM에 Mark가 \"Count me in!\"이라고 말한 의도는 무엇인가요?\n\n[Jenny 1:15 PM] A few of us are going out for lunch. Do you want to join?\n[Mark 1:16 PM] Count me in!\n\nQ: What does Mark mean by \"Count me in!\"",
+    "options": [
+        "He wants to count the people.",
+        "He needs to join a new team.",
+        "He wants to be included in the lunch plan.",
+        "He will pay for lunch."
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'Count me in!'은 '나도 껴줘!'라는 뜻으로, 어떤 그룹 활동이나 계획에 참여하고 싶다는 의사를 밝힐 때 쓰는 표현입니다. 마크는 점심 식사에 함께 가고 싶다는 뜻으로 말한 것이죠.",
+    "difficulty": 1,
+    "audioText": "Do you want to join? Count me in!"
+  }
+]

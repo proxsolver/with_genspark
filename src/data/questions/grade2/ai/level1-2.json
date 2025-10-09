@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ai_easy_1_6",
+    "subject": "ai",
+    "question": "ChatGPT와 같은 대화형 AI를 무엇이라고 부를까요?",
+    "options": ["챗봇", "로봇", "프로그램", "앱"],
+    "correctIndex": 0,
+    "explanation": "챗봇(Chatbot)은 사람과 대화할 수 있는 AI 프로그램입니다. Chat(대화) + Bot(로봇)의 합성어입니다.",
+    "difficulty": 1,
+    "tags": ["application", "chatbot"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_easy_1_7",
+    "subject": "ai",
+    "question": "이미지나 사진을 인식하는 AI 기술을 무엇이라고 할까요?",
+    "options": ["컴퓨터 비전", "음성 인식", "자연어 처리", "데이터 분석"],
+    "correctIndex": 0,
+    "explanation": "컴퓨터 비전(Computer Vision)은 컴퓨터가 이미지와 영상을 이해하고 분석하는 AI 기술입니다.",
+    "difficulty": 1,
+    "tags": ["computer vision"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_easy_1_8",
+    "subject": "ai",
+    "question": "AI가 잘못된 정보를 학습하면 어떻게 될까요?",
+    "options": ["잘못된 결과를 낸다", "자동으로 수정된다", "학습이 멈춘다", "문제없다"],
+    "correctIndex": 0,
+    "explanation": "AI는 학습한 데이터를 기반으로 결과를 내므로, 잘못된 데이터를 학습하면 잘못된 결과를 낼 수 있습니다. 이를 'Garbage In, Garbage Out'이라고 합니다.",
+    "difficulty": 1,
+    "tags": ["basic", "data quality"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_easy_1_9",
+    "subject": "ai",
+    "question": "자율주행 자동차에 사용되는 핵심 기술은?",
+    "options": ["AI", "GPS만", "카메라만", "센서만"],
+    "correctIndex": 0,
+    "explanation": "자율주행 자동차는 AI 기술을 활용하여 주변 환경을 인식하고 판단하며 제어합니다. GPS, 카메라, 센서 등의 데이터를 AI가 종합적으로 분석합니다.",
+    "difficulty": 1,
+    "tags": ["application", "autonomous"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_easy_1_10",
+    "subject": "ai",
+    "question": "AI 윤리에서 가장 중요한 것은?",
+    "options": ["인간 존중", "빠른 속도", "낮은 가격", "예쁜 디자인"],
+    "correctIndex": 0,
+    "explanation": "AI는 인간을 위한 도구이므로, 인간의 권리와 존엄성을 존중하는 것이 가장 중요합니다.",
+    "difficulty": 1,
+    "tags": ["ethics"],
+    "gradeRange": [3, 5]
+  }
+]

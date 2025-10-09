@@ -1,0 +1,902 @@
+[
+  {
+    "id": "math_normal_1_1",
+    "subject": "math",
+    "question": "🤔 머릿속으로 계산 도전! 90에서 45를 빼면 얼마일까요? 90에서 40을 먼저 빼고, 5를 더 빼보세요!",
+    "options": ["45", "55", "35", "50"],
+    "correctIndex": 0,
+    "explanation": "정답! 90 - 40 = 50, 50 - 5 = 45! 💡 이렇게 나눠서 생각하면 암산도 쉬워요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_2",
+    "subject": "math",
+    "question": "🚀 우주선 조립! 75개의 부품에 28개의 부품을 더해야 해요. 75에 20을 먼저 더하고, 8을 더 더해볼까요?",
+    "options": ["103개", "93개", "113개", "100개"],
+    "correctIndex": 0,
+    "explanation": "딩동댕! 75 + 20 = 95, 95 + 8 = 103개! 🌟 멋진 우주선이 완성되었어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_3",
+    "subject": "math",
+    "question": "🦸‍♂️ 히어로의 에너지 충전! 원래 에너지 53%에서 39%를 더 충전했어요. 총 에너지는 몇 %가 되었을까요?",
+    "options": ["92%", "82%", "102%", "90%"],
+    "correctIndex": 0,
+    "explanation": "좋아요! 53 + 30 = 83, 83 + 9 = 92%! 💥 에너지가 가득 찼어요! 출동!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_4",
+    "subject": "math",
+    "question": "도서관에 책이 120권 있었는데, 55권을 친구들이 빌려갔어요. 120에서 50을 빼고, 5를 더 빼면?",
+    "options": ["65권", "75권", "70권", "60권"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 120 - 50 = 70, 70 - 5 = 65권! 📚 남은 책도 재미있게 읽어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_5",
+    "subject": "math",
+    "question": "게임 점수 88점에서 15점을 잃었어요. 현재 점수는 몇 점일까요?",
+    "options": ["73점", "63점", "103점", "70점"],
+    "correctIndex": 0,
+    "explanation": "맞았어요! 88 - 10 = 78, 78 - 5 = 73점! 🎮 괜찮아, 다음 판에서 점수를 되찾으면 돼!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_6",
+    "subject": "math",
+    "question": "마법 학교 학생 46명과 37명이 함께 여행을 가요. 총 몇 명의 학생이 여행을 갈까요?",
+    "options": ["83명", "73명", "93명", "80명"],
+    "correctIndex": 0,
+    "explanation": "대단해요! 46 + 30 = 76, 76 + 7 = 83명! 🧙‍♂️ 신나는 마법 여행이 되겠네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_7",
+    "subject": "math",
+    "question": "공룡 박물관에 공룡 뼈가 150개 전시되어 있어요. 그중 75개가 티라노사우루스의 뼈예요. 나머지는 몇 개일까요?",
+    "options": ["75개", "85개", "225개", "100개"],
+    "correctIndex": 0,
+    "explanation": "바로 그거야! 150의 절반은 75! 150 - 75 = 75개! 🦖 공룡 박사님이네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_8",
+    "subject": "math",
+    "question": "해적선이 금화 62개를 싣고 가다가 폭풍을 만나 25개를 잃어버렸어요. 남은 금화는?",
+    "options": ["37개", "47개", "43개", "87개"],
+    "correctIndex": 0,
+    "explanation": "정확해요! 62 - 20 = 42, 42 - 5 = 37개! ⚓️ 괜찮아, 다시 보물을 찾으러 가자!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_9",
+    "subject": "math",
+    "question": "쿠키를 58개 구웠는데, 동생이 19개를 먹었어요. 몇 개의 쿠키가 남았을까요?",
+    "options": ["39개", "49개", "41개", "30개"],
+    "correctIndex": 0,
+    "explanation": "계산 천재! 58에서 20을 빼면 38, 1을 다시 더하면 39개! 🍪 동생이랑 사이좋게 나눠 먹어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_1_10",
+    "subject": "math",
+    "question": "운동회 달리기에서 우리 팀이 115점을 얻었어요. 상대 팀은 우리보다 20점 더 낮아요. 상대 팀 점수는?",
+    "options": ["95점", "135점", "105점", "85점"],
+    "correctIndex": 0,
+    "explanation": "완벽해요! 115 - 20 = 95점! 🏃‍♂️ 끝까지 최선을 다하는 모습이 멋져요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_1",
+    "subject": "math",
+    "question": "🤔 곱셈의 비밀! '8 × 6'과 답이 똑같은 다른 곱셈식은 무엇일까요?",
+    "options": ["6 × 8", "8 + 6", "7 × 7", "4 × 10"],
+    "correctIndex": 0,
+    "explanation": "바로 그거예요! 곱셈은 순서를 바꿔도 결과가 같아요. 8×6 = 48, 6×8 = 48! 💡 곱셈의 성질을 잘 알고 있네요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_2",
+    "subject": "math",
+    "question": "7명의 마법사가 각각 5개의 마법 카드를 가지고 있다면, 카드는 모두 몇 장일까요? (7 × 5 = ?)",
+    "options": ["35장", "12장", "40장", "30장"],
+    "correctIndex": 0,
+    "explanation": "정답! 7 × 5 = 35! 🧙‍♂️ 강력한 마법을 쓸 수 있겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_3",
+    "subject": "math",
+    "question": "9단 구구단 중에서 답의 일의 자리가 2인 것은 무엇일까요?",
+    "options": ["9 × 8 = 72", "9 × 2 = 18", "9 × 3 = 27", "9 × 7 = 63"],
+    "correctIndex": 0,
+    "explanation": "찾았군요! 9×8=72! 일의 자리가 2가 맞아요. 🕵️‍♂️ 구구단 탐정 같아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_4",
+    "subject": "math",
+    "question": "자동차 바퀴는 4개예요. 자동차 9대를 만들려면 바퀴가 총 몇 개 필요할까요?",
+    "options": ["36개", "13개", "32개", "40개"],
+    "correctIndex": 0,
+    "explanation": "딩동댕! 4개씩 9대니까 4 × 9 = 36개! 🚗 멋진 자동차들이 완성되겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_5",
+    "subject": "math",
+    "question": "6 곱하기 '어떤 수'를 했더니 42가 나왔어요. '어떤 수'는 무엇일까요?",
+    "options": ["7", "6", "8", "5"],
+    "correctIndex": 0,
+    "explanation": "구구단을 거꾸로! 6단에서 42가 나오는 건 6×7! '어떤 수'는 7이었네요! 🧐 추리력이 대단해요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_6",
+    "subject": "math",
+    "question": "사탕 한 개에 100원이에요. 8개를 사면 얼마를 내야 할까요?",
+    "options": ["800원", "80원", "108원", "8000원"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 100 × 8 = 800원! 🍬 10, 100 곱하기는 정말 쉽죠?",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_7",
+    "subject": "math",
+    "question": "거미 다리는 8개예요. 거미 8마리의 다리는 모두 몇 개일까요?",
+    "options": ["64개", "16개", "72개", "56개"],
+    "correctIndex": 0,
+    "explanation": "완벽해요! 8 × 8 = 64개! 🕷️ 거미들이 줄지어 가는 모습을 상상해보세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_8",
+    "subject": "math",
+    "question": "3 곱하기 9의 답은 27이에요. 그렇다면 9 곱하기 3의 답은 무엇일까요?",
+    "options": ["27", "12", "39", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "똑똑해요! 곱하는 순서가 바뀌어도 답은 똑같이 27이에요. ✨ 곱셈의 비밀을 알고 있군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_9",
+    "subject": "math",
+    "question": "한 시간에 5km를 걷는다면, 6시간 동안 걸을 수 있는 거리는 총 몇 km일까요?",
+    "options": ["30km", "11km", "25km", "35km"],
+    "correctIndex": 0,
+    "explanation": "정답! 5km씩 6시간이니까 5 × 6 = 30km! 🚶‍♂️ 꾸준히 걷는 건 건강에 좋아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_2_10",
+    "subject": "math",
+    "question": "4 × ( ) = 20 + 12 와 같아요. 괄호 안에 들어갈 숫자는?",
+    "options": ["8", "32", "5", "7"],
+    "correctIndex": 0,
+    "explanation": "먼저 20+12=32. 그렇다면 4에 얼마를 곱해야 32가 될까요? 4 × 8 = 32! 🌟 생각의 힘이 쑥쑥!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_1",
+    "subject": "math",
+    "question": "🤔 어떤 수를 5로 나누었을 때, 나머지가 될 수 있는 가장 큰 수는 무엇일까요?",
+    "options": ["4", "5", "6", "0"],
+    "correctIndex": 0,
+    "explanation": "대단해요! 나머지는 항상 나누는 수보다 작아야 해요. 5로 나누었으니 나머지 중에 가장 큰 수는 4! 💡 나눗셈의 원리를 꿰뚫고 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_2",
+    "subject": "math",
+    "question": "연필 32자루를 6명의 친구들에게 똑같이 나누어 주려고 해요. 한 명당 몇 자루씩 갖고 몇 자루가 남을까요?",
+    "options": ["5자루씩, 2자루 남음", "6자루씩, 2자루 남음", "5자루씩, 남지 않음", "6자루씩, 남지 않음"],
+    "correctIndex": 0,
+    "explanation": "6×5=30! 32에서 30을 빼면 2가 남아요. 5자루씩 갖고 2자루가 남네요. ✍️ 공평하게 잘 나눴어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_3",
+    "subject": "math",
+    "question": "45명의 학생들이 7명씩 한 모둠을 만들려고 해요. 만들어지는 모둠은 총 몇 개이고, 남는 학생은 몇 명일까요?",
+    "options": ["6모둠, 3명", "7모둠, 4명", "6모둠, 0명", "5모둠, 10명"],
+    "correctIndex": 0,
+    "explanation": "7×6=42! 45에서 42를 빼면 3이 남아요. 6모둠이 만들어지고 3명이 남아요. 👨‍👩‍👧‍👦 남은 친구들도 함께 놀아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_4",
+    "subject": "math",
+    "question": "어떤 수를 8로 나누었더니 몫이 4이고 나머지가 3이었어요. 어떤 수는 무엇일까요?",
+    "options": ["35", "32", "29", "15"],
+    "correctIndex": 0,
+    "explanation": "나눗셈을 거꾸로! (8 × 4) + 3 = 32 + 3 = 35! 🔄 거꾸로 생각하기 챔피언!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_5",
+    "subject": "math",
+    "question": "젤리 52개를 9개씩 봉지에 담아 포장하고 있어요. 포장을 끝내고 남은 젤리는 몇 개일까요?",
+    "options": ["7개", "9개", "5개", "0개"],
+    "correctIndex": 0,
+    "explanation": "9×5=45. 52-45=7. 7개가 남네요! 🍬 남은 젤리는 내가 먹어야지!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_6",
+    "subject": "math",
+    "question": "한 달이 31일이라면, 총 몇 주 하고 며칠이 더 있는 걸까요? (1주는 7일)",
+    "options": ["4주 3일", "4주 2일", "5주 4일", "3주 10일"],
+    "correctIndex": 0,
+    "explanation": "31 ÷ 7을 하면 몫은 4, 나머지는 3! 그래서 4주 3일이에요. 📅 달력을 척척 읽네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_7",
+    "subject": "math",
+    "question": "사과 20개를 3개씩 묶으면 몇 묶음이 나오고 몇 개가 남을까요?",
+    "options": ["6묶음, 2개", "7묶음, 1개", "6묶음, 0개", "5묶음, 5개"],
+    "correctIndex": 0,
+    "explanation": "3×6=18이니까 2개가 남아요. 6묶음, 2개! 🍎 남은 사과는 맛있게 냠냠!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_8",
+    "subject": "math",
+    "question": "딱지 60개를 8명에게 똑같이 나누어주면, 한 명은 최대 몇 개를 받을 수 있나요?",
+    "options": ["7개", "8개", "6개", "9개"],
+    "correctIndex": 0,
+    "explanation": "8×7=56. 8×8=64니까 8개씩은 못 나눠주네요. 한 명당 최대 7개! 💥 딱지 고수인데요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_9",
+    "subject": "math",
+    "question": "초콜릿 27개를 4명에게 남김없이 똑같이 나누어 주려면, 초콜릿이 최소 몇 개 더 필요할까요?",
+    "options": ["1개", "0개", "3개", "4개"],
+    "correctIndex": 0,
+    "explanation": "27 ÷ 4 = 6...3. 3개가 남아요. 4명에게 한 개씩 더 주려면 1개가 부족하네요. 🍫 1개만 더 있으면 모두 행복!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_3_10",
+    "subject": "math",
+    "question": "의자 한 줄에 9명씩 앉을 수 있어요. 50명의 손님이 모두 앉으려면 의자는 최소 몇 줄이 필요할까요?",
+    "options": ["6줄", "5줄", "7줄", "8줄"],
+    "correctIndex": 0,
+    "explanation": "9×5=45. 5줄에 앉고 5명이 남아요. 남은 5명도 앉아야 하니 한 줄이 더! 총 6줄이 필요해요. 🪑 손님을 배려하는 마음씨!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_1",
+    "subject": "math",
+    "question": "⏰ 100분짜리 영화가 오후 3시 10분에 시작했어요. 영화는 몇 시 몇 분에 끝날까요?",
+    "options": ["오후 4시 50분", "오후 5시", "오후 4시 10분", "오후 5시 10분"],
+    "correctIndex": 0,
+    "explanation": "100분은 1시간 40분! 3시 10분에서 1시간 뒤는 4시 10분. 여기서 40분을 더하면 4시 50분! 🎬 정말 재미있는 영화였겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_2",
+    "subject": "math",
+    "question": "오늘이 6월 15일 수요일이라면, 7일 뒤는 무슨 요일일까요?",
+    "options": ["수요일", "화요일", "목요일", "금요일"],
+    "correctIndex": 0,
+    "explanation": "7일은 정확히 1주일! 그래서 7일 뒤는 똑같은 수요일이에요. 🗓️ 요일의 규칙을 발견했군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_3",
+    "subject": "math",
+    "question": "오후 2시 30분에 공부를 시작해서 50분 동안 했어요. 공부가 끝난 시간은?",
+    "options": ["오후 3시 20분", "오후 3시 10분", "오후 3시 30분", "오후 2시 80분"],
+    "correctIndex": 0,
+    "explanation": "2시 30분에서 30분을 더하면 3시! 남은 20분을 더하면 3시 20분! ✍️ 집중하는 모습이 멋져요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_4",
+    "subject": "math",
+    "question": "1분 20초는 총 몇 초일까요? (1분 = 60초)",
+    "options": ["80초", "120초", "6020초", "20초"],
+    "correctIndex": 0,
+    "explanation": "1분은 60초니까, 60초에 20초를 더하면 80초! ⏱️ 시간 단위를 자유자재로 바꾸네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_5",
+    "subject": "math",
+    "question": "오전 8시에 집에서 출발해서 3시간 30분 만에 할머니 댁에 도착했어요. 도착한 시간은?",
+    "options": ["오전 11시 30분", "오전 11시", "낮 12시", "오후 1시 30분"],
+    "correctIndex": 0,
+    "explanation": "8시에서 3시간이 지나면 11시. 여기서 30분이 더 지나면 오전 11시 30분! 👵 할머니가 정말 좋아하시겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_6",
+    "subject": "math",
+    "question": "지금이 오후 5시 45분이에요. 15분 전에는 몇 시 몇 분이었을까요?",
+    "options": ["오후 5시 30분", "오후 6시", "오후 5시 20분", "오후 5시"],
+    "correctIndex": 0,
+    "explanation": "45분에서 15분을 빼면 30분! 시는 그대로 5시. 정답은 5시 30분! 🕰️ 시간을 거꾸로 돌리는 능력이 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_7",
+    "subject": "math",
+    "question": "잠을 밤 10시 30분에 자기 시작해서 9시간을 잤어요. 일어난 시간은?",
+    "options": ["오전 7시 30분", "오전 6시 30분", "오전 8시 30분", "오전 7시"],
+    "correctIndex": 0,
+    "explanation": "10시 30분에서 1시간 30분이 지나면 밤 12시. 남은 7시간 30분을 더 자면 오전 7시 30분! ☀️ 푹 자고 일어나니 상쾌하죠?",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_8",
+    "subject": "math",
+    "question": "3월 25일에 소풍을 가기로 했어요. 오늘이 3월 18일이라면 며칠 밤을 자야 소풍날이 될까요?",
+    "options": ["7밤", "6밤", "8밤", "10밤"],
+    "correctIndex": 0,
+    "explanation": "25 - 18 = 7! 7밤만 자면 신나는 소풍날이에요! 🍙 김밥이 기대되네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_9",
+    "subject": "math",
+    "question": "하루는 24시간이에요. 이틀은 총 몇 시간일까요?",
+    "options": ["48시간", "24시간", "26시간", "36시간"],
+    "correctIndex": 0,
+    "explanation": "하루가 24시간이니까, 이틀은 24 × 2 = 48시간! 🌍 지구가 두 바퀴 도는 시간!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_4_10",
+    "subject": "math",
+    "question": "오후 4시 정각에 시계의 긴바늘(분침)과 짧은바늘(시침)이 만드는 작은 쪽 각은 예각, 둔각, 직각 중 무엇에 가장 가까울까요?",
+    "options": ["둔각", "예각", "직각", "평각"],
+    "correctIndex": 0,
+    "explanation": "짧은바늘은 4를, 긴바늘은 12를 가리켜요. 직각(90도)보다 더 벌어져 있으니 둔각! 🧐 시계를 보고 각도를 생각하다니, 대단해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_1",
+    "subject": "math",
+    "question": "⚖️ 교실 칠판의 길이는 약 3cm, 30cm, 3m 중 무엇에 가장 가까울까요?",
+    "options": ["3m", "30cm", "3cm", "30m"],
+    "correctIndex": 0,
+    "explanation": "3cm는 손가락 길이, 30cm는 자 길이 정도예요. 칠판은 훨씬 기니까 3m가 가장 비슷해요! 📏 길이를 어림하는 감각이 뛰어나요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_2",
+    "subject": "math",
+    "question": "💧 물 한 컵의 양은 약 200ml, 2L, 20L 중 무엇에 가장 가까울까요?",
+    "options": ["200ml", "2L", "20L", "2ml"],
+    "correctIndex": 0,
+    "explanation": "2L는 큰 우유, 20L는 큰 생수통이에요. 물 한 컵은 200ml가 가장 적당해요. 🥤 양을 가늠하는 능력이 좋네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_3",
+    "subject": "math",
+    "question": "갓 태어난 아기의 몸무게는 약 300g, 3kg, 30kg 중 무엇에 가장 가까울까요?",
+    "options": ["3kg", "300g", "30kg", "30g"],
+    "correctIndex": 0,
+    "explanation": "300g은 작은 사과 무게, 30kg은 우리 친구들 몸무게 정도예요. 아기는 약 3kg! 🍼 우리도 이렇게 작았을 때가 있었어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_4",
+    "subject": "math",
+    "question": "1km를 걸어가는 데 걸리는 시간은 약 1분, 15분, 1시간 중 무엇에 가장 가까울까요?",
+    "options": ["15분", "1분", "1시간", "10초"],
+    "correctIndex": 0,
+    "explanation": "1분은 너무 빠르고, 1시간은 너무 느려요. 보통 걸음으로 약 15분 정도 걸려요. 🚶‍♀️ 생활 속 단위를 잘 알고 있군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_5",
+    "subject": "math",
+    "question": "2L짜리 주스를 4명이 똑같이 나누어 마시면, 한 명은 몇 ml를 마실 수 있을까요?",
+    "options": ["500ml", "200ml", "250ml", "400ml"],
+    "correctIndex": 0,
+    "explanation": "2L는 2000ml! 2000ml를 4명에게 나누면 2000 ÷ 4 = 500ml! 🧃 사이좋게 잘 나눴네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_6",
+    "subject": "math",
+    "question": "내 키가 1m 40cm라면, cm로만 나타내면 몇 cm일까요?",
+    "options": ["140cm", "1040cm", "14cm", "50cm"],
+    "correctIndex": 0,
+    "explanation": "1m는 100cm! 100cm에 40cm를 더하면 140cm! ✨ 단위 변환의 마법사!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_7",
+    "subject": "math",
+    "question": "5kg짜리 쌀과 500g짜리 소금 중 어느 것이 10배 더 무거울까요?",
+    "options": ["쌀", "소금", "무게가 같다", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "5kg은 5000g이에요. 5000g은 500g의 10배! 쌀이 10배 더 무거워요. ⚖️ 단위의 크기를 정확히 비교했네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_8",
+    "subject": "math",
+    "question": "3km 50m를 m로만 나타내면 몇 m일까요?",
+    "options": ["3050m", "350m", "30050m", "80m"],
+    "correctIndex": 0,
+    "explanation": "1km는 1000m니까, 3km는 3000m! 3000m에 50m를 더하면 3050m! 🗺️ 지도도 잘 읽을 수 있겠어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_9",
+    "subject": "math",
+    "question": "내 가방 무게가 2500g이라면, kg으로 어떻게 나타낼 수 있을까요?",
+    "options": ["2kg 500g", "25kg", "2kg 50g", "20kg 500g"],
+    "correctIndex": 0,
+    "explanation": "1000g은 1kg! 2500g은 2000g과 500g으로 나눌 수 있어요. 그래서 2kg 500g! 🎒 책을 너무 많이 넣으면 무거워요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_5_10",
+    "subject": "math",
+    "question": "1L짜리 우유를 사고 300ml를 마셨어요. 남은 우유는 몇 ml일까요?",
+    "options": ["700ml", "1300ml", "299ml", "800ml"],
+    "correctIndex": 0,
+    "explanation": "1L는 1000ml! 1000ml에서 300ml를 마셨으니 1000 - 300 = 700ml! 🥛 남은 우유도 맛있게 마셔요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_1",
+    "subject": "math",
+    "question": "큐브(정육면체)를 펼쳤을 때(전개도) 나오는 도형은 어떤 모양일까요?",
+    "options": ["정사각형 6개", "직사각형 6개", "정사각형 4개", "삼각형 8개"],
+    "correctIndex": 0,
+    "explanation": "정육면체는 똑같은 정사각형 6개의 면으로 이루어져 있어요. 펼치면 정사각형 6개가 나와요! 🧊 입체 도형을 상상하는 능력이 뛰어나요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_2",
+    "subject": "math",
+    "question": "네 변의 길이가 모두 같고, 네 각이 모두 직각인 사각형의 이름은 무엇일까요?",
+    "options": ["정사각형", "직사각형", "마름모", "평행사변형"],
+    "correctIndex": 0,
+    "explanation": "바로 정사각형! 직사각형과 마름모의 좋은 점을 모두 가졌네요. 🖼️ 도형의 특징을 정확히 알고 있어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_3",
+    "subject": "math",
+    "question": "피자 조각, 아이스크림 콘, 고깔모자의 공통적인 모양은 무엇과 가장 비슷할까요?",
+    "options": ["부채꼴 또는 원뿔", "삼각형", "사각형", "원기둥"],
+    "correctIndex": 0,
+    "explanation": "평면에서는 부채꼴, 입체에서는 원뿔 모양과 가장 비슷해요! 🍕 생활 속에서 수학을 발견했네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_4",
+    "subject": "math",
+    "question": "오른쪽으로 한 칸, 위로 한 칸, 오른쪽으로 한 칸, 위로 한 칸... 이렇게 움직이면 어떤 모양의 선이 그려질까요?",
+    "options": ["계단 모양", "동그라미 모양", "네모 모양", "지그재그 모양"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 계단을 오르는 것처럼 한 칸씩 움직이니까 계단 모양이 그려져요. ↗️ 규칙에 따라 움직이는 상상력!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_5",
+    "subject": "math",
+    "question": "각이 없는 동그란 도형의 이름은 무엇일까요?",
+    "options": ["원", "타원", "삼각형", "사각형"],
+    "correctIndex": 0,
+    "explanation": "뾰족한 각이 하나도 없는 매끄러운 도형은 바로 원! 🏀 공, 바퀴 등 우리 주변에 많이 있어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_6",
+    "subject": "math",
+    "question": "직사각형 모양의 종이를 대각선으로 한 번 자르면 어떤 도형 2개가 생길까요?",
+    "options": ["직각삼각형", "정삼각형", "이등변삼각형", "사각형"],
+    "correctIndex": 0,
+    "explanation": "직사각형의 마주 보는 꼭짓점을 이어서 자르면 똑같이 생긴 직각삼각형 2개가 만들어져요! ✂️ 도형을 나누고 합치는 능력이 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_7",
+    "subject": "math",
+    "question": "축구공은 어떤 입체 도형과 가장 비슷한 모양일까요?",
+    "options": ["구", "원", "원기둥", "정육면체"],
+    "correctIndex": 0,
+    "explanation": "공처럼 완전히 둥근 입체 도형을 '구'라고 불러요. 원은 평면 도형이랍니다! ⚽️ 평면과 입체의 차이를 아는군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_8",
+    "subject": "math",
+    "question": "다음 중 나머지 셋과 모양이 다른 하나는? (교통 표지판, 피자 한 판, 동전, 주사위)",
+    "options": ["주사위", "교통 표지판", "피자 한 판", "동전"],
+    "correctIndex": 0,
+    "explanation": "나머지는 모두 평면에서 볼 때 원 모양에 가깝지만, 주사위는 네모난 입체 도형(정육면체)이에요! 🎲 관찰력이 정말 뛰어나요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_9",
+    "subject": "math",
+    "question": "세모, 세모, 네모, 네모, 동그라미, 동그라미... 다음 순서에 올 도형은?",
+    "options": ["세모", "네모", "동그라미", "별"],
+    "correctIndex": 0,
+    "explanation": "세모 2번, 네모 2번, 동그라미 2번... 규칙을 찾았나요? 다음엔 다시 세모가 2번 나올 차례! 🧐 패턴을 완벽하게 읽었네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_6_10",
+    "subject": "math",
+    "question": "깡통이나 휴지심 같은 모양의 입체 도형 이름은 무엇일까요?",
+    "options": ["원기둥", "원뿔", "구", "사각기둥"],
+    "correctIndex": 0,
+    "explanation": "위아래가 동그랗고 기둥처럼 생긴 도형은 바로 원기둥! 🥫 우리 주변의 도형에 이름을 붙여줘요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_1",
+    "subject": "math",
+    "question": "🔢 나는 두 자리 수예요. 십의 자리 숫자는 7이고, 3으로 나누어떨어져요. 나는 누구일까요?",
+    "options": ["72, 75, 78", "70, 73, 76", "77", "71, 74, 77"],
+    "correctIndex": 0,
+    "explanation": "십의 자리가 7인 수 중 3의 배수를 찾아봐요. 72(7+2=9), 75(7+5=12), 78(7+8=15)! 모두 3의 배수네요. 🕵️‍♂️ 숫자 탐정의 날카로운 추리!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_2",
+    "subject": "math",
+    "question": "🔢 숫자 카드 4, 0, 5, 1을 한 번씩만 사용해서 만들 수 있는 가장 작은 네 자리 수는 무엇일까요?",
+    "options": ["1045", "0145", "5410", "1054"],
+    "correctIndex": 0,
+    "explanation": "가장 작은 수를 만들려면 천의 자리에 0을 빼고 가장 작은 수(1)를! 다음 백의 자리에 남은 수 중 가장 작은 수(0)를 놓아요. 그래서 1045! 🧐 함정을 잘 피했어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_3",
+    "subject": "math",
+    "question": "500원짜리 동전 2개와 100원짜리 동전 3개를 합치면 얼마일까요?",
+    "options": ["1300원", "1000원", "800원", "1500원"],
+    "correctIndex": 0,
+    "explanation": "500×2=1000원, 100×3=300원. 합치면 1000+300=1300원! 💰 동전 계산도 척척!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_4",
+    "subject": "math",
+    "question": "나는 40보다 크고 50보다 작은 수예요. 일의 자리 숫자가 십의 자리 숫자보다 3이 더 커요. 나는 누구일까요?",
+    "options": ["47", "41", "36", "52"],
+    "correctIndex": 0,
+    "explanation": "40과 50 사이니까 십의 자리는 4. 일의 자리는 십의 자리 4보다 3이 크니까 4+3=7. 나는 47! 🧩 수수께끼를 완벽하게 풀었어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_5",
+    "subject": "math",
+    "question": "두 자리 수 중에서 짝수이면서 5의 배수인 수는 모두 몇 개일까요?",
+    "options": ["9개", "10개", "18개", "20개"],
+    "correctIndex": 0,
+    "explanation": "5의 배수는 일의 자리가 0 또는 5예요. 그중 짝수이려면 일의 자리가 0이어야 해요! 10, 20, 30... 90까지 모두 9개! 🌟 조건을 모두 만족하는 답을 잘 찾네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_6",
+    "subject": "math",
+    "question": "1부터 5까지의 숫자를 한 번씩만 더해서 만들 수 있는 가장 큰 수는 무엇일까요? (1+2+3+4+5 = ?)",
+    "options": ["15", "14", "16", "10"],
+    "correctIndex": 0,
+    "explanation": "1+5=6, 2+4=6, 가운데 3을 더하면 6+6+3=15! 이렇게 짝을 지어 더하면 빨라요. 🎯 계산의 달인!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_7",
+    "subject": "math",
+    "question": "나는 세 자리 수예요. 각 자리 숫자의 합은 3이고, 100에 가장 가까운 수예요. 나는 누구일까요?",
+    "options": ["102", "111", "201", "300"],
+    "correctIndex": 0,
+    "explanation": "각 자리 숫자의 합이 3인 수는 102, 111, 120, 201, 210, 300... 이 중에서 100에 가장 가까운 수는 102! 👍 최고의 전략가!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_8",
+    "subject": "math",
+    "question": "주사위를 두 번 던져서 나온 눈의 수를 곱했어요. 곱한 값이 될 수 없는 것은 무엇일까요?",
+    "options": ["7", "6", "12", "25"],
+    "correctIndex": 0,
+    "explanation": "주사위 눈(1~6)을 곱해서 6(1×6), 12(2×6), 25(5×5)는 만들 수 있지만, 7은 만들 수 없어요! 🎲 주사위의 비밀을 알고 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_9",
+    "subject": "math",
+    "question": "10부터 20까지의 수 중에서 홀수는 모두 몇 개일까요?",
+    "options": ["5개", "6개", "10개", "11개"],
+    "correctIndex": 0,
+    "explanation": "11, 13, 15, 17, 19! 손가락으로 세어봐도 5개! 💡 꼼꼼하게 잘 세었어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_7_10",
+    "subject": "math",
+    "question": "369, 369 게임! 30부터 50까지의 수 중에서 박수를 두 번 쳐야 하는 수는 무엇일까요?",
+    "options": ["33, 36, 39", "30, 31, 32", "43, 46, 49", "33만 있다"],
+    "correctIndex": 0,
+    "explanation": "33(짝짝), 36(짝짝), 39(짝짝)! 3, 6, 9가 두 번 들어가거나 30, 33처럼 3,6,9가 포함된 십의 자리 수와 3,6,9가 같이 있는 경우에 박수를 두번쳐요! 👏 게임의 규칙을 완벽히 이해했어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_1",
+    "subject": "math",
+    "question": "🤔 빨강, 파랑, 노랑 공이 하나씩 있어요. '내 공은 파랑색이 아니야'라고 말한 친구와 '내 공은 빨강색이야'라고 말한 친구가 있다면, 아무 말도 안 한 친구의 공은 무슨 색일까요?",
+    "options": ["파랑색", "빨강색", "노랑색", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "빨강색 공의 주인은 정해졌어요. '파랑색이 아니야'라고 한 친구는 노랑색 공을 가졌겠네요. 그럼 남은 파랑색 공이 아무 말 안 한 친구의 것! 🕵️‍♂️ 논리적으로 범인을 찾았어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_2",
+    "subject": "math",
+    "question": "A, B, C 세 사람이 달리기를 했어요. A는 B보다 빨랐고, C는 A보다 빨랐어요. 1등은 누구일까요?",
+    "options": ["C", "A", "B", "모두 1등"],
+    "correctIndex": 0,
+    "explanation": "B < A, A < C. 순서대로 나열하면 B < A < C! 가장 빠른 사람은 C! 🏃‍♀️ 순서를 논리적으로 잘 배열했네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_3",
+    "subject": "math",
+    "question": "오늘은 내 생일 3일 전이에요. 내 생일이 금요일이라면, 오늘은 무슨 요일일까요?",
+    "options": ["화요일", "수요일", "목요일", "월요일"],
+    "correctIndex": 0,
+    "explanation": "생일(금) -> 하루 전(목) -> 이틀 전(수) -> 3일 전(화)! 오늘은 화요일이네요! 🎉 생일이 정말 기다려지겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_4",
+    "subject": "math",
+    "question": "강아지, 고양이, 햄스터가 있어요. 강아지는 고양이보다 무겁고, 햄스터는 고양이보다 가벼워요. 가장 가벼운 동물은?",
+    "options": ["햄스터", "고양이", "강아지", "알 수 없다"],
+    "correctIndex": 0,
+    "explanation": "햄스터 < 고양이, 고양이 < 강아지. 순서대로 나열하면 햄스터 < 고양이 < 강아지! 가장 가벼운 동물은 햄스터! 🐹 귀여운 동물 친구들이네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_5",
+    "subject": "math",
+    "question": "오른손에 동전을 쥐고 '내 말은 거짓말이야'라고 말했어요. 이 사람의 말은 참일까요, 거짓일까요?",
+    "options": ["알 수 없다", "참이다", "거짓이다", "동전이 없다"],
+    "correctIndex": 0,
+    "explanation": "어려운 문제! 만약 이 말이 참이라면, '내 말은 거짓말'이라는 내용 때문에 거짓이 돼요. 거짓이라면, '내 말은 거짓말'의 반대니까 참이 돼요. 계속 돌고 돌죠? 이런 걸 '역설'이라고 해요! 🧠 생각의 함정에 빠졌네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_6",
+    "subject": "math",
+    "question": "의사 한 명이 환자 3명에게 3분마다 약을 한 알씩 주려고 해요. 3명 모두에게 약을 주는 데 걸리는 최소 시간은?",
+    "options": ["0분 (동시에 준다)", "3분", "6분", "9분"],
+    "correctIndex": 0,
+    "explanation": "똑똑한데요! 3명에게 약을 동시에 '하나, 둘, 셋!' 하고 나누어주면 시간이 전혀 걸리지 않아요! 💡 고정관념을 깬 멋진 생각!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_7",
+    "subject": "math",
+    "question": "어두운 방에 흰 양말 10짝, 검은 양말 10짝이 섞여 있어요. 눈을 감고 양말을 꺼낼 때, 똑같은 색깔의 양말 한 켤레를 가지려면 최소 몇 짝을 꺼내야 할까요?",
+    "options": ["3짝", "2짝", "11짝", "20짝"],
+    "correctIndex": 0,
+    "explanation": "최악의 경우를 생각해요! 첫 번째 흰색, 두 번째 검은색을 꺼냈다면? 세 번째는 흰색이든 검은색이든 무조건 한 켤레가 완성돼요! 🧦 논리적인 생각이 빛나네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_8",
+    "subject": "math",
+    "question": "아빠, 엄마, 나, 동생이 한 줄로 서서 사진을 찍으려고 해요. 아빠가 항상 맨 앞에 서야 한다면, 줄을 설 수 있는 방법은 총 몇 가지일까요?",
+    "options": ["6가지", "24가지", "4가지", "12가지"],
+    "correctIndex": 0,
+    "explanation": "아빠는 고정! 엄마, 나, 동생 3명이 줄 서는 방법은 3×2×1=6가지예요. (엄마-나-동생, 엄마-동생-나 등) 📸 가족사진 예쁘게 찍어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_9",
+    "subject": "math",
+    "question": "항아리에 물이 절반 차 있었는데, 다음 날 보니 그 절반이 또 줄었어요. 얼마나 남았을까요?",
+    "options": ["처음 양의 1/4", "사라졌다", "처음 양의 1/2", "가득 찼다"],
+    "correctIndex": 0,
+    "explanation": "절반(1/2)의 절반(1/2)은 1/4! 처음 양의 1/4만큼 남았네요. 🏺 분수를 잘 이해하고 있군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_8_10",
+    "subject": "math",
+    "question": "사과 5개가 있었는데, 내가 2개를 가져갔어요. 나에게는 몇 개의 사과가 있을까요?",
+    "options": ["2개", "3개", "5개", "0개"],
+    "correctIndex": 0,
+    "explanation": "헷갈리는 문제! 다른 사람에게 준 게 아니라 '내가' 가져갔으니 나에게는 2개가 있어요. 🍎 문제를 끝까지 잘 읽는군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_1",
+    "subject": "math",
+    "question": "어떤 수에 25를 더했더니 70이 되었어요. 어떤 수는 얼마일까요?",
+    "options": ["45", "95", "55", "50"],
+    "correctIndex": 0,
+    "explanation": "거꾸로! 70에서 25를 빼면 원래 수가 나와요. 70 - 25 = 45! 🔄 거꾸로 계산하기의 달인!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_2",
+    "subject": "math",
+    "question": "내 과자 봉지에서 친구가 12개를 가져갔더니 18개가 남았어요. 원래 과자는 몇 개였을까요?",
+    "options": ["30개", "6개", "18개", "20개"],
+    "correctIndex": 0,
+    "explanation": "친구가 가져가기 전으로! 18개에 12개를 더하면 원래 개수가 나와요. 18 + 12 = 30개! 😋 친구랑 사이좋게 나눠 먹어요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_3",
+    "subject": "math",
+    "question": "어떤 수를 9로 나누었더니 몫이 5가 나왔어요. 나누어떨어졌다면 어떤 수는 무엇일까요?",
+    "options": ["45", "14", "4", "54"],
+    "correctIndex": 0,
+    "explanation": "나누기를 거꾸로 하면 곱하기! 5 × 9 = 45. 원래 수는 45였네요. 💡 생각의 방향을 바꾸니 쉽죠?",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_4",
+    "subject": "math",
+    "question": "가지고 있던 스티커의 3배를 선물 받았더니 24개가 되었어요. 원래 스티커는 몇 개였을까요?",
+    "options": ["8개", "21개", "27개", "12개"],
+    "correctIndex": 0,
+    "explanation": "3배가 되기 전으로! 24개를 3으로 나누면 원래 개수가 나와요. 24 ÷ 3 = 8개! ✨ 예쁜 스티커가 많아졌네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_5",
+    "subject": "math",
+    "question": "어떤 수에서 5를 곱하고 10을 더했더니 50이 되었어요. 어떤 수는?",
+    "options": ["8", "10", "12", "6"],
+    "correctIndex": 0,
+    "explanation": "모든 계산을 거꾸로! 50에서 10을 빼면 40. 40을 5로 나누면 8! 🧠 복잡한 과정도 되돌릴 수 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_6",
+    "subject": "math",
+    "question": "물통에 물이 있었는데 200ml를 마시고 300ml를 더 부었더니 800ml가 되었어요. 원래 있던 물은 몇 ml?",
+    "options": ["700ml", "1300ml", "500ml", "600ml"],
+    "correctIndex": 0,
+    "explanation": "거꾸로! 800에서 300을 빼고, 마셨던 200을 더해요! 800-300=500, 500+200=700ml! 💧 꼼꼼하게 잘 생각했어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_7",
+    "subject": "math",
+    "question": "오늘 줄넘기를 어제보다 50개 더 해서 120개를 했어요. 어제는 몇 개를 했을까요?",
+    "options": ["70개", "170개", "100개", "50개"],
+    "correctIndex": 0,
+    "explanation": "더하기 전으로! 120에서 오늘 더 한 50개를 빼면 어제 한 개수가 나와요. 120 - 50 = 70개! 💪 운동을 정말 열심히 하는군요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_8",
+    "subject": "math",
+    "question": "어떤 수의 2배는 50보다 10이 더 작아요. 어떤 수는 무엇일까요?",
+    "options": ["20", "40", "25", "30"],
+    "correctIndex": 0,
+    "explanation": "50보다 10 작은 수는 40. 어떤 수의 2배가 40이니까, 어떤 수는 40 ÷ 2 = 20! 🧩 수수께끼를 푸는 것 같아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_9",
+    "subject": "math",
+    "question": "두 수를 더했더니 15, 곱했더니 50이 나왔어요. 두 수는 무엇과 무엇일까요?",
+    "options": ["5와 10", "7와 8", "3와 12", "1와 14"],
+    "correctIndex": 0,
+    "explanation": "곱해서 50이 되는 조합을 생각해봐요. 1×50, 2×25, 5×10... 이 중에서 더해서 15가 되는 것은 5와 10! 🤯 멋진 추리력이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_9_10",
+    "subject": "math",
+    "question": "내 나이를 2로 나누고 5를 더하면 10살이 돼요. 내 나이는 몇 살일까요?",
+    "options": ["10살", "15살", "5살", "20살"],
+    "correctIndex": 0,
+    "explanation": "거꾸로! 10에서 5를 빼면 5. 5에 2를 곱하면 10! 내 나이는 10살이네요. 🎂 나이도 수학으로 풀 수 있어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_1",
+    "subject": "math",
+    "question": "티셔츠 3벌과 바지 2벌이 있어요. 서로 다르게 짝을 지어 입을 수 있는 방법은 총 몇 가지일까요?",
+    "options": ["6가지", "5가지", "3가지", "2가지"],
+    "correctIndex": 0,
+    "explanation": "티셔츠 하나당 바지 2벌씩 입을 수 있어요. 티셔츠가 3벌이니까 3 × 2 = 6가지! 👕 멋진 패션 센스!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_2",
+    "subject": "math",
+    "question": "500원짜리 동전 1개, 100원짜리 동전 2개, 50원짜리 동전 3개가 있어요. 내가 가진 돈은 모두 얼마일까요?",
+    "options": ["850원", "750원", "800원", "950원"],
+    "correctIndex": 0,
+    "explanation": "500원 + (100×2) + (50×3) = 500 + 200 + 150 = 850원! 💰 동전 부자가 되었네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_3",
+    "subject": "math",
+    "question": "한 줄에 5명씩 4줄로 서 있었는데, 2명이 다른 곳으로 갔어요. 지금은 총 몇 명이 서 있을까요?",
+    "options": ["18명", "20명", "22명", "10명"],
+    "correctIndex": 0,
+    "explanation": "처음 인원은 5 × 4 = 20명. 2명이 갔으니 20 - 2 = 18명! 🚶‍♂️🚶‍♀️ 질서를 잘 지키는군요.",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_4",
+    "subject": "math",
+    "question": "일주일에 2번씩 수영을 배우기로 했어요. 4주 동안 총 몇 번 수영장에 갈까요?",
+    "options": ["8번", "6번", "10번", "28번"],
+    "correctIndex": 0,
+    "explanation": "일주일에 2번씩 4주 동안 가니까 2 × 4 = 8번! 🏊‍♂️ 꾸준히 하면 수영 실력이 쑥쑥 늘 거예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_5",
+    "subject": "math",
+    "question": "2000원을 내고 700원짜리 과자 2개를 샀어요. 거스름돈은 얼마일까요?",
+    "options": ["600원", "1400원", "1300원", "500원"],
+    "correctIndex": 0,
+    "explanation": "과자 값은 700 × 2 = 1400원. 거스름돈은 2000 - 1400 = 600원! 🛒 계획적인 소비, 멋져요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_6",
+    "subject": "math",
+    "question": "우리 반 학생 25명이 5명씩 한 조를 이루어 보물찾기를 해요. 총 몇 개의 조가 만들어질까요?",
+    "options": ["5조", "20조", "30조", "6조"],
+    "correctIndex": 0,
+    "explanation": "25명을 5명씩 나누면 되니까 25 ÷ 5 = 5조! 💎 보물을 꼭 찾길 바라요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_7",
+    "subject": "math",
+    "question": "연필 12자루가 들어있는 연필 한 다스와 낱개 5자루가 있어요. 연필은 총 몇 자루일까요?",
+    "options": ["17자루", "125자루", "60자루", "7자루"],
+    "correctIndex": 0,
+    "explanation": "한 다스는 12자루! 12자루에 5자루를 더하면 17자루! ✏️ 단위를 잘 알고 있네요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_8",
+    "subject": "math",
+    "question": "하루에 30분씩 책을 읽기로 약속했어요. 3일 동안 책 읽는 시간은 총 몇 분일까요?",
+    "options": ["90분 (1시간 30분)", "60분 (1시간)", "33분", "120분 (2시간)"],
+    "correctIndex": 0,
+    "explanation": "하루에 30분씩 3일이면 30 × 3 = 90분! 90분은 1시간 30분과 같아요. 📚 훌륭한 습관이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_9",
+    "subject": "math",
+    "question": "토끼 우리에 토끼 다리가 20개 보였어요. 우리 안에는 토끼가 몇 마리 있을까요? (토끼 다리는 4개)",
+    "options": ["5마리", "4마리", "10마리", "20마리"],
+    "correctIndex": 0,
+    "explanation": "전체 다리 수 20개를 토끼 한 마리 다리 수 4개로 나누면 20 ÷ 4 = 5마리! 🐰 토끼들이 정말 귀엽겠어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "math_normal_10_10",
+    "subject": "math",
+    "question": "초밥 한 접시에 초밥이 2개씩 있어요. 3명이 가서 각각 4접시씩 먹었다면, 먹은 초밥은 총 몇 개일까요?",
+    "options": ["24개", "12개", "18개", "30개"],
+    "correctIndex": 0,
+    "explanation": "한 사람이 2×4=8개씩 먹었어요. 3명이니까 8×3=24개! 🍣 단계별로 차근차근 잘 풀었네요!",
+    "difficulty": 2
+  }
+]

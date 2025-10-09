@@ -1,0 +1,902 @@
+[
+  {
+    "id": "people_easy_1_1",
+    "subject": "people",
+    "question": "🔬 실험실 탐험! 사과가 떨어지는 걸 보고 중력을 생각해낸 과학자는 누구일까요?",
+    "options": ["아이작 뉴턴", "알베르트 아인슈타인", "찰스 다윈", "마리 퀴리"],
+    "correctIndex": 0,
+    "explanation": "뉴턴은 사과가 떨어지는 걸 보고 ‘중력’을 생각해냈어요! 🍎 지구가 물체를 당기는 힘이랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_2",
+    "subject": "people",
+    "question": "💡 전구를 발명한 사람은 누구일까요?",
+    "options": ["토머스 에디슨", "니콜라 테슬라", "알렉산더 그레이엄 벨", "라이트 형제"],
+    "correctIndex": 0,
+    "explanation": "에디슨은 수천 번 실험 끝에 전구를 발명했어요! 💡 ‘실패는 성공의 어머니’라고 했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_3",
+    "subject": "people",
+    "question": "📱 전화기를 만든 사람은 누구일까요?",
+    "options": ["알렉산더 그레이엄 벨", "에디슨", "다빈치", "갈릴레오"],
+    "correctIndex": 0,
+    "explanation": "벨은 첫 전화 통화에서 ‘왓슨, 여기로 와요!’라고 말했어요! 📞 지금 우리가 통화할 수 있는 건 그 덕분이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_4",
+    "subject": "people",
+    "question": "🪐 망원경으로 달과 행성을 관찰한 과학자는 누구일까요?",
+    "options": ["갈릴레오 갈릴레이", "뉴턴", "코페르니쿠스", "아인슈타인"],
+    "correctIndex": 0,
+    "explanation": "갈릴레오는 망원경으로 달의 산과 목성의 위성을 발견했어요! 🔭 ‘지구가 태양 주위를 돈다’고 주장했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_5",
+    "subject": "people",
+    "question": "🧬 유전의 법칙을 발견한 사람은 누구일까요?",
+    "options": ["멘델", "다윈", "퀴리", "파스퇴르"],
+    "correctIndex": 0,
+    "explanation": "멘델은 완두콩을 키우며 유전 법칙을 알아냈어요! 🌱 부모의 특징이 자식에게 어떻게 전해지는지 밝혀냈답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_6",
+    "subject": "people",
+    "question": "💉 병균을 죽이는 백신을 연구한 과학자는 누구일까요?",
+    "options": ["루이 파스퇴르", "플로렌스 나이팅게일", "마리 퀴리", "다빈치"],
+    "correctIndex": 0,
+    "explanation": "파스퇴르는 병균이 병을 일으킨다는 걸 증명하고, 백신을 만들었어요! 💉 우유를 살균하는 ‘파스퇴르 살균법’도 그가 만들었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_7",
+    "subject": "people",
+    "question": "✈️ 처음으로 비행기를 날린 사람은 누구일까요?",
+    "options": ["라이트 형제", "에디슨", "테슬라", "벨"],
+    "correctIndex": 0,
+    "explanation": "라이트 형제는 1903년 처음으로 사람이 탄 비행기를 날렸어요! 🛫 ‘플라이어 1호’로 12초 동안 날았답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_8",
+    "subject": "people",
+    "question": "🎨 과학자이자 화가였던 르네상스 시대 천재는 누구일까요?",
+    "options": ["레오나르도 다빈치", "뉴턴", "멘델", "갈릴레오"],
+    "correctIndex": 0,
+    "explanation": "다빈치는 ‘모나리자’를 그린 화가이자, 비행기 아이디어도 그린 과학자였어요! 🕊️ 모든 분야에 호기심이 많았답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_9",
+    "subject": "people",
+    "question": "☢️ 방사능을 연구한 여성 과학자는 누구일까요?",
+    "options": ["마리 퀴리", "플로렌스 나이팅게일", "로자 파크스", "헬렌 켈러"],
+    "correctIndex": 0,
+    "explanation": "마리 퀴리는 방사능을 연구해 노벨상을 두 번 받은 최초의 여성이에요! ☢️ 실험실에서 평생 과학을 했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_1_10",
+    "subject": "people",
+    "question": "🧫 미생물을 처음 관찰한 과학자는 누구일까요?",
+    "options": ["안토니 반 레우벤훅", "파스퇴르", "멘델", "다윈"],
+    "correctIndex": 0,
+    "explanation": "레우벤훅은 직접 만든 현미경으로 ‘미생물’을 처음 본 사람이에요! 🦠 ‘작은 동물들’이라고 불렀답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_1",
+    "subject": "people",
+    "question": "🇰🇷 한글을 만든 임금님은 누구일까요?",
+    "options": ["세종대왕", "이순신", "강감찬", "유관순"],
+    "correctIndex": 0,
+    "explanation": "세종대왕은 백성들이 쉽게 글을 읽고 쓰게 하려고 한글을 만들었어요! 📖 ‘훈민정음’이라는 이름으로 세상에 내놓았답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_2",
+    "subject": "people",
+    "question": "⚔️ 거북선으로 왜군을 물리친 장군은 누구일까요?",
+    "options": ["이순신", "세종대왕", "을지문덕", "김유신"],
+    "correctIndex": 0,
+    "explanation": "이순신 장군은 거북선을 만들어 바다에서 왜군을 이겼어요! 🐢 ‘필승’이라는 말을 남겼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_3",
+    "subject": "people",
+    "question": "📚 조선 시대에 백과사전 같은 책을 만든 학자는 누구일까요?",
+    "options": ["정약용", "세종대왕", "이이", "이황"],
+    "correctIndex": 0,
+    "explanation": "정약용은 ‘목민심서’와 ‘흠흠신서’를 써서 백성과 기술을 생각했어요! 📚 실학을 펼친 대표 학자랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_4",
+    "subject": "people",
+    "question": "🌸 신라 시대 삼국을 하나로 만든 장군은 누구일까요?",
+    "options": ["김유신", "이순신", "강감찬", "을지문덕"],
+    "correctIndex": 0,
+    "explanation": "김유신은 신라가 백제와 고구려를 이기고 통일하도록 도운 장군이에요! ⚔️ 문무왕과 함께 삼국통일을 이뤘답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_5",
+    "subject": "people",
+    "question": "🛡️ 고구려에서 수나라 군대를 막아낸 장군은 누구일까요?",
+    "options": ["을지문덕", "강감찬", "이순신", "김유신"],
+    "correctIndex": 0,
+    "explanation": "을지문덕은 ‘살수대첩’에서 수나라 군대를 크게 이겼어요! 🏞️ ‘을지문덕가’라는 시도 남겼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_6",
+    "subject": "people",
+    "question": "🕊️ 고려 시대에 몽골과 싸우며 나라를 지킨 장군은 누구일까요?",
+    "options": ["강감찬", "이순신", "김유신", "을지문덕"],
+    "correctIndex": 0,
+    "explanation": "강감찬은 귀주대첩에서 거란군을 물리쳤어요! 🛡️ ‘천리장성’을 쌓아 나라를 지켰답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_7",
+    "subject": "people",
+    "question": "🇰🇷 일제 강점기 때 독립을 외친 여성 독립운동가는 누구일까요?",
+    "options": ["유관순", "안중근", "윤봉길", "김구"],
+    "correctIndex": 0,
+    "explanation": "유관순 열사는 16세에 만세 운동을 이끌었어요! 🇰🇷 ‘대한독립만세!’를 외치며 용감하게 싸웠답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_8",
+    "subject": "people",
+    "question": "🇰🇷 한글로 된 최초의 소설을 쓴 작가는 누구일까요?",
+    "options": ["허균", "이순신", "세종대왕", "정약용"],
+    "correctIndex": 0,
+    "explanation": "허균은 ‘홍길동전’을 써서 평등한 세상을 꿈꿨어요! 📖 한국 최초의 한글 소설이랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_9",
+    "subject": "people",
+    "question": "🇰🇷 조선 시대에 천문 시계를 만든 과학자는 누구일까요?",
+    "options": ["장영실", "정약용", "세종대왕", "이순신"],
+    "correctIndex": 0,
+    "explanation": "장영실은 자격루(물시계)와 천문 기구를 만들었어요! ⏳ 신분은 낮았지만, 재능으로 나라를 도왔답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_2_10",
+    "subject": "people",
+    "question": "🇰🇷 조선 시대에 ‘천지인’ 사상으로 백성을 사랑한 사상가는 누구일까요?",
+    "options": ["이이", "이황", "정약용", "허균"],
+    "correctIndex": 0,
+    "explanation": "이이(율곡)는 ‘백성은 하늘과 같고, 땅과 같고, 부모와 같다’고 했어요! 🌾 백성을 가장 소중히 여겼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_1",
+    "subject": "people",
+    "question": "🇺🇸 미국 독립 선언을 이끈 지도자는 누구일까요?",
+    "options": ["조지 워싱턴", "나폴레옹", "링컨", "켄터키"],
+    "correctIndex": 0,
+    "explanation": "조지 워싱턴은 미국 초대 대통령이자 독립 전쟁의 영웅이에요! 🇺🇸 ‘국부’로 불린답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_2",
+    "subject": "people",
+    "question": "🕊️ 인도의 독립을 평화적으로 이끈 지도자는 누구일까요?",
+    "options": ["마하트마 간디", "넬슨 만델라", "마틴 루터 킹", "레닌"],
+    "correctIndex": 0,
+    "explanation": "간디는 ‘비폭력 저항’으로 인도를 영국으로부터 독립시켰어요! 🕊️ 소금행진으로 유명하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_3",
+    "subject": "people",
+    "question": "🇺🇸 노예 해방을 선언한 미국 대통령은 누구일까요?",
+    "options": ["إبراه암 링컨", "워싱턴", "루즈벨트", "켄터키"],
+    "correctIndex": 0,
+    "explanation": "링컨은 ‘노예 해방 선언’으로 흑인 노예를 자유롭게 했어요! 🕊️ 미국을 하나로 지키려 애썼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_4",
+    "subject": "people",
+    "question": "🇿🇦 인종 차별을 없앤 남아공 대통령은 누구일까요?",
+    "options": ["넬슨 만델라", "간디", "마틴 루터 킹", "케네디"],
+    "correctIndex": 0,
+    "explanation": "만델라는 27년 감옥 생활 끝에 인종 차별을 없애고 대통령이 됐어요! 🌍 ‘용서와 화해’의 상징이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_5",
+    "subject": "people",
+    "question": "🇺🇸 흑인 인권 운동을 이끈 목사는 누구일까요?",
+    "options": ["마틴 루터 킹", "오바마", "맬컴 X", "링컨"],
+    "correctIndex": 0,
+    "explanation": "마틴 루터 킹은 ‘나에게 꿈이 있습니다’ 연설로 인권을 외쳤어요! ✊ 비폭력으로 평등을 요구했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_6",
+    "subject": "people",
+    "question": "🇫🇷 프랑스 혁명을 이끈 여성은 누구일까요?",
+    "options": ["올랭프 드 구주", "마리 앙투아네트", "조지 샌드", "클레멘스"],
+    "correctIndex": 0,
+    "explanation": "올랭프 드 구주는 ‘여성도 인권이 있다’고 외쳤어요! 🇫🇷 프랑스 혁명 때 여성 인권을 주장한 용감한 인물이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_7",
+    "subject": "people",
+    "question": "🇨🇳 중국을 통일한 첫 황제는 누구일까요?",
+    "options": ["진시황", "공자", "모택동", "손문"],
+    "correctIndex": 0,
+    "explanation": "진시황은 중국을 처음으로 통일하고 만리장성을 만들기 시작했어요! 🏯 병마용으로 유명하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_8",
+    "subject": "people",
+    "question": "🇯🇵 일본을 개국시킨 미국 해군 제독은 누구일까요?",
+    "options": ["매튜 페리", "맥아더", "루즈벨트", "켄터키"],
+    "correctIndex": 0,
+    "explanation": "페리는 검은 배(흑선)을 타고 일본에 도착해 문을 열게 했어요! ⚓ ‘흑선 내항’ 사건이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_9",
+    "subject": "people",
+    "question": "🇰🇷 대한민국 임시 정부를 이끈 독립운동가는 누구일까요?",
+    "options": ["김구", "안중근", "유관순", "이봉창"],
+    "correctIndex": 0,
+    "explanation": "김구 선생은 ‘백범일지’를 쓰며 평생 독립을 위해 싸웠어요! 🇰🇷 임시 정부 주석으로 활동했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_3_10",
+    "subject": "people",
+    "question": "🇰🇷 3·1 운동 때 독립선언서를 읽은 인물은 누구일까요?",
+    "options": ["한용운", "유관순", "안중근", "윤봉길"],
+    "correctIndex": 0,
+    "explanation": "한용운 스님은 탑골공원에서 독립선언서를 낭독했어요! 🕊️ ‘우리가 오늘 조선의 독립을 선언하노라!’",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_1",
+    "subject": "people",
+    "question": "🎨 ‘별이 빛나는 밤’을 그린 화가는 누구일까요?",
+    "options": ["빈센트 반 고흐", "피카소", "모네", "다빈치"],
+    "correctIndex": 0,
+    "explanation": "고흐는 별이 빛나는 밤하늘을 강한 붓터치로 그렸어요! 🌌 마음을 그림에 담은 화가랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_2",
+    "subject": "people",
+    "question": "🎹 ‘엘리제를 위하여’를 작곡한 음악가는 누구일까요?",
+    "options": ["베토벤", "모차르트", "바흐", "차이코프스키"],
+    "correctIndex": 0,
+    "explanation": "베토벤은 귀가 안 들려도 위대한 음악을 만들었어요! 🎼 ‘교향곡 9번’도 그가 작곡했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_3",
+    "subject": "people",
+    "question": "🎨 ‘모나리자’를 그린 화가는 누구일까요?",
+    "options": ["레오나르도 다빈치", "고흐", "피카소", "르누아르"],
+    "correctIndex": 0,
+    "explanation": "다빈치는 미소가 신비로운 ‘모나리자’를 그렸어요! 😊 이 그림은 지금도 프랑스 루브르 박물관에 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_4",
+    "subject": "people",
+    "question": "🎹 5살에 작곡을 시작한 천재 음악가는 누구일까요?",
+    "options": ["모차르트", "베토벤", "하이든", "쇼팽"],
+    "correctIndex": 0,
+    "explanation": "모차르트는 어릴 때부터 피아노를 치고 작곡했어요! 🎵 ‘피가로의 결혼’도 그가 만들었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_5",
+    "subject": "people",
+    "question": "🎨 ‘우산’을 그린 인상파 화가는 누구일까요?",
+    "options": ["르누아르", "모네", "고흐", "피카소"],
+    "correctIndex": 0,
+    "explanation": "르누아르는 사람들의 행복한 모습을 밝은 색으로 그렸어요! ☂️ ‘우산’은 파리 거리의 일상을 담았답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_6",
+    "subject": "people",
+    "question": "🎨 ‘수련’ 시리즈로 유명한 화가는 누구일까요?",
+    "options": ["모네", "르누아르", "고흐", "다빈치"],
+    "correctIndex": 0,
+    "explanation": "모네는 자신의 정원 연못을 수십 번 그렸어요! 🌸 빛과 색의 변화를 표현한 인상파 대표 화가랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_7",
+    "subject": "people",
+    "question": "🎭 ‘햄릿’을 쓴 극작가는 누구일까요?",
+    "options": ["셰익스피어", "괴테", "톨스토이", "도스토옙스키"],
+    "correctIndex": 0,
+    "explanation": "셰익스피어는 ‘햄릿’, ‘로미오와 줄리엣’ 등 수많은 명작을 썼어요! 🎭 영국 문학의 거장이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_8",
+    "subject": "people",
+    "question": "🎨 입체파 화풍으로 유명한 화가는 누구일까요?",
+    "options": ["피카소", "모네", "고흐", "르누아르"],
+    "correctIndex": 0,
+    "explanation": "피카소는 사물을 여러 각도에서 한 화면에 그렸어요! 🧊 ‘게르니카’로 전쟁의 참상을 표현했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_9",
+    "subject": "people",
+    "question": "🎻 ‘사계’를 작곡한 음악가는 누구일까요?",
+    "options": ["비발디", "베토벤", "모차르트", "바흐"],
+    "correctIndex": 0,
+    "explanation": "비발디는 봄, 여름, 가을, 겨울을 음악으로 표현했어요! 🎻 ‘사계’는 지금도 많이 듣는 클래식이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_4_10",
+    "subject": "people",
+    "question": "🎨 ‘밤의 카페’를 그린 화가는 누구일까요?",
+    "options": ["빈센트 반 고흐", "모네", "피카소", "르누아르"],
+    "correctIndex": 0,
+    "explanation": "고흐는 밤의 카페를 강렬한 노란색과 파란색으로 그렸어요! ☕ 마음의 불안을 표현한 작품이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_1",
+    "subject": "people",
+    "question": "⚽ 브라질의 축구 왕은 누구일까요?",
+    "options": ["펠레", "메시", "호날두", "마라도나"],
+    "correctIndex": 0,
+    "explanation": "펠레는 17세에 월드컵에서 골을 넣으며 전설이 됐어요! ⚽ 세 번의 월드컵 우승을 이끌었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_2",
+    "subject": "people",
+    "question": "🏀 NBA에서 ‘신’이라 불리는 농구 선수는 누구일까요?",
+    "options": ["마이클 조던", "레브론 제임스", "코비 브라이언트", "샤킬 오닐"],
+    "correctIndex": 0,
+    "explanation": "마이클 조던은 시카고 불스에서 6번 우승했어요! 🏀 점프슛과 승부욕으로 ‘농구의 신’이라 불려요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_3",
+    "subject": "people",
+    "question": "🏃‍♂️ 100m 세계 기록을 가진 ‘번개’ 선수는 누구일까요?",
+    "options": ["우사인 볼트", "카를 루이스", "마이클 조던", "펠레"],
+    "correctIndex": 0,
+    "explanation": "우사인 볼트는 100m를 9.58초로 달려 ‘번개’라 불려요! ⚡ 자메이카 출신의 전설적인 스프린터랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_4",
+    "subject": "people",
+    "question": "🏊‍♀️ 올림픽에서 가장 많은 금메달을 딴 선수는 누구일까요?",
+    "options": ["마이클 펠프스", "우사인 볼트", "시몬 바일스", "나오미 오사카"],
+    "correctIndex": 0,
+    "explanation": "마이클 펠프스는 수영에서 23개의 금메달을 땄어요! 🏊‍♂️ 올림픽 역사상 가장 많은 메달을 딴 선수랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_5",
+    "subject": "people",
+    "question": "🇰🇷 한국 최초의 올림픽 금메달리스트는 누구일까요?",
+    "options": ["손기정", "황영조", "박태환", "김연아"],
+    "correctIndex": 0,
+    "explanation": "손기정은 1936년 베를린 올림픽 마라톤에서 금메달을 땄어요! 🏃‍♂️ 일제 강점기라 일본 국기 대신 소나무를 그렸답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_6",
+    "subject": "people",
+    "question": "🇰🇷 ‘피겨 여왕’이라 불리는 선수는 누구일까요?",
+    "options": ["김연아", "박태환", "이상화", "류현진"],
+    "correctIndex": 0,
+    "explanation": "김연아는 2010년 올림픽에서 금메달을 땄어요! 🥇 ‘퀸 유나’로 불리며 세계를 감동시켰답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_7",
+    "subject": "people",
+    "question": "⚽ 아르헨티나의 ‘축구 신’은 누구일까요?",
+    "options": ["마라도나", "메시", "펠레", "호날두"],
+    "correctIndex": 0,
+    "explanation": "마라도나는 ‘신의 손’ 골로 유명해요! ⚽ 1986년 월드컵에서 아르헨티나를 우승으로 이끌었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_8",
+    "subject": "people",
+    "question": "🎾 일본계 미국인으로 그랜드슬램 우승한 테니스 선수는 누구일까요?",
+    "options": ["나오미 오사카", "세레나 윌리엄스", "샤라포바", "케이트니"],
+    "correctIndex": 0,
+    "explanation": "나오미 오사카는 정신 건강을 중요하게 여기며 목소리를 냈어요! 🎾 여러 차례 그랜드슬램 우승했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_9",
+    "subject": "people",
+    "question": "🤸‍♀️ 올림픽 체조에서 ‘시몬 바일스’는 어떤 나라 선수일까요?",
+    "options": ["미국", "러시아", "중국", "일본"],
+    "correctIndex": 0,
+    "explanation": "시몬 바일스는 미국의 체조 선수로, 난이도 높은 기술로 유명해요! 🥇 정신 건강을 위해 경기를 포기한 용기도 보여줬답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_5_10",
+    "subject": "people",
+    "question": "🇰🇷 메이저리그에서 활약한 한국 투수는 누구일까요?",
+    "options": ["류현진", "박찬호", "김광현", "오승환"],
+    "correctIndex": 0,
+    "explanation": "류현진은 LA 다저스에서 사이영상 후보에 오르며 활약했어요! ⚾ ‘고속구 대신 변화구’로 승부했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_1",
+    "subject": "people",
+    "question": "🌍 최초로 지구를 한 바퀴 돈 탐험가는 누구일까요?",
+    "options": ["마젤란", "콜럼버스", "마르코 폴로", "제임스 쿡"],
+    "correctIndex": 0,
+    "explanation": "마젤란의 원정대가 처음으로 지구를 일주했어요! 🌍 마젤란은 중도에 죽었지만, 배는 돌아왔답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_2",
+    "subject": "people",
+    "question": "🌕 최초로 달에 착륙한 우주비행사는 누구일까요?",
+    "options": ["닐 암스트롱", "유리 가가린", "존 글렌", "이선 연"],
+    "correctIndex": 0,
+    "explanation": "닐 암스트롱은 1969년 달에 착륙하며 ‘인류의 한 걸음’을 남겼어요! 🌕 ‘이것은 한 사람의 작은 걸음이지만, 인류에게는 위대한 도약이다.’",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_3",
+    "subject": "people",
+    "question": "🌏 아메리카 대륙을 ‘발견’한 탐험가는 누구일까요?",
+    "options": ["콜럼버스", "마젤란", "바스코 다 가마", "제임스 쿡"],
+    "correctIndex": 0,
+    "explanation": "콜럼버스는 인도로 가려다 아메리카를 발견했어요! 🌎 하지만 원주민에게는 슬픈 시작이 됐답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_4",
+    "subject": "people",
+    "question": "🌊 최초로 우주에 간 사람은 누구일까요?",
+    "options": ["유리 가가린", "닐 암스트롱", "존 글렌", "설리번"],
+    "correctIndex": 0,
+    "explanation": "유리 가가린은 1961년 최초로 우주에 갔어요! 🚀 ‘지구는 푸르다!’라고 감탄했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_5",
+    "subject": "people",
+    "question": "🌏 실크로드를 따라 중국까지 간 이탈리아 탐험가는 누구일까요?",
+    "options": ["마르코 폴로", "콜럼버스", "마젤란", "제임스 쿡"],
+    "correctIndex": 0,
+    "explanation": "마르코 폴로는 17년 동안 중국을 여행했어요! 🐫 그의 책은 유럽에 동양을 알리는 데 큰 역할을 했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_6",
+    "subject": "people",
+    "question": "🇰🇷 최초의 우주비행사는 누구일까요?",
+    "options": ["이소연", "고산", "유영", "김수현"],
+    "correctIndex": 0,
+    "explanation": "이소연 박사는 2008년 러시아 우주선을 타고 우주에 갔어요! 🚀 한국 최초의 우주인이랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_7",
+    "subject": "people",
+    "question": "🌊 남극 대륙을 처음 발견한 탐험가는 누구일까요?",
+    "options": ["제임스 쿡", "마젤란", "콜럼버스", "다윈"],
+    "correctIndex": 0,
+    "explanation": "제임스 쿡은 남극 근처까지 항해하며 ‘남방 대륙’을 찾았어요! ❄️ 비록 상륙은 못 했지만, 탐험의 길을 열었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_8",
+    "subject": "people",
+    "question": "🌏 인도로 가는 바닷길을 처음 연 탐험가는 누구일까요?",
+    "options": ["바스코 다 가마", "마젤란", "콜럼버스", "마르코 폴로"],
+    "correctIndex": 0,
+    "explanation": "바스코 다 가마는 아프리카를 돌아 인도에 도착했어요! ⚓ 향신료 무역의 길을 열었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_9",
+    "subject": "people",
+    "question": "🌍 갈라파고스 제도에서 진화를 연구한 과학자는 누구일까요?",
+    "options": ["찰스 다윈", "멘델", "뉴턴", "갈릴레오"],
+    "correctIndex": 0,
+    "explanation": "다윈은 핀치새의 부리 모양을 보고 ‘진화론’을 생각해냈어요! 🐦 ‘종의 기원’이라는 책을 썼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_6_10",
+    "subject": "people",
+    "question": "👩‍🚀 최초의 여성 우주비행사는 누구일까요?",
+    "options": ["발렌티나 테레시코바", "샐리 라이드", "이소연", "크리스티나"],
+    "correctIndex": 0,
+    "explanation": "테레시코바는 1963년 소련에서 우주에 갔어요! 🌌 여성도 우주에 갈 수 있다는 걸 증명했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_1",
+    "subject": "people",
+    "question": "🦊 ‘흥부와 놀부’에서 제비를 도운 사람은 누구일까요?",
+    "options": ["흥부", "놀부", "흥부 아내", "놀부 아내"],
+    "correctIndex": 0,
+    "explanation": "흥부는 제비 다리를 고쳐주었어요! 🐦 그 덕분에 박 타래에서 보물을 얻었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_2",
+    "subject": "people",
+    "question": "🐰 ‘토끼와 거북이’에서 느리지만 이긴 동물은 누구일까요?",
+    "options": ["거북이", "토끼", "여우", "늑대"],
+    "correctIndex": 0,
+    "explanation": "거북이는 천천히 꾸준히 가서 이겼어요! 🐢 ‘서두르지 말고 끝까지 해라’라는 교훈이 담겼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_3",
+    "subject": "people",
+    "question": "🐺 ‘아기돼지 삼형제’에서 집을 잘 지은 형은 누구일까요?",
+    "options": ["돌로 지은 형", "나무로 지은 형", "짚으로 지은 형", "종이로 지은 형"],
+    "correctIndex": 0,
+    "explanation": "돌로 집을 지은 형은 늑대에게 안전했어요! 🏠 ‘준비를 잘 하면 위험을 피할 수 있다’는 교훈이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_4",
+    "subject": "people",
+    "question": "👸 ‘백설공주’에서 사과를 주는 사람은 누구일까요?",
+    "options": ["마녀", "왕비", "공주", "왕"],
+    "correctIndex": 0,
+    "explanation": "마녀는 질투에 사과에 독을 넣었어요! 🍎 하지만 진심 어린 키스로 백설공주는 깨어났답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_5",
+    "subject": "people",
+    "question": "👠 ‘신데렐라’에서 유리 구두를 잃어버린 사람은 누구일까요?",
+    "options": ["신데렐라", "마녀", "왕자", "언니들"],
+    "correctIndex": 0,
+    "explanation": "신데렐라는 자정에 도망가다 유리 구두를 잃어버렸어요! 👠 그 구두가 왕자를 그녀에게 이끌었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_6",
+    "subject": "people",
+    "question": "🐉 ‘선녀와 나무꾼’에서 하늘에서 내려온 사람은 누구일까요?",
+    "options": ["선녀", "나무꾼", "용왕", "도사"],
+    "correctIndex": 0,
+    "explanation": "선녀는 하늘에서 내려와 나무꾼과 사랑에 빠졌어요! 🕊️ 하지만 하늘로 돌아가야 했답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_7",
+    "subject": "people",
+    "question": "🦊 ‘선녀와 나무꾼’에서 도둑질한 물건은 무엇일까요?",
+    "options": ["날개옷", "보물", "거울", "신발"],
+    "correctIndex": 0,
+    "explanation": "나무꾼은 선녀의 날개옷을 숨겼어요! 🕊️ 그래서 선녀는 하늘로 돌아가지 못했답니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_8",
+    "subject": "people",
+    "question": "🐭 ‘미운 오리새끼’에서 결국 아름다운 새가 된 것은 누구일까요?",
+    "options": ["백조", "오리", "까마귀", "참새"],
+    "correctIndex": 0,
+    "explanation": "미운 오리새끼는 사실 백조였어요! 🦢 ‘다름은 나쁨이 아니다’라는 교훈이 담겼답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_9",
+    "subject": "people",
+    "question": "👑 ‘개구리 왕자’에서 공주가 만난 동물은 무엇일까요?",
+    "options": ["개구리", "뱀", "여우", "늑대"],
+    "correctIndex": 0,
+    "explanation": "공주는 개구리와 약속을 지키지 않으려 했지만, 결국 왕자로 변했어요! 🐸 ‘약속은 꼭 지켜야 해요!’",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_7_10",
+    "subject": "people",
+    "question": "🪡 ‘알라딘과 마법의 램프’에서 램프를 문지른 사람은 누구일까요?",
+    "options": ["알라딘", "마법사", "술탄", "공주"],
+    "correctIndex": 0,
+    "explanation": "알라딘은 램프를 문질러 지니를 불러냈어요! 🧞‍♂️ 지니의 힘으로 공주와 결혼했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_1",
+    "subject": "people",
+    "question": "🚒 불을 끄는 일을 하는 사람은 누구일까요?",
+    "options": ["소방관", "경찰관", "의사", "선생님"],
+    "correctIndex": 0,
+    "explanation": "소방관은 불을 끄고 사람을 구해요! 🚒 용감하고 빠르게 움직이는 영웅이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_2",
+    "subject": "people",
+    "question": "💉 병을 고치는 일을 하는 사람은 누구일까요?",
+    "options": ["의사", "간호사", "약사", "선생님"],
+    "correctIndex": 0,
+    "explanation": "의사는 병의 원인을 찾아 치료해줘요! 🩺 청진기로 심장 소리를 들어보기도 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_3",
+    "subject": "people",
+    "question": "📚 아이들을 가르치는 사람은 누구일까요?",
+    "options": ["선생님", "의사", "소방관", "경찰관"],
+    "correctIndex": 0,
+    "explanation": "선생님은 아이들에게 글, 수학, 인성을 가르쳐요! 📖 학교에서 가장 친한 어른이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_4",
+    "subject": "people",
+    "question": "👮‍♂️ 거리에서 사람을 지키는 사람은 누구일까요?",
+    "options": ["경찰관", "소방관", "의사", "우체부"],
+    "correctIndex": 0,
+    "explanation": "경찰관은 범죄를 막고 도움을 주는 사람이에요! 🚔 ‘112’를 누르면 바로 와 준답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_5",
+    "subject": "people",
+    "question": "🌱 식물을 키우는 일을 하는 사람은 누구일까요?",
+    "options": ["농부", "의사", "선생님", "건축가"],
+    "correctIndex": 0,
+    "explanation": "농부는 쌀, 채소, 과일을 키워 우리에게 먹을 것을 줘요! 🌾 햇빛과 비를 기다리며 애써요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_6",
+    "subject": "people",
+    "question": "✈️ 비행기를 조종하는 사람은 누구일까요?",
+    "options": ["조종사", "기차 기관사", "버스 기사", "선장"],
+    "correctIndex": 0,
+    "explanation": "조종사는 비행기를 안전하게 목적지까지 데려다줘요! ✈️ 하늘에서 가장 책임감 있는 사람이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_7",
+    "subject": "people",
+    "question": "🏗️ 집을 짓는 일을 하는 사람은 누구일까요?",
+    "options": ["건축가", "의사", "선생님", "소방관"],
+    "correctIndex": 0,
+    "explanation": "건축가는 집과 건물의 설계도를 그려요! 🏗️ 튼튼하고 아름다운 공간을 만드는 사람이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_8",
+    "subject": "people",
+    "question": "📬 편지를 배달하는 사람은 누구일까요?",
+    "options": ["우체부", "택배 기사", "버스 기사", "선생님"],
+    "correctIndex": 0,
+    "explanation": "우체부는 편지와 소포를 집까지 배달해줘요! 📮 비가 오나 눈이 오나 열심히 일한답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_9",
+    "subject": "people",
+    "question": "🚢 배를 운전하는 사람은 누구일까요?",
+    "options": ["선장", "조종사", "기차 기관사", "버스 기사"],
+    "correctIndex": 0,
+    "explanation": "선장은 배를 이끌고 바다를 항해해요! ⚓ 폭풍 속에서도 침착하게 지휘한답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_8_10",
+    "subject": "people",
+    "question": "🎭 영화나 연극에서 연기를 하는 사람은 누구일까요?",
+    "options": ["배우", "감독", "작가", "촬영기사"],
+    "correctIndex": 0,
+    "explanation": "배우는 다른 사람의 역할을 연기해요! 🎭 감정을 표현해 우리를 웃고 울게 한답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_1",
+    "subject": "people",
+    "question": "🇰🇷 16세에 만세 운동을 이끈 소녀는 누구일까요?",
+    "options": ["유관순", "나혜석", "신사임당", "황진이"],
+    "correctIndex": 0,
+    "explanation": "유관순 열사는 아우내 장터에서 만세를 외쳤어요! 🇰🇷 어린 나이에 나라를 위해 목숨을 바쳤답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_2",
+    "subject": "people",
+    "question": "🇺🇸 어린이 노예였지만 자유를 찾아간 인물은 누구일까요?",
+    "options": ["하리엇 터브먼", "로자 파크스", "헬렌 켈러", "앤 프랭크"],
+    "correctIndex": 0,
+    "explanation": "하리엇 터브먼은 ‘지하철도’로 수많은 노예를 자유롭게 했어요! 🚂 용감한 해방의 영웅이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_3",
+    "subject": "people",
+    "question": "🇳🇱 전쟁 중 일기를 쓴 소녀는 누구일까요?",
+    "options": ["앤 프랭크", "헬렌 켈러", "말라라 유사프자이", "로자 파크스"],
+    "correctIndex": 0,
+    "explanation": "앤 프랭크는 나치를 피해 은신처에서 일기를 썼어요! 📓 그 일기는 전 세계에 평화를 일깨웠답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_4",
+    "subject": "people",
+    "question": "🇵🇰 교육을 위해 싸운 어린 소녀는 누구일까요?",
+    "options": ["말라라 유사프자이", "헬렌 켈러", "앤 프랭크", "로자 파크스"],
+    "correctIndex": 0,
+    "explanation": "말라라는 여자아이도 학교에 가야 한다고 외쳤어요! 📚 총에 맞고도 포기하지 않았답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_5",
+    "subject": "people",
+    "question": "🇺🇸 버스에서 자리를 양보하지 않은 용감한 소녀는 누구일까요?",
+    "options": ["로자 파크스", "헬렌 켈러", "앤 프랭크", "말라라"],
+    "correctIndex": 0,
+    "explanation": "로자 파크스는 인종 차별에 저항해 버스 자리에 앉았어요! 🚌 그 한 행동이 큰 인권 운동으로 이어졌답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_6",
+    "subject": "people",
+    "question": "🇺🇸 장님이지만 작가가 된 소녀는 누구일까요?",
+    "options": ["헬렌 켈러", "앤 프랭크", "말라라", "로자 파크스"],
+    "correctIndex": 0,
+    "explanation": "헬렌 켈러는 눈도 귀도 못 들었지만, 선생님 도움으로 글을 배웠어요! ✍️ ‘나는 내일을 믿는다’고 했답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_7",
+    "subject": "people",
+    "question": "🇰🇷 어린 나이에 독립운동에 참여한 소년은 누구일까요?",
+    "options": ["김석진", "유관순", "안중근", "윤봉길"],
+    "correctIndex": 0,
+    "explanation": "김석진은 12세에 독립선언서를 배포했어요! 🇰🇷 어린이도 나라를 지킬 수 있다는 걸 보여줬답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_8",
+    "subject": "people",
+    "question": "🇯🇵 원자폭탄 피해 속에서 종이학을 접은 소녀는 누구일까요?",
+    "options": ["사다코 사사키", "헬렌 켈러", "앤 프랭크", "말라라"],
+    "correctIndex": 0,
+    "explanation": "사다코는 ‘종이학 1000마리를 접으면 낫는다’는 말을 믿고 접었어요! 🕊️ 평화의 상징이 됐답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_9",
+    "subject": "people",
+    "question": "🇺🇸 어린이 노예로 태어났지만 자서전을 쓴 인물은 누구일까요?",
+    "options": ["프레더릭 더글라스", "하리엇 터브먼", "링컨", "워싱턴"],
+    "correctIndex": 0,
+    "explanation": "더글라스는 스스로 글을 배워 노예 제도를 고발했어요! 📖 말과 글로 인권을 외쳤답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_9_10",
+    "subject": "people",
+    "question": "🇰🇷 어린이도 나라를 지킬 수 있다는 걸 보여준 인물은 누구일까요?",
+    "options": ["유관순", "세종대왕", "이순신", "강감찬"],
+    "correctIndex": 0,
+    "explanation": "유관순 열사는 어린 나이에 나라를 위해 싸웠어요! 🇰🇷 ‘어린이도 위인’이 될 수 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_1",
+    "subject": "people",
+    "question": "🇯🇵 다도(차 마시는 예절)를 중요하게 여기는 나라는 어디일까요?",
+    "options": ["일본", "중국", "한국", "인도"],
+    "correctIndex": 0,
+    "explanation": "일본은 다도를 통해 예의와 평화를 배워요! 🍵 ‘와비사비’라는 미의식도 담겨 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_2",
+    "subject": "people",
+    "question": "🇮🇳 인도 사람들은 어떤 음식을 손으로 먹나요?",
+    "options": ["커리", "김치", "피자", "햄버거"],
+    "correctIndex": 0,
+    "explanation": "인도 사람들은 오른손으로 커리를 밥과 함께 먹어요! 🍛 손으로 먹는 게 더 맛있다고 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_3",
+    "subject": "people",
+    "question": "🇫🇷 프랑스 사람들은 아침에 무엇을 즐겨 먹을까요?",
+    "options": ["크루아상", "김치찌개", "라면", "타코"],
+    "correctIndex": 0,
+    "explanation": "프랑스 사람들은 크루아상과 커피로 아침을 시작해요! 🥐 바삭바삭한 빵이 특징이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_4",
+    "subject": "people",
+    "question": "🇲🇽 멕시코 사람들은 어떤 축제를 크게 할까요?",
+    "options": ["망자의 날", "할로윈", "크리스마스", "추석"],
+    "correctIndex": 0,
+    "explanation": "망자의 날은 죽은 가족을 기리는 축제예요! 💀 색종이와 꽃으로 즐겁게 기념한답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_5",
+    "subject": "people",
+    "question": "🇰🇷 한국의 전통 명절 중 가을에 있는 것은 무엇일까요?",
+    "options": ["추석", "설날", "단오", "한식"],
+    "correctIndex": 0,
+    "explanation": "추석은 가을에 가족이 모여 차례를 지내고 송편을 먹어요! 🌕 보름달처럼 동그란 날이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_6",
+    "subject": "people",
+    "question": "🇨🇳 중국 사람들은 새해에 무엇을 주나요?",
+    "options": ["홍바오", "크리스마스 카드", "선물 상자", "꽃다발"],
+    "correctIndex": 0,
+    "explanation": "홍바오는 빨간 봉투에 돈을 넣어 주는 선물이에요! 🧧 ‘행운과 복’을 주는 의미랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_7",
+    "subject": "people",
+    "question": "🇧🇷 브라질 사람들은 어떤 축제를 화려하게 할까요?",
+    "options": ["카니발", "할로윈", "벚꽃 축제", "눈 축제"],
+    "correctIndex": 0,
+    "explanation": "카니발은 화려한 의상과 춤으로 즐기는 축제예요! 🎭 리우 카니발이 세계에서 가장 유명하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_8",
+    "subject": "people",
+    "question": "🇹🇭 태국 사람들은 인사할 때 무엇을 하나요?",
+    "options": ["와이", "악수", "포옹", "하이파이브"],
+    "correctIndex": 0,
+    "explanation": "‘와이’는 손을 모아 인사하는 태국의 전통 예절이에요! 🙏 존경과 감사의 마음을 담아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_9",
+    "subject": "people",
+    "question": "🇰🇷 한국의 전통 의상은 무엇일까요?",
+    "options": ["한복", "기모노", "사리", "치파오"],
+    "correctIndex": 0,
+    "explanation": "한복은 한국의 아름다운 전통 옷이에요! 🎎 명절이나 결혼식 때 입는답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "people_easy_10_10",
+    "subject": "people",
+    "question": "🌍 다양한 문화를 존중하는 마음을 뭐라고 할까요?",
+    "options": ["다문화 이해", "편견", "차별", "무관심"],
+    "correctIndex": 0,
+    "explanation": "다른 나라 사람도 존중하고 이해하려는 마음이 중요해요! 🌏 ‘서로 다르지만 함께 살아가요!’",
+    "difficulty": 1
+  }
+]

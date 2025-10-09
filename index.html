@@ -180,6 +180,9 @@
                             <span id="userAvatarDisplay" style="font-size: 1.2rem;">🐰</span>
                             <span id="userNameDisplay">학습자</span>님, 환영합니다!
                         </span>
+                        <button onclick="changeGrade()" id="gradeDisplay" class="px-3 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs rounded-full font-semibold transition-colors cursor-pointer" title="클릭하여 학년 변경">
+                            🎓 4학년
+                        </button>
                         <span id="offlineModeIndicator" class="hidden px-2 py-0.5 bg-gray-200 text-gray-600 text-xs rounded-full">📴 오프라인</span>
                         <a href="login.html" id="loginButton" class="hidden px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-full transition-colors" onclick="return handleLoginClick()">🔐 로그인하고 동기화</a>
                     </p>
@@ -701,6 +704,59 @@
         <div id="home-toast-message"></div>
     </div>
 
+    <!-- 학년 변경 모달 -->
+    <div id="grade-change-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-lg w-full">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4">🎓</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">학년 변경</h2>
+                <p class="text-sm text-gray-600">학년에 맞는 난이도로 문제가 제공됩니다</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 mb-6">
+                <button onclick="confirmGradeChange(1)" id="modal-grade-1" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🌰</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">1학년</div>
+                    <div class="text-xs text-gray-600">기초</div>
+                </button>
+
+                <button onclick="confirmGradeChange(2)" id="modal-grade-2" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🌱</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">2학년</div>
+                    <div class="text-xs text-gray-600">쉬움</div>
+                </button>
+
+                <button onclick="confirmGradeChange(3)" id="modal-grade-3" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🪴</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">3학년</div>
+                    <div class="text-xs text-gray-600">보통</div>
+                </button>
+
+                <button onclick="confirmGradeChange(4)" id="modal-grade-4" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🌳</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">4학년</div>
+                    <div class="text-xs text-gray-600">표준</div>
+                </button>
+
+                <button onclick="confirmGradeChange(5)" id="modal-grade-5" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🌲</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">5학년</div>
+                    <div class="text-xs text-gray-600">어려움</div>
+                </button>
+
+                <button onclick="confirmGradeChange(6)" id="modal-grade-6" class="grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105">
+                    <div class="text-4xl mb-2">🌺</div>
+                    <div class="text-lg font-bold text-gray-800 mb-1">6학년</div>
+                    <div class="text-xs text-gray-600">고급</div>
+                </button>
+            </div>
+
+            <button onclick="closeGradeModal()" class="w-full px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-bold hover:bg-gray-300 transition-colors">
+                취소
+            </button>
+        </div>
+    </div>
+
     <!-- 필수 스크립트 -->
     <script src="firebase-config.js"></script>
     <script src="firebase-integration.js"></script>
@@ -711,7 +767,84 @@
     <script src="index-missions.js"></script>
     <script src="index-farm.js"></script>
 
-    <!-- 인라인 JavaScript (Firebase 초기화만) -->
-    <!-- 모든 JavaScript는 외부 파일로 분리됨 (index-main.js, index-missions.js) -->
+    <!-- 학년 관리 스크립트 -->
+    <script>
+        // 페이지 로드 시 학년 표시 업데이트
+        document.addEventListener('DOMContentLoaded', function() {
+            updateGradeDisplay();
+        });
+
+        // 학년 표시 업데이트
+        function updateGradeDisplay() {
+            const userGrade = localStorage.getItem('userGrade') || '4';
+            const gradeDisplay = document.getElementById('gradeDisplay');
+            if (gradeDisplay) {
+                gradeDisplay.textContent = `🎓 ${userGrade}학년`;
+            }
+        }
+
+        // 학년 변경 모달 열기
+        function changeGrade() {
+            const currentGrade = localStorage.getItem('userGrade') || '4';
+            const modal = document.getElementById('grade-change-modal');
+
+            // 모든 학년 버튼 스타일 초기화
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`modal-grade-${i}`);
+                if (btn) {
+                    btn.className = 'grade-modal-btn p-4 border-4 border-gray-300 rounded-xl hover:border-blue-500 transition-all transform hover:scale-105';
+                }
+            }
+
+            // 현재 학년 버튼 하이라이트
+            const currentBtn = document.getElementById(`modal-grade-${currentGrade}`);
+            if (currentBtn) {
+                currentBtn.className = 'grade-modal-btn p-4 border-4 border-blue-500 bg-blue-50 rounded-xl transition-all transform scale-105';
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        // 학년 변경 확인
+        function confirmGradeChange(grade) {
+            const currentGrade = localStorage.getItem('userGrade') || '4';
+
+            if (grade.toString() === currentGrade) {
+                closeGradeModal();
+                return;
+            }
+
+            if (confirm(`학년을 ${grade}학년으로 변경하시겠습니까?\n\n변경하면 ${grade}학년 수준의 문제가 제공됩니다.`)) {
+                localStorage.setItem('userGrade', grade.toString());
+                updateGradeDisplay();
+                closeGradeModal();
+
+                // 성공 토스트 표시
+                showToast(`✅ 학년이 ${grade}학년으로 변경되었습니다!`);
+
+                console.log(`✅ 학년 변경: ${grade}학년`);
+            }
+        }
+
+        // 학년 변경 모달 닫기
+        function closeGradeModal() {
+            document.getElementById('grade-change-modal').classList.add('hidden');
+        }
+
+        // 토스트 메시지 표시 (간단 버전)
+        function showToast(message) {
+            const toast = document.getElementById('home-toast');
+            const toastMessage = document.getElementById('home-toast-message');
+
+            if (toast && toastMessage) {
+                toastMessage.textContent = message;
+                toast.classList.remove('hidden');
+
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            }
+        }
+    </script>
 </body>
 </html>

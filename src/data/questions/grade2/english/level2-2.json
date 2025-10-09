@@ -1,0 +1,602 @@
+[
+  {
+    "id": "english_normal_animal_1",
+    "subject": "english",
+    "question": "숲속의 왕! 🦁 멋진 갈기를 가진 '사자'는 영어로 무엇일까요?",
+    "options": ["Lion", "Tiger", "Bear", "Fox"],
+    "correctIndex": 0,
+    "explanation": "으르렁! 🦁 숲속의 왕 '사자'는 영어로 Lion이라고 해요. '호랑이'를 뜻하는 Tiger와 헷갈리지 않게 조심해요!",
+    "difficulty": 2,
+    "audioText": "Lion"
+  },
+  {
+    "id": "english_normal_animal_2",
+    "subject": "english",
+    "question": "멍멍! 🐶 우리와 가장 친한 친구인 '강아지'는 영어로 어떻게 말할까요?",
+    "options": ["Dog", "Cat", "Pig", "Cow"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 🐶 우리를 반갑게 맞아주는 '강아지'는 Dog랍니다. 고양이(Cat)와는 다른 친구죠?",
+    "difficulty": 2,
+    "audioText": "Dog"
+  },
+  {
+    "id": "english_normal_animal_3",
+    "subject": "english",
+    "question": "바나나를 좋아하는 긴 팔 친구! 🐒 '원숭이'의 영어 이름은 무엇일까요?",
+    "options": ["Monkey", "Donkey", "Money", "Month"],
+    "correctIndex": 0,
+    "explanation": "우끼끼! 🐒 나무를 잘 타는 재주꾼 '원숭이'는 Monkey라고 불러요. 발음이 비슷한 단어들을 조심해서 기억해요!",
+    "difficulty": 2,
+    "audioText": "Monkey"
+  },
+  {
+    "id": "english_normal_fruit_1",
+    "subject": "english",
+    "question": "아침에 한 개씩 먹으면 의사 선생님이 필요 없다는 빨간 과일! 🍎 '사과'는 영어로 뭘까요?",
+    "options": ["Apple", "Grape", "Lemon", "Peach"],
+    "correctIndex": 0,
+    "explanation": "아삭아삭! 🍎 '사과'는 영어로 Apple이에요. 우리가 자주 쓰는 스마트폰 이름과 같아서 기억하기 쉽죠?",
+    "difficulty": 2,
+    "audioText": "Apple"
+  },
+  {
+    "id": "english_normal_fruit_2",
+    "subject": "english",
+    "question": "노랗고 긴~ 껍질을 쏙 벗겨 먹는 달콤한 '바나나'! 🍌 영어 이름은 무엇일까요?",
+    "options": ["Banana", "Bandana", "Panama", "Orange"],
+    "correctIndex": 0,
+    "explanation": "달콤해! 🍌 '바나나'는 영어로도 Banana라고 해요. 발음은 조금 다르니 따라 읽어보세요!",
+    "difficulty": 2,
+    "audioText": "Banana"
+  },
+  {
+    "id": "english_normal_fruit_3",
+    "subject": "english",
+    "question": "동글동글 주황색! 🍊 비타민이 가득한 '오렌지'는 영어로 어떻게 쓸까요?",
+    "options": ["Orange", "Range", "Order", "Purple"],
+    "correctIndex": 0,
+    "explanation": "상큼해! 🍊 '오렌지'는 영어로도 Orange예요. '주황색'이라는 뜻도 가지고 있답니다!",
+    "difficulty": 2,
+    "audioText": "Orange"
+  },
+  {
+    "id": "english_normal_color_1",
+    "subject": "english",
+    "question": "불끈불끈 힘이 솟는 소방차의 색깔! 🚒 '빨간색'은 영어로 무엇일까요?",
+    "options": ["Red", "Read", "Bed", "Blue"],
+    "correctIndex": 0,
+    "explanation": "정열의 색! ❤️ '빨간색'은 Red라고 해요. '읽다'라는 뜻의 Read와 발음이 같지만 철자가 달라요.",
+    "difficulty": 2,
+    "audioText": "Red"
+  },
+  {
+    "id": "english_normal_color_2",
+    "subject": "english",
+    "question": "맑은 하늘처럼 시원한 색! ☁️ '파란색'의 영어 이름은 무엇일까요?",
+    "options": ["Blue", "Black", "Blow", "Glue"],
+    "correctIndex": 0,
+    "explanation": "시원한 느낌! 💧 '파란색'은 Blue라고 말해요. 바다 색깔도 Blue죠!",
+    "difficulty": 2,
+    "audioText": "Blue"
+  },
+  {
+    "id": "english_normal_color_3",
+    "subject": "english",
+    "question": "병아리처럼 귀엽고 바나나처럼 맛있는 🐥 '노란색'은 영어로 뭐라고 할까요?",
+    "options": ["Yellow", "Yell", "Hello", "Window"],
+    "correctIndex": 0,
+    "explanation": "반짝반짝! ✨ '노란색'은 Yellow라고 해요. 별님도 보통 Yellow 색으로 그리죠?",
+    "difficulty": 2,
+    "audioText": "Yellow"
+  },
+  {
+    "id": "english_normal_number_1",
+    "subject": "english",
+    "question": "손가락을 하나 ☝️ 폈을 때를 나타내는 숫자 '1'은 영어로 어떻게 쓸까요?",
+    "options": ["One", "Won", "On", "Once"],
+    "correctIndex": 0,
+    "explanation": "첫 번째! 🥇 숫자 '1'은 영어로 One이라고 써요. '이겼다'는 뜻의 Won과 발음이 같아요.",
+    "difficulty": 2,
+    "audioText": "One"
+  },
+  {
+    "id": "english_normal_number_2",
+    "subject": "english",
+    "question": "양손을 모두 펴면 손가락이 몇 개? 🖐🖐 숫자 '10'의 영어 철자를 찾아보세요!",
+    "options": ["Ten", "Tan", "Pen", "Then"],
+    "correctIndex": 0,
+    "explanation": "모두 합쳐! 👐 숫자 '10'은 Ten이라고 쓴답니다. 글씨 쓰는 Pen과 헷갈리지 마세요!",
+    "difficulty": 2,
+    "audioText": "Ten"
+  },
+  {
+    "id": "english_normal_number_3",
+    "subject": "english",
+    "question": "내 친구는 2명! ✌️ 숫자 '2'를 영어로 올바르게 쓴 것은 무엇일까요?",
+    "options": ["Two", "Too", "To", "Zoo"],
+    "correctIndex": 0,
+    "explanation": "둘이서 함께! 👫 숫자 '2'는 Two라고 써요. '~도 또한'이라는 뜻의 Too와 발음이 똑같아요!",
+    "difficulty": 2,
+    "audioText": "Two"
+  },
+  {
+    "id": "english_normal_object_1",
+    "subject": "english",
+    "question": "글씨를 쓰거나 그림을 그릴 때 꼭 필요한 ✏️ '연필'은 영어로 무엇일까요?",
+    "options": ["Pencil", "Pen", "Paper", "Eraser"],
+    "correctIndex": 0,
+    "explanation": "사각사각! ✏️ 글씨를 쓰는 '연필'은 영어로 Pencil이라고 해요. Pen은 볼펜이나 잉크펜을 말해요.",
+    "difficulty": 2,
+    "audioText": "Pencil"
+  },
+  {
+    "id": "english_normal_object_2",
+    "subject": "english",
+    "question": "여러 가지 책을 넣고 다니는 🎒 '가방'의 영어 이름은 무엇일까요?",
+    "options": ["Bag", "Back", "Big", "Box"],
+    "correctIndex": 0,
+    "explanation": "학교 갈 준비! 🎒 물건을 넣는 '가방'은 Bag이라고 해요. '등'을 뜻하는 Back과 발음이 비슷해요.",
+    "difficulty": 2,
+    "audioText": "Bag"
+  },
+  {
+    "id": "english_normal_object_3",
+    "subject": "english",
+    "question": "세상에서 가장 뜨거운 과일은 무엇일까요? 🔥 (힌트: '천도' 복숭아!)",
+    "options": ["천도복숭아", "용과", "수박", "딸기"],
+    "correctIndex": 0,
+    "explanation": "앗 뜨거워! 🔥 온도가 천 도(1000℃)나 되는 과일은 바로 천도복숭아랍니다! (농담이에요~😜)",
+    "difficulty": 2,
+    "audioText": "천도복숭아"
+  },
+  {
+    "id": "english_normal_sentence_1",
+    "subject": "english",
+    "question": "친구를 처음 만났을 때 \"안녕!\" 하고 반갑게 인사하는 말은? 👋",
+    "options": ["Hello", "Bye", "Sorry", "Good"],
+    "correctIndex": 0,
+    "explanation": "만나서 반가워! 👋 친구와 만났을 때 하는 인사 '안녕!'은 Hello라고 해요. 헤어질 때는 Bye라고 하죠!",
+    "difficulty": 2,
+    "audioText": "Hello"
+  },
+  {
+    "id": "english_normal_sentence_2",
+    "subject": "english",
+    "question": "고마운 마음을 전하고 싶을 때! \"고마워!\" 라고 말하려면? 🙏",
+    "options": ["Thank you", "Sorry", "Excuse me", "Please"],
+    "correctIndex": 0,
+    "explanation": "진심을 담아서! 🙏 '고마워!'는 영어로 Thank you라고 표현해요. 친구가 도와줬을 때 꼭 말해봐요!",
+    "difficulty": 2,
+    "audioText": "Thank you"
+  },
+  {
+    "id": "english_normal_sentence_3",
+    "subject": "english",
+    "question": "내 이름을 친구에게 알려줄 때, \"내 이름은 OOO이야.\"는 영어로 어떻게 시작할까요? (My ____ is OOO.)",
+    "options": ["name", "age", "home", "face"],
+    "correctIndex": 0,
+    "explanation": "내 소개하기! 🙋 '이름'은 영어로 name이에요. My name is... 라고 말하면서 나를 소개해봐요.",
+    "difficulty": 2,
+    "audioText": "name"
+  },
+  {
+    "id": "english_normal_opposite_1",
+    "subject": "english",
+    "question": "코끼리는 몸집이 '크고' 🐘, 쥐는 몸집이 '작아요' 🐭. '큰'을 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Big", "Small", "Tall", "Short"],
+    "correctIndex": 0,
+    "explanation": "우와, 크다! 🐘 '큰'은 영어로 Big이라고 해요. 반대말인 '작은'은 Small이랍니다.",
+    "difficulty": 2,
+    "audioText": "Big"
+  },
+  {
+    "id": "english_normal_opposite_2",
+    "subject": "english",
+    "question": "여름은 '덥고' ☀️, 겨울은 '추워요' ❄️. '더운'이라는 뜻의 영어 단어는 무엇일까요?",
+    "options": ["Hot", "Cold", "Warm", "Cool"],
+    "correctIndex": 0,
+    "explanation": "땀이 뻘뻘! ☀️ '더운' 날씨는 Hot이라고 표현해요. 반대로 '추운' 날씨는 Cold라고 말해요.",
+    "difficulty": 2,
+    "audioText": "Hot"
+  },
+  {
+    "id": "english_normal_opposite_3",
+    "subject": "english",
+    "question": "낮에는 기분이 '행복'했다가 😊 밤에는 '슬퍼질' 😥 때가 있어요. '행복한'은 영어로 뭘까요?",
+    "options": ["Happy", "Sad", "Angry", "Tired"],
+    "correctIndex": 0,
+    "explanation": "싱글벙글! 😄 '행복한' 기분은 영어로 Happy라고 해요. 반대말인 '슬픈'은 Sad랍니다.",
+    "difficulty": 2,
+    "audioText": "Happy"
+  },
+  {
+    "id": "english_normal_body_1",
+    "subject": "english",
+    "question": "맛있는 음식을 볼 때 사용하는 우리 몸의 '눈' 👀! 영어로 어떻게 말할까요?",
+    "options": ["Eye", "Nose", "Mouth", "Ear"],
+    "correctIndex": 0,
+    "explanation": "반짝반짝! 👀 세상을 보는 소중한 '눈'은 영어로 Eye라고 해요. 양쪽 두 눈은 Eyes라고 부른답니다.",
+    "difficulty": 2,
+    "audioText": "Eye"
+  },
+  {
+    "id": "english_normal_body_2",
+    "subject": "english",
+    "question": "엄마의 따뜻한 목소리를 듣는 '귀' 👂! 영어 이름은 무엇일까요?",
+    "options": ["Ear", "Hair", "Hear", "Air"],
+    "correctIndex": 0,
+    "explanation": "쫑긋! 👂 소리를 듣는 '귀'는 영어로 Ear라고 해요. '듣다'라는 뜻의 Hear와 발음이 비슷하죠?",
+    "difficulty": 2,
+    "audioText": "Ear"
+  },
+  {
+    "id": "english_normal_body_3",
+    "subject": "english",
+    "question": "맛있는 밥을 냠냠 먹는 '입' 👄! 영어로 어떻게 표현할까요?",
+    "options": ["Mouth", "Mouse", "Math", "South"],
+    "correctIndex": 0,
+    "explanation": "오물오물! 👄 말하고 먹는 '입'은 Mouth라고 해요. '생쥐'를 뜻하는 Mouse와 헷갈리지 않게 주의해요!",
+    "difficulty": 2,
+    "audioText": "Mouth"
+  },
+  {
+    "id": "english_normal_action_1",
+    "subject": "english",
+    "question": "신나는 음악이 나오면 몸을 흔들며 '춤을 춰요' 💃! '춤추다'는 영어로 무엇일까요?",
+    "options": ["Dance", "Sing", "Jump", "Run"],
+    "correctIndex": 0,
+    "explanation": "흔들흔들! 💃 '춤추다'는 영어로 Dance라고 해요. '노래하다'는 Sing, '점프하다'는 Jump예요.",
+    "difficulty": 2,
+    "audioText": "Dance"
+  },
+  {
+    "id": "english_normal_action_2",
+    "subject": "english",
+    "question": "사과를 한 입 베어 물면 어떻게 될까요? 🍎",
+    "options": ["파인애플", "사라다", "초코파이", "사과잼"],
+    "correctIndex": 0,
+    "explanation": "아삭! 🍎 사과(apple)를 베어 물면 파인애플(pie+apple)이 된답니다! (재미있는 말장난 퀴즈예요! 😆)",
+    "difficulty": 2,
+    "audioText": "파인애플"
+  },
+  {
+    "id": "english_normal_action_3",
+    "subject": "english",
+    "question": "배가 고플 때 피자를 '먹어요' 🍕! '먹다'는 영어로 어떻게 말할까요?",
+    "options": ["Eat", "It", "Easy", "Sit"],
+    "correctIndex": 0,
+    "explanation": "냠냠! 🍕 음식을 '먹다'는 영어로 Eat이라고 해요. '앉다'는 Sit이라고 하니, 헷갈리지 마세요!",
+    "difficulty": 2,
+    "audioText": "Eat"
+  },
+  {
+    "id": "english_normal_weather_1",
+    "subject": "english",
+    "question": "쨍쨍! ☀️ 맑은 날에 하늘에 떠 있는 '해'는 영어로 무엇일까요?",
+    "options": ["Sun", "Son", "Run", "Fun"],
+    "correctIndex": 0,
+    "explanation": "따뜻해! ☀️ 우리를 비춰주는 '해'는 영어로 Sun이에요. '아들'을 뜻하는 Son과 발음이 같아요!",
+    "difficulty": 2,
+    "audioText": "Sun"
+  },
+  {
+    "id": "english_normal_weather_2",
+    "subject": "english",
+    "question": "주룩주룩 창밖을 보니 '비'가 와요 ☔. '비'는 영어로 무엇일까요?",
+    "options": ["Rain", "Run", "Pain", "Train"],
+    "correctIndex": 0,
+    "explanation": "우산을 챙겨요! ☔ 하늘에서 내리는 '비'는 Rain이라고 해요. '기차'를 뜻하는 Train과 끝나는 소리가 비슷해요.",
+    "difficulty": 2,
+    "audioText": "Rain"
+  },
+  {
+    "id": "english_normal_weather_3",
+    "subject": "english",
+    "question": "펑펑~ 하얀 '눈'이 내려서 눈사람을 만들어요 ☃️. '눈'은 영어로 무엇일까요?",
+    "options": ["Snow", "Slow", "Show", "Now"],
+    "correctIndex": 0,
+    "explanation": "뽀드득! ☃️ 겨울에 만나는 '눈'은 영어로 Snow라고 해요. '느린'이라는 뜻의 Slow와 발음이 비슷하니 주의해요!",
+    "difficulty": 2,
+    "audioText": "Snow"
+  },
+   {
+      "id": "english_medium_1_1",
+      "subject": "english",
+      "question": "민수는 공을 가지고 놀고 있어요. 이 문장을 영어로 완성하면? 'Minsoo ___ a ball.' ⚽🧒",
+      "options": ["plays with", "play with", "playing with", "played with"],
+      "correctIndex": 0,
+      "explanation": "주어가 'Minsoo'(1인칭 단수)이므로 동사는 'plays'가 돼요! 'plays with' = ~와 함께 놀아요! 🤝",
+      "difficulty": 2,
+      "audioText": "Minsoo plays with a ball."
+    },
+    {
+      "id": "english_medium_1_2",
+      "subject": "english",
+      "question": "지영이는 사과를 먹고 있어요. 영어 문장으로 바꾸면? 'Jiyoung ___ an apple.' 🍎👧",
+      "options": ["eats", "eat", "eating", "ate"],
+      "correctIndex": 0,
+      "explanation": "지영이(1인칭 단수)가 지금 먹고 있으므로 'eats'가 맞아요! 🍏",
+      "difficulty": 2,
+      "audioText": "Jiyoung eats an apple."
+    },
+    {
+      "id": "english_medium_1_3",
+      "subject": "english",
+      "question": "우리 강아지는 꼬리를 흔들어요. 영어로 말하면? 'My dog ___ its tail.' 🐕💫",
+      "options": ["wags", "wag", "wagging", "wagged"],
+      "correctIndex": 0,
+      "explanation": "강아지(단수)가 하므로 동사에 's'가 붙어요! 'wags' = 흔들어요! 🌀",
+      "difficulty": 2,
+      "audioText": "My dog wags its tail."
+    },
+    {
+      "id": "english_medium_2_1",
+      "subject": "english",
+      "question": "친구가 물었어요: '___ is your name?' 이름을 묻는 질문이에요! ❓",
+      "options": ["What", "Where", "Who", "When"],
+      "correctIndex": 0,
+      "explanation": "'What is your name?' = 이름이 뭐예요? 'What'은 '무엇'을 물을 때 써요! 💬",
+      "difficulty": 2,
+      "audioText": "What is your name?"
+    },
+    {
+      "id": "english_medium_2_2",
+      "subject": "english",
+      "question": "선생님이 물으셨어요: '___ do you live?' 어디 사는지 묻는 질문이에요! 🏠",
+      "options": ["Where", "What", "Who", "Why"],
+      "correctIndex": 0,
+      "explanation": "'Where'는 장소를 물을 때 써요! 'Where do you live?' = 어디 살아요? 🗺️",
+      "difficulty": 2,
+      "audioText": "Where do you live?"
+    },
+    {
+      "id": "english_medium_2_3",
+      "subject": "english",
+      "question": "친구가 사진을 보며 물었어요: '___ is that boy?' 저 소년이 누구인지 묻는 질문이에요! 👦",
+      "options": ["Who", "What", "Where", "When"],
+      "correctIndex": 0,
+      "explanation": "'Who'는 사람을 물을 때 써요! 'Who is that boy?' = 저 소년은 누구야? 👀",
+      "difficulty": 2,
+      "audioText": "Who is that boy?"
+    },
+    {
+      "id": "english_medium_3_1",
+      "subject": "english",
+      "question": "나는 내 공책을 잃어버렸어요. 영어로 말하면? 'I lost ___ notebook.' 📓😢",
+      "options": ["my", "your", "his", "her"],
+      "correctIndex": 0,
+      "explanation": "내가 잃어버렸으니 'my notebook'이에요! 'my' = 내 것! 💡",
+      "difficulty": 2,
+      "audioText": "I lost my notebook."
+    },
+    {
+      "id": "english_medium_3_2",
+      "subject": "english",
+      "question": "친구에게 물어봤어요: 'Is this ___ pencil?' 이 연필이 네 거니? ✏️",
+      "options": ["your", "my", "his", "her"],
+      "correctIndex": 0,
+      "explanation": "상대방(너)에게 묻는 말이므로 'your pencil'이에요! 'your' = 너의! 🤔",
+      "difficulty": 2,
+      "audioText": "Is this your pencil?"
+    },
+    {
+      "id": "english_medium_3_3",
+      "subject": "english",
+      "question": "엄마가 말했어요: 'This is ___ bag.' 이 가방은 엄마 거예요! 👜",
+      "options": ["her", "his", "my", "your"],
+      "correctIndex": 0,
+      "explanation": "여자(엄마)의 물건이므로 'her bag'이에요! 'her' = 그녀의! 👩",
+      "difficulty": 2,
+      "audioText": "This is her bag."
+    },
+    {
+      "id": "english_medium_4_1",
+      "subject": "english",
+      "question": "책상 위에 사과가 여러 개 있어요. 영어로 말하면? 'There are many ___.' 🍎🍎",
+      "options": ["apples", "apple", "appleses", "applen"],
+      "correctIndex": 0,
+      "explanation": "사과가 여러 개면 'apple'에 's'를 붙여 'apples'가 돼요! 🍏",
+      "difficulty": 2,
+      "audioText": "There are many apples."
+    },
+    {
+      "id": "english_medium_4_2",
+      "subject": "english",
+      "question": "공원에 아이들이 많이 놀고 있어요. 영어로? 'Many ___ are playing.' 👧👦",
+      "options": ["children", "childs", "childes", "child"],
+      "correctIndex": 0,
+      "explanation": "'Child'의 복수형은 특별해요! 'Children'이에요. 외워야 해요! 🧒",
+      "difficulty": 2,
+      "audioText": "Many children are playing."
+    },
+    {
+      "id": "english_medium_4_3",
+      "subject": "english",
+      "question": "버스 정류장에 버스가 여러 대 있어요. 영어로? 'There are three ___.' 🚌🚌",
+      "options": ["buses", "buss", "bus", "buse"],
+      "correctIndex": 0,
+      "explanation": "'Bus'는 끝이 's'라서 복수형은 'buses'예요! 🔔",
+      "difficulty": 2,
+      "audioText": "There are three buses."
+    },
+    {
+      "id": "english_medium_5_1",
+      "subject": "english",
+      "question": "공이 상자 안에 있어요. 영어로 말하면? 'The ball is ___ the box.' 📦⚽",
+      "options": ["in", "on", "under", "next to"],
+      "correctIndex": 0,
+      "explanation": "'In'은 안에 있다는 뜻이에요! 상자 **속**에 공이 있죠! 🎁",
+      "difficulty": 2,
+      "audioText": "The ball is in the box."
+    },
+    {
+      "id": "english_medium_5_2",
+      "subject": "english",
+      "question": "책이 책상 위에 있어요. 영어로? 'The book is ___ the desk.' 📚🪑",
+      "options": ["on", "in", "under", "behind"],
+      "correctIndex": 0,
+      "explanation": "'On'은 위에 있다는 뜻이에요! 책이 책상 **위**에 있죠! ✨",
+      "difficulty": 2,
+      "audioText": "The book is on the desk."
+    },
+    {
+      "id": "english_medium_5_3",
+      "subject": "english",
+      "question": "고양이가 의자 밑에 숨었어요. 영어로? 'The cat is ___ the chair.' 🐱🪑",
+      "options": ["under", "on", "in", "above"],
+      "correctIndex": 0,
+      "explanation": "'Under'는 밑에 있다는 뜻이에요! 고양이가 의자 **밑**에 숨었죠! 🕵️‍♀️",
+      "difficulty": 2,
+      "audioText": "The cat is under the chair."
+    },
+    {
+      "id": "english_medium_6_1",
+      "subject": "english",
+      "question": "친구가 'Hello!'라고 인사했어요. 가장 알맞은 대답은? 👋😊",
+      "options": ["Hello!", "Goodbye!", "Thank you!", "Sorry!"],
+      "correctIndex": 0,
+      "explanation": "인사에는 인사로! 'Hello!'라고 하면 'Hello!'라고 답해요! 💬",
+      "difficulty": 2,
+      "audioText": "Hello!"
+    },
+    {
+      "id": "english_medium_6_2",
+      "subject": "english",
+      "question": "친구가 선물을 줬어요. 뭐라고 말해야 할까요? 🎁❤️",
+      "options": ["Thank you!", "You're welcome!", "Hello!", "Goodbye!"],
+      "correctIndex": 0,
+      "explanation": "선물을 받으면 'Thank you!'라고 해요! 감사 인사예요! 🙏",
+      "difficulty": 2,
+      "audioText": "Thank you!"
+    },
+    {
+      "id": "english_medium_6_3",
+      "subject": "english",
+      "question": "친구가 'Thank you!'라고 했어요. 뭐라고 답할까요? 😊",
+      "options": ["You're welcome!", "Thank you!", "Hello!", "I'm sorry!"],
+      "correctIndex": 0,
+      "explanation": "'You're welcome!'은 '천만에요!'라는 뜻이에요! 예의 바른 답이에요! 🌟",
+      "difficulty": 2,
+      "audioText": "You're welcome!"
+    },
+    {
+      "id": "english_medium_7_1",
+      "subject": "english",
+      "question": "어제 나는 공원에 갔어요. 영어로? 'Yesterday, I ___ to the park.' 🌳📅",
+      "options": ["went", "go", "goes", "going"],
+      "correctIndex": 0,
+      "explanation": "'Yesterday'(어제)가 있으므로 과거형 'went'가 맞아요! 'go'의 과거형은 'went'예요! ⏪",
+      "difficulty": 2,
+      "audioText": "Yesterday, I went to the park."
+    },
+    {
+      "id": "english_medium_7_2",
+      "subject": "english",
+      "question": "지난 주말에 우리는 영화를 봤어요. 영어로? 'Last weekend, we ___ a movie.' 🎥",
+      "options": ["watched", "watch", "watches", "watching"],
+      "correctIndex": 0,
+      "explanation": "'Last weekend'은 과거 시간! 'watch'의 과거형은 'watched'예요! 📽️",
+      "difficulty": 2,
+      "audioText": "Last weekend, we watched a movie."
+    },
+    {
+      "id": "english_medium_7_3",
+      "subject": "english",
+      "question": "어제는 비가 왔어요. 영어로? 'It ___ yesterday.' 🌧️",
+      "options": ["rained", "rain", "rains", "raining"],
+      "correctIndex": 0,
+      "explanation": "'Yesterday'가 있으므로 과거형 'rained'가 맞아요! 💧",
+      "difficulty": 2,
+      "audioText": "It rained yesterday."
+    },
+    {
+      "id": "english_medium_8_1",
+      "subject": "english",
+      "question": "코끼리는 개보다 훨씬 커요! 영어로? 'The elephant is ___ than the dog.' 🐘🐶",
+      "options": ["bigger", "big", "biggest", "more big"],
+      "correctIndex": 0,
+      "explanation": "둘을 비교할 땐 '-er'를 붙여요! 'Big' → 'Bigger than'! ⚖️",
+      "difficulty": 2,
+      "audioText": "The elephant is bigger than the dog."
+    },
+    {
+      "id": "english_medium_8_2",
+      "subject": "english",
+      "question": "이 공은 저 공보다 작아요. 영어로? 'This ball is ___ than that ball.' ⚽🎾",
+      "options": ["smaller", "small", "smallest", "more small"],
+      "correctIndex": 0,
+      "explanation": "'Small'의 비교급은 'smaller'예요! 두 개를 비교할 때 써요! 🔍",
+      "difficulty": 2,
+      "audioText": "This ball is smaller than that ball."
+    },
+    {
+      "id": "english_medium_8_3",
+      "subject": "english",
+      "question": "겨울은 여름보다 더 추워요. 영어로? 'Winter is ___ than summer.' ❄️☀️",
+      "options": ["colder", "cold", "coldest", "more cold"],
+      "correctIndex": 0,
+      "explanation": "'Cold'의 비교급은 'colder'예요! 계절을 비교할 때 써요! 🌍",
+      "difficulty": 2,
+      "audioText": "Winter is colder than summer."
+    },
+    {
+      "id": "english_medium_9_1",
+      "subject": "english",
+      "question": "오늘은 월요일이에요. 내일은 무슨 요일일까요? 📅➡️",
+      "options": ["Tuesday", "Monday", "Sunday", "Wednesday"],
+      "correctIndex": 0,
+      "explanation": "월요일 다음은 화요일! 영어로는 'Tuesday'예요! 🗓️",
+      "difficulty": 2,
+      "audioText": "Tuesday"
+    },
+    {
+      "id": "english_medium_9_2",
+      "subject": "english",
+      "question": "생일이 5월 3일이에요. 영어로 날짜를 말하면? 🎂",
+      "options": ["May third", "May three", "March third", "May threeth"],
+      "correctIndex": 0,
+      "explanation": "날짜는 서수로 말해요! 3일 → 'third'! 'May third'예요! 📆",
+      "difficulty": 2,
+      "audioText": "May third"
+    },
+    {
+      "id": "english_medium_9_3",
+      "subject": "english",
+      "question": "일요일은 주말이에요. 영어로 일요일은? 🌈",
+      "options": ["Sunday", "Sundae", "Sandy", "Sondy"],
+      "correctIndex": 0,
+      "explanation": "'Sunday'는 일요일이에요! 'Sundae'는 아이스크림이니 헷갈리지 마세요! 🍨",
+      "difficulty": 2,
+      "audioText": "Sunday"
+    },
+    {
+      "id": "english_medium_10_1",
+      "subject": "english",
+      "question": "선생님이 이렇게 말했어요: 'He plays soccer.' 누구 이야기일까요? 👦⚽",
+      "options": ["한 남자아이", "두 남자아이", "여자아이", "선생님"],
+      "correctIndex": 0,
+      "explanation": "'He'는 남자 한 명을 가리켜요! 동사에 's'가 붙은 걸로도 알 수 있어요! 👀",
+      "difficulty": 2,
+      "audioText": "He plays soccer."
+    },
+    {
+      "id": "english_medium_10_2",
+      "subject": "english",
+      "question": "친구가 말했어요: 'They eat lunch.' 몇 명이 점심을 먹고 있을까요? 🍱👧👦",
+      "options": ["두 명 이상", "한 명", "아무도 안 먹어", "선생님만"],
+      "correctIndex": 0,
+      "explanation": "'They'는 둘 이상을 뜻해요! 동사에 's'가 없으니 복수예요! 👥",
+      "difficulty": 2,
+      "audioText": "They eat lunch."
+    },
+    {
+      "id": "english_medium_10_3",
+      "subject": "english",
+      "question": "선생님이 말했어요: 'She reads a book.' 이 문장에서 'She'는 누구일까요? 📖👩",
+      "options": ["여자아이 또는 여자 어른", "남자아이", "강아지", "책"],
+      "correctIndex": 0,
+      "explanation": "'She'는 여자를 가리켜요! 동사 'reads'에도 's'가 붙었죠? 👧",
+      "difficulty": 2,
+      "audioText": "She reads a book."
+    }
+  ]

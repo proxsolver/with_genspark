@@ -1,0 +1,302 @@
+[
+  {
+    "id": "english_easy_1_1",
+    "subject": "english",
+    "question": "친구가 생일 선물을 줬을 때 느끼는 기분은 영어로 뭐라고 해요? 😊🎁",
+    "options": ["Happy", "Hungry", "Sleepy", "Angry"],
+    "correctIndex": 0,
+    "explanation": "'Happy'는 기쁘다는 뜻이에요! 웃는 얼굴로 말해보세요! 😄",
+    "difficulty": 1,
+    "audioText": "Happy"
+  },
+  {
+    "id": "english_easy_1_2",
+    "subject": "english",
+    "question": "강아지가 길을 잃었을 때 느끼는 감정은 영어로 뭐라고 해요? 🐕😢",
+    "options": ["Sad", "Mad", "Glad", "Bad"],
+    "correctIndex": 0,
+    "explanation": "'Sad'는 슬프다는 뜻이에요. 위로해 주고 싶어지죠! 💙",
+    "difficulty": 1,
+    "audioText": "Sad"
+  },
+  {
+    "id": "english_easy_1_3",
+    "subject": "english",
+    "question": "깜깜한 방에 들어갔을 때 느끼는 감정은 영어로 뭐라고 해요? 🌑👀",
+    "options": ["Scared", "Shared", "Cared", "Bared"],
+    "correctIndex": 0,
+    "explanation": "'Scared'는 무섭다는 뜻이에요. 손전등을 켜면 괜찮아져요! 🔦",
+    "difficulty": 1,
+    "audioText": "Scared"
+  },
+  {
+    "id": "english_easy_2_1",
+    "subject": "english",
+    "question": "운동장에서 친구들과 공을 차는 활동은 영어로 뭐라고 해요? ⚽🏃‍♂️",
+    "options": ["Play", "Ploy", "Pley", "Plow"],
+    "correctIndex": 0,
+    "explanation": "'Play'는 놀다, 게임하다는 뜻이에요! 즐거운 시간이죠! 🎉",
+    "difficulty": 1,
+    "audioText": "Play"
+  },
+  {
+    "id": "english_easy_2_2",
+    "subject": "english",
+    "question": "운동회에서 가장 빠른 친구가 하는 행동은 영어로 뭐라고 해요? 🏃‍♀️💨",
+    "options": ["Run", "Fun", "Sun", "Gun"],
+    "correctIndex": 0,
+    "explanation": "'Run'은 달리기예요! 발이 땅을 빠르게 차고 지나가죠! 🦵",
+    "difficulty": 1,
+    "audioText": "Run"
+  },
+  {
+    "id": "english_easy_2_3",
+    "subject": "english",
+    "question": "트램펄린에서 위로 뛰는 행동은 영어로 뭐라고 부를까요? 🤸‍♀️",
+    "options": ["Jump", "Dump", "Bump", "Hump"],
+    "correctIndex": 0,
+    "explanation": "'Jump'는 뛰다예요! 땅에서 위로 퐁! 하고 올라가요! 🌟",
+    "difficulty": 1,
+    "audioText": "Jump"
+  },
+  {
+    "id": "english_easy_3_1",
+    "subject": "english",
+    "question": "주황색 과일로, 할로윈 때도 등장하는 이 과일은 영어로? 🎃🍊",
+    "options": ["Orange", "Oringe", "Orenge", "Aurange"],
+    "correctIndex": 0,
+    "explanation": "'Orange'는 오렌지예요! 비타민이 가득한 과일이에요! 💪",
+    "difficulty": 1,
+    "audioText": "Orange"
+  },
+  {
+    "id": "english_easy_3_2",
+    "subject": "english",
+    "question": "빨간 채소로, 샐러드에 자주 넣는 이 채소는 영어로 뭐라고 해요? 🥗🍅",
+    "options": ["Tomato", "Tamato", "Tomatoe", "Tumato"],
+    "correctIndex": 0,
+    "explanation": "'Tomato'는 토마토예요! 과일일까? 채소일까? 🤔",
+    "difficulty": 1,
+    "audioText": "Tomato"
+  },
+  {
+    "id": "english_easy_3_3",
+    "subject": "english",
+    "question": "노란 과일로, 주스로도 자주 마시는 이 과일은 영어로? 🍹💛",
+    "options": ["Lemon", "Lamon", "Limen", "Lomon"],
+    "correctIndex": 0,
+    "explanation": "'Lemon'은 레몬이에요! 신맛이 나지만 상큼해요! 🍋",
+    "difficulty": 1,
+    "audioText": "Lemon"
+  },
+  {
+    "id": "english_easy_4_1",
+    "subject": "english",
+    "question": "비가 올 때 머리에 쓰는 것은 영어로 뭐라고 해요? 🌧️🧢",
+    "options": ["Hat", "Hot", "Hit", "Hut"],
+    "correctIndex": 0,
+    "explanation": "'Hat'은 모자예요! 비나 햇빛을 막아줘요! ☔",
+    "difficulty": 1,
+    "audioText": "Hat"
+  },
+  {
+    "id": "english_easy_4_2",
+    "subject": "english",
+    "question": "겨울에 손을 따뜻하게 해주는 옷은 영어로 뭐라고 부를까요? 🧤❄️",
+    "options": ["Gloves", "Glovs", "Glaves", "Gloavez"],
+    "correctIndex": 0,
+    "explanation": "'Gloves'는 장갑이에요! 눈싸움할 때 꼭 필요하죠! ⛄",
+    "difficulty": 1,
+    "audioText": "Gloves"
+  },
+  {
+    "id": "english_easy_4_3",
+    "subject": "english",
+    "question": "발에 신는 신발은 영어로 뭐라고 해요? 👟👣",
+    "options": ["Shoes", "Shoos", "Shous", "Choos"],
+    "correctIndex": 0,
+    "explanation": "'Shoes'는 신발이에요! 걸을 때 발을 보호해줘요! 🚶‍♀️",
+    "difficulty": 1,
+    "audioText": "Shoes"
+  },
+  {
+    "id": "english_easy_5_1",
+    "subject": "english",
+    "question": "하늘을 나는 큰 교통수단은 영어로 뭐라고 해요? ✈️☁️",
+    "options": ["Airplane", "Airplain", "Airplan", "Erplane"],
+    "correctIndex": 0,
+    "explanation": "'Airplane'은 비행기예요! 구름 위를 날아다녀요! 🌈",
+    "difficulty": 1,
+    "audioText": "Airplane"
+  },
+  {
+    "id": "english_easy_5_2",
+    "subject": "english",
+    "question": "철로 위를 달리는 긴 교통수단은 영어로 뭐라고 부를까요? 🚂🛤️",
+    "options": ["Train", "Trane", "Traine", "Drain"],
+    "correctIndex": 0,
+    "explanation": "'Train'은 기차예요! 'Choo-choo!' 소리를 내며 달려요! 🛤️",
+    "difficulty": 1,
+    "audioText": "Train"
+  },
+  {
+    "id": "english_easy_5_3",
+    "subject": "english",
+    "question": "물 위를 떠다니는 큰 배는 영어로 뭐라고 해요? 🚢🌊",
+    "options": ["Ship", "Sheep", "Chip", "Shop"],
+    "correctIndex": 0,
+    "explanation": "'Ship'은 배예요! 바다를 건너 다른 나라로 가요! 🌍",
+    "difficulty": 1,
+    "audioText": "Ship"
+  },
+  {
+    "id": "english_easy_6_1",
+    "subject": "english",
+    "question": "우리가 자는 곳은 영어로 뭐라고 해요? 🛏️🏡",
+    "options": ["Home", "Hone", "Hume", "Com"],
+    "correctIndex": 0,
+    "explanation": "'Home'은 집이에요! 가족과 함께 있는 따뜻한 곳이죠! ❤️",
+    "difficulty": 1,
+    "audioText": "Home"
+  },
+  {
+    "id": "english_easy_6_2",
+    "subject": "english",
+    "question": "공부하고 친구를 만나는 곳은 영어로 뭐라고 부를까요? 🏫🎒",
+    "options": ["School", "Skool", "Scool", "Shool"],
+    "correctIndex": 0,
+    "explanation": "'School'은 학교예요! 매일 새로운 걸 배우는 곳이에요! 📚",
+    "difficulty": 1,
+    "audioText": "School"
+  },
+  {
+    "id": "english_easy_6_3",
+    "subject": "english",
+    "question": "미끄럼틀과 그네가 있는 곳은 영어로 뭐라고 해요? 🌳🛝",
+    "options": ["Park", "Pork", "Perk", "Pirk"],
+    "correctIndex": 0,
+    "explanation": "'Park'은 공원이에요! 친구들과 뛰어놀기 좋은 곳이죠! 🌈",
+    "difficulty": 1,
+    "audioText": "Park"
+  },
+  {
+    "id": "english_easy_7_1",
+    "subject": "english",
+    "question": "오늘은 무슨 요일일까요? '오늘'은 영어로 뭐라고 해요? 📅✨",
+    "options": ["Today", "Todai", "Todey", "Tuday"],
+    "correctIndex": 0,
+    "explanation": "'Today'는 오늘을 뜻해요! 오늘도 즐거운 하루 되세요! ☀️",
+    "difficulty": 1,
+    "audioText": "Today"
+  },
+  {
+    "id": "english_easy_7_2",
+    "subject": "english",
+    "question": "내일은 친구 생일이래요! '내일'은 영어로 뭐라고 해요? 🎂➡️",
+    "options": ["Tomorrow", "Tomorow", "Tommorow", "Timorrow"],
+    "correctIndex": 0,
+    "explanation": "'Tomorrow'는 내일이에요! 기다려지는 하루죠! 🌟",
+    "difficulty": 1,
+    "audioText": "Tomorrow"
+  },
+  {
+    "id": "english_easy_7_3",
+    "subject": "english",
+    "question": "어제는 비가 왔어요! '어제'는 영어로 뭐라고 부를까요? 🌧️⬅️",
+    "options": ["Yesterday", "Yestarday", "Yesterdey", "Yesturday"],
+    "correctIndex": 0,
+    "explanation": "'Yesterday'는 어제예요! 지난 일을 말할 때 써요! 📖",
+    "difficulty": 1,
+    "audioText": "Yesterday"
+  },
+  {
+    "id": "english_easy_8_1",
+    "subject": "english",
+    "question": "코끼리는 아주 '큰' 동물이에요! '큰'은 영어로 뭐라고 해요? 🐘📏",
+    "options": ["Big", "Bag", "Beg", "Bug"],
+    "correctIndex": 0,
+    "explanation": "'Big'은 크다는 뜻이에요! 작은 것과 반대예요! 🆚",
+    "difficulty": 1,
+    "audioText": "Big"
+  },
+  {
+    "id": "english_easy_8_2",
+    "subject": "english",
+    "question": "솜사탕은 '부드럽고' 달콤해요! '부드러운'은 영어로 뭐라고 해요? 🍬☁️",
+    "options": ["Soft", "Sof", "Saft", "Sift"],
+    "correctIndex": 0,
+    "explanation": "'Soft'는 부드럽다는 뜻이에요! 털장난감처럼 말랑말랑해요! 🧸",
+    "difficulty": 1,
+    "audioText": "Soft"
+  },
+  {
+    "id": "english_easy_8_3",
+    "subject": "english",
+    "question": "얼음은 '차가워요'! '차가운'은 영어로 뭐라고 부를까요? 🧊🥶",
+    "options": ["Cold", "Cald", "Cord", "Gold"],
+    "correctIndex": 0,
+    "explanation": "'Cold'는 차갑다는 뜻이에요! 아이스크림도 이 느낌이에요! 🍦",
+    "difficulty": 1,
+    "audioText": "Cold"
+  },
+  {
+    "id": "english_easy_9_1",
+    "subject": "english",
+    "question": "밥을 먹을 때 하는 행동은 영어로 뭐라고 해요? 🍚🍽️",
+    "options": ["Eat", "Eet", "Ate", "It"],
+    "correctIndex": 0,
+    "explanation": "'Eat'은 먹다예요! 배고플 때 꼭 해야 하는 일이죠! 😋",
+    "difficulty": 1,
+    "audioText": "Eat"
+  },
+  {
+    "id": "english_easy_9_2",
+    "subject": "english",
+    "question": "물이 목이 마를 때 하는 행동은 영어로 뭐라고 부를까요? 💧🥤",
+    "options": ["Drink", "Drank", "Drenk", "Dring"],
+    "correctIndex": 0,
+    "explanation": "'Drink'은 마시다예요! 물, 주스, 우유를 마실 때 써요! 🥛",
+    "difficulty": 1,
+    "audioText": "Drink"
+  },
+  {
+    "id": "english_easy_9_3",
+    "subject": "english",
+    "question": "잠이 올 때 하는 행동은 영어로 뭐라고 해요? 🌙😴",
+    "options": ["Sleep", "Sleap", "Slip", "Sloop"],
+    "correctIndex": 0,
+    "explanation": "'Sleep'은 자다예요! 꿈나라로 떠나는 시간이에요! 🌠",
+    "difficulty": 1,
+    "audioText": "Sleep"
+  },
+  {
+    "id": "english_easy_10_1",
+    "subject": "english",
+    "question": "선생님이 'Sheep'이라고 말했어요! 어떤 그림을 고르면 될까요? 🐑👂",
+    "options": ["Sheep", "Ship", "Shop", "Soup"],
+    "correctIndex": 0,
+    "explanation": "'Sheep'은 양이에요! 'Ship'(배)와 발음이 비슷하지만 달라요! 🐏",
+    "difficulty": 1,
+    "audioText": "Sheep"
+  },
+  {
+    "id": "english_easy_10_2",
+    "subject": "english",
+    "question": "친구가 'Pen'이라고 말했어요! 어떤 물건을 찾으면 될까요? ✏️🎧",
+    "options": ["Pen", "Pan", "Pin", "Pun"],
+    "correctIndex": 0,
+    "explanation": "'Pen'은 펜이에요! 'Pan'(프라이팬)과 소리가 비슷하지만 다르답니다! 🍳",
+    "difficulty": 1,
+    "audioText": "Pen"
+  },
+  {
+    "id": "english_easy_10_3",
+    "subject": "english",
+    "question": "선생님이 'Bat'이라고 말했어요! 야구 도구일까요? 박쥐일까요? 🦇⚾",
+    "options": ["Bat", "Bet", "Bit", "But"],
+    "correctIndex": 0,
+    "explanation": "'Bat'은 야구 방망이이거나 박쥐예요! 문맥을 잘 들어봐야 해요! 👂",
+    "difficulty": 1,
+    "audioText": "Bat"
+  }
+]

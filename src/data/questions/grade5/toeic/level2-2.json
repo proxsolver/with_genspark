@@ -1,0 +1,57 @@
+[
+  {
+    "id": "toeic_medium_2_6",
+    "subject": "toeic",
+    "question": "We are looking for candidates with _____ experience in marketing.",
+    "options": ["considerable", "consider", "consideration", "considering"],
+    "correctIndex": 0,
+    "explanation": "명사 'experience'를 수식하는 형용사가 필요하므로 'considerable'이 정답입니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "word form"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_7",
+    "subject": "toeic",
+    "question": "The agreement was reached _____ all parties involved.",
+    "options": ["among", "between", "within", "through"],
+    "correctIndex": 0,
+    "explanation": "'among'은 셋 이상의 사이를 나타낼 때 사용합니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "preposition"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_8",
+    "subject": "toeic",
+    "question": "_____ the product's popularity, we need to increase production.",
+    "options": ["Given", "Give", "Giving", "To give"],
+    "correctIndex": 0,
+    "explanation": "'Given'은 '~을 고려하면'이라는 뜻의 전치사로 사용됩니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "preposition"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_9",
+    "subject": "toeic",
+    "question": "The manager suggested _____ the meeting to next week.",
+    "options": ["postponing", "to postpone", "postpone", "postponed"],
+    "correctIndex": 0,
+    "explanation": "'suggest'는 동명사를 목적어로 취합니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "gerund"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_medium_2_10",
+    "subject": "toeic",
+    "question": "The new software is _____ more efficient than the previous version.",
+    "options": ["considerably", "considerable", "consider", "consideration"],
+    "correctIndex": 0,
+    "explanation": "비교급 'more efficient'를 강조하는 부사 'considerably'가 필요합니다.",
+    "difficulty": 2,
+    "tags": ["grammar", "comparative"],
+    "gradeRange": [3, 5]
+  }
+]

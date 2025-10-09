@@ -1,0 +1,902 @@
+[
+  {
+    "id": "economy_easy_1_1",
+    "subject": "economy",
+    "question": "💰 돈 탐험! 우리나라에서 쓰는 돈의 이름은 무엇일까요?",
+    "options": ["원", "달러", "유로", "엔"],
+    "correctIndex": 0,
+    "explanation": "대한민국에서 쓰는 돈은 ‘원’이에요! 💵 100원, 500원, 1000원처럼 쓰여 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_2",
+    "subject": "economy",
+    "question": "🪙 동전 중에서 가장 작은 금액은 무엇일까요?",
+    "options": ["1원", "10원", "50원", "100원"],
+    "correctIndex": 0,
+    "explanation": "1원짜리 동전이 가장 작아요! 🪙 하지만 요즘은 거의 안 쓰여요. 10원부터 자주 써요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_3",
+    "subject": "economy",
+    "question": "💵 1000원짜리 지폐는 어떤 색일까요?",
+    "options": ["파란색", "초록색", "빨간색", "노란색"],
+    "correctIndex": 0,
+    "explanation": "1000원짜리 지폐는 파란색이에요! 💙 이순신 장군이 그려져 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_4",
+    "subject": "economy",
+    "question": "💰 500원짜리 동전은 어떤 색일까요?",
+    "options": ["은색", "금색", "빨간색", "초록색"],
+    "correctIndex": 0,
+    "explanation": "500원짜리 동전은 은색이에요! 🪙 가운데 구멍이 있었던 옛날 동전도 있었답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_5",
+    "subject": "economy",
+    "question": "💵 5000원짜리 지폐에는 누가 그려져 있을까요?",
+    "options": ["신사임당", "세종대왕", "이순신", "퇴계 이황"],
+    "correctIndex": 0,
+    "explanation": "5000원짜리 지폐에는 신사임당이 그려져 있어요! 🎨 그녀는 화가이자 어머니로 유명하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_6",
+    "subject": "economy",
+    "question": "💰 100원짜리 동전으로 무엇을 살 수 있을까요?",
+    "options": ["아무것도 못 사요", "사탕 하나", "빵 하나", "장난감 하나"],
+    "correctIndex": 0,
+    "explanation": "요즘은 100원으로는 거의 아무것도 못 사요! 💸 물가가 올라서 작은 사탕도 500원 이상이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_7",
+    "subject": "economy",
+    "question": "💵 10000원짜리 지폐는 어떤 색일까요?",
+    "options": ["초록색", "파란색", "빨간색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "10000원짜리 지폐는 초록색이에요! 💚 세종대왕이 그려져 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_8",
+    "subject": "economy",
+    "question": "💰 동전과 지폐 중에서 더 가벼운 것은 무엇일까요?",
+    "options": ["지폐", "동전", "같아요", "모르겠어요"],
+    "correctIndex": 0,
+    "explanation": "지폐는 종이로 되어 있어서 동전보다 훨씬 가벼워요! 📜 큰 금액도 가볍게 들고 다닐 수 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_9",
+    "subject": "economy",
+    "question": "💵 50000원짜리 지폐에는 누가 그려져 있을까요?",
+    "options": ["신사임당", "세종대왕", "이순신", "유관순"],
+    "correctIndex": 0,
+    "explanation": "50000원짜리 지폐에도 신사임당이 그려져 있어요! 🎨 우리나라 최고액 지폐랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_1_10",
+    "subject": "economy",
+    "question": "💰 1000원으로 300원짜리 사탕을 3개 사면 얼마가 남을까요?",
+    "options": ["100원", "0원", "200원", "300원"],
+    "correctIndex": 0,
+    "explanation": "300원 × 3 = 900원! 1000 – 900 = 100원이 남아요! 🍬 계산 잘하면 돈을 아낄 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_1",
+    "subject": "economy",
+    "question": "🛒 장보기 탐험! 꼭 필요한 물건만 사는 것을 뭐라고 할까요?",
+    "options": ["필요한 소비", "과소비", "낭비", "기부"],
+    "correctIndex": 0,
+    "explanation": "꼭 필요한 것만 사는 건 ‘필요한 소비’예요! 🛒 장난감이 많아도 공부 도구가 더 중요할 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_2",
+    "subject": "economy",
+    "question": "💡 전등을 켜놓고 나가지 않는 이유는 무엇일까요?",
+    "options": ["전기 절약", "더 밝아서", "귀신이 무서워서", "불이 예뻐서"],
+    "correctIndex": 0,
+    "explanation": "전기를 아끼면 돈도 절약되고 지구도 건강해져요! 💡 ‘끄고 나가기’ 습관을 들이세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_3",
+    "subject": "economy",
+    "question": "🧺 물을 틀어놓고 양치하지 않는 이유는 무엇일까요?",
+    "options": ["물 절약", "이가 더 깨끗해서", "거품이 많아서", "물이 차가워서"],
+    "correctIndex": 0,
+    "explanation": "물을 아끼면 수도세도 줄고, 물 부족도 막을 수 있어요! 💧 ‘꼭지 잠그기’는 작은 실천이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_4",
+    "subject": "economy",
+    "question": "🎁 생일 선물로 꼭 비싼 걸 줘야 할까요?",
+    "options": ["아니요, 정성이 중요해요", "네, 비싸야 해요", "안 줘도 돼요", "돈만 줘야 해요"],
+    "correctIndex": 0,
+    "explanation": "선물은 비싸야 좋은 게 아니에요! 💌 손편지나 직접 만든 카드도 마음을 전할 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_5",
+    "subject": "economy",
+    "question": "👕 옷이 작아지면 바로 버릴까요?",
+    "options": ["아니요, 나눠 줄 수 있어요", "네, 버려야 해요", "불태워야 해요", "강에 버려야 해요"],
+    "correctIndex": 0,
+    "explanation": "작아진 옷은 다른 아이에게 나눠 줄 수 있어요! 👕 ‘재사용’은 절약이자 나눔이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_6",
+    "subject": "economy",
+    "question": "🍭 사탕을 한 번에 다 먹지 않는 이유는 무엇일까요?",
+    "options": ["절약해서 오래 먹기", "맛이 없어서", "이가 아파서", "선생님이 시켜서"],
+    "correctIndex": 0,
+    "explanation": "하나씩 나눠 먹으면 더 오래 즐길 수 있어요! 🍬 ‘조금씩 쓰기’도 절약이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_7",
+    "subject": "economy",
+    "question": "📱 핸드폰을 자주 바꾸는 건 어떤 소비일까요?",
+    "options": ["과소비", "필요한 소비", "절약", "기부"],
+    "correctIndex": 0,
+    "explanation": "쓸 만한 핸드폰을 자주 바꾸는 건 ‘과소비’예요! 📱 고장 나지 않았다면 계속 쓰는 게 좋아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_8",
+    "subject": "economy",
+    "question": "🎒 학용품을 중고로 사는 건 어떤 행동일까요?",
+    "options": ["절약", "낭비", "과소비", "기부"],
+    "correctIndex": 0,
+    "explanation": "중고 학용품은 싸고 환경도 지켜요! 📚 ‘재사용’은 똑똑한 소비예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_9",
+    "subject": "economy",
+    "question": "💡 전기 장난감 대신 어떤 걸로 놀면 절약될까요?",
+    "options": ["종이비행기", "비디오게임", "TV 보기", "핸드폰 게임"],
+    "correctIndex": 0,
+    "explanation": "종이비행기는 전기 없이도 재미있어요! ✈️ 자연과 함께 놀면 건강도 좋아져요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_2_10",
+    "subject": "economy",
+    "question": "🛒 장을 보러 가기 전에 꼭 해야 할 일은 무엇일까요?",
+    "options": ["장보기 목록 만들기", "친구 만나기", "TV 보기", "잠자기"],
+    "correctIndex": 0,
+    "explanation": "목록을 만들면 불필요한 걸 사지 않아요! 📝 계획은 절약의 첫걸음이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_1",
+    "subject": "economy",
+    "question": "🏦 돈을 안전하게 맡길 수 있는 곳은 어디일까요?",
+    "options": ["은행", "공원", "놀이터", "버스 정류장"],
+    "correctIndex": 0,
+    "explanation": "은행은 돈을 안전하게 보관해 주는 곳이에요! 💰 이자도 조금씩 받을 수 있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_2",
+    "subject": "economy",
+    "question": "🐷 저금통에 돈을 모으는 이유는 무엇일까요?",
+    "options": ["큰 꿈을 이루기 위해", "돈을 잃어버리기 위해", "장난감을 버리기 위해", "친구에게 주기 위해"],
+    "correctIndex": 0,
+    "explanation": "작은 돈도 모이면 큰돈이 돼요! 🐷 ‘꿈을 이루는 첫걸음’이 바로 저축이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_3",
+    "subject": "economy",
+    "question": "💳 은행에서 돈을 넣고 빼는 데 쓰는 카드는 무엇일까요?",
+    "options": ["체크카드", "선물카드", "게임카드", "사진카드"],
+    "correctIndex": 0,
+    "explanation": "체크카드는 내 통장에서 바로 돈이 빠져나가요! 💳 부모님이 쓰는 걸 본 적 있죠?",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_4",
+    "subject": "economy",
+    "question": "💰 용돈을 받으면 먼저 해야 할 일은 무엇일까요?",
+    "options": ["일부는 저축하기", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "용돈의 일부는 저축하면 더 큰 꿈을 이룰 수 있어요! 💸 ‘500원만 저금통에’부터 시작해 보세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_5",
+    "subject": "economy",
+    "question": "🏦 은행에서 돈을 맡기면 받는 작은 보상은 무엇일까요?",
+    "options": ["이자", "선물", "쿠폰", "장난감"],
+    "correctIndex": 0,
+    "explanation": "은행은 돈을 맡기면 ‘이자’를 줘요! 💰 시간이 지날수록 조금씩 돈이 늘어나요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_6",
+    "subject": "economy",
+    "question": "🐷 저금통을 깨지 않고 돈을 찾을 수 있을까요?",
+    "options": ["아니요, 깨야 해요", "네, 구멍이 커요", "자동으로 나와요", "은행이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "전통 저금통은 깨야 돈을 꺼낼 수 있어요! 🐷 그래서 ‘절대 꺼내지 말자’는 마음을 다지죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_7",
+    "subject": "economy",
+    "question": "🏦 어린이도 은행에 계좌를 만들 수 있을까요?",
+    "options": ["네, 부모님과 함께", "아니요, 안 돼요", "18세부터만", "학교에서만"],
+    "correctIndex": 0,
+    "explanation": "부모님과 함께라면 어린이도 계좌를 만들 수 있어요! 📊 ‘꿈을 위한 통장’을 열어 보세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_8",
+    "subject": "economy",
+    "question": "💰 100원을 매일 저금하면 10일 후에 얼마일까요?",
+    "options": ["1000원", "100원", "500원", "2000원"],
+    "correctIndex": 0,
+    "explanation": "100원 × 10일 = 1000원! 💸 꾸준함이 큰 힘이 돼요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_9",
+    "subject": "economy",
+    "question": "🐷 저금통은 왜 돼지 모양일까요?",
+    "options": ["영어로 ‘돼지’가 저축과 관련 있어서", "귀여워서", "크기가 커서", "빨리 달려서"],
+    "correctIndex": 0,
+    "explanation": "옛날 영어로 ‘pygg’(점토)가 ‘pig’(돼지)와 비슷해져서 돼지 모양이 됐어요! 🐷 재미있는 언어 이야기죠!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_3_10",
+    "subject": "economy",
+    "question": "🏦 은행은 왜 중요한 곳일까요?",
+    "options": ["돈을 안전하게 지켜줘서", "장난감을 팔아서", "영화를 틀어줘서", "밥을 줘서"],
+    "correctIndex": 0,
+    "explanation": "은행은 내 돈을 도둑이나 화재로부터 지켜줘요! 🔒 안전하고 똑똑한 돈 보관소랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_1",
+    "subject": "economy",
+    "question": "👩‍🏫 선생님이 받는 돈을 뭐라고 할까요?",
+    "options": ["월급", "용돈", "선물", "세금"],
+    "correctIndex": 0,
+    "explanation": "일을 하고 받는 돈은 ‘월급’ 또는 ‘소득’이에요! 💼 열심히 일하면 그만큼 받을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_2",
+    "subject": "economy",
+    "question": "👨‍🌾 농부는 어떤 일을 해서 돈을 벌까요?",
+    "options": ["쌀과 채소를 키워서", "게임을 만들어서", "비행기를 조종해서", "노래를 불러서"],
+    "correctIndex": 0,
+    "explanation": "농부는 햇빛과 비를 맞으며 먹을 것을 키워요! 🌾 우리 밥상의 시작이랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_3",
+    "subject": "economy",
+    "question": "👷‍♂️ 건설 노동자는 어떤 일을 할까요?",
+    "options": ["집과 다리를 지어요", "빵을 굽어요", "책을 써요", "그림을 그려요"],
+    "correctIndex": 0,
+    "explanation": "건설 노동자는 헬멧을 쓰고 집, 학교, 다리를 지어요! 🏗️ 우리 동네를 만드는 영웅이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_4",
+    "subject": "economy",
+    "question": "👩‍⚕️ 의사가 받는 돈은 어디서 올까요?",
+    "options": ["환자가 내는 진료비", "은행에서 주는 돈", "정부가 그냥 줘요", "하늘에서 떨어져요"],
+    "correctIndex": 0,
+    "explanation": "환자가 병원에 내는 돈으로 의사가 월급을 받아요! 🩺 ‘용역’을 제공한 대가랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_5",
+    "subject": "economy",
+    "question": "🎤 가수는 어떻게 돈을 벌까요?",
+    "options": ["노래하고 공연해서", "책을 써서", "농사 지어서", "버스를 운전해서"],
+    "correctIndex": 0,
+    "explanation": "가수는 노래와 공연으로 사람들을 즐겁게 해줘요! 🎶 그 대가로 돈을 받는답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_6",
+    "subject": "economy",
+    "question": "🧒 어린이도 돈을 벌 수 있을까요?",
+    "options": ["집안일로 용돈을 받아요", "회사에 취직해요", "은행에서 그냥 줘요", "학교에서 시험 보고 받아요"],
+    "correctIndex": 0,
+    "explanation": "집안일을 도우면 부모님이 용돈을 줄 수 있어요! 🧹 ‘작은 일도 소중한 노동’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_7",
+    "subject": "economy",
+    "question": "👨‍🍳 요리사는 어떤 일을 해서 돈을 벌까요?",
+    "options": ["맛있는 음식을 만들어서", "자동차를 수리해서", "책을 팔아서", "그림을 전시해서"],
+    "correctIndex": 0,
+    "explanation": "요리사는 맛있는 음식으로 손님을 맞아요! 🍲 ‘맛’으로 돈을 버는 직업이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_8",
+    "subject": "economy",
+    "question": "👩‍💻 프로그래머는 어떤 일을 할까요?",
+    "options": ["컴퓨터 프로그램을 만들어요", "농사를 지어요", "그림을 그려요", "버스를 몰아요"],
+    "correctIndex": 0,
+    "explanation": "프로그래머는 앱과 게임을 만드는 사람이에요! 💻 우리가 쓰는 모든 디지털 도구 뒤에 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_9",
+    "subject": "economy",
+    "question": "📚 작가는 어떻게 돈을 벌까요?",
+    "options": ["책을 써서", "빵을 굽어서", "자동차를 팔아서", "노래를 불러서"],
+    "correctIndex": 0,
+    "explanation": "작가는 책을 써서 사람들에게 이야기를 전해요! 📖 책이 팔릴 때마다 돈을 받아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_4_10",
+    "subject": "economy",
+    "question": "💼 모든 직업의 공통점은 무엇일까요?",
+    "options": ["다른 사람을 도와요", "혼자만 좋아요", "돈을 그냥 받아요", "쉬는 게 좋아요"],
+    "correctIndex": 0,
+    "explanation": "모든 직업은 누군가를 도와요! 🤝 그래서 사회가 잘 돌아가고, 그 대가로 돈을 받는 거예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_1",
+    "subject": "economy",
+    "question": "🛒 시장에서 같은 과일이 가게마다 가격이 다른 이유는 무엇일까요?",
+    "options": ["비용과 이익이 다르기 때문", "색이 다르기 때문", "이름이 다르기 때문", "공기 때문에"],
+    "correctIndex": 0,
+    "explanation": "가게마다 사온 가격과 이익 목표가 달라서 가격이 달라져요! 🍎 비교해서 사는 게 똑똑해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_2",
+    "subject": "economy",
+    "question": "🏷️ ‘할인’이 붙은 표시는 왜 붙을까요?",
+    "options": ["빨리 팔기 위해", "비싸게 팔기 위해", "장난감을 숨기기 위해", "이름을 바꾸기 위해"],
+    "correctIndex": 0,
+    "explanation": "할인은 재고를 줄이거나 손님을 끌기 위해 해요! 💰 똑같은 물건도 싸게 살 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_3",
+    "subject": "economy",
+    "question": "🥕 장날(장이 서는 날)에 과일이 싼 이유는 무엇일까요?",
+    "options": ["직접 가져와서", "비가 와서", "이름이 예뻐서", "포장이 예뻐서"],
+    "correctIndex": 0,
+    "explanation": "농부가 직접 가져와서 중간 비용이 없기 때문에 싸요! 🥬 신선하고 저렴한 장보기의 즐거움이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_4",
+    "subject": "economy",
+    "question": "⚖️ 물건의 가격을 정할 때 가장 중요한 것은 무엇일까요?",
+    "options": ["얼마나 들었는지", "색깔", "이름", "크기"],
+    "correctIndex": 0,
+    "explanation": "원재료, 인건비, 배송비 등 ‘비용’이 가격을 결정해요! 💸 이익을 더해 최종 가격이 돼요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_5",
+    "subject": "economy",
+    "question": "🛍️ 대형마트가 동네 가게보다 싼 이유는 무엇일까요?",
+    "options": ["많이 사서 싸게 사기 때문", "건물이 크기 때문", "이름이 멋있기 때문", "불이 밝기 때문"],
+    "correctIndex": 0,
+    "explanation": "대형마트는 한 번에 많이 사서 단가를 낮출 수 있어요! 📦 ‘대량 구매’의 힘이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_6",
+    "subject": "economy",
+    "question": "🍓 딸기가 겨울보다 여름에 싼 이유는 무엇일까요?",
+    "options": ["많이 나서", "맛이 없어서", "이름이 바뀌어서", "포장이 예뻐서"],
+    "correctIndex": 0,
+    "explanation": "딸기는 여름이 제철이라 많이 나와서 싸요! 🌞 제철 음식은 싸고 맛있답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_7",
+    "subject": "economy",
+    "question": "🎁 ‘1+1’은 어떤 의미일까요?",
+    "options": ["하나 사면 하나 더 줘요", "하나만 팔아요", "둘 다 비싸요", "공짜로 줘요"],
+    "correctIndex": 0,
+    "explanation": "‘1+1’은 하나 사면 하나를 공짜로 더 주는 거예요! 🛒 똑같은 걸 두 개 사는 게 이득이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_8",
+    "subject": "economy",
+    "question": "🛒 장을 볼 때 가격을 비교하는 이유는 무엇일까요?",
+    "options": ["더 싸게 사기 위해", "이름을 외우기 위해", "포장을 보기 위해", "친구를 기다리기 위해"],
+    "correctIndex": 0,
+    "explanation": "비교하면 같은 물건도 더 싸게 살 수 있어요! 💡 ‘똑똑한 소비자’가 되는 법이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_9",
+    "subject": "economy",
+    "question": "📦 온라인 쇼핑이 싼 이유는 무엇일까요?",
+    "options": ["가게를 안 내서", "배달이 느려서", "포장이 예뻐서", "이름이 멋있어서"],
+    "correctIndex": 0,
+    "explanation": "온라인은 가게 임대료가 없어서 싸게 팔 수 있어요! 📱 하지만 배송비는 확인해야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_5_10",
+    "subject": "economy",
+    "question": "🏷️ ‘정찰제’란 무엇일까요?",
+    "options": ["가격을 깎을 수 없어요", "무조건 깎아줘요", "공짜로 줘요", "이름을 바꿔줘요"],
+    "correctIndex": 0,
+    "explanation": "정찰제는 가격표 그대로 사는 거예요! 💰 대형마트나 편의점에서 자주 써요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_1",
+    "subject": "economy",
+    "question": "🍎 사과는 ‘재화’일까요, ‘용역’일까요?",
+    "options": ["재화", "용역", "둘 다", "아무것도 아님"],
+    "correctIndex": 0,
+    "explanation": "만질 수 있는 물건은 ‘재화’예요! 🍏 사과, 책, 장난감이 재화랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_2",
+    "subject": "economy",
+    "question": " haircut 미용사가 머리를 자르는 건 ‘재화’일까요, ‘용역’일까요?",
+    "options": ["용역", "재화", "둘 다", "아무것도 아님"],
+    "correctIndex": 0,
+    "explanation": "손으로 하는 서비스는 ‘용역’이에요! ✂️ 미용, 수리, 강의가 용역이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_3",
+    "subject": "economy",
+    "question": "🚌 버스를 타는 건 무엇일까요?",
+    "options": ["용역", "재화", "선물", "장난감"],
+    "correctIndex": 0,
+    "explanation": "버스는 나를 목적지까지 데려다주는 ‘서비스’예요! 🚌 그래서 ‘용역’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_4",
+    "subject": "economy",
+    "question": "📚 책을 사는 건 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "책은 만질 수 있는 물건이니까 ‘재화’예요! 📖 읽고 나면 다시 팔 수도 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_5",
+    "subject": "economy",
+    "question": "🍕 피자를 배달해 주는 건 무엇일까요?",
+    "options": ["재화 + 용역", "재화만", "용역만", "기부"],
+    "correctIndex": 0,
+    "explanation": "피자(재화) + 배달(용역) = 둘 다! 🍕 물건과 서비스가 함께 제공돼요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_6",
+    "subject": "economy",
+    "question": "🎨 미술 수업을 듣는 건 무엇일까요?",
+    "options": ["용역", "재화", "선물", "장난감"],
+    "correctIndex": 0,
+    "explanation": "선생님이 가르쳐 주는 건 ‘서비스’니까 ‘용역’이에요! 🖌️ 배운 건 내 것이 되지만, 수업 자체는 용역이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_7",
+    "subject": "economy",
+    "question": "🧸 인형을 사는 건 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "인형은 만지고 소장할 수 있는 ‘재화’예요! 🧸 장난감은 대부분 재화랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_8",
+    "subject": "economy",
+    "question": "🎬 영화를 보는 건 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "영화관은 ‘보여주는 서비스’를 제공해요! 🎥 그래서 ‘용역’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_9",
+    "subject": "economy",
+    "question": "🚲 자전거를 고쳐주는 건 무엇일까요?",
+    "options": ["용역", "재화", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "수리는 ‘서비스’니까 ‘용역’이에요! 🔧 물건은 내 거지만, 고쳐주는 일은 용역이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_6_10",
+    "subject": "economy",
+    "question": "💧 물을 사는 건 무엇일까요?",
+    "options": ["재화", "용역", "기부", "세금"],
+    "correctIndex": 0,
+    "explanation": "병에 든 물은 만질 수 있으니 ‘재화’예요! 💦 수도물은 공공재지만, 생수는 재화랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_1",
+    "subject": "economy",
+    "question": "📺 광고를 믿고 바로 사는 건 좋은 선택일까요?",
+    "options": ["아니요, 비교해 봐야 해요", "네, 무조건 좋아요", "공짜니까 사야 해요", "친구가 사면 따라 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "광고는 물건을 잘 보이게 만들어요! 📣 꼭 직접 보고 비교한 후에 사야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_2",
+    "subject": "economy",
+    "question": "🍭 ‘맛있어 보이는’ 광고를 보면 꼭 사야 할까요?",
+    "options": ["아니요, 정말 필요한지 생각해 봐야 해요", "네, 무조건 사야 해요", "친구가 사면 따라 사야 해요", "부모님이 말하면 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "광고는 눈속임이 많아요! 🍬 ‘정말 필요한가?’ 먼저 물어보세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_3",
+    "subject": "economy",
+    "question": "📱 유튜브 광고를 보고 바로 결제하면 어떤 일이 생길까요?",
+    "options": ["후회할 수 있어요", "무조건 행복해져요", "공짜로 줘요", "친구가 부러워해요"],
+    "correctIndex": 0,
+    "explanation": "광고는 ‘사고 싶게’ 만들지만, 꼭 필요한지 생각해야 해요! 💸 충동구매는 후회로 이어질 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_4",
+    "subject": "economy",
+    "question": "🎁 ‘공짜 체험’ 광고를 보면 어떻게 해야 할까요?",
+    "options": ["부모님과 상의해요", "바로 신청해요", "친구에게 말해요", "무시해요"],
+    "correctIndex": 0,
+    "explanation": "공짜 체험도 나중에 돈이 나갈 수 있어요! 📞 꼭 부모님과 이야기하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_5",
+    "subject": "economy",
+    "question": "🛒 광고에서 ‘한정 수량’이라고 하면 어떻게 해야 할까요?",
+    "options": ["서두르지 말고 생각해 봐요", "바로 달려가요", "친구에게 양보해요", "무시해요"],
+    "correctIndex": 0,
+    "explanation": "‘한정 수량’은 급하게 사게 만드는 말이에요! 🧠 진짜 필요한지 차분히 생각하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_6",
+    "subject": "economy",
+    "question": "🎭 광고에서 유명인이 나오면 그 물건이 무조건 좋을까요?",
+    "options": ["아니요, 광고일 뿐이에요", "네, 무조건 좋아요", "공짜예요", "친구가 사면 따라 사야 해요"],
+    "correctIndex": 0,
+    "explanation": "유명인도 광고료를 받고 나오는 거예요! ⭐ 물건 자체를 직접 확인하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_7",
+    "subject": "economy",
+    "question": "📱 게임 속 ‘아이템 광고’를 보면 어떻게 해야 할까요?",
+    "options": ["부모님께 물어봐요", "바로 결제해요", "친구에게 말해요", "무시해요"],
+    "correctIndex": 0,
+    "explanation": "게임 아이템은 실제 돈이 들어가요! 💰 꼭 부모님 허락을 받으세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_8",
+    "subject": "economy",
+    "question": "🍭 ‘맛있고 건강해요!’라는 광고를 믿을 수 있을까요?",
+    "options": ["직접 성분을 확인해 봐야 해요", "무조건 믿어요", "친구가 먹으면 따라 먹어요", "부모님이 사주면 먹어요"],
+    "correctIndex": 0,
+    "explanation": "광고는 과장될 수 있어요! 📦 뒷면의 ‘영양 성분표’를 꼭 확인하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_9",
+    "subject": "economy",
+    "question": "📺 광고를 보고 물건을 사기 전에 꼭 해야 할 일은 무엇일까요?",
+    "options": ["부모님과 이야기하기", "친구에게 말하기", "눈 감고 결정하기", "바로 결제하기"],
+    "correctIndex": 0,
+    "explanation": "부모님은 더 많은 경험으로 도와줄 수 있어요! 👨‍👩‍👧‍👦 ‘함께 생각하기’가 똑똑한 소비예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_7_10",
+    "subject": "economy",
+    "question": "🛒 광고에 속지 않는 방법은 무엇일까요?",
+    "options": ["여러 곳에서 비교해 보기", "첫눈에 사기", "친구 따라 사기", "가장 비싼 걸 사기"],
+    "correctIndex": 0,
+    "explanation": "여러 가게에서 가격과 후기를 비교하면 광고에 속지 않아요! 🔍 ‘비교는 힘’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_1",
+    "subject": "economy",
+    "question": "🏫 학교는 누가 만든 걸까요?",
+    "options": ["세금으로", "선생님이 사서", "학생이 모아서", "기업이 줘서"],
+    "correctIndex": 0,
+    "explanation": "학교, 도서관, 공원은 모두 ‘세금’으로 지어요! 💰 국민이 낸 돈으로 함께 쓰는 거예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_2",
+    "subject": "economy",
+    "question": "💧 수도물은 왜 공짜일까요?",
+    "options": ["세금으로 운영돼서", "하늘에서 그냥 내려서", "강에서 퍼서", "기업이 공짜로 줘서"],
+    "correctIndex": 0,
+    "explanation": "수도는 정부가 세금으로 관리해요! 💦 하지만 물을 많이 쓰면 ‘수도세’를 내야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_3",
+    "subject": "economy",
+    "question": "👮‍♂️ 경찰관은 누가 월급을 줄까요?",
+    "options": ["정부(세금)", "기업", "학생", "은행"],
+    "correctIndex": 0,
+    "explanation": "경찰, 소방관, 선생님은 정부가 세금으로 월급을 줘요! 🛡️ 모두를 지키는 공공 서비스예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_4",
+    "subject": "economy",
+    "question": "🌳 공원은 왜 공짜일까요?",
+    "options": ["세금으로 만들었기 때문", "기업이 줬기 때문", "학생이 만들었기 때문", "공짜로 생겼기 때문"],
+    "correctIndex": 0,
+    "explanation": "공원은 국민 모두가 즐기라고 세금으로 만들었어요! 🌸 ‘공공재’라고 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_5",
+    "subject": "economy",
+    "question": "🛣️ 도로는 누가 만들었을까요?",
+    "options": ["정부(세금)", "자동차 회사", "학생", "은행"],
+    "correctIndex": 0,
+    "explanation": "도로, 다리, 터널은 모두 세금으로 만들어요! 🚗 모두가 안전하게 다니기 위한 공공재랍니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_6",
+    "subject": "economy",
+    "question": "📚 도서관 책은 왜 공짜로 빌릴 수 있을까요?",
+    "options": ["세금으로 운영돼서", "기업이 줘서", "선생님이 사서", "학생이 모아서"],
+    "correctIndex": 0,
+    "explanation": "도서관은 세금으로 운영돼서 누구나 공짜로 책을 빌릴 수 있어요! 📖 지식은 모두의 것이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_7",
+    "subject": "economy",
+    "question": "🚑 119에 전화하면 왜 공짜일까요?",
+    "options": ["세금으로 운영돼서", "기업이 줘서", "학생이 모아서", "공짜로 생겨서"],
+    "correctIndex": 0,
+    "explanation": "119는 위급할 때 누구나 도움을 받을 수 있도록 세금으로 운영돼요! 🚒 생명은 돈으로 살 수 없어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_8",
+    "subject": "economy",
+    "question": "💡 ‘공공재’란 무엇일까요?",
+    "options": ["모두가 함께 쓰는 것", "내 것만 쓰는 것", "기업만 쓰는 것", "친구만 쓰는 것"],
+    "correctIndex": 0,
+    "explanation": "공원, 학교, 도로처럼 모두가 함께 쓰는 걸 ‘공공재’라고 해요! 🌍 함께 지켜야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_9",
+    "subject": "economy",
+    "question": "💰 세금은 어디에 쓰일까요?",
+    "options": ["학교, 병원, 도로", "기업 이익", "외국에 줘요", "은행에 넣어요"],
+    "correctIndex": 0,
+    "explanation": "세금은 학교, 병원, 소방서, 도로 등 우리 삶을 지켜주는 데 쓰여요! 🏥 모두를 위한 돈이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_8_10",
+    "subject": "economy",
+    "question": "🚮 공공재를 더럽히면 어떤 일이 생길까요?",
+    "options": ["모두가 불편해져요", "공짜로 줘요", "더 좋아져요", "기업이 치워줘요"],
+    "correctIndex": 0,
+    "explanation": "공원에 쓰레기를 버리면 모두가 불편하고, 세금으로 청소해야 해요! 🌱 ‘내가 지킨다’는 마음이 필요해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_1",
+    "subject": "economy",
+    "question": "🎁 기부는 무엇일까요?",
+    "options": ["도움이 필요한 사람에게 나누기", "내 것만 쓰기", "비싸게 팔기", "버리기"],
+    "correctIndex": 0,
+    "explanation": "기부는 나의 것을 도움이 필요한 사람과 나누는 거예요! ❤️ 작아진 옷, 장난감도 기부할 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_2",
+    "subject": "economy",
+    "question": "🧸 안 입는 옷을 기부하면 어떤 일이 생길까요?",
+    "options": ["다른 아이가 따뜻하게 입어요", "쓰레기가 돼요", "공짜로 줘요", "기업이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "기부한 옷은 추운 곳의 아이들에게 전달돼요! 🧥 ‘나눔은 따뜻한 경제’예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_3",
+    "subject": "economy",
+    "question": "📚 책을 기부하면 어디에 갈까요?",
+    "options": ["도서관이나 학교", "쓰레기장", "기업", "은행"],
+    "correctIndex": 0,
+    "explanation": "기부한 책은 도서관이나 멀리 사는 친구들에게 가요! 📖 지식도 나누면 커져요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_4",
+    "subject": "economy",
+    "question": "💝 기부는 꼭 큰돈이어야 할까요?",
+    "options": ["아니요, 작은 것부터 가능해요", "네, 큰돈만 돼요", "공짜만 돼요", "기업만 해요"],
+    "correctIndex": 0,
+    "explanation": "100원도, 그림도, 편지도 기부가 될 수 있어요! 💌 마음이 가장 중요하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_5",
+    "subject": "economy",
+    "question": "🍲 급식 남은 음식을 버리지 않고 기부하면 어떤 일이 생길까요?",
+    "options": ["도움이 필요한 사람에게 가요", "쓰레기가 돼요", "공짜로 줘요", "기업이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "음식 기부는 배고픈 사람을 도와요! 🍚 ‘남기지 않기’도 중요한 나눔이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_6",
+    "subject": "economy",
+    "question": "🤝 나눔을 하면 기분이 어때요?",
+    "options": ["따뜻하고 뿌듯해요", "슬퍼져요", "아파요", "지쳐요"],
+    "correctIndex": 0,
+    "explanation": "나누면 마음이 따뜻해지고, 세상도 밝아져요! ☀️ ‘작은 나눔, 큰 행복’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_7",
+    "subject": "economy",
+    "question": "🎁 생일에 선물 대신 기부를 요청하면 어떤 일이 생길까요?",
+    "options": ["더 의미 있는 생일이 돼요", "친구가 안 와요", "공짜로 줘요", "기업이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "기부 요청은 친구들과 함께 나누는 특별한 생일이 돼요! 🎂 ‘기쁨을 나누는 날’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_8",
+    "subject": "economy",
+    "question": "🧸 장난감을 기부할 때 꼭 해야 할 일은 무엇일까요?",
+    "options": ["깨끗이 닦기", "버리기", "숨기기", "비싸게 팔기"],
+    "correctIndex": 0,
+    "explanation": "기부 전에 깨끗이 닦으면 받는 사람도 기뻐요! 🧼 ‘정성이 담긴 나눔’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_9",
+    "subject": "economy",
+    "question": "❤️ 나눔은 경제와 어떤 관계일까요?",
+    "options": ["따뜻한 경제를 만들어요", "돈을 없애요", "기업만 좋아요", "쓰레기를 만들어요"],
+    "correctIndex": 0,
+    "explanation": "나눔은 ‘따뜻한 경제’를 만드는 힘이에요! 🌍 돈만이 아니라 마음도 흐르는 경제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_9_10",
+    "subject": "economy",
+    "question": "🌱 나눔을 시작할 수 있는 가장 작은 방법은 무엇일까요?",
+    "options": ["안 쓰는 물건 정리하기", "큰돈 주기", "기업에 요청하기", "버리기"],
+    "correctIndex": 0,
+    "explanation": "안 쓰는 장난감, 책, 옷을 정리하는 것부터 시작해 보세요! 📦 ‘작은 실천이 큰 변화’를 만들어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_1",
+    "subject": "economy",
+    "question": "🌟 꿈을 이루기 위해 지금부터 할 수 있는 경제 습관은 무엇일까요?",
+    "options": ["저축하기", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "꿈을 위한 통장에 조금씩 저축하면 언젠가 이뤄질 거예요! 🐷 ‘작은 돈, 큰 꿈’이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_2",
+    "subject": "economy",
+    "question": "📱 디지털 경제에서 돈을 쓸 때 꼭 기억해야 할 것은 무엇일까요?",
+    "options": ["부모님 허락", "친구 따라 하기", "눈 감고 결제하기", "가장 비싼 걸 사기"],
+    "correctIndex": 0,
+    "explanation": "디지털 결제는 쉽게 돈이 빠져나가요! 💳 꼭 부모님과 상의하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_3",
+    "subject": "economy",
+    "question": "🎯 ‘경제 계획’이란 무엇일까요?",
+    "options": ["돈을 어떻게 쓸지 미리 정하기", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "용돈을 ‘이만큼 쓰고, 이만큼 저축하자’고 정하는 게 경제 계획이에요! 📝 계획은 성공의 첫걸음이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_4",
+    "subject": "economy",
+    "question": "💡 미래에 로봇이 많은 일을 하면 어떤 직업이 생길까요?",
+    "options": ["로봇 수리사", "농부만 남아요", "모두 쉬어요", "은행만 남아요"],
+    "correctIndex": 0,
+    "explanation": "로봇이 늘어나면 로봇을 만들고 고치는 직업이 생겨요! 🤖 미래를 준비하는 꿈을 꾸세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_5",
+    "subject": "economy",
+    "question": "🌍 지구를 생각하는 경제를 뭐라고 할까요?",
+    "options": ["지속 가능한 경제", "과소비 경제", "낭비 경제", "기부만 하는 경제"],
+    "correctIndex": 0,
+    "explanation": "자원을 아끼고, 재활용하며, 나누는 경제를 ‘지속 가능한 경제’라고 해요! 🌱 미래 세대를 위한 선택이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_6",
+    "subject": "economy",
+    "question": "💳 체크카드와 신용카드 중 어린이가 쓸 수 있는 건 무엇일까요?",
+    "options": ["둘 다 안 돼요", "체크카드만", "신용카드만", "둘 다 돼요"],
+    "correctIndex": 0,
+    "explanation": "어린이는 카드를 직접 쓸 수 없어요! 💳 부모님이 대신 쓰셔야 해요. 디지털 경제도 조심스럽게 배워야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_7",
+    "subject": "economy",
+    "question": "🚀 꿈을 이루기 위한 첫걸음은 무엇일까요?",
+    "options": ["계획 세우기", "모두 쓰기", "버리기", "숨기기"],
+    "correctIndex": 0,
+    "explanation": "꿈을 이루려면 ‘계획’이 필요해요! 📊 ‘얼마를 모을까?’부터 시작해 보세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_8",
+    "subject": "economy",
+    "question": "📱 온라인 쇼핑에서 ‘리뷰’를 보는 이유는 무엇일까요?",
+    "options": ["다른 사람의 경험을 보기 위해", "이름 외우기 위해", "포장 보기 위해", "친구 기다리기 위해"],
+    "correctIndex": 0,
+    "explanation": "리뷰는 실제 사용한 사람의 솔직한 이야기예요! ⭐ 광고보다 믿을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_9",
+    "subject": "economy",
+    "question": "🌱 ‘착한 소비’란 무엇일까요?",
+    "options": ["환경과 사람을 생각하는 소비", "가장 비싼 걸 사기", "모두 쓰기", "눈 감고 사기"],
+    "correctIndex": 0,
+    "explanation": "환경을 지키고, 사람을 배려하는 소비를 ‘착한 소비’라고 해요! 🌍 예: 비닐 대신 천가방!",
+    "difficulty": 1
+  },
+  {
+    "id": "economy_easy_10_10",
+    "subject": "economy",
+    "question": "💡 경제를 배우는 이유는 무엇일까요?",
+    "options": ["똑똑하게 살기 위해", "모두 쓰기 위해", "버리기 위해", "숨기기 위해"],
+    "correctIndex": 0,
+    "explanation": "경제를 알면 돈을 아끼고, 나누고, 꿈을 이룰 수 있어요! 💰 ‘똑똑한 어린이’가 되는 길이에요!",
+    "difficulty": 1
+  }
+]

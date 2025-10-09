@@ -1,0 +1,902 @@
+[
+  {
+    "id": "korean_easy_1_1",
+    "subject": "korean",
+    "question": "📝 맞춤법 탐험! ‘맑아요’는 어떤 말의 활용일까요?",
+    "options": ["맑다", "먹다", "밝다", "부끄럽다"],
+    "correctIndex": 0,
+    "explanation": "‘맑다’는 ‘ㄹ’ 받침이 있어요. ‘아요’가 붙으면 ‘맑아요’가 돼요! ☀️ 날씨가 맑을 때 써요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_2",
+    "subject": "korean",
+    "question": "✏️ ‘공부하다’를 바르게 활용한 문장은 무엇일까요?",
+    "options": ["나는 공부해요", "나는 공부한다요", "나는 공부하요", "나는 공부해요요"],
+    "correctIndex": 0,
+    "explanation": "‘공부하다’는 ‘해요’로 활용돼요! 📚 ‘나는 공부해요’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_3",
+    "subject": "korean",
+    "question": "🔤 ‘가다’의 바른 활용은 무엇일까요?",
+    "options": ["가요", "가다요", "가요요", "가한다"],
+    "correctIndex": 0,
+    "explanation": "‘가다’는 ‘ㅏ’가 있으니 ‘아요’ → ‘가요’가 돼요! 🏃‍♂️ ‘학교에 가요’!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_4",
+    "subject": "korean",
+    "question": "📖 ‘먹다’를 바르게 활용한 문장은 무엇일까요?",
+    "options": ["나는 밥을 먹어요", "나는 밥을 먹한다요", "나는 밥을 먹요", "나는 밥을 먹어요요"],
+    "correctIndex": 0,
+    "explanation": "‘먹다’는 ‘ㅓ’가 있으니 ‘어요’ → ‘먹어요’가 돼요! 🍚",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_5",
+    "subject": "korean",
+    "question": "🔤 ‘크다’의 바른 활용은 무엇일까요?",
+    "options": ["커요", "크아요", "크어요", "크요"],
+    "correctIndex": 0,
+    "explanation": "‘크다’는 ‘ㅡ’ 탈락하고 ‘ㅓ’가 나와서 ‘커요’가 돼요! 🌱 ‘나무가 커요!’",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_6",
+    "subject": "korean",
+    "question": "✏️ ‘예쁘다’를 바르게 활용한 문장은 무엇일까요?",
+    "options": ["꽃이 예뻐요", "꽃이 예쁘아요", "꽃이 예쁘어요", "꽃이 예쁘요"],
+    "correctIndex": 0,
+    "explanation": "‘예쁘다’는 ‘ㅓ’가 있으니 ‘어요’ → ‘예뻐요’가 돼요! 🌸",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_7",
+    "subject": "korean",
+    "question": "🔤 ‘바쁘다’의 바른 활용은 무엇일까요?",
+    "options": ["바빠요", "바쁘아요", "바쁘어요", "바쁘요"],
+    "correctIndex": 0,
+    "explanation": "‘바쁘다’는 ‘ㅓ’가 있으니 ‘어요’ → ‘바빠요’가 돼요! ⏰ ‘엄마는 바빠요!’",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_8",
+    "subject": "korean",
+    "question": "📖 ‘춥다’를 바르게 활용한 문장은 무엇일까요?",
+    "options": ["오늘은 추워요", "오늘은 춥아요", "오늘은 춥어요", "오늘은 춥요"],
+    "correctIndex": 0,
+    "explanation": "‘춥다’는 ‘ㅜ’ 탈락하고 ‘ㅓ’가 나와서 ‘추워요’가 돼요! ❄️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_9",
+    "subject": "korean",
+    "question": "🔤 ‘덥다’의 바른 활용은 무엇일까요?",
+    "options": ["더워요", "덥아요", "덥어요", "덥요"],
+    "correctIndex": 0,
+    "explanation": "‘덥다’는 ‘ㅓ’가 있으니 ‘어요’ → ‘더워요’가 돼요! ☀️ ‘오늘은 더워요!’",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_1_10",
+    "subject": "korean",
+    "question": "✏️ ‘하다’를 바르게 활용한 문장은 무엇일까요?",
+    "options": ["숙제를 해요", "숙제를 하아요", "숙제를 하어요", "숙제를 하요"],
+    "correctIndex": 0,
+    "explanation": "‘하다’는 ‘ㅏ’가 있으니 ‘아요’ → ‘해요’가 돼요! ✍️ ‘숙제를 해요!’",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_1",
+    "subject": "korean",
+    "question": "📖 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["나는 학교에 갑니다", "나는학교에갑니다", "나 는 학 교 에 갑 니 다", "나는 학교 에 갑니다"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘은/는/에’는 앞말과 붙여 써요! 🏫 ‘학교에’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_2",
+    "subject": "korean",
+    "question": "✏️ “엄마가 밥을 만들었어요”에서 띄어쓰기가 틀린 부분은 없을까요?",
+    "options": ["없어요", "엄마가", "밥을", "만들었어요"],
+    "correctIndex": 0,
+    "explanation": "모두 맞아요! 조사 ‘가/을’은 앞말과 붙여 써요! 🍲",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_3",
+    "subject": "korean",
+    "question": "🔤 다음 중 띄어쓰기가 올바른 것은 무엇일까요?",
+    "options": ["책을 읽어요", "책 을읽어요", "책을읽어요", "책 을 읽어요"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘을’은 ‘책’과 붙이고, ‘읽어요’는 띄어 써요! 📖",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_4",
+    "subject": "korean",
+    "question": "📖 “우리는 공원에서 놀아요”에서 띄어쓰기가 맞는 부분은 무엇일까요?",
+    "options": ["공원에서", "공원 에서", "공 원에서", "공원에서 놀아요"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘에서’는 ‘공원’과 붙여 써요! 🌳 ‘공원에서’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_5",
+    "subject": "korean",
+    "question": "✏️ “친구와 함께 갔어요”에서 띄어쓰기가 올바른가요?",
+    "options": ["네, 맞아요", "아니요, 틀렸어요", "친구 와", "함께갔어요"],
+    "correctIndex": 0,
+    "explanation": "‘와’는 조사라 ‘친구’와 붙이고, ‘함께’는 띄어 써요! 👫",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_6",
+    "subject": "korean",
+    "question": "🔤 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["동생이 자요", "동생 이자요", "동생이자요", "동 생이 자 요"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘이’는 ‘동생’과 붙이고, ‘자요’는 띄어 써요! 😴",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_7",
+    "subject": "korean",
+    "question": "📖 “선생님이 웃어요”에서 띄어쓰기가 맞는 부분은 무엇일까요?",
+    "options": ["선생님이", "선생님 이", "선생님이웃어요", "선생 님이 웃어요"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘이’는 ‘선생님’과 붙여 써요! 😊 ‘선생님이’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_8",
+    "subject": "korean",
+    "question": "✏️ “우유를 마셔요”에서 띄어쓰기가 올바른가요?",
+    "options": ["네, 맞아요", "아니요, 틀렸어요", "우유 를", "마셔요우유"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘를’은 ‘우유’와 붙이고, ‘마셔요’는 띄어 써요! 🥛",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_9",
+    "subject": "korean",
+    "question": "🔤 다음 중 띄어쓰기가 올바른 문장은 무엇일까요?",
+    "options": ["비가 와요", "비 가와요", "비가와요", "비 가 와 요"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘가’는 ‘비’와 붙이고, ‘와요’는 띄어 써요! 🌧️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_2_10",
+    "subject": "korean",
+    "question": "📖 “할머니가 오세요”에서 띄어쓰기가 맞는 부분은 무엇일까요?",
+    "options": ["할머니가", "할머 니가", "할머니 가", "오세요할머니"],
+    "correctIndex": 0,
+    "explanation": "조사 ‘가’는 ‘할머니’와 붙여 써요! 👵 ‘할머니가’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_1",
+    "subject": "korean",
+    "question": "🌟 “기쁘다”와 비슷한 뜻을 가진 말은 무엇일까요?",
+    "options": ["즐겁다", "슬프다", "화나다", "무섭다"],
+    "correctIndex": 0,
+    "explanation": "‘기쁘다’ = ‘즐겁다’! 둘 다 행복한 마음을 나타내요! 😊",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_2",
+    "subject": "korean",
+    "question": "🌈 “슬프다”의 반대말은 무엇일까요?",
+    "options": ["기쁘다", "화나다", "졸리다", "배고프다"],
+    "correctIndex": 0,
+    "explanation": "‘슬프다’의 반대는 ‘기쁘다’예요! 😢 ↔ 😄",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_3",
+    "subject": "korean",
+    "question": "🔥 “화나다”와 비슷한 뜻을 가진 말은 무엇일까요?",
+    "options": ["성나다", "기쁘다", "졸리다", "배고프다"],
+    "correctIndex": 0,
+    "explanation": "‘화나다’ = ‘성나다’! 화가 났을 때 써요! 😠",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_4",
+    "subject": "korean",
+    "question": "🌙 “졸리다”의 반대말은 무엇일까요?",
+    "options": ["깨어 있다", "자다", "먹다", "놀다"],
+    "correctIndex": 0,
+    "explanation": "‘졸리다’는 잠이 올 때, 반대는 ‘깨어 있다’예요! 😴 ↔ 👀",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_5",
+    "subject": "korean",
+    "question": "🍎 “배고프다”와 비슷한 뜻을 가진 말은 무엇일까요?",
+    "options": ["허기지다", "배부르다", "졸리다", "기쁘다"],
+    "correctIndex": 0,
+    "explanation": "‘배고프다’ = ‘허기지다’! 밥을 먹고 싶을 때 써요! 🍚",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_6",
+    "subject": "korean",
+    "question": "🌞 “따뜻하다”의 반대말은 무엇일까요?",
+    "options": ["차갑다", "뜨겁다", "부드럽다", " cứng다"],
+    "correctIndex": 0,
+    "explanation": "‘따뜻하다’ ↔ ‘차갑다’! 날씨나 물의 느낌을 말할 때 써요! ☀️ ↔ ❄️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_7",
+    "subject": "korean",
+    "question": "💧 “부드럽다”와 비슷한 뜻을 가진 말은 무엇일까요?",
+    "options": ["연하다", "딱딱하다", "차갑다", "뜨겁다"],
+    "correctIndex": 0,
+    "explanation": "‘부드럽다’ = ‘연하다’! 촉감이 좋을 때 써요! 🧸",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_8",
+    "subject": "korean",
+    "question": "⚡ “빠르다”의 반대말은 무엇일까요?",
+    "options": ["느리다", "빠르다", "크다", "작다"],
+    "correctIndex": 0,
+    "explanation": "‘빠르다’ ↔ ‘느리다’! 달리기나 시간을 말할 때 써요! 🐢 ↔ 🐇",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_9",
+    "subject": "korean",
+    "question": "🐘 “크다”의 반대말은 무엇일까요?",
+    "options": ["작다", "높다", "길다", "두껍다"],
+    "correctIndex": 0,
+    "explanation": "‘크다’ ↔ ‘작다’! 물건의 크기를 비교할 때 써요! 🐭 ↔ 🐘",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_3_10",
+    "subject": "korean",
+    "question": "🌈 “예쁘다”와 비슷한 뜻을 가진 말은 무엇일까요?",
+    "options": ["아름답다", "못생기다", "크다", "작다"],
+    "correctIndex": 0,
+    "explanation": "‘예쁘다’ = ‘아름답다’! 꽃, 옷, 그림을 칭찬할 때 써요! 🌸",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_1",
+    "subject": "korean",
+    "question": "🧩 “책을 / 읽어요 / 나는”을 바르게 배열하면?",
+    "options": ["나는 책을 읽어요", "책을 나는 읽어요", "읽어요 나는 책을", "책을 읽어요 나는"],
+    "correctIndex": 0,
+    "explanation": "한국어는 주어 + 목적어 + 동사 순서예요! 📚 ‘나는 책을 읽어요’가 맞아요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_2",
+    "subject": "korean",
+    "question": "🧩 “학교에 / 갑니다 / 우리는”을 바르게 배열하면?",
+    "options": ["우리는 학교에 갑니다", "학교에 우리는 갑니다", "갑니다 우리는 학교에", "우리는 갑니다 학교에"],
+    "correctIndex": 0,
+    "explanation": "‘우리는(주어) + 학교에(목적어/부사어) + 갑니다(동사)’가 맞아요! 🏫",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_3",
+    "subject": "korean",
+    "question": "🧩 “밥을 / 먹어요 / 동생이”를 바르게 배열하면?",
+    "options": ["동생이 밥을 먹어요", "밥을 동생이 먹어요", "먹어요 동생이 밥을", "동생이 먹어요 밥을"],
+    "correctIndex": 0,
+    "explanation": "‘동생이(주어) + 밥을(목적어) + 먹어요(동사)’가 맞아요! 🍚",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_4",
+    "subject": "korean",
+    "question": "🧩 “공원에서 / 놀아요 / 아이들이”를 바르게 배열하면?",
+    "options": ["아이들이 공원에서 놀아요", "공원에서 아이들이 놀아요", "놀아요 아이들이 공원에서", "아이들이 놀아요 공원에서"],
+    "correctIndex": 0,
+    "explanation": "‘아이들이(주어) + 공원에서(부사어) + 놀아요(동사)’가 맞아요! 🌳",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_5",
+    "subject": "korean",
+    "question": "🧩 “우유를 / 마셔요 / 나는”을 바르게 배열하면?",
+    "options": ["나는 우유를 마셔요", "우유를 나는 마셔요", "마셔요 나는 우유를", "나는 마셔요 우유를"],
+    "correctIndex": 0,
+    "explanation": "‘나는(주어) + 우유를(목적어) + 마셔요(동사)’가 맞아요! 🥛",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_6",
+    "subject": "korean",
+    "question": "🧩 “선생님이 / 웃어요 / 교실에서”를 바르게 배열하면?",
+    "options": ["선생님이 교실에서 웃어요", "교실에서 선생님이 웃어요", "웃어요 선생님이 교실에서", "선생님이 웃어요 교실에서"],
+    "correctIndex": 0,
+    "explanation": "‘선생님이(주어) + 교실에서(부사어) + 웃어요(동사)’가 맞아요! 😊",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_7",
+    "subject": "korean",
+    "question": "🧩 “비가 / 와요 / 하늘에서”를 바르게 배열하면?",
+    "options": ["비가 하늘에서 와요", "하늘에서 비가 와요", "와요 비가 하늘에서", "비가 와요 하늘에서"],
+    "correctIndex": 0,
+    "explanation": "‘비가(주어) + 하늘에서(부사어) + 와요(동사)’가 맞아요! 🌧️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_8",
+    "subject": "korean",
+    "question": "🧩 “할머니가 / 오세요 / 버스에서”를 바르게 배열하면?",
+    "options": ["할머니가 버스에서 오세요", "버스에서 할머니가 오세요", "오세요 할머니가 버스에서", "할머니가 오세요 버스에서"],
+    "correctIndex": 0,
+    "explanation": "‘할머니가(주어) + 버스에서(부사어) + 오세요(동사)’가 맞아요! 👵",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_9",
+    "subject": "korean",
+    "question": "🧩 “친구와 / 갔어요 / 영화관에”를 바르게 배열하면?",
+    "options": ["친구와 영화관에 갔어요", "영화관에 친구와 갔어요", "갔어요 친구와 영화관에", "친구와 갔어요 영화관에"],
+    "correctIndex": 0,
+    "explanation": "‘친구와(주어) + 영화관에(부사어) + 갔어요(동사)’가 맞아요! 🎬",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_4_10",
+    "subject": "korean",
+    "question": "🧩 “엄마가 / 만들었어요 / 맛있는 밥을”를 바르게 배열하면?",
+    "options": ["엄마가 맛있는 밥을 만들었어요", "맛있는 밥을 엄마가 만들었어요", "만들었어요 엄마가 맛있는 밥을", "엄마가 만들었어요 맛있는 밥을"],
+    "correctIndex": 0,
+    "explanation": "‘엄마가(주어) + 맛있는 밥을(목적어) + 만들었어요(동사)’가 맞아요! 🍲",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_1",
+    "subject": "korean",
+    "question": "🥚 다음 사건을 순서대로 배열해 보세요!\n(가) 병아리가 알에서 깨어났어요\n(나) 엄마 닭이 알을 품었어요\n(다) 알이 부화했어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "알을 품고 → 부화하고 → 깨어나는 순서예요! 🐣",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_2",
+    "subject": "korean",
+    "question": "🌱 다음 사건을 순서대로 배열해 보세요!\n(가) 꽃이 피었어요\n(나) 씨앗을 심었어요\n(다) 싹이 났어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "씨앗을 심고 → 싹이 나고 → 꽃이 피는 순서예요! 🌸",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_3",
+    "subject": "korean",
+    "question": "🍞 다음 사건을 순서대로 배열해 보세요!\n(가) 빵을 먹었어요\n(나) 빵을 샀어요\n(다) 배가 고팠어요",
+    "options": ["다 → 나 → 가", "가 → 나 → 다", "나 → 가 → 다", "다 → 가 → 나"],
+    "correctIndex": 0,
+    "explanation": "배가 고프면 → 빵을 사고 → 먹는 순서예요! 🥖",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_4",
+    "subject": "korean",
+    "question": "🌧️ 다음 사건을 순서대로 배열해 보세요!\n(가) 우산을 썼어요\n(나) 비가 왔어요\n(다) 집을 나섰어요",
+    "options": ["다 → 나 → 가", "나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나"],
+    "correctIndex": 0,
+    "explanation": "집을 나서고 → 비가 오면 → 우산을 쓰는 순서예요! ☔",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_5",
+    "subject": "korean",
+    "question": "📚 다음 사건을 순서대로 배열해 보세요!\n(가) 책을 읽었어요\n(나) 도서관에 갔어요\n(다) 책을 빌렸어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "도서관에 가고 → 책을 빌리고 → 읽는 순서예요! 📖",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_6",
+    "subject": "korean",
+    "question": "🚌 다음 사건을 순서대로 배열해 보세요!\n(가) 버스에서 내렸어요\n(나) 버스를 기다렸어요\n(다) 버스에 탔어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "버스를 기다리고 → 타고 → 내리는 순서예요! 🚌",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_7",
+    "subject": "korean",
+    "question": "🎨 다음 사건을 순서대로 배열해 보세요!\n(가) 그림을 그렸어요\n(나) 종이를 꺼냈어요\n(다) 크레용을 골랐어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "종이를 꺼내고 → 크레용을 고르고 → 그림을 그리는 순서예요! 🖍️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_8",
+    "subject": "korean",
+    "question": "🛁 다음 사건을 순서대로 배열해 보세요!\n(가) 수건으로 닦았어요\n(나) 물을 틀었어요\n(다) 샤워했어요",
+    "options": ["나 → 다 → 가", "가 → 나 → 다", "다 → 가 → 나", "나 → 가 → 다"],
+    "correctIndex": 0,
+    "explanation": "물을 틀고 → 샤워하고 → 수건으로 닦는 순서예요! 🚿",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_9",
+    "subject": "korean",
+    "question": "⚽ 다음 사건을 순서대로 배열해 보세요!\n(가) 골을 넣었어요\n(나) 공을 찼어요\n(다) 경기를 시작했어요",
+    "options": ["다 → 나 → 가", "가 → 나 → 다", "나 → 가 → 다", "다 → 가 → 나"],
+    "correctIndex": 0,
+    "explanation": "경기를 시작하고 → 공을 차고 → 골을 넣는 순서예요! ⚽",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_5_10",
+    "subject": "korean",
+    "question": "🌙 다음 사건을 순서대로 배열해 보세요!\n(가) 잠이 들었어요\n(나) 침대에 누웠어요\n(다) 잠옷을 입었어요",
+    "options": ["다 → 나 → 가", "가 → 나 → 다", "나 → 가 → 다", "다 → 가 → 나"],
+    "correctIndex": 0,
+    "explanation": "잠옷을 입고 → 침대에 누워 → 잠이 드는 순서예요! 😴",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_1",
+    "subject": "korean",
+    "question": "🔤 “ㅅ, ㅏ, ㄱ”으로 만들 수 있는 받침 있는 글자는 무엇일까요?",
+    "options": ["싹", "사", "산", "살"],
+    "correctIndex": 0,
+    "explanation": "ㅅ + ㅏ + ㄱ = 싹! 봄에 싹이 트는 그 ‘싹’이에요! 🌱",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_2",
+    "subject": "korean",
+    "question": "🔤 “ㄴ, ㅏ, ㄴ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["난", "나", "남", "납"],
+    "correctIndex": 0,
+    "explanation": "ㄴ + ㅏ + ㄴ = 난! ‘난 괜찮아요’의 ‘난’이에요! 😊",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_3",
+    "subject": "korean",
+    "question": "🔤 “ㅁ, ㅓ, ㄹ”로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["멀", "머", "멜", "몰"],
+    "correctIndex": 0,
+    "explanation": "ㅁ + ㅓ + ㄹ = 멀! ‘멀리 가요’의 ‘멀’이에요! 🚶‍♂️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_4",
+    "subject": "korean",
+    "question": "🔤 “ㅂ, ㅏ, ㅇ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["방", "바", "방", "박"],
+    "correctIndex": 0,
+    "explanation": "ㅂ + ㅏ + ㅇ = 방! ‘교실’이나 ‘방’을 뜻해요! 🏠",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_5",
+    "subject": "korean",
+    "question": "🔤 “ㄷ, ㅏ, ㄹ”로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["달", "다", "달", "닥"],
+    "correctIndex": 0,
+    "explanation": "ㄷ + ㅏ + ㄹ = 달! 밤하늘의 ‘달’이에요! 🌙",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_6",
+    "subject": "korean",
+    "question": "🔤 “ㄱ, ㅜ, ㄴ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["군", "구", "군", "국"],
+    "correctIndex": 0,
+    "explanation": "ㄱ + ㅜ + ㄴ = 군! ‘군인’의 ‘군’이에요! 🪖",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_7",
+    "subject": "korean",
+    "question": "🔤 “ㅈ, ㅣ, ㄱ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["직", "지", "직", "진"],
+    "correctIndex": 0,
+    "explanation": "ㅈ + ㅣ + ㄱ = 직! ‘직업’의 ‘직’이에요! 💼",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_8",
+    "subject": "korean",
+    "question": "🔤 “ㅊ, ㅏ, ㅇ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["창", "차", "창", "착"],
+    "correctIndex": 0,
+    "explanation": "ㅊ + ㅏ + ㅇ = 창! ‘창문’의 ‘창’이에요! 🪟",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_9",
+    "subject": "korean",
+    "question": "🔤 “ㅋ, ㅓ, ㄴ”으로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["건", "거", "건", "결"],
+    "correctIndex": 0,
+    "explanation": "ㅋ + ㅓ + ㄴ = 건! ‘건강’의 ‘건’이에요! 💪",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_6_10",
+    "subject": "korean",
+    "question": "🔤 “ㅌ, ㅏ, ㄹ”로 만들 수 있는 글자는 무엇일까요?",
+    "options": ["탈", "타", "탈", "탁"],
+    "correctIndex": 0,
+    "explanation": "ㅌ + ㅏ + ㄹ = 탈! ‘탈을 쓰다’의 ‘탈’이에요! 🎭",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_1",
+    "subject": "korean",
+    "question": "🐸 “개구리도 우물 안에서는 제일 크다”는 말은 무슨 뜻일까요?",
+    "options": ["좁은 곳에서는 자기가 최고라고 생각해요", "우물 속 개구리가 제일 커요", "개구리는 우물을 좋아해요", "우물은 위험해요"],
+    "correctIndex": 0,
+    "explanation": "좁은 세상만 보면 자기가 최고라고 생각할 수 있어요! 🌍 넓은 세상을 알아야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_2",
+    "subject": "korean",
+    "question": "🐜 “개미가 모이면 코끼리도 옮긴다”는 말은 무슨 뜻일까요?",
+    "options": ["작은 힘이 모이면 큰일을 해요", "코끼리는 약해요", "개미는 강해요", "모두 혼자 해야 해요"],
+    "correctIndex": 0,
+    "explanation": "작은 힘이라도 모이면 큰일도 할 수 있어요! 🤝 협력이 중요하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_3",
+    "subject": "korean",
+    "question": "🐢 “천리 길도 한 걸음부터”는 무슨 뜻일까요?",
+    "options": ["큰일도 작은 시작에서 출발해요", "천 리를 한 번에 가요", "걷지 않아도 돼요", "쉬는 게 좋아요"],
+    "correctIndex": 0,
+    "explanation": "아무리 멀고 어려운 일도 **첫걸음**에서 시작돼요! 🥾 용기 내세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_4",
+    "subject": "korean",
+    "question": "🦊 “여우와 두루미” 이야기에서 배울 점은 무엇일까요?",
+    "options": ["서로에게 베푼 대로 돌아와요", "여우가 이겨요", "두루미가 속아요", "친구는 믿지 마세요"],
+    "correctIndex": 0,
+    "explanation": "여우가 두루미를 속였다가 오히려 속았어요! 🦢 **서로 배려**해야 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_5",
+    "subject": "korean",
+    "question": "🐯 “호랑이도 제 말 하면 온다”는 말은 무슨 뜻일까요?",
+    "options": ["이야기하면 실제로 나타날 것 같아요", "호랑이가 말을 알아들어요", "말을 하면 위험해요", "호랑이를 부를 수 있어요"],
+    "correctIndex": 0,
+    "explanation": "누군가를 이야기하면 나타나는 것처럼 보일 때 써요! 🗣️ ‘설마 진짜 오는 건 아니겠지?’",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_6",
+    "subject": "korean",
+    "question": "🦁 “사자는 용감하다”는 말에서 ‘사자’는 무엇을 뜻할까요?",
+    "options": ["용감한 사람을 비유해요", "진짜 사자를 말해요", "동물원 사자를 말해요", "사자가 말해요"],
+    "correctIndex": 0,
+    "explanation": "용감한 사람을 ‘사자처럼 용감하다’고 비유해요! 🦁",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_7",
+    "subject": "korean",
+    "question": "🦉 “부엉이 눈 감고 쥐 잡기”는 무슨 뜻일까요?",
+    "options": ["우연히 성공하는 걸 말해요", "부엉이가 잘 잡아요", "쥐가 안 보여요", "눈을 감아야 해요"],
+    "correctIndex": 0,
+    "explanation": "부엉이는 낮에 눈이 잘 안 보이는데, 우연히 쥐를 잡았다는 뜻이에요! 🐭",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_8",
+    "subject": "korean",
+    "question": "🐵 “원숭이도 나무에서 떨어진다”는 말은 무슨 뜻일까요?",
+    "options": ["전문가도 실수할 수 있어요", "원숭이가 약해요", "나무가 미끄러워요", "모두 완벽해요"],
+    "correctIndex": 0,
+    "explanation": "원숭이도 나무에서 떨어질 수 있어요! 🐒 **겸손**이 중요하답니다!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_9",
+    "subject": "korean",
+    "question": "🐔 “꿩 대신 닭”은 무슨 뜻일까요?",
+    "options": ["원하는 게 없을 때 차선책을 선택해요", "꿩이 더 좋아요", "닭은 안 돼요", "둘 다 안 돼요"],
+    "correctIndex": 0,
+    "explanation": "꿩을 못 잡았을 때 닭이라도 잡는다는 뜻이에요! 🐓 현실적인 선택을 말할 때 써요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_7_10",
+    "subject": "korean",
+    "question": "🐮 “소 잃고 외양간 고친다”는 말은 무슨 뜻일까요?",
+    "options": ["일이 터지고 나서야 대비해요", "소를 찾았어요", "외양간이 튼튼해요", "모두 괜찮아요"],
+    "correctIndex": 0,
+    "explanation": "소를 잃고 나서야 외양간을 고치는 어리석음을 말해요! 🐄 **미리미리 준비**하세요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_1",
+    "subject": "korean",
+    "question": "📖 “봄이 왔어요. 꽃이 피고, 새가 지저귀어요. 아이들은 공원에서 놀아요.” 이 글의 주제는 무엇일까요?",
+    "options": ["봄", "꽃", "새", "공원"],
+    "correctIndex": 0,
+    "explanation": "꽃, 새, 아이들 모두 **봄의 모습**을 보여줘요! 🌸",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_2",
+    "subject": "korean",
+    "question": "📖 “비가 왔어요. 우산을 쓰고 학교에 갔어요. 친구들도 우산을 썼어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["비 오는 날", "우산", "학교", "친구"],
+    "correctIndex": 0,
+    "explanation": "비가 와서 우산을 쓴 이야기예요! ☔ **비 오는 날**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_3",
+    "subject": "korean",
+    "question": "📖 “할머니께서 김치를 담그셨어요. 맛있는 냄새가 났어요. 우리 가족은 김치찌개를 먹었어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["김치", "할머니", "냄새", "가족"],
+    "correctIndex": 0,
+    "explanation": "김치를 담그고, 김치찌개를 먹는 이야기예요! 🥬 **김치**가 중심이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_4",
+    "subject": "korean",
+    "question": "📖 “운동회 날이에요. 나는 계주를 뛰었어요. 우리 반은 1등을 했어요!” 이 글의 주제는 무엇일까요?",
+    "options": ["운동회", "계주", "1등", "우리 반"],
+    "correctIndex": 0,
+    "explanation": "운동회에서 계주를 뛰고 1등한 이야기예요! 🏃‍♂️ **운동회**가 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_5",
+    "subject": "korean",
+    "question": "📖 “도서관에 갔어요. 조용히 책을 읽었어요. 새로운 이야기가 재미있었어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["도서관", "책", "이야기", "조용히"],
+    "correctIndex": 0,
+    "explanation": "도서관에서 책을 읽은 이야기예요! 📚 **도서관**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_6",
+    "subject": "korean",
+    "question": "📖 “할아버지와 낚시를 했어요. 물고기가 잘 안 잡혔어요. 하지만 즐거웠어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["낚시", "할아버지", "물고기", "즐거움"],
+    "correctIndex": 0,
+    "explanation": "할아버지와 낚시한 이야기예요! 🎣 **낚시**가 중심이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_7",
+    "subject": "korean",
+    "question": "📖 “생일이에요. 친구들이 놀러 왔어요. 케이크를 먹고 게임을 했어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["생일", "친구", "케이크", "게임"],
+    "correctIndex": 0,
+    "explanation": "생일에 친구들과 즐거운 시간을 보낸 이야기예요! 🎂 **생일**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_8",
+    "subject": "korean",
+    "question": "📖 “첫눈이 왔어요. 눈사람을 만들었어요. 눈싸움도 했어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["첫눈", "눈사람", "눈싸움", "겨울"],
+    "correctIndex": 0,
+    "explanation": "첫눈이 와서 눈놀이를 한 이야기예요! ❄️ **첫눈**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_9",
+    "subject": "korean",
+    "question": "📖 “과학 시간이에요. 식물을 관찰했어요. 뿌리와 잎을 그렸어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["과학 시간", "식물", "뿌리", "그리기"],
+    "correctIndex": 0,
+    "explanation": "과학 시간에 식물을 관찰한 이야기예요! 🌿 **과학 시간**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_8_10",
+    "subject": "korean",
+    "question": "📖 “여름방학이에요. 바다에 갔어요. 파도와 모래가 재미있었어요.” 이 글의 주제는 무엇일까요?",
+    "options": ["여름방학", "바다", "파도", "모래"],
+    "correctIndex": 0,
+    "explanation": "여름방학에 바다에 간 이야기예요! 🏖️ **여름방학**이 주제예요!",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_1",
+    "subject": "korean",
+    "question": "🐶 다음 중 동물이 아닌 것은 무엇일까요?",
+    "options": ["사과", "강아지", "고양이", "토끼"],
+    "correctIndex": 0,
+    "explanation": "사과는 **식물**이지 동물이 아니에요! 🍎",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_2",
+    "subject": "korean",
+    "question": "🍎 다음 중 식물이 아닌 것은 무엇일까요?",
+    "options": ["강아지", "사과나무", "장미", "풀"],
+    "correctIndex": 0,
+    "explanation": "강아지는 **동물**이에요! 🐕",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_3",
+    "subject": "korean",
+    "question": "😊 다음 중 감정이 아닌 것은 무엇일까요?",
+    "options": ["책", "기쁨", "슬픔", "화남"],
+    "correctIndex": 0,
+    "explanation": "책은 **물건**이에요! 감정이 아니랍니다! 📖",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_4",
+    "subject": "korean",
+    "question": "🚗 다음 중 탈 것이 아닌 것은 무엇일까요?",
+    "options": ["사과", "자동차", "버스", "자전거"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 탈 수 없어요! 🍏",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_5",
+    "subject": "korean",
+    "question": "✏️ 다음 중 학용품이 아닌 것은 무엇일까요?",
+    "options": ["사과", "연필", "지우개", "공책"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 학용품이 아니랍니다! 🍎",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_6",
+    "subject": "korean",
+    "question": "👕 다음 중 옷이 아닌 것은 무엇일까요?",
+    "options": ["사과", "셔츠", "바지", "모자"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 옷이 아니랍니다! 🍏",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_7",
+    "subject": "korean",
+    "question": "⚽ 다음 중 스포츠가 아닌 것은 무엇일까요?",
+    "options": ["사과", "축구", "농구", "야구"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 스포츠가 아니랍니다! 🍎",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_8",
+    "subject": "korean",
+    "question": "🎹 다음 중 악기가 아닌 것은 무엇일까요?",
+    "options": ["사과", "피아노", "기타", "드럼"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 악기가 아니랍니다! 🍏",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_9",
+    "subject": "korean",
+    "question": "🏫 다음 중 장소가 아닌 것은 무엇일까요?",
+    "options": ["사과", "학교", "공원", "도서관"],
+    "correctIndex": 0,
+    "explanation": "사과는 **과일**이에요! 장소가 아니랍니다! 🍎",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_9_10",
+    "subject": "korean",
+    "question": "🍚 다음 중 음식이 아닌 것은 무엇일까요?",
+    "options": ["책", "김치", "불고기", "된장찌개"],
+    "correctIndex": 0,
+    "explanation": "책은 **물건**이에요! 음식이 아니랍니다! 📚",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_1",
+    "subject": "korean",
+    "question": "🗣️ 친구에게 물건을 빌릴 때 가장 예의 바른 말은 무엇일까요?",
+    "options": ["잠깐만 빌려줄 수 있을까?", "줘!", "빌려줘!", "내 거야!"],
+    "correctIndex": 0,
+    "explanation": "‘~해줄 수 있을까?’는 **정중한 요청**이에요! 👍",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_2",
+    "subject": "korean",
+    "question": "🗣️ 선생님께 질문할 때 가장 예의 바른 말은 무엇일까요?",
+    "options": ["질문 있어요.", "말해!", "왜 그래?", "몰라요!"],
+    "correctIndex": 0,
+    "explanation": "‘질문 있어요’는 **정중하고 예의 있는 말**이에요! 🙋‍♀️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_3",
+    "subject": "korean",
+    "question": "🗣️ 친구에게 도움을 요청할 때 좋은 말은 무엇일까요?",
+    "options": ["도와줄 수 있을까?", "해!", "빨리 해!", "왜 안 해?"],
+    "correctIndex": 0,
+    "explanation": "‘도와줄 수 있을까?’는 **정중한 요청**이에요! 🤝",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_4",
+    "subject": "korean",
+    "question": "🗣️ 감사할 때 가장 좋은 말은 무엇일까요?",
+    "options": ["고마워요!", "됐어!", "알았어!", "그만해!"],
+    "correctIndex": 0,
+    "explanation": "‘고마워요!’는 **감사의 마음**을 전하는 말이에요! ❤️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_5",
+    "subject": "korean",
+    "question": "🗣️ 사과할 때 가장 좋은 말은 무엇일까요?",
+    "options": ["미안해요!", "네가 잘못했어!", "몰라!", "그만해!"],
+    "correctIndex": 0,
+    "explanation": "‘미안해요!’는 **사과의 마음**을 전하는 말이에요! 🙏",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_6",
+    "subject": "korean",
+    "question": "🗣️ 친구에게 인사할 때 좋은 말은 무엇일까요?",
+    "options": ["안녕!", "야!", "왜?", "가만히 있어!"],
+    "correctIndex": 0,
+    "explanation": "‘안녕!’은 **기본 인사말**이에요! 😊",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_7",
+    "subject": "korean",
+    "question": "🗣️ 부탁할 때 정중한 말은 무엇일까요?",
+    "options": ["부탁할게요.", "해!", "빨리 해!", "왜 안 해?"],
+    "correctIndex": 0,
+    "explanation": "‘부탁할게요’는 **정중한 부탁**이에요! 🙇‍♂️",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_8",
+    "subject": "korean",
+    "question": "🗣️ 칭찬할 때 좋은 말은 무엇일까요?",
+    "options": ["잘했어!", "못했어!", "왜 그래?", "그만해!"],
+    "correctIndex": 0,
+    "explanation": "‘잘했어!’는 **칭찬의 말**이에요! 👏",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_9",
+    "subject": "korean",
+    "question": "🗣️ 친구에게 조언할 때 좋은 말은 무엇일까요?",
+    "options": ["이렇게 해보는 건 어때?", "해!", "왜 안 해?", "몰라!"],
+    "correctIndex": 0,
+    "explanation": "‘~어때?’는 **부드러운 조언**이에요! 💬",
+    "difficulty": 1
+  },
+  {
+    "id": "korean_easy_10_10",
+    "subject": "korean",
+    "question": "🗣️ 친구와 의견이 다를 때 좋은 말은 무엇일까요?",
+    "options": ["나는 이렇게 생각해.", "네가 틀렸어!", "왜 그래?", "그만해!"],
+    "correctIndex": 0,
+    "explanation": "‘나는 이렇게 생각해’는 **존중하는 표현**이에요! 🤗",
+    "difficulty": 1
+  }
+]

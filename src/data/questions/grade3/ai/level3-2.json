@@ -1,0 +1,57 @@
+[
+  {
+    "id": "ai_hard_3_6",
+    "subject": "ai",
+    "question": "BERT 모델의 특징은?",
+    "options": ["양방향 문맥 이해", "단방향 처리", "이미지 생성", "음성 인식"],
+    "correctIndex": 0,
+    "explanation": "BERT(Bidirectional Encoder Representations from Transformers)는 문장의 앞뒤 문맥을 모두 고려하는 양방향 언어 모델입니다.",
+    "difficulty": 3,
+    "tags": ["BERT", "NLP"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_7",
+    "subject": "ai",
+    "question": "Meta Learning의 목표는?",
+    "options": ["학습하는 방법을 학습", "메타데이터 분석", "빠른 학습", "정확한 예측"],
+    "correctIndex": 0,
+    "explanation": "메타 러닝(Learning to Learn)은 AI가 새로운 작업을 빠르게 학습할 수 있도록 학습 방법 자체를 학습하는 기법입니다.",
+    "difficulty": 3,
+    "tags": ["meta learning"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_8",
+    "subject": "ai",
+    "question": "Diffusion Model이 사용되는 주요 분야는?",
+    "options": ["이미지 생성", "텍스트 분류", "음성 인식", "데이터 압축"],
+    "correctIndex": 0,
+    "explanation": "Diffusion Model은 노이즈를 점진적으로 제거하여 고품질 이미지를 생성하는 모델로, Stable Diffusion 등에 사용됩니다.",
+    "difficulty": 3,
+    "tags": ["diffusion", "generative"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_9",
+    "subject": "ai",
+    "question": "Prompt Engineering이란?",
+    "options": ["AI 입력 최적화", "프로그램 작성", "모델 훈련", "데이터 수집"],
+    "correctIndex": 0,
+    "explanation": "프롬프트 엔지니어링은 AI 모델에게 원하는 결과를 얻기 위해 효과적인 입력(프롬프트)을 설계하는 기술입니다.",
+    "difficulty": 3,
+    "tags": ["prompt engineering", "LLM"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_hard_3_10",
+    "subject": "ai",
+    "question": "AGI(Artificial General Intelligence)란?",
+    "options": ["인간 수준 범용 AI", "특정 작업 AI", "강한 AI", "약한 AI"],
+    "correctIndex": 0,
+    "explanation": "AGI는 인간처럼 다양한 분야에서 범용적으로 사고하고 학습할 수 있는 인공지능을 의미합니다. 아직 실현되지 않은 미래 기술입니다.",
+    "difficulty": 3,
+    "tags": ["AGI", "future"],
+    "gradeRange": [3, 5]
+  }
+]

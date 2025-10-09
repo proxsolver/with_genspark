@@ -1,0 +1,115 @@
+[
+  {
+    "id": "ai_medium_2_1",
+    "subject": "ai",
+    "question": "지도 학습(Supervised Learning)의 특징은?",
+    "options": ["정답이 있는 데이터로 학습", "정답 없이 패턴 찾기", "보상으로 학습", "규칙 기반 학습"],
+    "correctIndex": 0,
+    "explanation": "지도 학습은 입력 데이터와 정답(레이블)이 함께 제공되어 AI가 이를 학습하는 방식입니다.",
+    "difficulty": 2,
+    "tags": ["machine learning", "supervised"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_medium_2_2",
+    "subject": "ai",
+    "question": "딥러닝(Deep Learning)의 '딥(Deep)'이 의미하는 것은?",
+    "options": ["신경망 층이 많다", "데이터가 깊다", "학습이 오래 걸린다", "복잡한 코드"],
+    "correctIndex": 0,
+    "explanation": "딥러닝의 '딥'은 여러 층(Layer)으로 구성된 깊은 신경망 구조를 의미합니다.",
+    "difficulty": 2,
+    "tags": ["deep learning"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_medium_2_3",
+    "subject": "ai",
+    "question": "자연어 처리(NLP)가 다루는 것은?",
+    "options": ["인간의 언어", "이미지", "숫자", "음악"],
+    "correctIndex": 0,
+    "explanation": "자연어 처리(Natural Language Processing)는 사람의 언어를 컴퓨터가 이해하고 처리하는 AI 기술입니다.",
+    "difficulty": 2,
+    "tags": ["NLP"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_medium_2_4",
+    "subject": "ai",
+    "question": "강화 학습(Reinforcement Learning)의 핵심 개념은?",
+    "options": ["보상과 처벌", "정답 레이블", "군집화", "차원 축소"],
+    "correctIndex": 0,
+    "explanation": "강화 학습은 행동에 대한 보상과 처벌을 통해 AI가 최적의 행동을 학습하는 방식입니다.",
+    "difficulty": 2,
+    "tags": ["reinforcement learning"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "ai_medium_2_5",
+    "subject": "ai",
+    "question": "과적합(Overfitting)이란?",
+    "options": ["학습 데이터에만 너무 맞춤", "학습이 부족함", "데이터가 너무 많음", "모델이 너무 단순함"],
+    "correctIndex": 0,
+    "explanation": "과적합은 AI가 학습 데이터에는 완벽하지만 새로운 데이터에는 잘 작동하지 않는 현상입니다.",
+    "difficulty": 2,
+    "tags": ["machine learning", "overfitting"],
+    "gradeRange": [3, 5]
+  },
+    {
+      "id": "ai_medium_2_6",
+      "subject": "ai",
+      "question": "CNN(Convolutional Neural Network)이 주로 사용되는 분야는?",
+      "options": ["이미지 인식", "텍스트 번역", "음성 합성", "게임"],
+      "correctIndex": 0,
+      "explanation": "CNN은 이미지의 특징을 효과적으로 추출하는 구조로, 이미지 인식 분야에서 널리 사용됩니다.",
+      "difficulty": 2,
+      "tags": ["CNN", "computer vision"],
+      "gradeRange": [3, 5]
+    },
+    {
+      "id": "ai_medium_2_7",
+      "subject": "ai",
+      "question": "RNN(Recurrent Neural Network)의 특징은?",
+      "options": ["순차 데이터 처리", "이미지 처리", "단순 분류", "데이터 압축"],
+      "correctIndex": 0,
+      "explanation": "RNN은 시간 순서가 있는 데이터(텍스트, 음성, 시계열 등)를 처리하는데 특화된 신경망입니다.",
+      "difficulty": 2,
+      "tags": ["RNN"],
+      "gradeRange": [3, 5]
+    },
+    {
+      "id": "ai_medium_2_8",
+      "subject": "ai",
+      "question": "전이 학습(Transfer Learning)이란?",
+      "options": ["기존 모델을 새 작업에 활용", "데이터를 옮기는 것", "모델을 복사하는 것", "학습을 멈추는 것"],
+      "correctIndex": 0,
+      "explanation": "전이 학습은 이미 학습된 모델을 새로운 작업에 재사용하여 학습 시간과 데이터를 절약하는 기법입니다.",
+      "difficulty": 2,
+      "tags": ["transfer learning"],
+      "gradeRange": [3, 5]
+    },
+    {
+      "id": "ai_medium_2_9",
+      "subject": "ai",
+      "question": "GPT 모델의 'T'가 의미하는 것은?",
+      "options": ["Transformer", "Training", "Technology", "Text"],
+      "correctIndex": 0,
+      "explanation": "GPT는 'Generative Pre-trained Transformer'의 약자로, Transformer 구조를 기반으로 합니다.",
+      "difficulty": 2,
+      "tags": ["LLM", "GPT"],
+      "gradeRange": [3, 5]
+    },
+    {
+      "id": "ai_medium_2_10",
+      "subject": "ai",
+      "question": "AI의 편향(Bias) 문제란?",
+      "options": ["데이터 편향이 결과에 반영", "모델이 느림", "에러가 많음", "코드가 복잡함"],
+      "correctIndex": 0,
+      "explanation": "AI는 학습 데이터의 편향을 그대로 반영하므로, 공정하지 않은 데이터로 학습하면 편향된 결과를 낼 수 있습니다.",
+      "difficulty": 2,
+      "tags": ["ethics", "bias"],
+      "gradeRange": [3, 5]
+    }
+
+  
+
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "toeic_hard_3_6",
+    "subject": "toeic",
+    "question": "The findings were _____ with the initial hypothesis.",
+    "options": ["consistent", "consisted", "consisting", "consistency"],
+    "correctIndex": 0,
+    "explanation": "'be consistent with'는 '~와 일치하다'라는 뜻의 표현입니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "collocation"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_7",
+    "subject": "toeic",
+    "question": "_____ economic conditions, the company decided to postpone expansion plans.",
+    "options": ["In light of", "In spite of", "On behalf of", "With regard to"],
+    "correctIndex": 0,
+    "explanation": "'In light of'는 '~을 고려하여, ~에 비추어'라는 뜻입니다.",
+    "difficulty": 3,
+    "tags": ["vocabulary", "expression"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_8",
+    "subject": "toeic",
+    "question": "The research team has made _____ progress in developing the new technology.",
+    "options": ["substantial", "substantiate", "substance", "substantially"],
+    "correctIndex": 0,
+    "explanation": "명사 'progress'를 수식하는 형용사 'substantial'(상당한)이 필요합니다.",
+    "difficulty": 3,
+    "tags": ["grammar", "word form"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_9",
+    "subject": "toeic",
+    "question": "_____ the unexpected challenges, the project was completed on time.",
+    "options": ["Notwithstanding", "Nevertheless", "Nonetheless", "Henceforth"],
+    "correctIndex": 0,
+    "explanation": "'Notwithstanding'은 전치사로 '~에도 불구하고'의 의미입니다.",
+    "difficulty": 3,
+    "tags": ["grammar", "preposition"],
+    "gradeRange": [3, 5]
+  },
+  {
+    "id": "toeic_hard_3_10",
+    "subject": "toeic",
+    "question": "The CEO emphasized the importance of _____ innovation.",
+    "options": ["fostering", "fostered", "foster", "fosters"],
+    "correctIndex": 0,
+    "explanation": "전치사 'of' 뒤에는 동명사가 와야 합니다.",
+    "difficulty": 3,
+    "tags": ["grammar", "gerund"],
+    "gradeRange": [3, 5]
+  }
+]

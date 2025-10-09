@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "eng_easy_spell_011",
+    "subject": "english",
+    "question": "우리가 잠을 자는 '침대'는 영어로 어떻게 쓸까요?",
+    "options": ["Bed", "Bad", "Bid", "Bud"],
+    "correctIndex": 0,
+    "explanation": "정답! '침대'는 'Bed'라고 써요. '나쁜'이라는 뜻의 'Bad'와 헷갈리지 않도록 조심해요!",
+    "difficulty": 1,
+    "audioText": "Bed"
+  },
+  {
+    "id": "eng_easy_spell_012",
+    "subject": "english",
+    "question": "숫자 '10'을 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
+    "options": ["Tan", "Ten", "Tin", "Tun"],
+    "correctIndex": 1,
+    "explanation": "맞았어요! 숫자 '10'은 'Ten'이에요. T-E-N!",
+    "difficulty": 1,
+    "audioText": "Ten"
+  },
+  {
+    "id": "eng_easy_spell_013",
+    "subject": "english",
+    "question": "그림(🐷)을 보고 '돼지'를 뜻하는 올바른 영어 단어를 고르세요.",
+    "options": ["Peg", "Pig", "Pag", "Pug"],
+    "correctIndex": 1,
+    "explanation": "꿀꿀! 맞아요. '돼지'는 'Pig'라고 쓴답니다. P-I-G!",
+    "difficulty": 1,
+    "audioText": "Pig"
+  },
+  {
+    "id": "eng_easy_spell_014",
+    "subject": "english",
+    "question": "'태양'을 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
+    "options": ["San", "Sin", "Sun", "Son"],
+    "correctIndex": 2,
+    "explanation": "정답! '태양'은 'Sun'이에요. '아들'을 뜻하는 'Son'과 발음이 같아서 헷갈릴 수 있으니 철자를 잘 봐두세요!",
+    "difficulty": 1,
+    "audioText": "Sun"
+  },
+  {
+    "id": "eng_easy_spell_015",
+    "subject": "english",
+    "question": "우리가 글씨를 쓰는 '펜'은 영어로 어떻게 쓸까요?",
+    "options": ["Pen", "Pan", "Pin", "Pun"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! '펜'은 'Pen'이에요. 숫자 '10(Ten)'과 소리가 비슷하죠?",
+    "difficulty": 1,
+    "audioText": "Pen"
+  },
+  {
+    "id": "eng_easy_spell_016",
+    "subject": "english",
+    "question": "그림(🦵)을 보고 '다리'를 뜻하는 올바른 영어 단어를 고르세요.",
+    "options": ["Lag", "Leg", "Log", "Lug"],
+    "correctIndex": 1,
+    "explanation": "맞아요! '다리'는 'Leg' 에요. '레고(Lego)' 장난감과 헷갈리지 마세요!",
+    "difficulty": 1,
+    "audioText": "Leg"
+  },
+  {
+    "id": "eng_easy_spell_017",
+    "subject": "english",
+    "question": "'젖은' 이라는 뜻의 영어 단어 철자는 무엇일까요?",
+    "options": ["Wet", "Wat", "Wit", "Wot"],
+    "correctIndex": 0,
+    "explanation": "정답! 비에 맞아서 옷이 '젖었을 때' 쓰는 단어는 'Wet'이에요.",
+    "difficulty": 1,
+    "audioText": "Wet"
+  },
+  {
+    "id": "eng_easy_spell_018",
+    "subject": "english",
+    "question": "그림(🕸️)을 보고 '거미줄'을 뜻하는 올바른 영어 단어를 고르세요.",
+    "options": ["Wab", "Wob", "Web", "Wib"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! 거미가 만드는 '거미줄'은 'Web'이라고 해요.",
+    "difficulty": 1,
+    "audioText": "Web"
+  },
+  {
+    "id": "eng_easy_spell_019",
+    "subject": "english",
+    "question": "숫자 '6'을 뜻하는 영어 단어의 올바른 철자는 무엇일까요?",
+    "options": ["Sax", "Sex", "Sox", "Six"],
+    "correctIndex": 3,
+    "explanation": "맞았어요! 숫자 '6'은 'Six'에요. S-I-X!",
+    "difficulty": 1,
+    "audioText": "Six"
+  },
+  {
+    "id": "eng_easy_spell_020",
+    "subject": "english",
+    "question": "우리가 물건을 넣는 '상자'는 영어로 어떻게 쓸까요?",
+    "options": ["Box", "Bax", "Bex", "Bix"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! '상자'는 'Box'라고 써요. B-O-X!",
+    "difficulty": 1,
+    "audioText": "Box"
+  },
+  {
+    "id": "eng_easy_vocab_011",
+    "subject": "english",
+    "question": "다음 중 '걷다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Fly", "Swim", "Walk", "Crawl"],
+    "correctIndex": 2,
+    "explanation": "정답! '걷다'는 'Walk'에요. 공원을 산책하는 것을 상상해보세요!",
+    "difficulty": 1,
+    "audioText": "Walk"
+  },
+  {
+    "id": "eng_easy_vocab_012",
+    "subject": "english",
+    "question": "단어 'Yellow'는 무슨 색깔을 뜻할까요?",
+    "options": ["주황색", "분홍색", "보라색", "노란색"],
+    "correctIndex": 3,
+    "explanation": "맞았어요! 'Yellow'는 병아리처럼 귀여운 '노란색'을 뜻해요.",
+    "difficulty": 1,
+    "audioText": "Yellow"
+  },
+  {
+    "id": "eng_easy_vocab_013",
+    "subject": "english",
+    "question": "다음 중 '놀다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Work", "Study", "Play", "Clean"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! '놀다'는 'Play'에요. 'Let's play!'는 '같이 놀자!'라는 뜻이랍니다.",
+    "difficulty": 1,
+    "audioText": "Play"
+  },
+  {
+    "id": "eng_easy_vocab_014",
+    "subject": "english",
+    "question": "단어 'Brother'는 누구를 가리키는 말일까요?",
+    "options": ["누나, 언니", "형, 오빠, 남동생", "엄마", "아빠"],
+    "correctIndex": 1,
+    "explanation": "정답! 'Brother'는 남자 형제를 부르는 말이에요. 나보다 나이가 많으면 형/오빠, 적으면 남동생이 될 수 있어요.",
+    "difficulty": 1,
+    "audioText": "Brother"
+  },
+  {
+    "id": "eng_easy_vocab_015",
+    "subject": "english",
+    "question": "다음 중 '노래하다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Draw", "Sing", "Shout", "Listen"],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '노래하다'는 영어로 'Sing'이에요. 'I can sing.'은 '나는 노래할 수 있어.'라는 뜻이죠.",
+    "difficulty": 1,
+    "audioText": "Sing"
+  },
+  {
+    "id": "eng_easy_vocab_016",
+    "subject": "english",
+    "question": "단어 'White'는 무슨 색깔을 뜻할까요?",
+    "options": ["회색", "갈색", "검은색", "흰색"],
+    "correctIndex": 3,
+    "explanation": "맞았어요! 'White'는 눈처럼 깨끗한 '흰색'을 뜻해요.",
+    "difficulty": 1,
+    "audioText": "White"
+  },
+  {
+    "id": "eng_easy_vocab_017",
+    "subject": "english",
+    "question": "다음 중 '날다'라는 행동을 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Jump", "Fly", "Fall", "Sit"],
+    "correctIndex": 1,
+    "explanation": "정답! 새처럼 하늘을 '날다'는 영어로 'Fly'라고 해요.",
+    "difficulty": 1,
+    "audioText": "Fly"
+  },
+  {
+    "id": "eng_easy_vocab_018",
+    "subject": "english",
+    "question": "단어 'Circle'은 어떤 모양을 뜻할까요?",
+    "options": ["세모", "네모", "동그라미", "별"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! 'Circle'은 동글동글 '동그라미' 모양을 뜻해요.",
+    "difficulty": 1,
+    "audioText": "Circle"
+  },
+  {
+    "id": "eng_easy_vocab_019",
+    "subject": "english",
+    "question": "다음 중 '주스'를 뜻하는 영어 단어는 무엇일까요?",
+    "options": ["Water", "Milk", "Juice", "Soda"],
+    "correctIndex": 2,
+    "explanation": "맞았어요! 우리가 마시는 과일 '주스'는 영어로 'Juice'라고 해요.",
+    "difficulty": 1,
+    "audioText": "Juice"
+  },
+  {
+    "id": "eng_easy_vocab_020",
+    "subject": "english",
+    "question": "단어 'Angry'는 어떤 기분을 뜻할까요?",
+    "options": ["신나는", "지루한", "화난", "놀란"],
+    "correctIndex": 2,
+    "explanation": "정답! 'Angry'는 '화난' 기분을 나타내는 말이에요. 'I am angry!'라고 말하면 '나 화났어!'라는 뜻이 된답니다.",
+    "difficulty": 1,
+    "audioText": "Angry"
+  },
+  {
+    "id": "eng_easy_anto_011",
+    "subject": "english",
+    "question": "단어 'Full(가득 찬)'의 반대말은 무엇일까요?",
+    "options": ["Empty", "Many", "Lot", "More"],
+    "correctIndex": 0,
+    "explanation": "맞았어요! 컵에 물이 가득 차있으면 'Full', 비어있으면 'Empty'라고 해요.",
+    "difficulty": 1,
+    "audioText": "Full, Empty"
+  },
+  {
+    "id": "eng_easy_anto_012",
+    "subject": "english",
+    "question": "단어 'Push(밀다)'의 반대말은 무엇일까요?",
+    "options": ["Go", "Stop", "Pull", "Hit"],
+    "correctIndex": 2,
+    "explanation": "정답! 문을 'Push(밀다)'의 반대말은 'Pull(당기다)'이에요. 문에 항상 써있는 단어들이죠?",
+    "difficulty": 1,
+    "audioText": "Push, Pull"
+  },
+  {
+    "id": "eng_easy_anto_013",
+    "subject": "english",
+    "question": "단어 'Boy(소년)'의 반대말은 무엇일까요?",
+    "options": ["Man", "Woman", "Girl", "Baby"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! 'Boy(소년)'의 반대말은 'Girl(소녀)'이에요.",
+    "difficulty": 1,
+    "audioText": "Boy, Girl"
+  },
+  {
+    "id": "eng_easy_anto_014",
+    "subject": "english",
+    "question": "단어 'Black(검은색)'의 반대말은 무엇일까요?",
+    "options": ["Gray", "White", "Dark", "Brown"],
+    "correctIndex": 1,
+    "explanation": "맞아요! 'Black(검은색)'의 반대말은 'White(흰색)'에요.",
+    "difficulty": 1,
+    "audioText": "Black, White"
+  },
+  {
+    "id": "eng_easy_anto_015",
+    "subject": "english",
+    "question": "단어 'Question(질문)'의 반대말은 무엇일까요?",
+    "options": ["Answer", "Test", "Quiz", "Word"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 'Question(질문)'의 반대말은 'Answer(대답)'에요. 질문이 있으면 대답이 있겠죠?",
+    "difficulty": 1,
+    "audioText": "Question, Answer"
+  },
+  {
+    "id": "eng_easy_anto_016",
+    "subject": "english",
+    "question": "단어 'Start(시작하다)'의 반대말은 무엇일까요?",
+    "options": ["Begin", "End", "Go", "Stop"],
+    "correctIndex": 1,
+    "explanation": "정답! 'Start(시작하다)'의 반대말은 'End(끝내다)'에요. 'Stop(멈추다)'도 비슷한 뜻이지만 'End'가 더 정확한 반대말이랍니다.",
+    "difficulty": 1,
+    "audioText": "Start, End"
+  },
+  {
+    "id": "eng_easy_anto_017",
+    "subject": "english",
+    "question": "단어 'Clean(깨끗한)'의 반대말은 무엇일까요?",
+    "options": ["Dirty", "Clear", "New", "Fresh"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 'Clean(깨끗한)'의 반대말은 'Dirty(더러운)'에요.",
+    "difficulty": 1,
+    "audioText": "Clean, Dirty"
+  },
+  {
+    "id": "eng_easy_anto_018",
+    "subject": "english",
+    "question": "단어 'Left(왼쪽)'의 반대말은 무엇일까요?",
+    "options": ["Side", "Right", "Front", "Back"],
+    "correctIndex": 1,
+    "explanation": "최고예요! 'Left(왼쪽)'의 반대말은 'Right(오른쪽)'에요. 왼손은 Left hand, 오른손은 Right hand!",
+    "difficulty": 1,
+    "audioText": "Left, Right"
+  },
+  {
+    "id": "eng_easy_anto_019",
+    "subject": "english",
+    "question": "단어 'Sit(앉다)'의 반대말은 무엇일까요?",
+    "options": ["Run", "Walk", "Jump", "Stand"],
+    "correctIndex": 3,
+    "explanation": "정답! 'Sit(앉다)'의 반대말은 'Stand(서다)'에요. Sit down! Stand up!",
+    "difficulty": 1,
+    "audioText": "Sit, Stand"
+  },
+  {
+    "id": "eng_easy_anto_020",
+    "subject": "english",
+    "question": "단어 'Hard(단단한, 어려운)'의 반대말은 무엇일까요?",
+    "options": ["Easy", "Soft", "모두 정답", "정답 없음"],
+    "correctIndex": 2,
+    "explanation": "대단해요! 'Hard'는 '어려운'이라는 뜻과 '단단한'이라는 뜻 두 가지를 모두 가지고 있어요. 그래서 반대말도 'Easy(쉬운)'와 'Soft(부드러운)' 두 개가 모두 맞아요!",
+    "difficulty": 1,
+    "audioText": "Hard, Easy, Soft"
+  },
+  {
+    "id": "eng_easy_rhyme_011",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Fox'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
+    "options": ["Fix", "Fax", "Box", "Far"],
+    "correctIndex": 2,
+    "explanation": "맞았어요! 'Fox'와 'Box'는 둘 다 '-ox' 소리로 끝나는 라임 친구들이에요.",
+    "difficulty": 1,
+    "audioText": "Fox, Box"
+  },
+  {
+    "id": "eng_easy_rhyme_012",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Pen'과 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
+    "options": ["Pan", "Pin", "Ten", "Pain"],
+    "correctIndex": 2,
+    "explanation": "정답! 'Pen'과 'Ten'은 둘 다 '-en' 소리로 끝나요. 소리를 내어 따라 읽어보세요. Pen, Ten!",
+    "difficulty": 1,
+    "audioText": "Pen, Ten"
+  },
+  {
+    "id": "eng_easy_rhyme_013",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Pig'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
+    "options": ["Big", "Bag", "Peg", "Pin"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 'Pig'와 'Big'은 둘 다 '-ig' 소리로 끝나요. A big pig! (큰 돼지!)",
+    "difficulty": 1,
+    "audioText": "Pig, Big"
+  },
+  {
+    "id": "eng_easy_rhyme_014",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Bed'와 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
+    "options": ["Bad", "Bid", "Bud", "Red"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! 'Bed'와 'Red'는 '-ed' 소리로 끝나는 라임이에요. A red bed! (빨간 침대!)",
+    "difficulty": 1,
+    "audioText": "Bed, Red"
+  },
+  {
+    "id": "eng_easy_rhyme_015",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Blue'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
+    "options": ["Glow", "Blew", "Glue", "모두 정답"],
+    "correctIndex": 3,
+    "explanation": "최고예요! 'Blue', 'Blew', 'Glue'는 모두 '블루'와 비슷한 소리가 나요. 철자는 다르지만 소리가 비슷한 단어들이랍니다!",
+    "difficulty": 1,
+    "audioText": "Blue, Glue"
+  },
+  {
+    "id": "eng_easy_rhyme_016",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Fly'와 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
+    "options": ["Sky", "Flow", "Flea", "Full"],
+    "correctIndex": 0,
+    "explanation": "정답! 'Fly'와 'Sky'는 둘 다 '아이' 소리로 끝나는 라임 친구들이에요. Fly in the sky! (하늘을 날다!)",
+    "difficulty": 1,
+    "audioText": "Fly, Sky"
+  },
+  {
+    "id": "eng_easy_rhyme_017",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Day'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
+    "options": ["Die", "Do", "Play", "Dip"],
+    "correctIndex": 2,
+    "explanation": "맞았어요! 'Day'와 'Play'는 둘 다 '에이' 소리로 끝나요. Play all day! (하루 종일 놀다!)",
+    "difficulty": 1,
+    "audioText": "Day, Play"
+  },
+  {
+    "id": "eng_easy_rhyme_018",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'See'와 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
+    "options": ["Sea", "She", "Say", "So"],
+    "correctIndex": 0,
+    "explanation": "딩동댕! 'See(보다)'와 'Sea(바다)'는 철자는 다르지만 소리가 똑같아요. 이런 단어들을 동음이의어라고 한답니다.",
+    "difficulty": 1,
+    "audioText": "See, Sea"
+  },
+  {
+    "id": "eng_easy_rhyme_019",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Go'와 비슷한 소리로 끝나는 단어(라임)는 무엇일까요?",
+    "options": ["Do", "No", "Now", "Got"],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 'Go'와 'No'는 둘 다 '오우' 소리로 끝나는 라임이에요.",
+    "difficulty": 1,
+    "audioText": "Go, No"
+  },
+  {
+    "id": "eng_easy_rhyme_020",
+    "subject": "english",
+    "question": "다음 단어들 중에서 'Train'과 비슷한 소리로 끝나는 단어(라임)를 찾아보세요.",
+    "options": ["Pain", "Rain", "Brain", "모두 정답"],
+    "correctIndex": 3,
+    "explanation": "정말 잘했어요! 'Train', 'Rain', 'Brain', 'Pain'은 모두 '-ain' 소리로 끝나는 라임 가족이에요!",
+    "difficulty": 1,
+    "audioText": "Train, Rain"
+  },
+  {
+    "id": "eng_easy_category_011",
+    "subject": "english",
+    "question": "다음 중 '직업(Job)' 종류에 속하는 단어는 무엇일까요?",
+    "options": ["Doctor (의사)", "Hospital (병원)", "Sick (아픈)", "Medicine (약)"],
+    "correctIndex": 0,
+    "explanation": "정답! 'Doctor'는 사람들을 치료해주는 '의사'라는 직업이에요.",
+    "difficulty": 1,
+    "audioText": "Doctor"
+  },
+  {
+    "id": "eng_easy_category_012",
+    "subject": "english",
+    "question": "다음 중 '채소(Vegetable)' 종류에 속하는 단어는 무엇일까요?",
+    "options": ["Apple (사과)", "Strawberry (딸기)", "Carrot (당근)", "Grape (포도)"],
+    "correctIndex": 2,
+    "explanation": "맞아요! 'Carrot'은 토끼가 좋아하는 '당근'이라는 채소예요. 나머지는 모두 달콤한 과일이랍니다.",
+    "difficulty": 1,
+    "audioText": "Carrot"
+  },
+  {
+    "id": "eng_easy_category_013",
+    "subject": "english",
+    "question": "다음 중 '날씨(Weather)'를 나타내는 단어는 무엇일까요?",
+    "options": ["Windy (바람부는)", "Morning (아침)", "Winter (겨울)", "Cold (추운)"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 'Windy'는 바람이 많이 부는 날씨를 말해요. 'Cold'는 '추운' 상태를 말하지만 날씨 그 자체는 아니랍니다.",
+    "difficulty": 1,
+    "audioText": "Windy"
+  },
+  {
+    "id": "eng_easy_category_014",
+    "subject": "english",
+    "question": "다음 중 '운동(Sports)' 종류에 속하지 **않는** 단어는 무엇일까요?",
+    "options": ["Soccer (축구)", "Baseball (야구)", "Swim (수영하다)", "Music (음악)"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! 'Music'은 우리가 듣는 '음악'이죠. 나머지는 모두 신나는 운동 경기랍니다.",
+    "difficulty": 1,
+    "audioText": "Music"
+  },
+  {
+    "id": "eng_easy_category_015",
+    "subject": "english",
+    "question": "다음 중 '감정(Feeling)'을 나타내는 단어는 무엇일까요?",
+    "options": ["Tired (피곤한)", "Run (달리다)", "Desk (책상)", "Yummy (맛있는)"],
+    "correctIndex": 0,
+    "explanation": "정답! 'Tired'는 '피곤한' 상태나 기분을 나타내는 말이에요.",
+    "difficulty": 1,
+    "audioText": "Tired"
+  },
+  {
+    "id": "eng_easy_category_016",
+    "subject": "english",
+    "question": "다음 중 '곤충(Insect)' 종류에 속하는 단어는 무엇일까요?",
+    "options": ["Spider (거미)", "Ant (개미)", "Frog (개구리)", "Snake (뱀)"],
+    "correctIndex": 1,
+    "explanation": "맞았어요! 'Ant'는 열심히 일하는 '개미'라는 곤충이에요. 거미는 곤충이 아니고, 개구리와 뱀도 곤충이 아니랍니다.",
+    "difficulty": 1,
+    "audioText": "Ant"
+  },
+  {
+    "id": "eng_easy_category_017",
+    "subject": "english",
+    "question": "다음 중 '음료(Drink)' 종류에 속하지 **않는** 단어는 무엇일까요?",
+    "options": ["Water (물)", "Juice (주스)", "Cookie (쿠키)", "Milk (우유)"],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 'Cookie'는 우리가 먹는 '쿠키'이지, 마시는 음료가 아니에요.",
+    "difficulty": 1,
+    "audioText": "Cookie"
+  },
+  {
+    "id": "eng_easy_category_018",
+    "subject": "english",
+    "question": "다음 중 '계절(Season)'을 나타내는 단어는 무엇일까요?",
+    "options": ["Monday (월요일)", "January (1월)", "Spring (봄)", "Today (오늘)"],
+    "correctIndex": 2,
+    "explanation": "정답! 'Spring'은 꽃이 피는 아름다운 계절, '봄'을 뜻해요.",
+    "difficulty": 1,
+    "audioText": "Spring"
+  },
+  {
+    "id": "eng_easy_category_019",
+    "subject": "english",
+    "question": "다음 중 '학용품(School Supplies)' 종류에 속하는 단어는 무엇일까요?",
+    "options": ["Toy (장난감)", "Eraser (지우개)", "Bed (침대)", "Spoon (숟가락)"],
+    "correctIndex": 1,
+    "explanation": "맞아요! 'Eraser'는 글씨를 지울 때 쓰는 '지우개'라는 학용품이에요.",
+    "difficulty": 1,
+    "audioText": "Eraser"
+  },
+  {
+    "id": "eng_easy_category_020",
+    "subject": "english",
+    "question": "다음 중 '모양(Shape)'을 나타내는 단어는 무엇일까요?",
+    "options": ["Star (별)", "Sweet (달콤한)", "Soft (부드러운)", "Sing (노래하다)"],
+    "correctIndex": 0,
+    "explanation": "딩동댕! 'Star'는 반짝이는 '별' 모양을 뜻해요. 맛이나 느낌, 행동을 나타내는 다른 단어들과는 다르죠?",
+    "difficulty": 1,
+    "audioText": "Star"
+  },
+  {
+    "id": "eng_easy_firstletter_011",
+    "subject": "english",
+    "question": "'왕'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["Q (Queen)", "K (King)", "P (Prince)", "J (Jack)"],
+    "correctIndex": 1,
+    "explanation": "정답! '왕'은 'King'이라서 알파벳 'K'로 시작해요. 여왕은 'Queen'이랍니다.",
+    "difficulty": 1,
+    "audioText": "King"
+  },
+  {
+    "id": "eng_easy_firstletter_012",
+    "subject": "english",
+    "question": "그림(🌈) '무지개'를 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["C (Cloud)", "S (Sky)", "R (Rainbow)", "W (Wind)"],
+    "correctIndex": 2,
+    "explanation": "맞아요! 아름다운 '무지개'는 'Rainbow'라서 알파벳 'R'로 시작해요.",
+    "difficulty": 1,
+    "audioText": "Rainbow"
+  },
+  {
+    "id": "eng_easy_firstletter_013",
+    "subject": "english",
+    "question": "'여우'를 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["F (Fox)", "W (Wolf)", "D (Deer)", "B (Bear)"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! '여우'는 'Fox'라서 알파벳 'F'로 시작해요.",
+    "difficulty": 1,
+    "audioText": "Fox"
+  },
+  {
+    "id": "eng_easy_firstletter_014",
+    "subject": "english",
+    "question": "그림(🎁) '선물'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["P (Present)", "G (Gift)", "B (Box)", "모두 정답"],
+    "correctIndex": 3,
+    "explanation": "대단해요! '선물'은 'Present' 또는 'Gift'라고 말할 수 있어요. 그리고 선물은 보통 'Box'에 담겨있죠? 그래서 모두 정답이 될 수 있답니다!",
+    "difficulty": 1,
+    "audioText": "Present, Gift, Box"
+  },
+  {
+    "id": "eng_easy_firstletter_015",
+    "subject": "english",
+    "question": "'얼음'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["W (Water)", "S (Snow)", "I (Ice)", "C (Cold)"],
+    "correctIndex": 2,
+    "explanation": "정답! 차가운 '얼음'은 'Ice'라서 알파벳 'I'로 시작해요. 아이스크림(Ice cream)도 같은 'Ice'를 쓴답니다.",
+    "difficulty": 1,
+    "audioText": "Ice"
+  },
+  {
+    "id": "eng_easy_firstletter_016",
+    "subject": "english",
+    "question": "그림(🔑) '열쇠'를 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["D (Door)", "L (Lock)", "H (Hole)", "K (Key)"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! '열쇠'는 'Key'라서 알파벳 'K'로 시작해요.",
+    "difficulty": 1,
+    "audioText": "Key"
+  },
+  {
+    "id": "eng_easy_firstletter_017",
+    "subject": "english",
+    "question": "'사자'와 '호랑이' 중 알파벳 순서가 더 빠른 동물은 무엇일까요?",
+    "options": ["Lion (사자)", "Tiger (호랑이)", "순서가 같다", "알 수 없음"],
+    "correctIndex": 0,
+    "explanation": "맞았어요! 'Lion'은 'L'로 시작하고, 'Tiger'는 'T'로 시작해요. 알파벳 순서에서 'L'이 'T'보다 앞에 오기 때문에 'Lion'이 더 빠르답니다.",
+    "difficulty": 1,
+    "audioText": "Lion, Tiger"
+  },
+  {
+    "id": "eng_easy_firstletter_018",
+    "subject": "english",
+    "question": "그림(🏞️) '공원'을 뜻하는 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["Z (Zoo)", "P (Park)", "G (Garden)", "F (Forest)"],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '공원'은 'Park'라서 알파벳 'P'로 시작해요.",
+    "difficulty": 1,
+    "audioText": "Park"
+  },
+  {
+    "id": "eng_easy_firstletter_019",
+    "subject": "english",
+    "question": "'여왕'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["K (King)", "P (Princess)", "Q (Queen)", "W (Woman)"],
+    "correctIndex": 2,
+    "explanation": "정답! 멋진 '여왕'님은 'Queen'이라서 알파벳 'Q'로 시작해요. 'King'은 왕이죠!",
+    "difficulty": 1,
+    "audioText": "Queen"
+  },
+  {
+    "id": "eng_easy_firstletter_020",
+    "subject": "english",
+    "question": "동물 '얼룩말'을 뜻하는 영어 단어는 어떤 알파벳으로 시작할까요?",
+    "options": ["H (Horse)", "L (Lion)", "T (Tiger)", "Z (Zebra)"],
+    "correctIndex": 3,
+    "explanation": "맞아요! 줄무늬가 멋진 '얼룩말'은 'Zebra'라서 알파벳의 마지막 글자인 'Z'로 시작해요!",
+    "difficulty": 1,
+    "audioText": "Zebra"
+  },
+  {
+    "id": "eng_easy_pair_011",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Bed - 🪑", "Desk - 🛌", "Chair - 🚪", "Door - 🚪"],
+    "correctIndex": 3,
+    "explanation": "정답! 'Door'는 '문'을 뜻하고 🚪 그림과 딱 맞아요. 🪑-Chair, 🛌-Bed.",
+    "difficulty": 1,
+    "audioText": "Door"
+  },
+  {
+    "id": "eng_easy_pair_012",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
+    "options": ["Pencil - ✏️", "Eraser - 📏", "Ruler - 📏", "Note - 📓"],
+    "correctIndex": 1,
+    "explanation": "맞아요! 'Eraser'는 '지우개'인데 📏 그림은 '자(Ruler)'에요. 잘못 짝지어졌네요!",
+    "difficulty": 1,
+    "audioText": "Eraser"
+  },
+  {
+    "id": "eng_easy_pair_013",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Bread - 🍞", "Cheese - 🧀", "Milk - 🥛", "모두 정답"],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 빵, 치즈, 우유 모두 그림과 단어가 올바르게 짝지어졌어요!",
+    "difficulty": 1,
+    "audioText": "Bread, Cheese, Milk"
+  },
+  {
+    "id": "eng_easy_pair_014",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Boy - 👧", "Girl - 👦", "Baby - 👨", "Man - 👨"],
+    "correctIndex": 3,
+    "explanation": "정답! 'Man'은 '남자 어른'을 뜻하고, 👨 그림과 맞아요. 👧-Girl, 👦-Boy, 👨-Man, 👩-Woman!",
+    "difficulty": 1,
+    "audioText": "Man"
+  },
+  {
+    "id": "eng_easy_pair_015",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
+    "options": ["Sun - ☀️", "Moon - 🌙", "Star - ⭐", "Cloud - 🔥"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! 'Cloud'는 '구름(☁️)'인데 🔥 그림은 '불(Fire)'이에요. 잘못 짝지어졌네요!",
+    "difficulty": 1,
+    "audioText": "Cloud"
+  },
+  {
+    "id": "eng_easy_pair_016",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Head - 🦶", "Foot - 🦶", "Leg - 💪", "Arm - 🦵"],
+    "correctIndex": 1,
+    "explanation": "맞아요! 'Foot'은 '발'을 뜻하고, 🦶 그림과 딱 맞아요. 머리는 Head, 팔은 Arm, 다리는 Leg!",
+    "difficulty": 1,
+    "audioText": "Foot"
+  },
+  {
+    "id": "eng_easy_pair_017",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Sing - 🎤", "Dance - 💃", "Read - 🎧", "Draw - 🎨"],
+    "correctIndex": 3,
+    "explanation": "정답! 'Draw'는 '그리다'라는 뜻이고, 🎨 그림과 어울려요. 다른 행동들도 알아볼까요? 🎤-Sing, 💃-Dance, 🎧-Listen!",
+    "difficulty": 1,
+    "audioText": "Draw"
+  },
+  {
+    "id": "eng_easy_pair_018",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 **잘못** 짝지어진 것을 고르세요.",
+    "options": ["Hospital - 🏥", "School - 🏫", "Home - 🏠", "Park - 🏦"],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 'Park'는 '공원'인데 🏦 그림은 '은행(Bank)'이에요. 잘못 짝지어졌네요!",
+    "difficulty": 1,
+    "audioText": "Park"
+  },
+  {
+    "id": "eng_easy_pair_019",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Shirt - 👖", "Pants - 👕", "Socks - 👟", "Shoes - 👟"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! 'Shoes'는 '신발'을 뜻하고, 👟 그림과 맞아요. 👕-Shirt, 👖-Pants, 🧦-Socks!",
+    "difficulty": 1,
+    "audioText": "Shoes"
+  },
+  {
+    "id": "eng_easy_pair_020",
+    "subject": "english",
+    "question": "다음 중 단어와 그림이 올바르게 짝지어진 것을 고르세요.",
+    "options": ["Five - 🖐️", "Ten - 👣", "One - ☝️", "모두 정답"],
+    "correctIndex": 3,
+    "explanation": "정말 잘했어요! Five(5), Ten(10), One(1) 모두 그림과 잘 어울려요. 그래서 모두 정답!",
+    "difficulty": 1,
+    "audioText": "Five, Ten, One"
+  },
+  {
+    "id": "eng_easy_insentence_011",
+    "subject": "english",
+    "question": "이것은 노란색 ____이에요. 빈칸에 들어갈 알맞은 말은? 'This is a yellow ____.'",
+    "options": ["flower", "tree", "leaf", "sky"],
+    "correctIndex": 0,
+    "explanation": "정답! 'This is a yellow flower.'는 '이것은 노란 꽃이야.'라는 뜻이에요.",
+    "difficulty": 1,
+    "audioText": "This is a yellow flower."
+  },
+  {
+    "id": "eng_easy_insentence_012",
+    "subject": "english",
+    "question": "나는 큰 ____을 가지고 있어요. 빈칸에 들어갈 알맞은 말은? 'I have a big ____.'",
+    "options": ["house", "small", "happy", "run"],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 'I have a big house.'는 '나는 큰 집을 가지고 있어.'라는 뜻이에요.",
+    "difficulty": 1,
+    "audioText": "I have a big house."
+  },
+  {
+    "id": "eng_easy_insentence_013",
+    "subject": "english",
+    "question": "나의 ____을 봐! 빈칸에 들어갈 알맞은 말은? 'Look at my ____!'",
+    "options": ["hand", "sit", "is", "blue"],
+    "correctIndex": 0,
+    "explanation": "정답! 'Look at my hand!'는 '내 손을 봐!'라는 뜻이에요. 'Look at'은 '~을 보다'라는 뜻으로 아주 자주 쓰인답니다.",
+    "difficulty": 1,
+    "audioText": "Look at my hand!"
+  },
+  {
+    "id": "eng_easy_insentence_014",
+    "subject": "english",
+    "question": "그것은 ____ 고양이야. 빈칸에 들어갈 알맞은 말은? 'It is a ____ cat.'",
+    "options": ["cute", "run", "eat", "desk"],
+    "correctIndex": 0,
+    "explanation": "맞아요! 'It is a cute cat.'은 '그것은 귀여운 고양이야.'라는 뜻이에요. 'cute'는 '귀여운'이라는 뜻의 형용사랍니다.",
+    "difficulty": 1,
+    "audioText": "It is a cute cat."
+  },
+  {
+    "id": "eng_easy_insentence_015",
+    "subject": "english",
+    "question": "나는 ____을 마셔요. 빈칸에 들어갈 알맞은 말은? 'I drink ____.'",
+    "options": ["book", "milk", "chair", "song"],
+    "correctIndex": 1,
+    "explanation": "딩동댕! 'I drink milk.'는 '나는 우유를 마셔요.'라는 뜻이에요. 'drink'는 '마시다'라는 뜻의 행동 단어랍니다.",
+    "difficulty": 1,
+    "audioText": "I drink milk."
+  },
+  {
+    "id": "eng_easy_insentence_016",
+    "subject": "english",
+    "question": "나의 아빠는 ____이야. 빈칸에 들어갈 알맞은 말은? 'My father is a ____.'",
+    "options": ["doctor", "happy", "tall", "play"],
+    "correctIndex": 0,
+    "explanation": "정답! 'My father is a doctor.'는 '나의 아빠는 의사 선생님이야.'라는 뜻이에요. 직업을 나타내는 단어가 들어갈 자리였어요.",
+    "difficulty": 1,
+    "audioText": "My father is a doctor."
+  },
+  {
+    "id": "eng_easy_insentence_017",
+    "subject": "english",
+    "question": "나는 나의 ____ 위에서 잠을 자. 빈칸에 들어갈 알맞은 말은? 'I sleep on my ____.'",
+    "options": ["desk", "chair", "bed", "floor"],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 'I sleep on my bed.'는 '나는 나의 침대 위에서 잠을 자.'라는 뜻이에요. 'on'은 '~위에'라는 뜻이죠.",
+    "difficulty": 1,
+    "audioText": "I sleep on my bed."
+  },
+  {
+    "id": "eng_easy_insentence_018",
+    "subject": "english",
+    "question": "그녀는 ____을 가지고 놀아. 빈칸에 들어갈 알맞은 말은? 'She plays with a ____.'",
+    "options": ["ball", "eat", "sad", "water"],
+    "correctIndex": 0,
+    "explanation": "맞았어요! 'She plays with a ball.'은 '그녀는 공을 가지고 놀아.'라는 뜻이에요.",
+    "difficulty": 1,
+    "audioText": "She plays with a ball."
+  },
+  {
+    "id": "eng_easy_insentence_019",
+    "subject": "english",
+    "question": "나는 ____에 가는 것을 좋아해. 빈칸에 들어갈 알맞은 말은? 'I like to go to the ____.'",
+    "options": ["pencil", "happy", "beach", "sing"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! 'I like to go to the beach.'는 '나는 해변에 가는 것을 좋아해.'라는 뜻이에요. 'beach'는 '해변'이라는 장소랍니다.",
+    "difficulty": 1,
+    "audioText": "I like to go to the beach."
+  },
+  {
+    "id": "eng_easy_insentence_020",
+    "subject": "english",
+    "question": "이것은 너를 위한 ____이야. 빈칸에 들어갈 알맞은 말은? 'This is a ____ for you.'",
+    "options": ["gift", "go", "fast", "my"],
+    "correctIndex": 0,
+    "explanation": "정답! 'This is a gift for you.'는 '이것은 너를 위한 선물이야.'라는 멋진 문장이에요. 'gift'는 '선물'이라는 뜻이랍니다.",
+    "difficulty": 1,
+    "audioText": "This is a gift for you."
+  },
+  {
+    "id": "eng_easy_listening_011",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Run", "Walk", "Jump", "Sit"],
+    "correctIndex": 2,
+    "explanation": "정답! '두 발로 위로 뛰는 행동'은 바로 'Jump(점프하다)'에요.",
+    "difficulty": 1,
+    "audioText": "I am an action. You use two feet to go up."
+  },
+  {
+    "id": "eng_easy_listening_012",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Monday", "Tuesday", "Wednesday", "Sunday"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! '주말의 마지막 날'은 바로 'Sunday(일요일)'에요.",
+    "difficulty": 1,
+    "audioText": "I am a day of the week. I am the last day of the weekend."
+  },
+  {
+    "id": "eng_easy_listening_013",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Train", "Plane", "Ship", "Taxi"],
+    "correctIndex": 1,
+    "explanation": "맞았어요! '하늘을 날아서 여행하는 것'은 바로 'Plane(비행기)'이랍니다.",
+    "difficulty": 1,
+    "audioText": "I am a vehicle. I travel in the sky."
+  },
+  {
+    "id": "eng_easy_listening_014",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Five", "Six", "Seven", "Eight"],
+    "correctIndex": 2,
+    "explanation": "정답! '6 다음, 8 이전의 숫자'는 바로 'Seven(7)'이에요.",
+    "difficulty": 1,
+    "audioText": "I am a number. I am after six and before eight."
+  },
+  {
+    "id": "eng_easy_listening_015",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Pink", "Purple", "Orange", "Brown"],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '빨간색과 파란색을 섞으면 나오는 색'은 바로 'Purple(보라색)'이에요.",
+    "difficulty": 1,
+    "audioText": "I am a color. You can make me by mixing red and blue."
+  },
+  {
+    "id": "eng_easy_listening_016",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Library", "Hospital", "Police Station", "Fire Station"],
+    "correctIndex": 0,
+    "explanation": "맞아요! '많은 책이 있고, 조용히 해야 하는 곳'은 바로 'Library(도서관)'이죠.",
+    "difficulty": 1,
+    "audioText": "I am a place. I have many books and you must be quiet."
+  },
+  {
+    "id": "eng_easy_listening_017",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Eyes", "Ears", "Mouth", "Nose"],
+    "correctIndex": 1,
+    "explanation": "정답! '소리를 듣기 위해 사용하는 우리 몸의 부분'은 바로 'Ears(귀)'에요.",
+    "difficulty": 1,
+    "audioText": "I am part of your body. You use me to hear sounds."
+  },
+  {
+    "id": "eng_easy_listening_018",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Cookie", "Candy", "Cake", "Ice cream"],
+    "correctIndex": 3,
+    "explanation": "딩동댕! '차갑고 달콤하며, 여름에 먹는 간식'은 바로 'Ice cream(아이스크림)'이죠.",
+    "difficulty": 1,
+    "audioText": "I am a sweet food. I am cold and you eat me in summer."
+  },
+  {
+    "id": "eng_easy_listening_019",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Farmer", "Doctor", "Cook", "Singer"],
+    "correctIndex": 2,
+    "explanation": "맞아요! '음식을 만드는 직업'을 가진 사람은 바로 'Cook(요리사)' 또는 'Chef'라고 해요.",
+    "difficulty": 1,
+    "audioText": "I am a job. I make food for people."
+  },
+  {
+    "id": "eng_easy_listening_020",
+    "subject": "english",
+    "question": "다음에 들려주는 설명을 잘 듣고, 무엇에 대한 설명인지 맞춰보세요.",
+    "options": ["Rain", "Snow", "Wind", "Sun"],
+    "correctIndex": 1,
+    "explanation": "정답! '하늘에서 내리는 하얗고 차가운 것'은 바로 'Snow(눈)'에요.",
+    "difficulty": 1,
+    "audioText": "I come from the sky. I am white and cold."
+  },
+  {
+    "id": "eng_easy_plural_011",
+    "subject": "english",
+    "question": "의자 한 개는 'a chair'에요. 그럼 의자 여러 개는 영어로 어떻게 말할까요?",
+    "options": ["chairs", "chaires", "chair's", "chair"],
+    "correctIndex": 0,
+    "explanation": "정답! 간단하게 단어 뒤에 '-s'만 붙여서 'chairs'라고 하면 '의자들'이라는 뜻이 돼요.",
+    "difficulty": 1,
+    "audioText": "a chair, chairs"
+  },
+  {
+    "id": "eng_easy_plural_012",
+    "subject": "english",
+    "question": "여우 한 마리는 'a fox'에요. 그럼 여우 두 마리는 영어로 어떻게 말할까요?",
+    "options": ["two fox", "two fox's", "two foxen", "two foxes"],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 'x'로 끝나는 단어는 뒤에 '-es'를 붙여서 'foxes'라고 말해요. 박스(box)도 boxes가 된답니다.",
+    "difficulty": 1,
+    "audioText": "a fox, two foxes"
+  },
+  {
+    "id": "eng_easy_plural_013",
+    "subject": "english",
+    "question": "남자 한 명은 'a man'이에요. 그럼 남자 세 명은 영어로 어떻게 말할까요?",
+    "options": ["three mans", "three men", "three man's", "three manes"],
+    "correctIndex": 1,
+    "explanation": "대단해요! 'man'의 여러 명은 '-s'를 붙이지 않고 'men'이라는 특별한 모습으로 변신해요. 이런 단어들을 잘 기억해두면 영어를 더 잘하게 될 거예요!",
+    "difficulty": 1,
+    "audioText": "a man, three men"
+  },
+  {
+    "id": "eng_easy_plural_014",
+    "subject": "english",
+    "question": "장난감 한 개는 'a toy'에요. 그럼 장난감 여러 개는 영어로 어떻게 말할까요?",
+    "options": ["toies", "toyes", "toys", "toy's"],
+    "correctIndex": 2,
+    "explanation": "맞았어요! 'y' 앞에 'o'처럼 모음(a,e,i,o,u)이 있을 때는 그냥 '-s'만 붙여서 'toys'라고 해요. 'boy'도 'boys'가 된답니다.",
+    "difficulty": 1,
+    "audioText": "a toy, toys"
+  },
+  {
+    "id": "eng_easy_plural_015",
+    "subject": "english",
+    "question": "여자 한 명은 'a woman'이에요. 그럼 여자 여러 명은 영어로 어떻게 말할까요?",
+    "options": ["womans", "womanses", "womens", "women"],
+    "correctIndex": 3,
+    "explanation": "정답! 'woman'도 'man'처럼 특별하게 변신해요. 여러 명일 땐 'women'이 되고, 발음은 '위민'에 가깝게 난답니다.",
+    "difficulty": 1,
+    "audioText": "a woman, women"
+  },
+  {
+    "id": "eng_easy_plural_016",
+    "subject": "english",
+    "question": "나뭇잎 한 개는 'a leaf'에요. 그럼 나뭇잎 여러 개는 영어로 어떻게 말할까요?",
+    "options": ["leafs", "leaves", "leafes", "leaf's"],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 'f'로 끝나는 단어는 'f'를 'v'로 바꾸고 '-es'를 붙이는 경우가 많아요. 그래서 'leaves'가 된답니다.",
+    "difficulty": 1,
+    "audioText": "a leaf, leaves"
+  },
+  {
+    "id": "eng_easy_plural_017",
+    "subject": "english",
+    "question": "발 한 개는 'one foot'이에요. 그럼 두 발은 영어로 어떻게 말할까요?",
+    "options": ["two foots", "two feets", "two feet", "two footes"],
+    "correctIndex": 2,
+    "explanation": "딩동댕! 'foot'도 특별하게 변신하는 단어에요. 여러 개일 땐 'feet'이 된답니다. 'child'가 'children'이 되는 것처럼요!",
+    "difficulty": 1,
+    "audioText": "one foot, two feet"
+  },
+  {
+    "id": "eng_easy_plural_018",
+    "subject": "english",
+    "question": "토마토 한 개는 'a tomato'에요. 그럼 토마토 여러 개는 영어로 어떻게 말할까요?",
+    "options": ["tomatos", "tomatoes", "tomato's", "tomato"],
+    "correctIndex": 1,
+    "explanation": "맞았어요! 'o'로 끝나는 단어는 뒤에 '-es'를 붙여서 'tomatoes'라고 말하는 경우가 많아요. 'potato'도 'potatoes'가 된답니다.",
+    "difficulty": 1,
+    "audioText": "a tomato, tomatoes"
+  },
+  {
+    "id": "eng_easy_plural_019",
+    "subject": "english",
+    "question": "접시 한 개는 'a dish'에요. 그럼 접시 두 개는 영어로 어떻게 말할까요?",
+    "options": ["two dish", "two dishs", "two dishes", "two dish's"],
+    "correctIndex": 2,
+    "explanation": "정답! 'sh'로 끝나는 단어는 뒤에 '-es'를 붙여서 'dishes'라고 말해요. 발음하기 더 편하죠? 디쉬-이즈!",
+    "difficulty": 1,
+    "audioText": "a dish, two dishes"
+  },
+  {
+    "id": "eng_easy_plural_020",
+    "subject": "english",
+    "question": "생쥐 한 마리는 'a mouse'에요. 그럼 생쥐 여러 마리는 영어로 어떻게 말할까요?",
+    "options": ["mouses", "mices", "mice", "mouse's"],
+    "correctIndex": 2,
+    "explanation": "대단해요! 'mouse'도 특별하게 변신하는 단어 중 하나에요. 여러 마리일 땐 'mice'가 된답니다. 정말 재미있죠?",
+    "difficulty": 1,
+    "audioText": "a mouse, mice"
+  }
+]

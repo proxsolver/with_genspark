@@ -11,6 +11,26 @@
     <!-- 한글 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- MathJax for LaTeX support -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['\\(','\\)']],
+                displayMath: [['\\[','\\]']],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                linebreaks: { automatic: true }
+            },
+            SVG: {
+                linebreaks: { automatic: true }
+            }
+        });
+    </script>
+
     <!-- 로거 시스템 (가장 먼저 로드) -->
     <script src="logger.js"></script>
 
@@ -494,14 +514,20 @@
 
                 const currentSubject = selectedSubjects[currentSubjectIndex];
 
+                // 학년별 경로 설정
+                const userGrade = localStorage.getItem('userGrade') || '4'; // 기본값 4학년
+                const gradePath = `grade${userGrade}`;
+
                 const easyFile = `level1${daySuffix}.json`;
                 const mediumFile = `level2${daySuffix}.json`;
                 const hardFile = `level3${daySuffix}.json`;
 
+                console.log(`📚 문제 로딩: ${gradePath}/${currentSubject}`);
+
                 const [easyQuestions, mediumQuestions, hardQuestions] = await Promise.all([
-                    fetch(`src/data/questions/${currentSubject}/${easyFile}`).then(res => res.json()),
-                    fetch(`src/data/questions/${currentSubject}/${mediumFile}`).then(res => res.json()),
-                    fetch(`src/data/questions/${currentSubject}/${hardFile}`).then(res => res.json())
+                    fetch(`src/data/questions/${gradePath}/${currentSubject}/${easyFile}`).then(res => res.json()),
+                    fetch(`src/data/questions/${gradePath}/${currentSubject}/${mediumFile}`).then(res => res.json()),
+                    fetch(`src/data/questions/${gradePath}/${currentSubject}/${hardFile}`).then(res => res.json())
                 ]);
 
                 questions = {
@@ -631,24 +657,24 @@
         // 진행률 표시 업데이트
         function updateProgressDisplay() {
             const totalCompleted = questionCounts.easy + questionCounts.medium + questionCounts.hard;
-            const totalTarget = targetCounts.easy + targetCounts.medium + targetCounts.hard;
-            
+            const totalTarget = 10; // 총 10개 정답 완료 목표
+
             document.getElementById('overall-progress').textContent = `${totalCompleted} / ${totalTarget} 문제`;
-            
+
             const progress = (totalCompleted / totalTarget) * 100;
             document.getElementById('overall-progress-bar').style.width = progress + '%';
 
             // 난이도별 현황 업데이트
             document.getElementById('easy-status').innerHTML = `
-                <div class="text-lg font-bold text-green-600">${questionCounts.easy}/10</div>
+                <div class="text-lg font-bold text-green-600">${questionCounts.easy}</div>
                 <div class="text-xs text-green-700">쉬움 정답</div>
             `;
             document.getElementById('medium-status').innerHTML = `
-                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}/5</div>
+                <div class="text-lg font-bold text-yellow-600">${questionCounts.medium}</div>
                 <div class="text-xs text-yellow-700">보통 정답</div>
             `;
             document.getElementById('hard-status').innerHTML = `
-                <div class="text-lg font-bold text-red-600">${questionCounts.hard}/1</div>
+                <div class="text-lg font-bold text-red-600">${questionCounts.hard}</div>
                 <div class="text-xs text-red-700">어려움 정답</div>
             `;
         }
@@ -876,35 +902,10 @@
             }
 
             const totalCorrect = questionCounts.easy + questionCounts.medium + questionCounts.hard;
-            const hasMixedDifficulty = (questionCounts.medium > 0 || questionCounts.hard > 0);
 
-            // 완료 조건 (정답 기준):
-            // 1. 쉬움만 10정답
-            // 2. 보통 5정답 완료
-            // 3. 어려움 1정답 완료
-            // 4. 보통/어려움 포함 총 16정답
-
-            if (questionCounts.easy >= 10 && questionCounts.medium === 0 && questionCounts.hard === 0) {
-                // 쉬움만 10정답 완료
-                sessionStats.completionType = 'easy_only';
-                return true;
-            }
-
-            if (questionCounts.medium >= 5) {
-                // 보통 5정답 완료
-                sessionStats.completionType = 'medium_complete';
-                return true;
-            }
-
-            if (questionCounts.hard >= 1) {
-                // 어려움 1정답 완료 (최상위 달성)
-                sessionStats.completionType = 'hard_complete';
-                return true;
-            }
-
-            if (hasMixedDifficulty && totalCorrect >= 16) {
-                // 보통/어려움 포함 16정답
-                sessionStats.completionType = 'mixed_complete';
+            // 완료 조건: 총 10개 정답 (난이도 무관)
+            if (totalCorrect >= 10) {
+                sessionStats.completionType = 'complete';
                 return true;
             }
 

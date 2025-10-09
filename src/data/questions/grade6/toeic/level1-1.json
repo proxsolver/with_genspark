@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "eng_easy_grammar_001",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nThe manager and her assistant _______ in a meeting right now.",
+    "options": [
+      "is",
+      "are",
+      "was",
+      "be"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'The manager and her assistant'는 두 명, 즉 복수 주어이므로 동사도 복수형인 'are'를 사용해야 해요. 주어와 동사의 수를 일치시키는 것, 잊지 마세요! (S-V Agreement)",
+    "difficulty": 1,
+    "audioText": "manager and her assistant, is, are, was, be"
+  },
+  {
+    "id": "eng_easy_grammar_002",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nShe _______ the report to her boss yesterday morning.",
+    "options": [
+      "send",
+      "sends",
+      "sent",
+      "sending"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 'yesterday morning'이라는 명확한 과거 시점이 있으므로 동사의 과거형인 'sent'가 정답입니다. 시간 표현을 보고 시제를 결정하는 연습은 정말 중요해요. 👍",
+    "difficulty": 1,
+    "audioText": "send, sends, sent, sending, yesterday morning"
+  },
+  {
+    "id": "eng_easy_grammar_003",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nThe first train to Busan _______ at 6 AM every day.",
+    "options": [
+      "leave",
+      "leaves",
+      "left",
+      "leaving"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 'every day'라는 표현에서 알 수 있듯이, 매일 반복되는 일이나 정해진 스케줄은 현재 시제를 사용해요. 주어가 3인칭 단수('The first train')이므로 동사에 -s를 붙인 'leaves'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "leave, leaves, left, leaving, every day"
+  },
+  {
+    "id": "eng_easy_grammar_004",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nLet's meet _______ the cafe in front of the city hall.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "from"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 'the cafe'와 같이 비교적 좁고 구체적인 장소를 나타낼 때는 전치사 'at'을 사용합니다. 'in'은 도시나 나라처럼 넓은 장소에, 'on'은 표면 위에 있을 때 주로 사용돼요.",
+    "difficulty": 1,
+    "audioText": "meet at the cafe, in, on, at, from"
+  },
+  {
+    "id": "eng_easy_grammar_005",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nI need to buy _______ new umbrella because it is raining.",
+    "options": [
+      "a",
+      "an",
+      "the",
+      "some"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답! 'umbrella'는 '어' 소리, 즉 모음(a, e, i, o, u) 발음으로 시작하기 때문에 부정관사 'an'을 써야 해요. 발음을 기준으로 'a'와 'an'을 구분하는 것, 꼭 기억해두세요!",
+    "difficulty": 1,
+    "audioText": "a new umbrella, an new umbrella"
+  },
+  {
+    "id": "eng_easy_grammar_006",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nMr. Kim forgot _______ wallet on the desk.",
+    "options": [
+      "he",
+      "him",
+      "his",
+      "he's"
+    ],
+    "correctIndex": 2,
+    "explanation": "완벽해요! 'wallet'(지갑)이라는 명사 앞에는 소유를 나타내는 소유격 'his'(그의)가 와야 합니다. 'he'는 주격, 'him'은 목적격이에요.",
+    "difficulty": 1,
+    "audioText": "his wallet, he, him, his"
+  },
+  {
+    "id": "eng_easy_grammar_007",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\n_______ many people waiting in line for the new product.",
+    "options": [
+      "It is",
+      "There is",
+      "There are",
+      "They are"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! '~가 있다'라는 의미를 나타낼 때는 'There is/are' 구문을 사용해요. 뒤에 'many people'이라는 복수 명사가 오므로 'There are'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "There is, There are, many people"
+  },
+  {
+    "id": "eng_easy_grammar_008",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nI _______ call you back as soon as I finish this task.",
+    "options": [
+      "am",
+      "was",
+      "will",
+      "have"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'as soon as I finish this task'(이 일이 끝나자마자)는 미래에 할 행동을 나타내므로, 미래 시제를 만드는 조동사 'will'이 필요해요.",
+    "difficulty": 1,
+    "audioText": "will call you back, as soon as I finish"
+  },
+  {
+    "id": "eng_easy_grammar_009",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nHe _______ drinks coffee in the morning to wake up.",
+    "options": [
+      "usually",
+      "yet",
+      "already",
+      "soon"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '아침에 잠을 깨기 위해'라는 문맥과 현재 시제('drinks')를 볼 때, '보통, 대개'라는 뜻의 빈도부사 'usually'가 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "usually drinks coffee"
+  },
+  {
+    "id": "eng_easy_grammar_010",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 단어를 고르세요.\n\nThis building is much _______ than the one across the street.",
+    "options": [
+      "tall",
+      "taller",
+      "tallest",
+      "as tall"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 문장에 '~보다'라는 의미의 'than'이 있으므로, 두 대상을 비교하는 비교급 형태인 'taller'가 정답입니다. 'tall-taller-tallest' 변화를 기억하세요!",
+    "difficulty": 1,
+    "audioText": "taller than, tall, taller, tallest"
+  },
+  {
+    "id": "eng_easy_vocabulary_011",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nPlease submit your weekly report to the main _______ by Friday.",
+    "options": [
+      "office",
+      "park",
+      "kitchen",
+      "hotel"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! '주간 보고서(weekly report)'를 제출하는 장소로는 '사무실(office)'이 가장 적절하죠. 비즈니스 상황에서 자주 쓰이는 기본 단어예요.",
+    "difficulty": 1,
+    "audioText": "submit your weekly report, office, park, kitchen, hotel"
+  },
+  {
+    "id": "eng_easy_vocabulary_012",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nOur company's top priority is _______ satisfaction.",
+    "options": [
+      "customer",
+      "driver",
+      "student",
+      "patient"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! 회사(company)의 '최우선 순위(top priority)'는 '고객(customer)' 만족인 경우가 많죠. 문맥에 가장 잘 어울리는 단어를 잘 찾았어요.",
+    "difficulty": 1,
+    "audioText": "customer satisfaction, driver, student, patient"
+  },
+  {
+    "id": "eng_easy_vocabulary_013",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nThe marketing team prepared a detailed _______ on the new campaign.",
+    "options": [
+      "report",
+      "recipe",
+      "ticket",
+      "menu"
+    ],
+    "explanation": "맞아요! 마케팅팀이 새로운 캠페인에 대해 준비하는 것은 '보고서(report)'가 가장 자연스럽습니다. 'recipe'(요리법), 'ticket'(표), 'menu'(메뉴)는 어울리지 않죠.",
+    "correctIndex": 0,
+    "difficulty": 1,
+    "audioText": "a detailed report, recipe, ticket, menu"
+  },
+  {
+    "id": "eng_easy_vocabulary_014",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nAll department heads must attend the _______ tomorrow at 10 AM.",
+    "options": [
+      "party",
+      "concert",
+      "meeting",
+      "vacation"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! '모든 부서장들(All department heads)'이 참석해야 하는 것은 '회의(meeting)'일 가능성이 가장 높습니다. 비즈니스 필수 단어예요!",
+    "difficulty": 1,
+    "audioText": "attend the meeting, party, concert, vacation"
+  },
+  {
+    "id": "eng_easy_vocabulary_015",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nEvery _______ in the company will receive a holiday bonus.",
+    "options": [
+      "employee",
+      "visitor",
+      "competitor",
+      "passenger"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답! 회사에서 '연말 보너스(holiday bonus)'를 받는 대상은 '직원(employee)'입니다. 'visitor'(방문객), 'competitor'(경쟁자), 'passenger'(승객)는 문맥에 맞지 않아요.",
+    "difficulty": 1,
+    "audioText": "every employee, visitor, competitor, passenger"
+  },
+  {
+    "id": "eng_easy_vocabulary_016",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nAfter you receive the goods, we will send you an _______ for payment.",
+    "options": [
+      "invitation",
+      "invoice",
+      "interview",
+      "idea"
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 물건(goods)을 받은 후 지불(payment)을 위해 받는 것은 '송장' 또는 '청구서'를 뜻하는 'invoice'입니다. 토익에 자주 나오는 비즈니스 어휘이니 꼭 알아두세요! 💼",
+    "difficulty": 1,
+    "audioText": "send you an invoice, invitation, invoice, interview"
+  },
+  {
+    "id": "eng_easy_vocabulary_017",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nThis new _______ is very popular among young people.",
+    "options": [
+      "problem",
+      "product",
+      "mistake",
+      "rule"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 젊은 사람들 사이에서 '인기 있는(popular)' 것은 새로운 '제품(product)'이겠죠. 문맥을 잘 파악했어요.",
+    "difficulty": 1,
+    "audioText": "This new product, problem, product, mistake"
+  },
+  {
+    "id": "eng_easy_vocabulary_018",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nPlease check the _______ to see the time of your flight.",
+    "options": [
+      "schedule",
+      "price",
+      "color",
+      "size"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! '비행 시간(time of your flight)'을 확인하려면 '일정표(schedule)'를 봐야겠죠. 아주 기본적인 단어지만 활용도가 높아요.",
+    "difficulty": 1,
+    "audioText": "check the schedule, price, color, size"
+  },
+  {
+    "id": "eng_easy_vocabulary_019",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nYou can _______ a book from our website with just a few clicks.",
+    "options": [
+      "break",
+      "lose",
+      "order",
+      "forget"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 웹사이트에서 몇 번의 클릭만으로 책을 '주문하다(order)'는 것이 가장 자연스러운 흐름입니다. 동사 'order'는 명사로 '주문', '순서'라는 뜻도 있어요.",
+    "difficulty": 1,
+    "audioText": "order a book, break, lose, order, forget"
+  },
+  {
+    "id": "eng_easy_vocabulary_020",
+    "subject": "english",
+    "question": "문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nYou must show your _______ before you can board the airplane.",
+    "options": [
+      "key",
+      "money",
+      "license",
+      "ticket"
+    ],
+    "correctIndex": 3,
+    "explanation": "맞아요! '비행기에 탑승하기 전(before you can board the airplane)'에 보여줘야 하는 것은 바로 '표(ticket)'입니다. 쉬운 단어지만 실수하지 않도록 꼼꼼히 봐야 해요.",
+    "difficulty": 1,
+    "audioText": "show your ticket, key, money, license, ticket"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_021",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nCould you please _______ the light? It's too dark in here.",
+    "options": [
+      "turn on",
+      "turn off",
+      "look at",
+      "go over"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! '너무 어둡다(It's too dark)'고 했으니, 불을 '켜다'라는 의미의 'turn on'이 와야겠죠. 반대말인 'turn off'(끄다)도 함께 기억해두세요!",
+    "difficulty": 1,
+    "audioText": "turn on the light, turn off"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_022",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nAll new members must _______ this application form.",
+    "options": [
+      "get up",
+      "give up",
+      "look for",
+      "fill out"
+    ],
+    "correctIndex": 3,
+    "explanation": "잘했어요! 'application form'(지원서)과 함께 쓰여 '작성하다, 기입하다'라는 의미를 만드는 구동사는 'fill out'입니다. 'fill in'도 같은 뜻으로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "fill out this application form, get up, give up, fill out"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_023",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nI can't find my keys. Can you help me _______ them?",
+    "options": [
+      "look after",
+      "look for",
+      "look up",
+      "look into"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! '열쇠를 찾을 수 없다'는 문맥이므로, '~을 찾다'라는 의미의 'look for'가 정답입니다. 'look after'(돌보다), 'look up'(찾아보다), 'look into'(조사하다)와 헷갈리지 않게 조심하세요.",
+    "difficulty": 1,
+    "audioText": "look for them, look after, look for, look up"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_024",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nI have to go to the post office to _______ a package.",
+    "options": [
+      "take off",
+      "put on",
+      "pick up",
+      "drop off"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 우체국에 가는 목적은 '소포를 찾아오기' 위함이므로 'pick up'(~을 찾아오다, ~을 태우다)이 가장 적절합니다. 'drop off'는 반대로 '~을 가져다주다'라는 뜻이에요.",
+    "difficulty": 1,
+    "audioText": "pick up a package, take off, pick up, drop off"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_025",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nIt's warm inside, so you can _______ your coat.",
+    "options": [
+      "put on",
+      "try on",
+      "take off",
+      "get on"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답! '실내가 따뜻하다(It's warm inside)'고 했으니, 코트를 '벗다'라는 의미의 'take off'가 자연스럽습니다. 'put on'은 반대로 '(옷을) 입다'라는 뜻이죠.",
+    "difficulty": 1,
+    "audioText": "take off your coat, put on, take off"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_026",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nMs. Davis is not at her desk. Could you ask her to _______ me _______?",
+    "options": [
+      "call / back",
+      "hang / up",
+      "get / on",
+      "put / through"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! 자리에 없는 사람에게 '다시 전화해달라고' 부탁할 때 쓰는 표현은 'call back'입니다. 'ask her to call me back' (그녀에게 저에게 다시 전화해달라고 부탁해 주세요)라는 의미가 돼요.",
+    "difficulty": 1,
+    "audioText": "call me back, hang up, get on, put through"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_027",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nWhat time do you usually _______ in the morning?",
+    "options": [
+      "go out",
+      "wake up",
+      "get up",
+      "stay up"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 아침에 '일어나다'라는 행동을 나타내는 가장 일반적인 구동사는 'get up'입니다. 'wake up'은 잠에서 '깨다'라는 의미로, 'get up'은 침대에서 '일어나다'라는 행동의 의미가 더 강해요. 둘 다 비슷한 상황에서 쓰일 수 있습니다.",
+    "difficulty": 1,
+    "audioText": "get up in the morning, wake up, get up, stay up"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_028",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nPlease come in and _______ on the sofa.",
+    "options": [
+      "run away",
+      "stand up",
+      "sit down",
+      "lie down"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 들어오라고 한 뒤에 소파에 '앉으라'고 권하는 것이 자연스럽죠. 'sit down'은 '앉다'라는 뜻의 기본적인 표현입니다.",
+    "difficulty": 1,
+    "audioText": "sit down on the sofa, stand up, sit down"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_029",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nDon't forget to _______ your homework by the end of the day.",
+    "options": [
+      "hand in",
+      "give away",
+      "put off",
+      "find out"
+    ],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 숙제나 보고서 등을 '제출하다'라고 할 때 'hand in'이라는 구동사를 사용합니다. 'submit'과 같은 의미로 기억해두면 좋아요.",
+    "difficulty": 1,
+    "audioText": "hand in your homework, give away, put off, hand in"
+  },
+  {
+    "id": "eng_easy_phrasal_verbs_030",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 표현을 고르세요.\n\nWe need to _______ at the hotel before 3 PM.",
+    "options": [
+      "check out",
+      "check in",
+      "check on",
+      "check up"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 호텔이나 공항에서 '투숙/탑승 수속을 하다'라는 의미로 'check in'을 사용합니다. 반대말은 'check out'(체크아웃하다)이죠. 꼭 알아둬야 할 필수 표현이에요!",
+    "difficulty": 1,
+    "audioText": "check in at the hotel, check out, check in"
+  },
+  {
+    "id": "eng_easy_prepositions_031",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nThe company's headquarters is located _______ Paris.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "by"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답! 'Paris'와 같은 도시, 나라 등 넓은 지역 앞에는 전치사 'in'을 사용합니다. 'at'은 구체적인 지점, 'on'은 표면 위를 나타낼 때 주로 써요. 장소 전치사 사용법, 잘 기억하고 있네요!",
+    "difficulty": 1,
+    "audioText": "located in Paris, at, on, in"
+  },
+  {
+    "id": "eng_easy_prepositions_032",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nThe workshop will be held _______ Friday morning.",
+    "options": [
+      "in",
+      "on",
+      "at",
+      "for"
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 'Friday'와 같이 특정 요일이나 날짜 앞에는 전치사 'on'을 씁니다. 'on Friday', 'on May 5th' 처럼요. 시간 전치사 'in, on, at'의 쓰임은 정말 중요해요.",
+    "difficulty": 1,
+    "audioText": "held on Friday morning, in, on, at"
+  },
+  {
+    "id": "eng_easy_prepositions_033",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nHis flight is scheduled to arrive _______ 10:30 PM.",
+    "options": [
+      "at",
+      "on",
+      "in",
+      "from"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '10:30 PM'처럼 구체적인 시각 앞에는 전치사 'at'을 사용합니다. 'at noon', 'at midnight' 처럼 특정 시점을 나타낼 때도 'at'을 써요. 👍",
+    "difficulty": 1,
+    "audioText": "arrive at 10:30 PM, at, on, in"
+  },
+  {
+    "id": "eng_easy_prepositions_034",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nHe has worked in this company _______ five years.",
+    "options": [
+      "since",
+      "during",
+      "for",
+      "while"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 'five years'와 같이 구체적인 기간을 나타낼 때는 '~동안'이라는 의미의 전치사 'for'를 사용합니다. 'since'는 '~이래로'라는 시작 시점을 나타낼 때 써요.",
+    "difficulty": 1,
+    "audioText": "for five years, since, during, for"
+  },
+  {
+    "id": "eng_easy_prepositions_035",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nI am going _______ the supermarket to buy some milk.",
+    "options": [
+      "at",
+      "for",
+      "by",
+      "to"
+    ],
+    "correctIndex": 3,
+    "explanation": "정답! 'go' 동사와 함께 쓰여 방향이나 목적지를 나타낼 때는 전치사 'to'를 사용합니다. 'go to the supermarket' (슈퍼마켓에 가다) 처럼요.",
+    "difficulty": 1,
+    "audioText": "going to the supermarket, at, for, to"
+  },
+  {
+    "id": "eng_easy_prepositions_036",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nWe received a letter _______ our client in Japan.",
+    "options": [
+      "from",
+      "of",
+      "about",
+      "with"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! '~로부터' 오는 출처를 나타낼 때는 전치사 'from'을 씁니다. 'a letter from our client' (우리 고객으로부터 온 편지) 라는 의미가 되죠.",
+    "difficulty": 1,
+    "audioText": "a letter from our client, from, of, about"
+  },
+  {
+    "id": "eng_easy_prepositions_037",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nHe went to the conference _______ his colleagues.",
+    "options": [
+      "without",
+      "with",
+      "along",
+      "among"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! '~와 함께'라는 동반의 의미를 나타낼 때는 전치사 'with'를 사용합니다. 'with his colleagues' (그의 동료들과 함께)가 자연스럽죠.",
+    "difficulty": 1,
+    "audioText": "with his colleagues, without, with, along"
+  },
+  {
+    "id": "eng_easy_prepositions_038",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nThis is a book _______ a famous artist.",
+    "options": [
+      "on",
+      "for",
+      "about",
+      "since"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! '~에 관한' 주제를 나타낼 때는 전치사 'about'을 사용합니다. 'a book about a famous artist' (유명한 화가에 관한 책) 이라는 뜻이 돼요.",
+    "difficulty": 1,
+    "audioText": "a book about a famous artist, on, for, about"
+  },
+  {
+    "id": "eng_easy_prepositions_039",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nThe cat is sleeping _______ the table.",
+    "options": [
+      "on",
+      "under",
+      "next",
+      "above"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 위치를 나타내는 전치사 문제네요. 'under'는 '~아래에' 라는 뜻입니다. 'on'은 '~위에', 'above'는 '(떨어져서) ~위에', 'next'는 'next to' 형태로 '~옆에' 라는 뜻으로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "sleeping under the table, on, under, above"
+  },
+  {
+    "id": "eng_easy_prepositions_040",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 전치사를 고르세요.\n\nShe travels to work _______ bus every day.",
+    "options": [
+      "in",
+      "on",
+      "by",
+      "with"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 버스, 지하철, 택시 등 교통수단을 나타낼 때는 전치사 'by'를 사용합니다. 'by bus', 'by subway', 'by car' 처럼요. 단, 관사가 붙으면 'in a car', 'on a bus' 처럼 다른 전치사를 쓰니 주의하세요!",
+    "difficulty": 1,
+    "audioText": "travels to work by bus, in, on, by"
+  },
+  {
+    "id": "eng_easy_conjunctions_041",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nI like coffee, _______ my brother prefers tea.",
+    "options": [
+      "and",
+      "but",
+      "so",
+      "or"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 앞 문장(나는 커피를 좋아한다)과 뒷 문장(내 남동생은 차를 선호한다)의 내용이 서로 대조되므로, '하지만, 그러나'라는 뜻의 접속사 'but'이 가장 적절합니다.",
+    "difficulty": 1,
+    "audioText": "I like coffee, but my brother prefers tea"
+  },
+  {
+    "id": "eng_easy_conjunctions_042",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nWe need to hire more staff _______ our business is growing quickly.",
+    "options": [
+      "because",
+      "although",
+      "so",
+      "if"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! '직원을 더 고용해야 한다'는 결과에 대한 이유('사업이 빠르게 성장하고 있다')를 설명하고 있으므로, '~이기 때문에'라는 뜻의 'because'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "because our business is growing"
+  },
+  {
+    "id": "eng_easy_conjunctions_043",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nIt started to rain, _______ we decided to take a taxi.",
+    "options": [
+      "but",
+      "and",
+      "so",
+      "because"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 비가 오기 시작했다는 원인 때문에 '그래서' 택시를 타기로 결정했다는 결과가 이어지는 것이 자연스럽죠. '그래서'라는 의미의 'so'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "It started to rain, so we decided to take a taxi"
+  },
+  {
+    "id": "eng_easy_conjunctions_044",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nWould you like to have coffee _______ tea?",
+    "options": [
+      "and",
+      "so",
+      "but",
+      "or"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 커피와 차 중에서 하나를 선택하는 상황이므로, '또는'이라는 의미의 접속사 'or'를 사용해야 합니다. 선택지를 나열할 때 사용되는 기본적인 접속사예요.",
+    "difficulty": 1,
+    "audioText": "coffee or tea"
+  },
+  {
+    "id": "eng_easy_conjunctions_045",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nPlease turn off your phone _______ you enter the theater.",
+    "options": [
+      "after",
+      "before",
+      "while",
+      "because"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답! 영화관에 '들어가기 전에' 휴대폰을 끄라는 의미가 되어야 하므로, '~하기 전에'라는 뜻의 'before'가 맞습니다. 'after'는 '~한 후에', 'while'은 '~하는 동안' 이라는 뜻이죠.",
+    "difficulty": 1,
+    "audioText": "before you enter the theater, after, before, while"
+  },
+  {
+    "id": "eng_easy_conjunctions_046",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nHe will call you _______ he arrives at the airport.",
+    "options": [
+      "when",
+      "which",
+      "what",
+      "who"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! '그가 공항에 도착할 때' 전화할 것이라는 의미이므로, 시간을 나타내는 접속사 'when' (~할 때)이 정답입니다. 'which', 'what', 'who'는 의문사나 관계대명사로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "when he arrives at the airport"
+  },
+  {
+    "id": "eng_easy_conjunctions_047",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\n_______ you need any help, please do not hesitate to ask.",
+    "options": [
+      "Unless",
+      "But",
+      "If",
+      "So"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! '만약 도움이 필요하다면' 이라는 조건을 나타내므로, '만약 ~라면' 이라는 뜻의 접속사 'If'가 정답입니다. 'Unless'는 '만약 ~가 아니라면' 이라는 반대 의미예요.",
+    "difficulty": 1,
+    "audioText": "If you need any help"
+  },
+  {
+    "id": "eng_easy_conjunctions_048",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nShe went for a walk _______ she finished her dinner.",
+    "options": [
+      "after",
+      "before",
+      "until",
+      "since"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 저녁 식사를 '마친 후에' 산책을 갔다는 시간 순서를 나타내므로 '~한 후에'라는 뜻의 'after'가 가장 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "after she finished her dinner"
+  },
+  {
+    "id": "eng_easy_conjunctions_049",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nWe bought some snacks _______ the movie started.",
+    "options": [
+      "and",
+      "but",
+      "so",
+      "and"
+    ],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 간식을 사고 영화를 보는, 순차적으로 일어나는 두 가지 행동을 나열하고 있으므로 '그리고'라는 의미의 'and'가 정답입니다.",
+    "difficulty": 1,
+    "audioText": "bought some snacks and watched a movie"
+  },
+  {
+    "id": "eng_easy_conjunctions_050",
+    "subject": "english",
+    "question": "빈칸에 들어갈 가장 알맞은 접속사를 고르세요.\n\nI was listening to music _______ I was cleaning my room.",
+    "options": [
+      "while",
+      "because",
+      "if",
+      "though"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '방을 청소하는 동안' 음악을 들었다는, 두 가지 행동이 동시에 일어나는 상황을 나타내므로 '~하는 동안'이라는 의미의 'while'이 정답입니다.",
+    "difficulty": 1,
+    "audioText": "while I was cleaning my room"
+  },
+  {
+    "id": "eng_easy_word_forms_051",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nFor more _______, please visit our website.",
+    "options": [
+      "inform",
+      "informative",
+      "information",
+      "informing"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'more' 다음에는 셀 수 없는 명사나 셀 수 있는 명사의 복수형이 올 수 있어요. 문맥상 '더 많은 정보'라는 뜻이 되어야 하므로 명사인 'information'이 정답입니다. 'inform'은 동사, 'informative'는 형용사예요.",
+    "difficulty": 1,
+    "audioText": "For more information, inform, informative, information"
+  },
+  {
+    "id": "eng_easy_word_forms_052",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nThe new marketing campaign was very _______.",
+    "options": [
+      "succeed",
+      "success",
+      "successful",
+      "successfully"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! be동사 'was' 다음에는 주어('The new marketing campaign')를 보충 설명하는 보어가 와야 해요. 이 자리에는 형용사인 'successful'(성공적인)이 가장 적절합니다. 'success'는 명사, 'succeed'는 동사, 'successfully'는 부사예요.",
+    "difficulty": 1,
+    "audioText": "was very successful, succeed, success, successful"
+  },
+  {
+    "id": "eng_easy_word_forms_053",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nThe package _______ is scheduled for tomorrow afternoon.",
+    "options": [
+      "deliver",
+      "delivered",
+      "delivering",
+      "delivery"
+    ],
+    "correctIndex": 3,
+    "explanation": "맞아요! 문장에서 주어 역할을 할 수 있는 것은 명사입니다. '그 소포 배달'이라는 의미가 되어야 하므로 명사인 'delivery'가 정답입니다. 'deliver'는 동사죠.",
+    "difficulty": 1,
+    "audioText": "The package delivery, deliver, delivery"
+  },
+  {
+    "id": "eng_easy_word_forms_054",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nPlease handle the fragile items _______.",
+    "options": [
+      "care",
+      "careful",
+      "carefully",
+      "caring"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 동사 'handle'(다루다)을 수식하는 자리이므로 부사인 'carefully'(조심스럽게)가 와야 합니다. 형용사는 명사를, 부사는 동사, 형용사, 다른 부사, 문장 전체를 수식하는 역할을 해요.",
+    "difficulty": 1,
+    "audioText": "handle the fragile items carefully, careful, carefully"
+  },
+  {
+    "id": "eng_easy_word_forms_055",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nThe team is trying to _______ a new design for the product.",
+    "options": [
+      "creative",
+      "creation",
+      "create",
+      "creator"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답! 'to' 부정사 다음에는 동사 원형이 와야 하므로 '만들다, 창조하다'라는 뜻의 동사 'create'가 정답입니다. 'creative'는 형용사, 'creation'과 'creator'는 명사예요.",
+    "difficulty": 1,
+    "audioText": "to create a new design, creative, creation, create"
+  },
+  {
+    "id": "eng_easy_word_forms_056",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nThere is a significant _______ between the two proposals.",
+    "options": [
+      "differ",
+      "different",
+      "differently",
+      "difference"
+    ],
+    "correctIndex": 3,
+    "explanation": "잘했어요! 관사 'a'와 형용사 'significant' 다음에는 명사가 와야 합니다. '상당한 차이'라는 의미를 만들기 위해 명사인 'difference'가 필요해요. 'differ'는 동사, 'different'는 형용사, 'differently'는 부사입니다.",
+    "difficulty": 1,
+    "audioText": "a significant difference, differ, different, difference"
+  },
+  {
+    "id": "eng_easy_word_forms_057",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nYour advice was very _______ to our team.",
+    "options": [
+      "help",
+      "helpful",
+      "helping",
+      "helpless"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! be동사 'was'와 부사 'very' 다음에는 보어 역할을 하는 형용사가 와야 합니다. '매우 도움이 되는'이라는 뜻의 'helpful'이 정답입니다. 'help'는 명사 또는 동사로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "was very helpful, help, helpful, helpless"
+  },
+  {
+    "id": "eng_easy_word_forms_058",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nHe finished the test _______ and left the room.",
+    "options": [
+      "quick",
+      "quicker",
+      "quickly",
+      "quickness"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 동사 'finished'(끝냈다)를 수식하려면 부사가 필요하죠. '빠르게'라는 뜻의 부사 'quickly'가 정답입니다. 'quick'은 형용사예요.",
+    "difficulty": 1,
+    "audioText": "finished the test quickly, quick, quickly"
+  },
+  {
+    "id": "eng_easy_word_forms_059",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nEach _______ is expected to complete their tasks on time.",
+    "options": [
+      "work",
+      "worker",
+      "working",
+      "worked"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! 'Each' 다음에는 단수 명사가 와야 하고, 문맥상 '각각의 근로자'를 의미하므로 사람을 나타내는 명사 'worker'가 정답입니다. 'work'는 '일'이라는 추상적인 명사 또는 동사로 쓰여요.",
+    "difficulty": 1,
+    "audioText": "Each worker, work, worker, working"
+  },
+  {
+    "id": "eng_easy_word_forms_060",
+    "subject": "english",
+    "question": "문법적으로 빈칸에 가장 알맞은 단어를 고르세요.\n\nShe looked very _______ after receiving the good news.",
+    "options": [
+      "happy",
+      "happily",
+      "happiness",
+      "happen"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! 'look'이 '~처럼 보이다'라는 감각동사로 쓰일 때는 뒤에 형용사가 와서 주어의 상태를 설명해요. '매우 행복해 보였다'는 의미이므로 형용사인 'happy'가 정답입니다. 'happily'는 부사, 'happiness'는 명사예요.",
+    "difficulty": 1,
+    "audioText": "looked very happy, happy, happily, happiness"
+  },
+  {
+    "id": "eng_easy_reading_061",
+    "subject": "english",
+    "question": "다음 안내문을 읽고 질문에 답하세요.\n\nNotice: The library will close at 5 PM on Friday, October 26, for a staff meeting.\n\nQ: What time will the library close on October 26?",
+    "options": [
+      "At 5 AM",
+      "At 9 AM",
+      "At 5 PM",
+      "At 9 PM"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 안내문에 'The library will close at 5 PM'이라고 명확하게 나와 있어요. 지문에서 핵심 정보를 정확히 찾아냈네요!",
+    "difficulty": 1,
+    "audioText": "The library will close at 5 PM on Friday"
+  },
+  {
+    "id": "eng_easy_reading_062",
+    "subject": "english",
+    "question": "다음 문장을 읽고 질문에 답하세요.\n\nDue to heavy rain, the outdoor concert has been canceled.\n\nQ: Why was the concert canceled?",
+    "options": [
+      "Because of the sun",
+      "Because of the wind",
+      "Because of the snow",
+      "Because of the rain"
+    ],
+    "correctIndex": 3,
+    "explanation": "잘했어요! 문장 첫 부분에 'Due to heavy rain'(폭우 때문에)이라고 이유가 나와 있죠. 'because of the rain'이 정답입니다. 'Due to'는 '~ 때문에'라는 뜻으로 이유를 나타내는 중요한 표현이에요.",
+    "difficulty": 1,
+    "audioText": "Due to heavy rain, the outdoor concert has been canceled."
+  },
+  {
+    "id": "eng_easy_reading_063",
+    "subject": "english",
+    "question": "다음 이메일 일부를 읽고 질문에 답하세요.\n\nFrom: Jane Smith, Marketing Director\nTo: All Staff\nSubject: New Coffee Machine\n\nQ: What is Jane Smith's job title?",
+    "options": [
+      "All Staff",
+      "Marketing Director",
+      "New Coffee Machine",
+      "Jane Smith"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 이메일 발신자 정보에 'Jane Smith, Marketing Director'라고 쓰여있어요. 따라서 그녀의 직책(job title)은 'Marketing Director'입니다.",
+    "difficulty": 1,
+    "audioText": "Jane Smith, Marketing Director"
+  },
+  {
+    "id": "eng_easy_reading_064",
+    "subject": "english",
+    "question": "다음 문장을 읽고 질문에 답하세요.\n\nFor assistance, please press the button and wait for an operator.\n\nQ: What should you do first to get help?",
+    "options": [
+      "Wait for an operator",
+      "Talk to a manager",
+      "Press the button",
+      "Leave the area"
+    ],
+    "correctIndex": 2,
+    "explanation": "훌륭해요! 문장에서 도움을 받기 위해 'please press the button'(버튼을 누르세요)라고 먼저 안내하고 있어요. 그 다음에 'wait for an operator'(상담원을 기다리세요)라고 했죠. 순서를 잘 파악했네요.",
+    "difficulty": 1,
+    "audioText": "For assistance, please press the button"
+  },
+  {
+    "id": "eng_easy_reading_065",
+    "subject": "english",
+    "question": "다음 광고를 읽고 질문에 답하세요.\n\nVisit Mike's Bookstore! We have a special sale on all children's books this weekend.\n\nQ: What is being advertised?",
+    "options": [
+      "A restaurant",
+      "A bookstore",
+      "A toy store",
+      "A coffee shop"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답! 광고 첫 문장에 'Visit Mike's Bookstore!'라고 나와 있죠. 따라서 이 광고는 '서점(Bookstore)'에 대한 것입니다. 아주 쉽게 찾아냈네요!",
+    "difficulty": 1,
+    "audioText": "Visit Mike's Bookstore! A special sale on all children's books."
+  },
+  {
+    "id": "eng_easy_reading_066",
+    "subject": "english",
+    "question": "다음 안내문을 읽고 질문에 답하세요.\n\nThe customer service center has moved from the first floor to the third floor.\n\nQ: Where is the customer service center now?",
+    "options": [
+      "On the first floor",
+      "On the second floor",
+      "On the third floor",
+      "In the basement"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! 안내문에 'moved from the first floor to the third floor'(1층에서 3층으로 이전했습니다)라고 되어 있어요. 따라서 현재 위치는 'on the third floor'가 맞습니다.",
+    "difficulty": 1,
+    "audioText": "moved from the first floor to the third floor"
+  },
+  {
+    "id": "eng_easy_reading_067",
+    "subject": "english",
+    "question": "다음 메모를 읽고 질문에 답하세요.\n\nMemo: The weekly meeting time has changed. It will now be at 2:00 PM instead of 11:00 AM.\n\nQ: What is the new time for the meeting?",
+    "options": [
+      "9:00 AM",
+      "11:00 AM",
+      "2:00 PM",
+      "4:00 PM"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 메모에서 'It will now be at 2:00 PM'(이제 오후 2시에 열릴 것입니다)이라고 새로운 시간을 알려주고 있어요. 'instead of'는 '~ 대신에'라는 뜻이니, 이전 시간과 헷갈리면 안돼요!",
+    "difficulty": 1,
+    "audioText": "The new time for the meeting, It will now be at 2:00 PM"
+  },
+  {
+    "id": "eng_easy_reading_068",
+    "subject": "english",
+    "question": "다음 문자 메시지를 읽고 질문에 답하세요.\n\nHi Tom, I am running a little late. I will be there in about 15 minutes.\n\nQ: What is the purpose of this message?",
+    "options": [
+      "To cancel an appointment",
+      "To ask for directions",
+      "To inform someone about a delay",
+      "To confirm a reservation"
+    ],
+    "correctIndex": 2,
+    "explanation": "정답입니다! 'I am running a little late'(조금 늦고 있어요)라는 표현에서 이 메시지가 '지연에 대해 알리기 위해(To inform someone about a delay)' 보내졌다는 것을 알 수 있어요. 메시지의 목적을 잘 파악했네요.",
+    "difficulty": 1,
+    "audioText": "I am running a little late. I will be there in about 15 minutes."
+  },
+  {
+    "id": "eng_easy_reading_069",
+    "subject": "english",
+    "question": "다음 공지를 읽고 질문에 답하세요.\n\nOur office will be closed on Monday, January 1, for New Year's Day.\n\nQ: On what day will the office be closed?",
+    "options": [
+      "Friday",
+      "Saturday",
+      "Sunday",
+      "Monday"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 공지에서 'closed on Monday, January 1'이라고 명시했으므로, 사무실이 문을 닫는 날은 'Monday'(월요일)입니다.",
+    "difficulty": 1,
+    "audioText": "closed on Monday, January 1, for New Year's Day"
+  },
+  {
+    "id": "eng_easy_reading_070",
+    "subject": "english",
+    "question": "다음 광고 문구를 읽고 질문에 답하세요.\n\nFor a limited time, get a free drink with any sandwich purchase.\n\nQ: What is offered for free?",
+    "options": [
+      "A sandwich",
+      "A drink",
+      "A dessert",
+      "A salad"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! 광고 문구에 'get a free drink'(무료 음료를 받으세요)라고 나와 있어요. 샌드위치를 구매하면 음료가 무료라는 뜻이죠. 'free'라는 단어를 잘 포착했네요!",
+    "difficulty": 1,
+    "audioText": "get a free drink, with any sandwich purchase"
+  },
+  {
+    "id": "eng_easy_business_email_071",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nPlease find the _______ report for your review.",
+    "options": [
+      "attached",
+      "attach",
+      "attaching",
+      "attachment"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 이메일에서 '첨부된 파일'을 언급할 때 'the attached file' 또는 'the attached report'처럼 과거분사형 'attached'를 사용해 명사를 수식해요. '첨부된'이라는 수동의 의미를 가지죠. 아주 중요한 비즈니스 표현이에요! 📧",
+    "difficulty": 1,
+    "audioText": "the attached report, attached, attachment"
+  },
+  {
+    "id": "eng_easy_business_email_072",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nI am writing to _______ our meeting for next Tuesday at 3 PM.",
+    "options": [
+      "cancel",
+      "confirm",
+      "forget",
+      "change"
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! 약속 시간과 날짜를 언급하며 이메일을 보낼 때는 보통 약속을 '확인하기(confirm)' 위함인 경우가 많아요. 'confirm'은 비즈니스 이메일에서 약속, 예약 등을 확정할 때 자주 사용되는 필수 동사입니다.",
+    "difficulty": 1,
+    "audioText": "writing to confirm our meeting"
+  },
+  {
+    "id": "eng_easy_business_email_073",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nThis email is _______ the recent changes in our company policy.",
+    "options": [
+      "regarding",
+      "despite",
+      "without",
+      "except"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! 이메일의 주제를 도입할 때 '~에 관하여'라는 뜻으로 'regarding'을 자주 사용합니다. 'about'과 비슷한 의미지만 좀 더 격식있는 표현이에요. 'regarding the changes' (변동 사항에 관하여)가 자연스럽습니다.",
+    "difficulty": 1,
+    "audioText": "This email is regarding the recent changes"
+  },
+  {
+    "id": "eng_easy_business_email_074",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nIf you have any questions, please let me _______.",
+    "options": [
+      "know",
+      "knew",
+      "known",
+      "knowing"
+    ],
+    "correctIndex": 0,
+    "explanation": "훌륭해요! 'let me know'는 '저에게 알려주세요'라는 뜻으로, 상대방의 의견이나 답변을 요청할 때 쓰는 아주 일반적이고 공손한 표현입니다. 사역동사 'let' 다음에는 동사 원형이 온다는 것도 기억해두세요!",
+    "difficulty": 1,
+    "audioText": "please let me know"
+  },
+  {
+    "id": "eng_easy_business_email_075",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nI look forward to _______ you at the conference.",
+    "options": [
+      "see",
+      "seeing",
+      "saw",
+      "seen"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답! 'look forward to'는 '~을 고대하다'라는 뜻의 중요한 표현인데, 여기서 'to'는 전치사이기 때문에 뒤에 반드시 명사나 동명사(-ing)가 와야 합니다. 그래서 'seeing'이 정답이에요. 정말 자주 틀리는 부분이므로 꼭 기억하세요!",
+    "difficulty": 1,
+    "audioText": "look forward to seeing you"
+  },
+  {
+    "id": "eng_easy_business_email_076",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nAre you _______ for a short call this afternoon?",
+    "options": [
+      "available",
+      "busy",
+      "open",
+      "late"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! 상대방의 일정이 가능한지, 즉 '시간이 되는지' 물어볼 때 'Are you available?'이라는 표현을 씁니다. 'available'은 '(시간이) 가능한, 이용 가능한' 이라는 뜻으로 매우 유용한 형용사입니다.",
+    "difficulty": 1,
+    "audioText": "Are you available for a short call?"
+  },
+  {
+    "id": "eng_easy_business_email_077",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nI am sorry, but I need to _______ our appointment to next week.",
+    "options": [
+      "make",
+      "attend",
+      "reschedule",
+      "prepare"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! 약속을 '다음 주로' 옮겨야 하는 상황이므로, '일정을 변경하다'라는 뜻의 'reschedule'이 가장 적절합니다. 're-'는 '다시'라는 뜻을 가진 접두사예요.",
+    "difficulty": 1,
+    "audioText": "need to reschedule our appointment"
+  },
+  {
+    "id": "eng_easy_business_email_078",
+    "subject": "english",
+    "question": "이메일 끝맺음말로 가장 알맞은 것을 고르세요.\n\nThank you for your help.\n\nBest _______,\nJohn Carter",
+    "options": [
+      "regards",
+      "wishes",
+      "loves",
+      "luck"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 'Best regards'는 비즈니스 이메일에서 가장 일반적으로 쓰이는 끝인사 중 하나로, '안부를 전하며' 정도의 의미입니다. 'Sincerely', 'Regards' 등도 자주 사용돼요.",
+    "difficulty": 1,
+    "audioText": "Best regards"
+  },
+  {
+    "id": "eng_easy_business_email_079",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nCould you please send me more _______ about your products?",
+    "options": [
+      "informing",
+      "informed",
+      "informations",
+      "information"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! 제품에 대한 '정보'를 요청하는 내용이므로 명사인 'information'이 필요합니다. 'information'은 셀 수 없는 명사(불가산 명사)라서 복수형으로 'informations'라고 쓰지 않는다는 점을 꼭 기억해야 해요!",
+    "difficulty": 1,
+    "audioText": "send me more information"
+  },
+  {
+    "id": "eng_easy_business_email_080",
+    "subject": "english",
+    "question": "이메일 문맥상 빈칸에 가장 알맞은 단어를 고르세요.\n\nWe sincerely _______ for the delay in shipping your order.",
+    "options": [
+      "apologize",
+      "thank",
+      "request",
+      "offer"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '배송 지연(delay in shipping)'에 대해 말하고 있으므로 '사과하다'라는 뜻의 'apologize'가 가장 적절합니다. 'apologize for ~'는 '~에 대해 사과하다'라는 뜻의 중요한 표현입니다.",
+    "difficulty": 1,
+    "audioText": "apologize for the delay"
+  },
+  {
+    "id": "eng_easy_collocations_081",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nI would like to _______ a reservation for two people at 7 PM.",
+    "options": [
+      "do",
+      "make",
+      "get",
+      "have"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! '예약하다'는 영어로 'make a reservation'이라고 표현해요. 'do a reservation'은 어색한 표현입니다. 이렇게 함께 자주 쓰이는 단어 조합(collocation)을 익혀두는 것이 중요해요!",
+    "difficulty": 1,
+    "audioText": "make a reservation"
+  },
+  {
+    "id": "eng_easy_collocations_082",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nMs. Anderson will _______ a presentation on the new project tomorrow.",
+    "options": [
+      "give",
+      "speak",
+      "say",
+      "tell"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! '발표하다'는 'give a presentation'이라고 합니다. 'do a presentation'도 가능하지만 'give'가 더 흔하게 쓰여요. 자연스러운 단어 짝꿍을 기억해두세요!",
+    "difficulty": 1,
+    "audioText": "give a presentation"
+  },
+  {
+    "id": "eng_easy_collocations_083",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nLet's _______ a short break and continue in 15 minutes.",
+    "options": [
+      "get",
+      "make",
+      "take",
+      "do"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! '휴식을 취하다'는 영어로 'take a break'라고 합니다. 아주 일상적으로 많이 쓰는 표현이니 꼭 입에 붙여두세요.",
+    "difficulty": 1,
+    "audioText": "take a short break"
+  },
+  {
+    "id": "eng_easy_collocations_084",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nPlease _______ attention while I explain the instructions.",
+    "options": [
+      "give",
+      "pay",
+      "do",
+      "have"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '주의를 기울이다, 집중하다'는 'pay attention'이라고 표현합니다. 'pay'가 돈을 '지불하다'는 뜻 외에 관심이나 존경 등을 '표하다'는 의미로도 쓰여요.",
+    "difficulty": 1,
+    "audioText": "pay attention"
+  },
+  {
+    "id": "eng_easy_collocations_085",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nIf you don't understand, feel free to _______ a question.",
+    "options": [
+      "ask",
+      "say",
+      "tell",
+      "speak"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답! '질문하다'는 'ask a question'이죠. 아주 기본적인 표현이지만 정확히 알아두는 것이 중요합니다. 잘했어요!",
+    "difficulty": 1,
+    "audioText": "ask a question"
+  },
+  {
+    "id": "eng_easy_collocations_086",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nUsing this new software will help us _______ a lot of time.",
+    "options": [
+      "spend",
+      "waste",
+      "save",
+      "keep"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! '시간을 절약하다'는 'save time'이라고 합니다. 반대로 '시간을 낭비하다'는 'waste time'이라고 해요. 함께 알아두면 좋겠죠?",
+    "difficulty": 1,
+    "audioText": "save a lot of time"
+  },
+  {
+    "id": "eng_easy_collocations_087",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nIt is important for all employees to _______ the deadline.",
+    "options": [
+      "arrive",
+      "do",
+      "meet",
+      "make"
+    ],
+    "correctIndex": 2,
+    "explanation": "잘했어요! '마감 기한을 맞추다'는 영어로 'meet the deadline'이라고 합니다. 토익 비즈니스 파트에서 정말 자주 나오는 필수 표현이니 꼭 외워두세요! 📅",
+    "difficulty": 1,
+    "audioText": "meet the deadline"
+  },
+  {
+    "id": "eng_easy_collocations_088",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nWe need to find a way to _______ this problem quickly.",
+    "options": [
+      "make",
+      "solve",
+      "answer",
+      "do"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! '문제를 해결하다'는 'solve a problem'이라고 표현합니다. 'problem'과 가장 자연스럽게 어울리는 동사는 'solve'예요.",
+    "difficulty": 1,
+    "audioText": "solve this problem"
+  },
+  {
+    "id": "eng_easy_collocations_089",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nTo assemble the furniture correctly, you must _______ the instructions.",
+    "options": [
+      "go",
+      "take",
+      "make",
+      "follow"
+    ],
+    "correctIndex": 3,
+    "explanation": "훌륭해요! '지시 사항을 따르다'는 'follow the instructions'라고 합니다. 'instructions'와 짝꿍처럼 쓰이는 동사는 'follow'예요.",
+    "difficulty": 1,
+    "audioText": "follow the instructions"
+  },
+  {
+    "id": "eng_easy_collocations_090",
+    "subject": "english",
+    "question": "자연스러운 표현이 되도록 빈칸에 알맞은 단어를 고르세요.\n\nIt was a pleasure to _______ business with your company.",
+    "options": [
+      "make",
+      "have",
+      "do",
+      "get"
+    ],
+    "correctIndex": 2,
+    "explanation": "맞아요! '사업을 하다', '거래하다'는 영어로 'do business'라고 표현합니다. 'do business with ~'는 '~와 거래하다'라는 뜻으로 비즈니스 상황에서 자주 쓰여요.",
+    "difficulty": 1,
+    "audioText": "do business with your company"
+  },
+  {
+    "id": "eng_easy_confusing_words_091",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nIs this _______ bag? I found it on the floor.",
+    "options": [
+      "your",
+      "you're",
+      "you",
+      "yours"
+    ],
+    "correctIndex": 0,
+    "explanation": "정답입니다! 'bag'이라는 명사 앞에는 '너의'라는 소유의 의미를 가진 소유격 형용사 'your'가 와야 해요. 'you're'는 'you are'의 줄임말이니 헷갈리지 않도록 조심하세요!",
+    "difficulty": 1,
+    "audioText": "your bag, you're"
+  },
+  {
+    "id": "eng_easy_confusing_words_092",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nThe company will announce _______ quarterly earnings next week.",
+    "options": [
+      "it's",
+      "its",
+      "it",
+      "its'"
+    ],
+    "correctIndex": 1,
+    "explanation": "잘했어요! '그것의'라는 소유를 나타낼 때는 'its'를 사용합니다. 'it's'는 'it is'의 줄임말이에요. 아포스트로피(')가 있고 없고의 차이가 크니 꼭 구분해서 기억해주세요.",
+    "difficulty": 1,
+    "audioText": "its quarterly earnings, it's, its"
+  },
+  {
+    "id": "eng_easy_confusing_words_093",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nPlease put the books over _______, on the shelf.",
+    "options": [
+      "there",
+      "their",
+      "they're",
+      "theirs"
+    ],
+    "correctIndex": 0,
+    "explanation": "맞아요! '저기에'라는 장소를 나타내는 부사는 'there'입니다. 'their'는 '그들의'라는 소유격이고, 'they're'는 'they are'의 줄임말이에요. 발음이 비슷해서 헷갈리기 쉬우니 주의해야 해요.",
+    "difficulty": 1,
+    "audioText": "over there, their, they're"
+  },
+  {
+    "id": "eng_easy_confusing_words_094",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nWe are open every day _______ for public holidays.",
+    "options": [
+      "accept",
+      "except",
+      "expect",
+      "aspect"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '공휴일을 제외하고' 매일 문을 연다는 의미이므로, '~을 제외하고'라는 뜻의 전치사 'except'가 정답입니다. 'accept'는 '받아들이다'라는 동사, 'expect'는 '기대하다'라는 동사예요.",
+    "difficulty": 1,
+    "audioText": "accept, except, expect"
+  },
+  {
+    "id": "eng_easy_confusing_words_095",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nMy new computer is much faster _______ my old one.",
+    "options": [
+      "then",
+      "than",
+      "that",
+      "this"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답! 'faster'라는 비교급이 쓰였으므로, '~보다'라는 비교 대상을 나타내는 접속사 'than'이 와야 합니다. 'then'은 '그때에, 그러고 나서'라는 뜻의 부사로, 의미와 쓰임이 전혀 달라요.",
+    "difficulty": 1,
+    "audioText": "faster than, then, than"
+  },
+  {
+    "id": "eng_easy_confusing_words_096",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nThe bad weather will _______ our travel plans.",
+    "options": [
+      "affect",
+      "effect",
+      "affects",
+      "effects"
+    ],
+    "correctIndex": 0,
+    "explanation": "잘했어요! 빈칸에는 조동사 'will' 뒤에 오는 동사 원형이 필요해요. '~에 영향을 미치다'라는 뜻의 동사는 'affect'입니다. 'effect'는 주로 '효과, 결과'라는 의미의 명사로 쓰여요. 이 두 단어는 정말 중요하니 꼭 구분해두세요!",
+    "difficulty": 1,
+    "audioText": "affect our travel plans, affect, effect"
+  },
+  {
+    "id": "eng_easy_confusing_words_097",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nBe careful not to _______ your passport during the trip.",
+    "options": [
+      "loose",
+      "lose",
+      "lost",
+      "loosen"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! '여권을 잃어버리지 않도록' 조심하라는 의미이므로 '잃어버리다'라는 뜻의 동사 'lose'가 정답입니다. 'loose'는 '헐거운'이라는 뜻의 형용사예요. 발음이 비슷해서 헷갈리기 쉬워요.",
+    "difficulty": 1,
+    "audioText": "lose your passport, loose, lose"
+  },
+  {
+    "id": "eng_easy_confusing_words_098",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nCan you _______ me the time, please?",
+    "options": [
+      "say",
+      "tell",
+      "speak",
+      "talk"
+    ],
+    "correctIndex": 1,
+    "explanation": "정답입니다! 'tell'은 뒤에 '간접목적어(me) + 직접목적어(the time)'를 바로 붙여 '~에게 ~을 말해주다'라는 의미로 사용할 수 있어요. 'say'는 보통 'say something (to someone)' 형태로 쓰여요. 'tell me the time'이 가장 자연스러운 표현입니다.",
+    "difficulty": 1,
+    "audioText": "tell me the time, say, tell"
+  },
+  {
+    "id": "eng_easy_confusing_words_099",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nI don't know _______ to go to the party or stay home.",
+    "options": [
+      "weather",
+      "whether",
+      "what",
+      "if"
+    ],
+    "correctIndex": 1,
+    "explanation": "훌륭해요! '파티에 갈지 혹은 집에 머물지'처럼 '~인지 아닌지'라는 선택의 의미를 나타낼 때는 접속사 'whether'를 사용합니다. 'whether A or B' 형태로 자주 쓰여요. 'weather'는 '날씨'라는 뜻의 명사죠.",
+    "difficulty": 1,
+    "audioText": "whether to go, weather, whether"
+  },
+  {
+    "id": "eng_easy_confusing_words_100",
+    "subject": "english",
+    "question": "문법과 문맥에 맞는 단어를 고르세요.\n\nThis coffee is _______ hot to drink right now.",
+    "options": [
+      "to",
+      "too",
+      "two",
+      "so"
+    ],
+    "correctIndex": 1,
+    "explanation": "맞아요! '너무 ~해서 ~할 수 없다'는 의미로 'too ~ to...' 구문을 사용해요. '너무 뜨거워서 마실 수 없다'는 뜻이므로 '너무'라는 의미의 부사 'too'가 정답입니다. 'to'는 전치사, 'two'는 숫자 2를 의미하죠.",
+    "difficulty": 1,
+    "audioText": "too hot to drink, to, too, two"
+  }
+]

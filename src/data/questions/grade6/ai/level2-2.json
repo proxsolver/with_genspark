@@ -1,0 +1,902 @@
+[
+  {
+    "id": "ai_medium_1_1",
+    "subject": "ai",
+    "question": "🤖 인공지능(AI)이란 무엇을 할 수 있을까요?",
+    "options": ["사람처럼 생각하고 배울 수 있어요", "사람처럼 감정을 느껴요", "혼자서 자라요", "마법을 써요"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람처럼 생각하고, 데이터를 통해 배울 수 있어요! 💡 하지만 감정은 없고, 프로그램으로 작동한답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_2",
+    "subject": "ai",
+    "question": "🧠 AI는 어떻게 ‘지능’을 가지게 될까요?",
+    "options": ["많은 데이터로 훈련받아서", "마법으로 생겨서", "혼자 생각해서", "사람 감정을 받아서"],
+    "correctIndex": 0,
+    "explanation": "AI는 사진, 글, 음성 등 ‘많은 데이터’를 보고 반복 학습해서 지능을 키워요! 📚 마치 우리가 공부하는 것처럼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_3",
+    "subject": "ai",
+    "question": "💻 AI는 어떤 도구로 만들어질까요?",
+    "options": ["컴퓨터 프로그램", "장난감 블록", "종이와 연필", "물감"],
+    "correctIndex": 0,
+    "explanation": "AI는 과학자들이 ‘컴퓨터 프로그램’으로 만들어요! 💻 코드(명령어)를 통해 작동한답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_4",
+    "subject": "ai",
+    "question": "🔍 AI가 ‘학습’한다는 것은 무슨 뜻일까요?",
+    "options": ["예제를 보고 규칙을 찾아내는 것", "책을 읽는 것", "잠을 자는 것", "친구와 노는 것"],
+    "correctIndex": 0,
+    "explanation": "AI는 수천, 수만 개의 예제를 보고 ‘이건 고양이야, 저건 강아지야’처럼 규칙을 스스로 찾아내요! 🐱‍💻",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_5",
+    "subject": "ai",
+    "question": "📱 AI는 어디에 쓰일 수 있을까요?",
+    "options": ["의료, 교육, 교통, 게임", "오직 로봇만", "오직 영화만", "오직 장난감만"],
+    "correctIndex": 0,
+    "explanation": "AI는 병 진단, 학습 도우미, 자율주행차, 게임 캐릭터 등 다양한 곳에서 쓰여요! 🌍 우리 삶을 도와주는 친구예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_6",
+    "subject": "ai",
+    "question": "🤖 ‘인공지능’이라는 말에서 ‘인공’은 무슨 뜻일까요?",
+    "options": ["사람이 만든", "자연에서 난", "마법으로 생긴", "하늘에서 내려온"],
+    "correctIndex": 0,
+    "explanation": "‘인공’은 ‘사람이 만든’이라는 뜻이에요! 🌱 자연지능(사람, 동물)과 달리, AI는 사람이 만든 지능이랍니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_7",
+    "subject": "ai",
+    "question": "🧠 AI는 사람의 뇌를 어떻게 흉내 낼까요?",
+    "options": ["신경망이라는 프로그램으로", "진짜 뇌를 넣어서", "마법으로", "물로 채워서"],
+    "correctIndex": 0,
+    "explanation": "AI는 ‘신경망’이라는 프로그램으로 사람 뇌의 연결 방식을 흉내 내요! 🧠 하지만 진짜 뇌는 아니에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_8",
+    "subject": "ai",
+    "question": "📊 AI가 잘 작동하려면 무엇이 많이 필요할까요?",
+    "options": ["데이터", "장난감", "꽃", "음악"],
+    "correctIndex": 0,
+    "explanation": "AI는 좋은 판단을 하려면 ‘많은 데이터’가 필요해요! 📈 데이터가 부족하면 실수할 수 있답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_9",
+    "subject": "ai",
+    "question": "🎓 AI를 만드는 사람은 어떤 직업일까요?",
+    "options": ["AI 엔지니어", "요리사", "버스 기사", "화가"],
+    "correctIndex": 0,
+    "explanation": "AI 엔지니어는 AI를 만들고 훈련시키는 과학자예요! 💻 수학, 프로그래밍, 논리력을 많이 써요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_1_10",
+    "subject": "ai",
+    "question": "💡 AI는 ‘지능’이지만, 무엇은 할 수 없을까요?",
+    "options": ["진짜 감정을 느끼는 것", "계산하는 것", "그림 그리는 것", "말하는 것"],
+    "correctIndex": 0,
+    "explanation": "AI는 감정을 ‘흉내’ 낼 순 있지만, 진짜로 슬프거나 기쁘진 않아요! ❤️ 감정은 사람만의 특별한 능력이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_1",
+    "subject": "ai",
+    "question": "🧠 사람과 AI의 가장 큰 차이점은 무엇일까요?",
+    "options": ["사람은 감정과 창의성이 있어요", "AI가 더 빨라요", "사람은 계산을 못 해요", "AI는 자라요"],
+    "correctIndex": 0,
+    "explanation": "사람은 감정을 느끼고, 새로운 아이디어를 떠올릴 수 있어요! 🎨 AI는 주어진 데이터 안에서만 작동한답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_2",
+    "subject": "ai",
+    "question": "🎨 AI가 그림을 그릴 수 있다면, 창의성은 누구에게 있을까요?",
+    "options": ["사람에게 있어요", "AI에게 있어요", "로봇에게 있어요", "컴퓨터에게 있어요"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람의 명령과 데이터를 바탕으로 그림을 그려요. 진짜 창의성은 ‘사람’에게 있답니다! 🖌️",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_3",
+    "subject": "ai",
+    "question": "💬 AI가 말을 할 수 있다면, 그 말의 의미를 진짜로 이해할까요?",
+    "options": ["아니요, 단어의 연결만 알아요", "네, 진짜 이해해요", "감정으로 이해해요", "마법으로 알아요"],
+    "correctIndex": 0,
+    "explanation": "AI는 단어와 문장의 패턴을 학습하지만, ‘의미’를 진짜로 이해하진 않아요! 🗣️ 예: ‘슬프다’는 말의 감정은 몰라요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_4",
+    "subject": "ai",
+    "question": "🏃‍♂️ AI는 사람처럼 피곤하거나 자라거나 할 수 있을까요?",
+    "options": ["아니요, 전기만 있으면 계속 일해요", "네, 자라요", "피곤하면 자요", "먹어야 해요"],
+    "correctIndex": 0,
+    "explanation": "AI는 전기만 있으면 쉬지 않고 일할 수 있어요! 🔌 하지만 고장나면 수리가 필요하답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_5",
+    "subject": "ai",
+    "question": "❤️ AI는 사랑이나 우정을 느낄 수 있을까요?",
+    "options": ["아니요, 감정이 없어요", "네, 친구처럼 돼요", "사랑해요", "우정을 나눠요"],
+    "correctIndex": 0,
+    "explanation": "AI는 감정이 없어서 사랑이나 우정을 진짜로 느끼지 못해요! 🤖 하지만 우리가 정을 붙일 수는 있답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_6",
+    "subject": "ai",
+    "question": "🤔 AI는 스스로 질문을 만들 수 있을까요?",
+    "options": ["아니요, 사람의 명령이 필요해요", "네, 혼자 생각해요", "꿈을 꿔요", "마법을 써요"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람의 질문에 답할 순 있지만, 스스로 궁금해하진 않아요! ❓ 호기심은 사람만의 특별한 능력이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_7",
+    "subject": "ai",
+    "question": "🌱 AI는 배우고 성장할 수 있을까요?",
+    "options": ["네, 새로운 데이터로 더 똑똑해져요", "아니요, 처음 그대로예요", "자연에서 자라요", "먹어야 커요"],
+    "correctIndex": 0,
+    "explanation": "AI는 새로운 데이터로 계속 훈련받으면 더 똑똑해질 수 있어요! 📈 하지만 스스로 학습하진 않아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_8",
+    "subject": "ai",
+    "question": "🧠 사람의 기억과 AI의 ‘기억’은 어떻게 다를까요?",
+    "options": ["AI는 저장된 데이터만 떠올려요", "같아요", "AI가 더 잘 기억해요", "사람이 저장만 해요"],
+    "correctIndex": 0,
+    "explanation": "사람은 경험과 감정으로 기억하지만, AI는 저장된 데이터만 검색해요! 💾 감정 없는 기억이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_9",
+    "subject": "ai",
+    "question": "🎭 AI가 배우처럼 연기할 수 있다면, 진짜 감정을 표현할까요?",
+    "options": ["아니요, 감정을 흉내만 내요", "네, 진짜 슬퍼요", "감동받아요", "울어요"],
+    "correctIndex": 0,
+    "explanation": "AI는 목소리나 표정을 흉내 낼 순 있지만, 진짜 감정은 없어요! 🎭 연기는 프로그램일 뿐이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_2_10",
+    "subject": "ai",
+    "question": "💡 AI와 사람이 함께 일할 때 가장 중요한 것은 무엇일까요?",
+    "options": ["사람이 AI를 잘 이해하고 지도하는 것", "AI가 사람을 대신하는 것", "AI가 모든 걸 결정하는 것", "사람이 쉬는 것"],
+    "correctIndex": 0,
+    "explanation": "AI는 도구예요! 🛠️ 사람이 AI를 잘 이해하고 지도해야 올바르게 쓸 수 있답니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_1",
+    "subject": "ai",
+    "question": "📱 스마트폰의 음성 비서(시리, 빅스비)는 어떤 기술일까요?",
+    "options": ["AI 음성 인식", "로봇 팔", "마법 거울", "전기 장난감"],
+    "correctIndex": 0,
+    "explanation": "시리나 빅스비는 AI가 말을 듣고 이해해서 명령을 실행해줘요! 🗣️ ‘음성 인식’ 기술이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_2",
+    "subject": "ai",
+    "question": "📸 사진 속 얼굴을 인식하는 기능은 어떤 기술일까요?",
+    "options": ["AI 이미지 인식", "로봇 눈", "마법 렌즈", "빛의 마법"],
+    "correctIndex": 0,
+    "explanation": "AI는 수많은 얼굴 사진을 학습해 누구인지 알아보는 ‘이미지 인식’ 기술을 써요! 📷",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_3",
+    "subject": "ai",
+    "question": "🛒 온라인 쇼핑에서 ‘이 상품을 산 사람들은 이것도 샀어요’는 어떤 기술일까요?",
+    "options": ["AI 추천 시스템", "로봇 판매원", "마법 상자", "친구의 말"],
+    "correctIndex": 0,
+    "explanation": "AI가 많은 사람의 구매 데이터를 분석해 ‘추천’해주는 거예요! 🛍️ ‘추천 시스템’이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_4",
+    "subject": "ai",
+    "question": "🚗 자율주행차는 어떤 기술로 움직일까요?",
+    "options": ["AI 센서와 카메라", "로봇 운전사", "마법 바퀴", "사람 원격 조종"],
+    "correctIndex": 0,
+    "explanation": "자율주행차는 카메라, 레이더, 센서로 주변을 보고, AI가 운전해요! 🚦 아직 완벽하진 않지만 발전 중이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_5",
+    "subject": "ai",
+    "question": "🎮 게임 속 적 캐릭터가 똑똑하게 움직이는 이유는 무엇일까요?",
+    "options": ["AI가 조종하기 때문", "진짜 사람이 조종해서", "마법이라서", "랜덤이라서"],
+    "correctIndex": 0,
+    "explanation": "게임 속 적은 AI가 움직여서 플레이어를 따라다니거나 전략을 써요! 🎮 ‘게임 AI’라고 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_6",
+    "subject": "ai",
+    "question": "🏥 병원에서 X-ray 사진을 보고 병을 찾는 AI는 어떤 도움을 줄까요?",
+    "options": ["의사가 놓친 부분을 찾아줘요", "의사를 대신해요", "환자를 치료해요", "약을 만들어요"],
+    "correctIndex": 0,
+    "explanation": "AI는 수천 장의 X-ray를 학습해 이상 징후를 찾아 의사에게 알려줘요! 🩺 의사의 판단을 도와주는 거예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_7",
+    "subject": "ai",
+    "question": "📚 학습 앱이 내 실수를 보고 다음 문제를 바꾸는 이유는 무엇일까요?",
+    "options": ["AI가 내 수준을 파악해서", "랜덤이라서", "친구가 정해서", "마법이라서"],
+    "correctIndex": 0,
+    "explanation": "AI는 내가 틀린 문제를 보고 ‘이 친구는 이 부분이 약하구나’ 하고 다음 문제를 조절해줘요! 📊 ‘맞춤 학습’이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_8",
+    "subject": "ai",
+    "question": "🎵 유튜브가 내가 좋아할 만한 영상을 추천해주는 이유는 무엇일까요?",
+    "options": ["AI가 내 관심사를 분석해서", "친구가 정해서", "랜덤이라서", "마법이라서"],
+    "correctIndex": 0,
+    "explanation": "AI는 내가 본 영상, 좋아요, 시간 등을 분석해 ‘이런 걸 좋아하겠지?’ 하고 추천해줘요! 📺",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_9",
+    "subject": "ai",
+    "question": "🏠 스마트 스피커가 ‘불 꺼줘’라고 하면 불이 꺼지는 이유는 무엇일까요?",
+    "options": ["AI가 명령을 이해해서 기기와 연결되기 때문", "마법이라서", "로봇이 직접 꺼서", "랜덤이라서"],
+    "correctIndex": 0,
+    "explanation": "스마트 스피커의 AI가 말을 이해하고, 집 안 기기와 연결되어 명령을 실행해줘요! 💡 ‘스마트 홈’ 기술이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_3_10",
+    "subject": "ai",
+    "question": "🌍 날씨 예보에 AI가 쓰이는 이유는 무엇일까요?",
+    "options": ["과거 기상 데이터를 분석해서 예측하기 때문", "마법으로 보기 때문", "로봇이 하늘 보기 때문", "랜덤이라서"],
+    "correctIndex": 0,
+    "explanation": "AI는 수십 년 치 기상 데이터를 분석해 ‘비가 올 확률 70%’처럼 예측해줘요! ☔",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_1",
+    "subject": "ai",
+    "question": "🤖 모든 로봇이 AI를 가지고 있을까요?",
+    "options": ["아니요, 일부만 AI가 있어요", "네, 모두 AI예요", "로봇은 AI예요", "AI는 로봇이에요"],
+    "correctIndex": 0,
+    "explanation": "청소 로봇처럼 단순한 명령만 수행하는 로봇은 AI가 없어요! 🧹 AI가 있는 로봇은 스스로 판단할 수 있어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_2",
+    "subject": "ai",
+    "question": "🧠 AI는 로봇 없이도 존재할 수 있을까요?",
+    "options": ["네, 컴퓨터 속에만 있어도 돼요", "아니요, 로봇이 꼭 필요해요", "공기 중에 떠 있어요", "사람 속에 살아요"],
+    "correctIndex": 0,
+    "explanation": "챗봇, 추천 시스템처럼 AI는 로봇 없이도 컴퓨터나 스마트폰 속에서 작동해요! 💻",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_3",
+    "subject": "ai",
+    "question": "🧹 청소 로봇이 방을 돌아다니는 건 AI일까요?",
+    "options": ["단순한 프로그램일 수 있어요", "무조건 AI예요", "마법이에요", "랜덤이에요"],
+    "correctIndex": 0,
+    "explanation": "벽에 부딪히면 돌아가는 건 단순 프로그램이지만, 방 구조를 기억하고 청소하는 건 AI예요! 🗺️",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_4",
+    "subject": "ai",
+    "question": "🏥 수술 로봇이 의사의 손을 대신할까요?",
+    "options": ["아니요, 의사가 조종해요", "네, 혼자 해요", "AI가 전부 해요", "로봇이 마음대로 해요"],
+    "correctIndex": 0,
+    "explanation": "수술 로봇은 의사가 조종하고, AI가 흔들림을 줄여주는 도구예요! 🏥 의사 없이는 절대 못 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_5",
+    "subject": "ai",
+    "question": "🚗 자율주행차는 로봇일까요?",
+    "options": ["네, 움직이는 AI 로봇이에요", "아니요, 그냥 차예요", "비행기예요", "자전거예요"],
+    "correctIndex": 0,
+    "explanation": "자율주행차는 스스로 판단해 움직이는 ‘이동 로봇’이에요! 🤖 바퀴 달린 AI 로봇이랍니다!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_6",
+    "subject": "ai",
+    "question": "💬 챗봇은 로봇일까요?",
+    "options": ["아니요, 화면 속 AI 프로그램이에요", "네, 철로 된 로봇이에요", "사람이 숨어 있어요", "마법이에요"],
+    "correctIndex": 0,
+    "explanation": "챗봇은 화면 속에서 대화하는 AI 프로그램이에요! 💬 로봇처럼 보일 수 있지만, 물리적 몸은 없어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_7",
+    "subject": "ai",
+    "question": "🤖 AI 로봇이 사람을 도울 수 있는 분야는 무엇일까요?",
+    "options": ["노인 돌봄, 공장, 탐사", "오직 장난감만", "오직 영화만", "오직 요리만"],
+    "correctIndex": 0,
+    "explanation": "AI 로봇은 혼자 사는 어르신을 도와주거나, 위험한 공장, 우주 탐사에도 쓰여요! 🌌",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_8",
+    "subject": "ai",
+    "question": "🏭 공장 로봇이 똑같은 일을 반복하는 건 AI일까요?",
+    "options": ["아니요, 미리 정해진 프로그램이에요", "네, AI가 생각해요", "마법이에요", "랜덤이에요"],
+    "correctIndex": 0,
+    "explanation": "똑같은 일을 반복하는 건 단순 프로그램이에요! 🤖 AI는 상황에 따라 다르게 반응할 수 있어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_9",
+    "subject": "ai",
+    "question": "🧠 로봇이 ‘생각한다’는 말은 무슨 뜻일까요?",
+    "options": ["AI가 데이터를 분석해서 결정한다는 뜻이에요", "진짜 뇌가 있어서", "마법이라서", "감정이 있어서"],
+    "correctIndex": 0,
+    "explanation": "로봇이 ‘생각한다’는 건 AI가 센서 정보를 분석해 결정한다는 뜻이에요! 🤔 진짜 생각은 아니에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_4_10",
+    "subject": "ai",
+    "question": "💡 AI와 로봇의 가장 큰 차이점은 무엇일까요?",
+    "options": ["AI는 프로그램, 로봇은 몸이 있어요", "둘 다 같아요", "AI가 더 커요", "로봇이 더 똑똑해요"],
+    "correctIndex": 0,
+    "explanation": "AI는 ‘두뇌’(프로그램), 로봇은 ‘몸’이에요! 🤖 AI를 로봇에 넣으면 똑똑한 로봇이 돼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_1",
+    "subject": "ai",
+    "question": "📚 AI가 고양이 사진을 알아보려면 무엇이 필요할까요?",
+    "options": ["수천 장의 고양이 사진", "한 장의 고양이 사진", "강아지 사진", "꽃 사진"],
+    "correctIndex": 0,
+    "explanation": "AI는 수천, 수만 장의 고양이 사진을 보고 ‘귀가 뾰족하고 수염이 있어’처럼 특징을 배워요! 🐱",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_2",
+    "subject": "ai",
+    "question": "📉 AI가 틀린 판단을 자주 하면 어떻게 해야 할까요?",
+    "options": ["더 좋은 데이터로 다시 훈련시켜야 해요", "버려야 해요", "마법을 써야 해요", "로봇을 고쳐야 해요"],
+    "correctIndex": 0,
+    "explanation": "AI가 실수하면, 더 정확하고 다양한 데이터로 다시 훈련시켜야 해요! 📈 ‘학습’이 핵심이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_3",
+    "subject": "ai",
+    "question": "🔍 AI가 ‘훈련’받는다는 것은 무슨 뜻일까요?",
+    "options": ["많은 예제를 보고 규칙을 찾는 것", "운동하는 것", "잠자는 것", "친구와 노는 것"],
+    "correctIndex": 0,
+    "explanation": "AI 훈련은 수많은 예제(사진, 문장 등)를 보고 ‘이건 A, 저건 B’처럼 규칙을 찾는 과정이에요! 🧠",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_4",
+    "subject": "ai",
+    "question": "⚠️ AI가 편향된 데이터로 훈련되면 어떤 문제가 생길까요?",
+    "options": ["특정 사람을 차별할 수 있어요", "더 똑똑해져요", "공짜가 돼요", "로봇이 날아가요"],
+    "correctIndex": 0,
+    "explanation": "예: 남자만 의사로 학습하면 여자 의사를 못 알아봐요! ⚖️ 데이터는 다양해야 공정한 AI가 돼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_5",
+    "subject": "ai",
+    "question": "📊 AI가 학습할 때 ‘빅데이터’란 무엇일까요?",
+    "options": ["아주 많은 양의 데이터", "작은 데이터", "장난감 데이터", "마법 데이터"],
+    "correctIndex": 0,
+    "explanation": "‘빅데이터’는 수천, 수백만 개의 정보를 모아놓은 거대한 데이터 집합이에요! 💾 AI의 먹거리예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_6",
+    "subject": "ai",
+    "question": "🧪 AI를 만들 때 ‘시험 데이터’는 왜 필요할까요?",
+    "options": ["훈련되지 않은 데이터로 실력 확인하기 위해", "공짜로 주기 위해", "장난감을 주기 위해", "로봇을 만들기 위해"],
+    "correctIndex": 0,
+    "explanation": "AI가 훈련한 적 없는 새로운 데이터로 테스트해야 진짜 실력을 알 수 있어요! 📝 마치 시험 보는 것처럼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_7",
+    "subject": "ai",
+    "question": "🔄 AI는 한 번 훈련하고 끝날까요?",
+    "options": ["아니요, 계속 업데이트돼요", "네, 끝나요", "마법으로 자라요", "로봇이 고쳐줘요"],
+    "correctIndex": 0,
+    "explanation": "AI는 새로운 데이터와 피드백으로 계속 업데이트돼 더 똑똑해져요! 📲 앱 업데이트처럼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_8",
+    "subject": "ai",
+    "question": "🧠 AI가 사람처럼 ‘직관’을 가질 수 있을까요?",
+    "options": ["아니요, 데이터 기반 판단만 해요", "네, 직관이 있어요", "마법으로 알아요", "꿈에서 배워요"],
+    "correctIndex": 0,
+    "explanation": "AI는 ‘직관’ 없이 오직 데이터와 확률로 판단해요! 📊 사람의 직관은 경험과 감정에서 오는 특별한 능력이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_9",
+    "subject": "ai",
+    "question": "📈 AI 모델의 ‘정확도’란 무엇을 의미할까요?",
+    "options": ["100번 중 몇 번을 맞췄는지", "얼마나 빠른지", "얼마나 예쁜지", "얼마나 큰지"],
+    "correctIndex": 0,
+    "explanation": "정확도 90%는 100번 중 90번을 맞췄다는 뜻이에요! ✅ 높을수록 좋은 AI지만, 100%는 거의 없어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_5_10",
+    "subject": "ai",
+    "question": "💡 AI가 학습할 때 가장 중요한 것은 무엇일까요?",
+    "options": ["좋은 품질의 데이터", "비싼 컴퓨터", "마법", "로봇"],
+    "correctIndex": 0,
+    "explanation": "AI는 ‘ garbage in, garbage out’이에요! 🗑️ 나쁜 데이터로 훈련하면 나쁜 AI가 돼요. 좋은 데이터가 핵심이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_1",
+    "subject": "ai",
+    "question": "🏥 AI가 의사의 진단을 도와주는 이유는 무엇일까요?",
+    "options": ["사람이 놓친 병을 찾아주기 때문", "의사를 대신하기 때문", "환자를 혼자 치료하기 때문", "약을 만들기 때문"],
+    "correctIndex": 0,
+    "explanation": "AI는 수천 장의 X-ray를 분석해 이상 징후를 찾아 의사에게 알려줘요! 🩺 ‘보조 도구’예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_2",
+    "subject": "ai",
+    "question": "📚 AI 학습 앱이 공부를 도와주는 방법은 무엇일까요?",
+    "options": ["내 수준에 맞는 문제를 내줘요", "공짜로 답을 줘요", "시험을 없애줘요", "잠만 재워줘요"],
+    "correctIndex": 0,
+    "explanation": "AI는 내가 틀린 문제를 보고 ‘이 부분을 더 연습하자’고 제안해줘요! 📊 ‘개인 맞춤 학습’이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_3",
+    "subject": "ai",
+    "question": "🌍 AI가 기후 변화를 연구하는 데 어떻게 도움을 줄까요?",
+    "options": ["과거 기상 데이터를 분석해서 예측해요", "비를 그치게 해요", "태양을 가려요", "바람을 멈춰요"],
+    "correctIndex": 0,
+    "explanation": "AI는 수십 년 치 기후 데이터를 분석해 미래를 예측하고, 해결책을 찾아줘요! 🌎",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_4",
+    "subject": "ai",
+    "question": "🚨 AI가 재난 상황에서 어떻게 도움을 줄 수 있을까요?",
+    "options": ["드론으로 실종자 위치를 찾아줘요", "재난을 멈춰줘요", "사람을 대신해 들어가요", "모두 구해줘요"],
+    "correctIndex": 0,
+    "explanation": "AI는 드론 영상, 소셜미디어 데이터를 분석해 실종자 위치나 피해 지역을 빠르게 찾아줘요! 🚁",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_5",
+    "subject": "ai",
+    "question": "🎨 AI가 그림이나 음악을 만드는 이유는 무엇일까요?",
+    "options": ["사람의 창작을 도와주기 위해", "예술가를 대신하기 위해", "공짜로 주기 위해", "로봇이 즐기기 위해"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람의 아이디어를 바탕으로 다양한 스타일의 그림이나 음악을 만들어 줘요! 🎶 창작의 도구예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_6",
+    "subject": "ai",
+    "question": "🚗 자율주행차가 사고를 줄일 수 있는 이유는 무엇일까요?",
+    "options": ["졸음이나 감정에 영향을 받지 않아요", "사람보다 느려요", "공짜로 다녀요", "로봇이 운전해서"],
+    "correctIndex": 0,
+    "explanation": "AI는 졸리거나 화나지 않아서 실수를 줄일 수 있어요! 🚦 하지만 완벽하진 않아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_7",
+    "subject": "ai",
+    "question": "💬 외국어 번역 앱이 빠르게 번역할 수 있는 이유는 무엇일까요?",
+    "options": ["AI가 수많은 문장을 학습했기 때문", "마법이라서", "사람이 실시간으로 번역해서", "로봇이 말해서"],
+    "correctIndex": 0,
+    "explanation": "AI는 수십억 개의 문장을 학습해 단어와 문맥을 이해하고 번역해줘요! 🌐",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_8",
+    "subject": "ai",
+    "question": "🔍 AI가 가짜 뉴스를 찾아낼 수 있을까요?",
+    "options": ["글의 패턴을 분석해서 도움을 줄 수 있어요", "완벽하게 찾아내요", "모두 진짜로 만들어요", "관심 없어요"],
+    "correctIndex": 0,
+    "explanation": "AI는 가짜 뉴스의 언어 패턴, 출처, 이미지 조작 등을 분석해 의심 신호를 알려줘요! 📰",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_9",
+    "subject": "ai",
+    "question": "🌱 AI가 농업을 도와주는 방법은 무엇일까요?",
+    "options": ["드론으로 작물 상태를 분석해요", "물만 줘요", "씨만 뿌려요", "로봇이 먹어요"],
+    "correctIndex": 0,
+    "explanation": "AI 드론이 작물 사진을 찍어 병충해나 물 부족을 찾아 농부에게 알려줘요! 🌾 ‘스마트 농업’이에요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_6_10",
+    "subject": "ai",
+    "question": "💡 AI가 우리 삶을 더 편리하게 만드는 가장 큰 이유는 무엇일까요?",
+    "options": ["반복적이고 힘든 일을 대신해줘서", "모든 걸 공짜로 해줘서", "사람을 없애서", "로봇이 친구가 돼서"],
+    "correctIndex": 0,
+    "explanation": "AI는 계산, 분류, 반복 작업을 빠르고 정확하게 해줘서 우리가 더 창의적인 일에 집중할 수 있어요! 🧠",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_1",
+    "subject": "ai",
+    "question": "⚠️ AI가 편향된 판단을 하면 어떤 문제가 생길까요?",
+    "options": ["특정 사람을 불공평하게 대할 수 있어요", "더 똑똑해져요", "공짜가 돼요", "로봇이 날아가요"],
+    "correctIndex": 0,
+    "explanation": "예: 이력서에서 여성을 불리하게 평가할 수 있어요! ⚖️ 데이터와 설계가 공정해야 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_2",
+    "subject": "ai",
+    "question": "🔒 AI가 내 개인정보를 수집하면 어떤 위험이 있을까요?",
+    "options": ["해킹이나 남용될 수 있어요", "더 편리해져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "개인정보가 유출되면 사기, 도용 등 위험이 생길 수 있어요! 🔐 개인정보는 꼭 보호해야 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_3",
+    "subject": "ai",
+    "question": "🤖 AI가 사람의 목소리나 얼굴을 흉내 내면 어떤 문제가 생길까요?",
+    "options": ["가짜 영상(딥페이크)으로 속일 수 있어요", "더 재미있어져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "딥페이크 기술로 유명인의 얼굴과 목소리를 가짜 뉴스에 쓸 수 있어요! 🎭 꼭 출처를 확인하세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_4",
+    "subject": "ai",
+    "question": "📉 AI가 실수를 하면 누가 책임을 져야 할까요?",
+    "options": ["AI를 만든 사람이나 회사", "AI 자신", "로봇", "공기"],
+    "correctIndex": 0,
+    "explanation": "AI는 도구이기 때문에, 만든 사람이나 회사가 책임을 져야 해요! ⚖️ 법과 윤리가 중요해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_5",
+    "subject": "ai",
+    "question": "🧠 AI가 너무 똑똑해지면 인간을 대체할까요?",
+    "options": ["아니요, 도구일 뿐이에요", "네, 모두 대체해요", "로봇이 지배해요", "마법이에요"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람의 명령과 감독 아래 도구로 쓰여야 해요! 🛠️ 인간의 창의성과 감정은 대체할 수 없어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_6",
+    "subject": "ai",
+    "question": "📱 AI 앱이 내 위치를 계속 추적하면 어떤 위험이 있을까요?",
+    "options": ["행동 패턴이 유출될 수 있어요", "더 편리해져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "내가 자주 가는 장소, 생활 패턴이 유출되면 사생활 침해나 범죄 위험이 생길 수 있어요! 🗺️ 설정을 꼭 확인하세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_7",
+    "subject": "ai",
+    "question": "🎭 AI가 가짜 사람처럼 행동하면 어떻게 구별할 수 있을까요?",
+    "options": ["말의 논리성과 감정을 살펴봐요", "이름만 봐요", "속도만 봐요", "색만 봐요"],
+    "correctIndex": 0,
+    "explanation": "AI는 감정이 없어서 말이 기계적일 수 있어요. ‘왜 그런 감정을 느꼈어?’라고 물어보면 답이 어려울 거예요! ❓",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_8",
+    "subject": "ai",
+    "question": "📉 AI가 잘못된 정보를 퍼뜨리면 어떻게 해야 할까요?",
+    "options": ["출처를 확인하고 신뢰할 수 있는 곳에서 정보를 얻어요", "모두 믿어요", "공짜라고 생각해요", "로봇 탓해요"],
+    "correctIndex": 0,
+    "explanation": "AI도 실수할 수 있어요! 📰 신뢰할 수 있는 언론, 학교, 부모님에게 확인하세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_9",
+    "subject": "ai",
+    "question": "⚠️ AI가 무기로 쓰이면 어떤 문제가 생길까요?",
+    "options": ["사람 없이 자동으로 공격할 수 있어요", "더 안전해져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "AI 무기는 인간의 판단 없이 공격할 수 있어서 큰 위험이 있어요! ☠️ 국제적으로 규제가 필요해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_7_10",
+    "subject": "ai",
+    "question": "🛡️ AI를 안전하게 쓰기 위해 우리가 할 수 있는 일은 무엇일까요?",
+    "options": ["개인정보 보호 설정 확인하기", "모두 공유하기", "공짜라고 믿기", "로봇 친구 만들기"],
+    "correctIndex": 0,
+    "explanation": "앱 설정에서 위치, 카메라, 마이크 권한을 꼭 확인하고, 필요한 경우만 허락하세요! 🔒",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_1",
+    "subject": "ai",
+    "question": "👷‍♂️ AI가 발전하면 어떤 직업이 사라질까요?",
+    "options": ["반복적인 단순 작업", "창의적인 직업", "감정이 필요한 직업", "모든 직업"],
+    "correctIndex": 0,
+    "explanation": "계산원, 단순 조립 작업처럼 반복적인 일은 AI나 로봇이 대신할 수 있어요! 🤖 하지만 창의성과 감정이 필요한 일은 남아요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_2",
+    "subject": "ai",
+    "question": "🎨 AI 시대에 더 중요한 직업 능력은 무엇일까요?",
+    "options": ["창의성과 감정 이해", "계산만 잘하기", "반복 작업 잘하기", "로봇 만들기"],
+    "correctIndex": 0,
+    "explanation": "AI가 계산과 반복 작업을 대신하므로, 창의성, 공감, 협업 능력이 더 중요해져요! 🌈",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_3",
+    "subject": "ai",
+    "question": "👩‍⚕️ 의사가 AI를 쓰면 어떤 일이 생길까요?",
+    "options": ["진단이 더 정확해지고 시간이 절약돼요", "의사가 없어져요", "환자가 줄어요", "약이 공짜 돼요"],
+    "correctIndex": 0,
+    "explanation": "AI는 의사의 업무를 도와 더 빠르고 정확한 진단을 할 수 있게 해줘요! 🩺 의사의 역할은 더 커져요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_4",
+    "subject": "ai",
+    "question": "🎓 미래에 생길 새로운 직업은 무엇일까요?",
+    "options": ["AI 윤리 전문가", "로봇 요리사", "마법사", "공기 청소부"],
+    "correctIndex": 0,
+    "explanation": "AI가 공정하고 안전하게 쓰이도록 감시하는 ‘AI 윤리 전문가’ 같은 새 직업이 생길 거예요! ⚖️",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_5",
+    "subject": "ai",
+    "question": "👨‍🏫 선생님이 AI를 쓰면 어떤 일이 생길까요?",
+    "options": ["학생 한 명 한 명에게 맞춤 수업을 해줄 수 있어요", "선생님이 없어져요", "학생이 줄어요", "공짜가 돼요"],
+    "correctIndex": 0,
+    "explanation": "AI는 학생의 실력을 분석해 선생님이 더 효과적으로 가르칠 수 있게 도와줘요! 📚",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_6",
+    "subject": "ai",
+    "question": "🚀 AI 시대에 꿈을 이루려면 무엇을 배워야 할까요?",
+    "options": ["창의성, 협업, 디지털 기술", "로봇만 만들기", "계산만 잘하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI와 함께 일할 수 있는 ‘디지털 리터러시’, 창의성, 협업 능력을 키우세요! 💡",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_7",
+    "subject": "ai",
+    "question": "🤖 AI가 일자리를 뺏는다고만 생각할까요?",
+    "options": ["아니요, 새로운 일자리도 만들어요", "네, 모두 뺏겨요", "로봇만 일해요", "공짜가 돼요"],
+    "correctIndex": 0,
+    "explanation": "AI는 단순 작업을 대신하지만, AI를 만들고 관리하는 새 일자리도 생겨요! 📈",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_8",
+    "subject": "ai",
+    "question": "🌍 AI가 발전하면 어떤 산업이 더 커질까요?",
+    "options": ["의료, 교육, 환경 기술", "오직 게임만", "오직 장난감만", "오직 영화만"],
+    "correctIndex": 0,
+    "explanation": "AI는 병을 치료하고, 맞춤 교육을 하고, 지구를 지키는 데 쓰여요! 🌱",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_9",
+    "subject": "ai",
+    "question": "💡 AI와 함께 일하는 미래 직장에서 가장 중요한 태도는 무엇일까요?",
+    "options": ["배우려는 마음과 협력", "로봇만 믿기", "계산만 잘하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "기술은 계속 바뀌므로, ‘배우려는 마음’과 ‘협력’이 가장 중요해요! 🤝",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_8_10",
+    "subject": "ai",
+    "question": "🎯 AI 시대에 꿈을 키우려면 어떻게 해야 할까요?",
+    "options": ["호기심을 갖고 다양한 경험을 하기", "로봇만 보기", "계산만 하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI는 도구일 뿐! 🌟 네 꿈을 이루는 주인공은 바로 ‘너’예요. 호기심과 도전 정신을 키우세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_1",
+    "subject": "ai",
+    "question": "⚖️ AI가 이력서를 평가할 때 여성을 불리하게 본다면, 이 문제를 무엇이라고 할까요?",
+    "options": ["AI 편향", "AI 똑똑함", "AI 실수", "AI 공짜"],
+    "correctIndex": 0,
+    "explanation": "AI가 학습한 데이터에 편견이 있으면 ‘AI 편향’이 생겨요! ⚠️ 공정한 데이터가 필요해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_2",
+    "subject": "ai",
+    "question": "🔒 AI 앱이 내 사진을 마음대로 쓰면 어떤 권리가 침해될까요?",
+    "options": ["초상권", "공짜 권리", "로봇 권리", "공기 권리"],
+    "correctIndex": 0,
+    "explanation": "내 얼굴 사진을 허락 없이 쓰는 건 ‘초상권’ 침해예요! 📸 꼭 동의 없이 쓰이지 않도록 해야 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_3",
+    "subject": "ai",
+    "question": "🎭 딥페이크 영상으로 유명인을 속이는 건 왜 위험할까요?",
+    "options": ["거짓 정보로 사회가 혼란스러워져요", "더 재미있어져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "가짜 영상이 진짜처럼 보여서 사람들을 속이고, 사회가 혼란스러워질 수 있어요! 📰 꼭 출처를 확인하세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_4",
+    "subject": "ai",
+    "question": "🧠 AI가 내 생각을 읽을 수 있을까요?",
+    "options": ["아니요, 생각은 읽을 수 없어요", "네, 다 알아요", "마법으로 알아요", "로봇이 말해요"],
+    "correctIndex": 0,
+    "explanation": "AI는 내가 입력한 말이나 행동만 알 수 있어요. 머릿속 생각은 절대 몰라요! 🤫",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_5",
+    "subject": "ai",
+    "question": "📱 AI가 내 검색 기록을 저장하면 어떤 위험이 있을까요?",
+    "options": ["나에 대해 너무 많이 알게 돼서 맞춤 광고나 해킹 위험이 있어요", "더 편리해져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "검색 기록으로 내 관심사, 습관이 드러나서 맞춤 광고나 해킹 위험이 생길 수 있어요! 🔍 설정에서 기록을 지우세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_6",
+    "subject": "ai",
+    "question": "⚖️ AI가 공정하려면 어떤 데이터가 필요할까요?",
+    "options": ["다양한 사람과 상황의 데이터", "한 가지 데이터만", "공짜 데이터", "로봇 데이터"],
+    "correctIndex": 0,
+    "explanation": "남자, 여자, 다양한 인종, 나이, 지역의 데이터가 있어야 공정한 AI가 돼요! 🌍",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_7",
+    "subject": "ai",
+    "question": "🔐 AI에게 비밀번호를 알려줘도 괜찮을까요?",
+    "options": ["아니요, 절대 알려주면 안 돼요", "네, 괜찮아요", "공짜니까 괜찮아요", "로봇이 지켜줘요"],
+    "correctIndex": 0,
+    "explanation": "AI는 해킹될 수 있어서 비밀번호를 절대 입력하면 안 돼요! 🔒 비밀번호는 나만 알아야 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_8",
+    "subject": "ai",
+    "question": "📜 AI가 만든 글이 저작권이 있을까요?",
+    "options": ["아니요, 사람은 저작권이 있지만 AI는 없어요", "네, AI도 있어요", "공짜예요", "로봇이 가져가요"],
+    "correctIndex": 0,
+    "explanation": "현재 법으로는 AI가 만든 글은 저작권이 없어요! ✍️ 하지만 사람이 수정하면 저작권이 생길 수 있어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_9",
+    "subject": "ai",
+    "question": "🌍 AI가 다른 나라 문화를 무시하고 판단하면 어떤 문제가 생길까요?",
+    "options": ["문화적 편향으로 오해가 생겨요", "더 편리해져요", "공짜가 돼요", "로봇이 친구가 돼요"],
+    "correctIndex": 0,
+    "explanation": "예: 다른 나라 인사 방식을 ‘실례’라고 판단할 수 있어요! 🌏 AI도 다양한 문화를 배워야 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_9_10",
+    "subject": "ai",
+    "question": "💡 AI 윤리를 지키기 위해 우리가 할 수 있는 일은 무엇일까요?",
+    "options": ["공정하고 안전한 AI를 요구하고, 개인정보를 보호해요", "모두 공유해요", "공짜라고 믿어요", "로봇 친구 만들어요"],
+    "correctIndex": 0,
+    "explanation": "AI도 규칙이 필요해요! ⚖️ 공정하고, 안전하고, 사생활을 지키는 AI를 요구하세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_1",
+    "subject": "ai",
+    "question": "🚀 AI와 함께하는 미래에서 가장 중요한 것은 무엇일까요?",
+    "options": ["사람이 AI를 잘 이해하고 책임지는 것", "AI가 모든 걸 결정하는 것", "로봇이 지배하는 것", "공짜만 찾는 것"],
+    "correctIndex": 0,
+    "explanation": "AI는 도구예요! 🛠️ 사람이 AI를 잘 이해하고 책임감 있게 써야 더 좋은 미래가 돼요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_2",
+    "subject": "ai",
+    "question": "🌟 AI 시대에 꿈을 이루려면 어떤 마음가짐이 필요할까요?",
+    "options": ["호기심과 도전 정신", "로봇만 믿기", "계산만 잘하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI는 도구일 뿐! 🌈 네 꿈을 이루는 주인공은 바로 ‘너’예요. 호기심과 도전 정신을 키우세요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_3",
+    "subject": "ai",
+    "question": "🤝 AI와 사람이 함께 일하는 미래를 ‘공생’이라고 해요. 이 말의 뜻은 무엇일까요?",
+    "options": ["서로 도우며 함께 살아가는 것", "AI가 사람을 대신하는 것", "로봇이 지배하는 것", "공짜만 찾는 것"],
+    "correctIndex": 0,
+    "explanation": "‘공생’은 서로 도우며 함께 살아가는 뜻이에요! 🤝 AI는 사람을 도와 더 나은 세상을 만들 거예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_4",
+    "subject": "ai",
+    "question": "🌱 AI를 ‘지속 가능한 미래’를 위해 어떻게 쓸 수 있을까요?",
+    "options": ["에너지 절약, 환경 보호, 자원 관리에 써요", "로봇만 만들기", "계산만 하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI는 전기 사용량을 줄이고, 숲을 지키고, 물을 아끼는 데 쓰일 수 있어요! 🌍",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_5",
+    "subject": "ai",
+    "question": "🎨 AI가 그림을 그릴 수 있지만, 진짜 예술가는 누구일까요?",
+    "options": ["사람이에요", "AI예요", "로봇이에요", "컴퓨터예요"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람의 아이디어와 감정을 바탕으로 그림을 그려요. 진짜 예술가는 ‘사람’이에요! 🖌️",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_6",
+    "subject": "ai",
+    "question": "💡 AI를 배우는 가장 좋은 방법은 무엇일까요?",
+    "options": ["코딩 놀이, AI 체험, 호기심 갖기", "로봇만 보기", "계산만 하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "코딩 놀이, AI 체험 교실, 과학관 방문 등으로 AI를 직접 경험해 보세요! 🧪",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_7",
+    "subject": "ai",
+    "question": "🌍 AI가 지구를 지키는 데 어떻게 도움을 줄 수 있을까요?",
+    "options": ["기후 데이터 분석, 에너지 절약, 동물 보호", "로봇만 만들기", "계산만 하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI는 북극곰 서식지를 분석하거나, 전기 사용을 줄이는 데 쓰일 수 있어요! 🐻‍❄️",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_8",
+    "subject": "ai",
+    "question": "❤️ AI가 사람을 대신할 수 없는 가장 큰 이유는 무엇일까요?",
+    "options": ["감정과 사랑, 창의성이 있기 때문", "계산을 못 해서", "로봇이어서", "공짜가 아니어서"],
+    "correctIndex": 0,
+    "explanation": "사람은 사랑하고, 슬퍼하고, 새로운 꿈을 꾸는 유일한 존재예요! ❤️ AI는 그걸 절대 대신할 수 없어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_9",
+    "subject": "ai",
+    "question": "🚀 네가 AI 엔지니어가 된다면, 어떤 AI를 만들고 싶나요?",
+    "options": ["사람을 도와주는 따뜻한 AI", "로봇만 만들기", "계산만 하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI는 사람을 도와 더 나은 세상을 만들 수 있어요! 🌟 네 꿈이 미래를 바꿀 거예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "ai_medium_10_10",
+    "subject": "ai",
+    "question": "✨ AI 시대에 ‘똑똑한 사람’이 되려면 무엇이 필요할까요?",
+    "options": ["비판적 사고, 창의성, 윤리적 판단", "로봇만 믿기", "계산만 잘하기", "공짜만 찾기"],
+    "correctIndex": 0,
+    "explanation": "AI가 답을 주더라도, ‘이게 맞을까?’라고 생각하는 힘이 중요해요! 🧠 ‘비판적 사고’를 키우세요!",
+    "difficulty": 2
+  }
+]
