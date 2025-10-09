@@ -604,17 +604,7 @@
                 return;
             }
 
-            // 난이도별 문제 개수 체크
-            const config = difficultyConfig[currentDifficulty];
-            const difficultyKey = config.class;
-            const currentCount = questionCounts[difficultyKey];
-            const targetCount = config.targetCount;
 
-            if (currentCount >= targetCount) {
-                // 현재 난이도 완료, 다음 난이도로
-                upgradeDifficulty();
-                return;
-            }
 
             if (currentQuestionIndex >= currentQuestionPool.length) {
                 // 문제 풀 재생성
