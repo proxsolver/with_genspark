@@ -210,7 +210,7 @@
                 <span class="ml-2" style="white-space: pre-wrap; word-break: break-all;">${escapeHtml(log.message)}</span>
             `;
 
-            if (logContainer.firstChild && logContainer.firstChild.classList.contains('text-gray-400')) {
+            if (logContainer.firstChild && logContainer.firstChild.classList && logContainer.firstChild.classList.contains('text-gray-400')) {
                 logContainer.innerHTML = '';
             }
 

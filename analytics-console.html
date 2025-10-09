@@ -10,9 +10,9 @@
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="firebase-config.js"></script>
-    <script src="firebase-integration.js"></script>
 
     <!-- 한글 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -201,12 +201,6 @@
     <!-- 로거 시스템 -->
     <script src="logger.js"></script>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="firebase-config.js"></script>
-
     <script>
         const subjects = {
             english: { name: '영어', icon: '🇺🇸' },
@@ -234,41 +228,18 @@
         let currentLearnerId = 'local';
         let allLearners = {};
 
-        // Firebase 초기화
-        async function initFirebase() {
-            try {
-                if (typeof firebase === 'undefined') {
-                    console.log('Firebase not available');
-                    return false;
-                }
-
-                if (!firebase.apps.length) {
-                    firebase.initializeApp(firebaseConfig);
-                }
-
-                // 익명 로그인
-                const auth = firebase.auth();
-                if (!auth.currentUser) {
-                    await auth.signInAnonymously();
-                }
-
-                return true;
-            } catch (error) {
-                console.error('Firebase init error:', error);
-                return false;
-            }
-        }
-
         // 모든 학습자 데이터 가져오기
         async function refreshLearners() {
             try {
-                const firebaseReady = await initFirebase();
-                if (!firebaseReady) {
-                    alert('Firebase에 연결할 수 없습니다. 로컬 데이터만 사용합니다.');
-                    return;
+                if (!window.firebase_db || !window.currentFirebaseUser) {
+                    const firebaseReady = await initFirebase();
+                    if (!firebaseReady) {
+                        alert('Firebase에 연결할 수 없습니다. 로컬 데이터만 사용합니다.');
+                        return;
+                    }
                 }
 
-                const db = firebase.database();
+                const db = window.firebase_db;
                 const usersSnapshot = await db.ref('users').once('value');
                 const users = usersSnapshot.val() || {};
 
@@ -539,12 +510,22 @@
         }
 
         function updateRecentRecords() {
-            const recentData = [...analyticsData].reverse().slice(0, 20);
+            const recentData = [...analyticsData].slice(0, 20);
             const container = document.getElementById('recent-records');
             container.innerHTML = '';
 
+            if (recentData.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-400">
+                        <div class="text-3xl mb-2">📭</div>
+                        <div>학습 기록이 없습니다</div>
+                    </div>
+                `;
+                return;
+            }
+
             recentData.forEach(session => {
-                const completedDate = new Date(session.completedAt);
+                const completedDate = new Date(session.completedAt || session.timestamp || Date.now());
                 const dateStr = completedDate.toLocaleString('ko-KR', {
                     month: 'short',
                     day: 'numeric',
@@ -559,13 +540,20 @@
                     'mixed_15': '<span class="difficulty-tag difficulty-medium">혼합 15+</span>'
                 };
 
+                // 그룹 뷰일 때 학습자 이름 표시
+                const learnerBadge = session.learnerName ?
+                    `<span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold mr-2">👤 ${session.learnerName}</span>`
+                    : '';
+
                 const record = `
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all" data-subject="${session.subject}">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <span class="text-2xl">${subjects[session.subject]?.icon || '📚'}</span>
                                 <div>
-                                    <div class="font-bold text-gray-900">${session.subjectName || subjects[session.subject]?.name}</div>
+                                    <div class="font-bold text-gray-900">
+                                        ${learnerBadge}${session.subjectName || subjects[session.subject]?.name}
+                                    </div>
                                     <div class="text-sm text-gray-600">${dateStr}</div>
                                 </div>
                             </div>
@@ -574,12 +562,12 @@
                                     ${difficultyBadges[session.completionType] || ''}
                                 </div>
                                 <div class="text-sm text-gray-600">
-                                    정답률 <span class="font-bold text-green-600">${session.stats.accuracy}%</span> ·
-                                    ${session.stats.totalAnswered}문제 ·
-                                    ${session.stats.timeSpent}분
+                                    정답률 <span class="font-bold text-green-600">${session.stats?.accuracy || 0}%</span> ·
+                                    ${session.stats?.totalAnswered || 0}문제 ·
+                                    ${session.stats?.timeSpent || 0}분
                                 </div>
                                 <div class="text-xs text-gray-500 mt-1">
-                                    쉬움 ${session.questionCounts.easy} / 보통 ${session.questionCounts.medium} / 어려움 ${session.questionCounts.hard}
+                                    쉬움 ${session.questionCounts?.easy || 0} / 보통 ${session.questionCounts?.medium || 0} / 어려움 ${session.questionCounts?.hard || 0}
                                 </div>
                             </div>
                         </div>
@@ -631,7 +619,7 @@
         let currentViewMode = 'personal'; // 'personal' or 'group'
         let selectedGroupId = null;
 
-        // Firebase 초기화
+        // Firebase 초기화 및 인증
         async function initFirebase() {
             try {
                 // Firebase 스크립트가 로드될 때까지 대기
@@ -655,7 +643,7 @@
 
                 if (typeof firebase === 'undefined') {
                     console.warn('[Analytics Console] Firebase not available - 그룹 기능 비활성화');
-                    return;
+                    return false;
                 }
 
                 // Firebase가 이미 초기화되었는지 확인
@@ -665,16 +653,27 @@
                         firebase.initializeApp(firebaseConfig);
                     } else {
                         console.warn('[Analytics Console] firebaseConfig not found');
-                        return;
+                        return false;
                     }
                 }
 
-                // window.firebase_db 사용 (firebase-integration.js와 공유)
+                // Database 참조 설정
                 if (!window.firebase_db) {
                     window.firebase_db = firebase.database();
                 }
 
-                console.log('[Analytics Console] Firebase initialized');
+                // 익명 로그인 수행
+                const auth = firebase.auth();
+                if (!auth.currentUser) {
+                    console.log('[Analytics Console] Firebase 익명 로그인 시도...');
+                    await auth.signInAnonymously();
+                    console.log('[Analytics Console] Firebase 익명 로그인 완료');
+                }
+
+                // 현재 사용자 전역 변수에 저장
+                window.currentFirebaseUser = auth.currentUser;
+
+                console.log('[Analytics Console] Firebase initialized and authenticated:', auth.currentUser.uid);
 
                 // social-hub에서 전달된 그룹 ID 확인
                 const savedGroupId = localStorage.getItem('selectedGroupId');
@@ -690,8 +689,11 @@
                     localStorage.removeItem('selectedGroupId');
                     localStorage.removeItem('selectedGroupName');
                 }
+
+                return true;
             } catch (error) {
                 console.error('[Analytics Console] Firebase 초기화 실패:', error);
+                return false;
             }
         }
 
@@ -724,46 +726,24 @@
 
         // 사용자 그룹 목록 로드
         async function loadUserGroups() {
-            if (!window.firebase_db) {
-                await initFirebase();
-            }
-
-            if (!window.firebase_db) {
-                console.warn('[Analytics Console] Firebase 초기화 실패');
-                return;
+            if (!window.firebase_db || !window.currentFirebaseUser) {
+                const initialized = await initFirebase();
+                if (!initialized) {
+                    console.warn('[Analytics Console] Firebase 초기화 실패');
+                    document.getElementById('learner-info').textContent = 'Firebase 로그인이 필요합니다 (그룹 기능만 영향받음).';
+                    return;
+                }
             }
 
             try {
-                const firebaseIntegration = window.eduPetFirebaseIntegration;
-
-                // Firebase Integration이 초기화될 때까지 대기
-                if (!firebaseIntegration || !firebaseIntegration.currentUser) {
-                    console.log('[Analytics Console] Firebase Integration 대기 중...');
-                    await new Promise((resolve) => {
-                        let attempts = 0;
-                        const checkIntegration = setInterval(() => {
-                            attempts++;
-                            if (window.eduPetFirebaseIntegration?.currentUser) {
-                                clearInterval(checkIntegration);
-                                resolve();
-                            } else if (attempts > 30) { // 3초 타임아웃
-                                clearInterval(checkIntegration);
-                                console.log('[Analytics Console] Firebase 인증 타임아웃');
-                                resolve();
-                            }
-                        }, 100);
-                    });
-                }
-
                 // 인증 사용자 확인
-                const currentIntegration = window.eduPetFirebaseIntegration;
-                if (!currentIntegration || !currentIntegration.currentUser) {
+                if (!window.currentFirebaseUser) {
                     document.getElementById('learner-info').textContent = 'Firebase 로그인이 필요합니다 (그룹 기능만 영향받음).';
                     console.log('[Analytics Console] Firebase 사용자 인증 없음 - 그룹 기능 비활성화');
                     return;
                 }
 
-                const userId = currentIntegration.currentUser.uid;
+                const userId = window.currentFirebaseUser.uid;
                 const groupsSnapshot = await window.firebase_db.ref(`users/${userId}/social/groups`).once('value');
                 const myGroups = groupsSnapshot.val();
 
@@ -834,74 +814,64 @@
                 const memberIds = Object.keys(members);
 
                 let groupAnalyticsData = [];
-                let totalSessions = 0;
-                let totalCorrectAnswers = 0;
-                let totalQuestions = 0;
-                let subjectData = {};
 
                 // 각 멤버의 분석 데이터 수집
                 for (const memberId of memberIds) {
                     try {
-                        const statsSnapshot = await window.firebase_db.ref(`users/${memberId}/stats`).once('value');
-                        const memberStats = statsSnapshot.val();
+                        // 멤버 닉네임 가져오기
+                        const userSnapshot = await window.firebase_db.ref(`users/${memberId}`).once('value');
+                        const userData = userSnapshot.val();
 
-                        if (memberStats) {
-                            totalCorrectAnswers += memberStats.correctAnswers || 0;
+                        let nickname = '익명';
+                        if (userData?.profile?.nickname) {
+                            nickname = userData.profile.nickname;
+                        } else if (userData?.userData?.profile?.nickname) {
+                            nickname = userData.userData.profile.nickname;
+                        } else if (userData?.nickname) {
+                            nickname = userData.nickname;
+                        } else if (userData?.settings?.userName) {
+                            nickname = userData.settings.userName;
+                        } else {
+                            nickname = `사용자_${memberId.substring(0, 8)}`;
+                        }
 
-                            // 과목별 데이터 집계
-                            if (memberStats.subjectScores) {
-                                for (const [subject, score] of Object.entries(memberStats.subjectScores)) {
-                                    if (!subjectData[subject]) {
-                                        subjectData[subject] = {
-                                            correctCount: 0,
-                                            totalCount: 0,
-                                            sessions: 0
-                                        };
-                                    }
-                                    subjectData[subject].correctCount += score || 0;
-                                    subjectData[subject].sessions++;
-                                }
-                            }
+                        // analytics 데이터 가져오기
+                        const analyticsSnapshot = await window.firebase_db.ref(`users/${memberId}/analytics`).once('value');
+                        const memberAnalytics = analyticsSnapshot.val();
+
+                        if (memberAnalytics) {
+                            const analyticsArray = Array.isArray(memberAnalytics) ? memberAnalytics : Object.values(memberAnalytics);
+
+                            // 각 세션에 학습자 정보 추가
+                            analyticsArray.forEach(session => {
+                                groupAnalyticsData.push({
+                                    ...session,
+                                    learnerName: nickname,
+                                    learnerId: memberId
+                                });
+                            });
+
+                            console.log(`[Analytics Console] ${nickname}의 학습 데이터 ${analyticsArray.length}개 로드 완료`);
                         }
                     } catch (error) {
                         console.error(`멤버 ${memberId} 분석 데이터 로드 실패:`, error);
                     }
                 }
 
-                // 과목별 세션 생성 (분석용)
-                for (const [subjectId, data] of Object.entries(subjectData)) {
-                    if (data.sessions > 0) {
-                        const avgAccuracy = data.totalCount > 0 ? Math.round((data.correctCount / data.totalCount) * 100) : 0;
+                // 시간순 정렬 (최신순)
+                groupAnalyticsData.sort((a, b) => {
+                    const timeA = a.completedAt || a.timestamp || 0;
+                    const timeB = b.completedAt || b.timestamp || 0;
+                    return timeB - timeA;
+                });
 
-                        groupAnalyticsData.push({
-                            subject: subjectId,
-                            subjectName: subjects[subjectId]?.name || subjectId,
-                            completionType: 'group_aggregate',
-                            timestamp: Date.now(),
-                            stats: {
-                                accuracy: avgAccuracy,
-                                totalAnswered: data.correctCount,
-                                correctAnswers: data.correctCount,
-                                wrongAnswers: data.totalCount - data.correctCount,
-                                timeSpent: 0 // 그룹 데이터에서는 시간 정보 없음
-                            },
-                            questionCounts: {
-                                easy: 0,
-                                medium: 0,
-                                hard: 0
-                            },
-                            difficultyHistory: []
-                        });
-
-                        totalSessions += data.sessions;
-                    }
-                }
+                console.log(`[Analytics Console] 그룹 전체 학습 데이터 ${groupAnalyticsData.length}개 로드 완료`);
 
                 // 분석 데이터 전역 변수에 할당
                 analyticsData = groupAnalyticsData;
 
                 // 통계 업데이트
-                updateAnalytics();
+                loadAnalytics();
 
             } catch (error) {
                 console.error('[Analytics Console] 그룹 분석 데이터 집계 실패:', error);
@@ -937,13 +907,11 @@
             loadLearnerData();
 
             // Firebase 초기화 (비동기, 실패해도 로컬 데이터는 표시됨)
-            setTimeout(async () => {
-                try {
-                    await initFirebase();
-                } catch (error) {
-                    console.error('[Analytics Console] Firebase 초기화 중 오류:', error);
-                }
-            }, 2000); // 2초 후 Firebase 초기화 시도 (Integration이 먼저 초기화되도록)
+            try {
+                await initFirebase();
+            } catch (error) {
+                console.error('[Analytics Console] Firebase 초기화 중 오류:', error);
+            }
         });
     </script>
 </body>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일일 미션 - EduPet Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Plant System -->
+    <script src="plant-system.js"></script>
+    <script src="weakness-learning.js"></script>
+
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+
+        .mission-card {
+            transition: all 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .mission-card.completed {
+            background: linear-gradient(135deg, #d1fae5 0%, #10b981 100%);
+            border-color: #059669;
+        }
+
+        .mission-card.in-progress {
+            background: linear-gradient(135deg, #dbeafe 0%, #3b82f6 100%);
+            border-color: #2563eb;
+            animation: pulse-border 2s infinite;
+        }
+
+        .mission-card.pending {
+            opacity: 0.7;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: #2563eb; }
+            50% { border-color: #60a5fa; }
+        }
+
+        .reward-animation {
+            animation: reward-pop 0.5s ease-out;
+        }
+
+        @keyframes reward-pop {
+            0% { transform: scale(0) rotate(180deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .progress-bar {
+            transition: width 0.8s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <!-- Header -->
+        <div class="text-center mb-6 relative">
+            <button onclick="goHome()" class="absolute left-0 top-0 text-2xl hover:scale-110 transition-transform">
+                🏠
+            </button>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">🎯 일일 미션</h1>
+            <div class="text-sm text-gray-600" id="mission-date">
+                2025년 10월 9일
+            </div>
+        </div>
+
+        <!-- Daily Progress Summary -->
+        <div class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl shadow-lg p-6 mb-6 text-white">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-lg font-bold">📊 오늘의 진행률</h2>
+                <div class="text-2xl font-bold" id="overall-progress">0%</div>
+            </div>
+            <div class="w-full bg-white/30 rounded-full h-4 mb-3">
+                <div class="progress-bar bg-white rounded-full h-4" id="overall-progress-bar" style="width: 0%"></div>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+                <div>
+                    <span id="completed-count">0</span> / <span id="total-count">3</span> 미션 완료
+                </div>
+                <div class="flex items-center gap-2">
+                    🎁 획득: <span id="rewards-earned" class="font-bold">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Streak Counter -->
+        <div class="bg-gradient-to-r from-orange-400 to-red-500 rounded-xl shadow-lg p-4 mb-6 text-white">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="text-4xl">🔥</div>
+                    <div>
+                        <div class="text-sm opacity-90">연속 출석</div>
+                        <div class="text-2xl font-bold" id="streak-days">0일</div>
+                    </div>
+                </div>
+                <div class="text-right text-sm opacity-90">
+                    <div>다음 보너스까지</div>
+                    <div class="font-bold" id="next-streak-bonus">7일</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Missions -->
+        <div class="space-y-4 mb-6">
+            <h2 class="text-lg font-bold text-gray-800">🌟 오늘의 미션</h2>
+            <div id="daily-missions-list">
+                <!-- Missions will be populated here -->
+            </div>
+        </div>
+
+        <!-- Weekly Missions Preview (Coming Soon) -->
+        <div class="bg-white/50 rounded-xl p-6 text-center border-2 border-dashed border-gray-300">
+            <div class="text-4xl mb-2">📅</div>
+            <div class="font-bold text-gray-700 mb-1">주간/월간 미션</div>
+            <div class="text-sm text-gray-500">곧 출시됩니다!</div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 미션 시스템 ====================
+
+        // PlantSystem 인스턴스 (plant-system.js에서 이미 로드됨)
+        let plantSystem;
+
+        // 홈으로 이동
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        // 미션 정의
+        const MISSION_DEFINITIONS = {
+            daily_login: {
+                id: 'daily_login',
+                type: 'fixed',
+                title: '📅 출석 체크',
+                description: '오늘도 EduPet에 방문해주세요!',
+                icon: '📅',
+                checkCondition: () => true, // 페이지 로드만 해도 완료
+                rewards: { normalTickets: 1 },
+                autoComplete: true
+            },
+            daily_weakness: {
+                id: 'daily_weakness',
+                type: 'fixed',
+                title: '🎯 약점 과목 정복',
+                description: '가장 약한 과목 1회 완료하기',
+                icon: '🎯',
+                checkCondition: (data) => {
+                    const weakestSubject = getWeakestSubject();
+                    const completed = data.completedSubjects || [];
+                    return completed.includes(weakestSubject);
+                },
+                rewards: { growthTickets: 1, money: 100 },
+                getDynamicDescription: () => {
+                    const weakest = getWeakestSubject();
+                    const subjectNames = {
+                        english: '영어', math: '수학', science: '과학',
+                        korean: '국어', social: '사회', common: '상식',
+                        idiom: '사자성어', person: '인물', economy: '경제',
+                        production: '생산', toeic: 'TOEIC', ai: 'AI'
+                    };
+                    return `${subjectNames[weakest] || weakest} 과목 1회 완료하기`;
+                }
+            },
+            daily_goal: {
+                id: 'daily_goal',
+                type: 'fixed',
+                title: '💪 학습 목표 달성',
+                description: '오늘 총 3과목 완료하기',
+                icon: '💪',
+                checkCondition: (data) => {
+                    return (data.completedCount || 0) >= 3;
+                },
+                rewards: { water: 10, growthTickets: 1 },
+                maxProgress: 3
+            }
+        };
+
+        // 미션 데이터 구조
+        function getMissionSystem() {
+            const stored = localStorage.getItem('missionSystem');
+            const today = getCurrentDateKST();
+
+            if (!stored) {
+                return initializeMissionSystem(today);
+            }
+
+            const system = JSON.parse(stored);
+
+            // 날짜가 바뀌었으면 리셋
+            if (system.lastReset !== today) {
+                return initializeMissionSystem(today);
+            }
+
+            return system;
+        }
+
+        function saveMissionSystem(system) {
+            localStorage.setItem('missionSystem', JSON.stringify(system));
+        }
+
+        function initializeMissionSystem(today) {
+            const prevSystem = JSON.parse(localStorage.getItem('missionSystem') || '{}');
+            const prevDate = prevSystem.lastReset;
+
+            // 연속 출석 계산
+            let streakDays = prevSystem.streakDays || 0;
+            if (prevDate) {
+                const yesterday = getYesterdayDateKST();
+                if (prevDate === yesterday) {
+                    streakDays++; // 어제 접속했으면 연속 +1
+                } else if (prevDate !== today) {
+                    streakDays = 1; // 그 이전이면 리셋
+                }
+            } else {
+                streakDays = 1; // 첫 접속
+            }
+
+            const system = {
+                lastReset: today,
+                streakDays: streakDays,
+                missions: {
+                    daily_login: {
+                        status: 'pending',
+                        progress: 0,
+                        completedAt: null,
+                        rewardClaimed: false
+                    },
+                    daily_weakness: {
+                        status: 'pending',
+                        progress: 0,
+                        completedAt: null,
+                        rewardClaimed: false
+                    },
+                    daily_goal: {
+                        status: 'pending',
+                        progress: 0,
+                        completedAt: null,
+                        rewardClaimed: false
+                    }
+                }
+            };
+
+            saveMissionSystem(system);
+            return system;
+        }
+
+        function getCurrentDateKST() {
+            const now = new Date();
+            const kstOffset = 9 * 60; // KST is UTC+9
+            const kstTime = new Date(now.getTime() + (kstOffset + now.getTimezoneOffset()) * 60000);
+
+            // 04:00 기준으로 날짜 계산
+            kstTime.setHours(kstTime.getHours() - 4);
+
+            return kstTime.toISOString().split('T')[0];
+        }
+
+        function getYesterdayDateKST() {
+            const now = new Date();
+            const kstOffset = 9 * 60;
+            const kstTime = new Date(now.getTime() + (kstOffset + now.getTimezoneOffset()) * 60000);
+            kstTime.setHours(kstTime.getHours() - 4);
+            kstTime.setDate(kstTime.getDate() - 1);
+            return kstTime.toISOString().split('T')[0];
+        }
+
+        // 약점 과목 찾기
+        function getWeakestSubject() {
+            const userData = plantSystem.getUserData();
+            const subjectScores = userData.learning?.subjectScores || {};
+
+            if (Object.keys(subjectScores).length === 0) {
+                return 'math'; // 기본값
+            }
+
+            let weakest = null;
+            let lowestScore = Infinity;
+
+            for (const [subject, score] of Object.entries(subjectScores)) {
+                if (score < lowestScore) {
+                    lowestScore = score;
+                    weakest = subject;
+                }
+            }
+
+            return weakest || 'math';
+        }
+
+        // 미션 체크 및 업데이트
+        function checkAndUpdateMissions() {
+            const system = getMissionSystem();
+            const userData = plantSystem.getUserData();
+            const completedSubjects = userData.daily?.completedSubjectIds || [];
+            const completedCount = completedSubjects.length;
+
+            let updated = false;
+
+            // 출석 체크 자동 완료
+            if (system.missions.daily_login.status === 'pending') {
+                system.missions.daily_login.status = 'completed';
+                system.missions.daily_login.progress = 1;
+                system.missions.daily_login.completedAt = Date.now();
+                updated = true;
+            }
+
+            // 약점 과목 체크
+            const weakestSubject = getWeakestSubject();
+            if (completedSubjects.includes(weakestSubject) && system.missions.daily_weakness.status !== 'completed') {
+                system.missions.daily_weakness.status = 'completed';
+                system.missions.daily_weakness.progress = 1;
+                system.missions.daily_weakness.completedAt = Date.now();
+                updated = true;
+            } else if (completedSubjects.length > 0 && system.missions.daily_weakness.status === 'pending') {
+                system.missions.daily_weakness.status = 'in_progress';
+            }
+
+            // 학습 목표 체크
+            system.missions.daily_goal.progress = completedCount;
+            if (completedCount >= 3 && system.missions.daily_goal.status !== 'completed') {
+                system.missions.daily_goal.status = 'completed';
+                system.missions.daily_goal.completedAt = Date.now();
+                updated = true;
+            } else if (completedCount > 0 && system.missions.daily_goal.status === 'pending') {
+                system.missions.daily_goal.status = 'in_progress';
+            }
+
+            if (updated) {
+                saveMissionSystem(system);
+            }
+
+            return system;
+        }
+
+        // UI 렌더링
+        function renderMissions() {
+            const system = checkAndUpdateMissions();
+            const container = document.getElementById('daily-missions-list');
+            container.innerHTML = '';
+
+            let completedCount = 0;
+            let totalRewards = 0;
+
+            for (const [missionId, definition] of Object.entries(MISSION_DEFINITIONS)) {
+                const missionData = system.missions[missionId];
+                const card = createMissionCard(definition, missionData);
+                container.appendChild(card);
+
+                if (missionData.status === 'completed') {
+                    completedCount++;
+                    if (!missionData.rewardClaimed) {
+                        totalRewards++;
+                    }
+                }
+            }
+
+            // 전체 진행률 업데이트
+            const totalMissions = Object.keys(MISSION_DEFINITIONS).length;
+            const progress = Math.round((completedCount / totalMissions) * 100);
+
+            document.getElementById('overall-progress').textContent = progress + '%';
+            document.getElementById('overall-progress-bar').style.width = progress + '%';
+            document.getElementById('completed-count').textContent = completedCount;
+            document.getElementById('total-count').textContent = totalMissions;
+            document.getElementById('rewards-earned').textContent = totalRewards;
+
+            // 연속 출석 표시
+            document.getElementById('streak-days').textContent = system.streakDays + '일';
+            const nextBonus = system.streakDays < 7 ? 7 - system.streakDays : 30 - (system.streakDays % 30);
+            document.getElementById('next-streak-bonus').textContent = nextBonus + '일';
+
+            // 날짜 표시
+            const dateStr = new Date().toLocaleDateString('ko-KR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('mission-date').textContent = dateStr;
+        }
+
+        function createMissionCard(definition, missionData) {
+            const card = document.createElement('div');
+            const statusClass = missionData.status;
+            card.className = `mission-card ${statusClass} bg-white rounded-xl p-5 border-2 shadow-lg`;
+
+            // 동적 설명 가져오기
+            const description = definition.getDynamicDescription
+                ? definition.getDynamicDescription()
+                : definition.description;
+
+            // 진행률 계산
+            const maxProgress = definition.maxProgress || 1;
+            const currentProgress = missionData.progress || 0;
+            const progressPercent = Math.min((currentProgress / maxProgress) * 100, 100);
+
+            // 보상 텍스트
+            const rewardText = getRewardText(definition.rewards);
+
+            // 상태 아이콘
+            let statusIcon = '⏳';
+            let statusText = '대기중';
+            let statusColor = 'text-gray-500';
+
+            if (missionData.status === 'completed') {
+                statusIcon = missionData.rewardClaimed ? '✅' : '🎁';
+                statusText = missionData.rewardClaimed ? '완료' : '보상 수령 가능';
+                statusColor = 'text-green-600 font-bold';
+            } else if (missionData.status === 'in_progress') {
+                statusIcon = '⚡';
+                statusText = '진행중';
+                statusColor = 'text-blue-600 font-bold';
+            }
+
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="text-4xl">${definition.icon}</div>
+                        <div>
+                            <div class="font-bold text-gray-800 text-lg">${definition.title}</div>
+                            <div class="text-sm text-gray-600">${description}</div>
+                        </div>
+                    </div>
+                    <div class="${statusColor} text-2xl">${statusIcon}</div>
+                </div>
+
+                ${maxProgress > 1 ? `
+                    <div class="mb-3">
+                        <div class="flex items-center justify-between text-sm mb-1">
+                            <span class="text-gray-600">진행률</span>
+                            <span class="font-bold">${currentProgress} / ${maxProgress}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="progress-bar bg-gradient-to-r from-blue-500 to-purple-500 rounded-full h-2"
+                                 style="width: ${progressPercent}%"></div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-gray-600">보상:</span>
+                        <span class="font-bold text-orange-600">${rewardText}</span>
+                    </div>
+                    ${missionData.status === 'completed' && !missionData.rewardClaimed ? `
+                        <button onclick="claimReward('${definition.id}')"
+                                class="px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-lg text-sm font-bold hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105">
+                            수령하기
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+
+            return card;
+        }
+
+        function getRewardText(rewards) {
+            const parts = [];
+            if (rewards.normalTickets) parts.push(`🎫×${rewards.normalTickets}`);
+            if (rewards.premiumTickets) parts.push(`🎟️×${rewards.premiumTickets}`);
+            if (rewards.growthTickets) parts.push(`🌱×${rewards.growthTickets}`);
+            if (rewards.money) parts.push(`💰${rewards.money}원`);
+            if (rewards.water) parts.push(`💧×${rewards.water}`);
+            return parts.join(' ');
+        }
+
+        // 보상 수령
+        function claimReward(missionId) {
+            const system = getMissionSystem();
+            const mission = system.missions[missionId];
+            const definition = MISSION_DEFINITIONS[missionId];
+
+            if (mission.status !== 'completed' || mission.rewardClaimed) {
+                return;
+            }
+
+            // 보상 지급
+            const userData = plantSystem.getUserData();
+            const rewards = definition.rewards;
+
+            if (rewards.normalTickets) {
+                userData.rewards.normalGachaTickets += rewards.normalTickets;
+            }
+            if (rewards.premiumTickets) {
+                userData.rewards.premiumGachaTickets += rewards.premiumTickets;
+            }
+            if (rewards.growthTickets) {
+                const ticket = {
+                    id: Date.now().toString(),
+                    createdAt: Date.now(),
+                    expiresAt: Date.now() + (24 * 60 * 60 * 1000)
+                };
+                userData.rewards.growthTickets.push(ticket);
+            }
+            if (rewards.money) {
+                plantSystem.addMoney(rewards.money);
+            }
+            if (rewards.water) {
+                userData.wallet.water += rewards.water;
+            }
+
+            plantSystem.saveUserData(userData);
+
+            // 미션 상태 업데이트
+            mission.rewardClaimed = true;
+            saveMissionSystem(system);
+
+            // 애니메이션 및 알림
+            alert(`🎉 보상을 받았습니다!\n${getRewardText(rewards)}`);
+
+            // UI 갱신
+            renderMissions();
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            // PlantSystem 초기화
+            plantSystem = new PlantSystem();
+
+            // 미션 렌더링
+            renderMissions();
+
+            // 10초마다 자동 갱신 (다른 탭에서 퀴즈를 풀 수 있으므로)
+            setInterval(renderMissions, 10000);
+        });
+
+        // 외부에서 호출 가능한 함수 (quiz-adaptive.html에서 사용)
+        window.updateMissionProgress = function() {
+            renderMissions();
+        };
+    </script>
+</body>
+</html>

@@ -956,19 +956,32 @@
 
             if (typeof plantSystem !== 'undefined') {
                 try {
-                    const user = plantSystem.getUserData();
                     const subjectName = selectedSubjects[currentSubjectIndex];
+                    const user = plantSystem.getUserData();
 
                     // 추가 학습 모드에서는 과목 완료 처리 안 함
                     if (!extraLearningMode) {
-                        // 과목 완료 처리
+                        // 난이도별 코인 계산 (쉬움 1코인, 보통 2코인, 어려움 3코인)
+                        const earnedCoins = (questionCounts.easy * 1) + (questionCounts.medium * 2) + (questionCounts.hard * 3);
+
+                        // 과목 완료 처리 (먼저 실행)
                         const result = plantSystem.completeSubject(user, subjectName, subjectName);
+
+                        // 코인 지급 (과목 완료 후 실행)
+                        if (earnedCoins > 0) {
+                            plantSystem.addMoney(earnedCoins);
+                        }
 
                         if (result.success) {
                             rewardSummary.completedCount = result.completedCount;
                             rewardSummary.newRewards = result.rewards;
 
                             plantSystemMessage = `\n\n📚 과목 완료 (${result.completedCount}/9)`;
+
+                            // 코인 획득 메시지 추가
+                            if (earnedCoins > 0) {
+                                plantSystemMessage += `\n💰 ${earnedCoins}코인 획득! (쉬움 ${questionCounts.easy}×1 + 보통 ${questionCounts.medium}×2 + 어려움 ${questionCounts.hard}×3)`;
+                            }
 
                             if (result.rewards.growthTickets) {
                                 rewardSummary.growthTickets = result.rewards.growthTickets;
@@ -1042,6 +1055,13 @@
                 firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
                     .then(() => console.log('✅ Firebase 분석 데이터 업로드 완료'))
                     .catch(err => console.error('❌ Firebase 분석 데이터 업로드 실패:', err));
+            }
+
+            // 그룹 멤버 진행 상황 업데이트
+            if (typeof eduPetSocial !== 'undefined') {
+                eduPetSocial.updateGroupMemberProgress().catch(err => {
+                    console.warn('그룹 진행 상황 업데이트 실패:', err);
+                });
             }
 
             // 다음 행동 선택

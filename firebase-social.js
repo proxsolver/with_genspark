@@ -389,6 +389,17 @@ class EduPetSocial {
             const groupId = firebase_db.ref('groups').push().key;
             const now = Date.now();
 
+            // 사용자 통계 가져오기 (learningProgress에서)
+            let totalQuestions = 0;
+            let lastStudied = null;
+            try {
+                const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+                totalQuestions = progressData.totalQuestions || 0;
+                lastStudied = progressData.lastStudyDate || null;
+            } catch (e) {
+                console.warn('학습 진행 상황 로드 실패:', e);
+            }
+
             const groupData = {
                 id: groupId,
                 name: groupName,
@@ -401,7 +412,9 @@ class EduPetSocial {
                         nickname: eduPetAuth.userData.profile.nickname || '익명',
                         avatarAnimal: eduPetAuth.userData.profile.avatarAnimal || 'bunny',
                         joinedAt: now,
-                        role: 'owner'
+                        role: 'owner',
+                        totalQuestions: totalQuestions,
+                        lastStudied: lastStudied
                     }
                 },
                 settings: {
@@ -460,12 +473,25 @@ class EduPetSocial {
             const now = Date.now();
             const updates = {};
 
+            // 사용자 통계 가져오기 (learningProgress에서)
+            let totalQuestions = 0;
+            let lastStudied = null;
+            try {
+                const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+                totalQuestions = progressData.totalQuestions || 0;
+                lastStudied = progressData.lastStudyDate || null;
+            } catch (e) {
+                console.warn('학습 진행 상황 로드 실패:', e);
+            }
+
             // 그룹 멤버에 추가
             updates[`groups/${groupId}/members/${userId}`] = {
                 nickname: eduPetAuth.userData.profile.nickname || '익명',
                 avatarAnimal: eduPetAuth.userData.profile.avatarAnimal || 'bunny',
                 joinedAt: now,
-                role: 'member'
+                role: 'member',
+                totalQuestions: totalQuestions,
+                lastStudied: lastStudied
             };
 
             // 멤버 수 증가
@@ -483,6 +509,45 @@ class EduPetSocial {
         } catch (error) {
             console.error('그룹 참가 실패:', error);
             throw error;
+        }
+    }
+
+    // 그룹 멤버의 학습 진행 상황 업데이트
+    async updateGroupMemberProgress() {
+        try {
+            if (!eduPetAuth.currentUser || !eduPetAuth.userData) {
+                return;
+            }
+
+            const userId = eduPetAuth.currentUser.uid;
+
+            // 사용자가 속한 그룹 목록 가져오기
+            const groupsSnapshot = await firebase_db.ref(`users/${userId}/social/groups`).once('value');
+            const myGroups = groupsSnapshot.val();
+
+            if (!myGroups) return;
+
+            // 사용자 통계 가져오기
+            let totalQuestions = 0;
+            let lastStudied = Date.now();
+            try {
+                const progressData = JSON.parse(localStorage.getItem('learningProgress') || '{}');
+                totalQuestions = progressData.totalQuestions || 0;
+            } catch (e) {
+                console.warn('학습 진행 상황 로드 실패:', e);
+            }
+
+            // 모든 그룹의 멤버 정보 업데이트
+            const updates = {};
+            Object.keys(myGroups).forEach(groupId => {
+                updates[`groups/${groupId}/members/${userId}/totalQuestions`] = totalQuestions;
+                updates[`groups/${groupId}/members/${userId}/lastStudied`] = lastStudied;
+            });
+
+            await firebase_db.ref().update(updates);
+            console.log('[Social] 그룹 멤버 진행 상황 업데이트 완료');
+        } catch (error) {
+            console.error('그룹 멤버 진행 상황 업데이트 실패:', error);
         }
     }
 

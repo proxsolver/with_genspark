@@ -33,10 +33,9 @@
 
 
 
-학습 현황 progress-dashboard.html에서 
-초롱이님의 학습 여정 -> social-hub.html 의 프로필 적용
-social-hub.html 에 돈은 index.html에서 사용하고 있는 돈의 개념을 적용한다. 
-social-hub.html 에 동물 컬렉터는 animal-collection.html의 로직을 사용한다. 
+
+
+
 
 보상 시스템의 항목
 - 기본 세팅 값
@@ -64,7 +63,8 @@ social-hub.html 에 동물 컬렉터는 animal-collection.html의 로직을 사�
 
 
 > social-hub.html 에서
-- 그룹 생성 및 참여 기능
+-[x] 그룹 생성 및 참여 기능
+-
 - 그룹별 데이터 분석가능
 
 

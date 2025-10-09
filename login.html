@@ -132,37 +132,31 @@
     <script>
         let firebaseInitialized = false;
 
-        // Firebase 초기화 대기
+        // Firebase SDK 로드 대기
         async function waitForFirebase() {
-            console.log('[Login] waitForFirebase 시작');
-            console.log('[Login] firebase:', typeof firebase);
-            console.log('[Login] eduPetAuth:', typeof eduPetAuth);
-            console.log('[Login] eduPetFirebaseIntegration:', typeof eduPetFirebaseIntegration);
+            console.log('[Login] Firebase SDK 로드 대기 시작');
 
-            if (typeof firebase === 'undefined' || typeof eduPetAuth === 'undefined' || typeof eduPetFirebaseIntegration === 'undefined') {
+            if (typeof firebase === 'undefined') {
                 return new Promise((resolve) => {
                     let attempts = 0;
                     const checkInterval = setInterval(() => {
                         attempts++;
-                        console.log(`[Login] Firebase 대기 중... (시도 ${attempts}/50)`);
-                        console.log('[Login] firebase:', typeof firebase);
-                        console.log('[Login] eduPetAuth:', typeof eduPetAuth);
-                        console.log('[Login] eduPetFirebaseIntegration:', typeof eduPetFirebaseIntegration);
+                        console.log(`[Login] Firebase SDK 대기 중... (시도 ${attempts}/50)`);
 
-                        if (typeof firebase !== 'undefined' && typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                        if (typeof firebase !== 'undefined') {
                             clearInterval(checkInterval);
-                            console.log('[Login] ✅ Firebase 객체 로드 완료');
+                            console.log('[Login] ✅ Firebase SDK 로드 완료');
                             resolve();
                         } else if (attempts > 50) { // 5초 타임아웃
                             clearInterval(checkInterval);
-                            console.error('[Login] ❌ Firebase 로드 타임아웃');
-                            showMessage('Firebase 초기화 실패', 'error');
+                            console.error('[Login] ❌ Firebase SDK 로드 타임아웃');
+                            showMessage('Firebase 로드 실패', 'error');
                             resolve();
                         }
                     }, 100);
                 });
             } else {
-                console.log('[Login] ✅ Firebase 객체 이미 로드됨');
+                console.log('[Login] ✅ Firebase SDK 이미 로드됨');
             }
         }
 
@@ -170,105 +164,124 @@
         document.addEventListener('DOMContentLoaded', async () => {
             console.log('[Login] ========== 페이지 로드 시작 ==========');
 
-            // Firebase 대기
-            console.log('[Login] Firebase 객체 대기 중...');
+            // 오프라인 모드에서 온 경우 체크
+            const offlineMode = localStorage.getItem('offlineMode');
+            const comingFromOffline = offlineMode === 'true';
+
+            if (comingFromOffline) {
+                console.log('[Login] ⚠️ 오프라인 모드에서 로그인 전환 시도');
+                // 오프라인 모드 임시 표시
+                showMessage('오프라인 데이터를 유지하며 로그인합니다...', 'info');
+            }
+
+            // Firebase SDK 대기
+            console.log('[Login] Firebase SDK 대기 중...');
             await waitForFirebase();
-            console.log('[Login] Firebase 객체 대기 완료');
+            console.log('[Login] Firebase SDK 대기 완료');
 
-            // Firebase Integration 초기화
-            if (window.eduPetFirebaseIntegration) {
-                console.log('[Login] eduPetFirebaseIntegration 발견, 초기화 시작...');
-                try {
-                    const initResult = await eduPetFirebaseIntegration.initialize();
-                    console.log('[Login] eduPetFirebaseIntegration.initialize() 결과:', initResult);
+            // Firebase 앱 초기화 (firebase-config.js의 initFirebase 호출)
+            try {
+                console.log('[Login] Firebase 앱 초기화 시작...');
+                const firebaseReady = await initFirebase();
+                console.log('[Login] initFirebase() 결과:', firebaseReady);
+                console.log('[Login] firebase_app:', firebase_app);
+                console.log('[Login] firebase_auth:', firebase_auth);
+                console.log('[Login] firebase_db:', firebase_db);
 
+                if (firebaseReady) {
                     firebaseInitialized = true;
-                    console.log('[Login] ✅ Firebase 초기화 완료');
-                    console.log('[Login] firebase_auth:', typeof firebase_auth);
-                    console.log('[Login] firebase_db:', typeof firebase_db);
-                    console.log('[Login] eduPetAuth.currentUser:', eduPetAuth.currentUser);
+                    console.log('[Login] ✅ Firebase 앱 초기화 완료');
 
-                    // 이미 로그인되어 있는지 확인
-                    if (eduPetAuth.currentUser) {
-                        console.log('[Login] 이미 로그인됨, index.html로 이동');
-                        window.location.href = 'index.html';
-                        return;
+                    // 오프라인 모드에서 온 경우: 기존 인증 세션 로그아웃
+                    if (comingFromOffline && firebase_auth.currentUser) {
+                        console.log('[Login] 오프라인 모드 전환: 기존 인증 세션 종료');
+                        await firebase_auth.signOut();
                     }
-                } catch (error) {
-                    console.error('[Login] ❌ Firebase 초기화 실패:', error);
-                    console.error('[Login] 에러 스택:', error.stack);
+
+                    // 인증 상태 리스너 등록 (오프라인 모드 전환 시에는 바로 리다이렉트 안함)
+                    firebase_auth.onAuthStateChanged(async (user) => {
+                        console.log('[Login] 인증 상태 변경:', user ? user.uid : 'null');
+                        // 오프라인 모드 전환이 아닌 경우에만 자동 리다이렉트
+                        if (user && !comingFromOffline) {
+                            console.log('[Login] 이미 로그인됨, index.html로 이동');
+                            window.location.href = 'index.html';
+                        }
+                    });
+                } else {
+                    console.error('[Login] ❌ Firebase 앱 초기화 실패');
                 }
-            } else {
-                console.error('[Login] ❌ eduPetFirebaseIntegration을 찾을 수 없음');
+            } catch (error) {
+                console.error('[Login] ❌ Firebase 초기화 실패:', error);
+                console.error('[Login] 에러 스택:', error.stack);
             }
 
             console.log('[Login] ========== 초기화 완료 ==========');
         });
 
+        // 오프라인 데이터 마이그레이션
+        async function migrateOfflineData() {
+            const offlineMode = localStorage.getItem('offlineMode');
+            if (offlineMode !== 'true') {
+                return; // 오프라인 모드가 아니면 마이그레이션 불필요
+            }
+
+            console.log('[Login] 🔄 오프라인 데이터 마이그레이션 시작...');
+
+            try {
+                // PlantSystem 데이터가 있으면 Firebase로 동기화
+                const plantSystemUser = localStorage.getItem('plantSystemUser');
+                if (plantSystemUser && eduPetAuth.currentUser) {
+                    const userData = JSON.parse(plantSystemUser);
+                    console.log('[Login] 마이그레이션할 데이터:', userData);
+
+                    // Firebase에 통계 동기화
+                    if (userData.wallet) {
+                        await eduPetAuth.setUserStats({
+                            totalMoney: userData.wallet.money || 0,
+                            totalWater: userData.wallet.water || 0
+                        });
+                    }
+
+                    console.log('[Login] ✅ 오프라인 데이터 마이그레이션 완료');
+                }
+
+                // 오프라인 모드 플래그 제거
+                localStorage.removeItem('offlineMode');
+                console.log('[Login] 오프라인 모드 플래그 제거됨');
+
+            } catch (error) {
+                console.error('[Login] ❌ 데이터 마이그레이션 실패:', error);
+                // 실패해도 계속 진행 (나중에 동기화 가능)
+            }
+        }
+
         // 구글 로그인
         async function signInWithGoogle() {
             console.log('[Login] ========== 구글 로그인 시작 ==========');
-            console.log('[Login] firebaseInitialized:', firebaseInitialized);
-            console.log('[Login] typeof firebase:', typeof firebase);
-            console.log('[Login] typeof firebase_auth:', typeof firebase_auth);
-            console.log('[Login] typeof firebase_db:', typeof firebase_db);
-            console.log('[Login] typeof eduPetAuth:', typeof eduPetAuth);
-            console.log('[Login] eduPetAuth:', eduPetAuth);
-            console.log('[Login] eduPetAuth.signInWithGoogle:', typeof eduPetAuth?.signInWithGoogle);
 
             if (!firebaseInitialized) {
-                console.warn('[Login] ⚠️ Firebase가 아직 초기화되지 않음');
                 showMessage('Firebase 초기화 중입니다. 잠시 후 다시 시도해주세요.', 'warning');
-
-                // Firebase 초기화 재시도
-                try {
-                    console.log('[Login] Firebase 재초기화 시도...');
-                    await waitForFirebase();
-                    if (window.eduPetFirebaseIntegration) {
-                        const initResult = await eduPetFirebaseIntegration.initialize();
-                        console.log('[Login] 재초기화 결과:', initResult);
-                        firebaseInitialized = true;
-                        console.log('[Login] ✅ Firebase 재초기화 성공');
-                    } else {
-                        console.error('[Login] ❌ eduPetFirebaseIntegration이 없음');
-                    }
-                } catch (error) {
-                    console.error('[Login] ❌ Firebase 재초기화 실패:', error);
-                    showMessage('Firebase 초기화에 실패했습니다. 페이지를 새로고침해주세요.', 'error');
-                    return;
-                }
-            }
-
-            if (!eduPetAuth || typeof eduPetAuth.signInWithGoogle !== 'function') {
-                console.error('[Login] ❌ eduPetAuth.signInWithGoogle 함수를 찾을 수 없음');
-                console.error('[Login] eduPetAuth 객체:', eduPetAuth);
-                console.error('[Login] typeof eduPetAuth:', typeof eduPetAuth);
-                if (eduPetAuth) {
-                    console.error('[Login] eduPetAuth의 메서드들:', Object.keys(eduPetAuth));
-                }
-                showMessage('로그인 시스템 오류. 페이지를 새로고침해주세요.', 'error');
                 return;
             }
 
             try {
                 showLoading(true);
-                console.log('[Login] ✅ eduPetAuth.signInWithGoogle() 호출 시작');
+                console.log('[Login] eduPetAuth.signInWithGoogle() 호출');
 
                 const result = await eduPetAuth.signInWithGoogle();
 
-                console.log('[Login] ✅ 구글 로그인 성공');
-                console.log('[Login] 로그인 결과:', result);
-                showMessage('로그인 성공! 메인 페이지로 이동합니다...', 'success');
+                console.log('[Login] ✅ 구글 로그인 성공:', result);
+
+                // 오프라인 데이터 마이그레이션
+                await migrateOfflineData();
+
+                showMessage('로그인 성공! 데이터를 동기화하고 메인 페이지로 이동합니다...', 'success');
 
                 setTimeout(() => {
-                    console.log('[Login] index.html로 리다이렉트');
                     window.location.href = 'index.html';
-                }, 1000);
+                }, 1500);
             } catch (error) {
                 console.error('[Login] ❌ 구글 로그인 실패:', error);
-                console.error('[Login] 에러 메시지:', error.message);
-                console.error('[Login] 에러 코드:', error.code);
-                console.error('[Login] 에러 스택:', error.stack);
                 showLoading(false);
 
                 if (error.message === '로그인이 취소되었습니다') {
@@ -291,6 +304,9 @@
             try {
                 showLoading(true);
                 await eduPetAuth.signInAnonymously();
+
+                // 오프라인 데이터 마이그레이션
+                await migrateOfflineData();
 
                 showMessage('익명 로그인 성공! 메인 페이지로 이동합니다...', 'success');
 

@@ -1,0 +1,4 @@
+    <!-- 모든 JavaScript는 외부 파일로 분리됨 -->
+    </script>
+</body>
+</html>

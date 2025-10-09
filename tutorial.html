@@ -604,6 +604,28 @@
             nextSlide();
         }
         
+        // 구글 로그인 (튜토리얼용)
+        async function signInWithGoogleTutorial() {
+            try {
+                console.log('Starting Google Sign-In in tutorial...');
+
+                if (typeof eduPetAuth === 'undefined') {
+                    alert('Firebase 인증이 준비되지 않았습니다. 잠시 후 다시 시도해주세요.');
+                    return;
+                }
+
+                await eduPetAuth.signInWithGoogle();
+                console.log('Google Sign-In successful in tutorial');
+
+                // 로그인 성공 후 다음 슬라이드로 이동
+                alert('구글 로그인 성공! 환영합니다.');
+                nextSlide();
+            } catch (error) {
+                console.error('Google Sign-In failed in tutorial:', error);
+                alert('구글 로그인에 실패했습니다: ' + (error.message || '알 수 없는 오류'));
+            }
+        }
+
         // 엔터 키로 별명 설정
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && currentSlide === 6) {
@@ -641,12 +663,22 @@
 
             try {
                 // Update nickname and avatar in Firebase
-                await eduPetAuth.setNickname(nickname);
+                try {
+                    await eduPetAuth.setNickname(nickname);
+                    console.log('✅ Firebase에 닉네임 동기화 완료');
+                } catch (nicknameError) {
+                    // 이미 사용 중인 닉네임이거나 이미 설정된 경우 무시
+                    console.warn('닉네임 설정 스킵:', nicknameError.message);
+                }
+
                 await eduPetAuth.setAvatar(tempSelectedAvatar);
-                console.log('✅ Firebase에 닉네임 및 아바타 동기화 완료');
+                console.log('✅ Firebase에 아바타 동기화 완료');
 
                 // Grant starter bonuses - 100원 + 프리미엄 뽑기권 (plantSystem 사용)
-                if (typeof plantSystem !== 'undefined') {
+                // 이미 튜토리얼을 완료한 경우 보너스 지급 안 함
+                const alreadyCompleted = localStorage.getItem('eduPetOnboardingCompleted') === 'true';
+
+                if (typeof plantSystem !== 'undefined' && !alreadyCompleted) {
                     plantSystem.setMoney(100);
                     console.log('✅ 튜토리얼 완료: 100원 지급');
 
@@ -668,6 +700,8 @@
                         await plantSystemFirebase.save();
                         console.log('✅ Firebase에 보상 동기화 완료');
                     }
+                } else if (alreadyCompleted) {
+                    console.log('⚠️ 이미 튜토리얼 완료됨 - 보상 지급 스킵');
                 }
 
                 // Initialize quiz progress
