@@ -11,6 +11,12 @@ async function checkLogin() {
         return true;
     }
 
+    // Firebase 초기화 (eduPetAuth 사용 전에 반드시 호출)
+    await initFirebase();
+
+    // eduPetAuth 인스턴스 초기화
+    window.eduPetAuth = window.initializeEduPetAuth(firebase_auth);
+
     // Firebase Integration 대기
     if (typeof eduPetFirebaseIntegration !== 'undefined') {
         try {
@@ -103,8 +109,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
-    // Firebase 초기화
-    await initFirebase();
+
 
     // 첫 방문 체크
     if (!checkFirstVisit()) return;

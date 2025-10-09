@@ -96,18 +96,20 @@ class EduPetLeaderboard {
             if (!data) return [];
 
             // 데이터를 배열로 변환하고 정렬
-            const leaderboard = Object.entries(data).map(([uid, userData]) => {
-                let value = this.getNestedValue(userData, leaderboardType.field);
-                
-                return {
-                    uid,
-                    nickname: userData.profile?.nickname || '익명',
-                    avatarAnimal: userData.profile?.avatarAnimal || 'bunny',
-                    value: value || 0,
-                    isOnline: userData.profile?.isOnline || false,
-                    lastActive: userData.profile?.lastActive
-                };
-            }).sort((a, b) => b.value - a.value);
+            const leaderboard = Object.entries(data)
+                .filter(([uid, userData]) => ['google.com', 'password', 'email'].includes(userData.profile?.provider)) // 익명 사용자 및 provider가 없는 사용자 필터링
+                .map(([uid, userData]) => {
+                    let value = this.getNestedValue(userData, leaderboardType.field);
+                    
+                    return {
+                        uid,
+                        nickname: userData.profile?.nickname || '익명',
+                        avatarAnimal: userData.profile?.avatarAnimal || 'bunny',
+                        value: value || 0,
+                        isOnline: userData.profile?.isOnline || false,
+                        lastActive: userData.profile?.lastActive
+                    };
+                }).sort((a, b) => b.value - a.value);
 
             // 순위 추가
             leaderboard.forEach((user, index) => {
@@ -132,6 +134,7 @@ class EduPetLeaderboard {
             if (!data) return [];
 
             const accuracyLeaderboard = Object.entries(data)
+                .filter(([uid, userData]) => ['google', 'password', 'email'].includes(userData.profile?.provider)) // 익명 사용자 및 provider가 없는 사용자 필터링
                 .map(([uid, userData]) => {
                     const totalQuestions = userData.stats?.totalQuestions || 0;
                     const correctAnswers = userData.stats?.correctAnswers || 0;
@@ -248,6 +251,7 @@ class EduPetLeaderboard {
     // 순위표 데이터 처리
     processLeaderboardData(data, leaderboardType) {
         return Object.entries(data)
+            .filter(([uid, userData]) => ['google.com', 'password', 'email'].includes(userData.profile?.provider)) // 익명 사용자 및 provider가 없는 사용자 필터링
             .map(([uid, userData]) => {
                 const value = this.getNestedValue(userData, leaderboardType.field);
                 return {

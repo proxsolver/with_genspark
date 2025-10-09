@@ -1,367 +1,118 @@
-학습-식물 키우기 통합 시스템 개발 사양서
-시스템 개요 및 목표
-핵심 목표: 사용자가 매일 적정량의 학습(6과목 완료)을 통해 식물 2개를 성장시킬 수 있는 시스템 구현
+ 이제 index.html의 버그를 하나 잡자 화분 2개 키우는게 있는데 물주기 마지막 5번째에 성장권을 필히 사용하게 해줘 그리고 성장권이 
+  없으면 성장이 안되게
 
-핵심 원칙:
+✦ 알겠습니다. index.html 파일의 버그를 수정하여 식물에 5번째 물을 줄 때 성장권이 필수로 사용되도록 하고, 성장권이 없으면 식물이
+  성장하지 않도록 하겠습니다.
 
-물주기: 무제한 (약점 학습과 연동)
-성장 실행: 성장권으로만 가능
-일일 목표: 6과목 달성으로 성장권 2개 획득
-핵심 엔티티 정의
-Copy// 사용자 상태
-User {
-    userId: string,
-    daily: {
-        completedSubjects: number (0-9),
-        lastResetDate: string "YYYY-MM-DD"
-    },
-    rewards: {
-        growthTickets: [
-            {
-                ticketId: string,
-                issuedAt: timestamp,
-                expiresAt: timestamp  // issuedAt + 24시간
-            }
-        ],
-        normalGachaTickets: number,
-        premiumGachaTickets: number
-    },
-    learning: {
-        weakAreas: string[],  // ['수학', '영어', '과학']
-        subjectScores: object // 과목별 숙련도
-    }
-}
+  이 작업은 클라이언트 측 JavaScript 수정이 필요합니다. 다음 단계를 따르겠습니다:
+   1. index.html 또는 연결된 파일에서 식물 물주기 및 성장을 처리하는 관련 JavaScript 코드를 찾습니다.
+   2. "5번째 물주기" 로직이 처리되는 부분을 식별합니다.
+   3. 성장권 존재 여부를 확인하는 로직을 구현합니다.
+   4. 성장권이 없으면 성장을 방지합니다.
 
-// 식물 상태
-Plant {
-    plantId: string,
-    ownerId: string,
-    status: enum ['PLANTED', 'READY', 'GROWN'],
-    waterCount: number (0-20),
-    plantedAt: timestamp,
-    grownAt: timestamp | null
-}
+  index.html이 주요 진입점이고, plant-system.js가 식물 성장 로직과 관련이 있을 것 같습니다. index-farm.js도 관련될 수
+  있습니다.
 
-// 시스템 설정
-GameConfig {
-    WATER_REQUIRED: 20,
-    GROWTH_TIME_HOURS: 24,
-    GROWTH_TICKET_TTL_HOURS: 24,
-    REWARD_THRESHOLDS: {
-        3: { growthTickets: 1 },
-        5: { normalGacha: 1 },
-        6: { growthTickets: 1 },  // 누적 총 2개
-        9: { premiumGacha: 1 }
-    }
-}
-핵심 로직 플로우
-1. 일일 초기화 (Daily Reset)
-Copyfunction dailyReset(user) {
-    const today = getCurrentDate();
-    
-    if (user.daily.lastResetDate !== today) {
-        // 일일 진도 초기화
-        user.daily.completedSubjects = 0;
-        user.daily.lastResetDate = today;
-        
-        // 만료된 성장권 제거
-        user.rewards.growthTickets = user.rewards.growthTickets.filter(
-            ticket => ticket.expiresAt > getCurrentTimestamp()
-        );
-        
-        saveUserState(user);
-    }
-}
-2. 씨앗 심기 (Plant Seed)
-Copyfunction plantSeed(userId) {
-    const plant = {
-        plantId: generateUUID(),
-        ownerId: userId,
-        status: 'PLANTED',
-        waterCount: 0,
-        plantedAt: getCurrentTimestamp(),
-        grownAt: null
-    };
-    
-    savePlant(plant);
-    return plant;
-}
-3. 물주기 (Water Plant) - 무제한
-Copyfunction waterPlant(user, plantId) {
-    const plant = getPlant(plantId);
-    
-    // 전제 조건 확인
-    if (plant.status === 'GROWN' || plant.waterCount >= 20) {
-        return { success: false, message: "물주기 불가능" };
-    }
-    
-    // 약점 영역 문제 출제
-    const weakArea = analyzeWeakestArea(user);
-    const problem = generateProblem(weakArea);
-    
-    return {
-        problem: problem,
-        onCorrectAnswer: () => {
-            plant.waterCount += 1;
-            updateLearningProgress(user, weakArea);
-            
-            // 성장 준비 상태 확인
-            checkReadyStatus(plant);
-            
-            savePlant(plant);
-        }
-    };
-}
+  먼저 index.html을 확인하여 스크립트가 어떻게 포함되어 있는지, 그리고 이 로직을 처리하는 인라인 스크립트가 있는지
+  살펴보겠습니다. 그 다음 plant-system.js를 조사하겠습니다.
+ ╭─────────────────────────╮
+ │ ✓  ReadFile index.html  │
+ ╰─────────────────────────╯
+✦ index.html을 검토했습니다. <body> 태그 끝에 여러 JavaScript 파일이 포함되어 있습니다. 파일 이름과 사용자 요청을 바탕으로
+  plant-system.js와 index-farm.js가 식물 물주기 및 성장 로직을 포함할 가능성이 가장 높습니다.
 
-function checkReadyStatus(plant) {
-    const timeElapsed = getCurrentTimestamp() - plant.plantedAt;
-    const isTimeReady = timeElapsed >= (24 * 60 * 60 * 1000); // 24시간
-    const isWaterReady = plant.waterCount >= 20;
-    
-    if (isTimeReady && isWaterReady && plant.status === 'PLANTED') {
-        plant.status = 'READY';
-        notifyUser("🌱 식물이 성장 준비 완료!");
-    }
-}
-4. 과목 완료 및 보상 지급
-Copyfunction completeSubject(user, subjectId) {
-    // 중복 완료 방지
-    if (isSubjectCompletedToday(user, subjectId)) {
-        return { success: false, message: "이미 완료한 과목" };
-    }
-    
-    user.daily.completedSubjects += 1;
-    markSubjectCompleted(user, subjectId);
-    
-    // 보상 지급
-    const rewards = calculateRewards(user.daily.completedSubjects);
-    grantRewards(user, rewards);
-    
-    saveUserState(user);
-    return { success: true, rewards: rewards };
-}
+  식물 시스템의 핵심 로직으로 보이는 plant-system.js부터 살펴보겠습니다. "water", "growth", "voucher", "ticket"과 같은
+  키워드를 검색하여 관련 함수를 찾아보겠습니다.
+ ╭──────────────────────────────╮
+ │ ✓  ReadFile plant-system.js  │
+ ╰──────────────────────────────╯
+✦ plant-system.js 파일을 검토했습니다. 이 파일은 물주기, 성장, 보상 시스템을 포함한 식물 관리의 핵심 로직을 담고 있습니다.
 
-function calculateRewards(completedCount) {
-    const rewards = {};
-    
-    switch(completedCount) {
-        case 3:
-            rewards.growthTickets = 1;
-            break;
-        case 5:
-            rewards.normalGacha = 1;
-            break;
-        case 6:
-            rewards.growthTickets = 1; // 추가 1개 (총 2개)
-            break;
-        case 9:
-            rewards.premiumGacha = 1;
-            break;
-    }
-    
-    return rewards;
-}
+  사용자 요청과 관련된 내용은 다음과 같습니다.
 
-function grantRewards(user, rewards) {
-    if (rewards.growthTickets) {
-        const ticket = {
-            ticketId: generateUUID(),
-            issuedAt: getCurrentTimestamp(),
-            expiresAt: getCurrentTimestamp() + (24 * 60 * 60 * 1000)
-        };
-        user.rewards.growthTickets.push(ticket);
-    }
-    
-    if (rewards.normalGacha) {
-        user.rewards.normalGachaTickets += 1;
-    }
-    
-    if (rewards.premiumGacha) {
-        user.rewards.premiumGachaTickets += 1;
-    }
-}
-5. 식물 성장 실행
-Copyfunction growPlant(user, plantId) {
-    const plant = getPlant(plantId);
-    const currentTime = getCurrentTimestamp();
-    
-    // 조건 검증
-    const validationResult = validateGrowthConditions(user, plant, currentTime);
-    if (!validationResult.isValid) {
-        return { success: false, message: validationResult.message };
-    }
-    
-    // 성장권 소모
-    const ticketIndex = findValidGrowthTicket(user);
-    user.rewards.growthTickets.splice(ticketIndex, 1);
-    
-    // 식물 성장 완료
-    plant.status = 'GROWN';
-    plant.grownAt = currentTime;
-    
-    savePlant(plant);
-    saveUserState(user);
-    
-    return { success: true, message: "🎉 식물이 성장했습니다!" };
-}
+   * `waterPlant(plantId)` 함수: plant.waterCount를 증가시키고 단계 성장을 확인하는 역할을 합니다.
+   * `checkStageGrowth(plant)` 함수: plant.waterCount와 maxWater를 기반으로 식물이 다음 단계로 성장해야 하는지 결정합니다.
+   * `getMaxWaterForStage(stage)` 함수: 현재 모든 단계에 대해 5를 반환합니다. 즉, 식물이 한 단계를 진행하려면 5번의 물주기가
+     필요합니다. "5번째 물주기" 로직이 암묵적으로 처리되는 부분입니다.
+   * `growPlant(user, plantId)` 함수: 식물이 성장 준비가 되었을 때('READY' 상태) 호출되며, 성장권의 존재 여부를 확인하고
+     소모합니다.
+   * `validateGrowthConditions` 및 `findValidGrowthTicket`: growPlant에서 성장권이 사용 가능한지 확인하는 데 사용됩니다.
 
-function validateGrowthConditions(user, plant, currentTime) {
-    // 식물 상태 확인
-    if (plant.status !== 'READY') {
-        return { isValid: false, message: "식물이 성장 준비되지 않음" };
-    }
-    
-    // 시간 조건 확인
-    const timeElapsed = currentTime - plant.plantedAt;
-    if (timeElapsed < (24 * 60 * 60 * 1000)) {
-        const remainingHours = Math.ceil((24 * 60 * 60 * 1000 - timeElapsed) / (60 * 60 * 1000));
-        return { isValid: false, message: `${remainingHours}시간 후 성장 가능` };
-    }
-    
-    // 물 조건 확인
-    if (plant.waterCount < 20) {
-        return { isValid: false, message: `물이 부족함 (${plant.waterCount}/20)` };
-    }
-    
-    // 성장권 확인
-    const validTickets = user.rewards.growthTickets.filter(
-        ticket => ticket.expiresAt > currentTime
-    );
-    if (validTickets.length === 0) {
-        return { isValid: false, message: "유효한 성장권이 없음" };
-    }
-    
-    return { isValid: true };
-}
-약점 학습 시스템
-Copyfunction analyzeWeakestArea(user) {
-    // 과목별 점수 기반 약점 분석
-    const subjectScores = user.learning.subjectScores;
-    const weakestSubject = Object.keys(subjectScores)
-        .sort((a, b) => subjectScores[a] - subjectScores[b])[0];
-    
-    return weakestSubject;
-}
+  사용자 요청은 "물주기 마지막 5번째에 성장권을 필히 사용하게 해줘 그리고 성장권이 없으면 성장이 안되게" 입니다.
 
-function updateLearningProgress(user, subject) {
-    // 학습 성과 반영
-    if (!user.learning.subjectScores[subject]) {
-        user.learning.subjectScores[subject] = 0;
-    }
-    user.learning.subjectScores[subject] += 1;
-    
-    // 약점 영역 업데이트
-    updateWeakAreas(user);
-}
-UI 상태 표시 로직
-Copyfunction getDashboardState(user) {
-    const plants = getUserPlants(user.userId);
-    const currentTime = getCurrentTimestamp();
-    
-    return {
-        learning: {
-            progress: `${user.daily.completedSubjects}/9 과목 완료`,
-            nextReward: getNextRewardInfo(user.daily.completedSubjects)
-        },
-        plants: plants.map(plant => ({
-            id: plant.plantId,
-            status: plant.status,
-            waterProgress: `${plant.waterCount}/20`,
-            timeRemaining: calculateTimeRemaining(plant, currentTime),
-            canGrow: plant.status === 'READY'
-        })),
-        tickets: {
-            growthTickets: user.rewards.growthTickets.filter(
-                ticket => ticket.expiresAt > currentTime
-            ).length,
-            normalGacha: user.rewards.normalGachaTickets,
-            premiumGacha: user.rewards.premiumGachaTickets
-        }
-    };
-}
-예외 처리 및 엣지 케이스
-Copy// 동시 성장 시도 방지
-const growthInProgress = new Set();
+  현재 waterPlant는 waterCount를 증가시킨 다음 checkStageGrowth를 호출합니다. checkStageGrowth는 waterCount가 maxWater(5)에
+  도달하면 단계를 진행시킵니다. 이는 식물이 5번의 물주기 후에 성장권 없이 자동으로 다음 단계로 성장한다는 의미입니다.
+  성장권을 요구하는 growPlant 함수는 다른 성장 메커니즘(식물 상태가 'READY'일 때, 즉 WATER_REQUIRED 물주기와
+  GROWTH_TIME_HOURS가 경과한 후 checkReadyStatus에 의해 트리거됨)을 위한 것으로 보입니다.
 
-function preventConcurrentGrowth(plantId, operation) {
-    if (growthInProgress.has(plantId)) {
-        return { success: false, message: "이미 처리 중입니다" };
-    }
-    
-    growthInProgress.add(plantId);
-    try {
-        return operation();
-    } finally {
-        growthInProgress.delete(plantId);
-    }
-}
+  이는 오해 또는 2단계 성장 프로세스를 나타냅니다. 사용자는 단계 진행을 위해 5번째 물주기에 성장권이 필요하다고 요청하고
+  있으며, 최종 'GROWN' 상태를 위한 것이 아닙니다.
 
-// 시간 조작 방지
-function validateTimeIntegrity() {
-    const serverTime = getServerTime();
-    const clientTime = getCurrentTimestamp();
-    const timeDiff = Math.abs(serverTime - clientTime);
-    
-    if (timeDiff > 300000) { // 5분 이상 차이
-        throw new Error("시간 동기화 필요");
-    }
-}
+  사용자 요청을 구현하려면 checkStageGrowth를 다음과 같이 수정해야 합니다.
+   1. plant.waterCount가 5(단계의 마지막 물주기)인지 확인합니다.
+   2. 5번째 물주기인 경우, 사용자에게 성장권이 있는지 확인합니다.
+   3. 성장권이 있으면 성장권을 소모하고 단계 진행을 허용합니다.
+   4. 성장권이 없으면 단계 진행을 막고 성장권 부족으로 인한 실패 상태를 사용자에게 알립니다.
 
-// 성장권 만료 처리
-function cleanupExpiredTickets(user) {
-    const currentTime = getCurrentTimestamp();
-    user.rewards.growthTickets = user.rewards.growthTickets.filter(
-        ticket => ticket.expiresAt > currentTime
-    );
-}
-알림 시스템
-Copyfunction checkNotifications(user) {
-    const notifications = [];
-    const plants = getUserPlants(user.userId);
-    const currentTime = getCurrentTimestamp();
-    
-    // 성장 가능 알림
-    const readyPlants = plants.filter(p => p.status === 'READY');
-    const validTickets = user.rewards.growthTickets.filter(
-        ticket => ticket.expiresAt > currentTime
-    );
-    
-    if (readyPlants.length > 0 && validTickets.length > 0) {
-        notifications.push({
-            type: 'GROWTH_AVAILABLE',
-            message: `🌱 ${readyPlants.length}개 식물이 성장 준비 완료!`
-        });
-    }
-    
-    // 성장권 만료 경고
-    const expiringTickets = validTickets.filter(
-        ticket => (ticket.expiresAt - currentTime) <= (2 * 60 * 60 * 1000) // 2시간 이내
-    );
-    
-    if (expiringTickets.length > 0) {
-        notifications.push({
-            type: 'TICKET_EXPIRING',
-            message: `⏰ 성장권이 2시간 후 만료됩니다!`
-        });
-    }
-    
-    return notifications;
-}
-구현 체크리스트
-필수 구현 항목:
-✅ 일일 리셋 시스템 (자정 또는 첫 로그인 시)
-✅ 무제한 물주기 + 약점 학습 연동
-✅ 단계별 보상 시스템 (3/5/6/9 과목)
-✅ 성장권 TTL 관리 (24시간 만료)
-✅ 식물 상태 전이 (PLANTED → READY → GROWN)
-✅ 동시성 제어 및 예외 처리
-핵심 검증 포인트:
-6과목 달성 시 성장권 2개 보장
-24시간 + 물 20개 + 성장권 조건 모두 충족 시에만 성장 가능
-성장권 만료 시 자동 제거
-약점 영역 자동 감지 및 문제 출제
-성능 고려사항:
-성장권 만료 처리를 위한 백그라운드 작업
-식물 상태 업데이트를 위한 스케줄러
-사용자 상태 캐싱 전략
-이 사양서를 바탕으로 개발자 에이전트가 시스템을 구현할 수 있으며, 사용자의 목표인 "매일 적정량 학습으로 식물 2개 키우기"가 완벽하게 달성 가능합니다.
+  그러나 checkStageGrowth는 user 객체에 직접 접근할 수 없습니다. waterPlant 함수가 checkStageGrowth를 호출하고, waterPlant는
+  index-farm.js에서 호출될 것으로 예상됩니다. user 객체를 waterPlant로, 그리고 checkStageGrowth로 전달해야 합니다.
+
+  먼저 checkStageGrowth를 수정하여 user 객체를 인수로 받고 로직을 구현하겠습니다. 그런 다음 waterPlant와 index-farm.js로
+  거슬러 올라가 user 객체가 올바르게 전달되는지 확인하겠습니다.
+
+  계획:
+
+   1. checkStageGrowth를 수정하여 user를 인수로 받도록 합니다.
+   2. checkStageGrowth 내에서 plant.waterCount가 maxWater(5)에 도달하면 plantSystem.findValidGrowthTicket(user, currentTime)을
+      사용하여 성장권을 확인합니다.
+   3. 티켓이 발견되면 티켓을 소모하고(user.rewards.growthTickets.splice(ticketIndex, 1);) 성장을 허용합니다.
+   4. 티켓이 없으면 성장을 막고 티켓 부족으로 인한 실패 상태를 반환합니다.
+   5. waterPlant를 업데이트하여 user 객체를 checkStageGrowth로 전달합니다.
+   6. index-farm.js(또는 waterPlant가 호출되는 곳)를 업데이트하여 사용자 데이터를 검색하고 waterPlant로 전달합니다.
+
+  plant-system.js의 checkStageGrowth와 waterPlant를 수정하는 것부터 시작하겠습니다.plant-system.js 파일을 검토했습니다. 이
+  파일은 물주기, 성장, 보상 시스템을 포함한 식물 관리의 핵심 로직을 담고 있습니다.
+
+  사용자 요청과 관련된 내용은 다음과 같습니다.
+
+   * `waterPlant(plantId)` 함수: plant.waterCount를 증가시키고 단계 성장을 확인하는 역할을 합니다.
+   * `checkStageGrowth(plant)` 함수: plant.waterCount와 maxWater를 기반으로 식물이 다음 단계로 성장해야 하는지 결정합니다.
+   * `getMaxWaterForStage(stage)` 함수: 현재 모든 단계에 대해 5를 반환합니다. 즉, 식물이 한 단계를 진행하려면 5번의 물주기가
+     필요합니다. "5번째 물주기" 로직이 암묵적으로 처리되는 부분입니다.
+   * `growPlant(user, plantId)` 함수: 식물이 성장 준비가 되었을 때('READY' 상태) 호출되며, 성장권의 존재 여부를 확인하고
+     소모합니다.
+   * `validateGrowthConditions` 및 `findValidGrowthTicket`: growPlant에서 성장권이 사용 가능한지 확인하는 데 사용됩니다.
+
+  사용자 요청은 "물주기 마지막 5번째에 성장권을 필히 사용하게 해줘 그리고 성장권이 없으면 성장이 안되게" 입니다.
+
+  현재 waterPlant는 waterCount를 증가시킨 다음 checkStageGrowth를 호출합니다. checkStageGrowth는 waterCount가 maxWater(5)에
+  도달하면 단계를 진행시킵니다. 이는 식물이 5번의 물주기 후에 성장권 없이 자동으로 다음 단계로 성장한다는 의미입니다.
+  성장권을 요구하는 growPlant 함수는 다른 성장 메커니즘(식물 상태가 'READY'일 때, 즉 WATER_REQUIRED 물주기와
+  GROWTH_TIME_HOURS가 경과한 후 checkReadyStatus에 의해 트리거됨)을 위한 것으로 보입니다.
+
+  이는 오해 또는 2단계 성장 프로세스를 나타냅니다. 사용자는 단계 진행을 위해 5번째 물주기에 성장권이 필요하다고 요청하고
+  있으며, 최종 'GROWN' 상태를 위한 것이 아닙니다.
+
+  사용자 요청을 구현하려면 checkStageGrowth를 다음과 같이 수정해야 합니다.
+   1. plant.waterCount가 5(단계의 마지막 물주기)인지 확인합니다.
+   2. 5번째 물주기인 경우, 사용자에게 성장권이 있는지 확인합니다.
+   3. 성장권이 있으면 성장권을 소모하고 단계 진행을 허용합니다.
+   4. 성장권이 없으면 단계 진행을 막고 성장권 부족으로 인한 실패 상태를 사용자에게 알립니다.
+
+  그러나 checkStageGrowth는 user 객체에 직접 접근할 수 없습니다. waterPlant 함수가 checkStageGrowth를 호출하고, waterPlant는
+  index-farm.js에서 호출될 것으로 예상됩니다. user 객체를 waterPlant로, 그리고 checkStageGrowth로 전달해야 합니다.
+
+  먼저 checkStageGrowth를 수정하여 user 객체를 인수로 받고 로직을 구현하겠습니다. 그런 다음 waterPlant와 index-farm.js로
+  거슬러 올라가 user 객체가 올바르게 전달되는지 확인하겠습니다.
+
+  계획:
+
+   1. checkStageGrowth를 수정하여 user를 인수로 받도록 합니다.
+   2. checkStageGrowth 내에서 plant.waterCount가 maxWater(5)에 도달하면 plantSystem.findValidGrowthTicket(user, currentTime)을
+      사용하여 성장권을 확인합니다.
+   3. 티켓이 발견되면 티켓을 소모하고(user.rewards.growthTickets.splice(ticketIndex, 1);) 성장을 허용합니다.
+   4. 티켓이 없으면 성장을 막고 티켓 부족으로 인한 실패 상태를 반환합니다.
+   5. waterPlant를 업데이트하여 user 객체를 checkStageGrowth로 전달합니다.
+   6. index-farm.js(또는 waterPlant가 호출되는 곳)를 업데이트하여 사용자 데이터를 검색하고 waterPlant로 전달합니다.
+
+  plant-system.js의 checkStageGrowth와 waterPlant를 수정하는 것부터 시작하겠습니다.

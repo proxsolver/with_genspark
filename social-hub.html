@@ -522,10 +522,21 @@
         <div id="profile" class="tab-content">
             <h2>👤 내 프로필</h2>
 
-            <!-- 학습 여정 섹션 추가 -->
             <div class="friends-section">
-                <h3>📚 학습 여정</h3>
-                <div id="learning-journey" class="loading">학습 여정을 불러오는 중...</div>
+                <h3>별명 설정</h3>
+                <p style="color: #6c757d; margin-bottom: 15px;">친구들에게 보여질 별명을 설정하세요 (2-10자)</p>
+                <div class="input-group" style="max-width: none; margin: 0 0 15px 0;">
+                    <input 
+                        type="text" 
+                        id="profileNicknameInput" 
+                        placeholder="새 별명 입력" 
+                        maxlength="10"
+                        class="form-control"
+                    >
+                    <button class="btn btn-primary" onclick="updateNickname()">변경</button>
+                </div>
+                <div id="profileNicknameError" class="error" style="display: none;"></div>
+                <div id="profileNicknameSuccess" class="success" style="display: none;"></div>
             </div>
 
             <div class="friends-section">
@@ -545,6 +556,12 @@
             <div class="friends-section">
                 <h3>내 통계</h3>
                 <div id="profile-stats" class="loading">통계를 불러오는 중...</div>
+            </div>
+
+            <!-- 학습 여정 섹션 추가 -->
+            <div class="friends-section">
+                <h3>📚 학습 여정</h3>
+                <div id="learning-journey" class="loading">학습 여정을 불러오는 중...</div>
             </div>
         </div>
 

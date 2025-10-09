@@ -10,31 +10,46 @@ window.addEventListener('DOMContentLoaded', async () => {
     loadingOverlay.style.display = 'flex';
 
     try {
-        // eduPetAuth and eduPetFirebaseIntegration가 정의될 때까지 기다림
-        console.log('Waiting for Firebase modules to load...');
-        await new Promise((resolve, reject) => {
-            let attempts = 0;
-            const maxAttempts = 100; // 5초 타임아웃
-            const interval = setInterval(() => {
-                attempts++;
-                if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
-                    console.log('Firebase modules loaded successfully');
-                    clearInterval(interval);
-                    resolve();
-                } else if (attempts >= maxAttempts) {
-                    clearInterval(interval);
-                    reject(new Error('Firebase 모듈 로드 타임아웃'));
-                }
-            }, 50);
-        });
+        // Firebase 초기화 (firebase_auth를 먼저 채웁니다)
+        await initFirebase();
+        console.log('Firebase initialized in social-hub.js');
 
-        // 인증 상태 리스너를 먼저 설정합니다.
-        eduPetAuth.addAuthStateListener(onAuthStateChanged);
-        console.log('Auth state listener added');
+        // eduPetAuth 인스턴스를 초기화합니다.
+        // firebase_auth가 initFirebase() 호출 후 채워졌음을 보장합니다.
+        window.eduPetAuth = window.initializeEduPetAuth(firebase_auth);
+        console.log('eduPetAuth instance initialized in social-hub.js');
+        
+        // eduPetFirebaseIntegration가 정의될 때까지 기다림 (필요한 경우)
+        // 이 부분은 스크립트 로드 순서에 따라 이미 정의되어 있을 수 있습니다.
+        if (typeof eduPetFirebaseIntegration === 'undefined') {
+            console.log('Waiting for eduPetFirebaseIntegration to load...');
+            await new Promise(resolve => {
+                const interval = setInterval(() => {
+                    if (typeof eduPetFirebaseIntegration !== 'undefined') {
+                        clearInterval(interval);
+                        resolve();
+                    }
+                }, 50);
+            });
+        }
+        console.log('eduPetFirebaseIntegration is defined.');
 
-        // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
+        // Firebase 통합 기능을 초기화합니다. (더 이상 익명 로그인을 트리거하지 않음)
         await eduPetFirebaseIntegration.initialize();
         console.log('Firebase Integration is ready.');
+        
+        // eduPetAuth가 초기 인증 상태를 확인할 때까지 기다립니다.
+        await eduPetAuth.waitForAuthInit();
+        
+        // 인증 상태 리스너를 설정합니다. (eduPetAuth의 내부 리스너가 먼저 처리한 후 호출됨)
+        eduPetAuth.addAuthStateListener(onAuthStateChanged);
+        console.log('Auth state listener added');
+        
+        // 만약 현재 사용자가 없으면 익명 로그인 시도
+        if (!eduPetAuth.currentUser) {
+            console.log('No current user found, attempting anonymous sign-in.');
+            await eduPetAuth.signInAnonymously();
+        }
 
     } catch (error) {
         console.error('초기화 중 오류 발생:', error);
@@ -101,6 +116,10 @@ async function signInWithGoogle() {
                 // 이미 다른 계정과 연결된 경우
                 if (linkError.code === 'auth/credential-already-in-use') {
                     if (confirm('이 구글 계정은 이미 다른 계정과 연결되어 있습니다.\n기존 구글 계정으로 로그인하시겠습니까? (익명 데이터는 삭제됩니다)')) {
+                        // 임시로 로그인 버튼 표시, 로그아웃 버튼 숨기기
+                        document.getElementById('google-signin-btn').style.display = 'inline-flex';
+                        document.getElementById('signout-btn').style.display = 'none';
+
                         // 익명 계정 로그아웃
                         await firebase_auth.signOut();
 
@@ -113,6 +132,9 @@ async function signInWithGoogle() {
                         }, 1500);
                     } else {
                         showError('구글 로그인이 취소되었습니다.');
+                        // 취소 시 원래 상태로 복원 (로그아웃 버튼 표시, 로그인 버튼 숨기기)
+                        document.getElementById('google-signin-btn').style.display = 'none';
+                        document.getElementById('signout-btn').style.display = 'inline-block';
                     }
                 } else if (linkError.code === 'auth/popup-closed-by-user') {
                     showError('로그인이 취소되었습니다.');
@@ -132,7 +154,13 @@ async function signInWithGoogle() {
         loadingOverlay.style.display = 'none';
     } catch (error) {
         console.error('[Social Hub] 구글 로그인 실패:', error);
-        showError(error.message || '구글 로그인에 실패했습니다.');
+        let errorMessage = '구글 로그인에 실패했습니다.';
+        if (error.code === 'auth/popup-blocked') {
+            errorMessage = '팝업이 차단되었습니다. 브라우저의 팝업 차단을 해제하거나 이 사이트의 팝업을 허용해주세요.';
+        } else if (error.message) {
+            errorMessage = error.message;
+        }
+        showError(errorMessage);
         document.getElementById('loading-overlay').style.display = 'none';
     }
 }
@@ -210,35 +238,34 @@ async function onAuthStateChanged(state, userData) {
         let needsSync = false;
 
         try {
-            // 1. 구글 계정 이름이 있으면 우선 사용
-            if (userData?.profile?.provider === 'google' && userData?.profile?.nickname) {
+            // 1. Firebase 프로필 닉네임이 있으면 최우선
+            if (userData?.profile?.nickname) {
                 displayName = userData.profile.nickname;
             }
-            // 2. localStorage에서 확인 (튜토리얼에서 설정)
+            // 2. Firebase 프로필 닉네임이 없으면, 현재 인증된 사용자의 displayName (Google 등) 사용
+            else if (eduPetAuth.currentUser?.displayName) {
+                displayName = eduPetAuth.currentUser.displayName;
+                needsSync = true; // Firebase에 닉네임이 없으므로 동기화 필요
+            }
+            // 3. 둘 다 없으면 익명
             else {
-                const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
-                if (settings.userName) {
-                    displayName = settings.userName;
-
-                    // Firebase에 닉네임이 없거나 다르면 동기화 필요
-                    if (!userData?.profile?.nickname || userData.profile.nickname !== displayName) {
-                        needsSync = true;
-                    }
-                }
-                // 3. localStorage에 없으면 Firebase에서 가져오기
-                else if (userData?.profile?.nickname) {
-                    displayName = userData.profile.nickname;
-                }
+                displayName = '익명';
             }
 
             // Firebase에 닉네임 동기화 (비동기)
             if (needsSync && typeof eduPetAuth !== 'undefined') {
                 console.log('🔄 Syncing nickname to Firebase:', displayName);
-                eduPetAuth.setNickname(displayName).then(() => {
+                try {
+                    await eduPetAuth.setNickname(displayName);
                     console.log('✅ Firebase 닉네임 동기화 완료');
-                }).catch(err => {
+                    // After successful sync, update displayName from the now updated eduPetAuth.userData
+                    displayName = eduPetAuth.userData.profile.nickname;
+                } catch (err) {
                     console.warn('⚠️ Firebase 닉네임 동기화 실패:', err);
-                });
+                    showError(`닉네임 '${displayName}' 설정에 실패했습니다. 이미 사용 중이거나 유효하지 않습니다.`);
+                    // Fallback to '익명' if setting fails
+                    displayName = '익명';
+                }
             }
         } catch (error) {
             console.error('닉네임 로드 실패:', error);
@@ -258,9 +285,16 @@ async function onAuthStateChanged(state, userData) {
 
         showAuthStatus(profileHTML);
 
-        // 로그인 버튼 숨기고 로그아웃 버튼 표시
-        document.getElementById('google-signin-btn').style.display = 'none';
-        document.getElementById('signout-btn').style.display = 'inline-block';
+        // 인증 상태에 따라 버튼 표시
+        if (eduPetAuth.currentUser.isAnonymous) {
+            // 익명 사용자: 구글 로그인 버튼 표시
+            document.getElementById('google-signin-btn').style.display = 'inline-flex';
+            document.getElementById('signout-btn').style.display = 'none';
+        } else {
+            // 구글 등 인증된 사용자: 로그아웃 버튼 표시
+            document.getElementById('google-signin-btn').style.display = 'none';
+            document.getElementById('signout-btn').style.display = 'inline-block';
+        }
 
         // 로컬 plantSystem 데이터를 Firebase에 동기화
         if (typeof plantSystemFirebase !== 'undefined' && typeof plantSystem !== 'undefined') {
@@ -292,6 +326,33 @@ async function onAuthStateChanged(state, userData) {
         if (typeof plantSystem !== 'undefined') {
             console.log('[Social Hub] Money from plantSystem (onAuthStateChanged): ', plantSystem.getUserData().wallet?.money);
         }
+    } else if (state === 'profile_updated') {
+        // 프로필 업데이트 시 UI 새로고침
+        let displayName = '익명';
+        try {
+            const settings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+            if (settings.userName) {
+                displayName = settings.userName;
+            } else if (userData?.profile?.nickname) {
+                displayName = userData.profile.nickname;
+            }
+        } catch (error) {
+            console.error('닉네임 로드 실패 (profile_updated):', error);
+            displayName = userData?.profile?.nickname || '익명';
+        }
+
+        let profileHTML = `환영합니다, ${displayName}님! 🎉`;
+        if (userData?.profile?.photoURL) {
+            profileHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <img src="${userData.profile.photoURL}" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white;" />
+                    <span>환영합니다, ${displayName}님! 🎉</span>
+                </div>
+            `;
+        }
+        showAuthStatus(profileHTML);
+        loadSocialData(); // 모든 소셜 데이터 새로고침
+
     } else {
         showAuthStatus('로그인이 필요합니다.');
         clearSocialData();
@@ -404,6 +465,12 @@ async function loadProfileData() {
 
         // 아바타 동물 목록 로드
         loadAvatarSelection();
+
+        // 닉네임 입력 필드에 현재 닉네임 설정
+        const nicknameInput = document.getElementById('profileNicknameInput');
+        if (nicknameInput && currentUser?.profile?.nickname) {
+            nicknameInput.value = currentUser.profile.nickname;
+        }
 
         // 통계 로드
         loadProfileStats();
@@ -695,6 +762,84 @@ async function applyAvatarChange() {
         resultDiv.innerHTML = '<div class="error">아바타 적용에 실패했습니다.</div>';
     }
 }
+
+// 별명 업데이트 함수
+async function updateNickname() {
+    const nicknameInput = document.getElementById('profileNicknameInput');
+    const nickname = nicknameInput.value.trim();
+    const errorDiv = document.getElementById('profileNicknameError');
+    const successDiv = document.getElementById('profileNicknameSuccess');
+
+    // 에러/성공 메시지 초기화
+    errorDiv.style.display = 'none';
+    successDiv.style.display = 'none';
+    errorDiv.textContent = '';
+    successDiv.textContent = '';
+
+    if (!currentUser) {
+        errorDiv.textContent = '로그인이 필요합니다.';
+        errorDiv.style.display = 'block';
+        return;
+    }
+
+    // 입력 검증
+    if (!nickname) {
+        errorDiv.textContent = '별명을 입력해주세요!';
+        errorDiv.style.display = 'block';
+        nicknameInput.focus();
+        return;
+    }
+    
+    if (nickname.length < 2) {
+        errorDiv.textContent = '별명은 2글자 이상이어야 해요!';
+        errorDiv.style.display = 'block';
+        nicknameInput.focus();
+        return;
+    }
+    
+    if (nickname.length > 10) {
+        errorDiv.textContent = '별명은 10글자 이하여야 해요!';
+        errorDiv.style.display = 'block';
+        nicknameInput.focus();
+        return;
+    }
+    
+    // 특수문자 검사 (한글, 영문, 숫자, _만 허용)
+    const allowedPattern = /^[가-힣a-zA-Z0-9_\s]+$/;
+    if (!allowedPattern.test(nickname)) {
+        errorDiv.textContent = '한글, 영문, 숫자, _만 사용할 수 있어요!';
+        errorDiv.style.display = 'block';
+        nicknameInput.focus();
+        return;
+    }
+
+    try {
+        // Firebase에 닉네임 업데이트
+        await eduPetAuth.setNickname(nickname);
+
+        // localStorage에도 닉네임 업데이트
+        const userSettings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
+        userSettings.userName = nickname;
+        userSettings.setAt = Date.now(); // setAt 필드 업데이트
+        localStorage.setItem('eduPetSettings', JSON.stringify(userSettings));
+
+        successDiv.textContent = `✅ 별명이 "${nickname}"(으)로 변경되었습니다!`;
+        successDiv.style.display = 'block';
+
+        // UI 업데이트 (헤더 등)
+        onAuthStateChanged('profile_updated', eduPetAuth.userData);
+
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 3000);
+
+    } catch (error) {
+        console.error('닉네임 업데이트 실패:', error);
+        errorDiv.textContent = `닉네임 변경에 실패했습니다: ${error.message}`;
+        errorDiv.style.display = 'block';
+    }
+}
+
 
 
 // 프로필 통계 로드

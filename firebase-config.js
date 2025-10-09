@@ -28,7 +28,7 @@ async function initFirebase() {
                     if (!firebase_app) {
                         firebase_app = firebase.initializeApp(firebaseConfig);
                         firebase_db = firebase.database();
-                        firebase_auth = firebase.auth();
+                        firebase_auth = firebase_app.auth();
                         
                         console.log('Firebase 초기화 완료');
                         // eduPetAuth가 Firebase 초기화 완료를 기다리도록 신호 보냄
