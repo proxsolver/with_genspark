@@ -964,13 +964,8 @@
                         // 난이도별 코인 계산 (쉬움 1코인, 보통 2코인, 어려움 3코인)
                         const earnedCoins = (questionCounts.easy * 1) + (questionCounts.medium * 2) + (questionCounts.hard * 3);
 
-                        // 과목 완료 처리 (먼저 실행)
-                        const result = plantSystem.completeSubject(user, subjectName, subjectName);
-
-                        // 코인 지급 (과목 완료 후 실행)
-                        if (earnedCoins > 0) {
-                            plantSystem.addMoney(earnedCoins);
-                        }
+                        // 과목 완료 처리 (코인 포함)
+                        const result = plantSystem.completeSubject(user, subjectName, subjectName, earnedCoins);
 
                         if (result.success) {
                             rewardSummary.completedCount = result.completedCount;
@@ -978,9 +973,9 @@
 
                             plantSystemMessage = `\n\n📚 과목 완료 (${result.completedCount}/9)`;
 
-                            // 코인 획득 메시지 추가
-                            if (earnedCoins > 0) {
-                                plantSystemMessage += `\n💰 ${earnedCoins}코인 획득! (쉬움 ${questionCounts.easy}×1 + 보통 ${questionCounts.medium}×2 + 어려움 ${questionCounts.hard}×3)`;
+                            // 코인 획득 메시지 추가 (결과값 기반)
+                            if (result.rewards.earnedCoins > 0) {
+                                plantSystemMessage += `\n💰 ${result.rewards.earnedCoins}코인 획득! (쉬움 ${questionCounts.easy}×1 + 보통 ${questionCounts.medium}×2 + 어려움 ${questionCounts.hard}×3)`;
                             }
 
                             if (result.rewards.growthTickets) {

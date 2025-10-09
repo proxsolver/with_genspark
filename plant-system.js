@@ -272,7 +272,7 @@ class PlantSystem {
 
     // ===== 과목 완료 및 보상 =====
 
-    completeSubject(user, subjectId, subjectName) {
+    completeSubject(user, subjectId, subjectName, earnedCoins = 0) {
         // 중복 완료 방지
         if (user.daily.completedSubjectIds.includes(subjectId)) {
             return {
@@ -294,6 +294,15 @@ class PlantSystem {
         // 보상 계산 및 지급
         const rewards = this.calculateRewards(user.daily.completedSubjects);
         this.grantRewards(user, rewards);
+
+        // 코인 지급
+        if (earnedCoins > 0) {
+            if (!user.wallet) {
+                user.wallet = { money: 0, water: 0 };
+            }
+            user.wallet.money = (user.wallet.money || 0) + earnedCoins;
+            rewards.earnedCoins = earnedCoins; // 보상 결과에 코인 추가
+        }
 
         this.saveUserData(user);
 

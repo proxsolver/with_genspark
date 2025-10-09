@@ -1,3 +1,44 @@
+ ---
+  문제 원인
+
+  quiz-adaptive.html:970-973에서:
+  // 코인 지급 (과목 완료 후 실행)
+  if (earnedCoins > 0) {
+      plantSystem.addMoney(earnedCoins);
+  }
+
+  이 코드는 실행되고 있지만, 다음 이유로 작동하지 않을 수 있습니다:
+
+  1. plantSystem 객체가 undefined일 가능성 - typeof plantSystem !== 'undefined' 체크는 되어있으나, 초기화 타이밍 문제
+  2. addMoney() 호출 후 Firebase 동기화 누락 - 다른 보상은 Firebase 동기화되지만 코인은 안됨
+  3. 메시지는 표시되지만 실제 저장 안됨 - addMoney() 내부에서 saveUserData() 호출은 되지만, 이후 다른 코드에서 덮어쓸 가능성
+
+  ---
+  수정 계획
+
+  1️⃣ 코인 지급 타이밍 수정
+
+  - completeSubject() 호출 전에 addMoney() 실행 → 후로 변경
+  - completeSubject()가 saveUserData()를 호출하므로, 그 이후에 addMoney()를 호출하면 저장이 두 번 일어남
+
+  2️⃣ 코인 지급을 completeSubject() 내부로 통합
+
+  - 보상 지급 로직을 plantSystem.completeSubject() 안에 포함
+  - 현재는 티켓/가챠권만 지급하고 코인은 외부에서 처리 → 일관성 부족
+
+  3️⃣ 디버깅 로그 추가
+
+  - addMoney() 호출 시 콘솔 로그로 확인
+  - 저장 전후 금액 비교
+
+  4️⃣ Firebase 동기화 추가
+
+  - 코인 지급 후 Firebase에도 반영
+
+  수정 진행할까요?
+
+
+
 해커가 admin.html 페이지의 존재를 알아내고 비밀번호(8253)를 알아내기만 하면, 모든 사용자의 데이터를 삭제할 수 있는 현재
   구조는 절대 실제 서비스에 사용되어서는 안 됩니다.
 
