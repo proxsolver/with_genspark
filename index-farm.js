@@ -265,6 +265,7 @@ function homeConfirmWater() {
         }
     } else {
         homeShowToast('❌ ' + result.message);
+        homeCloseWateringModal(); // 실패 시에도 모달 닫기
     }
 }
 

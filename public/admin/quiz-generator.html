@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 생성기</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; background-color: #f8f9fa; }
+        h1 { text-align: center; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        select, button { width: 100%; padding: 0.75rem; font-size: 1rem; border-radius: 0.25rem; border: 1px solid #ccc; }
+        button { background-color: #007bff; color: white; cursor: pointer; border: none; }
+        button:disabled { background-color: #aaa; }
+        #result { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 0.25rem; text-align: center; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>📝 제미나이 퀴즈 생성기</h1>
+    <form id="quiz-generator-form">
+        <div class="form-group">
+            <label for="grade">학년</label>
+            <select id="grade" name="grade" required>
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
+                <option value="4">4학년</option>
+                <option value="5">5학년</option>
+                <option value="6">6학년</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subject">과목</label>
+            <select id="subject" name="subject" required>
+                <!-- 과목은 /src/data/questions/grade1/ 폴더 기준으로 동적 생성 -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="difficulty">난이도</label>
+            <select id="difficulty" name="difficulty" required>
+                <option value="1">1 (쉬움)</option>
+                <option value="2">2 (보통)</option>
+                <option value="3">3 (어려움)</option>
+            </select>
+        </div>
+        <button type="submit" id="generate-btn">퀴즈 생성</button>
+    </form>
+    <div id="result" class="hidden"></div>
+
+    <script>
+        const gradeSelect = document.getElementById('grade');
+        const subjectSelect = document.getElementById('subject');
+        const form = document.getElementById('quiz-generator-form');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultDiv = document.getElementById('result');
+
+        // 임시 과목 목록 - 실제로는 API를 통해 받아와야 합니다.
+        const subjectsByGrade = {
+            1: ['korean', 'math', 'common', 'science'],
+            // 학년별로 다른 과목이 있다면 추가
+        };
+
+        function populateSubjects(grade) {
+            const subjects = subjectsByGrade[grade] || subjectsByGrade[1]; // 기본값
+            subjectSelect.innerHTML = '';
+            subjects.forEach(subject => {
+                const option = document.createElement('option');
+                option.value = subject;
+                option.textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
+                subjectSelect.appendChild(option);
+            });
+        }
+        
+        // 초기 과목 목록 채우기
+        populateSubjects(gradeSelect.value);
+
+        // 학년 변경 시 과목 목록 업데이트
+        gradeSelect.addEventListener('change', (e) => {
+            // 지금은 모든 학년의 과목이 동일하다고 가정합니다.
+            // 필요 시 populateSubjects(e.target.value) 호출
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const grade = gradeSelect.value;
+            const subject = subjectSelect.value;
+            const difficulty = document.getElementById('difficulty').value;
+
+            generateBtn.disabled = true;
+            generateBtn.textContent = '생성 중...';
+            resultDiv.classList.remove('hidden');
+            resultDiv.textContent = '제미나이 API 호출 중... 잠시만 기다려주세요.';
+
+            try {
+                const response = await fetch('/api/generate-quiz', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ grade, subject, difficulty }),
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || '알 수 없는 오류가 발생했습니다.');
+                }
+
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.textContent = `✅ 생성 완료! 파일 위치: ${result.filePath}`;
+
+            } catch (error) {
+                resultDiv.style.backgroundColor = '#f8d7da';
+                resultDiv.textContent = `❌ 생성 실패: ${error.message}`;
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.textContent = '퀴즈 생성';
+            }
+        });
+    </script>
+</body>
+</html>

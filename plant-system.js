@@ -211,7 +211,9 @@ class PlantSystem {
     }
 
     waterPlant(plantId) {
+        const user = this.getUserData(); // 사용자 데이터 가져오기
         const plant = this.getPlant(plantId);
+        const currentTime = this.getCurrentTimestamp();
         const check = this.canWaterPlant(plant);
 
         if (!check.canWater) {
@@ -220,8 +222,21 @@ class PlantSystem {
 
         plant.waterCount += 1;
 
-        // 스테이지 자동 성장 체크
-        const stageChanged = this.checkStageGrowth(plant);
+        // 스테이지 자동 성장 체크 (user 객체와 currentTime 전달)
+        const growthResult = this.checkStageGrowth(user, plant, currentTime);
+
+        if (!growthResult.success) {
+            // 성장권 부족 등으로 성장이 실패한 경우
+            this.savePlant(plant); // 물만 준 상태 저장
+            return {
+                success: false,
+                message: growthResult.message,
+                waterCount: plant.waterCount,
+                status: plant.status,
+                stage: plant.stage,
+                stageChanged: false
+            };
+        }
 
         this.savePlant(plant);
 
@@ -230,16 +245,30 @@ class PlantSystem {
             waterCount: plant.waterCount,
             status: plant.status,
             stage: plant.stage,
-            stageChanged: stageChanged
+            stageChanged: growthResult.stageChanged
         };
     }
 
-    checkStageGrowth(plant) {
+    checkStageGrowth(user, plant, currentTime) {
         const currentStage = plant.stage || 0;
         const maxWater = this.getMaxWaterForStage(currentStage);
 
         // 현재 스테이지의 물 요구량을 달성했는지 체크
         if (plant.waterCount >= maxWater && currentStage < 3) {
+            // 5번째 물주기 (maxWater)에 성장권 필요 로직 추가
+            if (plant.waterCount === maxWater) {
+                const ticketIndex = this.findValidGrowthTicket(user, currentTime);
+                if (ticketIndex === -1) {
+                    // 성장권이 없으면 성장 실패
+                    console.log('성장권이 없어 식물 성장에 실패했습니다.');
+                    return { success: false, message: '성장권이 없어 다음 단계로 성장할 수 없습니다.' };
+                }
+                // 성장권 소모
+                user.rewards.growthTickets.splice(ticketIndex, 1);
+                this.saveUserData(user); // 사용자 데이터 업데이트
+                console.log('성장권 소모 완료.');
+            }
+
             plant.stage = currentStage + 1;
             plant.plantType = this.getPlantTypeForStage(plant.stage);
             plant.waterCount = 0; // 다음 스테이지를 위해 물 카운트 리셋
@@ -251,10 +280,10 @@ class PlantSystem {
             }
 
             console.log(`🌱 식물이 스테이지 ${currentStage} → ${plant.stage}로 성장!`, plant.plantType);
-            return true;
+            return { success: true, stageChanged: true };
         }
 
-        return false;
+        return { success: true, stageChanged: false };
     }
 
     checkReadyStatus(plant) {
