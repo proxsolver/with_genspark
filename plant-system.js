@@ -255,19 +255,18 @@ class PlantSystem {
 
         // 현재 스테이지의 물 요구량을 달성했는지 체크
         if (plant.waterCount >= maxWater && currentStage < 3) {
-            // 5번째 물주기 (maxWater)에 성장권 필요 로직 추가
-            if (plant.waterCount === maxWater) {
-                const ticketIndex = this.findValidGrowthTicket(user, currentTime);
-                if (ticketIndex === -1) {
-                    // 성장권이 없으면 성장 실패
-                    console.log('성장권이 없어 식물 성장에 실패했습니다.');
-                    return { success: false, message: '성장권이 없어 다음 단계로 성장할 수 없습니다.' };
-                }
-                // 성장권 소모
-                user.rewards.growthTickets.splice(ticketIndex, 1);
-                this.saveUserData(user); // 사용자 데이터 업데이트
-                console.log('성장권 소모 완료.');
+            // ✅ 수정: waterCount가 maxWater 이상일 때 항상 성장권 체크 (버그 방지)
+            const ticketIndex = this.findValidGrowthTicket(user, currentTime);
+            if (ticketIndex === -1) {
+                // 성장권이 없으면 성장 실패
+                console.log('성장권이 없어 식물 성장에 실패했습니다.');
+                return { success: false, message: '성장권이 없어 다음 단계로 성장할 수 없습니다.' };
             }
+
+            // 성장권 소모
+            user.rewards.growthTickets.splice(ticketIndex, 1);
+            this.saveUserData(user); // 사용자 데이터 업데이트
+            console.log('성장권 소모 완료.');
 
             plant.stage = currentStage + 1;
             plant.plantType = this.getPlantTypeForStage(plant.stage);

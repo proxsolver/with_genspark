@@ -368,10 +368,10 @@
                     </div>
                 </div>
 
-                <!-- 확인 버튼 (5초 후 활성화) -->
+                <!-- 확인 버튼 (1초 후 활성화) -->
                 <button id="water-confirm-btn" onclick="confirmLearningAndWater()" disabled
                         class="w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all">
-                    <span id="water-btn-text">💧 문제를 읽어주세요 (<span id="countdown">5</span>초)</span>
+                    <span id="water-btn-text">💧 문제를 읽어주세요 (<span id="countdown">1</span>초)</span>
                 </button>
             </div>
 
@@ -852,7 +852,7 @@
                     waterBtn.className = 'w-full px-4 py-3 bg-gray-400 text-white rounded-lg font-bold cursor-not-allowed transition-all';
                 }
                 if (waterBtnText) {
-                    waterBtnText.innerHTML = '💧 문제를 읽어주세요 (<span id="countdown">5</span>초)';
+                    waterBtnText.innerHTML = '💧 문제를 읽어주세요 (<span id="countdown">1</span>초)';
                 }
 
                 // 모달 표시 (먼저!)
@@ -882,7 +882,7 @@
                 return;
             }
 
-            let timeLeft = 5;
+            let timeLeft = 1;
 
             // 버튼 비활성화 및 초기화
             btn.disabled = true;
@@ -956,7 +956,14 @@
                     plantSystemFirebase.savePlantSystemState();
                 }
             } else {
-                showToast('❌ ' + result.message);
+                // ✅ 성장권 부족 시 명확한 안내
+                if (result.message.includes('성장권')) {
+                    showToast('🎫 ' + result.message + '\n\n📚 퀴즈를 풀어서 성장권을 획득하세요!\n(3과목 완료 시 성장권 1개 지급)');
+                } else {
+                    showToast('❌ ' + result.message);
+                }
+                closeWateringModal();
+                updateDashboard();
             }
         }
 
