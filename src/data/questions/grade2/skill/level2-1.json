@@ -1,0 +1,122 @@
+[
+  {
+    "id": "skill_medium_3_1",
+    "subject": "skill",
+    "question": "🎲 주사위 두 개를 던졌더니 합이 9가 나왔어요. 가능한 조합은 몇 가지일까요? (3과 6, 4와 5, 5와 4, 6과 3)",
+    "options": ["2가지", "3가지", "4가지", "5가지"],
+    "correctIndex": 2,
+    "explanation": "합이 9가 되는 조합은 (3, 6), (4, 5), (5, 4), (6, 3) 이렇게 4가지예요! 순서가 바뀌면 다른 경우예요.",
+    "hint": "합이 9가 되는 모든 조합을 세어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_2",
+    "subject": "skill",
+    "question": "📚 책장에 빨간 책 12권, 파란 책 8권, 초록 책 5권이 있어요. 책은 모두 몇 권일까요?",
+    "options": ["17권", "20권", "25권", "30권"],
+    "correctIndex": 2,
+    "explanation": "12 + 8 + 5 = 25권이에요!",
+    "hint": "세 가지 색의 책을 모두 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_3",
+    "subject": "skill",
+    "question": "🍰 케이크를 12조각으로 잘랐어요. 각 사람이 3조각씩 먹는다면 몇 명이 먹을 수 있을까요?",
+    "options": ["3명", "4명", "5명", "6명"],
+    "correctIndex": 1,
+    "explanation": "12조각을 3조각씩 나누면 12 ÷ 3 = 4명이 먹을 수 있어요!",
+    "hint": "12를 3으로 나누어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_4",
+    "subject": "skill",
+    "question": "🏃 운동장을 한 바퀴 도는데 5분이 걸려요. 3바퀴를 돌면 몇 분이 걸릴까요?",
+    "options": ["8분", "10분", "15분", "20분"],
+    "correctIndex": 2,
+    "explanation": "한 바퀴에 5분이니까 3바퀴는 5 × 3 = 15분이에요!",
+    "hint": "5분을 3번 더하거나 5와 3을 곱해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_5",
+    "subject": "skill",
+    "question": "🎯 다음 중 가장 큰 숫자는 무엇일까요? 38, 42, 29, 51",
+    "options": ["29", "38", "42", "51"],
+    "correctIndex": 3,
+    "explanation": "51이 가장 큰 숫자예요! 50대가 40대보다 크니까요.",
+    "hint": "십의 자리를 먼저 비교해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_6",
+    "subject": "skill",
+    "question": "🐸 개구리가 3마리 있고, 각 개구리가 알을 5개씩 낳았어요. 알은 모두 몇 개일까요?",
+    "options": ["8개", "10개", "15개", "18개"],
+    "correctIndex": 2,
+    "explanation": "개구리 3마리가 각각 5개씩 낳았으니 5 × 3 = 15개예요!",
+    "hint": "5개씩 3마리니까 곱셈을 사용해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_7",
+    "subject": "skill",
+    "question": "💰 지갑에 100원짜리 동전 7개, 50원짜리 동전 4개가 있어요. 모두 얼마일까요?",
+    "options": ["500원", "700원", "900원", "1100원"],
+    "correctIndex": 2,
+    "explanation": "100원 × 7 = 700원, 50원 × 4 = 200원, 합치면 700 + 200 = 900원이에요!",
+    "hint": "각 동전의 총액을 구한 다음 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_8",
+    "subject": "skill",
+    "question": "🎪 놀이공원 입장료는 어른 5000원, 어린이 3000원이에요. 어른 2명과 어린이 3명이 입장하면 얼마일까요?",
+    "options": ["13000원", "16000원", "19000원", "22000원"],
+    "correctIndex": 2,
+    "explanation": "어른 5000원 × 2 = 10000원, 어린이 3000원 × 3 = 9000원, 합치면 10000 + 9000 = 19000원이에요!",
+    "hint": "어른과 어린이 입장료를 각각 계산한 다음 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_9",
+    "subject": "skill",
+    "question": "📐 직사각형의 가로가 8cm, 세로가 5cm예요. 둘레는 몇 cm일까요?",
+    "options": ["13cm", "20cm", "26cm", "40cm"],
+    "correctIndex": 2,
+    "explanation": "둘레는 (가로 + 세로) × 2예요. (8 + 5) × 2 = 13 × 2 = 26cm예요!",
+    "hint": "가로와 세로를 더한 다음 2배를 해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_3_10",
+    "subject": "skill",
+    "question": "🌡️ 아침 기온이 5도였는데, 낮에 8도 올랐다가 밤에 6도 내려갔어요. 밤 기온은 몇 도일까요?",
+    "options": ["1도", "3도", "7도", "9도"],
+    "correctIndex": 2,
+    "explanation": "5도 + 8도 = 13도가 낮 기온이고, 13도 - 6도 = 7도가 밤 기온이에요!",
+    "hint": "차례대로 더하고 빼보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_hard_3_1",
+    "subject": "skill",
+    "question": "🧩 형은 동생보다 구슬을 5개 더 많이 가지고 있어요. 둘이 합치면 25개예요. 동생은 몇 개를 가지고 있을까요?",
+    "options": ["8개", "10개", "12개", "15개"],
+    "correctIndex": 1,
+    "explanation": "형이 5개 더 많으니까, 동생을 x개라 하면 형은 (x + 5)개예요. x + (x + 5) = 25이니까 2x + 5 = 25, 2x = 20, x = 10개예요!",
+    "hint": "동생의 개수를 먼저 생각하고, 형의 개수를 더해보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "skill_hard_3_2",
+    "subject": "skill",
+    "question": "🔢 숫자 배열: 1, 1, 2, 3, 5, 8, ? 다음 숫자는? (앞의 두 숫자를 더하면 다음 숫자가 됩니다)",
+    "options": ["11", "12", "13", "14"],
+    "correctIndex": 2,
+    "explanation": "이것은 피보나치 수열이에요! 앞의 두 숫자를 더하면 다음 숫자가 돼요. 5 + 8 = 13이에요!",
+    "hint": "마지막 두 숫자를 더해보세요.",
+    "difficulty": 3
+  }
+]

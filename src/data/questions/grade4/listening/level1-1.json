@@ -1,0 +1,134 @@
+[
+  {
+    "id": "listening_easy_g4_1_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇에 대해 말하고 있나요?",
+    "audioText": "My favorite subject is English.",
+    "options": ["좋아하는 과목", "좋아하는 음식", "좋아하는 색", "좋아하는 운동"],
+    "correctIndex": 0,
+    "explanation": "'favorite subject'는 '좋아하는 과목'이라는 뜻이에요.",
+    "hint": "'subject'는 '과목'이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 몇 시에 일어나나요?",
+    "audioText": "I usually wake up at seven in the morning.",
+    "options": ["6시", "7시", "8시", "9시"],
+    "correctIndex": 1,
+    "explanation": "'at seven'은 '7시에'라는 뜻이에요.",
+    "hint": "숫자를 잘 들어보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어디로 가고 있나요?",
+    "audioText": "I am going to the library to read books.",
+    "options": ["학교", "도서관", "공원", "병원"],
+    "correctIndex": 1,
+    "explanation": "'library'는 '도서관'이라는 뜻이에요.",
+    "hint": "책을 읽으러 가는 곳이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_4",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 날씨가 어떤가요?",
+    "audioText": "How's the weather today? It's cloudy and cold.",
+    "options": ["맑고 따뜻해요", "흐리고 추워요", "비가 와요", "눈이 와요"],
+    "correctIndex": 1,
+    "explanation": "'cloudy and cold'는 '흐리고 추운'이라는 뜻이에요.",
+    "hint": "'cloudy'는 '흐린', 'cold'는 '추운'이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_5",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 하고 있나요?",
+    "audioText": "My brother is playing basketball in the park.",
+    "options": ["축구", "농구", "야구", "배구"],
+    "correctIndex": 1,
+    "explanation": "'playing basketball'은 '농구를 하고 있다'는 뜻이에요.",
+    "hint": "'basketball'은 '농구'예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_6",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 먹었나요?",
+    "audioText": "I ate pizza and salad for dinner last night.",
+    "options": ["피자와 샐러드", "햄버거와 감자튀김", "스파게티와 빵", "치킨과 콜라"],
+    "correctIndex": 0,
+    "explanation": "'pizza and salad'는 '피자와 샐러드'예요.",
+    "hint": "두 가지 음식이 나와요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_7",
+    "subject": "listening",
+    "question": "🎧 다음 질문을 듣고 무엇을 묻고 있나요?",
+    "audioText": "Where do you live?",
+    "options": ["어디 사세요?", "몇 살이에요?", "이름이 뭐예요?", "뭐 하세요?"],
+    "correctIndex": 0,
+    "explanation": "'Where do you live?'는 '어디 사세요?'라는 뜻이에요.",
+    "hint": "'where'는 '어디'예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_1_8",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 누가 의사인가요?",
+    "audioText": "My father is a doctor. He works at a hospital.",
+    "options": ["아빠", "엄마", "형", "누나"],
+    "correctIndex": 0,
+    "explanation": "'My father is a doctor'는 '우리 아빠는 의사예요'라는 뜻이에요.",
+    "hint": "'father'는 '아빠'예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_medium_g4_1_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 하려고 하나요?",
+    "audioText": "What are you going to do this weekend? I'm going to visit my grandparents.",
+    "options": ["친구를 만나요", "할머니 댁에 가요", "영화를 봐요", "쇼핑을 해요"],
+    "correctIndex": 1,
+    "explanation": "'visit my grandparents'는 '조부모님을 방문하다', 즉 할머니 댁에 가는 것이에요.",
+    "hint": "'grandparents'는 '조부모님'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_1_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 왜 늦었나요?",
+    "audioText": "I'm sorry I'm late. I missed the bus.",
+    "options": ["버스를 놓쳤어요", "길을 잃었어요", "아팠어요", "잠을 못 잤어요"],
+    "correctIndex": 0,
+    "explanation": "'missed the bus'는 '버스를 놓쳤다'는 뜻이에요.",
+    "hint": "'miss'는 '놓치다'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_1_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 몇 명이 파티에 올까요?",
+    "audioText": "How many people are coming to your party? About twenty people.",
+    "options": ["10명", "15명", "20명", "25명"],
+    "correctIndex": 2,
+    "explanation": "'twenty people'은 '20명'이라는 뜻이에요.",
+    "hint": "'twenty'는 숫자 '20'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_1_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 취미가 무엇인가요?",
+    "audioText": "My hobby is collecting stamps from different countries.",
+    "options": ["우표 모으기", "사진 찍기", "그림 그리기", "악기 연주"],
+    "correctIndex": 0,
+    "explanation": "'collecting stamps'는 '우표를 모으는 것'이에요.",
+    "hint": "'collecting'은 '모으다'예요.",
+    "difficulty": 2
+  }
+]

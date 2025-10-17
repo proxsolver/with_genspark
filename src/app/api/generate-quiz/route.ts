@@ -13,7 +13,7 @@ async function callGeminiAPI(prompt: string): Promise<string> {
         throw new Error("GEMINI_API_KEY 환경 변수가 설정되지 않았습니다.");
     }
 
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     const requestBody = {
         contents: [{
@@ -117,9 +117,17 @@ export async function POST(request: NextRequest) {
         // 6. 새 파일 저장
         fs.writeFileSync(newFilePath, JSON.stringify(generatedData, null, 2), 'utf-8');
 
+        // 미리보기용 첫 번째와 마지막 문제 추출
+        const preview = {
+            first: generatedData[0] || null,
+            last: generatedData[generatedData.length - 1] || null
+        };
+
         return NextResponse.json({
             message: '퀴즈 생성 성공!',
-            filePath: `/src/data/questions/grade${grade}/${subject}/${newFileName}`
+            filePath: `/src/data/questions/grade${grade}/${subject}/${newFileName}`,
+            preview: preview,
+            totalQuestions: generatedData.length
         }, { status: 201 });
 
     } catch (error: any) {

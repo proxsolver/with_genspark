@@ -1,0 +1,57 @@
+[
+  {
+    "id": "listening_hard_g2_6_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 하고 싶지 않다고 했나요?",
+    "audioText": "I don't want to watch TV.",
+    "options": ["TV 보기", "공부하기", "놀기", "자기"],
+    "correctIndex": 0,
+    "explanation": "'I don't want to watch TV'는 'TV를 보고 싶지 않아'라는 뜻이에요.",
+    "hint": "'watch TV'는 'TV 보다'예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_6_2",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어디에 있나요?",
+    "audioText": "Where is your pen? It is in my bag.",
+    "options": ["책상 위", "가방 안", "바닥", "의자"],
+    "correctIndex": 1,
+    "explanation": "'in my bag'은 '내 가방 안에'라는 뜻이에요.",
+    "hint": "'in'은 '안에'라는 뜻이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_6_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 형제가 몇 명인가요?",
+    "audioText": "I have two brothers.",
+    "options": ["1명", "2명", "3명", "4명"],
+    "correctIndex": 1,
+    "explanation": "'two brothers'는 '형제가 두 명'이라는 뜻이에요.",
+    "hint": "'two'는 숫자 '2'예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_6_4",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 도와주려고 하나요?",
+    "audioText": "Can I help you? Yes, please help me.",
+    "options": ["도와주려고 해요", "가르쳐 주려고 해요", "물어보려고 해요", "주려고 해요"],
+    "correctIndex": 0,
+    "explanation": "'Can I help you?'는 '도와드릴까요?'라는 뜻이에요.",
+    "hint": "'help'는 '돕다'라는 뜻이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_6_5",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 언제 만날까요?",
+    "audioText": "See you tomorrow!",
+    "options": ["오늘", "내일", "어제", "다음 주"],
+    "correctIndex": 1,
+    "explanation": "'tomorrow'는 '내일'이라는 뜻이에요.",
+    "hint": "'tomorrow'는 오늘의 다음 날이에요.",
+    "difficulty": 3
+  }
+]

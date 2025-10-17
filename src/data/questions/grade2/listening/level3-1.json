@@ -1,0 +1,57 @@
+[
+  {
+    "id": "listening_hard_g2_5_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 하려고 하나요?",
+    "audioText": "Let's go to the park. Okay, let's go!",
+    "options": ["학교에 가요", "공원에 가요", "집에 가요", "병원에 가요"],
+    "correctIndex": 1,
+    "explanation": "'go to the park'는 '공원에 가다'는 뜻이에요.",
+    "hint": "'park'는 '공원'이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_5_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 먹고 있나요?",
+    "audioText": "I am eating a sandwich for lunch.",
+    "options": ["아침", "점심", "저녁", "간식"],
+    "correctIndex": 1,
+    "explanation": "'for lunch'는 '점심으로'라는 뜻이에요.",
+    "hint": "'lunch'는 '점심'이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_5_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 Mary는 무엇을 할 수 있나요?",
+    "audioText": "Can you swim, Mary? Yes, I can swim very well.",
+    "options": ["수영", "달리기", "노래", "그림"],
+    "correctIndex": 0,
+    "explanation": "Mary가 'I can swim'이라고 했으므로 수영을 할 수 있어요.",
+    "hint": "'swim'은 '수영하다'예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_5_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 얼마인가요?",
+    "audioText": "This book is five dollars.",
+    "options": ["3달러", "4달러", "5달러", "6달러"],
+    "correctIndex": 2,
+    "explanation": "'five dollars'는 '5달러'라는 뜻이에요.",
+    "hint": "숫자를 잘 들어보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_5_5",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 누가 선생님인가요?",
+    "audioText": "Who is she? She is my English teacher.",
+    "options": ["엄마", "언니", "영어 선생님", "친구"],
+    "correctIndex": 2,
+    "explanation": "'English teacher'는 '영어 선생님'이라는 뜻이에요.",
+    "hint": "'teacher'는 '선생님'이에요.",
+    "difficulty": 3
+  }
+]

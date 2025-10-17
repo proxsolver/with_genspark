@@ -1,0 +1,57 @@
+[
+  {
+    "id": "listening_hard_g4_5_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 왜 파티에 못 가나요?",
+    "audioText": "Are you coming to my birthday party? I'm sorry, I can't come because I have a dentist appointment.",
+    "options": ["아파서", "치과 약속이 있어서", "숙제가 많아서", "다른 약속이 있어서"],
+    "correctIndex": 1,
+    "explanation": "'dentist appointment'는 '치과 약속'이라는 뜻이에요.",
+    "hint": "'dentist'는 '치과의사'예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_5_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 특징을 가진 사람을 찾고 있나요?",
+    "audioText": "I'm looking for someone who is tall, has short hair, and wears glasses.",
+    "options": ["키 크고 긴 머리에 안경", "키 크고 짧은 머리에 안경", "작고 짧은 머리에 안경", "키 크고 긴 머리"],
+    "correctIndex": 1,
+    "explanation": "'tall, short hair, wears glasses'는 '키 크고, 짧은 머리, 안경 쓴'이에요.",
+    "hint": "세 가지 특징을 모두 찾아보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_5_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 조언을 하고 있나요?",
+    "audioText": "I have a headache. You should drink water and rest. Don't use your phone too much.",
+    "options": ["물 마시고 쉬기", "약 먹기", "병원 가기", "운동하기"],
+    "correctIndex": 0,
+    "explanation": "'drink water and rest'는 '물을 마시고 쉬다'는 뜻이에요.",
+    "hint": "'should'는 '~해야 한다'는 뜻이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_5_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 경험을 말하고 있나요?",
+    "audioText": "Last summer, I went camping with my family. We saw beautiful stars at night.",
+    "options": ["해변 여행", "캠핑", "등산", "스키"],
+    "correctIndex": 1,
+    "explanation": "'camping'은 '캠핑'이에요.",
+    "hint": "밤하늘의 별을 보는 활동이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_5_5",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 문제가 있나요?",
+    "audioText": "What's wrong with your computer? It's very slow and sometimes it doesn't turn on.",
+    "options": ["소리가 안 나요", "느리고 켜지지 않아요", "화면이 안 보여요", "키보드가 안 돼요"],
+    "correctIndex": 1,
+    "explanation": "'slow and doesn't turn on'은 '느리고 켜지지 않는다'는 뜻이에요.",
+    "hint": "두 가지 문제를 말하고 있어요.",
+    "difficulty": 3
+  }
+]

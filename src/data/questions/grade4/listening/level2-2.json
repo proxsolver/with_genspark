@@ -1,0 +1,79 @@
+[
+  {
+    "id": "listening_medium_g4_4_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어디로 여행을 갈까요?",
+    "audioText": "Where are you going on vacation? We're going to visit Paris in France.",
+    "options": ["런던", "파리", "로마", "베를린"],
+    "correctIndex": 1,
+    "explanation": "'Paris'는 '파리'예요.",
+    "hint": "프랑스의 수도예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_4_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 날씨를 좋아하나요?",
+    "audioText": "I prefer sunny days because I can play outside.",
+    "options": ["비 오는 날", "맑은 날", "흐린 날", "눈 오는 날"],
+    "correctIndex": 1,
+    "explanation": "'sunny days'는 '맑은 날'이에요.",
+    "hint": "'sunny'는 '맑은'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_4_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 몇 개를 샀나요?",
+    "audioText": "How many apples did you buy? I bought a dozen apples.",
+    "options": ["6개", "10개", "12개", "20개"],
+    "correctIndex": 2,
+    "explanation": "'a dozen'은 '12개'를 의미해요.",
+    "hint": "'dozen'은 '12개'라는 뜻이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_4_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 해야 하나요?",
+    "audioText": "Don't forget to bring your textbook tomorrow.",
+    "options": ["교과서 가져오기", "숙제 하기", "시험 공부", "청소하기"],
+    "correctIndex": 0,
+    "explanation": "'bring your textbook'은 '교과서를 가져오다'는 뜻이에요.",
+    "hint": "'textbook'은 '교과서'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_4_5",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 누가 더 키가 크나요?",
+    "audioText": "Is Tom taller than Mike? Yes, Tom is much taller.",
+    "options": ["Tom이 더 커요", "Mike가 더 커요", "둘 다 같아요", "알 수 없어요"],
+    "correctIndex": 0,
+    "explanation": "'Tom is taller'는 'Tom이 더 크다'는 뜻이에요.",
+    "hint": "'taller'는 '더 큰'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_hard_g4_4_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 직업을 원하나요?",
+    "audioText": "When I grow up, I want to be a scientist and discover new things.",
+    "options": ["의사", "선생님", "과학자", "요리사"],
+    "correctIndex": 2,
+    "explanation": "'scientist'는 '과학자'예요.",
+    "hint": "새로운 것을 발견하는 직업이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_4_2",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 왜 전화할 수 없나요?",
+    "audioText": "Can you call me later? Sorry, I can't. My phone battery is dead.",
+    "options": ["전화가 없어요", "배터리가 없어요", "전화번호를 몰라요", "바빠요"],
+    "correctIndex": 1,
+    "explanation": "'battery is dead'는 '배터리가 다 닳았다'는 뜻이에요.",
+    "hint": "'battery'를 잘 들어보세요.",
+    "difficulty": 3
+  }
+]

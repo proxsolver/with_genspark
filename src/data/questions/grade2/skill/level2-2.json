@@ -1,0 +1,122 @@
+[
+  {
+    "id": "skill_medium_4_1",
+    "subject": "skill",
+    "question": "🍪 쿠키 상자에 쿠키가 48개 들어있었어요. 8명이 똑같이 나누어 먹었어요. 한 명당 몇 개씩 먹었을까요?",
+    "options": ["4개", "6개", "8개", "10개"],
+    "correctIndex": 1,
+    "explanation": "48개를 8명이 나누면 48 ÷ 8 = 6개씩 먹었어요!",
+    "hint": "48을 8로 나누어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_2",
+    "subject": "skill",
+    "question": "🚲 자전거 바퀴는 2개, 세발자전거 바퀴는 3개예요. 자전거 5대와 세발자전거 3대의 바퀴는 모두 몇 개일까요?",
+    "options": ["16개", "19개", "21개", "25개"],
+    "correctIndex": 1,
+    "explanation": "자전거 바퀴: 2 × 5 = 10개, 세발자전거 바퀴: 3 × 3 = 9개, 합치면 10 + 9 = 19개예요!",
+    "hint": "각각의 바퀴를 계산한 다음 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_3",
+    "subject": "skill",
+    "question": "📅 오늘은 월요일이에요. 10일 후는 무슨 요일일까요?",
+    "options": ["월요일", "화요일", "수요일", "목요일"],
+    "correctIndex": 3,
+    "explanation": "한 주는 7일이에요. 10일은 7일 + 3일이니까, 7일 후는 다시 월요일이고, 3일을 더하면 목요일이에요!",
+    "hint": "7일이 한 주라는 것을 기억하세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_4",
+    "subject": "skill",
+    "question": "🎨 물감 세트가 12색, 16색, 24색 세 가지가 있어요. 가장 많은 색과 가장 적은 색의 차이는 몇 색일까요?",
+    "options": ["4색", "8색", "12색", "16색"],
+    "correctIndex": 2,
+    "explanation": "가장 많은 색은 24색, 가장 적은 색은 12색이에요. 24 - 12 = 12색 차이예요!",
+    "hint": "가장 큰 수에서 가장 작은 수를 빼보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_5",
+    "subject": "skill",
+    "question": "🐝 꿀벌 한 마리가 꽃 6송이를 방문해요. 꿀벌 8마리가 방문하는 꽃은 모두 몇 송이일까요?",
+    "options": ["14송이", "42송이", "48송이", "64송이"],
+    "correctIndex": 2,
+    "explanation": "꿀벌 한 마리당 6송이씩, 8마리니까 6 × 8 = 48송이예요!",
+    "hint": "6과 8을 곱해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_6",
+    "subject": "skill",
+    "question": "📏 막대 길이가 24cm예요. 3cm씩 자르면 몇 조각이 될까요?",
+    "options": ["6조각", "7조각", "8조각", "9조각"],
+    "correctIndex": 2,
+    "explanation": "24cm를 3cm씩 자르면 24 ÷ 3 = 8조각이 돼요!",
+    "hint": "24를 3으로 나누어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_7",
+    "subject": "skill",
+    "question": "🎁 선물 상자를 쌓으려고 해요. 맨 아래 줄에 5개, 그 위에 4개, 그 위에 3개를 쌓았어요. 선물 상자는 모두 몇 개일까요?",
+    "options": ["10개", "12개", "14개", "15개"],
+    "correctIndex": 1,
+    "explanation": "5 + 4 + 3 = 12개예요!",
+    "hint": "각 줄의 상자를 모두 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_8",
+    "subject": "skill",
+    "question": "🥤 음료수 한 병에 250ml씩 들어있어요. 6병을 마시면 몇 ml를 마신 걸까요?",
+    "options": ["1000ml", "1250ml", "1500ml", "2000ml"],
+    "correctIndex": 2,
+    "explanation": "250ml × 6 = 1500ml예요!",
+    "hint": "250과 6을 곱해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_9",
+    "subject": "skill",
+    "question": "🕐 수업이 오전 10시에 시작해서 40분 동안 진행돼요. 수업이 끝나는 시간은 몇 시 몇 분일까요?",
+    "options": ["10시 40분", "10시 50분", "11시", "11시 10분"],
+    "correctIndex": 0,
+    "explanation": "10시에서 40분을 더하면 10시 40분이에요!",
+    "hint": "시작 시간에 40분을 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_4_10",
+    "subject": "skill",
+    "question": "🌟 별 스티커를 모으고 있어요. 어제 15개, 오늘 12개를 모았어요. 내일 13개를 모으면 모두 몇 개일까요?",
+    "options": ["27개", "35개", "40개", "45개"],
+    "correctIndex": 2,
+    "explanation": "15 + 12 + 13 = 40개예요!",
+    "hint": "세 날의 스티커를 모두 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_hard_4_1",
+    "subject": "skill",
+    "question": "🧩 정원에 나무가 줄지어 서 있어요. 첫 번째 나무부터 마지막 나무까지 40m예요. 나무 사이 간격이 5m씩이고, 나무가 9그루라면 맞을까요?",
+    "options": ["맞아요", "틀려요, 8그루예요", "틀려요, 10그루예요", "틀려요, 11그루예요"],
+    "correctIndex": 0,
+    "explanation": "40m를 5m 간격으로 나누면 8개의 간격이 생겨요. 간격이 8개면 나무는 9그루가 맞아요! (나무 수 = 간격 수 + 1)",
+    "hint": "간격의 개수와 나무의 개수는 1개 차이가 나요.",
+    "difficulty": 3
+  },
+  {
+    "id": "skill_hard_4_2",
+    "subject": "skill",
+    "question": "🔢 어떤 수를 3배하고 7을 빼면 14가 돼요. 어떤 수는 무엇일까요?",
+    "options": "["5", "6", "7", "8"],
+    "correctIndex": 2,
+    "explanation": "거꾸로 풀어봐요! 14에 7을 더하면 21이고, 21을 3으로 나누면 7이에요. 확인: 7 × 3 - 7 = 21 - 7 = 14 맞아요!",
+    "hint": "마지막 결과부터 거꾸로 계산하세요. 빼기의 반대는 더하기, 곱하기의 반대는 나누기예요.",
+    "difficulty": 3
+  }
+]

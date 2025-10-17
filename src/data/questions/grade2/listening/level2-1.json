@@ -1,0 +1,90 @@
+[
+  {
+    "id": "listening_medium_g2_3_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 알맞은 답을 고르세요.",
+    "audioText": "Good morning, Tom. How are you?",
+    "options": ["아침 인사를 하고 있어요", "점심을 먹고 있어요", "숙제를 하고 있어요", "잠을 자고 있어요"],
+    "correctIndex": 0,
+    "explanation": "'Good morning'은 아침 인사이고, 'How are you?'는 안부를 묻는 말이에요.",
+    "hint": "'Good morning'이 들렸나요?",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_3_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 몇 개라고 했나요?",
+    "audioText": "I have three books.",
+    "options": ["2개", "3개", "4개", "5개"],
+    "correctIndex": 1,
+    "explanation": "'three'는 '3'이라는 뜻이므로 책이 3개예요.",
+    "hint": "숫자를 잘 들어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_3_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 가지고 있다고 했나요?",
+    "audioText": "I have a red bag.",
+    "options": ["빨간 책", "빨간 가방", "파란 가방", "빨간 연필"],
+    "correctIndex": 1,
+    "explanation": "'red bag'은 '빨간 가방'이라는 뜻이에요.",
+    "hint": "'red'는 빨간색, 'bag'은 가방이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_3_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 누가 학교에 간다고 했나요?",
+    "audioText": "My sister goes to school.",
+    "options": ["나", "오빠", "언니", "동생"],
+    "correctIndex": 2,
+    "explanation": "'My sister'는 '내 언니' 또는 '내 누나'라는 뜻이에요.",
+    "hint": "'sister'는 여자 형제예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_3_5",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 날씨가 어떤가요?",
+    "audioText": "It is sunny today.",
+    "options": ["비가 와요", "흐려요", "화창해요", "눈이 와요"],
+    "correctIndex": 2,
+    "explanation": "'sunny'는 '화창한'이라는 뜻이에요.",
+    "hint": "'sunny'는 해가 쨍쨍한 날씨예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_3_6",
+    "subject": "listening",
+    "question": "🎧 다음 질문을 듣고 무엇을 묻고 있나요?",
+    "audioText": "How old are you?",
+    "options": ["이름이 뭐예요?", "몇 살이에요?", "어디 사세요?", "뭐 좋아하세요?"],
+    "correctIndex": 1,
+    "explanation": "'How old are you?'는 '몇 살이에요?'라는 뜻으로 나이를 묻는 말이에요.",
+    "hint": "'old'는 나이와 관련된 단어예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_hard_g2_3_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 Tom이 무엇을 좋아하나요?",
+    "audioText": "Hello, Tom. Do you like apples? Yes, I like apples.",
+    "options": ["사과", "바나나", "포도", "딸기"],
+    "correctIndex": 0,
+    "explanation": "Tom이 'I like apples'라고 했으므로 사과를 좋아해요.",
+    "hint": "'apples'가 들렸나요?",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_3_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 하고 있나요?",
+    "audioText": "I am reading a book now.",
+    "options": ["책을 읽고 있어요", "책을 쓰고 있어요", "책을 사고 있어요", "책을 찾고 있어요"],
+    "correctIndex": 0,
+    "explanation": "'reading a book'은 '책을 읽고 있다'는 뜻이에요.",
+    "hint": "'reading'은 '읽는다'는 뜻이에요.",
+    "difficulty": 3
+  }
+]

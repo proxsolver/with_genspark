@@ -5,93 +5,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>퀴즈 생성기</title>
     <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 1rem; background-color: #f8f9fa; }
-        h1 { text-align: center; }
-        .form-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
-        select, button { width: 100%; padding: 0.75rem; font-size: 1rem; border-radius: 0.25rem; border: 1px solid #ccc; }
-        button { background-color: #007bff; color: white; cursor: pointer; border: none; }
-        button:disabled { background-color: #aaa; }
-        #result { margin-top: 1.5rem; padding: 1rem; background-color: #e9ecef; border-radius: 0.25rem; text-align: center; }
-        .hidden { display: none; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+        select, input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 2px solid #e0e0e0;
+            transition: border-color 0.3s;
+        }
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+        }
+        #result.success {
+            background-color: #d4edda;
+            border: 2px solid #c3e6cb;
+            color: #155724;
+        }
+        #result.error {
+            background-color: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+        #result.info {
+            background-color: #d1ecf1;
+            border: 2px solid #bee5eb;
+            color: #0c5460;
+        }
+        .hidden {
+            display: none;
+        }
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #0c5460;
+        }
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .preview-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .preview-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .preview-card .question {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+        .preview-card .explanation {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <h1>📝 제미나이 퀴즈 생성기</h1>
-    <form id="quiz-generator-form">
-        <div class="form-group">
-            <label for="grade">학년</label>
-            <select id="grade" name="grade" required>
-                <option value="1">1학년</option>
-                <option value="2">2학년</option>
-                <option value="3">3학년</option>
-                <option value="4">4학년</option>
-                <option value="5">5학년</option>
-                <option value="6">6학년</option>
-            </select>
+    <div class="container">
+        <h1>📝 퀴즈 생성기</h1>
+        <p class="subtitle">제미나이 AI를 활용해 새로운 퀴즈 문제를 자동 생성합니다</p>
+
+        <div class="info-box">
+            💡 <strong>안내:</strong> 새로운 문제를 생성하면 해당 학년/과목/난이도에 맞는 JSON 파일이 자동으로 생성됩니다.
         </div>
-        <div class="form-group">
-            <label for="subject">과목</label>
-            <select id="subject" name="subject" required>
-                <!-- 과목은 /src/data/questions/grade1/ 폴더 기준으로 동적 생성 -->
-            </select>
+
+        <form id="quiz-generator-form">
+            <div class="form-group">
+                <label for="grade">학년 선택</label>
+                <select id="grade" name="grade" required>
+                    <option value="">학년을 선택하세요</option>
+                    <option value="1">1학년</option>
+                    <option value="2">2학년</option>
+                    <option value="3">3학년</option>
+                    <option value="4" selected>4학년</option>
+                    <option value="5">5학년</option>
+                    <option value="6">6학년</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">과목 선택</label>
+                <select id="subject" name="subject" required>
+                    <option value="">과목을 선택하세요</option>
+                    <option value="english">영어 (English)</option>
+                    <option value="math">수학 (Math)</option>
+                    <option value="science">과학 (Science)</option>
+                    <option value="korean">국어 (Korean)</option>
+                    <option value="social">사회 (Social)</option>
+                    <option value="common">상식 (Common)</option>
+                    <option value="idiom">사자성어 (Idiom)</option>
+                    <option value="person">인물 (Person)</option>
+                    <option value="economy">경제 (Economy)</option>
+                    <option value="production">생산 (Production)</option>
+                    <option value="toeic">TOEIC</option>
+                    <option value="ai">AI</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="difficulty">난이도 선택</label>
+                <select id="difficulty" name="difficulty" required>
+                    <option value="">난이도를 선택하세요</option>
+                    <option value="1">1 - 쉬움 (Easy)</option>
+                    <option value="2">2 - 보통 (Medium)</option>
+                    <option value="3">3 - 어려움 (Hard)</option>
+                </select>
+            </div>
+
+            <button type="submit" id="generate-btn" class="btn-primary">
+                🚀 퀴즈 생성하기
+            </button>
+        </form>
+
+        <div id="result" class="hidden"></div>
+
+        <!-- 미리보기 섹션 -->
+        <div id="preview-section" class="hidden" style="margin-top: 2rem;">
+            <h3 style="color: #333; margin-bottom: 1rem;">📋 생성된 문제 미리보기</h3>
+            <div id="preview-content"></div>
         </div>
-        <div class="form-group">
-            <label for="difficulty">난이도</label>
-            <select id="difficulty" name="difficulty" required>
-                <option value="1">1 (쉬움)</option>
-                <option value="2">2 (보통)</option>
-                <option value="3">3 (어려움)</option>
-            </select>
-        </div>
-        <button type="submit" id="generate-btn">퀴즈 생성</button>
-    </form>
-    <div id="result" class="hidden"></div>
+    </div>
 
     <script>
         const gradeSelect = document.getElementById('grade');
         const subjectSelect = document.getElementById('subject');
+        const difficultySelect = document.getElementById('difficulty');
         const form = document.getElementById('quiz-generator-form');
         const generateBtn = document.getElementById('generate-btn');
         const resultDiv = document.getElementById('result');
 
-        // 임시 과목 목록 - 실제로는 API를 통해 받아와야 합니다.
-        const subjectsByGrade = {
-            1: ['korean', 'math', 'common', 'science'],
-            // 학년별로 다른 과목이 있다면 추가
-        };
-
-        function populateSubjects(grade) {
-            const subjects = subjectsByGrade[grade] || subjectsByGrade[1]; // 기본값
-            subjectSelect.innerHTML = '';
-            subjects.forEach(subject => {
-                const option = document.createElement('option');
-                option.value = subject;
-                option.textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
-                subjectSelect.appendChild(option);
-            });
-        }
-        
-        // 초기 과목 목록 채우기
-        populateSubjects(gradeSelect.value);
-
-        // 학년 변경 시 과목 목록 업데이트
-        gradeSelect.addEventListener('change', (e) => {
-            // 지금은 모든 학년의 과목이 동일하다고 가정합니다.
-            // 필요 시 populateSubjects(e.target.value) 호출
-        });
-
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const grade = gradeSelect.value;
             const subject = subjectSelect.value;
-            const difficulty = document.getElementById('difficulty').value;
+            const difficulty = difficultySelect.value;
+
+            if (!grade || !subject || !difficulty) {
+                showResult('모든 항목을 선택해주세요.', 'error');
+                return;
+            }
 
             generateBtn.disabled = true;
-            generateBtn.textContent = '생성 중...';
-            resultDiv.classList.remove('hidden');
-            resultDiv.textContent = '제미나이 API 호출 중... 잠시만 기다려주세요.';
+            generateBtn.innerHTML = '<span class="spinner"></span>생성 중...';
+            showResult('제미나이 AI가 문제를 생성하고 있습니다... (30초~1분 소요)', 'info');
 
             try {
                 const response = await fetch('/api/generate-quiz', {
@@ -108,17 +255,64 @@
                     throw new Error(result.message || '알 수 없는 오류가 발생했습니다.');
                 }
 
-                resultDiv.style.backgroundColor = '#d4edda';
-                resultDiv.textContent = `✅ 생성 완료! 파일 위치: ${result.filePath}`;
+                showResult(`✅ 생성 완료!<br><br><strong>파일 위치:</strong><br>${result.filePath}<br><strong>생성된 문제 수:</strong> ${result.totalQuestions}개<br><br>💡 이제 힌트 생성기에서 이 파일에 힌트를 추가할 수 있습니다.`, 'success');
+
+                // 미리보기 표시
+                if (result.preview && result.preview.first && result.preview.last) {
+                    showPreview(result.preview);
+                }
 
             } catch (error) {
-                resultDiv.style.backgroundColor = '#f8d7da';
-                resultDiv.textContent = `❌ 생성 실패: ${error.message}`;
+                showResult(`❌ 생성 실패<br><br><strong>오류:</strong> ${error.message}`, 'error');
             } finally {
                 generateBtn.disabled = false;
-                generateBtn.textContent = '퀴즈 생성';
+                generateBtn.innerHTML = '🚀 퀴즈 생성하기';
             }
         });
+
+        function showResult(message, type) {
+            resultDiv.innerHTML = message;
+            resultDiv.className = type;
+            resultDiv.classList.remove('hidden');
+        }
+
+        function showPreview(preview) {
+            const previewSection = document.getElementById('preview-section');
+            const previewContent = document.getElementById('preview-content');
+
+            let html = '';
+
+            // 첫 번째 문제
+            if (preview.first) {
+                html += `
+                    <div class="preview-card">
+                        <h4>📌 첫 번째 문제</h4>
+                        <div class="question">${preview.first.question}</div>
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                            <strong>정답:</strong> ${preview.first.options[preview.first.correctIndex]}
+                        </div>
+                        ${preview.first.explanation ? `<div class="explanation"><strong>💡 해설:</strong> ${preview.first.explanation}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            // 마지막 문제
+            if (preview.last && preview.last.id !== preview.first.id) {
+                html += `
+                    <div class="preview-card">
+                        <h4>📌 마지막 문제</h4>
+                        <div class="question">${preview.last.question}</div>
+                        <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                            <strong>정답:</strong> ${preview.last.options[preview.last.correctIndex]}
+                        </div>
+                        ${preview.last.explanation ? `<div class="explanation"><strong>💡 해설:</strong> ${preview.last.explanation}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            previewContent.innerHTML = html;
+            previewSection.classList.remove('hidden');
+        }
     </script>
 </body>
 </html>

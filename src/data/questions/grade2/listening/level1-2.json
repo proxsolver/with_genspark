@@ -1,0 +1,145 @@
+[
+  {
+    "id": "listening_easy_g2_2_1",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Book",
+    "options": ["책", "연필", "가방", "책상"],
+    "correctIndex": 0,
+    "explanation": "'Book'은 '책'이라는 뜻이에요.",
+    "hint": "읽는 물건이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_2",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Pencil",
+    "options": ["책", "연필", "가방", "지우개"],
+    "correctIndex": 1,
+    "explanation": "'Pencil'은 '연필'이라는 뜻이에요.",
+    "hint": "쓰는 도구예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_3",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "School",
+    "options": ["집", "학교", "공원", "병원"],
+    "correctIndex": 1,
+    "explanation": "'School'은 '학교'라는 뜻이에요.",
+    "hint": "공부하러 가는 곳이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_4",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Teacher",
+    "options": ["학생", "선생님", "의사", "요리사"],
+    "correctIndex": 1,
+    "explanation": "'Teacher'는 '선생님'이라는 뜻이에요.",
+    "hint": "학교에서 가르쳐 주시는 분이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_5",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 가족을 고르세요.",
+    "audioText": "Mother",
+    "options": ["아빠", "엄마", "형", "누나"],
+    "correctIndex": 1,
+    "explanation": "'Mother'는 '엄마'라는 뜻이에요.",
+    "hint": "여자 부모님이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_6",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 가족을 고르세요.",
+    "audioText": "Father",
+    "options": ["아빠", "엄마", "형", "누나"],
+    "correctIndex": 0,
+    "explanation": "'Father'는 '아빠'라는 뜻이에요.",
+    "hint": "남자 부모님이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_7",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 색깔을 고르세요.",
+    "audioText": "Yellow",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 2,
+    "explanation": "'Yellow'는 '노란색'이라는 뜻이에요.",
+    "hint": "바나나의 색깔이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_8",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 색깔을 고르세요.",
+    "audioText": "Green",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 3,
+    "explanation": "'Green'은 '초록색'이라는 뜻이에요.",
+    "hint": "나뭇잎의 색깔이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_9",
+    "subject": "listening",
+    "question": "🎧 다음 숫자를 듣고 알맞은 것을 고르세요.",
+    "audioText": "Five",
+    "options": ["4", "5", "6", "7"],
+    "correctIndex": 1,
+    "explanation": "'Five'는 숫자 '5'예요.",
+    "hint": "한 손의 손가락 개수예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_2_10",
+    "subject": "listening",
+    "question": "🎧 다음 숫자를 듣고 알맞은 것을 고르세요.",
+    "audioText": "Ten",
+    "options": ["8", "9", "10", "11"],
+    "correctIndex": 2,
+    "explanation": "'Ten'은 숫자 '10'이에요.",
+    "hint": "두 손의 손가락 개수예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_medium_g2_2_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "Nice to meet you.",
+    "options": ["만나서 반가워", "잘 지내", "안녕히 가", "고마워"],
+    "correctIndex": 0,
+    "explanation": "'Nice to meet you'는 '만나서 반가워'라는 뜻이에요.",
+    "hint": "처음 만났을 때 하는 인사예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_2_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇이 좋다는 말인가요?",
+    "audioText": "I like dogs.",
+    "options": ["고양이", "강아지", "토끼", "새"],
+    "correctIndex": 1,
+    "explanation": "'I like dogs'는 '나는 강아지를 좋아해'라는 뜻이에요.",
+    "hint": "'dog'는 '강아지'라는 뜻이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_2_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "What is your name?",
+    "options": ["이름이 뭐예요?", "몇 살이에요?", "어디 사세요?", "뭐 하세요?"],
+    "correctIndex": 0,
+    "explanation": "'What is your name?'은 '이름이 뭐예요?'라는 뜻이에요.",
+    "hint": "'name'은 '이름'이라는 뜻이에요.",
+    "difficulty": 2
+  }
+]

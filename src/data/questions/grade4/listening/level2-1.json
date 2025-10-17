@@ -1,0 +1,79 @@
+[
+  {
+    "id": "listening_medium_g4_3_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 생일이 언제인가요?",
+    "audioText": "When is your birthday? My birthday is on May 15th.",
+    "options": ["3월 15일", "4월 15일", "5월 15일", "6월 15일"],
+    "correctIndex": 2,
+    "explanation": "'May 15th'는 '5월 15일'이에요.",
+    "hint": "'May'는 '5월'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_3_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 누구를 닮았나요?",
+    "audioText": "You look like your mother. You have the same eyes.",
+    "options": ["아빠", "엄마", "형", "언니"],
+    "correctIndex": 1,
+    "explanation": "'look like your mother'는 '엄마를 닮았다'는 뜻이에요.",
+    "hint": "'mother'는 '엄마'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_3_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 추천하고 있나요?",
+    "audioText": "Can you recommend a good book? Yes, I recommend Harry Potter. It's very exciting.",
+    "options": ["해리포터", "톰 소여", "이상한 나라의 앨리스", "어린 왕자"],
+    "correctIndex": 0,
+    "explanation": "'Harry Potter'를 추천하고 있어요.",
+    "hint": "책 제목을 잘 들어보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_3_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 날씨가 어떻게 변할까요?",
+    "audioText": "It's sunny now, but it will rain this afternoon.",
+    "options": ["계속 맑아요", "오후에 비가 와요", "저녁에 눈이 와요", "아침에 흐려요"],
+    "correctIndex": 1,
+    "explanation": "'it will rain this afternoon'은 '오후에 비가 올 것이다'라는 뜻이에요.",
+    "hint": "'this afternoon'은 '오후에'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_3_5",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 음식을 좋아하지 않나요?",
+    "audioText": "What food don't you like? I don't like spicy food. It's too hot for me.",
+    "options": ["단 음식", "매운 음식", "신 음식", "짠 음식"],
+    "correctIndex": 1,
+    "explanation": "'spicy food'는 '매운 음식'이에요.",
+    "hint": "'spicy'는 '매운'이라는 뜻이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_hard_g4_3_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 하면 안 되나요?",
+    "audioText": "Can I use my phone in the library? No, you can't. You must keep quiet.",
+    "options": ["전화 사용", "책 읽기", "공부하기", "물 마시기"],
+    "correctIndex": 0,
+    "explanation": "도서관에서 전화를 사용하면 안 된다고 했어요.",
+    "hint": "'phone'과 'can't'를 잘 들어보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_3_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 왜 피곤한가요?",
+    "audioText": "I'm tired because I stayed up late last night to finish my project.",
+    "options": ["늦게까지 놀았어요", "운동을 많이 했어요", "프로젝트를 끝냈어요", "아파요"],
+    "correctIndex": 2,
+    "explanation": "'stayed up late to finish my project'는 '프로젝트를 끝내려고 늦게까지 깨어있었다'는 뜻이에요.",
+    "hint": "'project'를 잘 들어보세요.",
+    "difficulty": 3
+  }
+]

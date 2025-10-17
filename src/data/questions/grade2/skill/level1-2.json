@@ -1,0 +1,172 @@
+[
+  {
+    "id": "skill_easy_3_1",
+    "subject": "skill",
+    "question": "🎨 빨간색 크레파스가 5개, 파란색 크레파스가 8개 있어요. 크레파스는 모두 몇 개일까요?",
+    "options": ["3개", "11개", "13개", "15개"],
+    "correctIndex": 1,
+    "explanation": "빨간색 5개와 파란색 8개를 합치면 5 + 8 = 13개예요!",
+    "hint": "두 색의 크레파스를 모두 더해보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_2",
+    "subject": "skill",
+    "question": "🌳 나무 밑에 도토리가 있어요. 다람쥐가 7개를 주웠고, 아직 11개가 남아있어요. 처음에 도토리는 몇 개였을까요?",
+    "options": ["4개", "7개", "18개", "21개"],
+    "correctIndex": 2,
+    "explanation": "주운 7개와 남은 11개를 합치면 7 + 11 = 18개가 처음에 있었어요!",
+    "hint": "주운 것과 남은 것을 합쳐보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_3",
+    "subject": "skill",
+    "question": "🦆 연못에 오리 9마리가 있었어요. 5마리가 날아갔어요. 남은 오리는 몇 마리일까요?",
+    "options": ["4마리", "5마리", "9마리", "14마리"],
+    "correctIndex": 0,
+    "explanation": "9마리에서 5마리가 날아갔으니까 9 - 5 = 4마리가 남았어요!",
+    "hint": "날아간 오리를 빼보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_4",
+    "subject": "skill",
+    "question": "📏 연필이 6자루씩 3묶음 있어요. 연필은 모두 몇 자루일까요?",
+    "options": ["9자루", "12자루", "15자루", "18자루"],
+    "correctIndex": 3,
+    "explanation": "6자루씩 3묶음이니까 6 + 6 + 6 = 18자루예요! 또는 6 × 3 = 18로 계산할 수 있어요!",
+    "hint": "6을 3번 더해보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_5",
+    "subject": "skill",
+    "question": "🌈 무지개 색깔은 모두 몇 가지일까요?",
+    "options": ["5가지", "6가지", "7가지", "8가지"],
+    "correctIndex": 2,
+    "explanation": "무지개는 빨주노초파남보, 7가지 색깔로 이루어져 있어요!",
+    "hint": "'빨주노초파남보'를 세어보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_6",
+    "subject": "skill",
+    "question": "🍓 딸기 24개를 4명이 똑같이 나누어 먹으려고 해요. 한 명이 몇 개씩 먹을 수 있을까요?",
+    "options": ["4개", "6개", "8개", "12개"],
+    "correctIndex": 1,
+    "explanation": "24개를 4명이 나누면 24 ÷ 4 = 6개씩 먹을 수 있어요!",
+    "hint": "24를 4로 나누어보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_7",
+    "subject": "skill",
+    "question": "🔢 10, 20, 30, 40, ? 다음에 올 숫자는 무엇일까요?",
+    "options": ["45", "50", "55", "60"],
+    "correctIndex": 1,
+    "explanation": "10씩 커지는 규칙이에요! 40 다음은 40 + 10 = 50이에요!",
+    "hint": "숫자가 얼마씩 커지는지 보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_8",
+    "subject": "skill",
+    "question": "🎪 서커스에 어른 15명, 어린이 23명이 왔어요. 관객은 모두 몇 명일까요?",
+    "options": ["8명", "30명", "38명", "45명"],
+    "correctIndex": 2,
+    "explanation": "어른 15명과 어린이 23명을 합치면 15 + 23 = 38명이에요!",
+    "hint": "어른과 어린이 수를 더해보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_9",
+    "subject": "skill",
+    "question": "🥛 우유가 한 병에 200ml씩 들어있어요. 3병을 마시면 몇 ml를 마신 걸까요?",
+    "options": ["203ml", "400ml", "500ml", "600ml"],
+    "correctIndex": 3,
+    "explanation": "200ml씩 3병이니까 200 + 200 + 200 = 600ml예요! 또는 200 × 3 = 600으로 계산할 수 있어요!",
+    "hint": "200을 3번 더해보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_easy_3_10",
+    "subject": "skill",
+    "question": "🎯 과녁에 화살 3개가 맞았어요. 각각 10점, 5점, 8점이었어요. 총 몇 점일까요?",
+    "options": ["15점", "18점", "23점", "28점"],
+    "correctIndex": 2,
+    "explanation": "10 + 5 + 8 = 23점이에요!",
+    "hint": "세 점수를 모두 더해보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "skill_medium_2_1",
+    "subject": "skill",
+    "question": "🧮 민수는 구슬을 15개 가지고 있었어요. 동생에게 몇 개를 주고 나니 8개가 남았어요. 동생에게 몇 개를 주었을까요?",
+    "options": ["5개", "6개", "7개", "8개"],
+    "correctIndex": 2,
+    "explanation": "처음 15개에서 8개가 남았으니까 15 - 8 = 7개를 동생에게 주었어요!",
+    "hint": "처음 개수에서 남은 개수를 빼보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_2_2",
+    "subject": "skill",
+    "question": "🍎 사과와 배를 합쳐서 30개 샀어요. 사과가 18개라면 배는 몇 개일까요?",
+    "options": ["10개", "12개", "14개", "16개"],
+    "correctIndex": 1,
+    "explanation": "전체 30개에서 사과 18개를 빼면 30 - 18 = 12개가 배예요!",
+    "hint": "전체에서 사과 개수를 빼보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_2_3",
+    "subject": "skill",
+    "question": "🚗 주차장에 자동차와 오토바이를 합쳐서 바퀴가 20개 있어요. 자동차는 바퀴가 4개, 오토바이는 바퀴가 2개예요. 오토바이가 4대라면 자동차는 몇 대일까요?",
+    "options": ["2대", "3대", "4대", "5대"],
+    "correctIndex": 1,
+    "explanation": "오토바이 4대의 바퀴는 2 × 4 = 8개예요. 남은 바퀴는 20 - 8 = 12개이고, 자동차 바퀴는 4개씩이니까 12 ÷ 4 = 3대예요!",
+    "hint": "먼저 오토바이 바퀴 개수를 구한 다음, 남은 바퀴로 자동차 대수를 구해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_2_4",
+    "subject": "skill",
+    "question": "📅 오늘이 3월 25일이에요. 5일 후는 몇 월 몇 일일까요? (3월은 31일까지 있어요)",
+    "options": ["3월 29일", "3월 30일", "3월 31일", "4월 1일"],
+    "correctIndex": 1,
+    "explanation": "3월 25일에서 5일을 더하면 25 + 5 = 30일이에요. 아직 3월 안이니까 3월 30일이에요!",
+    "hint": "25에 5를 더해보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_medium_2_5",
+    "subject": "skill",
+    "question": "🎁 상자 안에 빨간 공과 파란 공이 들어있어요. 빨간 공은 파란 공보다 3개 더 많고, 파란 공이 7개예요. 빨간 공은 몇 개일까요?",
+    "options": ["4개", "7개", "10개", "12개"],
+    "correctIndex": 2,
+    "explanation": "파란 공이 7개이고, 빨간 공은 3개 더 많으니까 7 + 3 = 10개예요!",
+    "hint": "'더 많다'는 더하기를 의미해요.",
+    "difficulty": 2
+  },
+  {
+    "id": "skill_hard_2_1",
+    "subject": "skill",
+    "question": "🧩 숫자 퍼즐: 어떤 숫자에 5를 더하고, 그 결과를 2배로 하면 20이 돼요. 어떤 숫자는 무엇일까요?",
+    "options": ["3", "5", "7", "10"],
+    "correctIndex": 1,
+    "explanation": "거꾸로 생각해봐요! 2배해서 20이 되려면 그 전 숫자는 20 ÷ 2 = 10이에요. 10이 되려면 5를 더하기 전 숫자는 10 - 5 = 5예요!",
+    "hint": "마지막 결과부터 거꾸로 계산해보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "skill_hard_2_2",
+    "subject": "skill",
+    "question": "🔢 패턴 찾기: 2, 5, 4, 7, 6, 9, ? 다음 숫자는?",
+    "options": ["8", "10", "11", "12"],
+    "correctIndex": 0,
+    "explanation": "홀수 번째(2, 4, 6, ?)는 2씩 커지고, 짝수 번째(5, 7, 9)도 2씩 커져요. 다음은 홀수 번째 차례이니까 6 + 2 = 8이에요!",
+    "hint": "홀수 번째와 짝수 번째를 따로 보세요.",
+    "difficulty": 3
+  }
+]

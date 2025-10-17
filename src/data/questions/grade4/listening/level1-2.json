@@ -1,0 +1,123 @@
+[
+  {
+    "id": "listening_easy_g4_2_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어느 계절에 대해 말하고 있나요?",
+    "audioText": "I love summer because I can swim in the ocean.",
+    "options": ["봄", "여름", "가을", "겨울"],
+    "correctIndex": 1,
+    "explanation": "'summer'는 '여름'이라는 뜻이에요.",
+    "hint": "바다에서 수영할 수 있는 계절이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 샀나요?",
+    "audioText": "I bought a new computer yesterday.",
+    "options": ["컴퓨터", "핸드폰", "태블릿", "노트북"],
+    "correctIndex": 0,
+    "explanation": "'computer'는 '컴퓨터'예요.",
+    "hint": "'computer'를 잘 들어보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 운동을 하나요?",
+    "audioText": "Do you exercise every day? Yes, I go jogging every morning.",
+    "options": ["수영", "조깅", "자전거", "요가"],
+    "correctIndex": 1,
+    "explanation": "'jogging'은 '조깅'이에요.",
+    "hint": "아침에 달리는 운동이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 배우고 있나요?",
+    "audioText": "I'm learning to play the guitar.",
+    "options": ["피아노", "기타", "바이올린", "드럼"],
+    "correctIndex": 1,
+    "explanation": "'guitar'는 '기타'예요.",
+    "hint": "'guitar'를 잘 들어보세요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_5",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 언제 숙제를 끝냈나요?",
+    "audioText": "I finished my homework after dinner.",
+    "options": ["아침 전에", "점심 후에", "저녁 후에", "자기 전에"],
+    "correctIndex": 2,
+    "explanation": "'after dinner'는 '저녁 후에'라는 뜻이에요.",
+    "hint": "'after'는 '~후에'예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_6",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 얼마나 걸리나요?",
+    "audioText": "How long does it take to get to school? It takes about thirty minutes.",
+    "options": ["20분", "30분", "40분", "50분"],
+    "correctIndex": 1,
+    "explanation": "'thirty minutes'는 '30분'이에요.",
+    "hint": "'thirty'는 숫자 '30'이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g4_2_7",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 잃어버렸나요?",
+    "audioText": "I lost my umbrella on the bus.",
+    "options": ["가방", "우산", "지갑", "책"],
+    "correctIndex": 1,
+    "explanation": "'umbrella'는 '우산'이에요.",
+    "hint": "비 올 때 쓰는 물건이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_medium_g4_2_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 왜 기분이 좋나요?",
+    "audioText": "You look happy today. Yes, I got a good grade on my math test.",
+    "options": ["시험을 잘 봤어요", "친구를 만났어요", "선물을 받았어요", "여행을 가요"],
+    "correctIndex": 0,
+    "explanation": "'got a good grade on my test'는 '시험에서 좋은 점수를 받았다'는 뜻이에요.",
+    "hint": "'grade'는 '점수'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_2_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 동물인가요?",
+    "audioText": "It's a large animal with a long trunk and big ears.",
+    "options": ["기린", "코끼리", "하마", "사자"],
+    "correctIndex": 1,
+    "explanation": "'long trunk'는 '긴 코'라는 뜻으로, 코끼리를 설명하고 있어요.",
+    "hint": "코가 길고 귀가 큰 동물이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_2_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇을 하기로 했나요?",
+    "audioText": "Let's meet at the cinema at 3 o'clock. Okay, see you there!",
+    "options": ["영화 보기", "쇼핑하기", "공부하기", "운동하기"],
+    "correctIndex": 0,
+    "explanation": "'cinema'는 '영화관'이라는 뜻이에요.",
+    "hint": "'cinema'는 영화를 보는 곳이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g4_2_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇이 필요한가요?",
+    "audioText": "To make a sandwich, you need bread, cheese, and vegetables.",
+    "options": ["빵, 치즈, 야채", "빵, 고기, 소스", "빵, 버터, 잼", "빵, 계란, 우유"],
+    "correctIndex": 0,
+    "explanation": "'bread, cheese, and vegetables'는 '빵, 치즈, 야채'예요.",
+    "hint": "세 가지 재료를 잘 들어보세요.",
+    "difficulty": 2
+  }
+]

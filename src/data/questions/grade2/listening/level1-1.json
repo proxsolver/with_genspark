@@ -1,0 +1,178 @@
+[
+  {
+    "id": "listening_easy_g2_1_1",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "Hello!",
+    "options": ["안녕!", "고마워!", "잘가!", "미안해!"],
+    "correctIndex": 0,
+    "explanation": "'Hello'는 '안녕!'이라는 뜻의 인사말이에요.",
+    "hint": "만날 때 하는 인사말이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_2",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "Thank you!",
+    "options": ["안녕!", "고마워!", "좋아!", "싫어!"],
+    "correctIndex": 1,
+    "explanation": "'Thank you'는 '고마워!'라는 뜻이에요.",
+    "hint": "감사할 때 하는 말이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_3",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "Goodbye!",
+    "options": ["안녕!", "고마워!", "잘가!", "미안해!"],
+    "correctIndex": 2,
+    "explanation": "'Goodbye'는 '잘가!'라는 뜻으로, 헤어질 때 하는 인사말이에요.",
+    "hint": "헤어질 때 하는 인사말이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_4",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "I'm sorry.",
+    "options": ["안녕!", "고마워!", "좋아!", "미안해!"],
+    "correctIndex": 3,
+    "explanation": "'I'm sorry'는 '미안해'라는 뜻이에요.",
+    "hint": "잘못했을 때 하는 말이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_5",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Apple",
+    "options": ["사과", "바나나", "포도", "오렌지"],
+    "correctIndex": 0,
+    "explanation": "'Apple'은 '사과'라는 뜻이에요.",
+    "hint": "빨간색이나 초록색 과일이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_6",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Dog",
+    "options": ["고양이", "강아지", "토끼", "새"],
+    "correctIndex": 1,
+    "explanation": "'Dog'는 '강아지'라는 뜻이에요.",
+    "hint": "멍멍 짖는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_7",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 단어를 고르세요.",
+    "audioText": "Cat",
+    "options": ["고양이", "강아지", "토끼", "새"],
+    "correctIndex": 0,
+    "explanation": "'Cat'은 '고양이'라는 뜻이에요.",
+    "hint": "야옹 하고 우는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_8",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 색깔을 고르세요.",
+    "audioText": "Red",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 0,
+    "explanation": "'Red'는 '빨간색'이라는 뜻이에요.",
+    "hint": "사과나 딸기의 색깔이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_9",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 색깔을 고르세요.",
+    "audioText": "Blue",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 1,
+    "explanation": "'Blue'는 '파란색'이라는 뜻이에요.",
+    "hint": "하늘이나 바다의 색깔이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_10",
+    "subject": "listening",
+    "question": "🎧 다음 숫자를 듣고 알맞은 것을 고르세요.",
+    "audioText": "One",
+    "options": ["1", "2", "3", "4"],
+    "correctIndex": 0,
+    "explanation": "'One'은 숫자 '1'이에요.",
+    "hint": "가장 작은 숫자예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_11",
+    "subject": "listening",
+    "question": "🎧 다음 숫자를 듣고 알맞은 것을 고르세요.",
+    "audioText": "Two",
+    "options": ["1", "2", "3", "4"],
+    "correctIndex": 1,
+    "explanation": "'Two'는 숫자 '2'예요.",
+    "hint": "1 다음 숫자예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_easy_g2_1_12",
+    "subject": "listening",
+    "question": "🎧 다음 숫자를 듣고 알맞은 것을 고르세요.",
+    "audioText": "Three",
+    "options": ["1", "2", "3", "4"],
+    "correctIndex": 2,
+    "explanation": "'Three'는 숫자 '3'이에요.",
+    "hint": "2 다음 숫자예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "listening_medium_g2_1_1",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "Good morning!",
+    "options": ["좋은 아침!", "좋은 밤!", "좋은 저녁!", "좋은 오후!"],
+    "correctIndex": 0,
+    "explanation": "'Good morning'은 '좋은 아침', 즉 아침 인사예요.",
+    "hint": "아침에 하는 인사말이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_1_2",
+    "subject": "listening",
+    "question": "🎧 다음 영어를 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "How are you?",
+    "options": ["뭐 하니?", "어떻게 지내?", "어디 가니?", "누구세요?"],
+    "correctIndex": 1,
+    "explanation": "'How are you?'는 '어떻게 지내?'라는 안부 인사예요.",
+    "hint": "상대방의 상태를 묻는 말이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_1_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 좋아한다는 말인가요?",
+    "audioText": "I like apples.",
+    "options": ["사과", "바나나", "포도", "수박"],
+    "correctIndex": 0,
+    "explanation": "'I like apples'는 '나는 사과를 좋아해'라는 뜻이에요.",
+    "hint": "문장에 나온 과일 이름을 찾아보세요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_1_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 알맞은 뜻을 고르세요.",
+    "audioText": "This is my friend.",
+    "options": ["이건 내 책이야", "이건 내 친구야", "이건 내 집이야", "이건 내 가방이야"],
+    "correctIndex": 1,
+    "explanation": "'This is my friend'는 '이건 내 친구야'라는 뜻이에요.",
+    "hint": "'friend'는 '친구'라는 뜻이에요.",
+    "difficulty": 2
+  }
+]

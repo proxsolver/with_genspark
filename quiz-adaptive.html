@@ -274,10 +274,28 @@
                         문제를 불러오는 중...
                     </h2>
 
-                    <!-- TTS 버튼 -->
-                    <button id="tts-btn" onclick="playTTS()" class="ml-4 px-3 py-1 border-2 border-primary-500 text-primary-500 rounded-lg text-sm hover:bg-primary-500 hover:text-white transition-all hidden">
-                        🔊 발음
-                    </button>
+                    <div class="flex items-start space-x-2 ml-4">
+                        <!-- 힌트 버튼 -->
+                        <button id="hint-btn" onclick="showQuizHint()" class="px-3 py-1 border-2 border-yellow-500 text-yellow-600 rounded-lg text-sm hover:bg-yellow-500 hover:text-white transition-all hidden">
+                            💡 힌트
+                        </button>
+
+                        <!-- TTS 버튼 -->
+                        <button id="tts-btn" onclick="playTTS()" class="px-3 py-1 border-2 border-primary-500 text-primary-500 rounded-lg text-sm hover:bg-primary-500 hover:text-white transition-all hidden">
+                            🔊 발음
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 힌트 표시 영역 -->
+                <div id="hint-display" class="hidden bg-yellow-50 border-2 border-yellow-300 rounded-lg p-4 mb-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">💡</span>
+                        <div class="flex-1">
+                            <div class="font-bold text-yellow-900 mb-1">힌트</div>
+                            <div class="text-sm text-yellow-800" id="hint-text"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -446,16 +464,16 @@
         // 과목 정보
         const subjects = {
             english: { name: '영어', icon: '🇺🇸' },
+            listening: { name: '영어(듣기)', icon: '🎧' },
             math: { name: '수학', icon: '🔢' },
+            skill: { name: '수학(실력)', icon: '🎯' },
             science: { name: '과학', icon: '🔬' },
             korean: { name: '국어', icon: '📚' },
             social: { name: '사회', icon: '🏛️' },
             common: { name: '상식', icon: '🧠' },
             idiom: { name: '사자성어', icon: '📜' },
-            person: { name: '인물', icon: '👤' },
             economy: { name: '경제', icon: '💰' },
             production: { name: '생산', icon: '🏭' },
-            toeic: { name: 'TOEIC', icon: '📖' },
             ai: { name: 'AI', icon: '🤖' }
         };
 
@@ -615,6 +633,14 @@
             shuffledOptions = shuffleOptions(question);
             isAnswered = false;
 
+            // 힌트 버튼 초기화 (새 문제마다 재활성화)
+            const hintBtn = document.getElementById('hint-btn');
+            if (hintBtn) {
+                hintBtn.disabled = false;
+                hintBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                hintBtn.textContent = '💡 힌트';
+            }
+
             // UI 업데이트
             updateQuestionDisplay(question);
             updateProgressDisplay();
@@ -634,6 +660,28 @@
                     ${option.text}
                 </button>
             `).join('');
+
+            // 힌트 버튼 표시 조건: 난이도 2(보통) 또는 3(어려움) 이상
+            const hintBtn = document.getElementById('hint-btn');
+            const hintDisplay = document.getElementById('hint-display');
+
+            // 힌트 영역 초기화 (새 문제 로드 시 숨김)
+            hintDisplay.classList.add('hidden');
+
+            // 실력(skill) 과목은 모든 난이도에서 힌트 표시, 다른 과목은 난이도 2 이상에서만 표시
+            const isSkillSubject = question.subject === 'skill';
+            const shouldShowHint = isSkillSubject || currentDifficulty >= 2;
+
+            if (shouldShowHint && question.hint) {
+                // 힌트가 있고 조건 충족 시 버튼 표시
+                hintBtn.classList.remove('hidden');
+            } else if (shouldShowHint && !question.hint) {
+                // 힌트가 없지만 조건 충족 시에도 버튼 표시 (클릭 시 "힌트 없음" 메시지)
+                hintBtn.classList.remove('hidden');
+            } else {
+                // 조건 미충족 시 힌트 버튼 숨김
+                hintBtn.classList.add('hidden');
+            }
 
             // TTS 버튼
             const ttsBtn = document.getElementById('tts-btn');
@@ -1383,6 +1431,42 @@
                 document.getElementById('time-elapsed').textContent = 
                     `${minutes}:${seconds.toString().padStart(2, '0')}`;
             }, 1000);
+        }
+
+        // 힌트 표시
+        function showQuizHint() {
+            const question = currentQuestionPool[currentQuestionIndex];
+            const hintDisplay = document.getElementById('hint-display');
+            const hintText = document.getElementById('hint-text');
+            const hintBtn = document.getElementById('hint-btn');
+
+            if (question.hint) {
+                // 힌트가 있는 경우
+                hintText.textContent = question.hint;
+                hintDisplay.classList.remove('hidden');
+
+                // 힌트 버튼 비활성화 (한 번만 볼 수 있음)
+                hintBtn.disabled = true;
+                hintBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                hintBtn.textContent = '✓ 힌트 확인';
+
+                console.log('💡 힌트 표시:', question.hint);
+            } else {
+                // 힌트가 없는 경우
+                hintText.textContent = '이 문제에는 힌트가 제공되지 않습니다. 문제를 다시 읽어보세요!';
+                hintDisplay.classList.remove('hidden');
+
+                // 힌트 버튼 비활성화
+                hintBtn.disabled = true;
+                hintBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                console.log('💡 힌트 없음');
+            }
+
+            // 진동 피드백 (힌트 확인 시)
+            if (vibrationEnabled && navigator.vibrate) {
+                navigator.vibrate(50);
+            }
         }
 
         // TTS 재생

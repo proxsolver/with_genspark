@@ -1,0 +1,90 @@
+[
+  {
+    "id": "listening_medium_g2_4_1",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무슨 색인가요?",
+    "audioText": "I have a blue pencil.",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 1,
+    "explanation": "'blue'는 '파란색'이라는 뜻이에요.",
+    "hint": "하늘 색깔이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_4_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇을 하고 싶다고 했나요?",
+    "audioText": "I want to play soccer.",
+    "options": ["축구하고 싶어요", "농구하고 싶어요", "야구하고 싶어요", "수영하고 싶어요"],
+    "correctIndex": 0,
+    "explanation": "'play soccer'는 '축구하다'라는 뜻이에요.",
+    "hint": "'soccer'는 축구예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_4_3",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 무엇이 크다고 했나요?",
+    "audioText": "This is a big dog.",
+    "options": ["작은 강아지", "큰 강아지", "작은 고양이", "큰 고양이"],
+    "correctIndex": 1,
+    "explanation": "'big dog'는 '큰 강아지'라는 뜻이에요.",
+    "hint": "'big'은 '크다'는 뜻이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_4_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어디에 있나요?",
+    "audioText": "The cat is on the table.",
+    "options": ["의자 위", "책상 위", "침대 위", "바닥"],
+    "correctIndex": 1,
+    "explanation": "'on the table'은 '책상 위에'라는 뜻이에요.",
+    "hint": "'table'은 '책상'이라는 뜻이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_4_5",
+    "subject": "listening",
+    "question": "🎧 다음 질문을 듣고 무엇을 묻고 있나요?",
+    "audioText": "What color do you like?",
+    "options": ["무슨 색을 좋아해요?", "무엇을 좋아해요?", "누구를 좋아해요?", "어디를 좋아해요?"],
+    "correctIndex": 0,
+    "explanation": "'What color'는 '무슨 색'이라는 뜻이에요.",
+    "hint": "'color'는 '색깔'이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_medium_g2_4_6",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 누구의 것인가요?",
+    "audioText": "This is my mother's bag.",
+    "options": ["내 가방", "엄마의 가방", "언니의 가방", "친구의 가방"],
+    "correctIndex": 1,
+    "explanation": "'my mother's bag'은 '엄마의 가방'이라는 뜻이에요.",
+    "hint": "'mother'는 '엄마'예요.",
+    "difficulty": 2
+  },
+  {
+    "id": "listening_hard_g2_4_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 날씨가 어떤가요?",
+    "audioText": "How is the weather? It is rainy.",
+    "options": ["맑아요", "흐려요", "비가 와요", "눈이 와요"],
+    "correctIndex": 2,
+    "explanation": "'rainy'는 '비가 오는'이라는 뜻이에요.",
+    "hint": "'rain'은 '비'예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g2_4_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 몇 시인가요?",
+    "audioText": "It is seven o'clock.",
+    "options": ["6시", "7시", "8시", "9시"],
+    "correctIndex": 1,
+    "explanation": "'seven o'clock'은 '7시'라는 뜻이에요.",
+    "hint": "'seven'은 숫자 '7'이에요.",
+    "difficulty": 3
+  }
+]
