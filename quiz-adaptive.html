@@ -1022,8 +1022,8 @@
 
                     // 추가 학습 모드에서는 과목 완료 처리 안 함
                     if (!extraLearningMode) {
-                        // 난이도별 코인 계산 (쉬움 1코인, 보통 2코인, 어려움 3코인)
-                        const earnedCoins = (questionCounts.easy * 1) + (questionCounts.medium * 2) + (questionCounts.hard * 3);
+                        // 난이도별 코인 계산 (쉬움 1코인, 보통 2코인, 어려움 10코인)
+                        const earnedCoins = (questionCounts.easy * 1) + (questionCounts.medium * 2) + (questionCounts.hard * 10);
 
                         // 과목 완료 처리 (코인 포함)
                         const result = plantSystem.completeSubject(user, subjectName, subjectName, earnedCoins);
@@ -1052,12 +1052,24 @@
                                 plantSystemMessage += `\n💎 프리미엄 뽑기권 ${result.rewards.premiumGacha}개 획득!`;
                             }
 
-                            // Firebase 동기화
-                            if (window.plantSystemFirebase) {
-                                plantSystemFirebase.syncSubject({
-                                    questionsCompleted: totalAnswered,
-                                    correctAnswers: sessionStats.correct
+                            // Firebase 동기화 (비동기 처리)
+                            if (window.eduPetFirebaseIntegration && window.plantSystemFirebase) {
+                                // 1. 퀴즈 통계 업데이트 (일일 통계, 과목별 통계, 그룹 통계 포함)
+                                eduPetFirebaseIntegration.updateQuizStats({
+                                    subject: subjectName,
+                                    correctAnswers: sessionStats.correct,
+                                    totalQuestions: totalAnswered,
+                                    timeSpent: timeSpent
+                                }).catch(err => {
+                                    console.warn('⚠️ Firebase 퀴즈 통계 동기화 실패 (나중에 재시도됩니다):', err);
                                 });
+
+                                // 2. 식물 시스템 상태 저장 (돈, 티켓 정보 포함)
+                                plantSystemFirebase.save().catch(err => {
+                                    console.warn('⚠️ Firebase 식물 시스템 동기화 실패 (나중에 재시도됩니다):', err);
+                                });
+
+                                console.log('✅ Firebase 동기화 완료: 퀴즈 통계 + 식물 시스템 상태');
                             }
                         } else if (result.alreadyCompleted) {
                             plantSystemMessage = '\n\n⚠️ 이미 완료한 과목입니다';

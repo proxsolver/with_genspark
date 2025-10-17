@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>동물 컬렉션 테스트</title>
+</head>
+<body>
+    <h1>동물 컬렉션 데이터 확인</h1>
+    <pre id="data"></pre>
+
+    <script>
+        const animalCollection = localStorage.getItem('animalCollection');
+        const plantSystemUser = localStorage.getItem('plantSystemUser');
+        
+        document.getElementById('data').textContent = JSON.stringify({
+            animalCollection: animalCollection ? JSON.parse(animalCollection) : null,
+            plantSystemUser: plantSystemUser ? JSON.parse(plantSystemUser) : null
+        }, null, 2);
+    </script>
+</body>
+</html>

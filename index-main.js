@@ -204,6 +204,7 @@ function updateAllDisplays() {
     updateTodayActivity();
     updateWeeklyActivity();
     updateMissionWidget();
+    updateAnimalCollection(); // 동물 컬렉션 정보 업데이트
 }
 
 // 사용자 이름 및 아바타 업데이트
@@ -310,19 +311,19 @@ function updateStreak() {
     document.getElementById('streakDisplay').textContent = streakDays + '일째';
 }
 
-// 동물 수 업데이트
+// 동물 수 업데이트 (종류 수)
 function updateAnimalCount() {
     const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}}');
 
-    // collection 객체에서 각 동물의 count를 합산
-    let totalCount = 0;
-    if (animalState.collection) {
-        Object.values(animalState.collection).forEach(animal => {
-            totalCount += animal.count || 0;
-        });
-    }
+    // collection 객체에서 고유 동물 종류 수를 계산
+    const ownedCount = Object.keys(animalState.collection || {}).length;
 
-    document.getElementById('animalCountDisplay').textContent = totalCount + '마리';
+    console.log('🐾 [동물 컬렉션] 동물 수 업데이트:', ownedCount + '마리');
+
+    const animalCountEl = document.getElementById('animalCountDisplay');
+    if (animalCountEl) {
+        animalCountEl.textContent = ownedCount + '마리';
+    }
 }
 
 // 일일 진행률 업데이트
@@ -470,9 +471,14 @@ function updateTickets() {
         }
     }
 
-    document.getElementById('ticketCount').textContent = normalTickets + premiumTickets;
-    document.getElementById('normalTickets').textContent = normalTickets + '장';
-    document.getElementById('premiumTickets').textContent = premiumTickets + '장';
+    // null 체크하여 안전하게 업데이트
+    const ticketCountEl = document.getElementById('ticketCount');
+    const normalTicketsEl = document.getElementById('normalTickets');
+    const premiumTicketsEl = document.getElementById('premiumTickets');
+
+    if (ticketCountEl) ticketCountEl.textContent = normalTickets + premiumTickets;
+    if (normalTicketsEl) normalTicketsEl.textContent = normalTickets + '장';
+    if (premiumTicketsEl) premiumTicketsEl.textContent = premiumTickets + '장';
 }
 
 // 약점 과목 업데이트
@@ -488,6 +494,7 @@ function updateWeaknessSubject() {
 
     const subjectIcons = {
         '영어': '🇺🇸',
+        '듣기': '👂',
         '수학': '🔢',
         '과학': '🔬',
         '국어': '📚',
@@ -500,6 +507,7 @@ function updateWeaknessSubject() {
 
     const subjectIds = {
         '영어': 'english',
+        '듣기': 'listening',
         '수학': 'math',
         '과학': 'science',
         '국어': 'korean',
@@ -529,6 +537,7 @@ async function loadWeaknessQuestion() {
     // 한글 과목명을 영어 ID로 변환
     const subjectIds = {
         '영어': 'english',
+        '듣기': 'listening',
         '수학': 'math',
         '과학': 'science',
         '국어': 'korean',
@@ -547,6 +556,7 @@ async function loadWeaknessQuestion() {
     if (question) {
         const subjectIcons = {
             '영어': '🇺🇸',
+            '듣기': '👂',
             '수학': '🔢',
             '과학': '🔬',
             '국어': '📚',
@@ -599,6 +609,7 @@ function startWeaknessQuiz() {
     // 한글 과목명을 영어 ID로 변환
     const subjectIds = {
         '영어': 'english',
+        '듣기': 'listening',
         '수학': 'math',
         '과학': 'science',
         '국어': 'korean',
@@ -755,5 +766,221 @@ function updateWeeklyActivity() {
         }
     } catch (e) {
         console.error('주간 활동 업데이트 오류:', e);
+    }
+}
+
+// ========== 동물 컬렉션 분석 및 표시 ==========
+
+// 동물 컬렉션 전체 업데이트
+function updateAnimalCollection() {
+    console.log('📚 [동물 컬렉션] 전체 업데이트 시작');
+    updateCollectionProgress();
+    updateRarityStats();
+    updateRecentAnimals();
+    updateLegendaryTeaser();
+    console.log('✅ [동물 컬렉션] 전체 업데이트 완료');
+}
+
+// 도감 진행률 업데이트 (원형 진행바)
+function updateCollectionProgress() {
+    try {
+        const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}, "animals": []}');
+        const collection = animalState.collection || {};
+        const allAnimals = animalState.animals || [];
+
+        // 보유한 고유 동물 종류 수
+        const ownedCount = Object.keys(collection).length;
+        const totalCount = allAnimals.length || 500;
+        const percentage = totalCount > 0 ? Math.round((ownedCount / totalCount) * 100) : 0;
+
+        console.log(`📊 [도감 진행률] ${ownedCount}/${totalCount} (${percentage}%)`);
+
+        // 수치 업데이트
+        const countEl = document.getElementById('collection-count');
+        const totalEl = document.getElementById('collection-total');
+        const percentEl = document.getElementById('collection-percent');
+
+        if (countEl) countEl.textContent = ownedCount;
+        if (totalEl) totalEl.textContent = totalCount;
+        if (percentEl) percentEl.textContent = percentage + '%';
+
+        // 원형 진행바 업데이트 (SVG circle)
+        const circle = document.getElementById('collection-progress-circle');
+        if (circle) {
+            const radius = 42;
+            const circumference = 2 * Math.PI * radius; // 약 264
+            const offset = circumference - (percentage / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            console.log(`🔄 [도감 진행률] 원형 진행바 업데이트: offset=${offset.toFixed(2)}`);
+        } else {
+            console.warn('⚠️ [도감 진행률] collection-progress-circle 요소를 찾을 수 없습니다');
+        }
+
+    } catch (e) {
+        console.error('❌ [도감 진행률] 업데이트 오류:', e);
+    }
+}
+
+// 레어도별 통계 업데이트
+function updateRarityStats() {
+    try {
+        const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}}');
+        const collection = animalState.collection || {};
+
+        const stats = {
+            common: 0,
+            rare: 0,
+            epic: 0,
+            legendary: 0
+        };
+
+        // 각 동물의 tier를 확인하여 카운트
+        Object.values(collection).forEach(animal => {
+            const tier = animal.tier || 'common';
+            if (stats[tier] !== undefined) {
+                stats[tier]++;
+            }
+        });
+
+        console.log('🎭 [레어도별 통계] Common:', stats.common, '/ Rare:', stats.rare, '/ Epic:', stats.epic, '/ Legendary:', stats.legendary);
+
+        // UI 업데이트
+        const commonEl = document.getElementById('common-count');
+        const rareEl = document.getElementById('rare-count');
+        const epicEl = document.getElementById('epic-count');
+        const legendaryEl = document.getElementById('legendary-count');
+
+        if (commonEl) commonEl.textContent = stats.common;
+        if (rareEl) rareEl.textContent = stats.rare;
+        if (epicEl) epicEl.textContent = stats.epic;
+        if (legendaryEl) legendaryEl.textContent = stats.legendary;
+
+    } catch (e) {
+        console.error('❌ [레어도별 통계] 업데이트 오류:', e);
+    }
+}
+
+// 최근 획득한 동물 갤러리 업데이트
+function updateRecentAnimals() {
+    try {
+        const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}}');
+        const collection = animalState.collection || {};
+        const gallery = document.getElementById('recent-animals-gallery');
+        const emptyMessage = document.getElementById('recent-animals-empty');
+
+        if (!gallery) {
+            console.warn('⚠️ [최근 동물] recent-animals-gallery 요소를 찾을 수 없습니다');
+            return;
+        }
+
+        // collection을 배열로 변환하고 획득 시간순으로 정렬
+        // (획득 시간이 없으면 count 순으로 정렬)
+        const animals = Object.values(collection)
+            .sort((a, b) => {
+                // acquiredAt이 있으면 최신순
+                if (a.acquiredAt && b.acquiredAt) {
+                    return b.acquiredAt - a.acquiredAt;
+                }
+                // 없으면 count가 높은 순 (최근에 많이 획득한 동물)
+                return (b.count || 0) - (a.count || 0);
+            })
+            .slice(0, 5); // 최대 5마리
+
+        console.log(`🖼️ [최근 동물] ${animals.length}마리 표시 (최근 획득순)`);
+        if (animals.length > 0) {
+            console.log('   동물 목록:', animals.map(a => `${a.emoji} ${a.name} (${a.tier})`).join(', '));
+        }
+
+        if (animals.length === 0) {
+            gallery.innerHTML = '';
+            if (emptyMessage) emptyMessage.classList.remove('hidden');
+            console.log('   → 동물이 없어 빈 메시지 표시');
+            return;
+        }
+
+        if (emptyMessage) emptyMessage.classList.add('hidden');
+
+        // 갤러리 생성
+        gallery.innerHTML = animals.map(animal => {
+            const tierColors = {
+                common: 'border-gray-300 bg-gray-50',
+                rare: 'border-blue-400 bg-blue-50',
+                epic: 'border-purple-400 bg-purple-50',
+                legendary: 'border-yellow-400 bg-yellow-50'
+            };
+            const tierClass = tierColors[animal.tier] || tierColors.common;
+
+            return `
+                <div class="flex-shrink-0 ${tierClass} border-2 rounded-lg p-2 text-center" style="width: 70px;">
+                    <div class="text-3xl mb-1">${animal.emoji || '❓'}</div>
+                    <div class="text-xs font-bold text-gray-700 truncate">${animal.name || '???'}</div>
+                    <div class="text-xs text-gray-500">${animal.count || 0}마리</div>
+                </div>
+            `;
+        }).join('');
+
+    } catch (e) {
+        console.error('❌ [최근 동물] 갤러리 업데이트 오류:', e);
+    }
+}
+
+// 희귀 동물 티저 업데이트
+function updateLegendaryTeaser() {
+    try {
+        const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"collection": {}, "animals": []}');
+        const collection = animalState.collection || {};
+        const allAnimals = animalState.animals || [];
+
+        // 전설 등급 동물 찾기
+        const legendaryAnimals = allAnimals.filter(a => a.tier === 'legendary');
+        const ownedLegendary = Object.values(collection).filter(a => a.tier === 'legendary');
+
+        const teaserElement = document.getElementById('legendary-teaser');
+        const hintElement = document.getElementById('legendary-hint');
+
+        if (!teaserElement || !hintElement) {
+            console.warn('⚠️ [희귀 동물 티저] 요소를 찾을 수 없습니다');
+            return;
+        }
+
+        // 모든 전설 동물을 보유한 경우
+        if (ownedLegendary.length === legendaryAnimals.length && legendaryAnimals.length > 0) {
+            teaserElement.textContent = '👑';
+            hintElement.textContent = '축하합니다! 모든 전설 동물을 수집했습니다!';
+            console.log('🏆 [희귀 동물 티저] 모든 전설 동물 수집 완료!');
+            return;
+        }
+
+        // 전설 동물이 하나라도 있는 경우
+        if (ownedLegendary.length > 0) {
+            const animal = ownedLegendary[0];
+            teaserElement.textContent = animal.emoji || '🌟';
+            hintElement.textContent = `전설 ${ownedLegendary.length}/${legendaryAnimals.length} 수집! 나머지 ${legendaryAnimals.length - ownedLegendary.length}마리를 찾아보세요!`;
+            console.log(`⭐ [희귀 동물 티저] 전설 동물 ${ownedLegendary.length}/${legendaryAnimals.length} 보유`);
+            return;
+        }
+
+        // 아직 전설 동물이 없는 경우 - 에픽 동물 찾기
+        const epicAnimals = allAnimals.filter(a => a.tier === 'epic');
+        const unownedEpic = epicAnimals.filter(a => !collection[a.id]);
+
+        if (unownedEpic.length > 0 && unownedEpic.length < epicAnimals.length) {
+            // 일부 에픽은 있는 경우
+            const ownedEpic = Object.values(collection).filter(a => a.tier === 'epic');
+            if (ownedEpic.length > 0) {
+                teaserElement.textContent = ownedEpic[0].emoji || '✨';
+                hintElement.textContent = `에픽 ${ownedEpic.length}/${epicAnimals.length} 수집! 전설 동물을 향해!`;
+                console.log(`💎 [희귀 동물 티저] 에픽 동물 ${ownedEpic.length}/${epicAnimals.length} 보유`);
+                return;
+            }
+        }
+
+        // 기본 메시지
+        teaserElement.textContent = '🌟';
+        hintElement.textContent = '9과목 완료 시 프리미엄 뽑기권 획득 가능!';
+        console.log('💫 [희귀 동물 티저] 기본 메시지 표시 (희귀 동물 미보유)');
+
+    } catch (e) {
+        console.error('❌ [희귀 동물 티저] 업데이트 오류:', e);
     }
 }

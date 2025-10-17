@@ -326,6 +326,9 @@ async function onAuthStateChanged(state, userData) {
         if (typeof plantSystem !== 'undefined') {
             console.log('[Social Hub] Money from plantSystem (onAuthStateChanged): ', plantSystem.getUserData().wallet?.money);
         }
+
+        // 로그인 성공 시 순위표 자동 새로고침 시작 (30초마다)
+        startLeaderboardAutoRefresh(30);
     } else if (state === 'profile_updated') {
         // 프로필 업데이트 시 UI 새로고침
         let displayName = '익명';
@@ -356,6 +359,9 @@ async function onAuthStateChanged(state, userData) {
     } else {
         showAuthStatus('로그인이 필요합니다.');
         clearSocialData();
+
+        // 로그아웃 시 순위표 자동 새로고침 중지
+        stopLeaderboardAutoRefresh();
 
         // 로그인 버튼 표시, 로그아웃 버튼 숨기기
         document.getElementById('google-signin-btn').style.display = 'inline-flex';
@@ -397,6 +403,35 @@ function loadSocialData() {
     loadProfileData();
     loadMyGroups();
     loadPublicGroups();
+}
+
+// 주기적 순위표 새로고침 관리
+let leaderboardRefreshInterval = null;
+
+function startLeaderboardAutoRefresh(intervalSeconds = 30) {
+    // 기존 타이머가 있으면 중지
+    if (leaderboardRefreshInterval) {
+        clearInterval(leaderboardRefreshInterval);
+    }
+
+    console.log(`[Social Hub] 순위표 자동 새로고침 시작 (${intervalSeconds}초마다)`);
+
+    // 주기적으로 순위표만 새로고침
+    leaderboardRefreshInterval = setInterval(() => {
+        // 로그인 상태이고 소셜 허브 페이지에 있을 때만 새로고침
+        if (eduPetAuth && eduPetAuth.currentUser && !document.hidden) {
+            console.log('[Social Hub] 순위표 자동 새로고침 실행...');
+            loadLeaderboards();
+        }
+    }, intervalSeconds * 1000);
+}
+
+function stopLeaderboardAutoRefresh() {
+    if (leaderboardRefreshInterval) {
+        console.log('[Social Hub] 순위표 자동 새로고침 중지');
+        clearInterval(leaderboardRefreshInterval);
+        leaderboardRefreshInterval = null;
+    }
 }
 
 // 순위표 로드
@@ -1820,6 +1855,25 @@ window.addEventListener('pageshow', function(event) {
             document.getElementById('profile-stats').innerHTML = '<div class="loading">내 통계 새로고침...</div>';
 
             loadSocialData();
+        }
+    }
+});
+
+// 페이지를 떠날 때 타이머 정리
+window.addEventListener('beforeunload', () => {
+    stopLeaderboardAutoRefresh();
+});
+
+// 페이지가 숨겨지거나 다시 보일 때 (탭 전환 등)
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        console.log('[Social Hub] 페이지 숨김 - 새로고침 일시 중지');
+        // document.hidden 체크로 자동으로 중지됨 (setInterval 내부에서 체크)
+    } else {
+        console.log('[Social Hub] 페이지 다시 보임 - 즉시 새로고침');
+        // 페이지로 돌아왔을 때 즉시 한 번 새로고침
+        if (eduPetAuth && eduPetAuth.currentUser) {
+            loadLeaderboards();
         }
     }
 });

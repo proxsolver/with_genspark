@@ -870,7 +870,8 @@
                         level: 1,              // 레벨 (1-5)
                         exp: 0,                // 경험치
                         duplicates: 0,         // 중복 카드 개수 (합성에 사용)
-                        totalPower: animal.power // 실제 파워 (레벨 * 기본 파워)
+                        totalPower: animal.power, // 실제 파워 (레벨 * 기본 파워)
+                        acquiredAt: Date.now()  // 획득 시간 (최근 획득 동물 정렬용)
                     };
                 }
 
@@ -880,6 +881,8 @@
                     console.log(`🔥 중복 카드 획득! ${animal.name} - 중복 ${gameState.collection[animal.id].duplicates}장`);
                 }
 
+                // 중복 획득 시에도 acquiredAt 업데이트 (최근성 유지)
+                gameState.collection[animal.id].acquiredAt = Date.now();
                 gameState.collection[animal.id].count++;
                 
                 // Update legendary count
@@ -970,7 +973,8 @@
                         level: 1,              // 레벨 (1-5)
                         exp: 0,                // 경험치
                         duplicates: 0,         // 중복 카드 개수 (합성에 사용)
-                        totalPower: animal.power // 실제 파워 (레벨 * 기본 파워)
+                        totalPower: animal.power, // 실제 파워 (레벨 * 기본 파워)
+                        acquiredAt: Date.now()  // 획득 시간 (최근 획득 동물 정렬용)
                     };
                 }
 
@@ -980,6 +984,8 @@
                     console.log(`🔥 중복 카드 획득! ${animal.name} - 중복 ${gameState.collection[animal.id].duplicates}장`);
                 }
 
+                // 중복 획득 시에도 acquiredAt 업데이트 (최근성 유지)
+                gameState.collection[animal.id].acquiredAt = Date.now();
                 gameState.collection[animal.id].count++;
 
                 // Update legendary count

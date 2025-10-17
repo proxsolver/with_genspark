@@ -250,6 +250,14 @@
                 allLearners = { local: { name: '현재 기기 (로컬)', data: [] } };
 
                 for (const [userId, userData] of Object.entries(users)) {
+                    // 🔒 유효한 사용자만 필터링 (익명 사용자 제외)
+                    // provider가 'google.com', 'password', 'email' 중 하나여야 함
+                    const provider = userData.profile?.provider;
+                    if (!['google.com', 'password', 'email'].includes(provider)) {
+                        console.log(`[Analytics Console] 익명 사용자 제외: ${userId.substring(0, 8)} (provider: ${provider})`);
+                        continue; // 익명 사용자는 목록에서 제외
+                    }
+
                     // 닉네임 찾기 (social-hub.html과 동일한 경로)
                     let nickname = null;
 
@@ -305,7 +313,8 @@
                 }
 
                 updateLearnerSelect();
-                alert(`✅ ${Object.keys(allLearners).length - 1}명의 학습자 데이터를 불러왔습니다!`);
+                const validLearnerCount = Object.keys(allLearners).length - 1; // local 제외
+                alert(`✅ ${validLearnerCount}명의 유효한 학습자 데이터를 불러왔습니다!\n(익명 사용자는 제외되었습니다)`);
             } catch (error) {
                 console.error('학습자 데이터 로드 실패:', error);
                 alert('❌ 학습자 데이터를 불러올 수 없습니다: ' + error.message);
@@ -510,7 +519,15 @@
         }
 
         function updateRecentRecords() {
-            const recentData = [...analyticsData].slice(0, 20);
+            // 최신순으로 정렬 (completedAt 또는 timestamp 기준)
+            const recentData = [...analyticsData]
+                .sort((a, b) => {
+                    const timeA = a.completedAt || a.timestamp || 0;
+                    const timeB = b.completedAt || b.timestamp || 0;
+                    return timeA - timeB; // 최신이 위로 (오름차순 역순)
+                })
+                .slice(0, 20);
+
             const container = document.getElementById('recent-records');
             container.innerHTML = '';
 
@@ -821,6 +838,13 @@
                         // 멤버 닉네임 가져오기
                         const userSnapshot = await window.firebase_db.ref(`users/${memberId}`).once('value');
                         const userData = userSnapshot.val();
+
+                        // 🔒 유효한 사용자만 필터링 (익명 사용자 제외)
+                        const provider = userData?.profile?.provider;
+                        if (!['google.com', 'password', 'email'].includes(provider)) {
+                            console.log(`[Analytics Console] 그룹 멤버 중 익명 사용자 제외: ${memberId.substring(0, 8)} (provider: ${provider})`);
+                            continue; // 익명 사용자는 그룹 분석에서 제외
+                        }
 
                         let nickname = '익명';
                         if (userData?.profile?.nickname) {

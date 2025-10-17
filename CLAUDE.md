@@ -97,7 +97,7 @@ plantSystem.setMoney(100)        // Set money (admin only)
 ```
 
 **Coin earning:**
-- **Quiz completion:** Earn coins based on difficulty (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
+- **Quiz completion:** Earn coins based on difficulty (쉬움 1코인, 보통 2코인, 어려움 10코인 per question)
 - **Plant harvest:** 100 coins per harvested plant
 - **Coins stored in:** `user.wallet.money` via PlantSystem
 
@@ -238,7 +238,7 @@ if (result.success) {
 ### Learning Rewards Flow
 ```
 Daily Study → Complete Subjects → Earn Rewards & Coins
-├── Quiz completion → Earn coins (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
+├── Quiz completion → Earn coins (쉬움 1코인, 보통 2코인, 어려움 10코인 per question)
 ├── 3 subjects → 1 growth ticket
 ├── 5 subjects → 1 normal gacha ticket
 ├── 6 subjects → 1 growth ticket (additional)
@@ -371,7 +371,7 @@ Setup documented in `FIREBASE_SETUP.md`:
 - Session cleanup on logout
 
 #### Quiz System Fixes
-- Quiz completion now properly awards coins (쉬움 1코인, 보통 2코인, 어려움 3코인 per question)
+- Quiz completion now properly awards coins (쉬움 1코인, 보통 2코인, 어려움 10코인 per question)
 - Fixed timing issue where coins weren't being credited after quiz completion
 - Reward distribution properly syncs with Firebase
 

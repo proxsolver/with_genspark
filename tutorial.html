@@ -707,7 +707,7 @@
                 return;
             }
 
-            // Get user nickname for personalized message and Firebase update
+            // Get user nickname for personalized message
             let nickname = '학습자';
             try {
                 const userSettings = JSON.parse(localStorage.getItem('eduPetSettings') || '{}');
@@ -718,25 +718,26 @@
                 console.log('사용자 설정 로드 실패:', error);
             }
 
-            // Ensure Firebase user is authenticated and update profile
-            if (typeof eduPetAuth === 'undefined' || !eduPetAuth.currentUser) {
-                alert('사용자 인증에 실패했습니다. 다시 시도해주세요.');
-                console.error('eduPetAuth not available or no current user.');
-                return;
-            }
-
             try {
-                // Update nickname and avatar in Firebase
-                try {
-                    await eduPetAuth.setNickname(nickname);
-                    console.log('✅ Firebase에 닉네임 동기화 완료');
-                } catch (nicknameError) {
-                    // 이미 사용 중인 닉네임이거나 이미 설정된 경우 무시
-                    console.warn('닉네임 설정 스킵:', nicknameError.message);
-                }
+                // Update nickname and avatar in Firebase (선택적)
+                if (typeof eduPetAuth !== 'undefined' && eduPetAuth.currentUser) {
+                    try {
+                        await eduPetAuth.setNickname(nickname);
+                        console.log('✅ Firebase에 닉네임 동기화 완료');
+                    } catch (nicknameError) {
+                        // 이미 사용 중인 닉네임이거나 이미 설정된 경우 무시
+                        console.warn('닉네임 설정 스킵:', nicknameError.message);
+                    }
 
-                await eduPetAuth.setAvatar(tempSelectedAvatar);
-                console.log('✅ Firebase에 아바타 동기화 완료');
+                    try {
+                        await eduPetAuth.setAvatar(tempSelectedAvatar);
+                        console.log('✅ Firebase에 아바타 동기화 완료');
+                    } catch (avatarError) {
+                        console.warn('아바타 설정 실패:', avatarError.message);
+                    }
+                } else {
+                    console.log('⚠️ Firebase 오프라인 모드 - 로컬 저장소만 사용');
+                }
 
                 // Grant starter bonuses - 100원 + 프리미엄 뽑기권 (plantSystem 사용)
                 // 이미 튜토리얼을 완료한 경우 보너스 지급 안 함
@@ -759,13 +760,21 @@
                     plantSystem.saveUserData(plantSystemUser);
                     console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
 
-                    // Firebase에 보상 동기화
+                    // Firebase에 보상 동기화 (선택적)
                     if (typeof plantSystemFirebase !== 'undefined') {
-                        await plantSystemFirebase.save();
-                        console.log('✅ Firebase에 보상 동기화 완료');
+                        try {
+                            await plantSystemFirebase.save();
+                            console.log('✅ Firebase에 보상 동기화 완료');
+                        } catch (syncError) {
+                            console.warn('⚠️ Firebase 동기화 실패 (나중에 재시도됩니다):', syncError.message);
+                        }
                     }
                 } else if (alreadyCompleted) {
                     console.log('⚠️ 이미 튜토리얼 완료됨 - 보상 지급 스킵');
+                } else {
+                    console.error('❌ plantSystem이 로드되지 않았습니다!');
+                    alert('게임 시스템 로드 중 오류가 발생했습니다. 페이지를 새로고침 해주세요.');
+                    return;
                 }
 
                 // Initialize quiz progress
@@ -781,7 +790,7 @@
                 setTimeout(() => {
                     alert(`🎉 ${nickname}님, EduPet Collection에 오신 것을 환영합니다!\n\n시작 보너스가 지급되었습니다:\n💰 100 코인\n🎫 프리미엄 뽑기권 1장\n\n이제 게임을 시작합니다!\n소셜 기능은 소셜 허브에서 사용하세요!`);
 
-                    // Redirect to main page (익명 계정으로 게임 시작)
+                    // Redirect to main page
                     window.location.href = 'index.html';
                 }, 500);
 
@@ -807,27 +816,32 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', async function() {
-            // eduPetAuth and eduPetFirebaseIntegration가 정의될 때까지 기다림
+            // Firebase 모듈 로드 시도 (선택적)
             console.log('Waiting for Firebase modules to load in tutorial...');
-            await new Promise((resolve, reject) => {
-                let attempts = 0;
-                const maxAttempts = 100; // 5초 타임아웃
-                const interval = setInterval(() => {
-                    attempts++;
-                    if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
-                        console.log('Firebase modules loaded successfully in tutorial');
-                        clearInterval(interval);
-                        resolve();
-                    } else if (attempts >= maxAttempts) {
-                        clearInterval(interval);
-                        reject(new Error('Firebase 모듈 로드 타임아웃 in tutorial'));
-                    }
-                }, 50);
-            });
+            try {
+                await new Promise((resolve, reject) => {
+                    let attempts = 0;
+                    const maxAttempts = 100; // 5초 타임아웃
+                    const interval = setInterval(() => {
+                        attempts++;
+                        if (typeof eduPetAuth !== 'undefined' && typeof eduPetFirebaseIntegration !== 'undefined') {
+                            console.log('✅ Firebase modules loaded successfully in tutorial');
+                            clearInterval(interval);
+                            resolve();
+                        } else if (attempts >= maxAttempts) {
+                            clearInterval(interval);
+                            reject(new Error('Firebase 모듈 로드 타임아웃 in tutorial'));
+                        }
+                    }, 50);
+                });
 
-            // Firebase 통합 기능을 초기화합니다. (이 과정에서 익명 로그인이 트리거될 수 있습니다)
-            await eduPetFirebaseIntegration.initialize();
-            console.log('Firebase Integration is ready in tutorial.');
+                // Firebase 통합 기능을 초기화합니다.
+                await eduPetFirebaseIntegration.initialize();
+                console.log('✅ Firebase Integration is ready in tutorial.');
+            } catch (error) {
+                // Firebase 로드 실패 시 경고만 표시하고 계속 진행
+                console.warn('⚠️ Firebase 로드 실패 (오프라인 모드로 계속 진행):', error.message);
+            }
 
             checkOnboarding();
             updateUI();
