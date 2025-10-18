@@ -1,0 +1,52 @@
+[
+  {
+    "id": "kpop_medium_2_1",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래일까요?\n\n\"I'm on fire / 뜨겁게 타올라 / Feel the desire\"",
+    "options": ["세븐틴 - HOT", "엔하이픈 - Bite Me", "스트레이 키즈 - LALALALA", "투모로우바이투게더 - Happy Fools"],
+    "correctIndex": 0,
+    "explanation": "세븐틴의 2023년 미니앨범 타이틀곡 'HOT'입니다. 뜨거운 열정을 표현한 곡이에요!",
+    "difficulty": 2,
+    "lyrics": "I'm on fire / 뜨겁게 타올라 / Feel the desire"
+  },
+  {
+    "id": "kpop_medium_2_2",
+    "subject": "kpop",
+    "question": "이 가사를 부른 걸그룹은?\n\n\"Kitsch 그래 난 / Kitsch 하지 / 근데 난 네가 좋아\"",
+    "options": ["아이브", "뉴진스", "르세라핌", "에스파"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2023년 선공개곡 'Kitsch'입니다. 톡톡 튀는 매력이 있는 곡이에요!",
+    "difficulty": 2,
+    "lyrics": "Kitsch 그래 난 / Kitsch 하지 / 근데 난 네가 좋아"
+  },
+  {
+    "id": "kpop_medium_2_3",
+    "subject": "kpop",
+    "question": "다음 가사의 노래는?\n\n\"Spicy spicy spicy / Hot hot 우린 / 너무 spicy\"",
+    "options": ["에스파 - Spicy", "있지 - None of My Business", "뉴진스 - Cool With You", "르세라핌 - Fire in the belly"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2023년 미니 3집 타이틀곡 'Spicy'입니다. 매운맛 같은 매력을 표현했어요!",
+    "difficulty": 2,
+    "lyrics": "Spicy spicy spicy / Hot hot 우린 / 너무 spicy"
+  },
+  {
+    "id": "kpop_medium_2_4",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 그룹과 노래는?\n\n\"I am 그 누구보다 / 특별한 듯 빛이 나 / I am 어디에도\"",
+    "options": ["아이브 - I AM", "뉴진스 - OMG", "르세라핌 - ANTIFRAGILE", "에스파 - Girls"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2023년 정규 1집 타이틀곡 'I AM'입니다. 자신감을 표현한 곡이에요!",
+    "difficulty": 2,
+    "lyrics": "I am 그 누구보다 / 특별한 듯 빛이 나 / I am 어디에도"
+  },
+  {
+    "id": "kpop_medium_2_5",
+    "subject": "kpop",
+    "question": "이 가사는 어느 노래일까요?\n\n\"Cool with you / 시원하게 / 너와 나 함께\"",
+    "options": ["뉴진스 - Cool With You", "아이브 - After LIKE", "르세라핌 - Blue Flame", "에스파 - Illusion"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2023년 미니앨범 수록곡 'Cool With You'입니다. 시원한 분위기의 곡이에요!",
+    "difficulty": 2,
+    "lyrics": "Cool with you / 시원하게 / 너와 나 함께"
+  }
+]

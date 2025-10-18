@@ -473,7 +473,7 @@
             common: { name: '상식', icon: '🧠' },
             idiom: { name: '사자성어', icon: '📜' },
             economy: { name: '경제', icon: '💰' },
-            production: { name: '생산', icon: '🏭' },
+            kpop: { name: 'K-POP', icon: '🎵' },
             ai: { name: 'AI', icon: '🤖' }
         };
 
@@ -648,7 +648,28 @@
 
         // 문제 표시 업데이트
         function updateQuestionDisplay(question) {
-            document.getElementById('question-text').textContent = question.question;
+            const currentSubject = selectedSubjects[currentSubjectIndex];
+            const questionTextEl = document.getElementById('question-text');
+
+            // K-POP 과목 + 어려움 난이도 + 가사가 있을 때 = 듣기 전용 모드
+            if (currentSubject === 'kpop' && currentDifficulty === 3 && question.lyrics) {
+                // 가사 부분을 숨기고 듣기 안내 메시지 표시
+                const questionWithoutLyrics = question.question.split('\n\n')[0]; // 가사 이전 부분만 추출
+                questionTextEl.innerHTML = `
+                    <div class="mb-3">${questionWithoutLyrics}</div>
+                    <div class="p-4 bg-purple-50 border-2 border-purple-200 rounded-lg">
+                        <div class="text-center text-purple-700 font-semibold mb-2">
+                            🎧 듣기 전용 모드
+                        </div>
+                        <div class="text-center text-purple-600 text-sm">
+                            가사를 듣고 노래를 맞춰보세요!<br>
+                            아래 "🎵 가사 듣기" 버튼을 눌러주세요.
+                        </div>
+                    </div>
+                `;
+            } else {
+                questionTextEl.textContent = question.question;
+            }
 
             // 보기 생성
             const optionsContainer = document.getElementById('options-container');
@@ -683,10 +704,16 @@
                 hintBtn.classList.add('hidden');
             }
 
-            // TTS 버튼
+            // TTS 버튼 (K-POP 과목에서 가사가 있을 때 표시)
             const ttsBtn = document.getElementById('tts-btn');
-            if (question.audioText) {
+            if ((currentSubject === 'kpop' && question.lyrics) || question.audioText) {
                 ttsBtn.classList.remove('hidden');
+                // K-POP 과목인 경우 버튼 텍스트 변경
+                if (currentSubject === 'kpop' && question.lyrics) {
+                    ttsBtn.textContent = '🎵 가사 듣기';
+                } else {
+                    ttsBtn.textContent = '🔊 발음';
+                }
             } else {
                 ttsBtn.classList.add('hidden');
             }
@@ -1484,25 +1511,59 @@
         // TTS 재생
         function playTTS() {
             const question = currentQuestionPool[currentQuestionIndex];
+            const currentSubject = selectedSubjects[currentSubjectIndex];
 
-            if (question.audioText && 'speechSynthesis' in window) {
-                // 영어 음성 사용 강제
-                const utterance = new SpeechSynthesisUtterance(question.audioText);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.8;
+            if ('speechSynthesis' in window) {
+                let textToSpeak = '';
+                let language = 'en-US';
 
-                // 영어 음성만 필터링
-                const voices = speechSynthesis.getVoices();
-                const englishVoice = voices.find(voice =>
-                    voice.lang.startsWith('en-') &&
-                    (voice.name.includes('English') || voice.name.includes('US') || voice.name.includes('GB'))
-                );
-
-                if (englishVoice) {
-                    utterance.voice = englishVoice;
+                // K-POP 과목인 경우 가사를 한국어로 읽기
+                if (currentSubject === 'kpop' && question.lyrics) {
+                    textToSpeak = question.lyrics;
+                    language = 'ko-KR';
+                } else if (question.audioText) {
+                    textToSpeak = question.audioText;
+                    language = 'en-US';
+                } else {
+                    return; // 읽을 텍스트가 없으면 종료
                 }
 
+                const utterance = new SpeechSynthesisUtterance(textToSpeak);
+                utterance.lang = language;
+                utterance.rate = 0.9;
+
+                // 음성 선택
+                const voices = speechSynthesis.getVoices();
+                let selectedVoice;
+
+                if (language === 'ko-KR') {
+                    // 한국어 음성 찾기
+                    selectedVoice = voices.find(voice =>
+                        voice.lang.startsWith('ko-') &&
+                        (voice.name.includes('Korean') || voice.name.includes('Yuna') || voice.name.includes('한국'))
+                    );
+                } else {
+                    // 영어 음성 찾기
+                    selectedVoice = voices.find(voice =>
+                        voice.lang.startsWith('en-') &&
+                        (voice.name.includes('English') || voice.name.includes('US') || voice.name.includes('GB'))
+                    );
+                }
+
+                if (selectedVoice) {
+                    utterance.voice = selectedVoice;
+                }
+
+                // 현재 재생 중인 음성이 있으면 중지
+                speechSynthesis.cancel();
                 speechSynthesis.speak(utterance);
+
+                // 시각적 피드백
+                const ttsBtn = document.getElementById('tts-btn');
+                ttsBtn.classList.add('animate-pulse');
+                utterance.onend = () => {
+                    ttsBtn.classList.remove('animate-pulse');
+                };
             }
         }
 

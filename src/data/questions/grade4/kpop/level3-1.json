@@ -1,0 +1,52 @@
+[
+  {
+    "id": "kpop_hard_sample_1",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["뉴진스 - Supernatural", "에스파 - Supernova", "아이브 - Accendio", "르세라핌 - CRAZY"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2024년 일본 데뷔곡 'Supernatural'입니다. 신비로운 분위기의 곡이에요!",
+    "difficulty": 3,
+    "lyrics": "Stormy stormy stormy stormy / Stormy stormy night / 閉じ込めてた思い / 解き放つの Tonight"
+  },
+  {
+    "id": "kpop_hard_sample_2",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["르세라핌 - Smart", "아이브 - Heya", "뉴진스 - Bubble Gum", "에스파 - Armageddon"],
+    "correctIndex": 0,
+    "explanation": "르세라핌의 2024년 미니 4집 타이틀곡 'Smart'입니다. 세련된 사운드가 특징이에요!",
+    "difficulty": 3,
+    "lyrics": "I'm a smarter baby smarter / Smarter baby smarter / 나를 믿고 follow / I know 잘하고 있어 난"
+  },
+  {
+    "id": "kpop_hard_sample_3",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["아이브 - Accendio", "뉴진스 - How Sweet", "에스파 - Armageddon", "르세라핌 - CRAZY"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2024년 미니 2집 타이틀곡 'Accendio'입니다. 라틴 리듬이 매력적인 곡이에요!",
+    "difficulty": 3,
+    "lyrics": "Accendio 불을 켜 / 심장을 더 뛰게 해 / 타올라 번져가 / 멈출 수 없어"
+  },
+  {
+    "id": "kpop_hard_sample_4",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["투모로우바이투게더 - Deja Vu", "세븐틴 - MAESTRO", "엔하이픈 - XO", "스트레이 키즈 - 樂-STAR"],
+    "correctIndex": 0,
+    "explanation": "투모로우바이투게더의 2024년 미니 6집 타이틀곡 'Deja Vu'입니다. 감성적인 멜로디가 인상적이에요!",
+    "difficulty": 3,
+    "lyrics": "말하지 않아도 / 우린 알고 있어 / 데자뷰처럼 / 반복되는 우리"
+  },
+  {
+    "id": "kpop_hard_sample_5",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["에스파 - Armageddon", "뉴진스 - Bubble Gum", "아이브 - Heya", "르세라핌 - CRAZY"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2024년 정규 1집 타이틀곡 'Armageddon'입니다. 강렬한 사운드와 퍼포먼스가 특징이에요!",
+    "difficulty": 3,
+    "lyrics": "Armageddon 나의 광기는 / 깨어나 / 폭발하는 내 안의 universe"
+  }
+]

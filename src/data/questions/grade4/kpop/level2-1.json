@@ -1,0 +1,52 @@
+[
+  {
+    "id": "kpop_medium_sample_1",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래일까요?\n\n\"내가 제일 잘 나가 / 내가 제일 잘 나가 / I'm a baddie\"",
+    "options": ["아이브 - Baddie", "뉴진스 - ETA", "르세라핌 - UNFORGIVEN", "에스파 - Drama"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2023년 후속곡 'Baddie'입니다. 자신감 넘치는 가사와 강렬한 비트가 특징이에요!",
+    "difficulty": 2,
+    "lyrics": "내가 제일 잘 나가 / 내가 제일 잘 나가 / I'm a baddie"
+  },
+  {
+    "id": "kpop_medium_sample_2",
+    "subject": "kpop",
+    "question": "이 가사의 노래와 아티스트는?\n\n\"Drama drama drama / 너를 위한 drama / I'll be your diamond\"",
+    "options": ["에스파 - Drama", "아이브 - Kitsch", "뉴진스 - Ditto", "있지 - None of My Business"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2023년 타이틀곡 'Drama'입니다. 화려한 퍼포먼스와 함께 큰 인기를 얻었어요!",
+    "difficulty": 2,
+    "lyrics": "Drama drama drama / 너를 위한 drama / I'll be your diamond"
+  },
+  {
+    "id": "kpop_medium_sample_3",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 그룹과 노래는?\n\n\"God damn / 우린 완벽한 천사 / 불완전함에서 난 완벽해\"",
+    "options": ["르세라핌 - UNFORGIVEN", "아이브 - I AM", "뉴진스 - Super Shy", "에스파 - Spicy"],
+    "correctIndex": 0,
+    "explanation": "르세라핌의 2023년 정규 1집 타이틀곡 'UNFORGIVEN'입니다. 자아와 완벽에 대한 메시지를 담았어요!",
+    "difficulty": 2,
+    "lyrics": "God damn / 우린 완벽한 천사 / 불완전함에서 난 완벽해"
+  },
+  {
+    "id": "kpop_medium_sample_4",
+    "subject": "kpop",
+    "question": "이 가사는 어느 노래일까요?\n\n\"Run for your life / I'm feeling alive / 달려 더 빠르게\"",
+    "options": ["세븐틴 - 손오공", "스트레이 키즈 - S-Class", "엔시티 드림 - ISTJ", "투모로우바이투게더 - Sugar Rush Ride"],
+    "correctIndex": 0,
+    "explanation": "세븐틴의 2023년 타이틀곡 '손오공'입니다. 에너지 넘치는 퍼포먼스가 인상적이에요!",
+    "difficulty": 2,
+    "lyrics": "Run for your life / I'm feeling alive / 달려 더 빠르게"
+  },
+  {
+    "id": "kpop_medium_sample_5",
+    "subject": "kpop",
+    "question": "다음 가사의 아티스트와 곡명은?\n\n\"Either way 어떻게든 / 내 맘대로 골라 pick / 어떤 걸 골라도\"",
+    "options": ["아이브 - Either Way", "뉴진스 - How Sweet", "르세라핌 - Smart", "에스파 - Armageddon"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2024년 미니앨범 수록곡 'Either Way'입니다. 선택의 자유를 표현한 곡이에요!",
+    "difficulty": 2,
+    "lyrics": "Either way 어떻게든 / 내 맘대로 골라 pick / 어떤 걸 골라도"
+  }
+]

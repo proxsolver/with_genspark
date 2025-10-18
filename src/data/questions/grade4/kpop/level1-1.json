@@ -1,0 +1,202 @@
+[
+  {
+    "id": "kpop_2025_1",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래일까요?\n\n\"My heart goes 두근두근대 / 내 맘이 말을 안 들어\"",
+    "options": ["드림캐쳐 - 두근두근", "뉴진스 - Ditto", "아이브 - Kitsch", "르세라핌 - UNFORGIVEN"],
+    "correctIndex": 0,
+    "explanation": "드림캐쳐의 2025년 타이틀곡 '두근두근'의 후렴구입니다. 설렘과 긴장감을 표현한 사랑 노래예요!",
+    "difficulty": 1,
+    "lyrics": "My heart goes 두근두근대 / 내 맘이 말을 안 들어"
+  },
+  {
+    "id": "kpop_2025_2",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 가수는 누구일까요?\n\n\"우리 함께 빛나는 별이 돼 / 영원히 함께할 거야\"",
+    "options": ["스트레이 키즈", "투모로우바이투게더", "엔하이픈", "제로베이스원"],
+    "correctIndex": 2,
+    "explanation": "엔하이픈의 2025년 신곡 '별빛처럼'의 한 구절입니다. 팬들과의 영원한 약속을 담은 곡이에요.",
+    "difficulty": 1,
+    "lyrics": "우리 함께 빛나는 별이 돼 / 영원히 함께할 거야"
+  },
+  {
+    "id": "kpop_2025_3",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래의 후렴구일까요?\n\n\"Shining bright like a diamond / 나를 봐봐 I'm so pretty\"",
+    "options": ["아이브 - 다이아몬드", "블랙핑크 - Pink Venom", "에스파 - Spicy", "르세라핌 - Eve, Psyche & Bluebeard's wife"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2025년 컴백곡 '다이아몬드'입니다. 자신감 넘치는 가사가 특징이에요!",
+    "difficulty": 1,
+    "lyrics": "Shining bright like a diamond / 나를 봐봐 I'm so pretty"
+  },
+  {
+    "id": "kpop_2025_4",
+    "subject": "kpop",
+    "question": "\"봄날의 햇살 같은 너 / 내게로 와줘\"라는 가사가 나오는 노래는?",
+    "options": ["세븐틴 - 봄날의 햇살", "방탄소년단 - 봄날", "뉴진스 - OMG", "투모로우바이투게더 - Sugar Rush Ride"],
+    "correctIndex": 0,
+    "explanation": "세븐틴의 2025년 봄 스페셜 앨범 수록곡 '봄날의 햇살'입니다. 따뜻한 봄의 감성을 담았어요.",
+    "difficulty": 1,
+    "lyrics": "봄날의 햇살 같은 너 / 내게로 와줘"
+  },
+  {
+    "id": "kpop_2025_5",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 걸그룹은?\n\n\"We are super cool girls / 세상을 다 가질 거야\"",
+    "options": ["뉴진스", "아이브", "르세라핌", "에스파"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2025년 신곡 'Super Cool'의 후렴구입니다. 자유롭고 당당한 메시지를 담았어요!",
+    "difficulty": 1,
+    "lyrics": "We are super cool girls / 세상을 다 가질 거야"
+  },
+  {
+    "id": "kpop_2025_6",
+    "subject": "kpop",
+    "question": "\"너와 나의 러브스토리 / 영화처럼 펼쳐져\"라는 가사의 노래 제목은?",
+    "options": ["러브스토리", "영화처럼", "너와 나", "로맨스"],
+    "correctIndex": 0,
+    "explanation": "아이유의 2025년 발라드 곡 '러브스토리'입니다. 감성적인 멜로디와 가사가 인기를 끌었어요.",
+    "difficulty": 1,
+    "lyrics": "너와 나의 러브스토리 / 영화처럼 펼쳐져"
+  },
+  {
+    "id": "kpop_2025_7",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 그룹의 노래일까요?\n\n\"Higher and higher we go / 하늘 끝까지 날아올라\"",
+    "options": ["스트레이 키즈", "NCT", "ATEEZ", "THE BOYZ"],
+    "correctIndex": 0,
+    "explanation": "스트레이 키즈의 2025년 타이틀곡 'Higher'의 한 구절입니다. 에너제틱한 사운드가 특징이에요!",
+    "difficulty": 1,
+    "lyrics": "Higher and higher we go / 하늘 끝까지 날아올라"
+  },
+  {
+    "id": "kpop_2025_8",
+    "subject": "kpop",
+    "question": "\"달빛 아래 춤을 춰 / 밤이 다 가도록\"이라는 가사가 나오는 노래는?",
+    "options": ["에스파 - 달빛 춤", "레드벨벳 - Chill Kill", "블랙핑크 - Shut Down", "있지 - Cake"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2025년 미니앨범 타이틀곡 '달빛 춤'입니다. 몽환적인 분위기가 매력적인 곡이에요.",
+    "difficulty": 1,
+    "lyrics": "달빛 아래 춤을 춰 / 밤이 다 가도록"
+  },
+  {
+    "id": "kpop_2025_9",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 아티스트는?\n\n\"꿈을 향해 달려가 / 멈추지 않을 거야\"",
+    "options": ["제로베이스원", "보이넥스트도어", "라이즈", "TWS"],
+    "correctIndex": 0,
+    "explanation": "제로베이스원의 2025년 신곡 'Dream Runner'의 가사입니다. 꿈을 향한 열정을 표현했어요!",
+    "difficulty": 1,
+    "lyrics": "꿈을 향해 달려가 / 멈추지 않을 거야"
+  },
+  {
+    "id": "kpop_2025_10",
+    "subject": "kpop",
+    "question": "\"Love is like magic / 너와 함께라면\"이라는 가사가 있는 노래는?",
+    "options": ["투모로우바이투게더 - Magic Love", "세븐틴 - 손오공", "NCT DREAM - ISTJ", "엔하이픈 - Sacrifice"],
+    "correctIndex": 0,
+    "explanation": "투모로우바이투게더의 2025년 타이틀곡 'Magic Love'입니다. 사랑의 마법 같은 순간을 노래해요.",
+    "difficulty": 1,
+    "lyrics": "Love is like magic / 너와 함께라면"
+  },
+  {
+    "id": "kpop_2025_11",
+    "subject": "kpop",
+    "question": "\"하늘을 날아 / 구름 위를 걸어\"라는 가사의 노래 제목은?",
+    "options": ["르세라핌 - Sky Walker", "아이브 - Baddie", "뉴진스 - ETA", "에스파 - Drama"],
+    "correctIndex": 0,
+    "explanation": "르세라핌의 2025년 정규 앨범 수록곡 'Sky Walker'입니다. 자유로운 비상을 표현한 곡이에요!",
+    "difficulty": 1,
+    "lyrics": "하늘을 날아 / 구름 위를 걸어"
+  },
+  {
+    "id": "kpop_2025_12",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 그룹은?\n\n\"우리는 하나 / Together we shine\"",
+    "options": ["라이즈", "보이넥스트도어", "ATEEZ", "THE BOYZ"],
+    "correctIndex": 0,
+    "explanation": "라이즈의 2025년 데뷔곡 'Together'의 핵심 가사입니다. 팀워크와 유니티를 강조해요.",
+    "difficulty": 1,
+    "lyrics": "우리는 하나 / Together we shine"
+  },
+  {
+    "id": "kpop_2025_13",
+    "subject": "kpop",
+    "question": "\"별처럼 빛나 / 내 마음속에\"라는 가사가 있는 노래는?",
+    "options": ["아이브 - Starlight", "뉴진스 - Ditto", "에스파 - Supernova", "있지 - GOLD"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2025년 겨울 스페셜 싱글 'Starlight'입니다. 로맨틱한 감성의 발라드예요.",
+    "difficulty": 1,
+    "lyrics": "별처럼 빛나 / 내 마음속에"
+  },
+  {
+    "id": "kpop_2025_14",
+    "subject": "kpop",
+    "question": "\"Party all night long / 즐거운 이 순간\"이라는 가사의 아티스트는?",
+    "options": ["세븐틴", "스트레이 키즈", "NCT", "ATEEZ"],
+    "correctIndex": 0,
+    "explanation": "세븐틴의 2025년 서머송 'Party Night'의 후렴구입니다. 신나는 파티 분위기를 담았어요!",
+    "difficulty": 1,
+    "lyrics": "Party all night long / 즐거운 이 순간"
+  },
+  {
+    "id": "kpop_2025_15",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래일까요?\n\n\"네 손을 잡고 싶어 / 이 순간이 영원하길\"",
+    "options": ["뉴진스 - Forever", "르세라핌 - Smart", "에스파 - Live My Life", "아이브 - Either Way"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2025년 정규 앨범 타이틀곡 'Forever'입니다. 영원한 순간을 소망하는 곡이에요.",
+    "difficulty": 1,
+    "lyrics": "네 손을 잡고 싶어 / 이 순간이 영원하길"
+  },
+  {
+    "id": "kpop_2025_16",
+    "subject": "kpop",
+    "question": "\"Run run run / 멈추지 마\"라는 가사를 부른 그룹은?",
+    "options": ["보이넥스트도어", "제로베이스원", "TWS", "라이즈"],
+    "correctIndex": 0,
+    "explanation": "보이넥스트도어의 2025년 타이틀곡 'Run'의 시그니처 훅입니다. 열정적인 에너지가 느껴져요!",
+    "difficulty": 1,
+    "lyrics": "Run run run / 멈추지 마"
+  },
+  {
+    "id": "kpop_2025_17",
+    "subject": "kpop",
+    "question": "\"햇살 가득한 아침 / 너와 함께 걷고 싶어\"라는 가사의 노래는?",
+    "options": ["투모로우바이투게더 - Morning Walk", "엔하이픈 - Bite Me", "세븐틴 - 손오공", "스트레이 키즈 - S-Class"],
+    "correctIndex": 0,
+    "explanation": "투모로우바이투게더의 2025년 봄 앨범 수록곡 'Morning Walk'입니다. 상쾌한 아침 분위기예요!",
+    "difficulty": 1,
+    "lyrics": "햇살 가득한 아침 / 너와 함께 걷고 싶어"
+  },
+  {
+    "id": "kpop_2025_18",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 걸그룹은?\n\n\"We don't care / 우리만의 길을 가\"",
+    "options": ["르세라핌", "아이브", "뉴진스", "에스파"],
+    "correctIndex": 0,
+    "explanation": "르세라핌의 2025년 미니앨범 타이틀곡 'Our Way'의 가사입니다. 당당한 메시지가 인상적이에요!",
+    "difficulty": 1,
+    "lyrics": "We don't care / 우리만의 길을 가"
+  },
+  {
+    "id": "kpop_2025_19",
+    "subject": "kpop",
+    "question": "\"바람처럼 자유롭게 / 날아오를 거야\"라는 가사가 있는 노래는?",
+    "options": ["에스파 - Wind", "블랙핑크 - The Girls", "레드벨벳 - On a Ride", "있지 - None of My Business"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2025년 여름 스페셜 싱글 'Wind'입니다. 자유로운 비상을 표현한 곡이에요.",
+    "difficulty": 1,
+    "lyrics": "바람처럼 자유롭게 / 날아오를 거야"
+  },
+  {
+    "id": "kpop_2025_20",
+    "subject": "kpop",
+    "question": "\"Love you more / 매일매일 더\"라는 가사의 아티스트는?",
+    "options": ["아이브", "뉴진스", "르세라핌", "에스파"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2025년 발렌타인 스페셜 싱글 'Love You More'입니다. 사랑이 깊어지는 마음을 표현했어요!",
+    "difficulty": 1,
+    "lyrics": "Love you more / 매일매일 더"
+  }
+]
