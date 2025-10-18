@@ -747,7 +747,7 @@
                     plantSystem.setMoney(100);
                     console.log('✅ 튜토리얼 완료: 100원 지급');
 
-                    // Grant premium gacha ticket
+                    // ✅ 수정: plantSystem.grantRewards() 사용 (자동 성장 로직 포함)
                     const plantSystemUser = plantSystem.getUserData();
                     if (!plantSystemUser.rewards) {
                         plantSystemUser.rewards = {
@@ -756,7 +756,9 @@
                             premiumGachaTickets: 0
                         };
                     }
-                    plantSystemUser.rewards.premiumGachaTickets += 1;
+
+                    // grantRewards() 사용하여 프리미엄 뽑기권 지급
+                    plantSystem.grantRewards(plantSystemUser, { premiumGacha: 1 });
                     plantSystem.saveUserData(plantSystemUser);
                     console.log('✅ 튜토리얼 완료: 프리미엄 뽑기권 1장 지급');
 

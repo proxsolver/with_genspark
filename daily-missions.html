@@ -482,29 +482,34 @@
                 return;
             }
 
-            // 보상 지급
+            // ✅ 수정: plantSystem.grantRewards() 사용 (자동 성장 로직 포함)
             const userData = plantSystem.getUserData();
             const rewards = definition.rewards;
 
+            // normalGachaTickets, premiumGachaTickets, growthTickets를 grantRewards에 맞게 변환
+            const rewardsForPlantSystem = {};
+
             if (rewards.normalTickets) {
-                userData.rewards.normalGachaTickets += rewards.normalTickets;
+                rewardsForPlantSystem.normalGacha = rewards.normalTickets;
             }
             if (rewards.premiumTickets) {
-                userData.rewards.premiumGachaTickets += rewards.premiumTickets;
+                rewardsForPlantSystem.premiumGacha = rewards.premiumTickets;
             }
             if (rewards.growthTickets) {
-                const ticket = {
-                    id: Date.now().toString(),
-                    createdAt: Date.now(),
-                    expiresAt: Date.now() + (24 * 60 * 60 * 1000)
-                };
-                userData.rewards.growthTickets.push(ticket);
+                rewardsForPlantSystem.growthTickets = rewards.growthTickets;
             }
+
+            // plantSystem.grantRewards() 사용 (tryAutoGrowPlants 포함)
+            if (Object.keys(rewardsForPlantSystem).length > 0) {
+                plantSystem.grantRewards(userData, rewardsForPlantSystem);
+            }
+
+            // money와 water는 기존 방식 유지
             if (rewards.money) {
                 plantSystem.addMoney(rewards.money);
             }
             if (rewards.water) {
-                userData.wallet.water += rewards.water;
+                userData.wallet.water = (userData.wallet.water || 0) + rewards.water;
             }
 
             plantSystem.saveUserData(userData);
