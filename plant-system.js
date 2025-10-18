@@ -195,11 +195,16 @@ class PlantSystem {
             return { canWater: false, reason: '이미 완전히 성장한 식물입니다' };
         }
 
+        // ✅ 수정: 성장 준비 완료 상태 (성장권 대기 중)
+        if (plant.status === 'READY_FOR_GROWTH') {
+            return { canWater: false, reason: '성장권을 사용하여 다음 단계로 성장시켜주세요' };
+        }
+
         // 스테이지별 최대 물 요구량 (5, 10, 15)
         const maxWater = this.getMaxWaterForStage(plant.stage || 0);
 
         if (plant.waterCount >= maxWater) {
-            return { canWater: false, reason: '이 단계에서는 물이 충분합니다' };
+            return { canWater: false, reason: '이 단계에서는 물이 충분합니다. 성장권을 획득하세요!' };
         }
 
         return { canWater: true };
@@ -225,19 +230,7 @@ class PlantSystem {
         // 스테이지 자동 성장 체크 (user 객체와 currentTime 전달)
         const growthResult = this.checkStageGrowth(user, plant, currentTime);
 
-        if (!growthResult.success) {
-            // 성장권 부족 등으로 성장이 실패한 경우
-            this.savePlant(plant); // 물만 준 상태 저장
-            return {
-                success: false,
-                message: growthResult.message,
-                waterCount: plant.waterCount,
-                status: plant.status,
-                stage: plant.stage,
-                stageChanged: false
-            };
-        }
-
+        // ✅ 수정: needsGrowthTicket이 true여도 물은 저장 (성공 처리)
         this.savePlant(plant);
 
         return {
@@ -245,7 +238,9 @@ class PlantSystem {
             waterCount: plant.waterCount,
             status: plant.status,
             stage: plant.stage,
-            stageChanged: growthResult.stageChanged
+            stageChanged: growthResult.stageChanged,
+            needsGrowthTicket: growthResult.needsGrowthTicket,
+            message: growthResult.message
         };
     }
 
@@ -255,12 +250,18 @@ class PlantSystem {
 
         // 현재 스테이지의 물 요구량을 달성했는지 체크
         if (plant.waterCount >= maxWater && currentStage < 3) {
-            // ✅ 수정: waterCount가 maxWater 이상일 때 항상 성장권 체크 (버그 방지)
+            // 성장권 체크
             const ticketIndex = this.findValidGrowthTicket(user, currentTime);
             if (ticketIndex === -1) {
-                // 성장권이 없으면 성장 실패
-                console.log('성장권이 없어 식물 성장에 실패했습니다.');
-                return { success: false, message: '성장권이 없어 다음 단계로 성장할 수 없습니다.' };
+                // ✅ 수정: 성장권이 없어도 물은 저장 (성장 준비 상태로 대기)
+                console.log('성장권이 없어 성장 대기 중입니다. 물은 저장되었습니다.');
+                plant.status = 'READY_FOR_GROWTH'; // 성장 준비 완료 상태
+                return {
+                    success: true,
+                    stageChanged: false,
+                    needsGrowthTicket: true,
+                    message: '성장권이 필요합니다. 퀴즈를 풀어서 성장권을 획득하세요!'
+                };
             }
 
             // 성장권 소모
@@ -271,6 +272,7 @@ class PlantSystem {
             plant.stage = currentStage + 1;
             plant.plantType = this.getPlantTypeForStage(plant.stage);
             plant.waterCount = 0; // 다음 스테이지를 위해 물 카운트 리셋
+            plant.status = 'PLANTED'; // 상태 초기화 (다음 단계로)
 
             // 마지막 스테이지(3)에 도달하면 GROWN 상태로
             if (plant.stage === 3) {
@@ -372,6 +374,9 @@ class PlantSystem {
                 };
                 user.rewards.growthTickets.push(ticket);
             }
+
+            // ✅ 추가: 성장권을 지급받으면 자동으로 성장 가능한 식물 성장 시도
+            this.tryAutoGrowPlants(user);
         }
 
         if (rewards.normalGacha) {
@@ -381,6 +386,48 @@ class PlantSystem {
         if (rewards.premiumGacha) {
             user.rewards.premiumGachaTickets += rewards.premiumGacha;
         }
+    }
+
+    // ✅ 추가: 자동으로 성장 가능한 식물을 성장시키는 함수
+    tryAutoGrowPlants(user) {
+        const plants = this.getUserPlants(user.userId);
+        const currentTime = this.getCurrentTimestamp();
+        let grownCount = 0;
+
+        plants.forEach(plant => {
+            // READY_FOR_GROWTH 상태이고, 성장권이 있으면 자동 성장
+            if (plant.status === 'READY_FOR_GROWTH' && plant.waterCount >= 5) {
+                const ticketIndex = this.findValidGrowthTicket(user, currentTime);
+                if (ticketIndex !== -1) {
+                    // 성장권 소모
+                    user.rewards.growthTickets.splice(ticketIndex, 1);
+
+                    // 스테이지 성장
+                    const currentStage = plant.stage || 0;
+                    plant.stage = currentStage + 1;
+                    plant.plantType = this.getPlantTypeForStage(plant.stage);
+                    plant.waterCount = 0;
+                    plant.status = 'PLANTED';
+
+                    // 마지막 스테이지면 GROWN으로
+                    if (plant.stage === 3) {
+                        plant.status = 'GROWN';
+                        plant.grownAt = this.getCurrentTimestamp();
+                    }
+
+                    this.savePlant(plant);
+                    grownCount++;
+                    console.log(`🌱 자동 성장: ${plant.plantId} (스테이지 ${currentStage} → ${plant.stage})`);
+                }
+            }
+        });
+
+        if (grownCount > 0) {
+            this.saveUserData(user);
+            console.log(`✅ ${grownCount}개의 식물이 자동으로 성장했습니다!`);
+        }
+
+        return grownCount;
     }
 
     // ===== 식물 성장 실행 =====

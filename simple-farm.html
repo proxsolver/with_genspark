@@ -545,6 +545,14 @@
                 // 사용자 데이터 다시 가져오기 (리셋 후 변경사항 반영)
                 currentUser = plantSystem.getUserData();
 
+                // ✅ 추가: 자동으로 성장 가능한 식물 성장 시도
+                const grownCount = plantSystem.tryAutoGrowPlants(currentUser);
+                if (grownCount > 0) {
+                    showToast(`🌱 ${grownCount}개의 식물이 자동으로 성장했습니다!`);
+                    // 사용자 데이터 다시 로드 (성장권이 소모되었을 수 있음)
+                    currentUser = plantSystem.getUserData();
+                }
+
                 // UI 업데이트
                 updateDashboard();
                 renderPlants();
@@ -663,9 +671,15 @@
                 const stageNames = ['🌰 씨앗', '🌱 줄기', '🌳 나무', '🌺 완성'];
                 const stageName = stageNames[plant.stage || 0] || '🌱 성장 중';
 
-                const statusText = plant.status === 'GROWN'
-                    ? '🌺 성장 완료 - 수확 가능!'
-                    : `${stageName} 단계`;
+                let statusText;
+                if (plant.status === 'GROWN') {
+                    statusText = '🌺 성장 완료 - 수확 가능!';
+                } else if (plant.status === 'READY_FOR_GROWTH') {
+                    // ✅ 추가: 성장 준비 완료 상태
+                    statusText = `${stageName} 단계 - ⚡ 성장 준비 완료!`;
+                } else {
+                    statusText = `${stageName} 단계`;
+                }
 
                 document.getElementById(`plant${potNum}-status`).textContent = statusText;
 
@@ -688,6 +702,32 @@
                             🌺 수확하기
                         </button>
                     `;
+                } else if (plant.status === 'READY_FOR_GROWTH') {
+                    // ✅ 추가: 성장 준비 완료 - 성장권 대기 중
+                    const dashboard = plantSystem.getDashboardState(currentUser.userId);
+                    const hasGrowthTicket = dashboard.tickets.growthTickets > 0;
+                    const nextStage = ['🌱 줄기', '🌳 나무', '🌺 열매/꽃'][plant.stage || 0];
+
+                    if (hasGrowthTicket) {
+                        // 성장권이 있으면 성장하기 버튼 표시
+                        actions.innerHTML = `
+                            <button onclick="growPlantWithTicket('${plant.id}')" class="w-full px-4 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600 transition-all animate-pulse">
+                                🎫 성장하기 → ${nextStage}
+                            </button>
+                            <div class="text-xs text-green-600 mt-2 font-semibold">✅ 성장 준비 완료!</div>
+                        `;
+                    } else {
+                        // 성장권이 없으면 안내 메시지
+                        actions.innerHTML = `
+                            <button disabled class="w-full px-4 py-2 bg-gray-300 text-gray-600 rounded-lg font-bold cursor-not-allowed">
+                                🎫 성장권 필요
+                            </button>
+                            <div class="text-xs text-orange-600 mt-2">
+                                💡 퀴즈를 풀어서 성장권을 획득하세요!<br>
+                                (3과목 완료 시 성장권 1개 지급)
+                            </div>
+                        `;
+                    }
                 } else {
                     // 성장 중 - 물주기 가능
                     const nextStage = ['🌱 줄기', '🌳 나무', '🌺 열매/꽃', '완성'][plant.stage || 0];
@@ -938,6 +978,11 @@
                     // 축하 모달 표시
                     closeWateringModal();
                     showCelebrationModal(plant);
+                } else if (result.needsGrowthTicket) {
+                    // ✅ 추가: 성장권이 필요한 상태
+                    showPlantSpeech('물은 충분해! 이제 성장권만 있으면 성장할 수 있어!');
+                    showToast('🎫 ' + result.message);
+                    closeWateringModal();
                 } else {
                     showPlantSpeech(`고마워! 이제 ${result.waterCount}/${maxWater} 물을 받았어!`);
                     showToast(`✅ 학습 완료! 물을 주었습니다 (${result.waterCount}/${maxWater})`);
@@ -957,7 +1002,7 @@
                 }
             } else {
                 // ✅ 성장권 부족 시 명확한 안내
-                if (result.message.includes('성장권')) {
+                if (result.message && result.message.includes('성장권')) {
                     showToast('🎫 ' + result.message + '\n\n📚 퀴즈를 풀어서 성장권을 획득하세요!\n(3과목 완료 시 성장권 1개 지급)');
                 } else {
                     showToast('❌ ' + result.message);
@@ -1104,7 +1149,70 @@
             currentPlantId = null;
         }
 
-        // 식물 성장시키기
+        // ✅ 추가: 성장권을 사용해서 식물 성장시키기
+        function growPlantWithTicket(plantId) {
+            try {
+                if (!currentUser) {
+                    showToast('❌ 사용자 정보를 불러오는 중입니다');
+                    return;
+                }
+
+                const user = plantSystem.getUserData();
+                const plant = plantSystem.getPlant(plantId);
+                const currentTime = plantSystem.getCurrentTimestamp();
+
+                // 성장권 확인
+                const ticketIndex = plantSystem.findValidGrowthTicket(user, currentTime);
+                if (ticketIndex === -1) {
+                    showToast('❌ 유효한 성장권이 없습니다');
+                    return;
+                }
+
+                // 식물 상태 확인
+                if (plant.status !== 'READY_FOR_GROWTH') {
+                    showToast('❌ 성장 준비가 되지 않았습니다');
+                    return;
+                }
+
+                // 성장 전 스테이지 저장
+                const stageBefore = plant.stage || 0;
+
+                // 성장권 소모
+                user.rewards.growthTickets.splice(ticketIndex, 1);
+
+                // 스테이지 성장
+                plant.stage = stageBefore + 1;
+                plant.plantType = plantSystem.getPlantTypeForStage(plant.stage);
+                plant.waterCount = 0;
+                plant.status = 'PLANTED';
+
+                // 마지막 스테이지면 GROWN으로
+                if (plant.stage === 3) {
+                    plant.status = 'GROWN';
+                    plant.grownAt = plantSystem.getCurrentTimestamp();
+                }
+
+                plantSystem.savePlant(plant);
+                plantSystem.saveUserData(user);
+
+                // 축하 모달 표시
+                showPlantSpeech('와! 한 단계 성장했어요! 🎉');
+                showCelebrationModal(plant);
+
+                // Firebase 동기화
+                if (window.plantSystemFirebase) {
+                    plantSystemFirebase.savePlantSystemState();
+                }
+
+                updateDashboard();
+
+            } catch (error) {
+                console.error('성장 오류:', error);
+                showToast('❌ 성장 실패: ' + error.message);
+            }
+        }
+
+        // 식물 성장시키기 (기존 함수)
         function growPlantInPot(plantId) {
             try {
                 if (!currentUser) {
