@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_hard_2_1",
+    "subject": "colors",
+    "question": "우리나라 국기인 태극기에는 주로 어떤 색들이 있을까요?",
+    "options": ["빨간색, 파란색, 검은색", "노란색, 초록색, 보라색", "주황색, 분홍색, 갈색", "회색, 하얀색만"],
+    "correctIndex": 0,
+    "explanation": "태극기에는 빨간색, 파란색, 검은색이 있어요! 하얀 바탕에 빨강과 파랑의 태극 무늬와 검은색 건곤감리가 그려져 있어요.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_2_2",
+    "subject": "colors",
+    "question": "신호등의 '조심하세요' 신호는 무슨 색깔일까요?",
+    "options": ["노란색", "빨간색", "초록색", "파란색"],
+    "correctIndex": 0,
+    "explanation": "신호등의 '조심하세요' 신호는 노란색이에요! 노란색 불이 켜지면 주의해야 해요.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_2_3",
+    "subject": "colors",
+    "question": "분홍색을 만들려면 어떤 색들을 섞어야 할까요?",
+    "options": ["빨간색과 하얀색", "파란색과 노란색", "초록색과 검은색", "보라색과 주황색"],
+    "correctIndex": 0,
+    "explanation": "분홍색은 빨간색과 하얀색을 섞으면 만들 수 있어요! 예쁜 분홍색이 된답니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_2_4",
+    "subject": "colors",
+    "question": "수박 겉은 무슨 색이고 속은 무슨 색일까요?",
+    "options": ["겉은 초록색, 속은 빨간색", "겉은 빨간색, 속은 초록색", "겉은 노란색, 속은 파란색", "겉은 하얀색, 속은 보라색"],
+    "correctIndex": 0,
+    "explanation": "수박은 겉이 초록색이고 속이 빨간색이에요! 여름에 먹는 시원하고 달콤한 과일이랍니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_2_5",
+    "subject": "colors",
+    "question": "자주색은 어떤 색들을 섞어서 만들 수 있을까요?",
+    "options": ["빨간색과 파란색", "노란색과 초록색", "하얀색과 검은색", "주황색과 초록색"],
+    "correctIndex": 0,
+    "explanation": "자주색(보라색)은 빨간색과 파란색을 섞으면 만들 수 있어요! 포도와 같은 색이랍니다.",
+    "difficulty": 3
+  }
+]

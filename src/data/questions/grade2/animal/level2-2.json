@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_medium_2_1",
+    "subject": "animal",
+    "question": "대나무를 주로 먹는 흑백 무늬의 동물은 무엇일까요?",
+    "options": ["판다", "얼룩말", "펭귄", "곰"],
+    "correctIndex": 0,
+    "explanation": "판다는 검은색과 흰색 무늬가 있어요. 대나무를 아주 좋아해서 하루 종일 먹어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_2_2",
+    "subject": "animal",
+    "question": "도토리를 모아서 겨울에 먹는 동물은 무엇일까요?",
+    "options": ["다람쥐", "개", "고양이", "새"],
+    "correctIndex": 0,
+    "explanation": "다람쥐는 가을에 도토리를 모아요. 겨울에 먹으려고 나무 구멍에 숨겨둬요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_2_3",
+    "subject": "animal",
+    "question": "낮에는 나무에 거꾸로 매달려 자는 동물은 무엇일까요?",
+    "options": ["박쥐", "새", "다람쥐", "원숭이"],
+    "correctIndex": 0,
+    "explanation": "박쥐는 낮에는 나무나 동굴에 거꾸로 매달려 자요. 밤에 날아다녀요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_2_4",
+    "subject": "animal",
+    "question": "몸의 색깔을 주변 환경에 맞춰 바꿀 수 있는 동물은 무엇일까요?",
+    "options": ["카멜레온", "개구리", "뱀", "도마뱀"],
+    "correctIndex": 0,
+    "explanation": "카멜레온은 주변 색깔에 맞춰 몸 색깔을 바꿀 수 있어요. 적에게서 숨기 위해서예요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_2_5",
+    "subject": "animal",
+    "question": "물속에서 숨을 쉴 수 있지만 육지에 올라와 새끼를 낳는 동물은 무엇일까요?",
+    "options": ["바다거북", "물고기", "고래", "오징어"],
+    "correctIndex": 0,
+    "explanation": "바다거북은 바다에서 살지만, 알을 낳을 때는 모래사장으로 올라와요!",
+    "difficulty": 2
+  }
+]

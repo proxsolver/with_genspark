@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_easy_1_1",
+    "subject": "colors",
+    "question": "하늘은 무슨 색깔일까요?",
+    "options": ["파란색", "빨간색", "노란색", "검은색"],
+    "correctIndex": 0,
+    "explanation": "맑은 날 하늘은 파란색이에요! 구름이 없는 날 위를 보면 예쁜 파란 하늘을 볼 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_1_2",
+    "subject": "colors",
+    "question": "사과는 주로 무슨 색깔일까요?",
+    "options": ["빨간색", "파란색", "보라색", "검은색"],
+    "correctIndex": 0,
+    "explanation": "사과는 빨간색이에요! 물론 초록색 사과도 있지만, 가장 많이 보는 사과는 빨간색이랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_1_3",
+    "subject": "colors",
+    "question": "바나나는 무슨 색깔일까요?",
+    "options": ["노란색", "파란색", "빨간색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "바나나는 노란색이에요! 익은 바나나는 예쁜 노란색을 띠고 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_1_4",
+    "subject": "colors",
+    "question": "풀과 나뭇잎은 주로 무슨 색깔일까요?",
+    "options": ["초록색", "빨간색", "노란색", "하얀색"],
+    "correctIndex": 0,
+    "explanation": "풀과 나뭇잎은 초록색이에요! 봄과 여름에는 싱싱한 초록색 잎을 볼 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_1_5",
+    "subject": "colors",
+    "question": "눈은 무슨 색깔일까요?",
+    "options": ["하얀색", "검은색", "파란색", "빨간색"],
+    "correctIndex": 0,
+    "explanation": "눈은 하얀색이에요! 겨울에 내리는 눈은 깨끗한 하얀색이랍니다.",
+    "difficulty": 1
+  }
+]

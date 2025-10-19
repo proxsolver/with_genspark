@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_medium_1_1",
+    "subject": "animal",
+    "question": "겨울잠을 자는 동물은 무엇일까요?",
+    "options": ["곰", "개", "고양이", "토끼"],
+    "correctIndex": 0,
+    "explanation": "곰은 추운 겨울에는 동굴에서 잠을 자요. 이것을 겨울잠이라고 해요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_1_2",
+    "subject": "animal",
+    "question": "밤에 주로 활동하고 쥐를 잡아먹는 새는 무엇일까요?",
+    "options": ["올빼미", "참새", "비둘기", "까치"],
+    "correctIndex": 0,
+    "explanation": "올빼미는 밤에 눈이 잘 보여서 밤에 사냥을 해요. 쥐를 잡아먹어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_1_3",
+    "subject": "animal",
+    "question": "등껍질을 가지고 있어서 위험하면 그 안으로 숨는 동물은 무엇일까요?",
+    "options": ["거북이", "개구리", "뱀", "도마뱀"],
+    "correctIndex": 0,
+    "explanation": "거북이는 단단한 등껍질이 있어요. 위험하면 머리와 다리를 껍질 안으로 숨겨요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_1_4",
+    "subject": "animal",
+    "question": "물과 땅 양쪽에서 살 수 있는 동물은 무엇일까요?",
+    "options": ["개구리", "닭", "쥐", "새"],
+    "correctIndex": 0,
+    "explanation": "개구리는 어릴 때는 물속에서 올챙이로 살다가, 자라면 땅에서도 살 수 있어요!",
+    "difficulty": 2
+  },
+  {
+    "id": "animal_medium_1_5",
+    "subject": "animal",
+    "question": "주머니 속에 새끼를 넣고 다니는 동물은 무엇일까요?",
+    "options": ["캥거루", "사자", "호랑이", "곰"],
+    "correctIndex": 0,
+    "explanation": "캥거루 엄마는 배에 주머니가 있어요. 그 안에 아기 캥거루를 넣고 다녀요!",
+    "difficulty": 2
+  }
+]

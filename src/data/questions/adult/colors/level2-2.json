@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_medium_2_1",
+    "subject": "colors",
+    "question": "신호등의 '멈추세요' 신호는 무슨 색깔일까요?",
+    "options": ["빨간색", "초록색", "노란색", "파란색"],
+    "correctIndex": 0,
+    "explanation": "신호등의 '멈추세요' 신호는 빨간색이에요! 빨간색 불이 켜지면 반드시 멈춰야 해요.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_2_2",
+    "subject": "colors",
+    "question": "포도는 주로 무슨 색깔일까요?",
+    "options": ["보라색", "빨간색", "노란색", "초록색"],
+    "correctIndex": 0,
+    "explanation": "포도는 보라색이에요! 초록색 포도도 있지만, 많이 먹는 포도는 보라색이랍니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_2_3",
+    "subject": "colors",
+    "question": "레몬은 무슨 색깔일까요?",
+    "options": ["노란색", "빨간색", "초록색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "레몬은 노란색이에요! 신맛이 나는 노란색 과일이랍니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_2_4",
+    "subject": "colors",
+    "question": "초콜릿은 주로 무슨 색깔일까요?",
+    "options": ["갈색", "하얀색", "빨간색", "파란색"],
+    "correctIndex": 0,
+    "explanation": "초콜릿은 갈색이에요! 달콤한 갈색 간식이랍니다. 화이트 초콜릿은 하얀색이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_2_5",
+    "subject": "colors",
+    "question": "오렌지는 무슨 색깔일까요?",
+    "options": ["주황색", "파란색", "초록색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "오렌지는 주황색이에요! 오렌지의 이름이 주황색을 뜻하기도 해요.",
+    "difficulty": 2
+  }
+]

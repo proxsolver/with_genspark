@@ -473,6 +473,8 @@
             common: { name: '상식', icon: '🧠' },
             idiom: { name: '사자성어', icon: '📜' },
             economy: { name: '경제', icon: '💰' },
+            animal: { name: '동물 상식', icon: '🐾' },
+            colors: { name: '색깔', icon: '🎨' },
             kpop: { name: 'K-POP', icon: '🎵' },
             ai: { name: 'AI', icon: '🤖' }
         };
@@ -534,7 +536,7 @@
 
                 // 학년별 경로 설정
                 const userGrade = localStorage.getItem('userGrade') || '4'; // 기본값 4학년
-                const gradePath = `grade${userGrade}`;
+                const gradePath = userGrade === '7' ? 'adult' : `grade${userGrade}`;
 
                 const easyFile = `level1${daySuffix}.json`;
                 const mediumFile = `level2${daySuffix}.json`;

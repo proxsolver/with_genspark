@@ -305,9 +305,24 @@
             common: { name: '상식', icon: '🧠', color: 'purple', time: 7.5 },
             idiom: { name: '사자성어', icon: '📜', color: 'yellow', time: 7.5 },
             economy: { name: '경제', icon: '💰', color: 'amber', time: 7.5 },
+            person: { name: '인물', icon: '👤', color: 'teal', time: 7.5 },
             animal: { name: '동물 상식', icon: '🐾', color: 'lime', time: 7.5 },
+            colors: { name: '색깔', icon: '🎨', color: 'rose', time: 7.5 },
             kpop: { name: 'K-POP', icon: '🎵', color: 'pink', time: 7.5 },
-            ai: { name: 'AI', icon: '🤖', color: 'violet', time: 7.5 }
+            toeic: { name: 'TOEIC', icon: '📖', color: 'sky', time: 10 },
+            ai: { name: 'AI', icon: '🤖', color: 'violet', time: 7.5 },
+            production: { name: '생산관리', icon: '🏭', color: 'slate', time: 10 }
+        };
+
+        // 학년별 사용 가능한 과목 매핑
+        const subjectsByGrade = {
+            '1': ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'colors', 'toeic', 'ai'],
+            '2': ['english', 'listening', 'math', 'skill', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'animal', 'toeic', 'ai'],
+            '3': ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'production', 'toeic', 'ai'],
+            '4': ['english', 'listening', 'math', 'skill', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'kpop', 'toeic', 'ai'],
+            '5': ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'production', 'toeic', 'ai'],
+            '6': ['english', 'math', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'production', 'toeic', 'ai'],
+            '7': ['english', 'listening', 'math', 'skill', 'science', 'korean', 'social', 'common', 'idiom', 'economy', 'person', 'animal', 'colors', 'kpop', 'production', 'toeic', 'ai'] // 성인 - 모든 과목
         };
 
         // 오늘 완료한 과목 확인 (localStorage에서 가져오기)
@@ -654,7 +669,12 @@
             const userHistory = getUserHistory();
             const completedSubjects = getTodayCompletedSubjects();
 
-            container.innerHTML = Object.keys(subjects)
+            // 현재 학년 가져오기
+            const userGrade = localStorage.getItem('userGrade') || '4';
+            const availableSubjects = subjectsByGrade[userGrade] || Object.keys(subjects);
+
+            container.innerHTML = availableSubjects
+                .filter(subject => subjects[subject]) // 존재하는 과목만 필터링
                 .map(subject => {
                     const subjectData = subjects[subject];
                     const history = userHistory[subject];

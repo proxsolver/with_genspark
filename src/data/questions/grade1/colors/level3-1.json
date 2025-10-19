@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_hard_1_1",
+    "subject": "colors",
+    "question": "무지개에는 몇 가지 색깔이 있을까요?",
+    "options": ["7가지", "5가지", "3가지", "10가지"],
+    "correctIndex": 0,
+    "explanation": "무지개는 7가지 색깔로 이루어져 있어요! 빨, 주, 노, 초, 파, 남, 보 순서로 색이 있답니다.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_1_2",
+    "subject": "colors",
+    "question": "검은색과 하얀색을 섞으면 무슨 색이 될까요?",
+    "options": ["회색", "파란색", "빨간색", "노란색"],
+    "correctIndex": 0,
+    "explanation": "검은색과 하얀색을 섞으면 회색이 돼요! 코끼리나 구름이 회색이에요.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_1_3",
+    "subject": "colors",
+    "question": "빨간색, 파란색, 노란색을 무엇이라고 부를까요?",
+    "options": ["삼원색", "무지개색", "신호등색", "과일색"],
+    "correctIndex": 0,
+    "explanation": "빨간색, 파란색, 노란색을 삼원색이라고 해요! 이 세 가지 색으로 다른 여러 색을 만들 수 있어요.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_1_4",
+    "subject": "colors",
+    "question": "가을에 나뭇잎은 주로 무슨 색으로 변할까요?",
+    "options": ["노란색이나 빨간색", "파란색", "보라색", "검은색"],
+    "correctIndex": 0,
+    "explanation": "가을이 되면 나뭇잎은 노란색이나 빨간색으로 변해요! 이것을 단풍이라고 해요.",
+    "difficulty": 3
+  },
+  {
+    "id": "colors_hard_1_5",
+    "subject": "colors",
+    "question": "밤에 빛나는 별은 주로 무슨 색으로 보일까요?",
+    "options": ["하얀색이나 노란색", "빨간색", "초록색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "별은 하얀색이나 노란색으로 보여요! 밤하늘에서 반짝반짝 빛나는 별들을 볼 수 있어요.",
+    "difficulty": 3
+  }
+]

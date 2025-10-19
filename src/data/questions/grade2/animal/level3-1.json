@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_hard_1_1",
+    "subject": "animal",
+    "question": "날 수 있지만 새가 아니고, 날개가 있지만 깃털이 없는 동물은 무엇일까요?",
+    "options": ["박쥐", "나비", "잠자리", "개구리"],
+    "correctIndex": 0,
+    "explanation": "박쥐는 날 수 있지만 새가 아니에요. 날개가 있지만 깃털이 없고 털이 있어요. 포유류예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_1_2",
+    "subject": "animal",
+    "question": "알을 낳지만 새끼에게 젖을 먹이는 특별한 동물은 무엇일까요?",
+    "options": ["오리너구리", "닭", "물고기", "뱀"],
+    "correctIndex": 0,
+    "explanation": "오리너구리는 알을 낳지만 부화한 새끼에게 젖을 먹여요. 아주 특별한 포유류예요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_1_3",
+    "subject": "animal",
+    "question": "물속에서 살지만 물고기가 아니고, 아가미 대신 폐로 숨을 쉬는 큰 동물은 무엇일까요?",
+    "options": ["고래", "상어", "문어", "오징어"],
+    "correctIndex": 0,
+    "explanation": "고래는 물속에 살지만 물고기가 아니에요. 폐로 숨을 쉬는 포유류라서 가끔 수면 위로 올라와 숨을 쉬어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_1_4",
+    "subject": "animal",
+    "question": "독을 가지고 있어서 적을 공격할 수 있는 물고기는 무엇일까요?",
+    "options": ["복어", "금붕어", "잉어", "송어"],
+    "correctIndex": 0,
+    "explanation": "복어는 몸에 독을 가지고 있어요. 위험하면 몸을 둥글게 부풀려서 가시도 세워요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_1_5",
+    "subject": "animal",
+    "question": "심장이 3개나 있고 다리가 8개인 바다 동물은 무엇일까요?",
+    "options": ["문어", "오징어", "불가사리", "게"],
+    "correctIndex": 0,
+    "explanation": "문어는 심장이 3개나 있어요! 다리도 8개이고, 먹물을 뿜어서 적에게서 도망쳐요!",
+    "difficulty": 3
+  }
+]

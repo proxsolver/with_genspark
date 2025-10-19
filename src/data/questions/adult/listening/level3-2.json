@@ -1,0 +1,57 @@
+[
+  {
+    "id": "listening_hard_g4_6_1",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 무엇에 대해 걱정하고 있나요?",
+    "audioText": "You look worried. What's wrong? I'm worried about tomorrow's presentation. I'm not ready yet.",
+    "options": ["시험", "발표", "숙제", "면접"],
+    "correctIndex": 1,
+    "explanation": "'presentation'은 '발표'라는 뜻이에요.",
+    "hint": "'presentation'을 잘 들어보세요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_6_2",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 규칙을 말하고 있나요?",
+    "audioText": "In this museum, you mustn't touch the paintings or take photos.",
+    "options": ["그림을 만지거나 사진을 찍으면 안 돼요", "큰 소리로 말하면 안 돼요", "음식을 먹으면 안 돼요", "뛰면 안 돼요"],
+    "correctIndex": 0,
+    "explanation": "'mustn't touch the paintings or take photos'는 '그림을 만지거나 사진을 찍으면 안 된다'는 뜻이에요.",
+    "hint": "두 가지 규칙을 말하고 있어요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_6_3",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 계획을 세우고 있나요?",
+    "audioText": "What should we do for Mom's birthday? Let's make a cake and prepare a surprise party.",
+    "options": ["케이크 사기", "케이크 만들고 깜짝 파티", "선물 사기", "외식하기"],
+    "correctIndex": 1,
+    "explanation": "'make a cake and prepare a surprise party'는 '케이크를 만들고 깜짝 파티를 준비한다'는 뜻이에요.",
+    "hint": "두 가지 일을 할 거예요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_6_4",
+    "subject": "listening",
+    "question": "🎧 다음 문장을 듣고 어떤 성격인가요?",
+    "audioText": "My best friend is very kind and helpful. She always helps me when I have problems.",
+    "options": ["친절하고 도움이 돼요", "재미있고 활발해요", "조용하고 차분해요", "똑똑하고 성실해요"],
+    "correctIndex": 0,
+    "explanation": "'kind and helpful'은 '친절하고 도움이 되는'이라는 뜻이에요.",
+    "hint": "두 가지 성격을 말하고 있어요.",
+    "difficulty": 3
+  },
+  {
+    "id": "listening_hard_g4_6_5",
+    "subject": "listening",
+    "question": "🎧 다음 대화를 듣고 어떤 변화가 있었나요?",
+    "audioText": "How was your trip? It was amazing! The weather was perfect and the food was delicious. I had a wonderful time.",
+    "options": ["날씨가 나빴어요", "음식이 맛없었어요", "완벽한 여행이었어요", "지루했어요"],
+    "correctIndex": 2,
+    "explanation": "'amazing, perfect, delicious, wonderful'은 모두 좋은 의미로, 완벽한 여행이었다는 뜻이에요.",
+    "hint": "긍정적인 단어들을 찾아보세요.",
+    "difficulty": 3
+  }
+]

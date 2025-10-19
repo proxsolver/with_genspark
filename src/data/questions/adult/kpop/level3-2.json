@@ -1,0 +1,52 @@
+[
+  {
+    "id": "kpop_hard_2_1",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["뉴진스 - ETA", "아이브 - Either Way", "르세라핌 - Perfect Night", "에스파 - Better Things"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2023년 더블 타이틀곡 'ETA'입니다. 중독성 있는 리듬이 특징이에요!",
+    "difficulty": 3,
+    "lyrics": "이따 보자 / E T A / 언제 어디서 / What you, what you gonna do"
+  },
+  {
+    "id": "kpop_hard_2_2",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["르세라핌 - Perfect Night", "아이브 - Baddie", "뉴진스 - Get Up", "에스파 - Hold On Tight"],
+    "correctIndex": 0,
+    "explanation": "르세라핌의 2023년 디지털 싱글 'Perfect Night'입니다. 신나는 파티 분위기의 곡이에요!",
+    "difficulty": 3,
+    "lyrics": "Perfect night for you and me / 완벽한 이 밤 / We'll be dancing till the break of dawn"
+  },
+  {
+    "id": "kpop_hard_2_3",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["세븐틴 - MAESTRO", "스트레이 키즈 - 樂-STAR", "엔시티 - Golden Age", "투모로우바이투게더 - Back for More"],
+    "correctIndex": 0,
+    "explanation": "세븐틴의 2024년 정규 앨범 타이틀곡 'MAESTRO'입니다. 웅장한 사운드가 인상적이에요!",
+    "difficulty": 3,
+    "lyrics": "난 maestro / 완벽한 리듬 / 내가 이끄는 symphony"
+  },
+  {
+    "id": "kpop_hard_2_4",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["아이브 - Heya", "뉴진스 - How Sweet", "에스파 - Supernova", "르세라핌 - CRAZY"],
+    "correctIndex": 0,
+    "explanation": "아이브의 2024년 미니 2집 선공개 싱글 'Heya'입니다. 중독성 있는 후렴구가 특징이에요!",
+    "difficulty": 3,
+    "lyrics": "Heya heya heya / 나를 봐봐 / Heya heya heya / 주목해봐"
+  },
+  {
+    "id": "kpop_hard_2_5",
+    "subject": "kpop",
+    "question": "🎧 가사를 듣고 노래를 맞춰보세요!\n\n[아래 '🎵 가사 듣기' 버튼을 눌러주세요]",
+    "options": ["뉴진스 - Bubble Gum", "아이브 - Off The Record", "르세라핌 - Eve, Psyche & Bluebeard's wife", "에스파 - Live My Life"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2024년 선공개 싱글 'Bubble Gum'입니다. 상큼한 멜로디가 매력적인 곡이에요!",
+    "difficulty": 3,
+    "lyrics": "You're my favorite flavor / Bubble gum / 너와 함께면 / 달콤해"
+  }
+]

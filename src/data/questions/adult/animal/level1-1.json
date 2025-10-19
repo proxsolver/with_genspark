@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_easy_1_1",
+    "subject": "animal",
+    "question": "다리가 4개이고 '멍멍' 하고 짖는 동물은 무엇일까요?",
+    "options": ["개", "고양이", "토끼", "새"],
+    "correctIndex": 0,
+    "explanation": "개는 사람과 가장 친한 동물 중 하나예요. 다리가 4개이고 '멍멍' 하고 짖어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_2",
+    "subject": "animal",
+    "question": "깃털이 있고 하늘을 날 수 있는 동물은 무엇일까요?",
+    "options": ["새", "물고기", "개구리", "뱀"],
+    "correctIndex": 0,
+    "explanation": "새는 깃털이 있고 날개로 하늘을 날 수 있어요. 참새, 까치, 비둘기 등이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_3",
+    "subject": "animal",
+    "question": "물속에서 살면서 지느러미로 헤엄치는 동물은 무엇일까요?",
+    "options": ["물고기", "토끼", "소", "말"],
+    "correctIndex": 0,
+    "explanation": "물고기는 물속에서 살며 지느러미로 헤엄쳐요. 금붕어, 잉어 등이 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_4",
+    "subject": "animal",
+    "question": "'야옹' 하고 우는 동물은 무엇일까요?",
+    "options": ["고양이", "개", "토끼", "닭"],
+    "correctIndex": 0,
+    "explanation": "고양이는 '야옹' 하고 울어요. 발톱으로 나무를 잘 타고, 생쥐를 잡기도 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_5",
+    "subject": "animal",
+    "question": "귀가 길고 깡충깡충 뛰어다니는 동물은 무엇일까요?",
+    "options": ["토끼", "쥐", "강아지", "오리"],
+    "correctIndex": 0,
+    "explanation": "토끼는 귀가 길고 뒷다리가 튼튼해서 깡충깡충 뛰어다녀요. 당근을 좋아해요!",
+    "difficulty": 1
+  }
+]

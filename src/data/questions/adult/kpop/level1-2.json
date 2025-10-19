@@ -1,0 +1,52 @@
+[
+  {
+    "id": "kpop_easy_sample_1",
+    "subject": "kpop",
+    "question": "다음 가사는 어떤 노래일까요?\n\n\"Supernova, can't stop hyperstellar / 원초 그걸 찾아\"",
+    "options": ["에스파 - Supernova", "뉴진스 - Supernatural", "아이브 - Heya", "르세라핌 - Smart"],
+    "correctIndex": 0,
+    "explanation": "에스파의 2024년 메가히트곡 'Supernova'입니다. 중독성 강한 후렴구로 많은 사랑을 받았어요!",
+    "difficulty": 1,
+    "lyrics": "Supernova, can't stop hyperstellar / 원초 그걸 찾아"
+  },
+  {
+    "id": "kpop_easy_sample_2",
+    "subject": "kpop",
+    "question": "다음 가사를 부른 그룹은?\n\n\"How you doin'? / 삐끼삐끼 / How you doin'? / 빼꼼빼꼼\"",
+    "options": ["뉴진스", "아이브", "있지", "엔믹스"],
+    "correctIndex": 0,
+    "explanation": "뉴진스의 2024년 히트곡 'How Sweet'의 중독성 있는 후렴구입니다!",
+    "difficulty": 1,
+    "lyrics": "How you doin'? / 삐끼삐끼 / How you doin'? / 빼꼼빼꼼"
+  },
+  {
+    "id": "kpop_easy_sample_3",
+    "subject": "kpop",
+    "question": "이 유명한 후렴구는 어느 노래일까요?\n\n\"Sheesh sheesh / 놀란 입 다물지 못해 sheesh\"",
+    "options": ["베이비몬스터 - SHEESH", "블랙핑크 - Pink Venom", "아이브 - Baddie", "르세라핌 - Perfect Night"],
+    "correctIndex": 0,
+    "explanation": "베이비몬스터의 데뷔 타이틀곡 'SHEESH'입니다. 강렬한 비트와 함께 큰 인기를 얻었어요!",
+    "difficulty": 1,
+    "lyrics": "Sheesh sheesh / 놀란 입 다물지 못해 sheesh"
+  },
+  {
+    "id": "kpop_easy_sample_4",
+    "subject": "kpop",
+    "question": "다음 가사의 노래 제목은?\n\n\"Magnetic / You're so magnetic / I'm attracted to you\"",
+    "options": ["아일릿 - Magnetic", "뉴진스 - Attention", "있지 - GOLD", "엔믹스 - Dash"],
+    "correctIndex": 0,
+    "explanation": "아일릿의 데뷔곡 'Magnetic'입니다. 귀여운 멜로디로 많은 사랑을 받았어요!",
+    "difficulty": 1,
+    "lyrics": "Magnetic / You're so magnetic / I'm attracted to you"
+  },
+  {
+    "id": "kpop_easy_sample_5",
+    "subject": "kpop",
+    "question": "이 가사를 부른 보이그룹은?\n\n\"Chk chk boom / Chk chk boom / Chk chk boom / 발사\"",
+    "options": ["스트레이 키즈", "세븐틴", "엔시티", "투모로우바이투게더"],
+    "correctIndex": 0,
+    "explanation": "스트레이 키즈의 2024년 타이틀곡 'Chk Chk Boom'입니다. 파워풀한 퍼포먼스가 인상적이에요!",
+    "difficulty": 1,
+    "lyrics": "Chk chk boom / Chk chk boom / Chk chk boom / 발사"
+  }
+]

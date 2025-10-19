@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_easy_2_1",
+    "subject": "animal",
+    "question": "아침마다 '꼬끼오' 하고 우는 동물은 무엇일까요?",
+    "options": ["닭", "개", "소", "말"],
+    "correctIndex": 0,
+    "explanation": "수탉은 아침마다 '꼬끼오' 하고 울어요. 닭은 알을 낳기도 해요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_2",
+    "subject": "animal",
+    "question": "'음메' 하고 우는 동물은 무엇일까요?",
+    "options": ["소", "돼지", "양", "말"],
+    "correctIndex": 0,
+    "explanation": "소는 '음메' 하고 울어요. 소는 우유를 주는 고마운 동물이에요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_3",
+    "subject": "animal",
+    "question": "코가 아주 길고 몸집이 큰 동물은 무엇일까요?",
+    "options": ["코끼리", "기린", "사자", "호랑이"],
+    "correctIndex": 0,
+    "explanation": "코끼리는 코가 아주 길고 몸이 커요. 긴 코로 물을 마시고 음식을 먹어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_4",
+    "subject": "animal",
+    "question": "목이 아주 길어서 높은 나뭇잎을 먹는 동물은 무엇일까요?",
+    "options": ["기린", "말", "양", "사슴"],
+    "correctIndex": 0,
+    "explanation": "기린은 목이 아주 길어요. 높은 나무의 잎을 쉽게 먹을 수 있어요!",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_5",
+    "subject": "animal",
+    "question": "등에 줄무늬가 있고 '어흥' 하고 우는 동물은 무엇일까요?",
+    "options": ["호랑이", "사자", "치타", "표범"],
+    "correctIndex": 0,
+    "explanation": "호랑이는 등에 검은 줄무늬가 있어요. '어흥' 하고 크게 울어요!",
+    "difficulty": 1
+  }
+]

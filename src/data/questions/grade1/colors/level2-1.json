@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_medium_1_1",
+    "subject": "colors",
+    "question": "빨간색과 노란색을 섞으면 무슨 색이 될까요?",
+    "options": ["주황색", "초록색", "보라색", "파란색"],
+    "correctIndex": 0,
+    "explanation": "빨간색과 노란색을 섞으면 주황색이 돼요! 당근이나 오렌지 같은 색이랍니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_1_2",
+    "subject": "colors",
+    "question": "파란색과 노란색을 섞으면 무슨 색이 될까요?",
+    "options": ["초록색", "빨간색", "보라색", "주황색"],
+    "correctIndex": 0,
+    "explanation": "파란색과 노란색을 섞으면 초록색이 돼요! 풀과 나뭇잎 같은 색이에요.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_1_3",
+    "subject": "colors",
+    "question": "빨간색과 파란색을 섞으면 무슨 색이 될까요?",
+    "options": ["보라색", "초록색", "주황색", "노란색"],
+    "correctIndex": 0,
+    "explanation": "빨간색과 파란색을 섞으면 보라색이 돼요! 포도나 가지 같은 색이랍니다.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_1_4",
+    "subject": "colors",
+    "question": "소방차는 주로 무슨 색깔일까요?",
+    "options": ["빨간색", "파란색", "노란색", "초록색"],
+    "correctIndex": 0,
+    "explanation": "소방차는 빨간색이에요! 빨간색은 위험을 알리는 색이라서 소방차에 쓰여요.",
+    "difficulty": 2
+  },
+  {
+    "id": "colors_medium_1_5",
+    "subject": "colors",
+    "question": "신호등의 '가세요' 신호는 무슨 색깔일까요?",
+    "options": ["초록색", "빨간색", "노란색", "파란색"],
+    "correctIndex": 0,
+    "explanation": "신호등의 '가세요' 신호는 초록색이에요! 초록색 불이 켜지면 안전하게 건널 수 있어요.",
+    "difficulty": 2
+  }
+]

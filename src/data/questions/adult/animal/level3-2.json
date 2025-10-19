@@ -1,0 +1,47 @@
+[
+  {
+    "id": "animal_hard_2_1",
+    "subject": "animal",
+    "question": "발이 없어도 빠르게 움직일 수 있고, 허물을 벗는 동물은 무엇일까요?",
+    "options": ["뱀", "지렁이", "물고기", "올챙이"],
+    "correctIndex": 0,
+    "explanation": "뱀은 다리가 없지만 몸을 구불구불하게 움직여서 빠르게 이동해요. 자라면서 허물을 벗어요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_2_2",
+    "subject": "animal",
+    "question": "새끼를 낳지 않고 알을 낳지만, 날지 못하는 새는 무엇일까요?",
+    "options": ["펭귄", "참새", "비둘기", "까마귀"],
+    "correctIndex": 0,
+    "explanation": "펭귄은 새이지만 날 수 없어요. 대신 물속에서 아주 빠르게 헤엄쳐요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_2_3",
+    "subject": "animal",
+    "question": "밤에만 피는 꽃의 꿀을 먹고, 긴 주둥이를 가진 새는 무엇일까요?",
+    "options": ["벌새", "까치", "참새", "까마귀"],
+    "correctIndex": 0,
+    "explanation": "벌새는 아주 작고 빨라요. 긴 부리로 꽃의 꿀을 먹고, 공중에 떠서 날개를 빠르게 움직여요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_2_4",
+    "subject": "animal",
+    "question": "집을 스스로 짓고 다니면서 위험하면 그 안으로 숨는 작은 동물은 무엇일까요?",
+    "options": ["달팽이", "개미", "거미", "나비"],
+    "correctIndex": 0,
+    "explanation": "달팽이는 등껍질이 집이에요. 어디를 가든 집을 등에 지고 다녀요!",
+    "difficulty": 3
+  },
+  {
+    "id": "animal_hard_2_5",
+    "subject": "animal",
+    "question": "애벌레에서 번데기를 거쳐 아름다운 날개를 가진 곤충으로 변하는 것은 무엇일까요?",
+    "options": ["나비", "벌", "개미", "매미"],
+    "correctIndex": 0,
+    "explanation": "나비는 처음엔 애벌레로 태어나요. 번데기가 되었다가 아름다운 나비로 변해요!",
+    "difficulty": 3
+  }
+]

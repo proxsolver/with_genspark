@@ -1,0 +1,47 @@
+[
+  {
+    "id": "colors_easy_2_1",
+    "subject": "colors",
+    "question": "해는 무슨 색깔로 보일까요?",
+    "options": ["노란색", "파란색", "초록색", "보라색"],
+    "correctIndex": 0,
+    "explanation": "해는 노란색으로 보여요! 아침과 저녁에는 주황색이나 빨간색으로도 보일 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_2_2",
+    "subject": "colors",
+    "question": "밤하늘은 무슨 색깔일까요?",
+    "options": ["검은색", "하얀색", "노란색", "빨간색"],
+    "correctIndex": 0,
+    "explanation": "밤하늘은 검은색이에요! 어두운 밤하늘에는 반짝이는 별들이 보여요.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_2_3",
+    "subject": "colors",
+    "question": "딸기는 무슨 색깔일까요?",
+    "options": ["빨간색", "파란색", "노란색", "검은색"],
+    "correctIndex": 0,
+    "explanation": "딸기는 빨간색이에요! 익은 딸기는 맛있는 빨간색이랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_2_4",
+    "subject": "colors",
+    "question": "당근은 무슨 색깔일까요?",
+    "options": ["주황색", "파란색", "보라색", "검은색"],
+    "correctIndex": 0,
+    "explanation": "당근은 주황색이에요! 건강에 좋은 주황색 채소랍니다.",
+    "difficulty": 1
+  },
+  {
+    "id": "colors_easy_2_5",
+    "subject": "colors",
+    "question": "구름은 주로 무슨 색깔일까요?",
+    "options": ["하얀색", "빨간색", "초록색", "노란색"],
+    "correctIndex": 0,
+    "explanation": "구름은 하얀색이에요! 맑은 날 하늘에 떠 있는 구름은 하얀색이랍니다.",
+    "difficulty": 1
+  }
+]
