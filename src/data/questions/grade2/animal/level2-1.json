@@ -1,47 +1,302 @@
 [
   {
-    "id": "animal_medium_1_1",
+    "id": "animal_easy_2_1",
     "subject": "animal",
-    "question": "겨울잠을 자는 동물은 무엇일까요?",
-    "options": ["곰", "개", "고양이", "토끼"],
+    "question": "펭귄은 주로 어디에서 살아요?",
+    "options": ["남극", "사막", "정글", "산"],
     "correctIndex": 0,
-    "explanation": "곰은 추운 겨울에는 동굴에서 잠을 자요. 이것을 겨울잠이라고 해요!",
-    "difficulty": 2
+    "explanation": "펭귄은 추운 남극에서 살아요. 눈과 얼음 위에서도 잘 걷고, 물속에서는 헤엄을 잘 쳐요!",
+    "hint": "눈과 얼음이 가득한 아주 추운 곳이에요.",
+    "difficulty": 1
   },
   {
-    "id": "animal_medium_1_2",
+    "id": "animal_easy_2_2",
     "subject": "animal",
-    "question": "밤에 주로 활동하고 쥐를 잡아먹는 새는 무엇일까요?",
-    "options": ["올빼미", "참새", "비둘기", "까치"],
+    "question": "코끼리는 무엇을 많이 먹어요?",
+    "options": ["나뭇잎과 풀", "생선", "벌", "버섯"],
     "correctIndex": 0,
-    "explanation": "올빼미는 밤에 눈이 잘 보여서 밤에 사냥을 해요. 쥐를 잡아먹어요!",
-    "difficulty": 2
+    "explanation": "코끼리는 하루에 풀과 나뭇잎을 100kg 이상 먹어요! 식성이 아주 좋아요.",
+    "hint": "채식을 하는 큰 동물이에요.",
+    "difficulty": 1
   },
   {
-    "id": "animal_medium_1_3",
+    "id": "animal_easy_2_3",
     "subject": "animal",
-    "question": "등껍질을 가지고 있어서 위험하면 그 안으로 숨는 동물은 무엇일까요?",
-    "options": ["거북이", "개구리", "뱀", "도마뱀"],
+    "question": "개의 아기 이름은 무엇인가요?",
+    "options": ["강아지", "새끼 고양이", "병아리", "송아지"],
     "correctIndex": 0,
-    "explanation": "거북이는 단단한 등껍질이 있어요. 위험하면 머리와 다리를 껍질 안으로 숨겨요!",
-    "difficulty": 2
+    "explanation": "개의 아기는 ‘강아지’라고 해요. 꼬리를 흔들며 사람을 좋아해요!",
+    "hint": "‘멍멍’ 우는 동물의 아기예요.",
+    "difficulty": 1
   },
   {
-    "id": "animal_medium_1_4",
+    "id": "animal_easy_2_4",
     "subject": "animal",
-    "question": "물과 땅 양쪽에서 살 수 있는 동물은 무엇일까요?",
-    "options": ["개구리", "닭", "쥐", "새"],
+    "question": "고래는 주로 어디에서 살아요?",
+    "options": ["바다", "강", "숲", "하늘"],
     "correctIndex": 0,
-    "explanation": "개구리는 어릴 때는 물속에서 올챙이로 살다가, 자라면 땅에서도 살 수 있어요!",
-    "difficulty": 2
+    "explanation": "고래는 바다에서 살아요. 물고기가 아니라, 엄마 젖을 먹는 포유류예요!",
+    "hint": "가장 큰 동물이 사는 곳이에요.",
+    "difficulty": 1
   },
   {
-    "id": "animal_medium_1_5",
+    "id": "animal_easy_2_5",
     "subject": "animal",
-    "question": "주머니 속에 새끼를 넣고 다니는 동물은 무엇일까요?",
-    "options": ["캥거루", "사자", "호랑이", "곰"],
+    "question": "사자는 무엇을 먹어요?",
+    "options": ["다른 동물", "풀", "과일", "벌꿀"],
     "correctIndex": 0,
-    "explanation": "캥거루 엄마는 배에 주머니가 있어요. 그 안에 아기 캥거루를 넣고 다녀요!",
-    "difficulty": 2
+    "explanation": "사자는 사냥을 해서 다른 동물을 잡아먹어요. 육식 동물이에요!",
+    "hint": "‘동물의 왕’이라 불리는 육식 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_6",
+    "subject": "animal",
+    "question": "고양이의 아기 이름은 무엇인가요?",
+    "options": ["새끼 고양이", "강아지", "병아리", "송아지"],
+    "correctIndex": 0,
+    "explanation": "고양이의 아기는 ‘새끼 고양이’ 또는 ‘냥이’라고도 불러요. 작고 귀여워요!",
+    "hint": "‘야옹’ 우는 동물의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_7",
+    "subject": "animal",
+    "question": "낙타는 주로 어디에서 살아요?",
+    "options": ["사막", "바다", "눈 산", "늪지"],
+    "correctIndex": 0,
+    "explanation": "낙타는 사막에서 살아요. 등에 있는 혹에 물과 영양분을 저장할 수 있어요!",
+    "hint": "모래가 많고 물이 없는 더운 곳이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_8",
+    "subject": "animal",
+    "question": "소는 무엇을 주로 먹어요?",
+    "options": ["풀", "생선", "고기", "벌레"],
+    "correctIndex": 0,
+    "explanation": "소는 풀을 먹는 동물이에요. 농장에서 풀을 뜯으며 자라요!",
+    "hint": "우유를 주는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_9",
+    "subject": "animal",
+    "question": "말의 아기 이름은 무엇인가요?",
+    "options": ["망아지", "송아지", "강아지", "새끼 돼지"],
+    "correctIndex": 0,
+    "explanation": "말의 아기는 ‘망아지’라고 해요. 빠르게 달릴 수 있도록 자라나요!",
+    "hint": "달리기를 잘하는 동물의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_10",
+    "subject": "animal",
+    "question": "물고기는 주로 어디에서 살아요?",
+    "options": ["물속", "나무 위", "땅속", "하늘"],
+    "correctIndex": 0,
+    "explanation": "물고기는 강, 호수, 바다 등 물속에서 살아요. 지느러미로 헤엄쳐요!",
+    "hint": "숨을 쉬기 위해 아가미를 사용해요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_11",
+    "subject": "animal",
+    "question": "토끼는 무엇을 좋아해요?",
+    "options": ["당근", "생선", "고기", "빵"],
+    "correctIndex": 0,
+    "explanation": "토끼는 당근과 풀을 정말 좋아해요. 이빨이 계속 자라기 때문에 씹어야 해요!",
+    "hint": "귀가 길고 깡충깡충 뛰는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_12",
+    "subject": "animal",
+    "question": "돼지의 아기 이름은 무엇인가요?",
+    "options": ["새끼 돼지", "망아지", "송아지", "병아리"],
+    "correctIndex": 0,
+    "explanation": "돼지의 아기는 ‘새끼 돼지’라고 해요. 분홍색 피부에 콧김을 내뿜어요!",
+    "hint": "‘꿀꿀’ 우는 동물의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_13",
+    "subject": "animal",
+    "question": "곰은 주로 어디에서 살아요?",
+    "options": ["숲", "사막", "바다", "도시"],
+    "correctIndex": 0,
+    "explanation": "곰은 숲속이나 산속에서 살아요. 겨울에는 동굴에서 겨울잠을 자기도 해요!",
+    "hint": "덩치가 크고 털이 많아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_14",
+    "subject": "animal",
+    "question": "벌은 무엇을 모아요?",
+    "options": ["꽃의 꿀", "물", "모래", "잎사귀"],
+    "correctIndex": 0,
+    "explanation": "벌은 꽃에서 꿀과 꽃가루를 모아서 벌집에 저장해요. 꿀은 우리가 먹을 수도 있어요!",
+    "hint": "‘윙윙’ 날아다니며 꽃을 찾아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_15",
+    "subject": "animal",
+    "question": "소의 아기 이름은 무엇인가요?",
+    "options": ["송아지", "망아지", "강아지", "새끼 고양이"],
+    "correctIndex": 0,
+    "explanation": "소의 아기는 ‘송아지’라고 해요. 귀여운 울음소리로 엄마를 찾아요!",
+    "hint": "우유를 주는 동물의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_16",
+    "subject": "animal",
+    "question": "부엉이는 주로 어디에서 살아요?",
+    "options": ["나무 구멍", "물속", "땅속", "하늘"],
+    "correctIndex": 0,
+    "explanation": "부엉이는 나무 구멍이나 오래된 나무 위에서 살아요. 밤에 활동해요!",
+    "hint": "둥근 얼굴에 큰 눈을 가진 새예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_17",
+    "subject": "animal",
+    "question": "치타는 무엇을 먹어요?",
+    "options": ["다른 동물", "풀", "과일", "벌꿀"],
+    "correctIndex": 0,
+    "explanation": "치타는 토끼, 얼룩말 같은 작은 동물을 사냥해서 먹어요. 육식 동물이에요!",
+    "hint": "세상에서 가장 빠르게 달리는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_18",
+    "subject": "animal",
+    "question": "양의 아기 이름은 무엇인가요?",
+    "options": ["새끼 양", "송아지", "망아지", "병아리"],
+    "correctIndex": 0,
+    "explanation": "양의 아기는 ‘새끼 양’이라고 해요. 푹신한 털을 가지고 태어나요!",
+    "hint": "‘메에’ 하고 우는 동물의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_19",
+    "subject": "animal",
+    "question": "악어는 주로 어디에서 살아요?",
+    "options": ["강과 늪", "사막", "눈 산", "나무 위"],
+    "correctIndex": 0,
+    "explanation": "악어는 강, 호수, 늪 같은 물가에서 살아요. 물 위로 눈과 콧구멍만 내밀고 있어요!",
+    "hint": "단단한 비늘과 큰 입을 가졌어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_20",
+    "subject": "animal",
+    "question": "다람쥐는 무엇을 저장해요?",
+    "options": ["도토리와 견과류", "물", "돌", "깃털"],
+    "correctIndex": 0,
+    "explanation": "다람쥐는 겨울을 대비해 도토리와 견과류를 땅속이나 나무에 숨겨 놓아요!",
+    "hint": "나무 위에서 뛰어다니는 작은 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_21",
+    "subject": "animal",
+    "question": "거위의 아기 이름은 무엇인가요?",
+    "options": ["병아리", "새끼 거위", "망아지", "송아지"],
+    "correctIndex": 0,
+    "explanation": "거위의 아기는 ‘병아리’ 또는 ‘새끼 거위’라고 불러요. 엄마 따라 줄지어 다녀요!",
+    "hint": "‘꽥꽥’ 우는 물새의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_22",
+    "subject": "animal",
+    "question": "기린은 주로 어디에서 살아요?",
+    "options": ["아프리카 초원", "북극", "정글", "사막"],
+    "correctIndex": 0,
+    "explanation": "기린은 아프리카의 넓은 초원에서 살아요. 긴 목으로 나뭇잎을 먹어요!",
+    "hint": "키가 가장 큰 육지 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_23",
+    "subject": "animal",
+    "question": "판다곰은 무엇을 먹어요?",
+    "options": ["대나무", "고기", "생선", "과일"],
+    "correctIndex": 0,
+    "explanation": "판다는 하루 종일 대나무를 먹어요. 하루에 10시간 이상 먹는답니다!",
+    "hint": "검은색과 흰색 털을 가진 귀여운 곰이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_24",
+    "subject": "animal",
+    "question": "오리의 아기 이름은 무엇인가요?",
+    "options": ["병아리", "새끼 오리", "망아지", "송아지"],
+    "correctIndex": 0,
+    "explanation": "오리의 아기는 ‘병아리’ 또는 ‘새끼 오리’라고 해요. 물에서 엄마를 따라 헤엄쳐요!",
+    "hint": "발에 물갈퀴가 있는 새의 아기예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_25",
+    "subject": "animal",
+    "question": "캥거루는 주로 어디에서 살아요?",
+    "options": ["호주", "아프리카", "남미", "유럽"],
+    "correctIndex": 0,
+    "explanation": "캥거루는 호주에서만 살고 있어요. 뒷다리로 깡충깡충 뛰어다녀요!",
+    "hint": "배에 주머니가 있는 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_26",
+    "subject": "animal",
+    "question": "코알라는 무엇을 먹어요?",
+    "options": ["유칼립투스 잎", "풀", "벌꿀", "생선"],
+    "correctIndex": 0,
+    "explanation": "코알라는 유칼립투스 나무의 잎만 먹어요. 다른 음식은 잘 먹지 않아요!",
+    "hint": "호주에 사는 귀여운 나무 위 동물이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_27",
+    "subject": "animal",
+    "question": "개구리의 아기 이름은 무엇인가요?",
+    "options": ["올챙이", "애벌레", "유충", "새끼 개구리"],
+    "correctIndex": 0,
+    "explanation": "개구리의 아기는 ‘올챙이’예요. 처음에는 물속에서 꼬리로 헤엄치다가 다리가 나와요!",
+    "hint": "물속에서 태어나 나중에 다리가 자라요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_28",
+    "subject": "animal",
+    "question": "북극곰은 주로 어디에서 살아요?",
+    "options": ["북극", "사막", "정글", "호수"],
+    "correctIndex": 0,
+    "explanation": "북극곰은 눈과 얼음이 가득한 북극에서 살아요. 흰색 털로 위장해요!",
+    "hint": "세상에서 가장 추운 곳에 사는 곰이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_29",
+    "subject": "animal",
+    "question": "나비의 아기 이름은 무엇인가요?",
+    "options": ["애벌레", "올챙이", "유충", "새끼 나비"],
+    "correctIndex": 0,
+    "explanation": "나비의 아기는 ‘애벌레’예요. 애벌레는 잎을 많이 먹고, 나중에 번데기가 되어 나비로 변해요!",
+    "hint": "잎을 먹고 자라다가 날개가 생겨요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_2_30",
+    "subject": "animal",
+    "question": "사슴은 주로 어디에서 살아요?",
+    "options": ["숲", "사막", "바다", "도시"],
+    "correctIndex": 0,
+    "explanation": "사슴은 숲속이나 산속에서 살아요. 조용히 움직이며 풀과 나뭇잎을 먹어요!",
+    "hint": "뿔이 있는 초식 동물이에요.",
+    "difficulty": 1
   }
 ]

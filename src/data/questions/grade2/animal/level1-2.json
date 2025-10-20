@@ -1,47 +1,302 @@
 [
   {
-    "id": "animal_easy_2_1",
+    "id": "animal_easy_1_36",
     "subject": "animal",
-    "question": "아침마다 '꼬끼오' 하고 우는 동물은 무엇일까요?",
-    "options": ["닭", "개", "소", "말"],
+    "question": "‘딸꾹’ 소리처럼 ‘딸꾹딸꾹’ 우는 새는 무엇일까요?",
+    "options": ["두루미", "까치", "비둘기", "오리"],
     "correctIndex": 0,
-    "explanation": "수탉은 아침마다 '꼬끼오' 하고 울어요. 닭은 알을 낳기도 해요!",
+    "explanation": "두루미는 긴 다리와 긴 목을 가진 아름다운 새예요. ‘딸꾹딸꾹’ 소리를 내며 날아다녀요!",
+    "hint": "한국의 천연기념물이기도 해요.",
     "difficulty": 1
   },
   {
-    "id": "animal_easy_2_2",
+    "id": "animal_easy_1_37",
     "subject": "animal",
-    "question": "'음메' 하고 우는 동물은 무엇일까요?",
-    "options": ["소", "돼지", "양", "말"],
+    "question": "몸이 빨간색이고 검은색 날개를 가진 곤충은 무엇일까요?",
+    "options": ["장수풍뎅이", "사슴벌레", "무당벌레", "사마귀"],
     "correctIndex": 0,
-    "explanation": "소는 '음메' 하고 울어요. 소는 우유를 주는 고마운 동물이에요!",
+    "explanation": "장수풍뎅이는 빨간색 몸에 검은 날개를 가진 멋진 곤충이에요!",
+    "hint": "나무 위에서 자주 볼 수 있어요.",
     "difficulty": 1
   },
   {
-    "id": "animal_easy_2_3",
+    "id": "animal_easy_1_38",
     "subject": "animal",
-    "question": "코가 아주 길고 몸집이 큰 동물은 무엇일까요?",
-    "options": ["코끼리", "기린", "사자", "호랑이"],
+    "question": "‘우에엥’ 소리를 내며 물속에서 노는 동물은 무엇일까요?",
+    "options": ["돌고래", "상어", "물고기", "문어"],
     "correctIndex": 0,
-    "explanation": "코끼리는 코가 아주 길고 몸이 커요. 긴 코로 물을 마시고 음식을 먹어요!",
+    "explanation": "돌고래는 아주 영리한 바다 동물이에요. 사람을 좋아하고 물 위로 점프해요!",
+    "hint": "웃는 얼굴처럼 보이는 입을 가졌어요.",
     "difficulty": 1
   },
   {
-    "id": "animal_easy_2_4",
+    "id": "animal_easy_1_39",
     "subject": "animal",
-    "question": "목이 아주 길어서 높은 나뭇잎을 먹는 동물은 무엇일까요?",
-    "options": ["기린", "말", "양", "사슴"],
+    "question": "‘칙칙폭폭’ 기차처럼 소리 내는 새는 무엇일까요?",
+    "options": ["뻐꾸기", "부엉이", "까마귀", "까치"],
     "correctIndex": 0,
-    "explanation": "기린은 목이 아주 길어요. 높은 나무의 잎을 쉽게 먹을 수 있어요!",
+    "explanation": "뻐꾸기는 ‘뻐꾹! 뻐꾹!’ 하고 울어요. 봄이 되면 들을 수 있는 소리예요!",
+    "hint": "알을 다른 새 둥지에 낳는 새예요.",
     "difficulty": 1
   },
   {
-    "id": "animal_easy_2_5",
+    "id": "animal_easy_1_40",
     "subject": "animal",
-    "question": "등에 줄무늬가 있고 '어흥' 하고 우는 동물은 무엇일까요?",
-    "options": ["호랑이", "사자", "치타", "표범"],
+    "question": "등에 가시가 있고 몸을 동그랗게 말 수 있는 동물은 무엇일까요?",
+    "options": ["고슴도치", "두더지", "토끼", "다람쥐"],
     "correctIndex": 0,
-    "explanation": "호랑이는 등에 검은 줄무늬가 있어요. '어흥' 하고 크게 울어요!",
+    "explanation": "고슴도치는 위험할 때 몸을 동그랗게 말아서 가시로 자신을 지켜요!",
+    "hint": "밤에 활동하는 작은 포유류예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_41",
+    "subject": "animal",
+    "question": "‘까악 까악’ 소리를 내며 무리를 지어 날아다니는 새는 무엇일까요?",
+    "options": ["까마귀", "비둘기", "참새", "독수리"],
+    "correctIndex": 0,
+    "explanation": "까마귀는 검은색 깃털을 가진 영리한 새예요. ‘까악 까악’ 소리를 내요!",
+    "hint": "도시와 시골 어디서나 볼 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_42",
+    "subject": "animal",
+    "question": "앞다리가 낫처럼 생겨서 벌레를 잡는 곤충은 무엇일까요?",
+    "options": ["사마귀", "메뚜기", "벌", "파리"],
+    "correctIndex": 0,
+    "explanation": "사마귀는 앞다리로 벌레를 날렵하게 잡아요. 잎사귀처럼 생겨서 잘 안 보이기도 해요!",
+    "hint": "초록색이나 갈색으로 위장해요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_43",
+    "subject": "animal",
+    "question": "‘우르릉’ 소리처럼 낮게 우는 큰 고양이 동물은 무엇일까요?",
+    "options": ["사자", "호랑이", "표범", "고양이"],
+    "correctIndex": 0,
+    "explanation": "사자는 ‘우르릉’ 하고 울어요. 동물의 왕이라고 불리기도 해요!",
+    "hint": "수컷은 갈기를 가지고 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_44",
+    "subject": "animal",
+    "question": "‘찰싹찰싹’ 물을 튀기며 헤엄치는 동물은 무엇일까요?",
+    "options": ["펭귄", "오리", "백로", "까마귀"],
+    "correctIndex": 0,
+    "explanation": "펭귄은 날 수 없지만, 물속에서는 아주 빠르게 헤엄쳐요!",
+    "hint": "남극에 사는 검은색과 흰색 새예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_45",
+    "subject": "animal",
+    "question": "‘윙윙’ 소리를 내며 꽃에서 꽃으로 날아다니는 곤충은 무엇일까요?",
+    "options": ["나비", "벌", "파리", "모기"],
+    "correctIndex": 0,
+    "explanation": "나비는 예쁜 날개를 펼쳐 꽃에서 꽃으로 날아다녀요!",
+    "hint": "애벌레에서 변신해서 태어나요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_46",
+    "subject": "animal",
+    "question": "‘주르륵’ 빗소리처럼 ‘주르륵’ 움직이는 동물은 무엇일까요?",
+    "options": ["뱀", "도마뱀", "개구리", "두더지"],
+    "correctIndex": 0,
+    "explanation": "뱀은 다리 없이 몸을 굽히며 움직여요. 껍질을 벗기도 해요!",
+    "hint": "혀를 날름거리며 냄새를 맡아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_47",
+    "subject": "animal",
+    "question": "‘찰칵’ 소리를 내며 집게로 물건을 집는 바닷속 동물은 무엇일까요?",
+    "options": ["게", "문어", "오징어", "불가사리"],
+    "correctIndex": 0,
+    "explanation": "게는 단단한 껍질과 집게발이 있어요. 옆으로 걸어다니기도 해요!",
+    "hint": "바닷가에서 흔히 볼 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_48",
+    "subject": "animal",
+    "question": "팔다리가 많고 벽을 타고 다니는 동물은 무엇일까요?",
+    "options": ["도마뱀", "뱀", "개구리", "두더지"],
+    "correctIndex": 0,
+    "explanation": "도마뱀은 벽이나 나무를 잘 타요. 꼬리가 잘려도 다시 자라나기도 해요!",
+    "hint": "작고 날렵한 파충류예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_49",
+    "subject": "animal",
+    "question": "‘푸드득’ 날아오르며 ‘꼬꼬댁’ 우는 동물은 무엇일까요?",
+    "options": ["닭", "오리", "비둘기", "꿩"],
+    "correctIndex": 0,
+    "explanation": "닭은 알을 낳고, ‘꼬꼬댁’ 소리를 내며 농장에서 자라요!",
+    "hint": "털이 푹신하고 날개가 작아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_50",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 뛰어오르는 큰 물고기는 무엇일까요?",
+    "options": ["돌고래", "상어", "참치", "고등어"],
+    "correctIndex": 0,
+    "explanation": "참치는 바다에서 매우 빠르게 헤엄치는 물고기예요. 스피드가 빠르답니다!",
+    "hint": "회로 먹는 고급 생선이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_51",
+    "subject": "animal",
+    "question": "‘우르르’ 소리를 내며 무리를 지어 걷는 동물은 무엇일까요?",
+    "options": ["들소", "말", "염소", "사슴"],
+    "correctIndex": 0,
+    "explanation": "들소는 큰 뿔과 털이 많은 몸을 가진 동물이에요. 무리를 지어 다녀요!",
+    "hint": "야생에서 사는 소의 친척이에요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_52",
+    "subject": "animal",
+    "question": "‘찰칵’ 소리를 내며 딱정벌레처럼 생긴 곤충은 무엇일까요?",
+    "options": ["사슴벌레", "장수풍뎅이", "무당벌레", "메뚜기"],
+    "correctIndex": 0,
+    "explanation": "사슴벌레는 수컷이 큰 뿔을 가지고 있어요. 나무에 올라가서 싸우기도 해요!",
+    "hint": "여름에 숲에서 볼 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_53",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물가에서 뛰어다니는 작은 새는 무엇일까요?",
+    "options": ["물닭", "백로", "오리", "비둘기"],
+    "correctIndex": 0,
+    "explanation": "물닭은 물가에서 빠르게 뛰어다니며 먹이를 찾아요. 날개는 작아요!",
+    "hint": "물 위를 걷는 것처럼 보여요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_54",
+    "subject": "animal",
+    "question": "‘우우웅’ 소리를 내며 하늘을 나는 큰 새는 무엇일까요?",
+    "options": ["독수리", "부엉이", "까마귀", "비둘기"],
+    "correctIndex": 0,
+    "explanation": "독수리는 아주 높은 곳에서 하늘을 날아다니며 먹이를 찾아요!",
+    "hint": "날카로운 눈과 발톱을 가졌어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_55",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 팔처럼 생긴 다리를 흔드는 동물은 무엇일까요?",
+    "options": ["문어", "오징어", "불가사리", "게"],
+    "correctIndex": 0,
+    "explanation": "문어는 8개의 다리(촉수)를 가지고 있고, 물속에서 아주 영리하게 움직여요!",
+    "hint": "잉크를 뿜어서 도망가요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_56",
+    "subject": "animal",
+    "question": "‘우르르’ 소리를 내며 바위 위에 앉아 있는 동물은 무엇일까요?",
+    "options": ["염소", "양", "소", "말"],
+    "correctIndex": 0,
+    "explanation": "염소는 가파른 바위도 잘 오르고, 호기심이 많아요!",
+    "hint": "뿔이 있고 털이 짧아요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_57",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 꼬리를 흔드는 동물은 무엇일까요?",
+    "options": ["악어", "도마뱀", "뱀", "거북이"],
+    "correctIndex": 0,
+    "explanation": "악어는 강이나 늪에서 살며, 강한 턱으로 먹이를 잡아요!",
+    "hint": "눈과 콧구멍만 물 위로 내밀고 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_58",
+    "subject": "animal",
+    "question": "‘우르릉’ 소리를 내며 밤에 나무 위에서 자는 새는 무엇일까요?",
+    "options": ["올빼미", "부엉이", "까마귀", "두루미"],
+    "correctIndex": 0,
+    "explanation": "올빼미는 부엉이의 일종으로, 밤에 활동하며 조용히 날아다녀요!",
+    "hint": "머리를 뒤로 180도 돌릴 수 있어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_59",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 꼬리를 흔들며 헤엄치는 작은 물고기는 무엇일까요?",
+    "options": ["금붕어", "상어", "참치", "고등어"],
+    "correctIndex": 0,
+    "explanation": "금붕어는 예쁜 색깔을 가진 물고기로, 어항에서 키울 수 있어요!",
+    "hint": "꼬리가 흔들리며 헤엄쳐요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_60",
+    "subject": "animal",
+    "question": "‘우우웅’ 소리를 내며 무리를 지어 사는 바다 동물은 무엇일까요?",
+    "options": ["물범", "돌고래", "고래", "상어"],
+    "correctIndex": 0,
+    "explanation": "물범은 바닷가에서 햇볕을 쬐며 쉬고, 물속에서는 재주를 부리기도 해요!",
+    "hint": "둥글둥글하고 귀여운 얼굴을 가졌어요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_61",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 나뭇잎 위에서 뛰어다니는 작은 개구리는 무엇일까요?",
+    "options": ["청개구리", "두꺼비", "맹꽁이", "산개구리"],
+    "correctIndex": 0,
+    "explanation": "청개구리는 초록색 몸으로 나뭇잎 위에서 잘 숨어요. ‘개굴개굴’ 울어요!",
+    "hint": "나무 위에서 사는 개구리예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_62",
+    "subject": "animal",
+    "question": "‘우르릉’ 소리를 내며 숲속에서 사는 큰 사슴은 무엇일까요?",
+    "options": ["사슴", "노루", "염소", "말"],
+    "correctIndex": 0,
+    "explanation": "사슴은 큰 뿔을 가지고 있고, 숲속에서 조용히 살아요!",
+    "hint": "뿔은 매년 떨어졌다가 다시 자라나요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_63",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 다리를 헤엄치는 작은 새는 무엇일까요?",
+    "options": ["물떼새", "백로", "오리", "물닭"],
+    "correctIndex": 0,
+    "explanation": "물떼새는 물가에서 빠르게 뛰어다니며 먹이를 찾아요!",
+    "hint": "짧은 다리로 물 위를 빠르게 달려요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_64",
+    "subject": "animal",
+    "question": "‘우우웅’ 소리를 내며 밤에 활동하는 작은 고양이 같은 동물은 무엇일까요?",
+    "options": ["삵", "여우", "늑대", "고양이"],
+    "correctIndex": 0,
+    "explanation": "삵은 야생 고양이로, 밤에 조용히 사냥을 해요!",
+    "hint": "산속에서 사는 한국의 토종 고양이예요.",
+    "difficulty": 1
+  },
+  {
+    "id": "animal_easy_1_65",
+    "subject": "animal",
+    "question": "‘찰싹’ 소리를 내며 물속에서 꼬리를 흔들며 헤엄치는 바다거북은 무엇일까요?",
+    "options": ["바다거북", "육지거북", "악어", "도마뱀"],
+    "correctIndex": 0,
+    "explanation": "바다거북은 바다에서 살며, 알을 낳기 위해 해변으로 올라와요!",
+    "hint": "지느러미처럼 생긴 다리를 가졌어요.",
     "difficulty": 1
   }
 ]
