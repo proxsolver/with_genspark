@@ -1082,15 +1082,28 @@
                             }
 
                             // Firebase 동기화 (비동기 처리)
+                            console.log('[Quiz Completion] Firebase 동기화 시작...');
+                            console.log('[Quiz Completion] eduPetFirebaseIntegration 존재:', !!window.eduPetFirebaseIntegration);
+                            console.log('[Quiz Completion] plantSystemFirebase 존재:', !!window.plantSystemFirebase);
+
                             if (window.eduPetFirebaseIntegration && window.plantSystemFirebase) {
                                 // 1. 퀴즈 통계 업데이트 (일일 통계, 과목별 통계, 그룹 통계 포함)
+                                console.log('[Quiz Completion] 퀴즈 통계 업데이트 호출:', {
+                                    subject: subjectName,
+                                    correctAnswers: sessionStats.correct,
+                                    totalQuestions: totalAnswered,
+                                    timeSpent: timeSpent
+                                });
+
                                 eduPetFirebaseIntegration.updateQuizStats({
                                     subject: subjectName,
                                     correctAnswers: sessionStats.correct,
                                     totalQuestions: totalAnswered,
                                     timeSpent: timeSpent
+                                }).then(() => {
+                                    console.log('[Quiz Completion] ✅ 퀴즈 통계 업데이트 성공');
                                 }).catch(err => {
-                                    console.warn('⚠️ Firebase 퀴즈 통계 동기화 실패 (나중에 재시도됩니다):', err);
+                                    console.warn('[Quiz Completion] ⚠️ Firebase 퀴즈 통계 동기화 실패 (나중에 재시도됩니다):', err);
                                 });
 
                                 // 2. 식물 시스템 상태 저장 (돈, 티켓 정보 포함)

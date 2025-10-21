@@ -374,6 +374,13 @@ let eduPetAuthInstance = null;
 window.initializeEduPetAuth = function(firebaseAuthInstance) {
     if (!eduPetAuthInstance) {
         eduPetAuthInstance = new EduPetAuth(firebaseAuthInstance);
+        // 전역 변수로도 할당 (하위 호환성)
+        window.eduPetAuth = eduPetAuthInstance;
     }
     return eduPetAuthInstance;
+}
+
+// 하위 호환성을 위한 alias
+if (typeof window !== 'undefined') {
+    window.eduPetAuth = null; // 초기화 전까지 null
 }

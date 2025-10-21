@@ -984,3 +984,146 @@ function updateLegendaryTeaser() {
         console.error('❌ [희귀 동물 티저] 업데이트 오류:', e);
     }
 }
+
+// ===== 일일 학습 랭킹 기능 =====
+
+// 동물 이모지 매핑
+const animalEmojis = {
+    'bunny': '🐰',
+    'cat': '🐱',
+    'dog': '🐶',
+    'bear': '🐻',
+    'fox': '🦊',
+    'panda': '🐼',
+    'koala': '🐨',
+    'tiger': '🐯',
+    'lion': '🦁',
+    'elephant': '🐘',
+    'monkey': '🐵',
+    'pig': '🐷',
+    'cow': '🐮',
+    'horse': '🐴',
+    'sheep': '🐑',
+    'chicken': '🐔',
+    'penguin': '🐧',
+    'bird': '🐦',
+    'duck': '🦆',
+    'owl': '🦉'
+};
+
+// 일일 랭킹 불러오기
+async function loadDailyRanking() {
+    const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD 형식
+    console.log(`🏆 [일일 랭킹] 로딩 시작 (날짜: ${today})`);
+
+    const rankingListEl = document.getElementById('daily-ranking-list');
+    const loadingEl = document.getElementById('ranking-loading');
+
+    if (!rankingListEl) {
+        console.error('❌ [일일 랭킹] daily-ranking-list 요소를 찾을 수 없음');
+        return;
+    }
+
+    try {
+        // Firebase 연결 확인
+        if (typeof eduPetFirebaseIntegration === 'undefined' || !eduPetFirebaseIntegration.isFirebaseReady) {
+            console.log('⚠️ [일일 랭킹] Firebase가 준비되지 않음');
+            rankingListEl.innerHTML = `
+                <div class="text-center text-gray-500 py-8">
+                    <div class="text-3xl mb-2">📴</div>
+                    <div class="text-sm">오프라인 모드에서는 랭킹을 볼 수 없습니다</div>
+                    <div class="text-xs text-gray-400 mt-2">온라인으로 전환하여 친구들과 경쟁해보세요!</div>
+                </div>
+            `;
+            return;
+        }
+
+        // 랭킹 데이터 가져오기
+        const rankings = await eduPetFirebaseIntegration.getDailyLearningRanking(10);
+
+        if (!rankings || rankings.length === 0) {
+            console.log(`ℹ️ [일일 랭킹] ${today} 학습한 유저 없음`);
+            rankingListEl.innerHTML = `
+                <div class="text-center text-gray-500 py-8">
+                    <div class="text-3xl mb-2">📚</div>
+                    <div class="text-sm">아직 오늘 학습한 친구가 없어요</div>
+                    <div class="text-xs text-gray-400 mt-2">첫 번째 학습자가 되어보세요!</div>
+                    <div class="text-xs text-gray-500 mt-3">🗓️ ${today}</div>
+                </div>
+            `;
+            return;
+        }
+
+        console.log(`✅ [일일 랭킹] ${rankings.length}명의 랭킹 로드 완료`);
+
+        // 랭킹 렌더링
+        const rankingHTML = rankings.map((user, index) => {
+            const rank = index + 1;
+            const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `${rank}`;
+            const rankColor = rank === 1 ? 'text-yellow-600' : rank === 2 ? 'text-gray-500' : rank === 3 ? 'text-orange-600' : 'text-gray-600';
+            const avatar = animalEmojis[user.avatarAnimal] || '🐰';
+            const learningMinutes = Math.round(user.learningTime / 60);
+
+            return `
+                <div class="bg-white rounded-lg p-3 shadow-sm border border-yellow-200 hover:shadow-md transition-shadow">
+                    <div class="flex items-center space-x-3">
+                        <!-- 순위 -->
+                        <div class="text-2xl font-bold ${rankColor} w-10 text-center">
+                            ${rankEmoji}
+                        </div>
+
+                        <!-- 아바타 -->
+                        <div class="text-3xl">
+                            ${avatar}
+                        </div>
+
+                        <!-- 유저 정보 -->
+                        <div class="flex-1 min-w-0">
+                            <div class="font-bold text-gray-800 truncate">${user.nickname}</div>
+                            <div class="grid grid-cols-2 gap-2 text-xs text-gray-600 mt-1">
+                                <div>📚 ${user.subjectsCompleted}과목</div>
+                                <div>⏱️ ${learningMinutes}분</div>
+                                <div>✅ ${user.accuracy}%</div>
+                                <div>🐾 ${user.animalsCollected}마리</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        rankingListEl.innerHTML = rankingHTML;
+        console.log('🎉 [일일 랭킹] 렌더링 완료');
+
+    } catch (error) {
+        console.error('❌ [일일 랭킹] 로딩 실패:', error);
+        rankingListEl.innerHTML = `
+            <div class="text-center text-red-500 py-8">
+                <div class="text-3xl mb-2">⚠️</div>
+                <div class="text-sm">랭킹을 불러오는데 실패했습니다</div>
+                <div class="text-xs text-gray-400 mt-2">${error.message}</div>
+            </div>
+        `;
+    }
+}
+
+// 랭킹 새로고침
+function refreshDailyRanking() {
+    console.log('🔄 [일일 랭킹] 새로고침 시작');
+    loadDailyRanking();
+}
+
+// 페이지 로드 시 랭킹 로드
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        // 다른 초기화가 완료된 후 랭킹 로드 (약간의 지연)
+        setTimeout(() => {
+            loadDailyRanking();
+        }, 1000);
+    });
+} else {
+    // 이미 DOMContentLoaded 이벤트가 발생한 경우
+    setTimeout(() => {
+        loadDailyRanking();
+    }, 1000);
+}

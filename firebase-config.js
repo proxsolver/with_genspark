@@ -11,10 +11,14 @@
     appId: "1:555586725209:web:edcb983936ede1add1d848"
   };
 
+// Alias for compatibility with different naming conventions
+const firebase_config = firebaseConfig;
+
 // Firebase 초기화 함수
 let firebase_app = null;
 let firebase_db = null;
 let firebase_auth = null;
+window.eduPetAuth = null; // EduPetAuth 인스턴스를 전역으로 선언 (window 객체에)
 
 async function initFirebase() {
     try {
@@ -29,13 +33,17 @@ async function initFirebase() {
                         firebase_app = firebase.initializeApp(firebaseConfig);
                         firebase_db = firebase.database();
                         firebase_auth = firebase_app.auth();
-                        
+
                         console.log('Firebase 초기화 완료');
-                        // eduPetAuth가 Firebase 초기화 완료를 기다리도록 신호 보냄
-                        if (typeof eduPetAuth !== 'undefined' && eduPetAuth.resolveAuthReady) {
-                            eduPetAuth.resolveAuthReady();
+
+                        // EduPetAuth 인스턴스 생성
+                        if (typeof initializeEduPetAuth !== 'undefined') {
+                            window.eduPetAuth = initializeEduPetAuth(firebase_auth);
+                            console.log('EduPetAuth 초기화 완료');
+                        } else {
+                            console.warn('initializeEduPetAuth 함수를 찾을 수 없습니다');
                         }
-                    }        
+                    }
         return true;
     } catch (error) {
         console.error('Firebase 초기화 실패:', error);

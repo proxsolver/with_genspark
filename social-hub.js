@@ -1502,11 +1502,25 @@ async function loadMyGroups() {
                                 const lastStudied = member.lastStudied ? new Date(member.lastStudied).toLocaleDateString() : '학습 기록 없음';
                                 const totalQuestions = member.totalQuestions || 0;
 
+                                // 익명 필터링: nickname만 사용, 없으면 '익명'
+                                const displayName = member.nickname || '익명';
+
+                                // 아바타 동물 이모지
+                                const avatarEmojis = {
+                                    'bunny': '🐰', 'cat': '🐱', 'dog': '🐶', 'bear': '🐻',
+                                    'fox': '🦊', 'panda': '🐼', 'koala': '🐨', 'tiger': '🐯',
+                                    'lion': '🦁', 'elephant': '🐘', 'monkey': '🐵', 'pig': '🐷'
+                                };
+                                const avatar = avatarEmojis[member.avatarAnimal] || '🐰';
+
                                 return `
                                     <div style="padding: 8px; background: white; border-radius: 6px; font-size: 0.8rem;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                                             <span style="font-weight: bold; color: #495057;">
-                                                ${isOwner ? '👑' : '👤'} ${member.nickname || member.userName || '알 수 없음'}
+                                                ${isOwner ? '👑' : avatar} ${displayName}
+                                            </span>
+                                            <span style="font-size: 0.65rem; color: #adb5bd;" title="사용자 ID: ${uid}">
+                                                ID: ${uid.substring(0, 8)}...
                                             </span>
                                         </div>
                                         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 0.75rem; color: #6c757d; margin-top: 5px;">

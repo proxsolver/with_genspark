@@ -18,13 +18,30 @@ class EduPetFirebaseIntegration {
             const firebaseReady = await initFirebase();
             if (firebaseReady) {
                 this.isFirebaseReady = true;
-                
+
+                // eduPetAuth가 로드되고 초기화될 때까지 대기
+                console.log('[Firebase Integration] eduPetAuth 로드 대기 중...');
+                let retries = 0;
+                while ((!window.eduPetAuth || window.eduPetAuth === null) && retries < 50) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    retries++;
+                }
+
+                if (!window.eduPetAuth || window.eduPetAuth === null) {
+                    console.error('[Firebase Integration] eduPetAuth 로드 실패 - 타임아웃');
+                    console.error('[Firebase Integration] initializeEduPetAuth 존재:', typeof initializeEduPetAuth !== 'undefined');
+                    console.error('[Firebase Integration] firebase_auth 존재:', typeof firebase_auth !== 'undefined');
+                    return false;
+                }
+
+                console.log('[Firebase Integration] eduPetAuth 로드 완료');
+
                 // eduPetAuth가 Firebase 초기화 완료를 기다리도록 합니다.
-                await eduPetAuth.waitForAuthInit();
+                await window.eduPetAuth.waitForAuthInit();
 
                 // 익명 로그인 시도
-                if (!eduPetAuth.currentUser) {
-                    await eduPetAuth.signInAnonymously();
+                if (!window.eduPetAuth.currentUser) {
+                    await window.eduPetAuth.signInAnonymously();
                 }
 
                 // 오프라인 큐 처리
@@ -43,7 +60,10 @@ class EduPetFirebaseIntegration {
 
     // 퀴즈 완료 시 통계 업데이트 (신규: 통합 방식)
     async updateQuizStats(quizResult) {
-        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+        console.log('[updateQuizStats] 시작:', quizResult);
+
+        if (!this.isFirebaseReady || !window.eduPetAuth?.currentUser) {
+            console.warn('[updateQuizStats] Firebase 준비되지 않음 또는 사용자 미인증. 큐에 추가합니다.');
             this.queueForLater('updateQuizStats', quizResult);
             return;
         }
@@ -52,12 +72,19 @@ class EduPetFirebaseIntegration {
             const { subject, correctAnswers, totalQuestions, timeSpent } = quizResult;
 
             if (!subject) {
-                console.error('updateQuizStats에 subject가 없습니다.', quizResult);
+                console.error('[updateQuizStats] subject가 없습니다:', quizResult);
                 return;
             }
 
+            console.log('[updateQuizStats] Firebase 업데이트 준비:', {
+                subject,
+                correctAnswers,
+                totalQuestions,
+                timeSpent
+            });
+
             const updates = {};
-            const uid = eduPetAuth.currentUser.uid;
+            const uid = window.eduPetAuth.currentUser.uid;
 
             // 전체 통계 업데이트 (증가)
             updates[`users/${uid}/stats/correctAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
@@ -69,20 +96,42 @@ class EduPetFirebaseIntegration {
             updates[`users/${uid}/stats/subjects/${subject}/questions`] = firebase.database.ServerValue.increment(totalQuestions || 0);
             updates[`users/${uid}/stats/subjects/${subject}/experience`] = firebase.database.ServerValue.increment((correctAnswers || 0) * 10);
 
-            // 일일 통계도 함께 업데이트
-            const today = new Date().toISOString().split('T')[0];
-            updates[`daily_stats/${today}/${uid}/questionsAnswered`] = firebase.database.ServerValue.increment(totalQuestions || 0);
-            updates[`daily_stats/${today}/${uid}/learningTime`] = firebase.database.ServerValue.increment(timeSpent || 0);
-            updates[`daily_stats/${today}/${uid}/profile`] = {
-                nickname: eduPetAuth.userData.profile.nickname || '익명',
-                avatarAnimal: eduPetAuth.userData.profile.avatarAnimal || 'bunny'
-            };
+            // 일일 통계도 함께 업데이트 (로컬 타임존 날짜 사용)
+            const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD 형식, 로컬 타임존
+            console.log('[updateQuizStats] Daily stats 날짜:', today);
 
+            updates[`daily_stats/${today}/${uid}/questionsAnswered`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+            updates[`daily_stats/${today}/${uid}/correctAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+            updates[`daily_stats/${today}/${uid}/learningTime`] = firebase.database.ServerValue.increment(timeSpent || 0);
+
+            // 완료한 과목 추가 (Set으로 관리하기 위해 과목을 키로 사용)
+            if (subject) {
+                updates[`daily_stats/${today}/${uid}/subjects/${subject}`] = true;
+            }
+
+            // 프로필 및 동물 컬렉션 정보
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            let animalsCollected = 0;
+            if (animalCollection.collection) {
+                Object.values(animalCollection.collection).forEach(animal => {
+                    animalsCollected += animal.count || 0;
+                });
+            }
+
+            updates[`daily_stats/${today}/${uid}/profile`] = {
+                nickname: window.eduPetAuth.userData?.profile?.nickname || '익명',
+                avatarAnimal: window.eduPetAuth.userData?.profile?.avatarAnimal || 'bunny'
+            };
+            updates[`daily_stats/${today}/${uid}/animalsCollected`] = animalsCollected;
+            updates[`daily_stats/${today}/${uid}/lastUpdated`] = firebase.database.ServerValue.TIMESTAMP;
+
+            console.log('[updateQuizStats] Firebase 업데이트 실행:', updates);
             await firebase_db.ref().update(updates);
-            console.log('Firebase 통합 퀴즈 통계 업데이트 완료');
+            console.log('[updateQuizStats] ✅ Firebase 통합 퀴즈 통계 업데이트 완료 (daily_stats 포함)');
 
         } catch (error) {
-            console.error('Firebase 통합 퀴즈 통계 업데이트 실패:', error);
+            console.error('[updateQuizStats] ❌ Firebase 통합 퀴즈 통계 업데이트 실패:', error);
+            console.error('[updateQuizStats] 에러 상세:', error.message, error.code);
             this.queueForLater('updateQuizStats', quizResult);
         }
     }
@@ -565,10 +614,64 @@ class EduPetFirebaseIntegration {
     isSocialFeatureAvailable() {
         return this.isConnected() && eduPetAuth.userData?.profile?.nickname;
     }
+
+    // 일일 학습 랭킹 가져오기 (상위 10명)
+    async getDailyLearningRanking(limit = 10) {
+        if (!this.isFirebaseReady) {
+            console.log('Firebase is not ready, cannot get daily ranking.');
+            return [];
+        }
+
+        try {
+            const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD 형식, 로컬 타임존
+            const snapshot = await firebase_db.ref(`daily_stats/${today}`)
+                .orderByChild('learningTime')
+                .limitToLast(limit)
+                .once('value');
+
+            const data = snapshot.val();
+            if (!data) {
+                return [];
+            }
+
+            // 데이터를 배열로 변환하고 정렬
+            const rankings = Object.entries(data).map(([uid, stats]) => {
+                // 과목 수 계산 (subjects 객체의 키 개수)
+                const subjectsCount = stats.subjects ? Object.keys(stats.subjects).length : 0;
+
+                // 정답률 계산
+                const accuracy = stats.questionsAnswered > 0
+                    ? Math.round((stats.correctAnswers / stats.questionsAnswered) * 100)
+                    : 0;
+
+                return {
+                    uid,
+                    nickname: stats.profile?.nickname || '익명',
+                    avatarAnimal: stats.profile?.avatarAnimal || 'bunny',
+                    subjectsCompleted: subjectsCount,
+                    learningTime: stats.learningTime || 0,
+                    questionsAnswered: stats.questionsAnswered || 0,
+                    correctAnswers: stats.correctAnswers || 0,
+                    accuracy: accuracy,
+                    animalsCollected: stats.animalsCollected || 0,
+                    lastUpdated: stats.lastUpdated || 0
+                };
+            });
+
+            // 학습 시간 기준 내림차순 정렬
+            rankings.sort((a, b) => b.learningTime - a.learningTime);
+
+            return rankings.slice(0, limit);
+        } catch (error) {
+            console.error('일일 학습 랭킹 조회 실패:', error);
+            return [];
+        }
+    }
 }
 
-// 전역 인스턴스 생성
+// 전역 인스턴스 생성 및 window에 export
 const eduPetFirebaseIntegration = new EduPetFirebaseIntegration();
+window.eduPetFirebaseIntegration = eduPetFirebaseIntegration;
 
 
 

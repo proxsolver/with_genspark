@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Stats 디버그</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .section {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4ec9b0;
+            margin-top: 0;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .info { color: #4fc1ff; }
+        .success { color: #4ec9b0; }
+        .error { color: #f48771; }
+        .warning { color: #dcdcaa; }
+        button {
+            background: #0e639c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1177bb;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Daily Stats 디버그</h1>
+
+    <div class="section">
+        <h2>날짜 정보</h2>
+        <div id="date-info"></div>
+    </div>
+
+    <div class="section">
+        <h2>Firebase 연결 상태</h2>
+        <div id="firebase-status">확인 중...</div>
+    </div>
+
+    <div class="section">
+        <h2>오늘의 Daily Stats 데이터</h2>
+        <button onclick="checkTodayStats()">오늘 데이터 확인 (UTC)</button>
+        <button onclick="checkLocalStats()">오늘 데이터 확인 (로컬)</button>
+        <button onclick="checkAllRecentStats()">최근 3일 모두 확인</button>
+        <div id="stats-data" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="section">
+        <h2>내 사용자 통계</h2>
+        <button onclick="checkMyUserStats()">내 통계 확인</button>
+        <div id="user-stats" style="margin-top: 15px;"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script>
+        // 전역 변수
+        let db;
+        let auth;
+
+        // 날짜 정보 표시
+        function showDateInfo() {
+            const now = new Date();
+            const utcDate = now.toISOString().split('T')[0];
+            const localDate = now.toLocaleDateString('en-CA');
+            const koreaDate = new Date(now.getTime() + (9 * 60 * 60 * 1000)).toISOString().split('T')[0];
+
+            document.getElementById('date-info').innerHTML = `
+                <div class="info">현재 시간: ${now.toLocaleString('ko-KR')}</div>
+                <div class="warning">UTC 날짜: ${utcDate}</div>
+                <div class="success">로컬 날짜 (en-CA): ${localDate}</div>
+                <div class="success">한국 날짜 (UTC+9): ${koreaDate}</div>
+                <div style="margin-top: 10px;">타임존 오프셋: ${-now.getTimezoneOffset() / 60}시간</div>
+            `;
+        }
+
+        // Firebase 초기화
+        async function initFirebase() {
+            try {
+                if (typeof firebase_config === 'undefined') {
+                    throw new Error('firebase-config.js를 찾을 수 없습니다');
+                }
+
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebase_config);
+                }
+
+                db = firebase.database();
+                auth = firebase.auth();
+
+                // 익명 로그인
+                await auth.signInAnonymously();
+
+                document.getElementById('firebase-status').innerHTML =
+                    '<div class="success">✅ Firebase 연결 성공</div>' +
+                    '<div class="info">사용자 UID: ' + auth.currentUser.uid + '</div>';
+
+            } catch (error) {
+                document.getElementById('firebase-status').innerHTML =
+                    '<div class="error">❌ Firebase 연결 실패: ' + error.message + '</div>';
+            }
+        }
+
+        // 오늘 데이터 확인 (UTC)
+        async function checkTodayStats() {
+            const statsDiv = document.getElementById('stats-data');
+            const today = new Date().toISOString().split('T')[0];
+
+            statsDiv.innerHTML = '<div class="info">⏳ 로딩 중...</div>';
+
+            try {
+                const snapshot = await db.ref(`daily_stats/${today}`).once('value');
+                const data = snapshot.val();
+
+                if (!data) {
+                    statsDiv.innerHTML = `<div class="warning">⚠️ ${today} (UTC) 데이터가 없습니다</div>`;
+                    return;
+                }
+
+                const userCount = Object.keys(data).length;
+                statsDiv.innerHTML = `
+                    <div class="success">✅ ${today} (UTC) 데이터 발견: ${userCount}명</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                statsDiv.innerHTML = `<div class="error">❌ 오류: ${error.message}</div>`;
+            }
+        }
+
+        // 오늘 데이터 확인 (로컬)
+        async function checkLocalStats() {
+            const statsDiv = document.getElementById('stats-data');
+            const localDate = new Date().toLocaleDateString('en-CA');
+
+            statsDiv.innerHTML = '<div class="info">⏳ 로딩 중...</div>';
+
+            try {
+                const snapshot = await db.ref(`daily_stats/${localDate}`).once('value');
+                const data = snapshot.val();
+
+                if (!data) {
+                    statsDiv.innerHTML = `<div class="warning">⚠️ ${localDate} (로컬) 데이터가 없습니다</div>`;
+                    return;
+                }
+
+                const userCount = Object.keys(data).length;
+                statsDiv.innerHTML = `
+                    <div class="success">✅ ${localDate} (로컬) 데이터 발견: ${userCount}명</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                statsDiv.innerHTML = `<div class="error">❌ 오류: ${error.message}</div>`;
+            }
+        }
+
+        // 최근 3일 모두 확인
+        async function checkAllRecentStats() {
+            const statsDiv = document.getElementById('stats-data');
+            statsDiv.innerHTML = '<div class="info">⏳ 최근 3일 데이터 확인 중...</div>';
+
+            try {
+                const results = [];
+                const now = new Date();
+
+                for (let i = 0; i < 3; i++) {
+                    const date = new Date(now.getTime() - (i * 24 * 60 * 60 * 1000));
+                    const dateStr = date.toLocaleDateString('en-CA');
+
+                    const snapshot = await db.ref(`daily_stats/${dateStr}`).once('value');
+                    const data = snapshot.val();
+
+                    if (data) {
+                        const userCount = Object.keys(data).length;
+                        results.push(`
+                            <div class="success">✅ ${dateStr}: ${userCount}명</div>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        `);
+                    } else {
+                        results.push(`<div class="warning">⚠️ ${dateStr}: 데이터 없음</div>`);
+                    }
+                }
+
+                statsDiv.innerHTML = results.join('<hr style="border-color: #3e3e42; margin: 15px 0;">');
+            } catch (error) {
+                statsDiv.innerHTML = `<div class="error">❌ 오류: ${error.message}</div>`;
+            }
+        }
+
+        // 내 사용자 통계 확인
+        async function checkMyUserStats() {
+            const userStatsDiv = document.getElementById('user-stats');
+            userStatsDiv.innerHTML = '<div class="info">⏳ 로딩 중...</div>';
+
+            try {
+                const uid = auth.currentUser.uid;
+                const snapshot = await db.ref(`users/${uid}/stats`).once('value');
+                const data = snapshot.val();
+
+                if (!data) {
+                    userStatsDiv.innerHTML = '<div class="warning">⚠️ 통계 데이터가 없습니다</div>';
+                    return;
+                }
+
+                userStatsDiv.innerHTML = `
+                    <div class="success">✅ 사용자 통계 발견</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                userStatsDiv.innerHTML = `<div class="error">❌ 오류: ${error.message}</div>`;
+            }
+        }
+
+        // 초기화
+        window.addEventListener('DOMContentLoaded', async () => {
+            showDateInfo();
+            await initFirebase();
+        });
+    </script>
+</body>
+</html>
