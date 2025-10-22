@@ -34,6 +34,7 @@ npm run lint         # Run ESLint
 - `achievements.html` - Track user progress and unlock rewards
 - `social-hub.html` - Group management, rankings, and social features
 - `admin.html` - Administrator panel (password: 8253, dev/testing only)
+- `debug-daily-stats.html` - Firebase daily_stats debugging tool (dev/testing only)
 
 ## Critical System Architecture
 
@@ -177,13 +178,17 @@ if (result.success) {
 }
 ```
 
-#### 5. Firebase Integration (`firebase-integration.js`, `firebase-auth.js`)
+#### 5. Firebase Integration (`firebase-integration.js`, `firebase-auth.js`, `firebase-config.js`)
 
-**Class:** `EduPetFirebaseIntegration`
+**Classes:**
+- `EduPetAuth` - User authentication and profile management
+- `EduPetFirebaseIntegration` - Data synchronization and offline queue
+
+**Key Features:**
 - Anonymous auth on first load
 - Google Sign-In support for account management
 - **CRITICAL: Duplicate login prevention** - Users can only login from one device at a time
-- Real-time sync: stats, plant state, farm state, learning progress
+- Real-time sync: stats, plant state, farm state, learning progress, daily_stats
 - Offline queue via `queueForLater()`
 - Legacy `eduPetGameState` used only for Firebase migration (do not use for new features)
 
@@ -192,6 +197,66 @@ if (result.success) {
 2. Google Sign-In links permanent account
 3. Device tracking prevents duplicate logins
 4. Session management via Firebase Database `/sessions/{userId}`
+
+**Initialization Pattern (CRITICAL):**
+
+```javascript
+// firebase-config.js: Firebase 초기화 및 eduPetAuth 생성
+async function initFirebase() {
+    firebase_app = firebase.initializeApp(firebaseConfig);
+    firebase_db = firebase.database();
+    firebase_auth = firebase_app.auth();
+
+    // EduPetAuth 인스턴스를 window.eduPetAuth로 생성
+    window.eduPetAuth = initializeEduPetAuth(firebase_auth);
+}
+
+// firebase-integration.js: eduPetAuth 로드 대기
+async initialize() {
+    // eduPetAuth가 로드될 때까지 대기 (최대 5초)
+    while (!window.eduPetAuth && retries < 50) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+        retries++;
+    }
+
+    await window.eduPetAuth.waitForAuthInit();
+    if (!window.eduPetAuth.currentUser) {
+        await window.eduPetAuth.signInAnonymously();
+    }
+}
+```
+
+**Global instances (exported to window):**
+```javascript
+window.eduPetAuth                  // Authentication & user management
+window.eduPetFirebaseIntegration   // Data synchronization
+window.plantSystemFirebase         // Plant system sync helpers
+window.updateFirebaseStats         // Helper functions for stats update
+```
+
+**Daily Stats Tracking:**
+- Path: `daily_stats/{YYYY-MM-DD}/{userId}/`
+- Auto-increments: `questionsAnswered`, `correctAnswers`, `learningTime`
+- Stores completed subjects: `subjects/{subjectId}: true`
+- Profile snapshot: `profile: { nickname, avatarAnimal }`
+- Updated on quiz completion via `updateQuizStats()`
+
+**Script Loading Order (CRITICAL):**
+```html
+<!-- Firebase SDK (synchronous load) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<!-- Firebase integration (deferred load with proper initialization) -->
+<script defer src="firebase-config.js"></script>
+<script defer src="firebase-auth.js"></script>
+<script defer src="firebase-integration.js"></script>
+```
+
+**Debugging Tools:**
+- `debug-daily-stats.html` - View and debug daily_stats data
+- Console logs with `[updateQuizStats]` prefix for tracking sync status
 
 ### LocalStorage Schema
 
@@ -321,7 +386,9 @@ console.log('Premium tickets:', user.rewards.premiumGachaTickets);  // Should be
 // Visit animal-collection.html → Use premium ticket
 ```
 
-### Debugging localStorage
+### Debugging localStorage & Firebase
+
+**LocalStorage debugging:**
 ```javascript
 // View all game state
 const user = JSON.parse(localStorage.plantSystemUser);
@@ -335,6 +402,34 @@ console.log('Subject scores:', user.learning.subjectScores);
 // Clear all data (testing onboarding)
 localStorage.clear();
 ```
+
+**Firebase debugging:**
+```javascript
+// Check Firebase connection
+console.log('Firebase ready:', window.eduPetFirebaseIntegration?.isFirebaseReady);
+console.log('User authenticated:', window.eduPetAuth?.currentUser?.uid);
+
+// View current user data
+console.log('User data:', window.eduPetAuth?.userData);
+
+// Check daily stats in console (after quiz completion)
+// Look for logs with prefix: [updateQuizStats]
+
+// Manual stats update (for testing)
+await window.eduPetFirebaseIntegration.updateQuizStats({
+    subject: 'math',
+    correctAnswers: 10,
+    totalQuestions: 10,
+    timeSpent: 5
+});
+```
+
+**Using debug-daily-stats.html:**
+1. Open `debug-daily-stats.html` in browser
+2. Wait for Firebase connection (green checkmark)
+3. Click "오늘 데이터 확인 (로컬)" for current day stats
+4. Click "최근 3일 모두 확인" for historical data
+5. Click "내 통계 확인" for user profile stats
 
 ## Firebase Configuration
 
@@ -358,6 +453,22 @@ Setup documented in `FIREBASE_SETUP.md`:
 - **Question loading:** Odd/even day logic for file selection
 
 ### Recent Updates (October 2025)
+
+#### Firebase Authentication & Sync Fixes (Oct 23, 2025)
+- **CRITICAL FIX:** Resolved `eduPetAuth is not defined` error
+  - `firebase-config.js` now properly initializes `window.eduPetAuth`
+  - `firebase-auth.js` exports to `window.eduPetAuth` for global access
+  - Added `firebase_config` alias for compatibility
+- **CRITICAL FIX:** Fixed daily_stats not saving after quiz completion
+  - `firebase-integration.js` now waits for `eduPetAuth` to load before initialization
+  - `window.eduPetFirebaseIntegration` properly exported
+  - Added comprehensive debug logging for troubleshooting
+- **NEW TOOL:** `debug-daily-stats.html` for viewing Firebase daily_stats data
+  - Check today's data (UTC or local timezone)
+  - View recent 3 days of stats
+  - Inspect user statistics in real-time
+- Script loading order enforced with proper async/await patterns
+- `updateQuizStats()` now correctly saves to `daily_stats/{date}/{userId}/`
 
 #### Admin Panel Enhancements
 - Complete data reset functionality added to `admin.html`
