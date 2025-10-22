@@ -65,6 +65,20 @@ Realtime Database > 규칙 탭에서 다음 규칙 적용:
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
       }
+    },
+    "minigames": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "minigames_records": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "sessions": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
     }
   }
 }
@@ -210,6 +224,36 @@ const firebaseConfig = {
             ".validate": "$data.isString() && $data.length >= 2 && $data.length <= 10"
           }
         }
+      }
+    },
+    "nicknames": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "show_offs": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "groups": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "daily_stats": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "minigames": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "minigames_records": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "sessions": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
       }
     }
   }

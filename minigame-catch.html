@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물방울 받기 게임 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        #gameCanvas {
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- 헤더 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-3xl">💧</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">물방울 받기 게임</h1>
+                        <p class="text-xs text-gray-600">떨어지는 물방울을 받아요!</p>
+                    </div>
+                </div>
+                <button onclick="goBack()" class="px-3 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition text-sm">
+                    돌아가기
+                </button>
+            </div>
+
+            <!-- 게임 정보 -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-blue-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">남은 시간</p>
+                    <p class="text-2xl font-bold text-blue-600" id="timer">30</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">받은 물</p>
+                    <p class="text-2xl font-bold text-green-600" id="score">0</p>
+                </div>
+                <div class="bg-red-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">놓친 물</p>
+                    <p class="text-2xl font-bold text-red-600" id="missed">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 캔버스 -->
+        <div id="gameArea" style="display: none;">
+            <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+                <canvas id="gameCanvas" width="400" height="500"></canvas>
+                <div class="text-center text-sm text-gray-600 mt-3">
+                    <p>⬅️ 마우스나 터치로 바구니를 움직이세요 ➡️</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 시작 화면 -->
+        <div id="startSection" class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div class="mb-6">
+                <span class="text-6xl">💧</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">물방울 받기 챌린지!</h2>
+            <p class="text-gray-600 mb-6">30초 동안 최대한 많은 물방울을 받아보세요</p>
+
+            <div class="bg-blue-50 rounded-xl p-4 mb-6">
+                <ul class="text-sm text-gray-700 space-y-2 text-left">
+                    <li>• 하늘에서 떨어지는 물방울을 받아요</li>
+                    <li>• 물방울 1개당 <strong class="text-yellow-600">1코인</strong></li>
+                    <li>• 20개 이상 받으면 <strong class="text-green-600">성장티켓</strong> (주 1회)</li>
+                    <li>• 시간이 지날수록 물방울이 빨라져요!</li>
+                </ul>
+            </div>
+
+            <button onclick="startGame()" class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition font-bold text-lg">
+                게임 시작
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="minigame-system.js"></script>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let gameStarted = false;
+        let timeLeft = 30;
+        let score = 0;
+        let missed = 0;
+        let timerInterval = null;
+        let animationFrame = null;
+
+        // 게임 객체
+        const basket = {
+            x: canvas.width / 2 - 40,
+            y: canvas.height - 60,
+            width: 80,
+            height: 20,
+            speed: 5
+        };
+
+        let drops = [];
+        let dropSpeed = 2;
+        let lastDropTime = 0;
+        const dropInterval = 800; // 밀리초
+
+        function startGame() {
+            gameStarted = true;
+            timeLeft = 30;
+            score = 0;
+            missed = 0;
+            drops = [];
+            dropSpeed = 2;
+
+            document.getElementById('startSection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+
+            updateUI();
+            startTimer();
+            gameLoop();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+
+                // 시간이 지날수록 난이도 증가
+                if (timeLeft % 10 === 0) {
+                    dropSpeed += 0.5;
+                }
+
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function createDrop() {
+            drops.push({
+                x: Math.random() * (canvas.width - 20) + 10,
+                y: 0,
+                radius: 10,
+                speed: dropSpeed
+            });
+        }
+
+        function updateDrops() {
+            const now = Date.now();
+
+            // 새로운 물방울 생성
+            if (now - lastDropTime > dropInterval) {
+                createDrop();
+                lastDropTime = now;
+            }
+
+            // 물방울 이동 및 충돌 체크
+            for (let i = drops.length - 1; i >= 0; i--) {
+                const drop = drops[i];
+                drop.y += drop.speed;
+
+                // 바구니와 충돌 체크
+                if (
+                    drop.y + drop.radius >= basket.y &&
+                    drop.y - drop.radius <= basket.y + basket.height &&
+                    drop.x >= basket.x &&
+                    drop.x <= basket.x + basket.width
+                ) {
+                    score++;
+                    document.getElementById('score').textContent = score;
+                    drops.splice(i, 1);
+                    continue;
+                }
+
+                // 화면 밖으로 나가면 제거
+                if (drop.y - drop.radius > canvas.height) {
+                    missed++;
+                    document.getElementById('missed').textContent = missed;
+                    drops.splice(i, 1);
+                }
+            }
+        }
+
+        function drawDrop(drop) {
+            // 물방울 그리기
+            ctx.fillStyle = '#3B82F6';
+            ctx.beginPath();
+            ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 하이라이트
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(drop.x - 3, drop.y - 3, 3, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawBasket() {
+            // 바구니 그리기
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+
+            // 테두리
+            ctx.strokeStyle = '#654321';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(basket.x, basket.y, basket.width, basket.height);
+        }
+
+        function draw() {
+            // 배경 클리어
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 구름 그리기
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(100, 50, 30, 0, Math.PI * 2);
+            ctx.arc(130, 50, 25, 0, Math.PI * 2);
+            ctx.arc(150, 50, 30, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(300, 80, 25, 0, Math.PI * 2);
+            ctx.arc(320, 80, 30, 0, Math.PI * 2);
+            ctx.arc(345, 80, 25, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 물방울들 그리기
+            drops.forEach(drop => drawDrop(drop));
+
+            // 바구니 그리기
+            drawBasket();
+        }
+
+        function gameLoop() {
+            if (!gameStarted) return;
+
+            updateDrops();
+            draw();
+
+            animationFrame = requestAnimationFrame(gameLoop);
+        }
+
+        function updateUI() {
+            document.getElementById('timer').textContent = timeLeft;
+            document.getElementById('score').textContent = score;
+            document.getElementById('missed').textContent = missed;
+        }
+
+        function endGame() {
+            clearInterval(timerInterval);
+            cancelAnimationFrame(animationFrame);
+            gameStarted = false;
+
+            // 보상 지급
+            let result = { success: false, message: '게임을 완료했습니다!' };
+
+            if (typeof minigameSystem !== 'undefined') {
+                result = minigameSystem.rewardCatchGame(score);
+            }
+
+            // 결과 표시
+            let message = `🎉 게임 완료!\n\n`;
+            message += `💧 받은 물방울: ${score}개\n`;
+            message += `❌ 놓친 물방울: ${missed}개\n\n`;
+            message += result.message;
+
+            alert(message);
+
+            // 게임장으로 돌아가기
+            setTimeout(() => {
+                window.location.href = 'minigames.html';
+            }, 1000);
+        }
+
+        function goBack() {
+            if (gameStarted && !confirm('게임을 중단하시겠습니까?')) {
+                return;
+            }
+            window.location.href = 'minigames.html';
+        }
+
+        // 마우스/터치 이벤트로 바구니 이동
+        canvas.addEventListener('mousemove', (e) => {
+            if (!gameStarted) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+
+            basket.x = Math.max(0, Math.min(mouseX - basket.width / 2, canvas.width - basket.width));
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!gameStarted) return;
+
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const touchX = touch.clientX - rect.left;
+
+            basket.x = Math.max(0, Math.min(touchX - basket.width / 2, canvas.width - basket.width));
+        });
+    </script>
+</body>
+</html>

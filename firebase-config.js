@@ -85,14 +85,27 @@ function checkFirebaseConnection() {
 // 에러 처리 유틸리티
 function handleFirebaseError(error, context = '') {
     console.error(`Firebase 에러 ${context}:`, error);
-    
+
     // 사용자 친화적 에러 메시지
     const errorMessages = {
         'auth/network-request-failed': '네트워크 연결을 확인해주세요',
         'permission-denied': '접근 권한이 없습니다',
         'unavailable': '서버에 일시적으로 연결할 수 없습니다'
     };
-    
+
     const userMessage = errorMessages[error.code] || '일시적인 오류가 발생했습니다';
     return userMessage;
+}
+
+// 페이지 로드 시 자동으로 Firebase 초기화
+if (typeof window !== 'undefined') {
+    // DOM이 로드된 후 초기화
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initFirebase, 100); // 약간의 지연을 주어 모든 스크립트 로드 대기
+        });
+    } else {
+        // DOMContentLoaded가 이미 발생한 경우
+        setTimeout(initFirebase, 100);
+    }
 }

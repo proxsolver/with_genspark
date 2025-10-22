@@ -323,6 +323,9 @@ function updateAnimalCount() {
     const animalCountEl = document.getElementById('animalCountDisplay');
     if (animalCountEl) {
         animalCountEl.textContent = ownedCount + '마리';
+        console.log('✅ [동물 컬렉션] 화면에 표시 완료:', animalCountEl.textContent);
+    } else {
+        console.error('❌ [동물 컬렉션] animalCountDisplay 요소를 찾을 수 없습니다');
     }
 }
 
@@ -366,10 +369,17 @@ function updateHighestAnimal() {
     // 프로필에서 설정한 아바타 확인
     loadUserAvatarForDisplay();
 
-    // 최고 등급 동물도 표시 (하위 호환)
+    // 최고 등급 동물도 표시 (하위 호환 - 요소가 있을 때만)
     if (highestAnimal) {
-        document.getElementById('topAnimalDisplay').textContent = highestAnimal.emoji || '🦎';
-        document.getElementById('topAnimalName').textContent = highestAnimal.name || '동물';
+        const topAnimalDisplay = document.getElementById('topAnimalDisplay');
+        const topAnimalName = document.getElementById('topAnimalName');
+
+        if (topAnimalDisplay) {
+            topAnimalDisplay.textContent = highestAnimal.emoji || '🦎';
+        }
+        if (topAnimalName) {
+            topAnimalName.textContent = highestAnimal.name || '동물';
+        }
     }
 }
 

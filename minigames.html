@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니게임장 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .game-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .stat-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- 헤더 -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-4xl">🎮</span>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">미니게임장</h1>
+                        <p class="text-sm text-gray-600">재미있게 놀고 보상도 받아요!</p>
+                    </div>
+                </div>
+                <button onclick="goHome()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition">
+                    홈으로
+                </button>
+            </div>
+
+            <!-- 내 코인 표시 -->
+            <div class="flex items-center gap-4 p-4 bg-yellow-50 rounded-xl border-2 border-yellow-200">
+                <span class="text-2xl">💰</span>
+                <div>
+                    <p class="text-sm text-gray-600">내 코인</p>
+                    <p class="text-2xl font-bold text-yellow-600" id="userCoins">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 카드들 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <!-- 메모리 카드 게임 -->
+            <div class="game-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="text-center mb-4">
+                    <span class="text-6xl">🎴</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">메모리 카드</h3>
+                <p class="text-sm text-gray-600 mb-4 text-center">같은 동물 카드를 찾아보세요!</p>
+
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">기본 보상</span>
+                        <span class="font-bold text-yellow-600">20코인</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">완벽 클리어</span>
+                        <span class="font-bold text-yellow-600">+10코인</span>
+                    </div>
+                </div>
+
+                <div class="stat-badge rounded-lg p-3 text-center mb-4">
+                    <p class="text-xs text-white mb-1">오늘 남은 횟수</p>
+                    <p class="text-lg font-bold text-white" id="memory-remaining">5/5</p>
+                </div>
+
+                <!-- 최고 기록자 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-3 border border-yellow-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🏆</span>
+                            <div>
+                                <p class="text-xs text-gray-600">최고 기록자</p>
+                                <p class="text-sm font-bold text-gray-800" id="memory-top-player">불러오는 중...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-600">기록</p>
+                            <p class="text-sm font-bold text-orange-600" id="memory-top-score">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 보상 통계 -->
+                <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-200">
+                    <p class="text-xs text-gray-600 mb-2 font-semibold">💰 획득 보상</p>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div>
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="memory-today-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="memory-total-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 플레이 버튼 -->
+                <button onclick="goToGame('memory')" class="w-full py-3 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 transition">
+                    게임 시작하기
+                </button>
+
+                <div class="mt-2 text-center">
+                    <div class="text-xs text-gray-500">
+                        <span>플레이: </span><span id="memory-played">0</span>회 ·
+                        <span>성공: </span><span id="memory-won">0</span>회
+                    </div>
+                </div>
+            </div>
+
+            <!-- 빠른 계산 게임 -->
+            <div class="game-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="text-center mb-4">
+                    <span class="text-6xl">🧮</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">빠른 계산</h3>
+                <p class="text-sm text-gray-600 mb-4 text-center">30초 안에 몇 문제 풀까요?</p>
+
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">정답당</span>
+                        <span class="font-bold text-yellow-600">2코인</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">10개 이상</span>
+                        <span class="font-bold text-blue-600">가차티켓 🎫</span>
+                    </div>
+                </div>
+
+                <div class="stat-badge rounded-lg p-3 text-center mb-4">
+                    <p class="text-xs text-white mb-1">오늘 남은 횟수</p>
+                    <p class="text-lg font-bold text-white" id="math-remaining">5/5</p>
+                </div>
+
+                <!-- 최고 기록자 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-3 border border-yellow-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🏆</span>
+                            <div>
+                                <p class="text-xs text-gray-600">최고 기록자</p>
+                                <p class="text-sm font-bold text-gray-800" id="math-top-player">불러오는 중...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-600">정답</p>
+                            <p class="text-sm font-bold text-orange-600" id="math-top-score">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 보상 통계 -->
+                <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-200">
+                    <p class="text-xs text-gray-600 mb-2 font-semibold">💰 획득 보상</p>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="mb-1">
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="math-today-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="math-total-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="math-today-tickets">0</span>
+                            <span class="text-gray-500">🎫</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="math-total-tickets">0</span>
+                            <span class="text-gray-500">🎫</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 플레이 버튼 -->
+                <button onclick="goToGame('math')" class="w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition">
+                    게임 시작하기
+                </button>
+
+                <div class="mt-2 text-center">
+                    <div class="text-xs text-gray-500">
+                        <span>플레이: </span><span id="math-played">0</span>회 ·
+                        <span>최고: </span><span id="math-best">0</span>개
+                    </div>
+                </div>
+            </div>
+
+            <!-- 물방울 받기 게임 -->
+            <div class="game-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="text-center mb-4">
+                    <span class="text-6xl">💧</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">물방울 받기</h3>
+                <p class="text-sm text-gray-600 mb-4 text-center">떨어지는 물방울을 받아요!</p>
+
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">물방울당</span>
+                        <span class="font-bold text-yellow-600">1코인</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">20개 이상</span>
+                        <span class="font-bold text-green-600">성장티켓 🎟️</span>
+                    </div>
+                </div>
+
+                <div class="stat-badge rounded-lg p-3 text-center mb-4">
+                    <p class="text-xs text-white mb-1">오늘 남은 횟수</p>
+                    <p class="text-lg font-bold text-white" id="catch-remaining">5/5</p>
+                </div>
+
+                <!-- 최고 기록자 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-3 border border-yellow-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🏆</span>
+                            <div>
+                                <p class="text-xs text-gray-600">최고 기록자</p>
+                                <p class="text-sm font-bold text-gray-800" id="catch-top-player">불러오는 중...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-600">물방울</p>
+                            <p class="text-sm font-bold text-orange-600" id="catch-top-score">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 보상 통계 -->
+                <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-200">
+                    <p class="text-xs text-gray-600 mb-2 font-semibold">💰 획득 보상</p>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div class="mb-1">
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="catch-today-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                        <div class="mb-1">
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="catch-total-coins">0</span>
+                            <span class="text-gray-500">코인</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="catch-today-tickets">0</span>
+                            <span class="text-gray-500">🎟️</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="catch-total-tickets">0</span>
+                            <span class="text-gray-500">🎟️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 플레이 버튼 -->
+                <button onclick="goToGame('catch')" class="w-full py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition">
+                    게임 시작하기
+                </button>
+
+                <div class="mt-2 text-center">
+                    <div class="text-xs text-gray-500">
+                        <span>플레이: </span><span id="catch-played">0</span>회 ·
+                        <span>최고: </span><span id="catch-best">0</span>개
+                    </div>
+                </div>
+            </div>
+
+            <!-- 인형뽑기 게임 -->
+            <div class="game-card bg-white rounded-2xl shadow-lg p-6">
+                <div class="text-center mb-4">
+                    <span class="text-6xl">🎁</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2 text-center">인형뽑기</h3>
+                <p class="text-sm text-gray-600 mb-4 text-center">귀여운 동물 인형을 뽑아요!</p>
+
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">입장료</span>
+                        <span class="font-bold text-red-600">-10코인</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">성공시</span>
+                        <span class="font-bold text-pink-600">동물 획득 🐰</span>
+                    </div>
+                </div>
+
+                <div class="stat-badge rounded-lg p-3 text-center mb-4">
+                    <p class="text-xs text-white mb-1">오늘 남은 횟수</p>
+                    <p class="text-lg font-bold text-white" id="claw-remaining">5/5</p>
+                </div>
+
+                <!-- 최고 기록자 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-3 mb-3 border border-yellow-200">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-lg">🏆</span>
+                            <div>
+                                <p class="text-xs text-gray-600">최고 기록자</p>
+                                <p class="text-sm font-bold text-gray-800" id="claw-top-player">불러오는 중...</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-gray-600">성공률</p>
+                            <p class="text-sm font-bold text-orange-600" id="claw-top-score">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 보상 통계 -->
+                <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-200">
+                    <p class="text-xs text-gray-600 mb-2 font-semibold">🐾 획득 통계</p>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div>
+                            <span class="text-gray-600">오늘: </span>
+                            <span class="font-bold text-blue-600" id="claw-today-animals">0</span>
+                            <span class="text-gray-500">마리</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">누적: </span>
+                            <span class="font-bold text-purple-600" id="claw-total-animals">0</span>
+                            <span class="text-gray-500">마리</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 플레이 버튼 -->
+                <button onclick="goToGame('claw')" class="w-full py-3 bg-pink-600 text-white rounded-xl font-bold hover:bg-pink-700 transition">
+                    게임 시작하기
+                </button>
+
+                <div class="mt-2 text-center">
+                    <div class="text-xs text-gray-500">
+                        <span>플레이: </span><span id="claw-played">0</span>회 ·
+                        <span>성공: </span><span id="claw-won">0</span>회
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 규칙 안내 -->
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span>📖</span>
+                <span>게임 규칙</span>
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>각 게임은 하루에 <strong class="text-purple-600">5번</strong>씩 플레이할 수 있어요</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>특별 보상(가차티켓, 성장티켓)은 <strong class="text-purple-600">일주일에 1번</strong>만 받을 수 있어요</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span><strong class="text-pink-600">인형뽑기</strong>는 플레이할 때마다 <strong class="text-red-600">10코인</strong>이 소모돼요</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>매일 새벽 4시에 플레이 횟수가 초기화돼요</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>게임을 하면서 실력도 키우고 보상도 받아보세요!</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="minigame-system.js"></script>
+    <script>
+        // 초기화
+        document.addEventListener('DOMContentLoaded', async () => {
+            updateUI();
+
+            // Firebase 초기화 대기
+            await waitForFirebase();
+
+            // Firebase 준비 후 최고 기록 로드
+            loadTopRecords();
+        });
+
+        // Firebase 초기화 대기 함수
+        async function waitForFirebase() {
+            let retries = 0;
+            const maxRetries = 50; // 최대 5초 대기
+
+            while (retries < maxRetries) {
+                // Firebase가 로드되었는지 확인
+                if (typeof firebase !== 'undefined') {
+                    // Firebase 앱이 초기화되었는지 확인
+                    if (firebase.apps && firebase.apps.length > 0) {
+                        console.log('[Minigames] Firebase 초기화 완료');
+                        return true;
+                    }
+                    // Firebase가 로드되었지만 초기화되지 않은 경우, initFirebase 호출
+                    if (typeof initFirebase === 'function' && retries === 0) {
+                        console.log('[Minigames] Firebase 초기화 시도...');
+                        await initFirebase();
+                    }
+                }
+                await new Promise(resolve => setTimeout(resolve, 100));
+                retries++;
+            }
+
+            console.warn('[Minigames] Firebase 초기화 시간 초과 - 오프라인 모드로 계속');
+            return false;
+        }
+
+        function updateUI() {
+            // 코인 표시
+            if (typeof plantSystem !== 'undefined') {
+                const coins = plantSystem.getMoney();
+                document.getElementById('userCoins').textContent = coins.toLocaleString();
+            }
+
+            // 통계 표시
+            if (typeof minigameSystem !== 'undefined') {
+                const stats = minigameSystem.getStats();
+
+                // 메모리 게임
+                document.getElementById('memory-remaining').textContent =
+                    `${stats.remainingPlays.memory}/5`;
+                document.getElementById('memory-played').textContent =
+                    stats.totalStats.memory.played;
+                document.getElementById('memory-won').textContent =
+                    stats.totalStats.memory.won;
+
+                // 메모리 게임 보상 통계 - 전체 누적(모든 게임에서의 코인)에서 메모리만 추출
+                const memoryTodayCoins = stats.todayRewards.coins || 0;
+                const memoryTotalCoins = stats.totalRewards.coins || 0;
+                document.getElementById('memory-today-coins').textContent = memoryTodayCoins;
+                document.getElementById('memory-total-coins').textContent = memoryTotalCoins;
+
+                // 계산 게임
+                document.getElementById('math-remaining').textContent =
+                    `${stats.remainingPlays.math}/5`;
+                document.getElementById('math-played').textContent =
+                    stats.totalStats.math.played;
+                document.getElementById('math-best').textContent =
+                    stats.totalStats.math.bestScore;
+
+                // 계산 게임 보상 통계
+                document.getElementById('math-today-coins').textContent =
+                    stats.todayRewards.coins || 0;
+                document.getElementById('math-total-coins').textContent =
+                    stats.totalRewards.coins || 0;
+                document.getElementById('math-today-tickets').textContent =
+                    stats.todayRewards.normalTickets || 0;
+                document.getElementById('math-total-tickets').textContent =
+                    stats.totalRewards.normalTickets || 0;
+
+                // 물방울 게임
+                document.getElementById('catch-remaining').textContent =
+                    `${stats.remainingPlays.catch}/5`;
+                document.getElementById('catch-played').textContent =
+                    stats.totalStats.catch.played;
+                document.getElementById('catch-best').textContent =
+                    stats.totalStats.catch.bestScore;
+
+                // 물방울 게임 보상 통계
+                document.getElementById('catch-today-coins').textContent =
+                    stats.todayRewards.coins || 0;
+                document.getElementById('catch-total-coins').textContent =
+                    stats.totalRewards.coins || 0;
+                document.getElementById('catch-today-tickets').textContent =
+                    stats.todayRewards.growthTickets || 0;
+                document.getElementById('catch-total-tickets').textContent =
+                    stats.totalRewards.growthTickets || 0;
+
+                // 인형뽑기 게임
+                document.getElementById('claw-remaining').textContent =
+                    `${stats.remainingPlays.claw}/5`;
+                document.getElementById('claw-played').textContent =
+                    stats.totalStats.claw?.played || 0;
+                document.getElementById('claw-won').textContent =
+                    stats.totalStats.claw?.won || 0;
+
+                // 인형뽑기 획득 통계 (오늘 획득한 동물 수)
+                const clawAnimals = stats.totalStats.claw?.animals || [];
+                const today = new Date().toISOString().split('T')[0];
+                const todayAnimals = clawAnimals.filter(a => a.date === today).length;
+                document.getElementById('claw-today-animals').textContent = todayAnimals;
+                document.getElementById('claw-total-animals').textContent = clawAnimals.length;
+            }
+        }
+
+        // Firebase에서 최고 기록 불러오기
+        async function loadTopRecords() {
+            if (typeof minigameSystem === 'undefined') {
+                return;
+            }
+
+            try {
+                // 메모리 게임 최고 기록
+                const memoryTop = await minigameSystem.getTopRecords('memory', 1);
+                if (memoryTop.length > 0) {
+                    const record = memoryTop[0];
+                    document.getElementById('memory-top-player').textContent =
+                        record.nickname || '익명';
+                    document.getElementById('memory-top-score').textContent =
+                        record.perfectClear ? '완벽클리어!' : `${record.reward}코인`;
+                } else {
+                    document.getElementById('memory-top-player').textContent = '기록 없음';
+                    document.getElementById('memory-top-score').textContent = '-';
+                }
+
+                // 계산 게임 최고 기록
+                const mathTop = await minigameSystem.getTopRecords('math', 1);
+                if (mathTop.length > 0) {
+                    const record = mathTop[0];
+                    document.getElementById('math-top-player').textContent =
+                        record.nickname || '익명';
+                    document.getElementById('math-top-score').textContent =
+                        `${record.correctAnswers}개`;
+                } else {
+                    document.getElementById('math-top-player').textContent = '기록 없음';
+                    document.getElementById('math-top-score').textContent = '-';
+                }
+
+                // 물방울 게임 최고 기록
+                const catchTop = await minigameSystem.getTopRecords('catch', 1);
+                if (catchTop.length > 0) {
+                    const record = catchTop[0];
+                    document.getElementById('catch-top-player').textContent =
+                        record.nickname || '익명';
+                    document.getElementById('catch-top-score').textContent =
+                        `${record.waterDrops}개`;
+                } else {
+                    document.getElementById('catch-top-player').textContent = '기록 없음';
+                    document.getElementById('catch-top-score').textContent = '-';
+                }
+
+                // 인형뽑기 게임 최고 기록 (성공률 기준)
+                const clawTop = await minigameSystem.getTopRecords('claw', 1);
+                if (clawTop.length > 0) {
+                    const record = clawTop[0];
+                    document.getElementById('claw-top-player').textContent =
+                        record.nickname || '익명';
+                    // 성공 여부 표시
+                    document.getElementById('claw-top-score').textContent =
+                        record.success ? '성공!' : '-';
+                } else {
+                    document.getElementById('claw-top-player').textContent = '기록 없음';
+                    document.getElementById('claw-top-score').textContent = '-';
+                }
+            } catch (error) {
+                console.error('최고 기록 불러오기 실패:', error);
+            }
+        }
+
+        function goToGame(gameType) {
+            // 남은 횟수 확인
+            if (typeof minigameSystem !== 'undefined') {
+                if (!minigameSystem.canPlay(gameType)) {
+                    alert('오늘 플레이 횟수를 모두 사용했습니다!\n내일 다시 도전해주세요 😊');
+                    return;
+                }
+            }
+
+            // 게임 페이지로 이동
+            const gamePages = {
+                memory: 'minigame-memory.html',
+                math: 'minigame-math.html',
+                catch: 'minigame-catch.html',
+                claw: 'minigame-claw.html'
+            };
+
+            if (gamePages[gameType]) {
+                window.location.href = gamePages[gameType];
+            }
+        }
+
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

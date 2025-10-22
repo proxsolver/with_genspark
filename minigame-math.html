@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빠른 계산 게임 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .answer-btn {
+            transition: all 0.2s;
+        }
+        .answer-btn:hover {
+            transform: scale(1.05);
+        }
+        .answer-btn.correct {
+            animation: correctPulse 0.5s;
+        }
+        .answer-btn.wrong {
+            animation: wrongShake 0.5s;
+        }
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); background-color: #10b981; }
+        }
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- 헤더 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-3xl">🧮</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">빠른 계산 게임</h1>
+                        <p class="text-xs text-gray-600">30초 안에 몇 문제 풀까요?</p>
+                    </div>
+                </div>
+                <button onclick="goBack()" class="px-3 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition text-sm">
+                    돌아가기
+                </button>
+            </div>
+
+            <!-- 게임 정보 -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-blue-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">남은 시간</p>
+                    <p class="text-2xl font-bold text-blue-600" id="timer">30</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">정답</p>
+                    <p class="text-2xl font-bold text-green-600" id="correct">0</p>
+                </div>
+                <div class="bg-red-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">오답</p>
+                    <p class="text-2xl font-bold text-red-600" id="wrong">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 영역 -->
+        <div id="gameArea" style="display: none;">
+            <!-- 문제 표시 -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-4">
+                <div class="text-center">
+                    <p class="text-5xl font-bold text-gray-800 mb-2" id="question">0 + 0</p>
+                    <p class="text-sm text-gray-500">정답을 선택하세요</p>
+                </div>
+            </div>
+
+            <!-- 답안 선택 -->
+            <div class="grid grid-cols-2 gap-3">
+                <button class="answer-btn bg-white rounded-xl shadow-lg p-6 text-3xl font-bold text-gray-800 hover:bg-purple-50" onclick="selectAnswer(0)">
+                    <span id="answer0">0</span>
+                </button>
+                <button class="answer-btn bg-white rounded-xl shadow-lg p-6 text-3xl font-bold text-gray-800 hover:bg-purple-50" onclick="selectAnswer(1)">
+                    <span id="answer1">0</span>
+                </button>
+                <button class="answer-btn bg-white rounded-xl shadow-lg p-6 text-3xl font-bold text-gray-800 hover:bg-purple-50" onclick="selectAnswer(2)">
+                    <span id="answer2">0</span>
+                </button>
+                <button class="answer-btn bg-white rounded-xl shadow-lg p-6 text-3xl font-bold text-gray-800 hover:bg-purple-50" onclick="selectAnswer(3)">
+                    <span id="answer3">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 시작 화면 -->
+        <div id="startSection" class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div class="mb-6">
+                <span class="text-6xl">🧮</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">빠른 계산 챌린지!</h2>
+            <p class="text-gray-600 mb-6">30초 동안 최대한 많은 문제를 풀어보세요</p>
+
+            <div class="bg-purple-50 rounded-xl p-4 mb-6">
+                <ul class="text-sm text-gray-700 space-y-2 text-left">
+                    <li>• 간단한 덧셈과 뺄셈 문제가 나와요</li>
+                    <li>• 정답 1개당 <strong class="text-yellow-600">2코인</strong></li>
+                    <li>• 10개 이상 맞추면 <strong class="text-blue-600">가차티켓</strong> (주 1회)</li>
+                </ul>
+            </div>
+
+            <button onclick="startGame()" class="px-8 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition font-bold text-lg">
+                게임 시작
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="minigame-system.js"></script>
+    <script>
+        let gameStarted = false;
+        let timeLeft = 30;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        let currentAnswer = 0;
+        let timerInterval = null;
+
+        function startGame() {
+            gameStarted = true;
+            timeLeft = 30;
+            correctAnswers = 0;
+            wrongAnswers = 0;
+
+            document.getElementById('startSection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+
+            updateUI();
+            generateQuestion();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function generateQuestion() {
+            // 랜덤 연산자 (+, -)
+            const operators = ['+', '-'];
+            const operator = operators[Math.floor(Math.random() * operators.length)];
+
+            let num1, num2, answer;
+
+            if (operator === '+') {
+                num1 = Math.floor(Math.random() * 20) + 1;
+                num2 = Math.floor(Math.random() * 20) + 1;
+                answer = num1 + num2;
+            } else {
+                // 뺄셈은 항상 양수 결과가 나오도록
+                num1 = Math.floor(Math.random() * 30) + 10;
+                num2 = Math.floor(Math.random() * num1) + 1;
+                answer = num1 - num2;
+            }
+
+            currentAnswer = answer;
+
+            // 문제 표시
+            document.getElementById('question').textContent = `${num1} ${operator} ${num2}`;
+
+            // 4개의 보기 생성 (1개는 정답, 3개는 오답)
+            const answers = [answer];
+
+            while (answers.length < 4) {
+                const wrongAnswer = answer + Math.floor(Math.random() * 10) - 5;
+                if (wrongAnswer > 0 && !answers.includes(wrongAnswer)) {
+                    answers.push(wrongAnswer);
+                }
+            }
+
+            // 셔플
+            answers.sort(() => Math.random() - 0.5);
+
+            // 보기 표시
+            answers.forEach((ans, index) => {
+                document.getElementById(`answer${index}`).textContent = ans;
+            });
+        }
+
+        function selectAnswer(index) {
+            if (!gameStarted) return;
+
+            const selectedAnswer = parseInt(document.getElementById(`answer${index}`).textContent);
+            const button = document.querySelectorAll('.answer-btn')[index];
+
+            if (selectedAnswer === currentAnswer) {
+                // 정답
+                correctAnswers++;
+                document.getElementById('correct').textContent = correctAnswers;
+                button.classList.add('correct');
+
+                setTimeout(() => {
+                    button.classList.remove('correct');
+                    generateQuestion();
+                }, 300);
+            } else {
+                // 오답
+                wrongAnswers++;
+                document.getElementById('wrong').textContent = wrongAnswers;
+                button.classList.add('wrong');
+
+                setTimeout(() => {
+                    button.classList.remove('wrong');
+                }, 500);
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('timer').textContent = timeLeft;
+            document.getElementById('correct').textContent = correctAnswers;
+            document.getElementById('wrong').textContent = wrongAnswers;
+        }
+
+        function endGame() {
+            clearInterval(timerInterval);
+            gameStarted = false;
+
+            // 보상 지급
+            let result = { success: false, message: '게임을 완료했습니다!' };
+
+            if (typeof minigameSystem !== 'undefined') {
+                result = minigameSystem.rewardMathGame(correctAnswers);
+            }
+
+            // 결과 표시
+            let message = `🎉 게임 완료!\n\n`;
+            message += `✅ 정답: ${correctAnswers}개\n`;
+            message += `❌ 오답: ${wrongAnswers}개\n\n`;
+            message += result.message;
+
+            alert(message);
+
+            // 게임장으로 돌아가기
+            setTimeout(() => {
+                window.location.href = 'minigames.html';
+            }, 1000);
+        }
+
+        function goBack() {
+            if (gameStarted && !confirm('게임을 중단하시겠습니까?')) {
+                return;
+            }
+            window.location.href = 'minigames.html';
+        }
+    </script>
+</body>
+</html>

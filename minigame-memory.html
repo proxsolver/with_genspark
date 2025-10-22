@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메모리 카드 게임 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            width: 80px;
+            height: 80px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 2.5rem;
+        }
+        .card-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card.matched .card-back {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+        @media (max-width: 640px) {
+            .card {
+                width: 70px;
+                height: 70px;
+            }
+            .card-front, .card-back {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- 헤더 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-3xl">🎴</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">메모리 카드 게임</h1>
+                        <p class="text-xs text-gray-600">같은 동물을 찾아보세요!</p>
+                    </div>
+                </div>
+                <button onclick="goBack()" class="px-3 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition text-sm">
+                    돌아가기
+                </button>
+            </div>
+
+            <!-- 게임 정보 -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-blue-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">실수</p>
+                    <p class="text-lg font-bold text-blue-600" id="mistakes">0</p>
+                </div>
+                <div class="bg-green-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">찾은 쌍</p>
+                    <p class="text-lg font-bold text-green-600" id="matches">0/8</p>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-2">
+                    <p class="text-xs text-gray-600">시간</p>
+                    <p class="text-lg font-bold text-purple-600" id="timer">0초</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 보드 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+            <div id="gameBoard" class="grid grid-cols-4 gap-2 justify-items-center">
+                <!-- 카드들이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
+
+        <!-- 게임 시작 버튼 -->
+        <div id="startSection" class="bg-white rounded-2xl shadow-lg p-6 text-center">
+            <p class="text-gray-600 mb-4">모든 동물 쌍을 찾아보세요!</p>
+            <button onclick="startGame()" class="px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 transition font-bold">
+                게임 시작
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="minigame-system.js"></script>
+    <script>
+        const animals = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let mistakes = 0;
+        let gameStarted = false;
+        let startTime = null;
+        let timerInterval = null;
+
+        function initGame() {
+            // 카드 배열 생성 (각 동물 2장씩)
+            const cardPairs = [...animals, ...animals];
+
+            // 셔플
+            cards = cardPairs.sort(() => Math.random() - 0.5).map((animal, index) => ({
+                id: index,
+                animal: animal,
+                flipped: false,
+                matched: false
+            }));
+
+            renderBoard();
+        }
+
+        function renderBoard() {
+            const board = document.getElementById('gameBoard');
+            board.innerHTML = '';
+
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                if (card.flipped || card.matched) {
+                    cardElement.classList.add('flipped');
+                }
+                if (card.matched) {
+                    cardElement.classList.add('matched');
+                }
+
+                cardElement.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-front">?</div>
+                        <div class="card-back">${card.animal}</div>
+                    </div>
+                `;
+
+                cardElement.onclick = () => flipCard(card.id);
+                board.appendChild(cardElement);
+            });
+        }
+
+        function startGame() {
+            gameStarted = true;
+            matchedPairs = 0;
+            mistakes = 0;
+            flippedCards = [];
+            startTime = Date.now();
+
+            document.getElementById('startSection').style.display = 'none';
+            document.getElementById('mistakes').textContent = '0';
+            document.getElementById('matches').textContent = '0/8';
+
+            initGame();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('timer').textContent = `${elapsed}초`;
+            }, 1000);
+        }
+
+        function flipCard(cardId) {
+            if (!gameStarted) return;
+
+            const card = cards.find(c => c.id === cardId);
+            if (!card || card.matched || card.flipped || flippedCards.length === 2) return;
+
+            // 카드 뒤집기
+            card.flipped = true;
+            flippedCards.push(card);
+            renderBoard();
+
+            // 2장이 뒤집혔을 때
+            if (flippedCards.length === 2) {
+                setTimeout(checkMatch, 600);
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+
+            if (card1.animal === card2.animal) {
+                // 매치 성공
+                card1.matched = true;
+                card2.matched = true;
+                matchedPairs++;
+
+                document.getElementById('matches').textContent = `${matchedPairs}/8`;
+
+                // 게임 완료 체크
+                if (matchedPairs === 8) {
+                    setTimeout(gameComplete, 500);
+                }
+            } else {
+                // 매치 실패
+                mistakes++;
+                document.getElementById('mistakes').textContent = mistakes;
+                card1.flipped = false;
+                card2.flipped = false;
+            }
+
+            flippedCards = [];
+            renderBoard();
+        }
+
+        function gameComplete() {
+            clearInterval(timerInterval);
+            gameStarted = false;
+
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const isPerfect = mistakes === 0;
+
+            // 보상 지급
+            let result = { success: false, message: '게임을 완료했습니다!' };
+
+            if (typeof minigameSystem !== 'undefined') {
+                result = minigameSystem.rewardMemoryGame(isPerfect);
+            }
+
+            // 결과 표시
+            let message = `🎉 게임 완료!\n\n`;
+            message += `⏱️ 걸린 시간: ${elapsed}초\n`;
+            message += `❌ 실수: ${mistakes}번\n\n`;
+            message += result.message;
+
+            alert(message);
+
+            // 게임장으로 돌아가기
+            setTimeout(() => {
+                window.location.href = 'minigames.html';
+            }, 1000);
+        }
+
+        function goBack() {
+            if (gameStarted && !confirm('게임을 중단하시겠습니까?')) {
+                return;
+            }
+            window.location.href = 'minigames.html';
+        }
+
+        // 페이지 로드 시 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            initGame();
+        });
+    </script>
+</body>
+</html>

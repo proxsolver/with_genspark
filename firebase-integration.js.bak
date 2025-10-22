@@ -1,0 +1,756 @@
+// Firebase와 기존 시스템 통합을 위한 유틸리티
+class EduPetFirebaseIntegration {
+    constructor() {
+        this.isFirebaseReady = false;
+        this.offlineQueue = [];
+        this.syncInProgress = false;
+    }
+
+    // Firebase 연결 확인 및 초기화
+    async initialize() {
+        try {
+            // Firebase 스크립트가 로드되었는지 확인
+            if (typeof firebase === 'undefined') {
+                console.log('Firebase가 로드되지 않음 - 오프라인 모드로 동작');
+                return false;
+            }
+
+            const firebaseReady = await initFirebase();
+            if (firebaseReady) {
+                this.isFirebaseReady = true;
+
+                // eduPetAuth가 로드되고 초기화될 때까지 대기
+                console.log('[Firebase Integration] eduPetAuth 로드 대기 중...');
+                let retries = 0;
+                while ((!window.eduPetAuth || window.eduPetAuth === null) && retries < 50) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    retries++;
+                }
+
+                if (!window.eduPetAuth || window.eduPetAuth === null) {
+                    console.error('[Firebase Integration] eduPetAuth 로드 실패 - 타임아웃');
+                    console.error('[Firebase Integration] initializeEduPetAuth 존재:', typeof initializeEduPetAuth !== 'undefined');
+                    console.error('[Firebase Integration] firebase_auth 존재:', typeof firebase_auth !== 'undefined');
+                    return false;
+                }
+
+                console.log('[Firebase Integration] eduPetAuth 로드 완료');
+
+                // eduPetAuth가 Firebase 초기화 완료를 기다리도록 합니다.
+                await window.eduPetAuth.waitForAuthInit();
+
+                // 익명 로그인 시도
+                if (!window.eduPetAuth.currentUser) {
+                    await window.eduPetAuth.signInAnonymously();
+                }
+
+                // 오프라인 큐 처리
+                await this.processOfflineQueue();
+                
+                console.log('Firebase 통합 초기화 완료');
+                return true;
+            }
+            
+            return false;
+        } catch (error) {
+            console.error('Firebase 통합 초기화 실패:', error);
+            return false;
+        }
+    }
+
+    // 퀴즈 완료 시 통계 업데이트 (신규: 통합 방식)
+    async updateQuizStats(quizResult) {
+        console.log('[updateQuizStats] 시작:', quizResult);
+
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.warn('[updateQuizStats] Firebase 준비되지 않음 또는 사용자 미인증. 큐에 추가합니다.');
+            this.queueForLater('updateQuizStats', quizResult);
+            return;
+        }
+
+        try {
+            const { subject, correctAnswers, totalQuestions, timeSpent } = quizResult;
+
+            if (!subject) {
+                console.error('[updateQuizStats] subject가 없습니다:', quizResult);
+                return;
+            }
+
+            console.log('[updateQuizStats] Firebase 업데이트 준비:', {
+                subject,
+                correctAnswers,
+                totalQuestions,
+                timeSpent
+            });
+
+            const updates = {};
+            const uid = eduPetAuth.currentUser.uid;
+
+            // 전체 통계 업데이트 (증가)
+            updates[`users/${uid}/stats/correctAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+            updates[`users/${uid}/stats/totalQuestions`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+            updates[`users/${uid}/stats/totalLearningTime`] = firebase.database.ServerValue.increment(timeSpent || 0);
+
+            // 과목별 통계 업데이트 (증가)
+            updates[`users/${uid}/stats/subjects/${subject}/correctAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+            updates[`users/${uid}/stats/subjects/${subject}/questions`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+            updates[`users/${uid}/stats/subjects/${subject}/experience`] = firebase.database.ServerValue.increment((correctAnswers || 0) * 10);
+
+            // 일일 통계도 함께 업데이트 (로컬 타임존 날짜 사용)
+            const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD 형식, 로컬 타임존
+            console.log('[updateQuizStats] Daily stats 날짜:', today);
+
+            updates[`daily_stats/${today}/${uid}/questionsAnswered`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+            updates[`daily_stats/${today}/${uid}/correctAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+            updates[`daily_stats/${today}/${uid}/learningTime`] = firebase.database.ServerValue.increment(timeSpent || 0);
+
+            // 완료한 과목 추가 (Set으로 관리하기 위해 과목을 키로 사용)
+            if (subject) {
+                updates[`daily_stats/${today}/${uid}/subjects/${subject}`] = true;
+            }
+
+            // 프로필 및 동물 컬렉션 정보
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            let animalsCollected = 0;
+            if (animalCollection.collection) {
+                Object.values(animalCollection.collection).forEach(animal => {
+                    animalsCollected += animal.count || 0;
+                });
+            }
+
+            updates[`daily_stats/${today}/${uid}/profile`] = {
+                nickname: eduPetAuth.userData?.profile?.nickname || '익명',
+                avatarAnimal: eduPetAuth.userData?.profile?.avatarAnimal || 'bunny'
+            };
+            updates[`daily_stats/${today}/${uid}/animalsCollected`] = animalsCollected;
+            updates[`daily_stats/${today}/${uid}/lastUpdated`] = firebase.database.ServerValue.TIMESTAMP;
+
+            console.log('[updateQuizStats] Firebase 업데이트 실행:', updates);
+            await firebase_db.ref().update(updates);
+            console.log('[updateQuizStats] ✅ Firebase 통합 퀴즈 통계 업데이트 완료 (daily_stats 포함)');
+
+        } catch (error) {
+            console.error('[updateQuizStats] ❌ Firebase 통합 퀴즈 통계 업데이트 실패:', error);
+            console.error('[updateQuizStats] 에러 상세:', error.message, error.code);
+            this.queueForLater('updateQuizStats', quizResult);
+        }
+    }
+
+    // 동물 수집 시 통계 업데이트
+    async updateAnimalStats(animalData) {
+        const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+        let totalAnimalsCollected = 0;
+        if (animalCollection.collection) {
+            Object.values(animalCollection.collection).forEach(animal => {
+                totalAnimalsCollected += animal.count || 0;
+            });
+        }
+        const moneyUpdate = { totalMoney: -animalData.cost || 0 };
+
+        if (this.isFirebaseReady && eduPetAuth.currentUser) {
+            try {
+                // 온라인: 동물의 수는 절대값으로, 돈은 증분으로 업데이트
+                await eduPetAuth.setUserStats({ animalsCollected: totalAnimalsCollected });
+                if (animalData.cost) {
+                    await eduPetAuth.updateUserStats(moneyUpdate);
+                }
+                console.log(`Firebase 동물 컬렉션 통계 업데이트 완료: ${totalAnimalsCollected}마리`);
+            } catch (error) {
+                console.error('Firebase 동물 수집 통계 업데이트 실패:', error);
+                // 실패 시 오프라인 큐에 개별적으로 추가
+                this.queueForLater('setAnimalStats', { animalsCollected: totalAnimalsCollected });
+                if (animalData.cost) {
+                    this.queueForLater('updateUserStats', moneyUpdate);
+                }
+            }
+        } else {
+            // 오프라인: 큐에 개별적으로 추가
+            this.queueForLater('setAnimalStats', { animalsCollected: totalAnimalsCollected });
+            if (animalData.cost) {
+                this.queueForLater('updateUserStats', moneyUpdate);
+            }
+        }
+    }
+
+    // 농장 활동 통계 업데이트
+    async updateFarmStats(farmAction) {
+        const stats = {};
+
+        if (farmAction.type === 'plant_grown') {
+            stats.plantsGrown = 1;
+        } else if (farmAction.type === 'water_used') {
+            stats.totalWater = -farmAction.waterAmount || -1;
+        } else if (farmAction.type === 'harvest') {
+            stats.totalMoney = farmAction.moneyEarned || 0;
+        }
+
+        if (Object.keys(stats).length > 0) {
+            if (this.isFirebaseReady && eduPetAuth.currentUser) {
+                try {
+                    await eduPetAuth.updateUserStats(stats);
+                    console.log('Firebase 농장 통계 업데이트 완료');
+                } catch (error) {
+                    console.error('Firebase 농장 통계 업데이트 실패:', error);
+                    this.queueForLater('updateFarmStats', stats);
+                }
+            } else {
+                this.queueForLater('updateFarmStats', stats);
+            }
+        }
+    }
+
+    // ===== 새 식물 시스템 Firebase 통합 =====
+
+    // 식물 시스템 상태 저장
+    async savePlantSystemState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing plant system state save.');
+            return;
+        }
+
+        try {
+            const user = plantSystem.getUserData();
+            const plants = plantSystem.getAllPlants();
+
+            const stateToSave = {
+                user: user,
+                plants: plants,
+                lastUpdated: Date.now()
+            };
+
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/plantSystem`).set(stateToSave);
+
+            // stats/totalMoney도 함께 업데이트하여 순위표에 반영
+            if (user.wallet && typeof user.wallet.money === 'number') {
+                await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/stats/totalMoney`).set(user.wallet.money);
+            }
+            console.log('Firebase에 식물 시스템 상태 저장 완료');
+        } catch (error) {
+            console.error('Firebase에 식물 시스템 상태 저장 실패:', error);
+        }
+    }
+
+    // 식물 시스템 상태 불러오기
+    async loadPlantSystemState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load plant system state.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/plantSystem`).once('value');
+            const plantSystemState = snapshot.val();
+
+            if (plantSystemState) {
+                console.log('Firebase에서 식물 시스템 상태 불러오기 완료', plantSystemState);
+
+                // 로컬스토리지에 복원
+                if (plantSystemState.user) {
+                    localStorage.setItem('plantSystemUser', JSON.stringify(plantSystemState.user));
+                }
+                if (plantSystemState.plants) {
+                    localStorage.setItem('plantSystemPlants', JSON.stringify(plantSystemState.plants));
+                }
+
+                return plantSystemState;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 식물 시스템 상태 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // 과목 완료 시 Firebase 업데이트
+    async syncSubjectCompletion(subjectData) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            this.queueForLater('syncSubjectCompletion', subjectData);
+            return;
+        }
+
+        try {
+            const stats = {
+                totalQuestions: subjectData.questionsCompleted || 1,
+                correctAnswers: subjectData.correctAnswers || 0
+            };
+
+            await eduPetAuth.updateUserStats(stats);
+
+            // 식물 시스템 상태도 동기화
+            await this.savePlantSystemState();
+
+            console.log('Firebase 과목 완료 동기화 완료');
+        } catch (error) {
+            console.error('Firebase 과목 완료 동기화 실패:', error);
+            this.queueForLater('syncSubjectCompletion', subjectData);
+        }
+    }
+
+    // 식물 성장 시 Firebase 업데이트
+    async syncPlantGrowth(plantData) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            this.queueForLater('syncPlantGrowth', plantData);
+            return;
+        }
+
+        try {
+            const stats = {
+                plantsGrown: 1
+            };
+
+            await eduPetAuth.updateUserStats(stats);
+            await this.savePlantSystemState();
+
+            console.log('Firebase 식물 성장 동기화 완료');
+        } catch (error) {
+            console.error('Firebase 식물 성장 동기화 실패:', error);
+            this.queueForLater('syncPlantGrowth', plantData);
+        }
+    }
+
+    // 업적 달성 시 통계 업데이트
+    async updateAchievementStats(achievementData) {
+        const stats = {
+            achievementsUnlocked: 1
+        };
+
+        if (this.isFirebaseReady && eduPetAuth.currentUser) {
+            try {
+                await eduPetAuth.updateUserStats(stats);
+                console.log('Firebase 업적 통계 업데이트 완료');
+            } catch (error) {
+                console.error('Firebase 업적 통계 업데이트 실패:', error);
+                this.queueForLater('updateAchievementStats', stats);
+            }
+        } else {
+            this.queueForLater('updateAchievementStats', stats);
+        }
+    }
+
+    // Firebase에서 농장 상태 불러오기
+    async loadFarmState() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load farm state.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/farmState`).once('value');
+            const farmState = snapshot.val();
+            if (farmState) {
+                console.log('Firebase에서 농장 상태를 불러왔습니다.', farmState);
+                return farmState;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 농장 상태 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // Firebase에 농장 상태 저장하기
+    async saveFarmState(gameState) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing farm state save.');
+            this.queueForLater('saveFarmState', gameState);
+            return;
+        }
+
+        try {
+            const stateToSave = {
+                ...gameState,
+                lastUpdated: Date.now()
+            };
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/farmState`).set(stateToSave);
+            console.log('Firebase에 농장 상태를 저장했습니다.');
+        } catch (error) {
+            console.error('Firebase에 농장 상태 저장 실패:', error);
+            this.queueForLater('saveFarmState', gameState);
+        }
+    }
+
+    // Firebase에 학습 진행률 저장하기
+    async saveLearningProgress(learningProgress) {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, queueing learning progress save.');
+            this.queueForLater('saveLearningProgress', learningProgress);
+            return;
+        }
+
+        try {
+            const stateToSave = {
+                ...learningProgress,
+                lastUpdated: Date.now()
+            };
+            await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/learningProgress`).set(stateToSave);
+            console.log('Firebase에 학습 진행률을 저장했습니다.');
+        } catch (error) {
+            console.error('Firebase에 학습 진행률 저장 실패:', error);
+            this.queueForLater('saveLearningProgress', learningProgress);
+        }
+    }
+
+    // Firebase에서 학습 진행률 불러오기
+    async loadLearningProgress() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load learning progress.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/learningProgress`).once('value');
+            const progress = snapshot.val();
+            if (progress) {
+                console.log('Firebase에서 학습 진행률을 불러왔습니다.', progress);
+                return progress;
+            }
+            return null;
+        } catch (error) {
+            console.error('Firebase에서 학습 진행률 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // 신규: 통합된 통계 정보 불러오기 (레거시 호환용)
+    async loadStats() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+            console.log('Firebase is not ready, cannot load stats.');
+            return null;
+        }
+
+        try {
+            const snapshot = await firebase_db.ref(`users/${eduPetAuth.currentUser.uid}/stats`).once('value');
+            const stats = snapshot.val();
+            if (stats) {
+                console.log('Firebase에서 통합 통계를 불러왔습니다.', stats);
+                return stats;
+            }
+            return {}; // 통계가 없으면 빈 객체 반환
+        } catch (error) {
+            console.error('Firebase에서 통합 통계 불러오기 실패:', error);
+            return null;
+        }
+    }
+
+    // 오프라인 큐에 작업 추가
+    queueForLater(action, data) {
+        this.offlineQueue.push({
+            action,
+            data,
+            timestamp: Date.now()
+        });
+
+        // 로컬스토리지에 저장
+        try {
+            localStorage.setItem('firebaseOfflineQueue', JSON.stringify(this.offlineQueue));
+        } catch (error) {
+            console.error('오프라인 큐 저장 실패:', error);
+        }
+    }
+
+    // 오프라인 큐 처리
+    async processOfflineQueue() {
+        if (this.syncInProgress) return;
+        
+        this.syncInProgress = true;
+
+        try {
+            // 로컬스토리지에서 큐 복원
+            const savedQueue = localStorage.getItem('firebaseOfflineQueue');
+            if (savedQueue) {
+                this.offlineQueue = JSON.parse(savedQueue);
+            }
+
+            if (this.offlineQueue.length === 0) {
+                this.syncInProgress = false;
+                return;
+            }
+
+            console.log(`오프라인 큐 처리 시작: ${this.offlineQueue.length}개 작업`);
+
+            // 큐의 각 작업 처리
+            const processedItems = [];
+            for (const item of this.offlineQueue) {
+                try {
+                    switch (item.action) {
+                        case 'saveFarmState':
+                            await this.saveFarmState(item.data);
+                            break;
+                        case 'saveLearningProgress':
+                            await this.saveLearningProgress(item.data);
+                            break;
+                        case 'updateQuizStats':
+                            console.log('[Offline Queue] 퀴즈 통계 업데이트 시도:', item.data);
+                            if (item.data.stats) {
+                                const result = await eduPetAuth.updateUserStats(item.data.stats);
+                                console.log('[Offline Queue] 통계 업데이트 결과:', result);
+                            } else {
+                                console.warn('[Offline Queue] item.data.stats가 없습니다:', item.data);
+                            }
+                            if (item.data.dailyStats && eduPetAuth.currentUser && typeof eduPetLeaderboard !== 'undefined') {
+                                await eduPetLeaderboard.updateDailyStats(eduPetAuth.currentUser.uid, item.data.dailyStats);
+                            }
+                            break;
+                        case 'setAnimalStats':
+                            await eduPetAuth.setUserStats(item.data);
+                            break;
+                        case 'updateUserStats':
+                        case 'updateFarmStats':
+                        case 'updateAchievementStats':
+                            await eduPetAuth.updateUserStats(item.data);
+                            break;
+                        case 'syncSubjectCompletion':
+                            await this.syncSubjectCompletion(item.data);
+                            break;
+                        case 'syncPlantGrowth':
+                            await this.syncPlantGrowth(item.data);
+                            break;
+                    }
+                    processedItems.push(item);
+                } catch (error) {
+                    console.error(`오프라인 큐 처리 실패 (${item.action}):`, error);
+                    // 실패한 항목은 24시간이 지난 경우에만 제거
+                    if (Date.now() - item.timestamp > 24 * 60 * 60 * 1000) {
+                        processedItems.push(item);
+                    }
+                }
+            }
+
+            // 처리된 항목들 큐에서 제거
+            this.offlineQueue = this.offlineQueue.filter(item => !processedItems.includes(item));
+            
+            // 로컬스토리지 업데이트
+            if (this.offlineQueue.length > 0) {
+                localStorage.setItem('firebaseOfflineQueue', JSON.stringify(this.offlineQueue));
+            } else {
+                localStorage.removeItem('firebaseOfflineQueue');
+            }
+
+            console.log(`오프라인 큐 처리 완료: ${processedItems.length}개 처리됨`);
+        } catch (error) {
+            console.error('오프라인 큐 처리 중 오류:', error);
+        } finally {
+            this.syncInProgress = false;
+        }
+    }
+
+    // 현재 사용자의 Firebase 프로필 동기화
+    async syncUserProfile() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) return;
+
+        try {
+            // 로컬 게임 데이터 가져오기
+            const localGameState = JSON.parse(localStorage.getItem('eduPetGameState') || '{}');
+
+            // animalCollection에서 실제 소유한 동물 총 마리수 계산 (index.html과 동일한 방식)
+            const animalCollection = JSON.parse(localStorage.getItem('animalCollection') || '{}');
+            let animalsCollectedCount = 0;
+            if (animalCollection.collection) {
+                Object.values(animalCollection.collection).forEach(animal => {
+                    animalsCollectedCount += animal.count || 0;
+                });
+            }
+
+            // Firebase 통계와 비교하여 동기화
+            if (eduPetAuth.userData?.stats) {
+                const firebaseStats = eduPetAuth.userData.stats;
+                const localStats = {
+                    totalMoney: localGameState.money || 0,
+                    totalWater: localGameState.waterDrops || 0,
+                    animalsCollected: animalsCollectedCount
+                };
+
+                // 동물 수는 항상 절대값으로 설정 (잘못된 값 수정 가능)
+                if (localStats.animalsCollected !== firebaseStats.animalsCollected) {
+                    console.log(`[Firebase Integration] 동물 수 동기화: ${firebaseStats.animalsCollected} → ${localStats.animalsCollected}`);
+                    await eduPetAuth.setUserStats({ animalsCollected: localStats.animalsCollected });
+                }
+
+                // 돈과 물은 증분 업데이트 (로컬이 더 많을 때만)
+                const incrementUpdates = {};
+                if (localStats.totalMoney > firebaseStats.totalMoney) {
+                    incrementUpdates.totalMoney = localStats.totalMoney - firebaseStats.totalMoney;
+                }
+                if (localStats.totalWater > firebaseStats.totalWater) {
+                    incrementUpdates.totalWater = localStats.totalWater - firebaseStats.totalWater;
+                }
+
+                if (Object.keys(incrementUpdates).length > 0) {
+                    await eduPetAuth.updateUserStats(incrementUpdates);
+                    console.log('로컬 데이터를 Firebase에 동기화 완료');
+                }
+            }
+        } catch (error) {
+            console.error('사용자 프로필 동기화 실패:', error);
+        }
+    }
+
+    // 사용자 순위 가져오기
+    async getUserRanking() {
+        if (!this.isFirebaseReady || !eduPetAuth.currentUser) return null;
+
+        try {
+            const rankings = {};
+            const types = ['quiz_score', 'money_collector', 'animal_collector'];
+            
+            for (const type of types) {
+                const rank = await eduPetLeaderboard.getUserRank(eduPetAuth.currentUser.uid, type);
+                rankings[type] = rank;
+            }
+
+            return rankings;
+        } catch (error) {
+            console.error('사용자 순위 조회 실패:', error);
+            return null;
+        }
+    }
+
+    // Firebase 연결 상태 확인
+    isConnected() {
+        return this.isFirebaseReady && eduPetAuth.currentUser !== null;
+    }
+
+    // 소셜 기능 사용 가능 여부 확인
+    isSocialFeatureAvailable() {
+        return this.isConnected() && eduPetAuth.userData?.profile?.nickname;
+    }
+
+    // 일일 학습 랭킹 가져오기 (상위 10명)
+    async getDailyLearningRanking(limit = 10) {
+        if (!this.isFirebaseReady) {
+            console.log('Firebase is not ready, cannot get daily ranking.');
+            return [];
+        }
+
+        try {
+            const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD 형식, 로컬 타임존
+            const snapshot = await firebase_db.ref(`daily_stats/${today}`)
+                .orderByChild('learningTime')
+                .limitToLast(limit)
+                .once('value');
+
+            const data = snapshot.val();
+            if (!data) {
+                return [];
+            }
+
+            // 데이터를 배열로 변환하고 정렬
+            const rankings = Object.entries(data).map(([uid, stats]) => {
+                // 과목 수 계산 (subjects 객체의 키 개수)
+                const subjectsCount = stats.subjects ? Object.keys(stats.subjects).length : 0;
+
+                // 정답률 계산
+                const accuracy = stats.questionsAnswered > 0
+                    ? Math.round((stats.correctAnswers / stats.questionsAnswered) * 100)
+                    : 0;
+
+                return {
+                    uid,
+                    nickname: stats.profile?.nickname || '익명',
+                    avatarAnimal: stats.profile?.avatarAnimal || 'bunny',
+                    subjectsCompleted: subjectsCount,
+                    learningTime: stats.learningTime || 0,
+                    questionsAnswered: stats.questionsAnswered || 0,
+                    correctAnswers: stats.correctAnswers || 0,
+                    accuracy: accuracy,
+                    animalsCollected: stats.animalsCollected || 0,
+                    lastUpdated: stats.lastUpdated || 0
+                };
+            });
+
+            // 학습 시간 기준 내림차순 정렬
+            rankings.sort((a, b) => b.learningTime - a.learningTime);
+
+            return rankings.slice(0, limit);
+        } catch (error) {
+            console.error('일일 학습 랭킹 조회 실패:', error);
+            return [];
+        }
+    }
+}
+
+// 전역 인스턴스 생성
+const eduPetFirebaseIntegration = new EduPetFirebaseIntegration();
+
+
+
+// 기존 게임 함수들을 위한 헬퍼 함수들
+window.updateFirebaseStats = {
+    quiz: (result) => eduPetFirebaseIntegration.updateQuizStats(result),
+    animal: (data) => eduPetFirebaseIntegration.updateAnimalStats(data),
+    farm: (action) => eduPetFirebaseIntegration.updateFarmStats(action),
+    achievement: (data) => eduPetFirebaseIntegration.updateAchievementStats(data),
+    learningProgress: (data) => eduPetFirebaseIntegration.saveLearningProgress(data)
+};
+
+// 소셜 기능 상태 확인 함수
+window.checkSocialFeatures = () => eduPetFirebaseIntegration.isSocialFeatureAvailable();
+
+// 식물 시스템 Firebase 통합 헬퍼
+window.plantSystemFirebase = {
+    save: () => eduPetFirebaseIntegration.savePlantSystemState(),
+    load: () => eduPetFirebaseIntegration.loadPlantSystemState(),
+    syncSubject: (data) => eduPetFirebaseIntegration.syncSubjectCompletion(data),
+    syncGrowth: (data) => eduPetFirebaseIntegration.syncPlantGrowth(data)
+};
+
+// 그룹 학습 활동 기록 (퀴즈 완료 시 자동 호출)
+EduPetFirebaseIntegration.prototype.syncGroupActivity = async function(quizResult) {
+    if (!this.isFirebaseReady || !eduPetAuth.currentUser) {
+        return;
+    }
+
+    try {
+        // 사용자가 속한 그룹 조회
+        const userId = eduPetAuth.currentUser.uid;
+        const groupsSnapshot = await firebase_db.ref(`users/${userId}/social/groups`).once('value');
+        const myGroups = groupsSnapshot.val();
+
+        if (!myGroups || Object.keys(myGroups).length === 0) {
+            return; // 참여한 그룹이 없으면 종료
+        }
+
+        const { subject, correctAnswers, totalQuestions } = quizResult;
+
+        // 각 그룹의 통계 업데이트
+        const updates = {};
+        for (const groupId of Object.keys(myGroups)) {
+            // 그룹 전체 통계 업데이트
+            updates[`groups/${groupId}/stats/totalQuestions`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+            updates[`groups/${groupId}/stats/totalCorrectAnswers`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+
+            // 과목별 그룹 통계 (선택사항)
+            if (subject) {
+                updates[`groups/${groupId}/stats/subjects/${subject}/questions`] = firebase.database.ServerValue.increment(totalQuestions || 0);
+                updates[`groups/${groupId}/stats/subjects/${subject}/correct`] = firebase.database.ServerValue.increment(correctAnswers || 0);
+            }
+
+            // 그룹 활동 로그 (최근 활동)
+            const activityId = firebase_db.ref(`groups/${groupId}/activities`).push().key;
+            updates[`groups/${groupId}/activities/${activityId}`] = {
+                userId: userId,
+                userName: eduPetAuth.userData?.profile?.nickname || '익명',
+                subject: subject,
+                correctAnswers: correctAnswers,
+                totalQuestions: totalQuestions,
+                timestamp: Date.now()
+            };
+        }
+
+        await firebase_db.ref().update(updates);
+        console.log('[Firebase Integration] 그룹 활동 기록 완료');
+
+    } catch (error) {
+        console.error('[Firebase Integration] 그룹 활동 기록 실패:', error);
+    }
+};
+
+// quiz-adaptive.html에서 퀴즈 완료 시 그룹 활동 기록도 자동으로 수행하도록 수정
+const originalUpdateQuizStats = EduPetFirebaseIntegration.prototype.updateQuizStats;
+EduPetFirebaseIntegration.prototype.updateQuizStats = async function(quizResult) {
+    // 기존 개인 통계 업데이트
+    await originalUpdateQuizStats.call(this, quizResult);
+
+    // 그룹 활동 기록 추가
+    await this.syncGroupActivity(quizResult);
+};

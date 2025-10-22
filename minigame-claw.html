@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인형뽑기 게임 - EduPet Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        #gameCanvas {
+            background: linear-gradient(180deg, #FFF5E1 0%, #FFE4B5 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+        .prize-box {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .claw-moving {
+            animation: swing 0.5s ease-in-out;
+        }
+        @keyframes swing {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+        .sparkle {
+            animation: sparkle 1s ease-in-out infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- 헤더 -->
+        <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-3xl">🎁</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">인형뽑기 게임</h1>
+                        <p class="text-xs text-gray-600">귀여운 동물 인형을 뽑아보세요!</p>
+                    </div>
+                </div>
+                <button onclick="goBack()" class="px-3 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition text-sm">
+                    돌아가기
+                </button>
+            </div>
+
+            <!-- 게임 정보 -->
+            <div class="grid grid-cols-3 gap-2">
+                <div class="bg-yellow-50 rounded-lg p-2 text-center">
+                    <p class="text-xs text-gray-600">내 코인</p>
+                    <p class="text-xl font-bold text-yellow-600" id="userCoins">0</p>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-2 text-center">
+                    <p class="text-xs text-gray-600">남은 횟수</p>
+                    <p class="text-xl font-bold text-blue-600" id="remaining">5</p>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-2 text-center">
+                    <p class="text-xs text-gray-600">성공률</p>
+                    <p class="text-xl font-bold text-purple-600" id="successRate">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 캔버스 -->
+        <div id="gameArea" style="display: none;">
+            <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+                <canvas id="gameCanvas" width="400" height="500"></canvas>
+                <div class="text-center text-sm text-gray-600 mt-3">
+                    <p id="gameInstruction">⬅️ 마우스나 터치로 집게를 움직이세요 ➡️</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 시작 화면 -->
+        <div id="startSection" class="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div class="mb-6">
+                <div class="flex justify-center gap-3 mb-4">
+                    <span class="text-5xl prize-box">🐰</span>
+                    <span class="text-5xl prize-box" style="animation-delay: 0.3s;">🐻</span>
+                    <span class="text-5xl prize-box" style="animation-delay: 0.6s;">🦁</span>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">인형뽑기 챌린지!</h2>
+            <p class="text-gray-600 mb-6">집게를 조종해서 귀여운 동물 인형을 뽑아보세요</p>
+
+            <div class="bg-pink-50 rounded-xl p-4 mb-6 border-2 border-pink-200">
+                <ul class="text-sm text-gray-700 space-y-2 text-left">
+                    <li>• 입장료: <strong class="text-yellow-600">10코인</strong></li>
+                    <li>• 집게를 좌우로 움직여 위치를 선택하세요</li>
+                    <li>• 클릭하면 집게가 내려가서 인형을 잡습니다</li>
+                    <li>• 성공하면 동물 컬렉션에 추가됩니다!</li>
+                    <li class="text-xs text-gray-500">💡 팁: 인형 중앙을 노리면 성공률이 높아요</li>
+                </ul>
+            </div>
+
+            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-4 mb-6 border border-yellow-200">
+                <p class="text-sm font-bold text-gray-800 mb-2">🎁 등급별 확률</p>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="flex items-center gap-1">
+                        <span class="text-gray-500">⚪</span>
+                        <span>일반: 60%</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span class="text-blue-500">🔵</span>
+                        <span>레어: 30%</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span class="text-purple-500">🟣</span>
+                        <span>에픽: 9%</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span class="text-yellow-500 sparkle">⭐</span>
+                        <span>전설: 1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="startGame()" class="px-8 py-4 bg-pink-600 text-white rounded-xl hover:bg-pink-700 transition font-bold text-lg shadow-lg">
+                10코인으로 도전하기
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="plant-system.js"></script>
+    <script src="minigame-system.js"></script>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let gameStarted = false;
+        let clawX = canvas.width / 2;
+        let clawY = 50;
+        let clawMoving = false;
+        let clawDown = false;
+        let prizes = [];
+        let selectedPrize = null;
+        let gamePhase = 'move'; // 'move', 'down', 'up', 'result'
+
+        // 동물 이모지 풀 (인형뽑기 기계에 표시될 동물들)
+        const animalEmojiPool = {
+            common: ['🐰', '🐻', '🦊', '🐷', '🐮', '🐶', '🐱'],
+            rare: ['🐼', '🐨', '🦒', '🦓', '🐘'],
+            epic: ['🦁', '🐯', '🦅', '🦉', '🦈'],
+            legendary: ['🦄', '🐉']
+        };
+
+        // 실제 동물 데이터는 뽑았을 때 animal-collection의 DB에서 가져옴
+        function getRandomAnimalFromDB(rarity) {
+            // localStorage에서 동물 컬렉션 데이터 가져오기
+            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": [], "collection": {}}');
+            const allAnimals = animalState.animals || [];
+
+            // 등급별로 필터링
+            const tierAnimals = allAnimals.filter(a => {
+                if (rarity === 'common') return a.id?.startsWith('common_');
+                if (rarity === 'rare') return a.id?.startsWith('rare_');
+                if (rarity === 'epic') return a.id?.startsWith('epic_');
+                if (rarity === 'legendary') return a.id?.startsWith('legendary_');
+                return false;
+            });
+
+            // 해당 등급 동물이 있으면 랜덤 선택, 없으면 기본값
+            if (tierAnimals.length > 0) {
+                return tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
+            }
+
+            // DB가 비어있으면 임시 동물 반환
+            const tempEmojis = animalEmojiPool[rarity] || ['🐾'];
+            const tempEmoji = tempEmojis[Math.floor(Math.random() * tempEmojis.length)];
+
+            return {
+                id: `temp_${rarity}_${Date.now()}`,
+                name: `${rarity} 동물`,
+                emoji: tempEmoji,
+                rarity: rarity,
+                tier: rarity,
+                power: rarity === 'legendary' ? 10 : rarity === 'epic' ? 5 : rarity === 'rare' ? 2 : 1
+            };
+        }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+        });
+
+        function updateUI() {
+            if (typeof plantSystem !== 'undefined') {
+                const coins = plantSystem.getMoney();
+                document.getElementById('userCoins').textContent = coins;
+            }
+
+            if (typeof minigameSystem !== 'undefined') {
+                const stats = minigameSystem.getStats();
+                document.getElementById('remaining').textContent = stats.remainingPlays.claw || 5;
+
+                // 성공률 계산
+                const played = stats.totalStats.claw?.played || 0;
+                const won = stats.totalStats.claw?.won || 0;
+                const rate = played > 0 ? Math.round((won / played) * 100) : 0;
+                document.getElementById('successRate').textContent = rate + '%';
+            }
+        }
+
+        function startGame() {
+            // 코인 확인 및 차감
+            if (typeof minigameSystem !== 'undefined') {
+                const result = minigameSystem.playClawGame();
+                if (!result.success) {
+                    alert(result.message);
+                    return;
+                }
+            }
+
+            gameStarted = true;
+            gamePhase = 'move';
+            clawX = canvas.width / 2;
+            clawY = 50;
+            selectedPrize = null;
+
+            // 화면 전환
+            document.getElementById('startSection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+
+            // 인형들 생성
+            createPrizes();
+            updateUI();
+            draw();
+        }
+
+        // 등급별 가중치로 랜덤 동물 선택
+        function getRandomAnimalByRarity() {
+            const rand = Math.random() * 100;
+
+            // 확률: 일반 60%, 레어 30%, 에픽 9%, 전설 1%
+            let rarity;
+            if (rand < 60) {
+                rarity = 'common';
+            } else if (rand < 90) {
+                rarity = 'rare';
+            } else if (rand < 99) {
+                rarity = 'epic';
+            } else {
+                rarity = 'legendary';
+            }
+
+            // 해당 등급의 동물들만 필터링
+            const animalsOfRarity = animalTypes.filter(a => a.rarity === rarity);
+            return animalsOfRarity[Math.floor(Math.random() * animalsOfRarity.length)];
+        }
+
+        function createPrizes() {
+            prizes = [];
+            const positions = [
+                { x: 80, y: 350 },
+                { x: 160, y: 370 },
+                { x: 240, y: 350 },
+                { x: 320, y: 370 },
+                { x: 120, y: 420 },
+                { x: 200, y: 400 },
+                { x: 280, y: 420 }
+            ];
+
+            positions.forEach(pos => {
+                const randomAnimal = getRandomAnimalByRarity();
+                prizes.push({
+                    ...randomAnimal,
+                    x: pos.x,
+                    y: pos.y,
+                    width: 50,
+                    height: 50
+                });
+            });
+        }
+
+        function drawClaw() {
+            // 집게 줄
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(clawX, 0);
+            ctx.lineTo(clawX, clawY);
+            ctx.stroke();
+
+            // 집게
+            ctx.fillStyle = '#FFD700';
+            ctx.strokeStyle = '#DAA520';
+            ctx.lineWidth = 3;
+
+            // 집게 몸통
+            ctx.beginPath();
+            ctx.arc(clawX, clawY, 15, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // 집게 발
+            ctx.beginPath();
+            ctx.moveTo(clawX - 10, clawY + 10);
+            ctx.lineTo(clawX - 15, clawY + 25);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(clawX + 10, clawY + 10);
+            ctx.lineTo(clawX + 15, clawY + 25);
+            ctx.stroke();
+        }
+
+        function drawPrizes() {
+            prizes.forEach((prize, index) => {
+                // 선택된 인형은 집게를 따라 움직임
+                if (selectedPrize === index && gamePhase === 'up') {
+                    prize.y = clawY + 40;
+                    prize.x = clawX - 25;
+                }
+
+                // 인형 그림자
+                ctx.fillStyle = 'rgba(0,0,0,0.1)';
+                ctx.beginPath();
+                ctx.ellipse(prize.x + 25, prize.y + 60, 20, 5, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 인형 이모지
+                ctx.font = '40px Arial';
+                ctx.fillText(prize.emoji, prize.x, prize.y + 40);
+
+                // 등급 표시
+                const rarityColors = {
+                    common: '#9CA3AF',
+                    rare: '#3B82F6',
+                    epic: '#8B5CF6',
+                    legendary: '#F59E0B'
+                };
+                ctx.fillStyle = rarityColors[prize.rarity] || '#9CA3AF';
+                ctx.fillRect(prize.x, prize.y, 50, 3);
+            });
+        }
+
+        function draw() {
+            if (!gameStarted) return;
+
+            // 배경 클리어
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 상단 바
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(0, 0, canvas.width, 30);
+
+            // 인형들 그리기
+            drawPrizes();
+
+            // 집게 그리기
+            drawClaw();
+
+            // 게임 단계에 따른 동작
+            if (gamePhase === 'down') {
+                clawY += 5;
+                if (clawY >= 300) {
+                    // 인형 잡기 시도
+                    checkPrizeCapture();
+                    gamePhase = 'up';
+                }
+            } else if (gamePhase === 'up') {
+                clawY -= 3;
+                if (clawY <= 50) {
+                    clawY = 50;
+                    showResult();
+                    return;
+                }
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        function checkPrizeCapture() {
+            // 집게 위치와 가장 가까운 인형 찾기
+            let closestIndex = -1;
+            let closestDistance = Infinity;
+
+            prizes.forEach((prize, index) => {
+                const distance = Math.abs(prize.x + 25 - clawX);
+                if (distance < closestDistance && distance < 40) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            // 잡기 성공 확률 계산 (중앙에 가까울수록 성공률 높음)
+            if (closestIndex !== -1) {
+                const grabChance = Math.max(0.3, 1 - (closestDistance / 40) * 0.7);
+
+                // 1단계: 집게로 잡기 성공?
+                if (Math.random() < grabChance) {
+                    const prize = prizes[closestIndex];
+
+                    // 2단계: 등급별 "미끄러져 떨어짐" 확률 체크
+                    const holdChances = {
+                        common: 0.90,      // 일반: 90% 유지
+                        rare: 0.70,        // 레어: 70% 유지
+                        epic: 0.40,        // 에픽: 40% 유지
+                        legendary: 0.20    // 전설: 20% 유지 (80% 떨어짐!)
+                    };
+
+                    const holdChance = holdChances[prize.rarity] || 0.5;
+
+                    // 끝까지 잡고 올라가기 성공!
+                    if (Math.random() < holdChance) {
+                        selectedPrize = closestIndex;
+                    }
+                }
+            }
+        }
+
+        function showResult() {
+            gameStarted = false;
+            gamePhase = 'result';
+
+            if (selectedPrize !== null) {
+                const prize = prizes[selectedPrize];
+
+                // 동물 컬렉션에 추가
+                addToCollection(prize);
+
+                // 성공 처리
+                if (typeof minigameSystem !== 'undefined') {
+                    minigameSystem.clawGameSuccess(prize);
+                }
+
+                const rarityNames = {
+                    common: '일반',
+                    rare: '레어',
+                    epic: '에픽',
+                    legendary: '전설'
+                };
+
+                const rarityEmojis = {
+                    common: '⚪',
+                    rare: '🔵',
+                    epic: '🟣',
+                    legendary: '⭐'
+                };
+
+                const message = `🎉 축하합니다!\n\n${prize.emoji} ${prize.name}를 획득했습니다!\n${rarityEmojis[prize.rarity]} 등급: ${rarityNames[prize.rarity]}\n\n동물 컬렉션에 추가되었습니다!`;
+
+                alert(message);
+            } else {
+                // 실패 처리
+                if (typeof minigameSystem !== 'undefined') {
+                    minigameSystem.clawGameFailure();
+                }
+
+                alert('😢 아쉽게도 실패했습니다!\n\n다시 도전해보세요!');
+            }
+
+            // 게임장으로 돌아가기
+            setTimeout(() => {
+                window.location.href = 'minigames.html';
+            }, 1000);
+        }
+
+        function addToCollection(animal) {
+            // animal-collection.html과 동일한 저장 방식
+            let savedData = JSON.parse(localStorage.getItem('animalCollection')) || null;
+
+            // gameState 구조 생성 (없으면)
+            let gameState = {
+                animals: savedData?.animals || [],
+                collection: savedData?.collection || {},
+                stats: savedData?.stats || { totalDraws: 0, legendaryCount: 0 }
+            };
+
+            // collection에 동물 추가 (animal-collection.html과 동일한 구조)
+            if (!gameState.collection[animal.id]) {
+                // 처음 획득
+                gameState.collection[animal.id] = {
+                    id: animal.id,
+                    name: animal.name,
+                    emoji: animal.emoji,
+                    rarity: animal.rarity,
+                    tier: animal.rarity,
+                    count: 1,
+                    level: 1,
+                    exp: 0,
+                    duplicates: 0,
+                    power: 1,  // 기본 파워
+                    totalPower: 1,
+                    acquiredAt: Date.now(),
+                    source: 'minigame-claw'
+                };
+                console.log(`✨ 새 동물 획득: ${animal.name} (${animal.rarity})`);
+            } else {
+                // 중복 획득
+                gameState.collection[animal.id].count++;
+                gameState.collection[animal.id].duplicates++;
+                gameState.collection[animal.id].acquiredAt = Date.now();
+                console.log(`🔥 중복 카드 획득! ${animal.name} - 중복 ${gameState.collection[animal.id].duplicates}장`);
+            }
+
+            // 전설 통계 업데이트
+            if (animal.rarity === 'legendary' && gameState.collection[animal.id].count === 1) {
+                gameState.stats.legendaryCount++;
+            }
+
+            // 저장
+            localStorage.setItem('animalCollection', JSON.stringify(gameState));
+            console.log('✅ 동물 컬렉션에 저장 완료');
+        }
+
+        function goBack() {
+            if (gameStarted && !confirm('게임을 중단하시겠습니까? (코인은 환불되지 않습니다)')) {
+                return;
+            }
+            window.location.href = 'minigames.html';
+        }
+
+        // 마우스/터치 이벤트로 집게 이동
+        canvas.addEventListener('mousemove', (e) => {
+            if (!gameStarted || gamePhase !== 'move') return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            clawX = Math.max(30, Math.min(mouseX, canvas.width - 30));
+        });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!gameStarted || gamePhase !== 'move') return;
+
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const touchX = touch.clientX - rect.left;
+            clawX = Math.max(30, Math.min(touchX, canvas.width - 30));
+        });
+
+        // 클릭으로 집게 내리기
+        canvas.addEventListener('click', () => {
+            if (!gameStarted || gamePhase !== 'move') return;
+
+            gamePhase = 'down';
+            document.getElementById('gameInstruction').textContent = '집게가 내려가고 있습니다...';
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            if (!gameStarted || gamePhase !== 'move') return;
+
+            e.preventDefault();
+            gamePhase = 'down';
+            document.getElementById('gameInstruction').textContent = '집게가 내려가고 있습니다...';
+        });
+    </script>
+</body>
+</html>
