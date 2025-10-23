@@ -168,33 +168,104 @@
             legendary: ['🦄', '🐉']
         };
 
-        // 실제 동물 데이터는 뽑았을 때 animal-collection의 DB에서 가져옴
-        function getRandomAnimalFromDB(rarity) {
-            // localStorage에서 동물 컬렉션 데이터 가져오기
-            const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": [], "collection": {}}');
-            const allAnimals = animalState.animals || [];
+        // 동물 이름 풀
+        const animalNamePool = {
+            common: ['토끼', '곰', '여우', '돼지', '소', '개', '고양이', '병아리', '오리', '양'],
+            rare: ['판다', '코알라', '기린', '얼룩말', '코끼리', '펭귄', '물개', '수달'],
+            epic: ['사자', '호랑이', '독수리', '부엉이', '상어', '늑대', '치타', '악어'],
+            legendary: ['유니콘', '드래곤', '불사조', '페가수스']
+        };
 
-            // 등급별로 필터링
-            const tierAnimals = allAnimals.filter(a => {
-                if (rarity === 'common') return a.id?.startsWith('common_');
-                if (rarity === 'rare') return a.id?.startsWith('rare_');
-                if (rarity === 'epic') return a.id?.startsWith('epic_');
-                if (rarity === 'legendary') return a.id?.startsWith('legendary_');
-                return false;
-            });
-
-            // 해당 등급 동물이 있으면 랜덤 선택, 없으면 기본값
-            if (tierAnimals.length > 0) {
-                return tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
+        // localStorage에 동물 데이터베이스 초기화
+        function initializeAnimalDatabase() {
+            const existing = localStorage.getItem('animalCollection');
+            if (existing) {
+                const parsed = JSON.parse(existing);
+                if (parsed.animals && parsed.animals.length > 0) {
+                    return; // 이미 데이터가 있으면 스킵
+                }
             }
 
-            // DB가 비어있으면 임시 동물 반환
+            // 기본 동물 데이터베이스 생성
+            const animals = [];
+            let idCounter = 1;
+
+            // Common (20마리)
+            for (let i = 0; i < 20; i++) {
+                const emojiIndex = i % animalEmojiPool.common.length;
+                const nameIndex = i % animalNamePool.common.length;
+                animals.push({
+                    id: `common_${idCounter++}`,
+                    name: animalNamePool.common[nameIndex],
+                    emoji: animalEmojiPool.common[emojiIndex],
+                    rarity: 'common',
+                    tier: 'common',
+                    power: 1
+                });
+            }
+
+            // Rare (10마리)
+            for (let i = 0; i < 10; i++) {
+                const emojiIndex = i % animalEmojiPool.rare.length;
+                const nameIndex = i % animalNamePool.rare.length;
+                animals.push({
+                    id: `rare_${idCounter++}`,
+                    name: animalNamePool.rare[nameIndex],
+                    emoji: animalEmojiPool.rare[emojiIndex],
+                    rarity: 'rare',
+                    tier: 'rare',
+                    power: 2
+                });
+            }
+
+            // Epic (5마리)
+            for (let i = 0; i < 5; i++) {
+                const emojiIndex = i % animalEmojiPool.epic.length;
+                const nameIndex = i % animalNamePool.epic.length;
+                animals.push({
+                    id: `epic_${idCounter++}`,
+                    name: animalNamePool.epic[nameIndex],
+                    emoji: animalEmojiPool.epic[emojiIndex],
+                    rarity: 'epic',
+                    tier: 'epic',
+                    power: 5
+                });
+            }
+
+            // Legendary (2마리)
+            for (let i = 0; i < 2; i++) {
+                const emojiIndex = i % animalEmojiPool.legendary.length;
+                const nameIndex = i % animalNamePool.legendary.length;
+                animals.push({
+                    id: `legendary_${idCounter++}`,
+                    name: animalNamePool.legendary[nameIndex],
+                    emoji: animalEmojiPool.legendary[emojiIndex],
+                    rarity: 'legendary',
+                    tier: 'legendary',
+                    power: 10
+                });
+            }
+
+            // localStorage에 저장
+            const initialState = {
+                animals: animals,
+                collection: {},
+                stats: { totalDraws: 0, legendaryCount: 0 }
+            };
+            localStorage.setItem('animalCollection', JSON.stringify(initialState));
+            console.log('✅ 인형뽑기용 동물 데이터베이스 초기화 완료 (총 ' + animals.length + '마리)');
+        }
+
+        // Fallback 동물 생성 함수
+        function getFallbackAnimal(rarity) {
             const tempEmojis = animalEmojiPool[rarity] || ['🐾'];
+            const tempNames = animalNamePool[rarity] || ['동물'];
             const tempEmoji = tempEmojis[Math.floor(Math.random() * tempEmojis.length)];
+            const tempName = tempNames[Math.floor(Math.random() * tempNames.length)];
 
             return {
                 id: `temp_${rarity}_${Date.now()}`,
-                name: `${rarity} 동물`,
+                name: tempName,
                 emoji: tempEmoji,
                 rarity: rarity,
                 tier: rarity,
@@ -202,8 +273,57 @@
             };
         }
 
+        // 실제 동물 데이터는 뽑았을 때 animal-collection의 DB에서 가져옴
+        function getRandomAnimalFromDB(rarity) {
+            try {
+                // localStorage에서 동물 컬렉션 데이터 가져오기
+                const animalState = JSON.parse(localStorage.getItem('animalCollection') || '{"animals": [], "collection": {}}');
+                const allAnimals = animalState.animals || [];
+
+                // 배열인지 확인
+                if (!Array.isArray(allAnimals)) {
+                    console.error('⚠️ animals가 배열이 아닙니다:', allAnimals);
+                    return getFallbackAnimal(rarity);
+                }
+
+                // 등급별로 필터링
+                const tierAnimals = allAnimals.filter(a => {
+                    // 유효한 동물 객체인지 확인
+                    if (!a || typeof a.id !== 'string') {
+                        return false;
+                    }
+
+                    if (rarity === 'common') return a.id.startsWith('common_');
+                    if (rarity === 'rare') return a.id.startsWith('rare_');
+                    if (rarity === 'epic') return a.id.startsWith('epic_');
+                    if (rarity === 'legendary') return a.id.startsWith('legendary_');
+                    return false;
+                });
+
+                // 해당 등급 동물이 있으면 랜덤 선택
+                if (tierAnimals.length > 0) {
+                    const selectedAnimal = tierAnimals[Math.floor(Math.random() * tierAnimals.length)];
+                    // rarity와 tier 속성 추가 (없을 경우를 대비)
+                    return {
+                        ...selectedAnimal,
+                        rarity: selectedAnimal.rarity || rarity,
+                        tier: selectedAnimal.tier || rarity
+                    };
+                }
+
+                // 해당 등급 동물이 없으면 fallback
+                console.warn(`⚠️ ${rarity} 등급 동물을 찾을 수 없습니다. Fallback 사용.`);
+                return getFallbackAnimal(rarity);
+
+            } catch (error) {
+                console.error('❌ 동물 데이터 로드 오류:', error);
+                return getFallbackAnimal(rarity);
+            }
+        }
+
         // 초기화
         document.addEventListener('DOMContentLoaded', () => {
+            initializeAnimalDatabase();
             updateUI();
         });
 
@@ -267,9 +387,8 @@
                 rarity = 'legendary';
             }
 
-            // 해당 등급의 동물들만 필터링
-            const animalsOfRarity = animalTypes.filter(a => a.rarity === rarity);
-            return animalsOfRarity[Math.floor(Math.random() * animalsOfRarity.length)];
+            // 등급에 맞는 동물을 DB에서 가져오기
+            return getRandomAnimalFromDB(rarity);
         }
 
         function createPrizes() {

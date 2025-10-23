@@ -277,16 +277,22 @@ class MinigameSystem {
             bonusTicket = true;
             data.weeklyBonuses.catch = this.getToday();
 
-            // 성장티켓 추가
+            // 성장티켓 추가 (plant-system과 동일한 구조 사용)
             if (typeof plantSystem !== 'undefined') {
                 const user = plantSystem.getUserData();
                 user.rewards.growthTickets = user.rewards.growthTickets || [];
+
+                const currentTime = Date.now();
+                const TTL_HOURS = 24; // 24시간 유효
+
                 user.rewards.growthTickets.push({
-                    id: Date.now(),
-                    grantedAt: new Date().toISOString(),
-                    source: 'minigame-catch'
+                    ticketId: `minigame_catch_${currentTime}_${Math.random().toString(36).substr(2, 9)}`,
+                    issuedAt: currentTime,
+                    expiresAt: currentTime + (TTL_HOURS * 60 * 60 * 1000),
+                    source: 'minigame-catch'  // 추적용
                 });
                 plantSystem.saveUserData(user);
+                console.log('[MinigameSystem] 성장티켓 추가 완료 (유효기간: 24시간)');
             }
 
             // 보상 통계 업데이트
@@ -422,6 +428,27 @@ class MinigameSystem {
     }
 
     // Firebase에 게임 기록 저장
+    // 닉네임 가져오기 헬퍼 함수
+    getUserNickname() {
+        // 1. Firebase userData에서 가져오기
+        if (window.eduPetAuth?.userData?.profile?.nickname) {
+            return window.eduPetAuth.userData.profile.nickname;
+        }
+
+        // 2. PlantSystem 로컬 데이터에서 가져오기
+        try {
+            const plantSystemUser = JSON.parse(localStorage.getItem('plantSystemUser'));
+            if (plantSystemUser?.profile?.userName) {
+                return plantSystemUser.profile.userName;
+            }
+        } catch (e) {
+            // localStorage 파싱 실패 시 무시
+        }
+
+        // 3. 최후의 fallback
+        return '익명';
+    }
+
     async saveToFirebase(gameType, gameData) {
         // Firebase 초기화 확인
         if (typeof firebase === 'undefined' || !firebase.apps || firebase.apps.length === 0) {
@@ -435,7 +462,7 @@ class MinigameSystem {
         }
 
         const userId = window.eduPetAuth.currentUser.uid;
-        const nickname = window.eduPetAuth.userData?.nickname || '익명';
+        const nickname = this.getUserNickname();
 
         try {
             const recordData = {
@@ -484,39 +511,103 @@ class MinigameSystem {
 
     // 전체 유저 중 최고 기록 가져오기
     async getTopRecords(gameType, limit = 1) {
-        // Firebase 초기화 확인
-        if (typeof firebase === 'undefined' || !firebase.apps || firebase.apps.length === 0) {
-            console.log('[MinigameSystem] Firebase가 초기화되지 않음 - 최고 기록 가져오기 실패');
-            return [];
-        }
+        let firebaseRecords = [];
 
-        try {
-            const ref = firebase.database().ref(`minigames/${gameType}`);
-            const snapshot = await ref.once('value');
-            const records = [];
+        // Firebase에서 가져오기 시도
+        if (typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length > 0) {
+            try {
+                const ref = firebase.database().ref(`minigames/${gameType}`);
+                const snapshot = await ref.once('value');
 
-            snapshot.forEach((childSnapshot) => {
-                records.push(childSnapshot.val());
-            });
-
-            // 게임별 정렬
-            if (gameType === 'memory') {
-                records.sort((a, b) => {
-                    if (a.perfectClear && !b.perfectClear) return -1;
-                    if (!a.perfectClear && b.perfectClear) return 1;
-                    return (b.reward || 0) - (a.reward || 0);
+                snapshot.forEach((childSnapshot) => {
+                    firebaseRecords.push(childSnapshot.val());
                 });
-            } else if (gameType === 'math') {
-                records.sort((a, b) => (b.correctAnswers || 0) - (a.correctAnswers || 0));
-            } else if (gameType === 'catch') {
-                records.sort((a, b) => (b.waterDrops || 0) - (a.waterDrops || 0));
-            }
 
-            return records.slice(0, limit);
-        } catch (error) {
-            console.error('[MinigameSystem] 최고 기록 가져오기 실패:', error);
-            return [];
+                console.log(`[MinigameSystem] Firebase에서 ${gameType} 기록 ${firebaseRecords.length}개 가져옴`);
+            } catch (error) {
+                console.warn('[MinigameSystem] Firebase 최고 기록 가져오기 실패 (권한 문제일 수 있음):', error.message);
+                console.log('[MinigameSystem] 로컬 데이터로 대체합니다...');
+            }
         }
+
+        // 로컬 데이터 가져오기 (현재 사용자의 최고 기록)
+        const localData = this.getData();
+        const localRecords = [];
+
+        if (localData.totalStats && localData.totalStats[gameType]) {
+            const stats = localData.totalStats[gameType];
+            const userId = (typeof window.eduPetAuth !== 'undefined' && window.eduPetAuth.currentUser)
+                ? window.eduPetAuth.currentUser.uid
+                : 'local-user';
+            const nickname = this.getUserNickname();
+
+            // 게임별로 로컬 최고 기록 생성
+            if (gameType === 'memory' && stats.won > 0) {
+                localRecords.push({
+                    userId: userId,
+                    nickname: nickname,
+                    perfectClear: false,
+                    reward: 20,
+                    timestamp: Date.now()
+                });
+            } else if (gameType === 'math' && stats.bestScore > 0) {
+                localRecords.push({
+                    userId: userId,
+                    nickname: nickname,
+                    correctAnswers: stats.bestScore,
+                    timestamp: Date.now()
+                });
+            } else if (gameType === 'catch' && stats.bestScore > 0) {
+                localRecords.push({
+                    userId: userId,
+                    nickname: nickname,
+                    waterDrops: stats.bestScore,
+                    timestamp: Date.now()
+                });
+            } else if (gameType === 'claw' && stats.won > 0) {
+                localRecords.push({
+                    userId: userId,
+                    nickname: nickname,
+                    totalWins: stats.won,
+                    timestamp: Date.now()
+                });
+            }
+        }
+
+        console.log(`[MinigameSystem] 로컬에서 ${gameType} 기록 ${localRecords.length}개 가져옴`);
+
+        // Firebase와 로컬 데이터 병합
+        const allRecords = [...firebaseRecords];
+
+        // 로컬 기록 추가 (중복 체크: userId 기반)
+        localRecords.forEach(localRecord => {
+            const isDuplicate = allRecords.some(r => r.userId === localRecord.userId);
+            if (!isDuplicate) {
+                allRecords.push(localRecord);
+            }
+        });
+
+        console.log(`[MinigameSystem] 총 ${allRecords.length}개 기록 병합 (Firebase ${firebaseRecords.length} + 로컬 ${localRecords.length})`);
+
+        // 게임별 정렬
+        if (gameType === 'memory') {
+            allRecords.sort((a, b) => {
+                if (a.perfectClear && !b.perfectClear) return -1;
+                if (!a.perfectClear && b.perfectClear) return 1;
+                return (b.reward || 0) - (a.reward || 0);
+            });
+        } else if (gameType === 'math') {
+            allRecords.sort((a, b) => (b.correctAnswers || 0) - (a.correctAnswers || 0));
+        } else if (gameType === 'catch') {
+            allRecords.sort((a, b) => (b.waterDrops || 0) - (a.waterDrops || 0));
+        } else if (gameType === 'claw') {
+            allRecords.sort((a, b) => (b.totalWins || 0) - (a.totalWins || 0));
+        }
+
+        const topRecords = allRecords.slice(0, limit);
+        console.log(`[MinigameSystem] 최고 기록 ${topRecords.length}개 반환:`, topRecords);
+
+        return topRecords;
     }
 }
 

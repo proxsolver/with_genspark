@@ -116,7 +116,7 @@
         </div>
 
         <!-- 전체 통계 -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
             <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
                 <div class="text-sm text-gray-600 mb-2">총 학습 세션</div>
                 <div class="text-3xl font-bold text-blue-600" id="total-sessions">0</div>
@@ -132,6 +132,10 @@
             <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
                 <div class="text-sm text-gray-600 mb-2">최다 완료 타입</div>
                 <div class="text-2xl font-bold text-purple-600" id="most-completion-type">-</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg stat-card">
+                <div class="text-sm text-gray-600 mb-2">최다 학년</div>
+                <div class="text-2xl font-bold text-pink-600" id="most-grade">-</div>
             </div>
         </div>
 
@@ -159,6 +163,14 @@
                     <div class="text-2xl font-bold text-blue-600" id="type-mixed-15">0</div>
                     <div class="text-xs text-blue-600 mt-1" id="type-mixed-percent">0%</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- 학년별 통계 -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">🎓 학년별 학습 분석</h2>
+            <div id="grade-stats-container" class="grid grid-cols-1 md:grid-cols-6 gap-3">
+                <!-- 동적으로 생성됨 -->
             </div>
         </div>
 
@@ -380,6 +392,7 @@
 
             updateOverallStats();
             updateCompletionTypeStats();
+            updateGradeStats(); // 학년별 통계 추가
             updateSubjectStats();
             updateRecentRecords();
             populateSubjectFilter();
@@ -417,11 +430,30 @@
             const mostCommonType = Object.entries(typeCounts)
                 .sort((a, b) => b[1] - a[1])[0];
 
+            // 가장 많은 학년
+            const gradeCounts = {};
+            analyticsData.forEach(session => {
+                const grade = session.grade || session.gradeLabel || '알 수 없음';
+                gradeCounts[grade] = (gradeCounts[grade] || 0) + 1;
+            });
+
+            const mostCommonGrade = Object.entries(gradeCounts)
+                .sort((a, b) => b[1] - a[1])[0];
+
             document.getElementById('total-sessions').textContent = totalSessions;
             document.getElementById('avg-accuracy').textContent = avgAccuracy + '%';
             document.getElementById('avg-time').textContent = avgTime + '분';
             document.getElementById('most-completion-type').textContent =
                 mostCommonType ? completionTypeNames[mostCommonType[0]] || mostCommonType[0] : '-';
+
+            // 최다 학년 표시
+            if (mostCommonGrade) {
+                const gradeNum = mostCommonGrade[0];
+                const gradeText = typeof gradeNum === 'number' ? `${gradeNum}학년` : gradeNum;
+                document.getElementById('most-grade').textContent = gradeText;
+            } else {
+                document.getElementById('most-grade').textContent = '-';
+            }
         }
 
         function updateCompletionTypeStats() {
@@ -456,6 +488,77 @@
             document.getElementById('type-mixed-15').textContent = typeCounts.mixed_15;
             document.getElementById('type-mixed-percent').textContent =
                 total > 0 ? Math.round(typeCounts.mixed_15 / total * 100) + '%' : '0%';
+        }
+
+        function updateGradeStats() {
+            const gradeData = {};
+
+            // 학년별 데이터 집계
+            analyticsData.forEach(session => {
+                const grade = session.grade || 0;
+                if (grade === 0) return; // 학년 정보가 없으면 스킵
+
+                if (!gradeData[grade]) {
+                    gradeData[grade] = {
+                        sessions: 0,
+                        totalAccuracy: 0,
+                        totalTime: 0
+                    };
+                }
+
+                gradeData[grade].sessions++;
+                gradeData[grade].totalAccuracy += session.stats?.accuracy || 0;
+                gradeData[grade].totalTime += session.stats?.timeSpent || 0;
+            });
+
+            // 학년 이모지
+            const gradeEmojis = {
+                1: '🌰',
+                2: '🌱',
+                3: '🪴',
+                4: '🌳',
+                5: '🌲',
+                6: '🌺'
+            };
+
+            const container = document.getElementById('grade-stats-container');
+            container.innerHTML = '';
+
+            const total = analyticsData.length;
+
+            // 1학년부터 6학년까지 순서대로 표시
+            for (let grade = 1; grade <= 6; grade++) {
+                const data = gradeData[grade] || { sessions: 0, totalAccuracy: 0, totalTime: 0 };
+                const avgAccuracy = data.sessions > 0 ? Math.round(data.totalAccuracy / data.sessions) : 0;
+                const percent = total > 0 ? Math.round((data.sessions / total) * 100) : 0;
+
+                const card = `
+                    <div class="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg border-2 border-blue-200">
+                        <div class="text-center">
+                            <div class="text-3xl mb-1">${gradeEmojis[grade]}</div>
+                            <div class="text-sm font-bold text-gray-800">${grade}학년</div>
+                            <div class="text-2xl font-bold text-blue-600 mt-2">${data.sessions}</div>
+                            <div class="text-xs text-blue-600 mt-1">${percent}%</div>
+                            <div class="text-xs text-gray-600 mt-2">정답률 ${avgAccuracy}%</div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            }
+
+            // 학년 정보가 없는 세션이 많으면 경고 표시
+            const unknownSessions = analyticsData.filter(s => !s.grade || s.grade === 0).length;
+            if (unknownSessions > 0) {
+                container.innerHTML += `
+                    <div class="col-span-full mt-3 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <p class="text-sm text-yellow-800">
+                            ⚠️ 학년 정보가 없는 세션: ${unknownSessions}개
+                            <br>
+                            <span class="text-xs">튜토리얼에서 학년을 설정하면 정확한 분석이 가능합니다.</span>
+                        </p>
+                    </div>
+                `;
+            }
         }
 
         function updateSubjectStats() {
@@ -526,7 +629,7 @@
                 .sort((a, b) => {
                     const timeA = a.completedAt || a.timestamp || 0;
                     const timeB = b.completedAt || b.timestamp || 0;
-                    return timeA - timeB; // 최신이 위로 (오름차순 역순)
+                    return timeB - timeA; // 최신이 위로 (내림차순)
                 })
                 .slice(0, 20);
 
@@ -544,7 +647,15 @@
             }
 
             recentData.forEach(session => {
-                const completedDate = new Date(session.completedAt || session.timestamp || Date.now());
+                // timestamp 또는 completedAt을 숫자나 ISO 문자열로 처리
+                let timestamp = session.completedAt || session.timestamp || Date.now();
+
+                // ISO 문자열이면 파싱
+                if (typeof timestamp === 'string') {
+                    timestamp = new Date(timestamp).getTime();
+                }
+
+                const completedDate = new Date(timestamp);
                 const dateStr = completedDate.toLocaleString('ko-KR', {
                     month: 'short',
                     day: 'numeric',
@@ -556,12 +667,23 @@
                     'easy_only': '<span class="difficulty-tag difficulty-easy">쉬움 전용</span>',
                     'medium_complete': '<span class="difficulty-tag difficulty-medium">보통 완료</span>',
                     'hard_complete': '<span class="difficulty-tag difficulty-hard">어려움 완료</span>',
-                    'mixed_15': '<span class="difficulty-tag difficulty-medium">혼합 15+</span>'
+                    'mixed_15': '<span class="difficulty-tag difficulty-medium">혼합 15+</span>',
+                    'extra_learning': '<span class="difficulty-tag" style="background: #f59e0b; color: white;">✨ 추가학습</span>'
                 };
 
                 // 그룹 뷰일 때 학습자 이름 표시
                 const learnerBadge = session.learnerName ?
                     `<span class="inline-block px-2 py-1 bg-purple-100 text-purple-700 rounded text-xs font-semibold mr-2">👤 ${session.learnerName}</span>`
+                    : '';
+
+                // 추가 학습 모드 표시
+                const extraLearningBadge = session.isExtraLearning ?
+                    `<span class="inline-block px-2 py-1 bg-orange-100 text-orange-700 rounded text-xs font-semibold mr-2">✨ 추가학습</span>`
+                    : '';
+
+                // 학년 표시
+                const gradeBadge = session.grade || session.gradeLabel ?
+                    `<span class="inline-block px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs font-semibold mr-2">🎓 ${typeof session.grade === 'number' ? session.grade + '학년' : session.gradeLabel || session.grade}</span>`
                     : '';
 
                 const record = `
@@ -571,7 +693,7 @@
                                 <span class="text-2xl">${subjects[session.subject]?.icon || '📚'}</span>
                                 <div>
                                     <div class="font-bold text-gray-900">
-                                        ${learnerBadge}${session.subjectName || subjects[session.subject]?.name}
+                                        ${learnerBadge}${extraLearningBadge}${gradeBadge}${session.subjectName || subjects[session.subject]?.name}
                                     </div>
                                     <div class="text-sm text-gray-600">${dateStr}</div>
                                 </div>

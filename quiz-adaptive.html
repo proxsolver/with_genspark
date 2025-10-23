@@ -473,9 +473,12 @@
             common: { name: '상식', icon: '🧠' },
             idiom: { name: '사자성어', icon: '📜' },
             economy: { name: '경제', icon: '💰' },
+            person: { name: '인물', icon: '👤' },
             animal: { name: '동물 상식', icon: '🐾' },
             colors: { name: '색깔', icon: '🎨' },
             kpop: { name: 'K-POP', icon: '🎵' },
+            production: { name: '생산관리', icon: '🏭' },
+            toeic: { name: 'TOEIC', icon: '📖' },
             ai: { name: 'AI', icon: '🤖' }
         };
 
@@ -1009,6 +1012,54 @@
             // 학습 진행률 업데이트 (시간만)
             updateLearningProgress(currentSubject, sessionStats.correct, totalAnswered);
 
+            // ✅ 추가 학습 모드에서도 분석 데이터 저장
+            const userGrade = localStorage.getItem('userGrade') || '4';
+            const quizAnalytics = {
+                subject: currentSubject,
+                subjectName: subjects[currentSubject]?.name || currentSubject,
+                grade: parseInt(userGrade), // 학년 정보 추가
+                gradeLabel: `${userGrade}학년`,
+                completionType: sessionStats.completionType || 'extra_learning', // 추가 학습 타입
+                stats: {
+                    correct: sessionStats.correct,
+                    incorrect: sessionStats.incorrect,
+                    totalAnswered: totalAnswered,
+                    accuracy: accuracy,
+                    timeSpent: timeSpent
+                },
+                questionCounts: questionCounts,
+                difficultyHistory: sessionStats.difficultyHistory,
+                completedAt: Date.now(),
+                timestamp: Date.now(),
+                isExtraLearning: true // 추가 학습 모드 표시
+            };
+
+            try {
+                let analyticsHistory = JSON.parse(localStorage.getItem('quizAnalyticsHistory') || '[]');
+                console.log('[Analytics] [추가학습] 기존 분석 데이터:', analyticsHistory.length + '개');
+
+                analyticsHistory.push(quizAnalytics);
+                console.log('[Analytics] [추가학습] 새 분석 데이터 추가:', quizAnalytics);
+                console.log('[Analytics] [추가학습] 학년:', quizAnalytics.gradeLabel, '| 과목:', quizAnalytics.subjectName, '| 정답률:', quizAnalytics.stats.accuracy + '%');
+
+                if (analyticsHistory.length > 100) {
+                    analyticsHistory = analyticsHistory.slice(-100);
+                }
+
+                localStorage.setItem('quizAnalyticsHistory', JSON.stringify(analyticsHistory));
+                console.log('[Analytics] [추가학습] ✅ localStorage 저장 완료 (총', analyticsHistory.length, '개)');
+
+                // Firebase에도 저장
+                if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+                    const userId = firebase.auth().currentUser.uid;
+                    firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
+                        .then(() => console.log('[Analytics] [추가학습] ✅ Firebase 저장 완료'))
+                        .catch(err => console.error('[Analytics] [추가학습] ❌ Firebase 저장 실패:', err));
+                }
+            } catch (error) {
+                console.error('[Analytics] [추가학습] ❌ 분석 데이터 저장 실패:', error);
+            }
+
             alert(`✨ 추가 학습 완료!\n\n` +
                   `총 ${totalAnswered}문제 풀이\n` +
                   `정답률: ${accuracy}%\n` +
@@ -1132,9 +1183,12 @@
             alert(`🎉 과목 학습 완료!\n\n총 ${totalAnswered}문제 풀이\n정답률: ${accuracy}%\n소요시간: ${timeSpent}분${plantSystemMessage}`);
 
             // ✅ CRITICAL: 분석 데이터 저장 (analytics-console.html용)
+            const userGrade = localStorage.getItem('userGrade') || '4'; // 기본값 4학년
             const quizAnalytics = {
                 subject: currentSubject,
                 subjectName: subjects[currentSubject]?.name || currentSubject,
+                grade: parseInt(userGrade), // 학년 정보 추가
+                gradeLabel: `${userGrade}학년`, // 표시용
                 completionType: sessionStats.completionType,
                 stats: {
                     correct: sessionStats.correct,
@@ -1145,26 +1199,40 @@
                 },
                 questionCounts: questionCounts,
                 difficultyHistory: sessionStats.difficultyHistory,
-                completedAt: new Date().toISOString()
+                completedAt: Date.now(), // timestamp 형식으로 변경
+                timestamp: Date.now() // 추가 호환성
             };
 
-            // 기존 분석 데이터 로드
-            let analyticsHistory = JSON.parse(localStorage.getItem('quizAnalyticsHistory') || '[]');
-            analyticsHistory.push(quizAnalytics);
+            try {
+                // 기존 분석 데이터 로드
+                let analyticsHistory = JSON.parse(localStorage.getItem('quizAnalyticsHistory') || '[]');
+                console.log('[Analytics] 기존 분석 데이터:', analyticsHistory.length + '개');
 
-            // 최근 100개만 유지
-            if (analyticsHistory.length > 100) {
-                analyticsHistory = analyticsHistory.slice(-100);
-            }
+                analyticsHistory.push(quizAnalytics);
+                console.log('[Analytics] 새 분석 데이터 추가:', quizAnalytics);
+                console.log('[Analytics] 학년:', quizAnalytics.gradeLabel, '| 과목:', quizAnalytics.subjectName, '| 정답률:', quizAnalytics.stats.accuracy + '%');
 
-            localStorage.setItem('quizAnalyticsHistory', JSON.stringify(analyticsHistory));
+                // 최근 100개만 유지
+                if (analyticsHistory.length > 100) {
+                    analyticsHistory = analyticsHistory.slice(-100);
+                    console.log('[Analytics] 100개로 제한 (이전:', analyticsHistory.length + 100 + '개)');
+                }
 
-            // Firebase에도 분석 데이터 저장 (users 하위에 저장)
-            if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
-                const userId = firebase.auth().currentUser.uid;
-                firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
-                    .then(() => console.log('✅ Firebase 분석 데이터 업로드 완료'))
-                    .catch(err => console.error('❌ Firebase 분석 데이터 업로드 실패:', err));
+                localStorage.setItem('quizAnalyticsHistory', JSON.stringify(analyticsHistory));
+                console.log('[Analytics] ✅ localStorage 저장 완료 (총', analyticsHistory.length, '개)');
+
+                // Firebase에도 분석 데이터 저장 (users 하위에 저장)
+                if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+                    const userId = firebase.auth().currentUser.uid;
+                    firebase.database().ref(`users/${userId}/analytics`).set(analyticsHistory)
+                        .then(() => console.log('[Analytics] ✅ Firebase 분석 데이터 업로드 완료 (총', analyticsHistory.length, '개)'))
+                        .catch(err => console.error('[Analytics] ❌ Firebase 분석 데이터 업로드 실패:', err));
+                } else {
+                    console.log('[Analytics] ⚠️ Firebase 미연결 - 로컬만 저장됨');
+                }
+            } catch (error) {
+                console.error('[Analytics] ❌ 분석 데이터 저장 실패:', error);
+                alert('⚠️ 학습 분석 데이터 저장에 실패했습니다. localStorage 용량을 확인해주세요.');
             }
 
             // 그룹 멤버 진행 상황 업데이트
